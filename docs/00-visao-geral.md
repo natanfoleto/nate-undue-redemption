@@ -8,6 +8,7 @@ Jogo de ação e exploração em 3D com câmera fixa, num mundo subterrâneo per
 - **História e pilares:** ver `01-historia.md`.
 - **Core loop:** ver `02-core-loop.md`.
 - **Regras:** ver `03-regras.md`.
+- **Player:** ver `04-player.md`.
 - **Referência principal:** Minecraft Dungeons.
 - **Perspectiva:** 3D com câmera fixa isométrica, jogado como 2D (chão plano, sem pulo nem verticalidade).
 - **Estilo visual:** blocado/voxel, na linha de Minecraft Dungeons.
@@ -34,7 +35,7 @@ Jogo de ação e exploração em 3D com câmera fixa, num mundo subterrâneo per
 - [x] **01 Pilares e história** (`01-historia.md`)
 - [x] **02 Core loop** (`02-core-loop.md`): o que o jogador faz minuto a minuto, estrutura da partida, morte, progressão, vitória.
 - [x] **03 Regras** (`03-regras.md`): lista de atributos, fórmula de dano, hitbox, recuo, invencibilidade após dano, efeitos de status.
-- [ ] **04 Player** (`04-player.md`): movimento, ataques, esquiva, atributos base, controles.
+- [x] **04 Player** (`04-player.md`): movimento, ataques, esquiva, atributos base, controles.
 - [ ] **05 Itens** (`05-itens.md`): categorias, raridades, slots, consumíveis, relíquias, tabelas de loot.
 - [ ] **06 Mobs** (`06-mobs/`): uma ficha por mob.
 - [ ] **07 Chefes** (`07-chefes/`): fases, padrões de ataque, avisos visuais.

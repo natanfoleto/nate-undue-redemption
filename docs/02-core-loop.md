@@ -64,7 +64,7 @@ Posição exata de cada passagem, relíquia e segredo: `[A DEFINIR em 08-mapa]`.
 ### Começo e fim
 - **Abertura (cena):** Nhamundá, criaturas atacando rebanhos, Nate rejeitado pela cidade.
 - **Prólogo (jogável, cerca de 1 min):** borda da mina, na floresta. Primeira luta, contra a criatura. Ela perde, foge pela fenda e Nate a segue.
-- **Mina:** tutorial do resto dos controles. O que cada trecho ensina: `[A DEFINIR em 04-player]`.
+- **Mina:** tutorial do resto dos controles. O que cada trecho ensina: `04-player.md`.
 - **Final (cena):** o retorno à cidade.
 - Criatura do prólogo: `[A DEFINIR em 06-mobs]`.
 - Formato das cenas: `[A DEFINIR em 10-arte-audio]`.
@@ -77,6 +77,7 @@ Posição exata de cada passagem, relíquia e segredo: `[A DEFINIR em 08-mapa]`.
 ## Cura
 - **Frasco com cargas.** Nate sai do santuário com o frasco cheio, gasta cargas nas lutas e volta pelos atalhos ou avança até o próximo santuário para recarregar.
 - Recarrega ao descansar no santuário.
+- Nate ganha o frasco no primeiro santuário, no Bosque. Prólogo e Mina não têm cura (`04-player.md`).
 - Cargas extras vêm de melhorias escondidas (ver Progressão de poder).
 - Número de cargas e cura por carga: `[A DEFINIR em 05-itens]`.
 

@@ -117,7 +117,7 @@ Todo golpe inimigo é avisado antes de ferir (pilar 2).
 ### Invencibilidade após dano
 - Depois de levar um golpe, Nate pisca e não leva dano por 1 s. Pode andar, atacar e esquivar normalmente; os 0,2 s sem controle contam dentro desse 1 s.
 - Inimigos não têm invencibilidade após dano.
-- Invencibilidade durante a esquiva: `[A DEFINIR em 04-player]`.
+- Durante a esquiva, Nate fica invencível o rolamento inteiro, 0,4 s (`04-player.md`).
 
 ## Efeitos de status
 
