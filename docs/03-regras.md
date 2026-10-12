@@ -77,7 +77,7 @@ dano = dano do ataque × (1 + soma dos bônus em %) × variação × crítico
 | Armadilhas e perigos do cenário | sim | sim |
 
 - Dá para atrair ou empurrar inimigos para armadilhas.
-- Se os mobs desviam das armadilhas sozinhos: `[A DEFINIR em 06-mobs]`.
+- Andando, os mobs contornam as armadilhas; empurrados, caem nelas (`06-mobs/`).
 
 ## Golpes
 
@@ -126,8 +126,8 @@ Todo golpe inimigo é avisado antes de ferir (pilar 2).
 | Efeito | O que faz | Fonte |
 |--------|-----------|-------|
 | Atordoado | não se move nem ataca | magia Gelo; 3º golpe do Tacape marajoara |
-| Lento | anda à metade da velocidade | magia Lamaçal; Zarabatana marajoara; mobs: `[A DEFINIR em 06-mobs]` |
-| Veneno | perde vida aos poucos; Nate perde corações inteiros | 1 ou 2 tipos de mob (`[A DEFINIR em 06-mobs]`) |
+| Lento | anda à metade da velocidade | magia Lamaçal; Zarabatana marajoara; abalo do Golem de Pedra |
+| Veneno | perde vida aos poucos; Nate perde corações inteiros | praga do Necromante |
 | Queimadura | perde vida aos poucos; Nate perde corações inteiros | magias de Fogo: Bola de Fogo, Vapor, Magma e Tempestade de Fogo |
 
 A queimadura é de Nate; o veneno é dos mobs.

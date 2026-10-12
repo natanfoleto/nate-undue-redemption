@@ -23,7 +23,7 @@ O título resume o tema: uma redenção que ele não devia, mas que herdou da pr
 - Dinossauros fictícios, ecossistemas subterrâneos, ruínas, minas e criaturas exclusivas que não existem na superfície.
 - Áreas (detalhar em `08-mapa.md`):
   1. **A Mina:** galerias da velha mina da família de Nate. Entrada e tutorial.
-  2. **O Bosque de Fungos:** cogumelos gigantes bioluminescentes, dinossauros herbívoros, insetos. Primeiro santuário e primeiro pergaminho, quando o muiraquitã de Nate acorda.
+  2. **O Bosque de Fungos:** cogumelos gigantes bioluminescentes e dinossauros herbívoros, que vivem ali sem lutar. Primeiro santuário e primeiro pergaminho, quando o muiraquitã de Nate acorda.
   3. **As Ruínas:** a cidade e as minas antigas dos Marajoara, com murais e mecanismos. Onde a traição é descoberta.
   4. **A Grande Prisão:** arena do chefe.
 
@@ -51,6 +51,7 @@ O título resume o tema: uma redenção que ele não devia, mas que herdou da pr
 - Criatura colossal das profundezas, contida apenas pelo sono que a prisão incompleta provocou.
 - Um tremor abre uma fenda na floresta, na borda da velha mina da família de Nate, racha a prisão e acorda o predador antes da hora.
 - As criaturas de Agartha fogem dele e sobem pela fenda até a superfície.
+- A escuridão dele também desperta ossos e pedras: esqueletos, necromantes e golens (`06-mobs/`).
 - Chefe final: na fase 1 é enfrentado de frente na arena da grande prisão; na fase 2 recua para a escuridão e ataca de emboscada. Detalhes em `07-chefes/`.
 
 ## Como as construções antigas ajudam
@@ -64,13 +65,13 @@ O título resume o tema: uma redenção que ele não devia, mas que herdou da pr
 
 ## Arco da história
 1. **A cidade:** criaturas desconhecidas começam a aparecer, atacando rebanhos e assustando a população. Nate é tratado como o resto de uma família maldita.
-2. **A descida:** na floresta, uma das criaturas ataca Nate. Perdendo a luta, ela foge rastejando até a fenda. Curioso, ele a segue e descobre Agartha.
+2. **A descida:** na floresta, uma das criaturas, um lobo, ataca Nate. Perdendo a luta, ela foge mancando até a fenda. Curioso, ele a segue e descobre Agartha.
 3. **A descoberta:** as construções antigas o guiam e as memórias voltam. Aos poucos ele vira o único que entende aquele mundo.
 4. **A revelação:** murais e memórias mostram que ele é o herói antigo. A última memória revela a traição do irmão e onde a prisão falhou.
 5. **O clímax:** ele enfrenta o predador na grande prisão e a ativa por completo, sem repetir o erro do passado.
 6. **O retorno:** a cidade agora depende dele. Ele é o único que conhece o caminho, o guardião da passagem.
 
-**Ideia opcional:** a criatura que Nate poupou no início reaparece mais tarde e o ajuda num momento difícil.
+**Ideia opcional:** a criatura que Nate poupou no início reaparece mais tarde e o ajuda num momento difícil. Fora do escopo inicial (`06-mobs/`).
 
 ## Temas
 - Redenção dupla: a culpa da família nesta vida e a falha do herói antigo na outra.

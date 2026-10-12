@@ -66,7 +66,7 @@ Posição exata de cada passagem, pergaminho e segredo: `[A DEFINIR em 08-mapa]`
 - **Prólogo (jogável, cerca de 1 min):** borda da mina, na floresta. Primeira luta, contra a criatura. Ela perde, foge pela fenda e Nate a segue.
 - **Mina:** tutorial do resto dos controles. O que cada trecho ensina: `04-player.md`.
 - **Final (cena):** o retorno à cidade.
-- Criatura do prólogo: `[A DEFINIR em 06-mobs]`.
+- Criatura do prólogo: um Lobo (`06-mobs/lobo.md`).
 - Formato das cenas: `[A DEFINIR em 10-arte-audio]`.
 
 ## Combate no mapa
