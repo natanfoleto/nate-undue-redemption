@@ -25,7 +25,7 @@ Sistema de itens e as fichas de equipamento, muiraquitã e magias, frasco e melh
 ### Inventário e troca
 - Nate guarda tudo o que acha.
 - Equipamento e elementos são trocados a qualquer momento, no inventário, com o jogo pausado.
-- Tela do inventário: `[A DEFINIR em 09-interface]`.
+- Tela do inventário: `09-interface.md`.
 
 ### Visual
 - A arma aparece na mão de Nate e a armadura no corpo.

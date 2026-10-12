@@ -111,7 +111,7 @@ Nate começa com o facão e acha a baladeira, a primeira arma à distância, na 
 - **Armadilhas:** ferem Nate e os mobs; dá para atrair ou empurrar inimigos para elas.
 - **Muiraquitã e magias:** a Luz Ancestral ilumina as áreas escuras; com Terra aprendida, os golpes quebram paredes rachadas; com o Selo, a porta da Grande Prisão abre. Os elementos equipados dão as magias em combate.
 - **Cenário:** alavancas (perto, interagir; longe, tiro), baús (interagir), santuários (interagir para descansar, salvar e viajar), elevadores e portas que só abrem por um lado. Paredes bloqueiam golpes e tiros.
-- **Murais:** como Nate vê um mural: `[A DEFINIR em 09-interface]`.
+- **Murais:** interagir mostra o mural grande na tela; depois ele fica na galeria (`09-interface.md`).
 - **Morte:** volta ao último santuário, sem perder nada (`02-core-loop.md`).
 
 ## Animações necessárias

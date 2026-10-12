@@ -46,7 +46,7 @@ Tempo de quem joga pela primeira vez, contando as mortes.
 ### Viagem rápida
 - Ao descansar num santuário, Nate pode ir para outro santuário já visitado. Só sai de um santuário e só chega em outro.
 - Os atalhos continuam valendo: depois de morrer, são eles que levam do santuário de volta ao ponto onde Nate estava.
-- Tela de escolha (lista dos santuários visitados): `[A DEFINIR em 09-interface]`.
+- No menu do santuário, "Viajar" abre a lista dos santuários visitados (`09-interface.md`).
 
 ### Cadeia de progressão
 | Trecho | Poder obtido | Passagem para o trecho seguinte |
@@ -122,4 +122,4 @@ Nate fica mais forte com o que acha no mapa. Não há XP nem moeda.
 - **Vitória:** vencer a fase 2 da Boiúna, o predador, e fechar a Grande Prisão (`07-chefes/boiuna.md`). Em seguida vêm a cena final e os créditos.
 - **Pós-jogo, volta ao mundo:** depois dos créditos, Nate reaparece no último santuário, com o predador preso, para achar o que faltou.
 - A arena da Grande Prisão fica vazia; o resto do mapa segue como estava.
-- Contador de murais e segredos achados: `[A DEFINIR em 09-interface]`.
+- O contador de murais e segredos fica numa tela de progresso no menu de pausa, por área. Depois dos créditos, aparece um resumo da partida (`09-interface.md`).

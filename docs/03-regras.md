@@ -138,7 +138,7 @@ A queimadura é de Nate; o veneno é dos mobs.
 - O mesmo efeito não acumula: aplicar de novo renova a duração.
 - Efeitos diferentes valem ao mesmo tempo.
 - Efeito sem fonte no jogo é cortado.
-- Ícone, cor e som de cada efeito: `[A DEFINIR em 09-interface e 10-arte-audio]`.
+- Cada efeito tem um ícone sobre quem sofre e, em Nate, também ao lado dos corações (`09-interface.md`). Cor e som: `[A DEFINIR em 10-arte-audio]`.
 
 ### Quem sofre o quê
 | Alvo | Atordoado | Lento | Veneno | Queimadura |
@@ -148,4 +148,4 @@ A queimadura é de Nate; o veneno é dos mobs.
 | Chefe | imune | imune | imune | imune |
 
 - A única exceção do chefe é o atordoar no fim de cada parte da vida da fase 1, que faz parte da luta (`07-chefes/boiuna.md`).
-- Como mostrar que o chefe é imune: `[A DEFINIR em 09-interface]`.
+- Quando um efeito não pega no chefe, aparece "imune" sobre ele (`09-interface.md`).

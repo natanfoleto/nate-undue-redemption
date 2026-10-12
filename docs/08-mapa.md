@@ -251,7 +251,7 @@ As três ferem Nate e os mobs (`03-regras.md`). Os mobs contornam as armadilhas 
 | Elevador da mina | desce e quebra na chegada ao Bosque; consertado, liga S1 e a Mina | descer, quebrar, subir | elevador; quebra |
 | Parede rachada | quebra com qualquer golpe quando Nate já aprendeu Terra; sem Terra, responde com som de pedra firme | quebrar | quebrar; pedra firme |
 | Área escura | sem a Luz Ancestral, Nate para na borda; com ela, o brilho ilumina o caminho | — | — |
-| Mural | conta a história sem texto; como Nate vê o mural: `[A DEFINIR em 09-interface]` | — | — |
+| Mural | conta a história sem texto; interagir mostra o mural grande na tela, e depois ele fica na galeria (`09-interface.md`) | — | — |
 | Pilar da prisão e porta da Grande Prisão | ver `07-chefes/boiuna.md` | — | — |
 
 ### Comportamento e habilidades
