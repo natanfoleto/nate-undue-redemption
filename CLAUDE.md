@@ -8,7 +8,7 @@ Projeto piloto para ganhar experiência em desenvolvimento de jogos antes dos pr
 - Mudança de design: propor opções com prós e contras, o usuário decide, e o documento é atualizado junto com o código.
 - Números ficam em `docs/11-balanceamento.md` e nos arquivos de dados de `game/data/`; os dois mudam juntos.
 - Código e projeto seguem `docs/12-tecnico.md`.
-- Antes de cada commit com código, rodar os testes automáticos.
+- Antes de cada commit com código, rodar os testes automáticos (comando em `docs/12-tecnico.md`).
 
 ## Regra de produção
 - **Pequeno e completo:** começo, meio e fim. Poucos sistemas bem feitos em vez de muitos pela metade. Na dúvida, cortar escopo.

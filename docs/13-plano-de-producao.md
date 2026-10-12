@@ -30,6 +30,8 @@ Como construir o jogo a partir da documentação. São etapas curtas, e cada uma
 - Criar a tabela de tradução (pt_BR) com a primeira chave.
 - Instalar a ferramenta de testes (ex.: gdUnit4) e escrever um teste de exemplo.
 
+Concluída em 2026-10-12.
+
 ## Etapa 1: montador de modelos
 - Recurso `ModelData`: a lista de caixas, com tamanho, posição, ponto de giro e região da textura, em 16 px por bloco.
 - Montador: um script que cria as caixas como nós e aplica a textura.

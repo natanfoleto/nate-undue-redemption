@@ -5,7 +5,7 @@ Motor, arquitetura, estrutura de pastas e convenções de código.
 ## Fundamentos
 | Item | Decisão |
 |------|---------|
-| Motor | Godot 4, na versão estável mais recente quando a produção começar, fixada até o fim (sem atualizar no meio) |
+| Motor | Godot 4.7.2, a versão estável no começo da produção (2026-10-12), fixada até o fim (sem atualizar no meio) |
 | Linguagem | GDScript, sempre com tipos declarados (ex.: `var health: int = 5`) |
 | Plataformas | Windows e macOS; o desenvolvimento acontece no Mac |
 | Idioma do código | nomes de variáveis, funções e arquivos em inglês, como a API do Godot; comentários e textos do jogo em português |
@@ -85,6 +85,7 @@ Dentro de `game/`, as pastas são organizadas por assunto: cada parte do jogo ju
 ```
 game/
 ├── project.godot
+├── addons/        gdUnit4, a ferramenta de testes
 ├── assets/        texturas, sons, música e fontes
 ├── data/          números, modelos, animações e ondas
 ├── autoload/      sistemas globais
@@ -112,7 +113,10 @@ game/
 
 ## Processo
 - **Versão do Godot:** a estável mais recente no começo da produção, fixada até o fim.
-- **Testes automáticos:** para as regras de combate (fórmula de dano, efeitos de status, recuo) e para o salvamento, com uma ferramenta de testes do Godot (ex.: gdUnit4). O resto é testado jogando.
-- **Git:** os arquivos gerados pelo Godot (`.godot/`) e as exportações ficam fora do git. Sem Git LFS no começo: texturas de 16 px e sons pequenos cabem no git normal.
+- **Testes automáticos:** para as regras de combate (fórmula de dano, efeitos de status, recuo) e para o salvamento, com o gdUnit4 6.2.2, fixado junto com o Godot. O resto é testado jogando.
+  - Os testes ficam em `game/tests/`. No editor, rodam pelo painel GdUnit; no terminal, a partir da raiz do repositório:
+    `godot --headless --path game -s res://addons/gdUnit4/bin/GdUnitCmdTool.gd -a res://tests --ignoreHeadlessMode`
+  - O gdUnit4 e os testes ficam fora das exportações do jogo.
+- **Git:** os arquivos gerados pelo Godot (`.godot/`), os relatórios dos testes (`reports/`) e as exportações ficam fora do git. Sem Git LFS no começo: texturas de 16 px e sons pequenos cabem no git normal.
 - **Assets prontos:** entram como provisórios no começo da produção e são registrados com origem e licença no `10-arte-audio.md`. Os créditos do jogo listam os que pedem crédito.
 - **Ordem:** o montador de modelos e a prévia vêm antes dos primeiros modelos.

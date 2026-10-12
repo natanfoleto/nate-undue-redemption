@@ -1,0 +1,11 @@
+# Godot
+game/.godot/
+
+# Exportações
+builds/
+
+# macOS
+.DS_Store
+
+# Relatórios dos testes (gdUnit4)
+game/reports/
