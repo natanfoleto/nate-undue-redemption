@@ -4,7 +4,7 @@
 **Descrição visual:** esqueleto blocado, com 2 blocos de altura e uma espada. O visual deixa claro que é uma criatura da escuridão do predador. Ossos cinza-escuros, com brilho roxo nos olhos e nas juntas; o Veterano tem ossos quase pretos e brilho mais forte (`10-arte-audio.md`).
 
 ## Atributos
-Valores exatos: `[A DEFINIR em 11-balanceamento]`.
+Valores exatos: `11-balanceamento.md`.
 
 | Atributo | Valor |
 |----------|-------|
@@ -18,7 +18,7 @@ Valores exatos: `[A DEFINIR em 11-balanceamento]`.
 
 | Ataque | Tipo | Dano | Área | Aviso | Recuo | Efeito |
 |--------|------|------|------|-------|-------|--------|
-| Golpe de espada | comum | 1 coração | setor curto à frente | ergue a espada, pelo menos 0,6 s | `[A DEFINIR em 11-balanceamento]` | — |
+| Golpe de espada | comum | 1 coração | setor curto à frente | ergue a espada, pelo menos 0,6 s | curto | — |
 
 - **Invocado:** o Necromante faz esqueletos surgirem do chão. Esses se desfazem quando o Necromante morre (`necromante.md`).
 

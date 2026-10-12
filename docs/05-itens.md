@@ -49,7 +49,7 @@ Sistema de itens e as fichas de equipamento, muiraquitã e magias, frasco e melh
 **Descrição visual:** armas blocadas na mão de Nate. As comuns são ferramentas gastas de metal e madeira; as marajoara, de pedra e madeira com padrões geométricos marajoara. Tamanho: de 0,75 a 1,5 bloco de comprimento (`10-arte-audio.md`).
 
 #### Atributos
-Valores exatos: `[A DEFINIR em 11-balanceamento]`.
+Valores exatos: `11-balanceamento.md`.
 
 | Peça | Raridade | Velocidade | Dano | Golpe | Efeito | Área |
 |------|----------|------------|------|-------|--------|------|
@@ -88,7 +88,7 @@ Valores exatos: `[A DEFINIR em 11-balanceamento]`.
 **Descrição visual:** armas blocadas na mão de Nate; o projétil de cada uma aparece em voo. As marajoara têm padrões geométricos marajoara.
 
 #### Atributos
-Valores exatos: `[A DEFINIR em 11-balanceamento]`.
+Valores exatos: `11-balanceamento.md`.
 
 | Peça | Raridade | Tempo para puxar | Dano | Alcance | Projétil | Efeito | Área |
 |------|----------|------------------|------|---------|----------|--------|------|
@@ -97,7 +97,7 @@ Valores exatos: `[A DEFINIR em 11-balanceamento]`.
 | Azagaia marajoara | marajoara | longo | alto | médio | azagaia | recuo longo | Bosque |
 | Arco marajoara | marajoara | longo | alto | longo | flecha | atravessa inimigos | Ruínas |
 
-Recuo da Baladeira, da Zarabatana e do Arco: `[A DEFINIR em 11-balanceamento]`.
+Recuo: Baladeira, curto; Zarabatana, nenhum; Arco, curto.
 
 #### Comportamento e habilidades
 - Segurar puxa até a força total; soltar atira; soltar antes cancela (`04-player.md`).
@@ -127,7 +127,7 @@ Recuo da Baladeira, da Zarabatana e do Arco: `[A DEFINIR em 11-balanceamento]`.
 **Descrição visual:** blocos e cores sobre o modelo base de Nate. As comuns são equipamento gasto de minerador; as marajoara, fibras trançadas e placas de cerâmica com padrões geométricos marajoara.
 
 #### Atributos
-Valores exatos: `[A DEFINIR em 11-balanceamento]`.
+Valores exatos: `11-balanceamento.md`.
 
 | Peça | Raridade | Peso | Corações | Velocidade | Efeito | Área |
 |------|----------|------|----------|------------|--------|------|
@@ -173,7 +173,7 @@ Nenhum próprio.
 #### Atributos
 | Atributo | Valor |
 |----------|-------|
-| Raio da Luz Ancestral | `[A DEFINIR em 11-balanceamento]` |
+| Raio da Luz Ancestral | `11-balanceamento.md` |
 
 #### Comportamento e habilidades
 - **Adormecido:** do prólogo até o primeiro pergaminho, não faz nada.
@@ -232,7 +232,7 @@ Nenhuma além de ensinar o elemento.
 **Descrição visual:** cada magia tem a cor e o efeito do seu elemento: Fogo, laranja e amarelo; Água, azul-claro; Terra, marrom e ocre; Ar, branco e cinza-claro. Cada combinação mistura as cores dos dois elementos (`10-arte-audio.md`).
 
 #### Atributos
-Valores exatos (recarga, dano, áreas e durações): `[A DEFINIR em 11-balanceamento]`.
+Valores exatos (recarga, dano, áreas e durações): `11-balanceamento.md`.
 
 **Magias de elemento**
 
@@ -254,7 +254,7 @@ Valores exatos (recarga, dano, áreas e durações): `[A DEFINIR em 11-balanceam
 | Lamaçal | Água + Terra | lama no chão, à frente, que fica alguns segundos | lento em quem passa |
 | Escudo de Areia | Terra + Ar | areia girando ao redor de Nate, por alguns segundos | o próximo golpe recebido não tira coração |
 
-Recuo da Tempestade de Fogo: `[A DEFINIR em 11-balanceamento]`.
+Recuo da Tempestade de Fogo: curto.
 
 #### Comportamento e habilidades
 - **Água equipada:** queimadura, veneno e lento duram metade do tempo em Nate. A Água não cura: o frasco continua sendo a única cura.

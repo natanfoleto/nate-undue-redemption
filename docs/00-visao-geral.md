@@ -15,6 +15,7 @@ Jogo de ação e exploração em 3D com câmera fixa, num mundo subterrâneo per
 - **Mapa:** ver `08-mapa.md`.
 - **Interface:** ver `09-interface.md`.
 - **Arte e áudio:** ver `10-arte-audio.md`.
+- **Balanceamento:** ver `11-balanceamento.md`.
 - **Referência principal:** Minecraft Dungeons.
 - **Perspectiva:** 3D com câmera fixa isométrica, jogado como 2D (chão plano, sem pulo nem verticalidade).
 - **Estilo visual:** blocado/voxel, na linha de Minecraft Dungeons.
@@ -49,5 +50,5 @@ Jogo de ação e exploração em 3D com câmera fixa, num mundo subterrâneo per
 - [x] **08 Mapa** (`08-mapa.md`): regiões, conexões, atalhos, santuários, armadilhas, dificuldade por região.
 - [x] **09 Interface** (`09-interface.md`): HUD, inventário, menus, telas de morte e vitória.
 - [x] **10 Arte e áudio** (`10-arte-audio.md`): guia de estilo, lista consolidada de assets e sons.
-- [ ] **11 Balanceamento** (`11-balanceamento.md`): tabela com todos os números.
+- [x] **11 Balanceamento** (`11-balanceamento.md`): tabela com todos os números.
 - [ ] **12 Técnico** (`12-tecnico.md`): arquitetura no Godot, estrutura de pastas, convenções de código.

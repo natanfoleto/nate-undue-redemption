@@ -18,7 +18,7 @@ Regras comuns aos mobs e distribuição por área. Cada criatura tem a própria 
 
 ### Comportamento base
 - O mob nota Nate quando ele entra na percepção sem parede no meio, e então o persegue.
-- Se perde Nate de vista por alguns segundos, volta ao lugar de antes, sem recuperar vida. Tempo: `[A DEFINIR em 11-balanceamento]`.
+- Se perde Nate de vista por alguns segundos, volta ao lugar de antes, sem recuperar vida. Tempo: `11-balanceamento.md`.
 - Golpes, avisos, recuo e efeitos seguem `03-regras.md`.
 
 ### Ataques em grupo

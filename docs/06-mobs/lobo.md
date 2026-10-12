@@ -4,7 +4,7 @@
 **Descrição visual:** lobo blocado, com 1 bloco de altura. Cinza-escuro, com olhos âmbar; o Alfa é preto, com os olhos mais fortes (`10-arte-audio.md`).
 
 ## Atributos
-Valores exatos: `[A DEFINIR em 11-balanceamento]`.
+Valores exatos: `11-balanceamento.md`.
 
 | Atributo | Valor |
 |----------|-------|
@@ -18,13 +18,13 @@ Valores exatos: `[A DEFINIR em 11-balanceamento]`.
 
 | Ataque | Tipo | Dano | Área | Aviso | Recuo | Efeito |
 |--------|------|------|------|-------|-------|--------|
-| Salto com mordida | comum | 1 coração | salto curto em linha à frente | abaixa e rosna, pelo menos 0,6 s | `[A DEFINIR em 11-balanceamento]` | — |
+| Salto com mordida | comum | 1 coração | salto curto em linha à frente | abaixa e rosna, pelo menos 0,6 s | curto | — |
 
-- **Prólogo:** um lobo sozinho ataca Nate na borda da mina. Quando a vida dele baixa até um limite, ele foge mancando pela fenda, e Nate o segue. Limite: `[A DEFINIR em 11-balanceamento]`.
+- **Prólogo:** um lobo sozinho ataca Nate na borda da mina. Quando a vida dele baixa até um limite, ele foge mancando pela fenda, e Nate o segue. Limite: `11-balanceamento.md`.
 
 ### Variante: Lobo Alfa
 - Maior e com mais vida, com outra cor.
-- O salto é forte: 2 corações, com marca no chão e aviso de pelo menos 1 s.
+- O salto é forte: 2 corações e recuo longo, com marca no chão e aviso de pelo menos 1 s.
 - Aparece nas Ruínas e nas arenas opcionais.
 
 ## Interações

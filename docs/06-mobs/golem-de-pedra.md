@@ -4,7 +4,7 @@
 **Descrição visual:** construto de pedra blocado, com 3 blocos de altura. O visual deixa claro que é pedra despertada pela escuridão do predador. Pedra cinza com rachaduras que brilham em roxo; o Ancião tem pedra escura e rachaduras mais largas (`10-arte-audio.md`).
 
 ## Atributos
-Valores exatos: `[A DEFINIR em 11-balanceamento]`.
+Valores exatos: `11-balanceamento.md`.
 
 | Atributo | Valor |
 |----------|-------|
@@ -18,8 +18,8 @@ Valores exatos: `[A DEFINIR em 11-balanceamento]`.
 
 | Ataque | Tipo | Dano | Área | Aviso | Recuo | Efeito |
 |--------|------|------|------|-------|-------|--------|
-| Socão | forte | 2 corações | à frente, perto | marca no chão, pelo menos 1 s | `[A DEFINIR em 11-balanceamento]` | — |
-| Abalo | área | 2 corações | círculo ao redor | marca no chão, pelo menos 1 s | `[A DEFINIR em 11-balanceamento]` | lento |
+| Socão | forte | 2 corações | à frente, perto | marca no chão, pelo menos 1 s | longo | — |
+| Abalo | área | 2 corações | círculo ao redor | marca no chão, pelo menos 1 s | curto | lento |
 
 - **Resistência:** ignora o recuo curto. Só o 3º golpe do combo, a Azagaia marajoara e magias com recuo longo o empurram e interrompem (`03-regras.md`).
 

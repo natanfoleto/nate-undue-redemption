@@ -4,7 +4,7 @@
 **Descrição visual:** cobra blocada colossal, preta, com olhos que brilham. A cabeça tem cerca de 4 blocos de comprimento; o corpo é maior que a arena e aparece só em partes, saindo de um fosso no centro. É inspirada na Boiúna, a Cobra Grande das lendas amazônicas ("cobra preta", em tupi), que vive no fundo dos rios e atrai pescadores com a luz dos olhos. Preta com reflexos roxos e olhos âmbar que brilham (`10-arte-audio.md`).
 
 ## Atributos
-Valores exatos: `[A DEFINIR em 11-balanceamento]`.
+Valores exatos: `11-balanceamento.md`.
 
 | Atributo | Valor |
 |----------|-------|
@@ -28,16 +28,16 @@ Valores exatos: `[A DEFINIR em 11-balanceamento]`.
 
 ### Fase 1: de frente
 - A arena está iluminada. A Boiúna sai do fosso e alterna os ataques da tabela.
-- A vida da fase 1 tem 4 partes. Cada parte derrubada deixa a Boiúna atordoada por alguns segundos, e esse é o momento seguro de ativar um pilar. Duração do atordoar: `[A DEFINIR em 11-balanceamento]`.
-- **Pilar:** Nate ativa segurando o botão de interagir por um tempo; se levar um golpe, a ativação para. Dá para tentar sem atordoar a Boiúna, mas o jeito seguro é atordoar antes. Tempo: `[A DEFINIR em 11-balanceamento]`.
-- Cada pilar ativo prende a Boiúna com uma corrente de luz, e ela fica mais agressiva: espera menos entre um ataque e outro. Intervalos: `[A DEFINIR em 11-balanceamento]`.
+- A vida da fase 1 tem 4 partes. Cada parte derrubada deixa a Boiúna atordoada por alguns segundos, e esse é o momento seguro de ativar um pilar. Duração do atordoar: `11-balanceamento.md`.
+- **Pilar:** Nate ativa segurando o botão de interagir por um tempo; se levar um golpe, a ativação para. Dá para tentar sem atordoar a Boiúna, mas o jeito seguro é atordoar antes. Tempo: `11-balanceamento.md`.
+- Cada pilar ativo prende a Boiúna com uma corrente de luz, e ela fica mais agressiva: espera menos entre um ataque e outro. Intervalos: `11-balanceamento.md`.
 - Com os 4 pilares ativos, começa a fase 2.
 
 | Ataque | Tipo | Dano | Área | Aviso | Recuo | Depois do golpe |
 |--------|------|------|------|-------|-------|-----------------|
 | Bote | forte | 3 corações | linha do fosso até onde Nate está | a cabeça recua e os olhos brilham | longo | a cabeça fica no chão alguns segundos: janela para bater |
 | Varrida de cauda | área | 2 corações | um setor da arena | a cauda se ergue | longo | — |
-| Cuspe de escuridão | área | 2 corações | círculos em pontos da arena | a garganta incha | `[A DEFINIR em 11-balanceamento]` | ficam poças por alguns segundos, que deixam lento quem pisa |
+| Cuspe de escuridão | área | 2 corações | círculos em pontos da arena | a garganta incha | nenhum | ficam poças por alguns segundos, que deixam lento quem pisa |
 
 ### Fase 2: na escuridão
 - A arena apaga. Nate só enxerga dentro do brilho da Luz Ancestral do muiraquitã (`05-itens.md`).
@@ -48,7 +48,7 @@ Valores exatos: `[A DEFINIR em 11-balanceamento]`.
 | Ataque | Tipo | Dano | Área | Aviso | Recuo | Depois do golpe |
 |--------|------|------|------|-------|-------|-----------------|
 | Emboscada | forte | 3 corações | linha até Nate | os olhos aparecem na borda da Luz Ancestral | longo | a cabeça fica exposta: janela para bater |
-| Cerco | área | 2 corações | anel em volta de Nate | o corpo começa a circular | `[A DEFINIR em 11-balanceamento]` | — |
+| Cerco | área | 2 corações | anel em volta de Nate | o corpo começa a circular | curto | — |
 
 No Cerco, Nate escapa saindo do anel antes de ele fechar.
 

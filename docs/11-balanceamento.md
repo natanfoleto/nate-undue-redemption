@@ -1,0 +1,171 @@
+# Balanceamento
+
+Todos os números do jogo num lugar só. São valores iniciais, e os testes no motor vão ajustá-los. Ao ajustar, este documento muda primeiro; se o número também aparece numa ficha, a ficha muda junto.
+
+## Âncoras
+| Âncora | Valor |
+|--------|-------|
+| Golpe do facão | 10 pontos; 15 no 3º golpe do combo |
+| Golpes de facão para derrubar | Lobo 3, Necromante 4, Esqueleto 5, Golem 15 |
+| Variantes | cerca de 60% a mais de vida |
+| Recarga das magias de elemento | 8 a 10 s |
+| Efeitos de status | cerca de 2 s |
+| Mobs por onda | 3 a 4 nas arenas comuns; até 5 nas opcionais |
+
+## Partida
+Tempo de quem joga pela primeira vez, contando as mortes (`02-core-loop.md`).
+
+| Trecho | Tempo |
+|--------|-------|
+| Prólogo + Mina | 5 min |
+| Bosque de Fungos | 9 min |
+| Ruínas | 11 min |
+| Grande Prisão | 5 min (luta da Boiúna: cerca de 4 min) |
+| Caminho principal | 30 min |
+| Com todos os segredos | 45 min |
+
+## Nate
+| Valor | Número |
+|-------|--------|
+| Vida inicial | 5 corações |
+| Vida máxima | 9 corações com as 4 melhorias; até 11 com armadura de +2 |
+| Velocidade | 5 blocos/s |
+| Aceleração e frenagem | 0,1 s |
+| Ajuda de mira | cone de 45°, até 4 blocos |
+| Passo à frente em cada golpe | 0,5 bloco |
+| Janela para continuar o combo | 0,4 s depois da recuperação |
+| Recuperação depois do tiro | 0,3 s |
+| Rolamento | 3 blocos em 0,4 s, invencível o tempo todo; recarga de 1 s |
+| Sem controle ao levar golpe | 0,2 s |
+| Invencível depois de levar golpe | 1 s |
+| Frasco | 3 cargas (até 5 com melhorias); 2 corações por carga; 0,6 s para beber |
+| Chance de crítico | 5% |
+| Elementos equipados | 2 |
+| Raio da Luz Ancestral | 6 blocos |
+
+## Regras de combate
+| Valor | Número |
+|-------|--------|
+| Aviso mínimo do golpe comum | 0,6 s |
+| Aviso mínimo do golpe forte ou de área | 1 s |
+| Recuo curto | 1 bloco |
+| Recuo longo | 3 blocos |
+| Interrompido | 0,4 s sem agir |
+| Variação do dano de Nate | de 0,9 a 1,1 |
+| Crítico | dobra o dano |
+| Dano inimigo em Nate | golpe comum 1 coração; forte 2; do chefe até 3 |
+| Mobs atacando ao mesmo tempo | no máximo 5 |
+| Tempo de cada golpe de Nate | 30% de preparação, 20% de tempo ativo e 50% de recuperação |
+
+## Armas corpo a corpo
+Todas ficam entre 23 e 27 pontos de dano por segundo; o que muda é o jeito de bater.
+
+| Peça | Dano (1º e 2º / 3º) | Tempo por golpe | Alcance e ângulo | Efeito |
+|------|---------------------|-----------------|------------------|--------|
+| Facão | 10 / 15 | 0,5 s | 1,5 bloco, 90° | — |
+| Picareta | 16 / 24 | 0,7 s | 1,75 bloco, 45° | — |
+| Lança marajoara | 10 / 15 | 0,5 s | 3 blocos, 30° | crítico de 20% (5% da base mais 15%) |
+| Tacape marajoara | 16 / 24 | 0,7 s | 1,75 bloco, 150° | o 3º golpe atordoa por 1,5 s |
+| Lâmina de pedra verde | 7 / 11 | 0,35 s | 1,25 bloco, 90° | cada acerto tira 0,5 s da recarga das magias equipadas |
+
+## Armas à distância
+| Peça | Dano | Tempo para puxar | Alcance | Projétil | Recuo | Efeito |
+|------|------|------------------|---------|----------|-------|--------|
+| Baladeira | 6 | 0,4 s | 10 blocos | 20 blocos/s | curto | — |
+| Zarabatana marajoara | 5 | 0,4 s | 10 blocos | 25 blocos/s | nenhum | lento por 2 s |
+| Azagaia marajoara | 18 | 1 s | 10 blocos | 15 blocos/s | longo | — |
+| Arco marajoara | 16 | 1 s | 16 blocos | 30 blocos/s | curto | atravessa |
+
+## Armaduras
+| Peça | Corações | Velocidade de Nate | Efeito |
+|------|----------|--------------------|--------|
+| Colete de minerador | +1 | 5 blocos/s | — |
+| Armadura de minerador | +2 | 4,5 blocos/s | — |
+| Manto de fibras marajoara | +1 | 5 blocos/s | a esquiva recarrega em 0,7 s, em vez de 1 s |
+| Couraça de cerâmica marajoara | +2 | 4,5 blocos/s | 15% a mais de dano |
+
+## Magias
+As combinações gastam as duas recargas. Onde a combinação causa dano, ele é maior que a soma das duas magias separadas.
+
+| Magia | Recarga | Dano | Área | Efeito |
+|-------|---------|------|------|--------|
+| Bola de Fogo | 8 s | 25 | projétil a 15 blocos/s, alcance de 12 blocos; explosão de raio 1,5 bloco | queimadura |
+| Onda Cortante | 8 s | 20 | linha de 2 × 8 blocos | recuo curto |
+| Colapso Terrestre | 10 s | 30 | círculo de raio 3 blocos | recuo longo |
+| Rajada Veloz | 10 s | — | cone de 60°, 5 blocos | recuo longo; Nate fica 30% mais rápido por 3 s |
+| Vapor | as duas | — | nuvem de raio 2,5 blocos, a 4 blocos à frente, por 4 s | queimadura em quem está dentro |
+| Magma | as duas | 60 | linha de 2 × 8 blocos | queimadura |
+| Tempestade de Fogo | as duas | — | raio de 2,5 blocos ao redor de Nate, por 4 s | queimadura e recuo curto |
+| Gelo | as duas | 10 | cone de 60°, 6 blocos | atordoa por 2 s |
+| Lamaçal | as duas | — | círculo de raio 3 blocos, a 4 blocos à frente, por 5 s | lento |
+| Escudo de Areia | as duas | — | ao redor de Nate, por 6 s | segura 1 golpe |
+
+## Efeitos de status
+| Efeito | Valor |
+|--------|-------|
+| Atordoado | Gelo: 2 s; 3º golpe do Tacape: 1,5 s; Boiúna, depois de cada parte da vida da fase 1: 6 s |
+| Lento | metade da velocidade. Zarabatana e abalo do Golem: 2 s. Lamaçal, esporos e poças da Boiúna: enquanto estiver dentro e mais 1 s |
+| Veneno | praga do Necromante: 1 coração depois de 2 s |
+| Queimadura | 4 pontos a cada 0,5 s, por 2 s (16 no total) |
+| Água equipada | os efeitos em Nate duram metade do tempo; com ela, o veneno da praga acaba em 1 s e não chega a agir |
+
+## Mobs
+| Mob | Vida | Velocidade | Percepção | Vida da variante |
+|-----|------|------------|-----------|------------------|
+| Lobo | 30 | 4,5 blocos/s | 10 blocos | Alfa: 50 |
+| Esqueleto Guerreiro | 50 | 3 blocos/s | 7 blocos | Veterano: 80 |
+| Necromante | 40 | 3 blocos/s | 10 blocos | Ancião: 65 |
+| Golem de Pedra | 150 | 2 blocos/s | 7 blocos | Ancião: 240 |
+
+### Ataques dos mobs
+O tempo ativo é de 0,2 s; no salto do lobo, de 0,3 s.
+
+| Ataque | Preparação | Recuperação | Recarga | Área | Recuo |
+|--------|------------|-------------|---------|------|-------|
+| Lobo: salto com mordida | 0,6 s | 0,8 s | 2 s | salto de 3 blocos em linha | curto |
+| Lobo Alfa: salto forte | 1 s | 0,8 s | 2 s | salto de 4 blocos em linha | longo |
+| Esqueleto: golpe de espada | 0,7 s | 0,6 s | 1,5 s | setor de 90°, 1,5 bloco | curto |
+| Necromante: praga | 0,8 s | 0,5 s | 3 s | projétil a 8 blocos/s, alcance de 12 blocos | nenhum |
+| Necromante: invocar | 1,2 s | 0,8 s | 12 s | 2 esqueletos de cada vez, no máximo 3 vivos | — |
+| Golem: socão | 1,2 s | 1 s | 3 s | retângulo de 2 × 3 blocos à frente | longo |
+| Golem: abalo | 1,4 s | 1 s | 3 s | círculo de raio 3 blocos (Ancião: 4,5) | curto |
+
+### Comportamento
+| Valor | Número |
+|-------|--------|
+| Desistir de perseguir | 4 s sem ver Nate |
+| Necromante recua | quando Nate chega a menos de 4 blocos |
+| Lobo do prólogo foge | com 10 pontos de vida ou menos; no prólogo, ele não morre |
+
+## Arenas e ondas
+| Arena | Onda 1 | Onda 2 | Onda 3 |
+|-------|--------|--------|--------|
+| Mina | 3 Lobos | 2 Esqueletos e 1 Lobo | — |
+| Bosque 1 | 3 Esqueletos | 1 Necromante e 2 Lobos | — |
+| Bosque 2 | 4 Lobos | 2 Esqueletos e 1 Necromante | 1 Necromante e 3 Lobos |
+| Ruínas 1 | 3 Esqueletos e 1 Necromante | 1 Golem (o primeiro encontro com ele) | — |
+| Ruínas 2 | 1 Golem e 2 Esqueletos Veteranos | 1 Necromante Ancião e 3 Lobos Alfa | — |
+| Opcional da Mina | 2 Lobos Alfa e 2 Esqueletos Veteranos | 1 Necromante Ancião e 3 Esqueletos Veteranos | — |
+| Opcional do Bosque | 1 Necromante Ancião e 3 Lobos Alfa | 2 Necromantes Anciões e 3 Esqueletos Veteranos | — |
+| Opcional das Ruínas | 1 Golem Ancião e 2 Esqueletos Veteranos | 1 Golem Ancião, 1 Necromante Ancião e 2 Lobos Alfa | 2 Golens Anciões e 1 Necromante Ancião |
+
+## Armadilhas
+| Armadilha | Dano | Área | Tempo | Recuo |
+|-----------|------|------|-------|-------|
+| Pedras que caem | 1 coração em Nate; 30 nos mobs | raio de 1 bloco | aviso de 1 s; cai uma vez | curto |
+| Cogumelo de esporos | — (lento) | nuvem de raio 2 blocos | aviso de 1 s; nuvem por 3 s; volta a crescer em 8 s | — |
+| Lanças do chão | 1 coração em Nate; 20 nos mobs | as placas do chão | ciclo de 4 s: 2 s recolhidas, 1 s de aviso, 1 s para fora | curto |
+
+## Boiúna
+| Valor | Número |
+|-------|--------|
+| Vida da fase 1 | 4 partes de 180 (720 no total) |
+| Atordoada depois de cada parte | 6 s |
+| Ativar um pilar | segurar interagir por 2 s |
+| Intervalo entre ataques | 3 s; 2,5 s; 2 s; 1,5 s (com 0, 1, 2 e 3 pilares ativos) |
+| Vida da fase 2 | 400 |
+| Bote | preparação de 1,2 s; linha de 2 blocos de largura; 3 corações; recuo longo; cabeça no chão por 2,5 s |
+| Varrida de cauda | preparação de 1,2 s; setor de 120°, raio de 8 blocos; 2 corações; recuo longo |
+| Cuspe de escuridão | preparação de 1 s; 3 círculos de raio 1,5 bloco; 2 corações; sem recuo; poças por 4 s |
+| Emboscada | preparação de 1,2 s; linha de 2 blocos de largura; 3 corações; recuo longo; cabeça exposta por 2,5 s; uma a cada 5 s |
+| Cerco | anel de raio 3 blocos, que fecha em 1,2 s; 2 corações; recuo curto |

@@ -4,7 +4,7 @@
 **Descrição visual:** figura blocada de manto, com 2 blocos de altura e um cajado. O visual deixa claro que é uma criatura da escuridão do predador. Manto roxo-escuro, rosto em sombra, olhos roxos e cajado com pedra roxa; o Ancião tem manto preto com bordas roxas (`10-arte-audio.md`).
 
 ## Atributos
-Valores exatos: `[A DEFINIR em 11-balanceamento]`.
+Valores exatos: `11-balanceamento.md`.
 
 | Atributo | Valor |
 |----------|-------|
@@ -14,14 +14,14 @@ Valores exatos: `[A DEFINIR em 11-balanceamento]`.
 | Percepção | alta |
 
 ## Comportamento e habilidades
-- Mantém distância: recua quando Nate chega perto. Distância: `[A DEFINIR em 11-balanceamento]`.
+- Mantém distância: recua quando Nate chega perto. Distância: `11-balanceamento.md`.
 
 | Ataque | Tipo | Dano | Área | Aviso | Recuo | Efeito |
 |--------|------|------|------|-------|-------|--------|
 | Praga | comum | 1 coração | projétil | ergue o cajado, pelo menos 0,6 s até o disparo; o voo dá tempo extra | nenhum | veneno |
 | Invocar | área | — | marca no chão onde os esqueletos vão surgir | pelo menos 1 s | — | surgem Esqueletos Guerreiros |
 
-- **Invocar:** mantém até 3 esqueletos invocados vivos ao mesmo tempo. Invocar não conta no limite de 5 mobs atacando (`README.md`). Recarga: `[A DEFINIR em 11-balanceamento]`.
+- **Invocar:** mantém até 3 esqueletos invocados vivos ao mesmo tempo. Invocar não conta no limite de 5 mobs atacando (`README.md`). Recarga: `11-balanceamento.md`.
 - **Ao morrer:** os esqueletos que ele invocou se desfazem.
 
 ### Variante: Necromante Ancião

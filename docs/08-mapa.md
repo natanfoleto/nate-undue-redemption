@@ -89,7 +89,7 @@ Arenas opcionais têm ondas maiores, com variantes.
 | 7 | antessala da Grande Prisão | caminho | a prisão ativada pela metade: o predador adormece em vez de ficar preso |
 
 ## Arenas e ondas
-A passagem fecha até o jogador vencer as ondas (`02-core-loop.md`). Quantos mobs há em cada onda: `[A DEFINIR em 11-balanceamento]`.
+A passagem fecha até o jogador vencer as ondas (`02-core-loop.md`). Quantos mobs há em cada onda: `11-balanceamento.md`.
 
 | Arena | Guarda | Ondas |
 |-------|--------|-------|
@@ -151,10 +151,10 @@ As três ferem Nate e os mobs (`03-regras.md`). Os mobs contornam as armadilhas 
 #### Atributos
 | Atributo | Valor |
 |----------|-------|
-| Dano | 1 coração em Nate; em mobs: `[A DEFINIR em 11-balanceamento]` |
-| Área | círculo no chão; raio: `[A DEFINIR em 11-balanceamento]` |
+| Dano | 1 coração em Nate; em mobs: `11-balanceamento.md` |
+| Área | círculo no chão; raio: `11-balanceamento.md` |
 | Aviso | marca no chão, 1 s |
-| Recuo | `[A DEFINIR em 11-balanceamento]` |
+| Recuo | curto |
 | Usos | um: depois de cair, não volta |
 
 #### Comportamento e habilidades
@@ -182,10 +182,10 @@ As três ferem Nate e os mobs (`03-regras.md`). Os mobs contornam as armadilhas 
 | Atributo | Valor |
 |----------|-------|
 | Dano | nenhum |
-| Área | nuvem em círculo; raio e duração: `[A DEFINIR em 11-balanceamento]` |
+| Área | nuvem em círculo; raio e duração: `11-balanceamento.md` |
 | Efeito | lento |
 | Aviso | incha, com marca no chão, 1 s |
-| Recarga | volta a crescer depois de alguns segundos: `[A DEFINIR em 11-balanceamento]` |
+| Recarga | volta a crescer depois de alguns segundos: `11-balanceamento.md` |
 
 #### Comportamento e habilidades
 - Estoura quando Nate ou um mob passa perto. A nuvem fica alguns segundos e deixa lento quem está dentro.
@@ -211,11 +211,11 @@ As três ferem Nate e os mobs (`03-regras.md`). Os mobs contornam as armadilhas 
 #### Atributos
 | Atributo | Valor |
 |----------|-------|
-| Dano | 1 coração em Nate; em mobs: `[A DEFINIR em 11-balanceamento]` |
+| Dano | 1 coração em Nate; em mobs: `11-balanceamento.md` |
 | Área | as placas do chão |
 | Aviso | o chão racha e brilha, 1 s |
-| Ciclo | `[A DEFINIR em 11-balanceamento]` |
-| Recuo | `[A DEFINIR em 11-balanceamento]` |
+| Ciclo | `11-balanceamento.md` |
+| Recuo | curto |
 
 #### Comportamento e habilidades
 - Funcionam em ciclo fixo: aviso, lanças para fora e lanças recolhidas.

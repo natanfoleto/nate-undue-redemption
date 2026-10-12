@@ -43,7 +43,7 @@ No computador, com teclado e mouse ou com controle; os dois funcionam desde o in
 ### Mira
 - **Teclado e mouse:** os ataques vão na direção do cursor.
 - **Controle:** na direção do analógico direito; com ele solto, na direção do movimento.
-- **Ajuda de mira:** o golpe é puxado para o inimigo mais próximo dentro de um cone à frente. Tamanho do cone: `[A DEFINIR em 11-balanceamento]`.
+- **Ajuda de mira:** o golpe é puxado para o inimigo mais próximo dentro de um cone à frente. Tamanho do cone: `11-balanceamento.md`.
 - Dá para andar para um lado e atacar para outro.
 
 ### Ataque corpo a corpo
@@ -56,8 +56,8 @@ No computador, com teclado e mouse ou com controle; os dois funcionam desde o in
 | 3º | maior (quanto: `11-balanceamento.md`) | longo, que interrompe mobs pesados |
 
 - Toda arma corpo a corpo segue esse combo. Cada arma muda dano, área e tempos (`05-itens.md`).
-- Durante o golpe, Nate dá um pequeno passo à frente e não anda. Tamanho do passo: `[A DEFINIR em 11-balanceamento]`.
-- Tempo máximo entre dois apertos para o combo continuar: `[A DEFINIR em 11-balanceamento]`.
+- Durante o golpe, Nate dá um pequeno passo à frente e não anda. Tamanho do passo: `11-balanceamento.md`.
+- Tempo máximo entre dois apertos para o combo continuar: `11-balanceamento.md`.
 - A esquiva cancela a recuperação do golpe.
 
 ### Ataque à distância
