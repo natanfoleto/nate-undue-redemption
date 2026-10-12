@@ -2,11 +2,13 @@
 
 Projeto piloto para ganhar experiência em desenvolvimento de jogos antes dos próximos (entre eles, um jogo educacional sobre reciclagem ligado ao projeto Ecokids).
 
-## Fase atual: documentação
-- Nenhum código, cena ou asset é criado até a documentação estar concluída e aprovada.
-- Documentar um tema por vez, na ordem do roteiro em `docs/00-visao-geral.md`.
-- Em cada tema: propor opções com prós e contras, o usuário decide, a decisão é registrada no documento.
-- Ao concluir um tema, marcar no roteiro e atualizar a seção "Decisões" da visão geral se algo mudar.
+## Fase atual: produção
+- A documentação em `docs/` foi aprovada em 2026-10-12 e é a referência do que se constrói.
+- Seguir o plano em `docs/13-plano-de-producao.md`, uma etapa por vez; cada etapa termina com algo jogável.
+- Mudança de design: propor opções com prós e contras, o usuário decide, e o documento é atualizado junto com o código.
+- Números ficam em `docs/11-balanceamento.md` e nos arquivos de dados de `game/data/`; os dois mudam juntos.
+- Código e projeto seguem `docs/12-tecnico.md`.
+- Antes de cada commit com código, rodar os testes automáticos.
 
 ## Regra de produção
 - **Pequeno e completo:** começo, meio e fim. Poucos sistemas bem feitos em vez de muitos pela metade. Na dúvida, cortar escopo.

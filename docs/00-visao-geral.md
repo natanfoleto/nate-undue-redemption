@@ -53,3 +53,8 @@ Jogo de ação e exploração em 3D com câmera fixa, num mundo subterrâneo per
 - [x] **10 Arte e áudio** (`10-arte-audio.md`): guia de estilo, lista consolidada de assets e sons.
 - [x] **11 Balanceamento** (`11-balanceamento.md`): tabela com todos os números.
 - [x] **12 Técnico** (`12-tecnico.md`): arquitetura no Godot, estrutura de pastas, convenções de código.
+
+Documentação aprovada em 2026-10-12.
+
+## Produção
+Plano em `13-plano-de-producao.md`.
