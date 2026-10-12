@@ -60,6 +60,7 @@ As relíquias funcionam como os artefatos do Minecraft Dungeons (habilidades ati
   - **Muiraquitã da Luz** (Bosque de Fungos): ilumina áreas escuras; em combate, solta um clarão que atordoa.
   - **Muiraquitã da Rocha** (Ruínas): golpe em área que causa dano e quebra paredes rachadas, abrindo atalhos e segredos.
   - **O Selo** (fim das Ruínas): a peça que o irmão traidor escondeu. Sem ela a prisão não fecha.
+- **Muiraquitãs opcionais (2):** escondidas em segredos e arenas opcionais, com poderes de combate. Ver `02-core-loop.md`.
 - **Mecanismos:** elevadores e portas que só abrem por um lado, criando atalhos de volta aos santuários depois que uma área é explorada. Pontes e plataformas acionadas por alavancas ou relíquias.
 - **Murais (6 a 8):** contam a história sem texto. Os do caminho principal trazem o essencial; os escondidos completam os detalhes, como o rosto do irmão.
 - **A Grande Prisão:** a luta final usa tudo o que Nate aprendeu. Na fase 1 ele ativa os pilares da prisão com o Selo enquanto desvia do predador. Na fase 2, quando o predador some na escuridão, a Muiraquitã da Luz é o que o revela.

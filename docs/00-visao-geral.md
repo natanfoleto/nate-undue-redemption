@@ -6,28 +6,32 @@ Jogo de ação e exploração em 3D com câmera fixa, num mundo subterrâneo per
 ## Decisões
 - **Nome:** Nate: Undue Redemption
 - **História e pilares:** ver `01-historia.md`.
+- **Core loop:** ver `02-core-loop.md`.
 - **Referência principal:** Minecraft Dungeons.
 - **Perspectiva:** 3D com câmera fixa isométrica, jogado como 2D (chão plano, sem pulo nem verticalidade).
 - **Estilo visual:** blocado/voxel, na linha de Minecraft Dungeons.
-- **Estrutura do mapa:** mapa único e contínuo, sem andares, com áreas que se abrem conforme o jogador avança.
+- **Estrutura do mapa:** mapa único e contínuo, sem andares, com áreas que se abrem conforme o jogador avança. Caminho principal linear, com volta opcional a áreas já visitadas.
 - **Jogadores:** só solo.
-- **Dificuldade:** acessível; desafio extra sempre opcional.
+- **Dificuldade:** acessível, com morte sem perda; desafio extra sempre opcional, em arenas escondidas no mapa.
 - **Estilo de jogo:** definido pelo equipamento, sem classes.
 - **Pipeline de assets:** modelos e animações blocados definidos por código sempre que possível.
 - **Engine:** Godot 4 (recomendada) `[A DEFINIR]`
 
-## Escopo inicial proposto `[A DEFINIR no core loop]`
-- 1 mapa subterrâneo único (Agartha), desenhado à mão, com 3 áreas e a arena do chefe `[A DEFINIR em 08-mapa]`
+## Escopo inicial
+- 1 mapa subterrâneo único (Agartha), desenhado à mão: prólogo na borda da mina, 3 áreas e a arena do chefe `[A DEFINIR em 08-mapa]`
+- 30 min de caminho principal; 45 min com todos os segredos
 - 1 herói com ataque corpo a corpo, ataque à distância e esquiva
-- 3 relíquias (habilidades ativas que também abrem caminhos)
-- 3 a 4 tipos de mob
+- 5 muiraquitãs (habilidades ativas que também abrem caminhos): as 3 relíquias da história e 2 opcionais
+- 4 tipos de mob, mais variantes (quantas: `[A DEFINIR em 06-mobs]`)
 - 1 chefe com 2 fases
-- 10 a 15 itens, inventário simples e equipamento
-- 15 a 30 minutos de jogo
+- 10 a 15 peças de equipamento, melhorias escondidas (quantas: `[A DEFINIR em 05-itens]`) e o frasco de cura; inventário simples
+- 4 a 5 santuários e 6 a 8 murais
+- Arenas: 1 a 2 por área, mais cerca de 1 opcional por área
+- Cenas curtas: abertura, uma memória por santuário e final
 
 ## Roteiro de documentação
 - [x] **01 Pilares e história** (`01-historia.md`)
-- [ ] **02 Core loop** (`02-core-loop.md`): o que o jogador faz minuto a minuto, estrutura da partida, morte, progressão, vitória.
+- [x] **02 Core loop** (`02-core-loop.md`): o que o jogador faz minuto a minuto, estrutura da partida, morte, progressão, vitória.
 - [ ] **03 Regras** (`03-regras.md`): lista de atributos, fórmula de dano, hitbox, recuo, invencibilidade após dano, efeitos de status.
 - [ ] **04 Player** (`04-player.md`): movimento, ataques, esquiva, atributos base, controles.
 - [ ] **05 Itens** (`05-itens.md`): categorias, raridades, slots, consumíveis, relíquias, tabelas de loot.
