@@ -65,7 +65,7 @@ dano = dano do ataque × (1 + soma dos bônus em %) × variação × crítico
 - **Crítico:** ×2, com chance base de 5%. Equipamento e melhorias podem aumentar a chance (`05-itens.md`).
 - O resultado é arredondado para o inteiro mais próximo.
 - Exemplo: espada 10, +20% de bônus, variação 1,05 e crítico → 10 × 1,2 × 1,05 × 2 = 25,2 → 25 pontos.
-- O crítico tem efeito e som próprios: `[A DEFINIR em 10-arte-audio]`.
+- O crítico mostra um número amarelo grande e faíscas amarelas, com um som de impacto agudo (`10-arte-audio.md`).
 
 **Dano contra Nate:** sem sorte. Cada golpe tira sempre os mesmos corações.
 
@@ -99,7 +99,7 @@ Todo golpe inimigo é avisado antes de ferir (pilar 2).
 
 - O aviso conta do início da pose até o primeiro instante em que o golpe pode ferir. Em projéteis, conta até o disparo; o voo dá tempo extra.
 - Golpes comuns dependem de poses bem legíveis (`06-mobs/`).
-- Visual da marca no chão: `[A DEFINIR em 10-arte-audio]`.
+- A marca no chão é vermelho-alaranjada, com listras diagonais que vão enchendo até o golpe (`10-arte-audio.md`).
 
 ### Recuo e interrupção
 - Cada golpe tem um recuo: nenhum, curto (1 bloco) ou longo (3 blocos).
@@ -138,7 +138,7 @@ A queimadura é de Nate; o veneno é dos mobs.
 - O mesmo efeito não acumula: aplicar de novo renova a duração.
 - Efeitos diferentes valem ao mesmo tempo.
 - Efeito sem fonte no jogo é cortado.
-- Cada efeito tem um ícone sobre quem sofre e, em Nate, também ao lado dos corações (`09-interface.md`). Cor e som: `[A DEFINIR em 10-arte-audio]`.
+- Cada efeito tem um ícone sobre quem sofre e, em Nate, também ao lado dos corações (`09-interface.md`). Cor, forma e som de cada efeito: `10-arte-audio.md`.
 
 ### Quem sofre o quê
 | Alvo | Atordoado | Lento | Veneno | Queimadura |

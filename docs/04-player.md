@@ -1,7 +1,7 @@
 # Nate
 
 **Papel no jogo:** o herói, controlado pelo jogador. Homem comum de 30 anos, sem conhecimento especial, que aprende junto com quem joga (`01-historia.md`).
-**Descrição visual:** humano blocado, com as proporções do Minecraft e 2 blocos de altura. Roupa simples de ribeirinho: camiseta gasta, calça e botas de borracha. No pescoço, o muiraquitã, com uma lasca faltando. Esse é o visual base, sem equipamento; a arma aparece na mão e a armadura no corpo (`05-itens.md`). Cores exatas: `[A DEFINIR em 10-arte-audio]`, com uma regra: Nate precisa se destacar nos cenários escuros.
+**Descrição visual:** humano blocado, com as proporções do Minecraft e 2 blocos de altura. Roupa simples de ribeirinho: camiseta gasta, calça e botas de borracha. No pescoço, o muiraquitã, com uma lasca faltando. Esse é o visual base, sem equipamento; a arma aparece na mão e a armadura no corpo (`05-itens.md`). Cores: camiseta mostarda gasta, calça jeans, botas de borracha pretas, pele morena e cabelo preto curto (`10-arte-audio.md`). Regra: Nate precisa se destacar nos cenários escuros.
 
 ## Atributos
 | Atributo | Valor |
@@ -141,5 +141,5 @@ Nate começa com o facão e acha a baladeira, a primeira arma à distância, na 
 - Modelo de Nate: humano blocado de 2 blocos, visual de ribeirinho, definido por código.
 - Muiraquitã no pescoço, com a lasca faltando e inteiro (`05-itens.md`).
 - Efeito de piscar durante a invencibilidade.
-- Sinal de tiro na força total: `[A DEFINIR em 10-arte-audio]`.
+- Sinal de tiro na força total: brilho branco na ponta da arma e um clique curto (`10-arte-audio.md`).
 - Ícones de botão para teclado e mouse, Xbox e PlayStation (`09-interface.md`).

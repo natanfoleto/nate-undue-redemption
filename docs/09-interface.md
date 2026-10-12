@@ -113,4 +113,4 @@ Os avisos dos golpes não dependem só de cor, para ajudar daltônicos (regra pa
 - **Ícones:** corações, frasco, os 4 elementos e as 6 combinações, as 13 peças de equipamento, os 4 efeitos de status, o aviso de imune e os botões de teclado e mouse, Xbox e PlayStation.
 - **Imagens:** os mapas da Mina, do Bosque e das Ruínas.
 - **Sons de menu:** navegar, confirmar, voltar e equipar.
-- Visual de ícones, fontes e cores: `[A DEFINIR em 10-arte-audio]`.
+- Ícones em pixel art de 16×16 pixels, feitos para o jogo; fonte pixel com licença livre (OFL) e com os acentos do português; cores em `10-arte-audio.md`.

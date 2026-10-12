@@ -1,7 +1,7 @@
 # Esqueleto Guerreiro
 
 **Papel no jogo:** o soldado básico, de corpo a corpo e ritmo médio. São ossos despertados pela escuridão do predador, e não o corpo de uma pessoa do povo antigo.
-**Descrição visual:** esqueleto blocado, com 2 blocos de altura e uma espada. O visual deixa claro que é uma criatura da escuridão do predador. Cores: `[A DEFINIR em 10-arte-audio]`.
+**Descrição visual:** esqueleto blocado, com 2 blocos de altura e uma espada. O visual deixa claro que é uma criatura da escuridão do predador. Ossos cinza-escuros, com brilho roxo nos olhos e nas juntas; o Veterano tem ossos quase pretos e brilho mais forte (`10-arte-audio.md`).
 
 ## Atributos
 Valores exatos: `[A DEFINIR em 11-balanceamento]`.

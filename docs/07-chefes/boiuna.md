@@ -1,7 +1,7 @@
 # Boiúna, o predador
 
 **Papel no jogo:** o chefe final. É a criatura colossal das profundezas, presa só pelo sono que a prisão incompleta provocou. Acordou antes da hora, e a escuridão dela desperta esqueletos, necromantes e golens (`01-historia.md`, `06-mobs/`). A luta usa tudo o que Nate aprendeu: armas, magias, esquiva e o muiraquitã inteiro.
-**Descrição visual:** cobra blocada colossal, preta, com olhos que brilham. A cabeça tem cerca de 4 blocos de comprimento; o corpo é maior que a arena e aparece só em partes, saindo de um fosso no centro. É inspirada na Boiúna, a Cobra Grande das lendas amazônicas ("cobra preta", em tupi), que vive no fundo dos rios e atrai pescadores com a luz dos olhos. Cores: `[A DEFINIR em 10-arte-audio]`.
+**Descrição visual:** cobra blocada colossal, preta, com olhos que brilham. A cabeça tem cerca de 4 blocos de comprimento; o corpo é maior que a arena e aparece só em partes, saindo de um fosso no centro. É inspirada na Boiúna, a Cobra Grande das lendas amazônicas ("cobra preta", em tupi), que vive no fundo dos rios e atrai pescadores com a luz dos olhos. Preta com reflexos roxos e olhos âmbar que brilham (`10-arte-audio.md`).
 
 ## Atributos
 Valores exatos: `[A DEFINIR em 11-balanceamento]`.
@@ -43,7 +43,7 @@ Valores exatos: `[A DEFINIR em 11-balanceamento]`.
 - A arena apaga. Nate só enxerga dentro do brilho da Luz Ancestral do muiraquitã (`05-itens.md`).
 - A Boiúna some na escuridão e ataca de emboscada.
 - A vida da fase 2 é uma barra só. Quando acaba, a prisão fecha, e vêm a cena final e os créditos (`02-core-loop.md`).
-- Passagem da fase 1 para a 2 (cena ou dentro do jogo): `[A DEFINIR em 10-arte-audio]`.
+- A passagem da fase 1 para a 2 é uma cena curta, feita no motor (`10-arte-audio.md`).
 
 | Ataque | Tipo | Dano | Área | Aviso | Recuo | Depois do golpe |
 |--------|------|------|------|-------|-------|-----------------|

@@ -67,7 +67,7 @@ Lugar de cada passagem, pergaminho e segredo: `08-mapa.md`.
 - **Mina:** tutorial do resto dos controles. O que cada trecho ensina: `04-player.md`.
 - **Final (cena):** o retorno à cidade.
 - Criatura do prólogo: um Lobo (`06-mobs/lobo.md`).
-- Formato das cenas: `[A DEFINIR em 10-arte-audio]`.
+- Cenas feitas no motor, sem fala (`10-arte-audio.md`).
 
 ## Combate no mapa
 - **Mobs espalhados** no caminho principal e nos desvios. O jogador escolhe enfrentar ou contornar.

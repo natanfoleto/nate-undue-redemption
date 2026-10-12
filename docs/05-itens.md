@@ -19,7 +19,7 @@ Sistema de itens e as fichas de equipamento, muiraquitã e magias, frasco e melh
 | Marajoara | feitos pelo povo antigo e achados em Agartha | atributos e um efeito especial |
 
 - A raridade conta a história: o antigo é mais poderoso.
-- Itens marajoara têm padrões geométricos marajoara. Como mostrar a raridade de longe: `[A DEFINIR em 10-arte-audio]`.
+- Itens marajoara têm padrões geométricos marajoara. De longe, o item marajoara tem brilho e moldura verde-jade; o comum, moldura cinza, sem brilho (`10-arte-audio.md`).
 - Itens comuns precisam de perfis bem diferentes entre si, para não parecerem sem graça.
 
 ### Inventário e troca
@@ -35,7 +35,7 @@ Sistema de itens e as fichas de equipamento, muiraquitã e magias, frasco e melh
 - Cada item tem um lugar fixo no mapa: baús, segredos e arenas (`02-core-loop.md`). Não há tabelas de sorteio. A área de cada peça está nas fichas; o lugar exato fica em `08-mapa.md`.
 - Os mobs não deixam nada ao morrer. O prêmio de uma luta é o caminho livre, e por isso a derrota do mob precisa de um efeito satisfatório (`10-arte-audio.md`).
 - O frasco continua sendo a única cura.
-- Achar um item tem som e efeito de recompensa: `[A DEFINIR em 10-arte-audio]`.
+- Achar um item mostra um feixe de luz sobre ele; ao pegar, partículas e um som de recompensa (`10-arte-audio.md`).
 
 ### Equipamento inicial
 - Nate começa com o facão. A primeira arma à distância, a baladeira (o estilingue da região), é achada na Mina, onde o tiro é ensinado (`04-player.md`).
@@ -46,7 +46,7 @@ Sistema de itens e as fichas de equipamento, muiraquitã e magias, frasco e melh
 
 ### Armas corpo a corpo
 **Papel no jogo:** o ataque principal de Nate. Cada arma muda o ritmo do combo de 3 golpes, e as marajoara somam um efeito.
-**Descrição visual:** armas blocadas na mão de Nate. As comuns são ferramentas gastas de metal e madeira; as marajoara, de pedra e madeira com padrões geométricos marajoara. Tamanho em blocos: `[A DEFINIR em 10-arte-audio]`.
+**Descrição visual:** armas blocadas na mão de Nate. As comuns são ferramentas gastas de metal e madeira; as marajoara, de pedra e madeira com padrões geométricos marajoara. Tamanho: de 0,75 a 1,5 bloco de comprimento (`10-arte-audio.md`).
 
 #### Atributos
 Valores exatos: `[A DEFINIR em 11-balanceamento]`.
@@ -73,7 +73,7 @@ Valores exatos: `[A DEFINIR em 11-balanceamento]`.
 
 #### Animações necessárias
 - As do combo de Nate (`04-player.md`) servem para todas as armas.
-- Rastro do golpe: `[A DEFINIR em 10-arte-audio]`.
+- Rastro do golpe: arco branco curto; nas armas marajoara, verde-jade (`10-arte-audio.md`).
 
 #### Sons necessários
 - Golpe cortando o ar e acerto, em três pesos: leve (Lâmina de pedra verde), médio (Facão, Lança marajoara) e pesado (Picareta, Tacape marajoara).
@@ -168,7 +168,7 @@ Nenhum próprio.
 
 ### O muiraquitã
 **Papel no jogo:** o amuleto do herói antigo, que liga Nate ao povo de Agartha. Dá a Luz Ancestral e, inteiro, fecha a prisão.
-**Descrição visual:** amuleto de pedra verde com a forma clássica da muiraquitã, o sapo, e uma lasca faltando. Nate o usa no pescoço desde o prólogo. Cores e brilho: `[A DEFINIR em 10-arte-audio]`.
+**Descrição visual:** amuleto de pedra verde com a forma clássica da muiraquitã, o sapo, e uma lasca faltando. Nate o usa no pescoço desde o prólogo. Cor verde-jade; a Luz Ancestral é um brilho branco-esverdeado (`10-arte-audio.md`).
 
 #### Atributos
 | Atributo | Valor |
@@ -200,7 +200,7 @@ Nenhum próprio.
 
 ### Pergaminhos
 **Papel no jogo:** ensinam os elementos. São as recompensas de magia do mapa.
-**Descrição visual:** rolo de pergaminho. Visual exato e formato da leitura: `[A DEFINIR em 10-arte-audio]`.
+**Descrição visual:** rolo de fibra clara com desenhos marajoara em preto e vermelho. Ao ler, o rolo se abre na tela e mostra o desenho do elemento, sem texto (`10-arte-audio.md`).
 
 #### Atributos
 | Pergaminho | Área | Caminho |
@@ -229,7 +229,7 @@ Nenhuma além de ensinar o elemento.
 
 ### Magias
 **Papel no jogo:** os poderes de combate de Nate. O par de elementos equipado define o estilo da luta (pilar 1).
-**Descrição visual:** cada magia tem a cor e o efeito do seu elemento. Cores: `[A DEFINIR em 10-arte-audio]`.
+**Descrição visual:** cada magia tem a cor e o efeito do seu elemento: Fogo, laranja e amarelo; Água, azul-claro; Terra, marrom e ocre; Ar, branco e cinza-claro. Cada combinação mistura as cores dos dois elementos (`10-arte-audio.md`).
 
 #### Atributos
 Valores exatos (recarga, dano, áreas e durações): `[A DEFINIR em 11-balanceamento]`.
@@ -282,7 +282,7 @@ Recuo da Tempestade de Fogo: `[A DEFINIR em 11-balanceamento]`.
 
 ## Frasco
 **Papel no jogo:** a única cura. Recarrega no santuário.
-**Descrição visual:** `[A DEFINIR em 10-arte-audio]`.
+**Descrição visual:** moringa de cerâmica marajoara (`10-arte-audio.md`).
 
 ### Atributos
 | Atributo | Valor |
@@ -311,7 +311,7 @@ Recuo da Tempestade de Fogo: `[A DEFINIR em 11-balanceamento]`.
 
 ## Melhorias
 **Papel no jogo:** recompensa permanente dos segredos (pilar 3).
-**Descrição visual:** `[A DEFINIR em 10-arte-audio]`.
+**Descrição visual:** contas de jade, uma em forma de coração (+1 coração) e outra em forma de gota (+1 carga) (`10-arte-audio.md`).
 
 ### Atributos
 | Melhoria | Quantas | Efeito |

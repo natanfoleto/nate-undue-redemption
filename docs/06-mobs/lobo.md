@@ -1,7 +1,7 @@
 # Lobo
 
 **Papel no jogo:** o mob rápido de bando e o primeiro inimigo do jogo. É um bicho de Agartha, assustado, que foge do predador e sobe pela fenda; na superfície, ataca rebanhos.
-**Descrição visual:** lobo blocado, com 1 bloco de altura. Cores: `[A DEFINIR em 10-arte-audio]`.
+**Descrição visual:** lobo blocado, com 1 bloco de altura. Cinza-escuro, com olhos âmbar; o Alfa é preto, com os olhos mais fortes (`10-arte-audio.md`).
 
 ## Atributos
 Valores exatos: `[A DEFINIR em 11-balanceamento]`.

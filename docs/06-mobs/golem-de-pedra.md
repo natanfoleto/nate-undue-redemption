@@ -1,7 +1,7 @@
 # Golem de Pedra
 
 **Papel no jogo:** o tanque pesado. Tem muita vida e golpes fortes em área, e só é interrompido por golpes com recuo longo. É pedra despertada pela escuridão do predador.
-**Descrição visual:** construto de pedra blocado, com 3 blocos de altura. O visual deixa claro que é pedra despertada pela escuridão do predador. Cores: `[A DEFINIR em 10-arte-audio]`.
+**Descrição visual:** construto de pedra blocado, com 3 blocos de altura. O visual deixa claro que é pedra despertada pela escuridão do predador. Pedra cinza com rachaduras que brilham em roxo; o Ancião tem pedra escura e rachaduras mais largas (`10-arte-audio.md`).
 
 ## Atributos
 Valores exatos: `[A DEFINIR em 11-balanceamento]`.

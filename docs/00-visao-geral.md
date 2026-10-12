@@ -14,6 +14,7 @@ Jogo de ação e exploração em 3D com câmera fixa, num mundo subterrâneo per
 - **Chefe:** ver `07-chefes/boiuna.md`.
 - **Mapa:** ver `08-mapa.md`.
 - **Interface:** ver `09-interface.md`.
+- **Arte e áudio:** ver `10-arte-audio.md`.
 - **Referência principal:** Minecraft Dungeons.
 - **Perspectiva:** 3D com câmera fixa isométrica, jogado como 2D (chão plano, sem pulo nem verticalidade).
 - **Estilo visual:** blocado/voxel, na linha de Minecraft Dungeons.
@@ -34,7 +35,8 @@ Jogo de ação e exploração em 3D com câmera fixa, num mundo subterrâneo per
 - 13 peças de equipamento (5 armas corpo a corpo, 4 à distância e 4 armaduras), 6 melhorias escondidas e o frasco de cura; inventário simples
 - 4 santuários, 7 murais e 3 tipos de armadilha
 - 5 arenas (1 na Mina, 2 no Bosque e 2 nas Ruínas) e 3 arenas opcionais, uma por área
-- Cenas curtas: abertura, uma memória por santuário e final
+- 7 cenas curtas, feitas no motor: abertura, uma memória por santuário, troca de fase da Boiúna e final
+- 7 faixas de música e cerca de 100 efeitos sonoros
 
 ## Roteiro de documentação
 - [x] **01 Pilares e história** (`01-historia.md`)
@@ -46,6 +48,6 @@ Jogo de ação e exploração em 3D com câmera fixa, num mundo subterrâneo per
 - [x] **07 Chefes** (`07-chefes/`): fases, padrões de ataque, avisos visuais.
 - [x] **08 Mapa** (`08-mapa.md`): regiões, conexões, atalhos, santuários, armadilhas, dificuldade por região.
 - [x] **09 Interface** (`09-interface.md`): HUD, inventário, menus, telas de morte e vitória.
-- [ ] **10 Arte e áudio** (`10-arte-audio.md`): guia de estilo, lista consolidada de assets e sons.
+- [x] **10 Arte e áudio** (`10-arte-audio.md`): guia de estilo, lista consolidada de assets e sons.
 - [ ] **11 Balanceamento** (`11-balanceamento.md`): tabela com todos os números.
 - [ ] **12 Técnico** (`12-tecnico.md`): arquitetura no Godot, estrutura de pastas, convenções de código.

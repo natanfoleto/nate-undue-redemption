@@ -1,7 +1,7 @@
 # Necromante
 
 **Papel no jogo:** o invocador à distância e o alvo prioritário. Quando ele morre, os esqueletos que invocou se desfazem, e por isso vale eliminá-lo primeiro. É uma criatura da escuridão do predador, e não uma pessoa do povo antigo.
-**Descrição visual:** figura blocada de manto, com 2 blocos de altura e um cajado. O visual deixa claro que é uma criatura da escuridão do predador. Cores: `[A DEFINIR em 10-arte-audio]`.
+**Descrição visual:** figura blocada de manto, com 2 blocos de altura e um cajado. O visual deixa claro que é uma criatura da escuridão do predador. Manto roxo-escuro, rosto em sombra, olhos roxos e cajado com pedra roxa; o Ancião tem manto preto com bordas roxas (`10-arte-audio.md`).
 
 ## Atributos
 Valores exatos: `[A DEFINIR em 11-balanceamento]`.

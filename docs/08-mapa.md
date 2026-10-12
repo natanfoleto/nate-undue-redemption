@@ -75,18 +75,18 @@ Arenas opcionais têm ondas maiores, com variantes.
 | S4 | antessala da Grande Prisão | memória 4: a traição do irmão e onde a prisão falhou (`01-historia.md`) |
 
 - Viagem rápida entre os 4 santuários (`02-core-loop.md`).
-- Conteúdo das memórias 1 a 3: `[A DEFINIR em 10-arte-audio]`.
+- Conteúdo das memórias: `10-arte-audio.md`.
 
 ## Murais
 | Mural | Onde | Tipo | Conteúdo |
 |-------|------|------|----------|
-| 1 | Mina, onde a mina da família encontra os túneis do povo antigo | caminho | `[A DEFINIR em 10-arte-audio]` |
-| 2 | Bosque | caminho | `[A DEFINIR em 10-arte-audio]` |
-| 3 | Bosque | escondido | `[A DEFINIR em 10-arte-audio]` |
-| 4 | Ruínas, sala do Selo | caminho | `[A DEFINIR em 10-arte-audio]` |
-| 5 | Ruínas, sala do Selo | caminho | a traição |
+| 1 | Mina, onde a mina da família encontra os túneis do povo antigo | caminho | o povo antigo vivendo em Agartha |
+| 2 | Bosque | caminho | o predador surgindo das profundezas e o povo fugindo |
+| 3 | Bosque | escondido | o povo construindo os santuários e a Grande Prisão |
+| 4 | Ruínas, sala do Selo | caminho | os dois irmãos: o herói recebe o muiraquitã, e o irmão olha com inveja |
+| 5 | Ruínas, sala do Selo | caminho | a traição: o irmão tira a lasca do muiraquitã e a esconde |
 | 6 | Ruínas | escondido | o rosto do irmão |
-| 7 | antessala da Grande Prisão | caminho | `[A DEFINIR em 10-arte-audio]` |
+| 7 | antessala da Grande Prisão | caminho | a prisão ativada pela metade: o predador adormece em vez de ficar preso |
 
 ## Arenas e ondas
 A passagem fecha até o jogador vencer as ondas (`02-core-loop.md`). Quantos mobs há em cada onda: `[A DEFINIR em 11-balanceamento]`.
@@ -146,7 +146,7 @@ As três ferem Nate e os mobs (`03-regras.md`). Os mobs contornam as armadilhas 
 
 ### Pedras que caem
 **Papel no jogo:** o perigo da Mina. Pune quem passa distraído e serve para derrubar mobs.
-**Descrição visual:** pedras soltas no teto da galeria, com rachaduras visíveis. Tamanho: `[A DEFINIR em 10-arte-audio]`.
+**Descrição visual:** pedras soltas no teto da galeria, com rachaduras visíveis. Tamanho: 1 bloco.
 
 #### Atributos
 | Atributo | Valor |
@@ -176,7 +176,7 @@ As três ferem Nate e os mobs (`03-regras.md`). Os mobs contornam as armadilhas 
 
 ### Cogumelo de esporos
 **Papel no jogo:** o perigo do Bosque. Atrasa quem passa perto e serve para deixar mobs lentos.
-**Descrição visual:** cogumelo bioluminescente que incha antes de estourar. Tamanho: `[A DEFINIR em 10-arte-audio]`.
+**Descrição visual:** cogumelo bioluminescente que incha antes de estourar. Tamanho: 1,5 bloco de altura.
 
 #### Atributos
 | Atributo | Valor |
@@ -206,7 +206,7 @@ As três ferem Nate e os mobs (`03-regras.md`). Os mobs contornam as armadilhas 
 
 ### Lanças do chão
 **Papel no jogo:** o perigo das Ruínas. Dá ritmo aos corredores e serve para ferir mobs empurrados.
-**Descrição visual:** placas de pedra no chão, com padrões geométricos marajoara, de onde lanças saem pelas frestas. Tamanho: `[A DEFINIR em 10-arte-audio]`.
+**Descrição visual:** placas de pedra no chão, com padrões geométricos marajoara, de onde lanças saem pelas frestas. Tamanho: placas de 1×1 bloco.
 
 #### Atributos
 | Atributo | Valor |
@@ -237,7 +237,7 @@ As três ferem Nate e os mobs (`03-regras.md`). Os mobs contornam as armadilhas 
 
 ## Objetos do cenário
 **Papel no jogo:** os pontos de interação do mapa: descanso, recompensas, atalhos e caminhos que pedem um poder.
-**Descrição visual:** na Mina, madeira e metal gastos; em Agartha, pedra e cerâmica com padrões geométricos marajoara. Detalhes: `[A DEFINIR em 10-arte-audio]`.
+**Descrição visual:** na Mina, madeira e metal gastos; em Agartha, pedra e cerâmica com padrões geométricos marajoara. Cores: a paleta de cada área (`10-arte-audio.md`).
 
 ### Atributos
 | Objeto | O que faz | Animações | Sons |

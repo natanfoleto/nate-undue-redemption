@@ -52,7 +52,8 @@ Mobs por encontro e ondas de cada arena: `08-mapa.md`.
 
 ## Fauna de cenário
 - Uma espécie de dinossauro herbívoro vive no Bosque de Fungos, sem lutar. Ela mantém o mundo perdido de A Era do Gelo 3 (`01-historia.md`).
-- Espécie, visual e animações: `[A DEFINIR em 10-arte-audio]`.
+- Herbívoro de pescoço longo, com cerca de 5 blocos de altura, verde-musgo com manchas que brilham fraco; come cogumelos (`10-arte-audio.md`).
+- Animações: parado, andar devagar e comer.
 
 ## Fora do escopo inicial
 - A criatura poupada no prólogo voltar mais tarde para ajudar Nate (ideia opcional do `01-historia.md`).
