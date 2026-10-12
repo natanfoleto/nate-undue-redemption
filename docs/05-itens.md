@@ -191,7 +191,7 @@ Nenhum próprio.
 #### Sons necessários
 - Muiraquitã acordando.
 - Lasca se encaixando.
-- Ativação na porta e nos pilares: `[A DEFINIR em 07-chefes]`.
+- Ativação na porta e nos pilares (`07-chefes/boiuna.md`).
 
 #### Assets necessários
 - Modelo do muiraquitã no pescoço de Nate, com a lasca faltando e inteiro.

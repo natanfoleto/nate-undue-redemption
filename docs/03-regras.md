@@ -109,7 +109,7 @@ Todo golpe inimigo é avisado antes de ferir (pilar 2).
 |------|-------------|-------------|
 | Leve | empurra e interrompe | empurra e interrompe |
 | Pesado | nada | empurra e interrompe |
-| Chefe | nada | nada, salvo o que `07-chefes/` definir |
+| Chefe | nada | nada (`07-chefes/boiuna.md`) |
 
 - **Interrompido:** perde o golpe que preparava e fica 0,4 s sem agir.
 - **Nate:** é empurrado conforme o golpe e perde o controle por 0,2 s a cada golpe que leva.
@@ -147,5 +147,5 @@ A queimadura é de Nate; o veneno é dos mobs.
 | Mobs | sim | sim | sim | sim |
 | Chefe | imune | imune | imune | imune |
 
-- O chefe só sofre um efeito onde a luta for desenhada para isso (`07-chefes/`).
+- A única exceção do chefe é o atordoar no fim de cada parte da vida da fase 1, que faz parte da luta (`07-chefes/boiuna.md`).
 - Como mostrar que o chefe é imune: `[A DEFINIR em 09-interface]`.

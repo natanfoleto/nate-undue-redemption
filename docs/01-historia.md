@@ -49,10 +49,11 @@ O título resume o tema: uma redenção que ele não devia, mas que herdou da pr
 
 ## O predador
 - Criatura colossal das profundezas, contida apenas pelo sono que a prisão incompleta provocou.
+- É a Boiúna, uma cobra colossal e escura inspirada na Cobra Grande das lendas amazônicas.
 - Um tremor abre uma fenda na floresta, na borda da velha mina da família de Nate, racha a prisão e acorda o predador antes da hora.
 - As criaturas de Agartha fogem dele e sobem pela fenda até a superfície.
 - A escuridão dele também desperta ossos e pedras: esqueletos, necromantes e golens (`06-mobs/`).
-- Chefe final: na fase 1 é enfrentado de frente na arena da grande prisão; na fase 2 recua para a escuridão e ataca de emboscada. Detalhes em `07-chefes/`.
+- Chefe final: na fase 1 é enfrentado de frente na arena da grande prisão; na fase 2 recua para a escuridão e ataca de emboscada. Detalhes em `07-chefes/boiuna.md`.
 
 ## Como as construções antigas ajudam
 - **Santuários (4 a 5 no mapa):** curam, salvam, são o ponto de retorno quando Nate morre e devolvem um fragmento de memória da vida passada na primeira visita (cena curta, sem fala). É assim que um homem comum aprende a usar as construções.

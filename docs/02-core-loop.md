@@ -92,7 +92,7 @@ Posição exata de cada passagem, pergaminho e segredo: `[A DEFINIR em 08-mapa]`
 | Inimigos já mortos | continuam mortos |
 | Inimigos vivos | reiniciam, com vida cheia e na posição inicial |
 | Arena incompleta | reinicia |
-| Chefe | reinicia |
+| Chefe | reinicia do começo da fase em que Nate morreu (`07-chefes/boiuna.md`) |
 
 A morte custa só a caminhada de volta, que os atalhos encurtam. Dá para vencer um trecho difícil por desgaste, morrendo e voltando; isso é aceito, por causa da dificuldade acessível.
 
@@ -119,7 +119,7 @@ Nate fica mais forte com o que acha no mapa. Não há XP nem moeda.
 - Não há seletor de dificuldade: o desafio extra fica no mapa, para quem procura.
 
 ## Vitória e pós-jogo
-- **Vitória:** vencer a fase 2 do predador e fechar a Grande Prisão (detalhes em `07-chefes/`). Em seguida vêm a cena final e os créditos.
+- **Vitória:** vencer a fase 2 da Boiúna, o predador, e fechar a Grande Prisão (`07-chefes/boiuna.md`). Em seguida vêm a cena final e os créditos.
 - **Pós-jogo, volta ao mundo:** depois dos créditos, Nate reaparece no último santuário, com o predador preso, para achar o que faltou.
 - A arena da Grande Prisão fica vazia; o resto do mapa segue como estava.
 - Contador de murais e segredos achados: `[A DEFINIR em 09-interface]`.

@@ -11,6 +11,7 @@ Jogo de ação e exploração em 3D com câmera fixa, num mundo subterrâneo per
 - **Player:** ver `04-player.md`.
 - **Itens:** ver `05-itens.md`.
 - **Mobs:** ver `06-mobs/`.
+- **Chefe:** ver `07-chefes/boiuna.md`.
 - **Referência principal:** Minecraft Dungeons.
 - **Perspectiva:** 3D com câmera fixa isométrica, jogado como 2D (chão plano, sem pulo nem verticalidade).
 - **Estilo visual:** blocado/voxel, na linha de Minecraft Dungeons.
@@ -27,7 +28,7 @@ Jogo de ação e exploração em 3D com câmera fixa, num mundo subterrâneo per
 - 1 herói com ataque corpo a corpo, ataque à distância e esquiva
 - 1 amuleto, o muiraquitã (Luz Ancestral e o Selo), e 4 elementos aprendidos em pergaminhos: 4 magias e 6 combinações
 - 4 tipos de mob (Lobo, Esqueleto Guerreiro, Necromante e Golem de Pedra), com uma variante de cada, e 1 dinossauro de cenário
-- 1 chefe com 2 fases
+- 1 chefe com 2 fases: a Boiúna, o predador
 - 13 peças de equipamento (5 armas corpo a corpo, 4 à distância e 4 armaduras), 6 melhorias escondidas e o frasco de cura; inventário simples
 - 4 a 5 santuários e 6 a 8 murais
 - Arenas: 1 a 2 por área, mais cerca de 1 opcional por área
@@ -40,7 +41,7 @@ Jogo de ação e exploração em 3D com câmera fixa, num mundo subterrâneo per
 - [x] **04 Player** (`04-player.md`): movimento, ataques, esquiva, atributos base, controles.
 - [x] **05 Itens** (`05-itens.md`): categorias, raridades, slots, consumíveis, muiraquitã e magias, tabelas de loot.
 - [x] **06 Mobs** (`06-mobs/`): uma ficha por mob.
-- [ ] **07 Chefes** (`07-chefes/`): fases, padrões de ataque, avisos visuais.
+- [x] **07 Chefes** (`07-chefes/`): fases, padrões de ataque, avisos visuais.
 - [ ] **08 Mapa** (`08-mapa.md`): regiões, conexões, atalhos, santuários, armadilhas, dificuldade por região.
 - [ ] **09 Interface** (`09-interface.md`): HUD, inventário, menus, telas de morte e vitória.
 - [ ] **10 Arte e áudio** (`10-arte-audio.md`): guia de estilo, lista consolidada de assets e sons.
