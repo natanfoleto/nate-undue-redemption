@@ -39,6 +39,8 @@ Concluída em 2026-10-12.
 - Cena de prévia no editor, que mostra o modelo e a animação enquanto os dados são editados.
 - Nate em caixas lisas, com as animações parado e andar.
 
+Concluída em 2026-10-12.
+
 ## Etapa 2: Nate se movendo
 - Câmera ortográfica isométrica seguindo Nate.
 - Sala de teste pintada com GridMap, usando uma textura pronta de pedra (CC0).

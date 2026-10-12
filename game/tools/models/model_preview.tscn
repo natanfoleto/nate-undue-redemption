@@ -1,0 +1,45 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://tools/models/block_model.gd" id="1_2puyo"]
+[ext_resource type="Resource" path="res://data/models/nate.tres" id="2_vjcyh"]
+[ext_resource type="Script" path="res://tools/models/model_animator.gd" id="3_dks85"]
+[ext_resource type="Resource" path="res://data/animations/nate_walk.tres" id="4_iqwmh"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bosk4"]
+albedo_color = Color(0.25, 0.26, 0.28, 1)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_57ms8"]
+material = SubResource("StandardMaterial3D_bosk4")
+size = Vector2(4, 4)
+
+[sub_resource type="Environment" id="Environment_woeie"]
+background_mode = 1
+background_color = Color(0.16, 0.17, 0.2, 1)
+ambient_light_source = 2
+ambient_light_color = Color(0.55, 0.58, 0.65, 1)
+ambient_light_energy = 0.6
+
+[node name="ModelPreview" type="Node3D" unique_id=1211163119]
+
+[node name="Floor" type="MeshInstance3D" parent="." unique_id=1733727373]
+mesh = SubResource("PlaneMesh_57ms8")
+
+[node name="BlockModel" type="Node3D" parent="." unique_id=376058660]
+script = ExtResource("1_2puyo")
+model = ExtResource("2_vjcyh")
+
+[node name="ModelAnimator" type="Node" parent="BlockModel" unique_id=424278497]
+script = ExtResource("3_dks85")
+animation = ExtResource("4_iqwmh")
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=1634177159]
+transform = Transform3D(-0.70710677, -0.35355338, 0.6123724, 0, 0.8660254, 0.5, -0.70710677, 0.35355338, -0.6123724, 6.123724, 6, -6.123724)
+projection = 1
+size = 3.5
+
+[node name="Sun" type="DirectionalLight3D" parent="." unique_id=1595579635]
+transform = Transform3D(-0.50000006, -0.7094065, 0.49673176, 0, 0.57357645, 0.81915206, -0.8660254, 0.4095761, -0.28678825, 0, 0, 0)
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1239761810]
+environment = SubResource("Environment_woeie")

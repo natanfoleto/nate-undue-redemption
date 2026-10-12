@@ -27,6 +27,11 @@ Motor, arquitetura, estrutura de pastas e convenções de código.
 - Uma cena de prévia no editor mostra o modelo e a animação enquanto os dados são editados.
 - Uma variante usa o mesmo modelo e só troca a textura (`06-mobs/README.md`).
 - O montador e a prévia são feitos antes dos primeiros modelos.
+- Medidas em pixels (16 px = 1 bloco), com o chão em y = 0 e a frente do modelo virada para −z.
+- Cada caixa tem um nome e pode se prender a outra, girando junto com ela. Uma caixa de tamanho zero só agrupa partes.
+- A textura segue o molde de caixa do Minecraft: cada caixa ocupa uma região que começa num canto dado. Sem textura, cada caixa usa a própria cor (caixa lisa).
+- Uma pose cita só as partes que saem do repouso. Entre duas poses, o movimento é suave ou constante, e a troca de animação mistura as duas no tempo de mistura da nova.
+- Os scripts ficam em `game/tools/models/` (o montador `BlockModel`, o tocador `ModelAnimator` e a prévia `model_preview.tscn`); os dados, em `game/data/models/` e `game/data/animations/`.
 
 ### Salvamento
 - Um arquivo JSON na pasta do usuário, regravado a cada conquista (item, atalho, mural, inimigo morto) e a cada descanso (`02-core-loop.md`).
