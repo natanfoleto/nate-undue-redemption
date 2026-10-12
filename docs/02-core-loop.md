@@ -3,12 +3,12 @@
 O que o jogador faz minuto a minuto, como a partida se estrutura, o que acontece quando Nate morre, como ele fica mais forte e como o jogo termina.
 
 ## Resumo
-Nate atravessa Agartha de santuário em santuário. Em cada área, ele luta contra mobs espalhados e em arenas e acha equipamento, melhorias, muiraquitãs, murais e atalhos. As relíquias da história abrem o caminho seguinte e, nas áreas já visitadas, segredos. Morrer não tira nada: Nate volta ao último santuário. A partida termina quando ele prende o predador na Grande Prisão, em cerca de 30 min. Depois disso, o mundo continua aberto para achar o que faltou.
+Nate atravessa Agartha de santuário em santuário. Em cada área, ele luta contra mobs espalhados e em arenas e acha equipamento, melhorias, pergaminhos de magia, murais e atalhos. A Luz Ancestral do muiraquitã e a Terra abrem o caminho seguinte e, nas áreas já visitadas, segredos. Morrer não tira nada: Nate volta ao último santuário. A partida termina quando ele prende o predador na Grande Prisão, em cerca de 30 min. Depois disso, o mundo continua aberto para achar o que faltou.
 
 ## Minuto a minuto
 
 ### Loop de momento (segundos)
-Andar → ver o aviso do ataque inimigo → esquivar ou se posicionar → atacar de perto, à distância ou com a muiraquitã equipada → usar o frasco quando a vida baixa.
+Andar → ver o aviso do ataque inimigo → esquivar ou se posicionar → atacar de perto, à distância ou com magia → usar o frasco quando a vida baixa.
 
 Controles em `04-player.md`; dano, recuo e invencibilidade em `03-regras.md`.
 
@@ -17,8 +17,8 @@ Controles em `04-player.md`; dano, recuo e invencibilidade em `03-regras.md`.
 2. **Exploração:** caminho principal e desvios, com mobs espalhados, baús e segredos.
 3. **Lutas:** cada luta gasta vida e cargas do frasco. O que sobra decide se Nate avança ou volta para recarregar.
 4. **Atalho:** abrir um caminho curto de volta ao santuário, ou chegar ao próximo.
-5. **Arena:** o clímax da área, guardando uma relíquia ou uma passagem.
-6. **Próxima área.** Cada relíquia nova também abre segredos nas áreas já visitadas, para quem quiser voltar.
+5. **Arena:** o clímax da área, guardando um pergaminho ou uma passagem.
+6. **Próxima área.** Cada poder novo de exploração (Luz Ancestral, Terra) também abre segredos nas áreas já visitadas, para quem quiser voltar.
 
 Se Nate morre, volta ao passo 1 sem perder nada.
 
@@ -39,9 +39,9 @@ Tempo de quem joga pela primeira vez, contando as mortes.
 
 ### Forma: linear com volta opcional
 - O caminho principal segue sempre em frente. Nunca é preciso voltar para avançar.
-- Cada relíquia é exigida uma vez no caminho principal. Os outros usos abrem segredos, inclusive em áreas já visitadas.
+- Cada poder de exploração é exigido uma vez no caminho principal: a Luz Ancestral na passagem escura e a Terra na parede rachada antes do Selo. Os outros usos abrem segredos, inclusive em áreas já visitadas.
 - Voltar é opcional. Os atalhos (elevadores e portas que só abrem por um lado) e a viagem rápida encurtam a volta.
-- Paredes rachadas e cantos escuros precisam ser reconhecíveis à primeira vista, para o jogador lembrar de voltar quando tiver a relíquia certa.
+- Paredes rachadas e cantos escuros precisam ser reconhecíveis à primeira vista, para o jogador lembrar de voltar quando tiver o poder certo.
 
 ### Viagem rápida
 - Ao descansar num santuário, Nate pode ir para outro santuário já visitado. Só sai de um santuário e só chega em outro.
@@ -49,17 +49,17 @@ Tempo de quem joga pela primeira vez, contando as mortes.
 - Tela de escolha (lista dos santuários visitados): `[A DEFINIR em 09-interface]`.
 
 ### Cadeia de progressão
-| Trecho | Relíquia obtida | Passagem para o trecho seguinte |
-|--------|-----------------|---------------------------------|
-| Prólogo | nenhuma | Nate segue a criatura pela fenda |
-| Mina | nenhuma | sem exigência de relíquia |
-| Bosque de Fungos | Muiraquitã da Luz | passagem escura, que exige a Luz |
-| Ruínas | Muiraquitã da Rocha e o Selo | o Selo abre a Grande Prisão |
-| Grande Prisão | nenhuma | luta final |
+| Trecho | Poder obtido | Passagem para o trecho seguinte |
+|--------|--------------|---------------------------------|
+| Prólogo | nenhum | Nate segue a criatura pela fenda |
+| Mina | nenhum | sem exigência |
+| Bosque de Fungos | pergaminho de Fogo; o muiraquitã acorda (Luz Ancestral) | passagem escura, que exige a Luz Ancestral |
+| Ruínas | pergaminho de Terra e o Selo | o Selo, encaixado no muiraquitã, abre a Grande Prisão |
+| Grande Prisão | nenhum | luta final |
 
-Nas Ruínas, uma parede rachada no caminho até o Selo exige a Rocha.
+Nas Ruínas, uma parede rachada no caminho até o Selo exige a Terra. Os pergaminhos de Água e Ar são opcionais (`05-itens.md`).
 
-Posição exata de cada passagem, relíquia e segredo: `[A DEFINIR em 08-mapa]`.
+Posição exata de cada passagem, pergaminho e segredo: `[A DEFINIR em 08-mapa]`.
 
 ### Começo e fim
 - **Abertura (cena):** Nhamundá, criaturas atacando rebanhos, Nate rejeitado pela cidade.
@@ -71,7 +71,7 @@ Posição exata de cada passagem, relíquia e segredo: `[A DEFINIR em 08-mapa]`.
 
 ## Combate no mapa
 - **Mobs espalhados** no caminho principal e nos desvios. O jogador escolhe enfrentar ou contornar.
-- **Arenas** nos momentos-chave: a passagem fecha até o jogador vencer as ondas. Cerca de 1 a 2 por área, guardando uma relíquia ou uma passagem. A arena é o clímax da área e garante que o jogador pratique o que a área ensinou antes de seguir.
+- **Arenas** nos momentos-chave: a passagem fecha até o jogador vencer as ondas. Cerca de 1 a 2 por área, guardando um pergaminho ou uma passagem. A arena é o clímax da área e garante que o jogador pratique o que a área ensinou antes de seguir.
 - Número, posição e ondas de cada arena: `[A DEFINIR em 08-mapa]`.
 
 ## Cura
@@ -79,7 +79,7 @@ Posição exata de cada passagem, relíquia e segredo: `[A DEFINIR em 08-mapa]`.
 - Recarrega ao descansar no santuário.
 - Nate ganha o frasco no primeiro santuário, no Bosque. Prólogo e Mina não têm cura (`04-player.md`).
 - Cargas extras vêm de melhorias escondidas (ver Progressão de poder).
-- Número de cargas e cura por carga: `[A DEFINIR em 05-itens]`.
+- 3 cargas; cada carga cura 2 corações (`05-itens.md`).
 
 ## Morte e salvamento
 - Nate volta ao último santuário com vida e frasco cheios, sem perder nada.
@@ -87,7 +87,7 @@ Posição exata de cada passagem, relíquia e segredo: `[A DEFINIR em 08-mapa]`.
 
 | O quê | Depois da morte |
 |-------|-----------------|
-| Itens, equipamento, relíquias e melhorias | ficam |
+| Itens, equipamento, elementos aprendidos e melhorias | ficam |
 | Atalhos abertos e murais vistos | ficam |
 | Inimigos já mortos | continuam mortos |
 | Inimigos vivos | reiniciam, com vida cheia e na posição inicial |
@@ -96,7 +96,7 @@ Posição exata de cada passagem, relíquia e segredo: `[A DEFINIR em 08-mapa]`.
 
 A morte custa só a caminhada de volta, que os atalhos encurtam. Dá para vencer um trecho difícil por desgaste, morrendo e voltando; isso é aceito, por causa da dificuldade acessível.
 
-**Ao sair do jogo:** funciona como uma morte. Tudo o que foi conquistado é salvo na hora: itens, equipamento, relíquias, melhorias, atalhos, murais e inimigos mortos. Ao voltar, Nate está no último santuário. Como salvar a cada conquista: `[A DEFINIR em 12-tecnico]`.
+**Ao sair do jogo:** funciona como uma morte. Tudo o que foi conquistado é salvo na hora: itens, equipamento, elementos aprendidos, melhorias, atalhos, murais e inimigos mortos. Ao voltar, Nate está no último santuário. Como salvar a cada conquista: `[A DEFINIR em 12-tecnico]`.
 
 ## Progressão de poder
 Nate fica mais forte com o que acha no mapa. Não há XP nem moeda.
@@ -105,12 +105,12 @@ Nate fica mais forte com o que acha no mapa. Não há XP nem moeda.
 |-------|--------------|
 | Equipamento | cada peça tem um lugar fixo (baús, segredos, arenas); nada é sorteado |
 | Melhorias permanentes | escondidas em segredos (ex.: +vida máxima, +1 carga no frasco) |
-| Muiraquitãs | as 3 relíquias da história no caminho principal; 2 muiraquitãs opcionais em segredos e arenas opcionais |
+| Magias | 4 pergaminhos de elemento: Fogo e Terra no caminho principal; Água e Ar em segredos e arenas opcionais |
 
-- Mobs não deixam equipamento. O que deixam: `[A DEFINIR em 05-itens]`.
-- **Muiraquitãs:** ter a relíquia já abre caminhos; equipar dá o poder em combate. Nate equipa um número limitado por vez, como os artefatos do Minecraft Dungeons. Quantas ficam equipadas e em quais botões: `[A DEFINIR em 04-player e 05-itens]`.
-- Poderes das 2 muiraquitãs opcionais, lista de melhorias e lista de equipamento (10 a 15 peças): `[A DEFINIR em 05-itens]`.
-- Uso do Selo em combate, se houver: `[A DEFINIR em 05-itens]`. Na luta final, o Selo ativa os pilares e a Luz revela o predador; se isso usa o efeito de ter a relíquia ou o de equipá-la: `[A DEFINIR em 07-chefes]`.
+- Mobs não deixam nada ao morrer (`05-itens.md`).
+- **Magias:** aprender um elemento já dá o efeito dele fora de combate (com Terra, os golpes quebram paredes rachadas); equipar dá a magia em combate. Nate equipa 2 elementos por vez, cada um num botão, como os artefatos do Minecraft Dungeons, e os dois juntos lançam a combinação (`04-player.md`).
+- Magias, melhorias e as 13 peças de equipamento: `05-itens.md`.
+- A Luz Ancestral é do próprio muiraquitã: funciona sozinha e, na luta final, revela o predador. O Selo é a lasca que falta no muiraquitã: não tem poder de combate e funciona só por estar com Nate, inclusive nos pilares da luta final (`05-itens.md`).
 - Como nada é sorteado, sabemos o que o jogador pode ter em cada ponto do mapa. Isso guia o balanceamento (`11-balanceamento.md`).
 
 ## Desafio opcional

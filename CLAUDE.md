@@ -21,6 +21,7 @@ Projeto piloto para ganhar experiência em desenvolvimento de jogos antes dos pr
 - Pendências marcadas com `[A DEFINIR]`. Nunca inventar um valor sem discutir antes.
 - Números (atributos, dano, tempos, distâncias) sempre explícitos e com unidade.
 - Toda entidade (player, mob, chefe, item, armadilha) usa a ficha abaixo, para que a lista de assets, animações e sons saia direto dos documentos.
+- Itens com o mesmo comportamento (armas e armaduras) dividem uma ficha por categoria, com uma tabela das peças.
 
 ### Ficha de entidade
 

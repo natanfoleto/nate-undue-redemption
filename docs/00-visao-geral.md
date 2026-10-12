@@ -9,13 +9,14 @@ Jogo de ação e exploração em 3D com câmera fixa, num mundo subterrâneo per
 - **Core loop:** ver `02-core-loop.md`.
 - **Regras:** ver `03-regras.md`.
 - **Player:** ver `04-player.md`.
+- **Itens:** ver `05-itens.md`.
 - **Referência principal:** Minecraft Dungeons.
 - **Perspectiva:** 3D com câmera fixa isométrica, jogado como 2D (chão plano, sem pulo nem verticalidade).
 - **Estilo visual:** blocado/voxel, na linha de Minecraft Dungeons.
 - **Estrutura do mapa:** mapa único e contínuo, sem andares, com áreas que se abrem conforme o jogador avança. Caminho principal linear, com volta opcional a áreas já visitadas.
 - **Jogadores:** só solo.
 - **Dificuldade:** acessível, com morte sem perda; desafio extra sempre opcional, em arenas escondidas no mapa.
-- **Estilo de jogo:** definido pelo equipamento, sem classes.
+- **Estilo de jogo:** definido pelo equipamento e pelo par de elementos equipado, sem classes.
 - **Pipeline de assets:** modelos e animações blocados definidos por código sempre que possível.
 - **Engine:** Godot 4 (recomendada) `[A DEFINIR]`
 
@@ -23,10 +24,10 @@ Jogo de ação e exploração em 3D com câmera fixa, num mundo subterrâneo per
 - 1 mapa subterrâneo único (Agartha), desenhado à mão: prólogo na borda da mina, 3 áreas e a arena do chefe `[A DEFINIR em 08-mapa]`
 - 30 min de caminho principal; 45 min com todos os segredos
 - 1 herói com ataque corpo a corpo, ataque à distância e esquiva
-- 5 muiraquitãs (habilidades ativas que também abrem caminhos): as 3 relíquias da história e 2 opcionais
+- 1 amuleto, o muiraquitã (Luz Ancestral e o Selo), e 4 elementos aprendidos em pergaminhos: 4 magias e 6 combinações
 - 4 tipos de mob, mais variantes (quantas: `[A DEFINIR em 06-mobs]`)
 - 1 chefe com 2 fases
-- 10 a 15 peças de equipamento, melhorias escondidas (quantas: `[A DEFINIR em 05-itens]`) e o frasco de cura; inventário simples
+- 13 peças de equipamento (5 armas corpo a corpo, 4 à distância e 4 armaduras), 6 melhorias escondidas e o frasco de cura; inventário simples
 - 4 a 5 santuários e 6 a 8 murais
 - Arenas: 1 a 2 por área, mais cerca de 1 opcional por área
 - Cenas curtas: abertura, uma memória por santuário e final
@@ -36,7 +37,7 @@ Jogo de ação e exploração em 3D com câmera fixa, num mundo subterrâneo per
 - [x] **02 Core loop** (`02-core-loop.md`): o que o jogador faz minuto a minuto, estrutura da partida, morte, progressão, vitória.
 - [x] **03 Regras** (`03-regras.md`): lista de atributos, fórmula de dano, hitbox, recuo, invencibilidade após dano, efeitos de status.
 - [x] **04 Player** (`04-player.md`): movimento, ataques, esquiva, atributos base, controles.
-- [ ] **05 Itens** (`05-itens.md`): categorias, raridades, slots, consumíveis, relíquias, tabelas de loot.
+- [x] **05 Itens** (`05-itens.md`): categorias, raridades, slots, consumíveis, muiraquitã e magias, tabelas de loot.
 - [ ] **06 Mobs** (`06-mobs/`): uma ficha por mob.
 - [ ] **07 Chefes** (`07-chefes/`): fases, padrões de ataque, avisos visuais.
 - [ ] **08 Mapa** (`08-mapa.md`): regiões, conexões, atalhos, santuários, armadilhas, dificuldade por região.

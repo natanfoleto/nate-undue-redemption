@@ -51,7 +51,7 @@ Armadilhas têm os dois valores de dano: em corações, contra Nate, e em pontos
 - **Nate:** vida em corações inteiros. Cada golpe inimigo tira corações inteiros: golpe comum, 1; golpe forte, 2; golpe do chefe, até 3. Cura, melhorias e veneno também contam em corações.
 - **Inimigos:** vida em pontos, mostrada em barra. O dano que Nate causa também é em pontos.
 - Nada tira fração de coração. A armadura não reduz dano: dá corações extras e outros bônus (`05-itens.md`).
-- Corações iniciais de Nate: `[A DEFINIR em 04-player]`.
+- Corações iniciais de Nate: 5 (`04-player.md`).
 
 ### Fórmula
 **Dano que Nate causa:**
@@ -86,6 +86,7 @@ dano = dano do ataque × (1 + soma dos bônus em %) × variação × crítico
 - Todo golpe tem três tempos: preparação (o aviso), tempo ativo (quando fere) e recuperação.
 - Acerta todos os alvos na área, cada um no máximo uma vez.
 - Paredes bloqueiam golpes e projéteis.
+- O projétil para no primeiro inimigo que acerta, salvo arma com efeito próprio (`05-itens.md`).
 - Encostar num inimigo não fere. Só golpes avisados ferem.
 
 ### Aviso
@@ -124,23 +125,27 @@ Todo golpe inimigo é avisado antes de ferir (pilar 2).
 ### Lista
 | Efeito | O que faz | Fonte |
 |--------|-----------|-------|
-| Atordoado | não se move nem ataca | clarão da Muiraquitã da Luz |
-| Lento | anda à metade da velocidade | `[A DEFINIR em 05-itens ou 06-mobs]` |
-| Veneno | perde vida aos poucos; Nate perde corações inteiros | `[A DEFINIR em 05-itens ou 06-mobs]` |
+| Atordoado | não se move nem ataca | magia Gelo; 3º golpe do Tacape marajoara |
+| Lento | anda à metade da velocidade | magia Lamaçal; Zarabatana marajoara; mobs: `[A DEFINIR em 06-mobs]` |
+| Veneno | perde vida aos poucos; Nate perde corações inteiros | 1 ou 2 tipos de mob (`[A DEFINIR em 06-mobs]`) |
+| Queimadura | perde vida aos poucos; Nate perde corações inteiros | magias de Fogo: Bola de Fogo, Vapor, Magma e Tempestade de Fogo |
+
+A queimadura é de Nate; o veneno é dos mobs.
 
 ### Regras gerais
-- A intensidade de cada efeito é fixa. A duração, e no veneno também o ritmo, vem de quem aplica.
+- A intensidade de cada efeito é fixa. A duração, e no veneno e na queimadura também o ritmo, vem de quem aplica.
+- Com a Água equipada, queimadura, veneno e lento duram metade do tempo em Nate (`05-itens.md`).
 - O mesmo efeito não acumula: aplicar de novo renova a duração.
 - Efeitos diferentes valem ao mesmo tempo.
 - Efeito sem fonte no jogo é cortado.
 - Ícone, cor e som de cada efeito: `[A DEFINIR em 09-interface e 10-arte-audio]`.
 
 ### Quem sofre o quê
-| Alvo | Atordoado | Lento | Veneno |
-|------|-----------|-------|--------|
-| Nate | nunca | sim | sim, mas não tira o último coração |
-| Mobs | sim | sim | sim |
-| Chefe | imune | imune | imune |
+| Alvo | Atordoado | Lento | Veneno | Queimadura |
+|------|-----------|-------|--------|------------|
+| Nate | nunca | sim | sim, mas não tira o último coração | sim, mas não tira o último coração |
+| Mobs | sim | sim | sim | sim |
+| Chefe | imune | imune | imune | imune |
 
 - O chefe só sofre um efeito onde a luta for desenhada para isso (`07-chefes/`).
 - Como mostrar que o chefe é imune: `[A DEFINIR em 09-interface]`.
