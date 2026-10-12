@@ -21,7 +21,7 @@ O título resume o tema: uma redenção que ele não devia, mas que herdou da pr
 ## Agartha, o mundo perdido
 - Sistema subterrâneo gigantesco sob a floresta, isolado por milhares de anos, explorado como um mapa único e contínuo.
 - Dinossauros fictícios, ecossistemas subterrâneos, ruínas, minas e criaturas exclusivas que não existem na superfície.
-- Áreas (detalhar em `08-mapa.md`):
+- Áreas (detalhes em `08-mapa.md`):
   1. **A Mina:** galerias da velha mina da família de Nate. Entrada e tutorial.
   2. **O Bosque de Fungos:** cogumelos gigantes bioluminescentes e dinossauros herbívoros, que vivem ali sem lutar. Primeiro santuário e primeiro pergaminho, quando o muiraquitã de Nate acorda.
   3. **As Ruínas:** a cidade e as minas antigas dos Marajoara, com murais e mecanismos. Onde a traição é descoberta.
@@ -56,12 +56,12 @@ O título resume o tema: uma redenção que ele não devia, mas que herdou da pr
 - Chefe final: na fase 1 é enfrentado de frente na arena da grande prisão; na fase 2 recua para a escuridão e ataca de emboscada. Detalhes em `07-chefes/boiuna.md`.
 
 ## Como as construções antigas ajudam
-- **Santuários (4 a 5 no mapa):** curam, salvam, são o ponto de retorno quando Nate morre e devolvem um fragmento de memória da vida passada na primeira visita (cena curta, sem fala). É assim que um homem comum aprende a usar as construções.
+- **Santuários (4):** curam, salvam, são o ponto de retorno quando Nate morre e devolvem um fragmento de memória da vida passada na primeira visita (cena curta, sem fala). É assim que um homem comum aprende a usar as construções.
 - **O muiraquitã:** o amuleto de pedra verde da lenda das Icamiabas de Nhamundá. Era do herói antigo e saiu do rio com Nate no naufrágio. Acorda em Agartha, quando Nate lê o primeiro pergaminho, e passa a brilhar no escuro: é a Luz Ancestral, que abre as áreas escuras.
 - **Pergaminhos (4):** cada um ensina um elemento: Fogo, Água, Terra e Ar. As magias funcionam como os artefatos do Minecraft Dungeons (habilidades ativas com tempo de recarga), e Nate pode combinar dois elementos. Fogo e Terra estão no caminho principal; Água e Ar, escondidos. A Terra também quebra paredes rachadas, abrindo atalhos e segredos. Detalhes em `05-itens.md`.
 - **O Selo** (fim das Ruínas): a lasca que falta no muiraquitã, escondida pelo irmão traidor. Com ela, o amuleto fica inteiro e pode fechar a prisão.
 - **Mecanismos:** elevadores e portas que só abrem por um lado, criando atalhos de volta aos santuários depois que uma área é explorada. Pontes e plataformas acionadas por alavancas ou magias.
-- **Murais (6 a 8):** contam a história sem texto. Os do caminho principal trazem o essencial; os escondidos completam os detalhes, como o rosto do irmão.
+- **Murais (7):** contam a história sem texto. Os do caminho principal trazem o essencial; os escondidos completam os detalhes, como o rosto do irmão.
 - **A Grande Prisão:** a luta final usa tudo o que Nate aprendeu. Na fase 1 ele ativa os pilares da prisão com o muiraquitã inteiro enquanto desvia do predador. Na fase 2, quando o predador some na escuridão, a Luz Ancestral é o que o revela.
 
 ## Arco da história

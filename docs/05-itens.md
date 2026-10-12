@@ -206,14 +206,14 @@ Nenhum próprio.
 | Pergaminho | Área | Caminho |
 |------------|------|---------|
 | Fogo | Bosque | principal; é o primeiro e acorda o muiraquitã |
-| Água | Bosque | opcional: segredo ou arena opcional |
+| Água | Bosque | opcional: arena opcional, atrás de um canto escuro |
 | Terra | Ruínas | principal; vem antes da parede rachada do caminho até o Selo |
-| Ar | Ruínas | opcional: segredo ou arena opcional |
+| Ar | Ruínas | opcional: arena opcional escondida |
 
 #### Comportamento e habilidades
 - Nate lê o pergaminho (interagir) e aprende o elemento na hora. A combinação de dois elementos vem sozinha quando Nate conhece os dois.
 - Quem segue só o caminho principal termina com Fogo, Terra e a combinação Magma. Quem explora ganha Água e Ar e, com eles, as outras 5 combinações.
-- Lugar exato de cada pergaminho: `[A DEFINIR em 08-mapa]`.
+- Lugar de cada pergaminho: `08-mapa.md`.
 
 #### Interações
 Nenhuma além de ensinar o elemento.

@@ -12,6 +12,7 @@ Jogo de ação e exploração em 3D com câmera fixa, num mundo subterrâneo per
 - **Itens:** ver `05-itens.md`.
 - **Mobs:** ver `06-mobs/`.
 - **Chefe:** ver `07-chefes/boiuna.md`.
+- **Mapa:** ver `08-mapa.md`.
 - **Referência principal:** Minecraft Dungeons.
 - **Perspectiva:** 3D com câmera fixa isométrica, jogado como 2D (chão plano, sem pulo nem verticalidade).
 - **Estilo visual:** blocado/voxel, na linha de Minecraft Dungeons.
@@ -23,15 +24,15 @@ Jogo de ação e exploração em 3D com câmera fixa, num mundo subterrâneo per
 - **Engine:** Godot 4 (recomendada) `[A DEFINIR]`
 
 ## Escopo inicial
-- 1 mapa subterrâneo único (Agartha), desenhado à mão: prólogo na borda da mina, 3 áreas e a arena do chefe `[A DEFINIR em 08-mapa]`
+- 1 mapa subterrâneo único (Agartha), desenhado à mão: prólogo na borda da mina, 3 áreas e a arena do chefe (`08-mapa.md`)
 - 30 min de caminho principal; 45 min com todos os segredos
 - 1 herói com ataque corpo a corpo, ataque à distância e esquiva
 - 1 amuleto, o muiraquitã (Luz Ancestral e o Selo), e 4 elementos aprendidos em pergaminhos: 4 magias e 6 combinações
 - 4 tipos de mob (Lobo, Esqueleto Guerreiro, Necromante e Golem de Pedra), com uma variante de cada, e 1 dinossauro de cenário
 - 1 chefe com 2 fases: a Boiúna, o predador
 - 13 peças de equipamento (5 armas corpo a corpo, 4 à distância e 4 armaduras), 6 melhorias escondidas e o frasco de cura; inventário simples
-- 4 a 5 santuários e 6 a 8 murais
-- Arenas: 1 a 2 por área, mais cerca de 1 opcional por área
+- 4 santuários, 7 murais e 3 tipos de armadilha
+- 5 arenas (1 na Mina, 2 no Bosque e 2 nas Ruínas) e 3 arenas opcionais, uma por área
 - Cenas curtas: abertura, uma memória por santuário e final
 
 ## Roteiro de documentação
@@ -42,7 +43,7 @@ Jogo de ação e exploração em 3D com câmera fixa, num mundo subterrâneo per
 - [x] **05 Itens** (`05-itens.md`): categorias, raridades, slots, consumíveis, muiraquitã e magias, tabelas de loot.
 - [x] **06 Mobs** (`06-mobs/`): uma ficha por mob.
 - [x] **07 Chefes** (`07-chefes/`): fases, padrões de ataque, avisos visuais.
-- [ ] **08 Mapa** (`08-mapa.md`): regiões, conexões, atalhos, santuários, armadilhas, dificuldade por região.
+- [x] **08 Mapa** (`08-mapa.md`): regiões, conexões, atalhos, santuários, armadilhas, dificuldade por região.
 - [ ] **09 Interface** (`09-interface.md`): HUD, inventário, menus, telas de morte e vitória.
 - [ ] **10 Arte e áudio** (`10-arte-audio.md`): guia de estilo, lista consolidada de assets e sons.
 - [ ] **11 Balanceamento** (`11-balanceamento.md`): tabela com todos os números.

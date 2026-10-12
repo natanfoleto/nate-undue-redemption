@@ -17,7 +17,7 @@ Valores exatos: `[A DEFINIR em 11-balanceamento]`.
 ## Comportamento e habilidades
 
 ### Arena: a Grande Prisão
-- Arena com um fosso no centro, de onde a Boiúna sai, e 4 pilares ao redor. Formato, tamanho, posição dos pilares e enquadramento da câmera: `[A DEFINIR em 08-mapa]`.
+- Arena com um fosso no centro, de onde a Boiúna sai, e um pilar de cada lado. Ela cabe inteira na câmera normal do jogo (`08-mapa.md`). Medidas em blocos: no rascunho do mapa no motor.
 - A porta da Grande Prisão abre quando Nate interage com ela tendo o muiraquitã inteiro (`05-itens.md`).
 - Nenhum mob entra na luta.
 

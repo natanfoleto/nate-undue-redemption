@@ -59,7 +59,7 @@ Tempo de quem joga pela primeira vez, contando as mortes.
 
 Nas Ruínas, uma parede rachada no caminho até o Selo exige a Terra. Os pergaminhos de Água e Ar são opcionais (`05-itens.md`).
 
-Posição exata de cada passagem, pergaminho e segredo: `[A DEFINIR em 08-mapa]`.
+Lugar de cada passagem, pergaminho e segredo: `08-mapa.md`.
 
 ### Começo e fim
 - **Abertura (cena):** Nhamundá, criaturas atacando rebanhos, Nate rejeitado pela cidade.
@@ -71,8 +71,8 @@ Posição exata de cada passagem, pergaminho e segredo: `[A DEFINIR em 08-mapa]`
 
 ## Combate no mapa
 - **Mobs espalhados** no caminho principal e nos desvios. O jogador escolhe enfrentar ou contornar.
-- **Arenas** nos momentos-chave: a passagem fecha até o jogador vencer as ondas. Cerca de 1 a 2 por área, guardando um pergaminho ou uma passagem. A arena é o clímax da área e garante que o jogador pratique o que a área ensinou antes de seguir.
-- Número, posição e ondas de cada arena: `[A DEFINIR em 08-mapa]`.
+- **Arenas** nos momentos-chave: a passagem fecha até o jogador vencer as ondas. São 5: 1 na Mina, 2 no Bosque e 2 nas Ruínas, cada uma guardando um pergaminho ou uma passagem. A arena é o clímax da área e garante que o jogador pratique o que a área ensinou antes de seguir.
+- Posição e ondas de cada arena: `08-mapa.md`.
 
 ## Cura
 - **Frasco com cargas.** Nate sai do santuário com o frasco cheio, gasta cargas nas lutas e volta pelos atalhos ou avança até o próximo santuário para recarregar.
@@ -115,7 +115,7 @@ Nate fica mais forte com o que acha no mapa. Não há XP nem moeda.
 
 ## Desafio opcional
 - **Arenas opcionais:** escondidas fora do caminho principal e mais difíceis que as arenas comuns, usando o mesmo sistema. Guardam as melhores recompensas.
-- Cerca de 1 por área. Número e posição: `[A DEFINIR em 08-mapa]`.
+- Uma por área: Mina, Bosque e Ruínas (`08-mapa.md`).
 - Não há seletor de dificuldade: o desafio extra fica no mapa, para quem procura.
 
 ## Vitória e pós-jogo

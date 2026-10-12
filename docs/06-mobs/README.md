@@ -48,7 +48,7 @@ Um tipo novo de mob por área: uma coisa nova por vez (`04-player.md`).
 | Ruínas | os 4 tipos e as variantes | o Golem de Pedra e as variantes |
 | Arenas opcionais | variantes | o desafio extra |
 
-Quantos mobs há em cada encontro e as ondas de cada arena: `[A DEFINIR em 08-mapa]`.
+Mobs por encontro e ondas de cada arena: `08-mapa.md`.
 
 ## Fauna de cenário
 - Uma espécie de dinossauro herbívoro vive no Bosque de Fungos, sem lutar. Ela mantém o mundo perdido de A Era do Gelo 3 (`01-historia.md`).
