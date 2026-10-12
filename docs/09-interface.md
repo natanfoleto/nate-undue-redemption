@@ -66,7 +66,7 @@ Uma tela só, em três partes:
 ## Mapa
 - Uma imagem de cada área com segredos (Mina, Bosque de Fungos e Ruínas), aberta pelo menu de pausa.
 - Mostra os santuários e marca os cantos escuros e as paredes rachadas que Nate já viu e ainda não abriu: os lugares para onde vale voltar.
-- As imagens precisam acompanhar as mudanças do mapa durante os testes (`12-tecnico.md`).
+- As imagens são geradas do próprio mapa por uma câmera de cima, com os ícones desenhados por cima, e se atualizam a cada mudança no mapa (`12-tecnico.md`).
 
 ## Murais
 - Ao interagir, a câmera se aproxima e o mural aparece grande na tela, sem texto.
@@ -103,7 +103,7 @@ Os avisos dos golpes não dependem só de cor, para ajudar daltônicos (regra pa
 
 ### Idioma
 - Só português do Brasil. O jogo tem pouco texto: não há falas, e os murais não têm texto.
-- Sugestão para o `12-tecnico.md`: guardar os textos numa tabela desde o início, para facilitar uma tradução no futuro.
+- Os textos ficam numa tabela de tradução desde o início, para facilitar uma tradução no futuro (`12-tecnico.md`).
 
 ## Fim da partida
 - Depois da cena final e dos créditos, aparece um resumo da partida: tempo de jogo, mortes e segredos achados.

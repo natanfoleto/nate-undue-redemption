@@ -17,7 +17,7 @@
 ## Comportamento e habilidades
 
 ### Controles
-No computador, com teclado e mouse ou com controle; os dois funcionam desde o início. Sistemas e exportação: `[A DEFINIR em 12-tecnico]`.
+No computador, com teclado e mouse ou com controle; os dois funcionam desde o início. Exportação para Windows e macOS (`12-tecnico.md`).
 
 | Ação | Teclado e mouse | Controle (Xbox / PlayStation) |
 |------|-----------------|-------------------------------|

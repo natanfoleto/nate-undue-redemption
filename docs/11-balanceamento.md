@@ -1,6 +1,6 @@
 # Balanceamento
 
-Todos os números do jogo num lugar só. São valores iniciais, e os testes no motor vão ajustá-los. Ao ajustar, este documento muda primeiro; se o número também aparece numa ficha, a ficha muda junto.
+Todos os números do jogo num lugar só. São valores iniciais, e os testes no motor vão ajustá-los. Ao ajustar, este documento muda primeiro; se o número também aparece numa ficha, a ficha muda junto. No projeto, os números ficam nos arquivos de dados de `game/data/` (`12-tecnico.md`).
 
 ## Âncoras
 | Âncora | Valor |

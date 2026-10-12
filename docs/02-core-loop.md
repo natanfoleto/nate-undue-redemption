@@ -96,7 +96,7 @@ Lugar de cada passagem, pergaminho e segredo: `08-mapa.md`.
 
 A morte custa só a caminhada de volta, que os atalhos encurtam. Dá para vencer um trecho difícil por desgaste, morrendo e voltando; isso é aceito, por causa da dificuldade acessível.
 
-**Ao sair do jogo:** funciona como uma morte. Tudo o que foi conquistado é salvo na hora: itens, equipamento, elementos aprendidos, melhorias, atalhos, murais e inimigos mortos. Ao voltar, Nate está no último santuário. Como salvar a cada conquista: `[A DEFINIR em 12-tecnico]`.
+**Ao sair do jogo:** funciona como uma morte. Tudo o que foi conquistado é salvo na hora: itens, equipamento, elementos aprendidos, melhorias, atalhos, murais e inimigos mortos. Ao voltar, Nate está no último santuário. Como o jogo salva: `12-tecnico.md`.
 
 ## Progressão de poder
 Nate fica mais forte com o que acha no mapa. Não há XP nem moeda.

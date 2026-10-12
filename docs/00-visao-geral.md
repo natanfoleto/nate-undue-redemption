@@ -16,6 +16,7 @@ Jogo de ação e exploração em 3D com câmera fixa, num mundo subterrâneo per
 - **Interface:** ver `09-interface.md`.
 - **Arte e áudio:** ver `10-arte-audio.md`.
 - **Balanceamento:** ver `11-balanceamento.md`.
+- **Técnico:** ver `12-tecnico.md`.
 - **Referência principal:** Minecraft Dungeons.
 - **Perspectiva:** 3D com câmera fixa isométrica, jogado como 2D (chão plano, sem pulo nem verticalidade).
 - **Estilo visual:** blocado/voxel, na linha de Minecraft Dungeons.
@@ -24,7 +25,7 @@ Jogo de ação e exploração em 3D com câmera fixa, num mundo subterrâneo per
 - **Dificuldade:** acessível, com morte sem perda; desafio extra sempre opcional, em arenas escondidas no mapa.
 - **Estilo de jogo:** definido pelo equipamento e pelo par de elementos equipado, sem classes.
 - **Pipeline de assets:** modelos e animações blocados definidos por código sempre que possível.
-- **Engine:** Godot 4 (recomendada) `[A DEFINIR]`
+- **Engine:** Godot 4, com GDScript tipado; exportação para Windows e macOS (`12-tecnico.md`).
 
 ## Escopo inicial
 - 1 mapa subterrâneo único (Agartha), desenhado à mão: prólogo na borda da mina, 3 áreas e a arena do chefe (`08-mapa.md`)
@@ -51,4 +52,4 @@ Jogo de ação e exploração em 3D com câmera fixa, num mundo subterrâneo per
 - [x] **09 Interface** (`09-interface.md`): HUD, inventário, menus, telas de morte e vitória.
 - [x] **10 Arte e áudio** (`10-arte-audio.md`): guia de estilo, lista consolidada de assets e sons.
 - [x] **11 Balanceamento** (`11-balanceamento.md`): tabela com todos os números.
-- [ ] **12 Técnico** (`12-tecnico.md`): arquitetura no Godot, estrutura de pastas, convenções de código.
+- [x] **12 Técnico** (`12-tecnico.md`): arquitetura no Godot, estrutura de pastas, convenções de código.
