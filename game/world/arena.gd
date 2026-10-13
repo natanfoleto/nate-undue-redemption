@@ -22,6 +22,9 @@ var _alive: Array[Node3D] = []
 func _ready() -> void:
 	if SaveSystem.has_record(SaveSystem.OPENED, save_id):
 		state = State.DONE
+		# Vencida antes: os portões ficam abertos ao carregar o jogo (depois de cada portão ficar pronto).
+		for gate in gates:
+			gate.open.call_deferred(false)
 	Events.player_respawned.connect(_reset)
 
 
@@ -34,7 +37,8 @@ func _physics_process(_delta: float) -> void:
 					gate.close()
 				_next_wave()
 		State.FIGHTING:
-			_alive.assign(_alive.filter(func(mob: Node3D) -> bool: return is_instance_valid(mob) and mob.is_in_group(&"enemies")))
+			# Sem tipo no parâmetro: um mob já liberado não pode ser passado como Node3D.
+			_alive.assign(_alive.filter(func(mob: Variant) -> bool: return is_instance_valid(mob) and mob.is_in_group(&"enemies")))
 			if _alive.is_empty():
 				_next_wave()
 
@@ -47,8 +51,13 @@ func _next_wave() -> void:
 		for gate in gates:
 			gate.open()
 		return
+	if waves[_wave] == null or spawn_points.is_empty():
+		push_warning("Arena %s: onda %d vazia ou sem pontos de surgir." % [save_id, _wave + 1])
+		return
 	var scenes := waves[_wave].mobs
 	for i in scenes.size():
+		if scenes[i] == null:
+			continue
 		var mob := scenes[i].instantiate() as Node3D
 		var spot := spawn_points[i % spawn_points.size()]
 		mob.transform = global_transform.affine_inverse() * spot.global_transform

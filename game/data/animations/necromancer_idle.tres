@@ -1,0 +1,27 @@
+[gd_resource type="Resource" script_class="AnimationData" format=3]
+
+[ext_resource type="Script" path="res://tools/models/pose_data.gd" id="1_ffq12"]
+[ext_resource type="Script" path="res://tools/models/animation_data.gd" id="2_lujk5"]
+
+[sub_resource type="Resource" id="Resource_mhoih"]
+script = ExtResource("1_ffq12")
+rotations = Dictionary[StringName, Vector3]({
+&"arm_l": Vector3(0, 0, -4),
+&"body": Vector3(0, 0, 2)
+})
+
+[sub_resource type="Resource" id="Resource_wjs21"]
+script = ExtResource("1_ffq12")
+time = 1.0
+rotations = Dictionary[StringName, Vector3]({
+&"arm_l": Vector3(0, 0, -8),
+&"body": Vector3(0, 0, -2),
+&"hood": Vector3(-4, 0, 0)
+})
+
+[resource]
+script = ExtResource("2_lujk5")
+length = 2.0
+loop = true
+blend_time = 0.2
+poses = Array[ExtResource("1_ffq12")]([SubResource("Resource_mhoih"), SubResource("Resource_wjs21")])

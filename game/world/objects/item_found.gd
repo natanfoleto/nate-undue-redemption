@@ -13,14 +13,19 @@ const SCENE_PATH := "res://world/objects/item_found.tscn"
 @onready var _sparkles: CPUParticles3D = $Sparkles
 
 
-## Mostra o sinal sobre [param where], com o nome do item.
+## Mostra o sinal sobre [param where], com o nome do item de equipamento.
 static func show_found(where: Node3D, item_id: StringName) -> void:
+	var item: Resource = load(GameState.ITEMS_FOLDER + item_id + ".tres")
+	show_name(where, item.get(&"name_key"))
+
+
+## Mostra o sinal sobre [param where], com o nome dado (a chave na tabela de tradução).
+static func show_name(where: Node3D, name_key: StringName) -> void:
 	# Carregada aqui: a cena usa este mesmo script.
 	var found := (load(SCENE_PATH) as PackedScene).instantiate() as ItemFound
 	where.get_parent().add_child(found)
 	found.global_position = where.global_position
-	var item: Resource = load(GameState.ITEMS_FOLDER + item_id + ".tres")
-	found._label.text = found.tr(item.get(&"name_key")) if item else ""
+	found._label.text = found.tr(name_key)
 	found._sparkles.emitting = true
 	var tween := found.create_tween().set_parallel()
 	tween.tween_property(found._label, ^"position:y", found._label.position.y + found.rise, found.duration)

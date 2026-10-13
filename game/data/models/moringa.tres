@@ -1,0 +1,43 @@
+[gd_resource type="Resource" script_class="ModelData" format=3]
+
+[ext_resource type="Script" path="res://tools/models/box_data.gd" id="1_arroa"]
+[ext_resource type="Script" path="res://tools/models/model_data.gd" id="2_ggk7t"]
+
+[sub_resource type="Resource" id="Resource_565pc"]
+resource_name = "body"
+script = ExtResource("1_arroa")
+name = &"body"
+size = Vector3i(5, 5, 5)
+position = Vector3(-2.5, -4, -2.5)
+color = Color(0.70980394, 0.3372549, 0.18431373, 1)
+
+[sub_resource type="Resource" id="Resource_3jd4g"]
+resource_name = "band"
+script = ExtResource("1_arroa")
+name = &"band"
+size = Vector3i(6, 1, 6)
+position = Vector3(-3, -2, -3)
+texture_offset = Vector2i(0, 10)
+color = Color(0.9098039, 0.8509804, 0.6901961, 1)
+
+[sub_resource type="Resource" id="Resource_hmvuv"]
+resource_name = "neck"
+script = ExtResource("1_arroa")
+name = &"neck"
+size = Vector3i(3, 2, 3)
+position = Vector3(-1.5, 1, -1.5)
+texture_offset = Vector2i(0, 17)
+color = Color(0.70980394, 0.3372549, 0.18431373, 1)
+
+[sub_resource type="Resource" id="Resource_ob3sf"]
+resource_name = "mouth"
+script = ExtResource("1_arroa")
+name = &"mouth"
+size = Vector3i(2, 1, 2)
+position = Vector3(-1, 3, -1)
+texture_offset = Vector2i(0, 22)
+color = Color(0.5411765, 0.22745098, 0.12156863, 1)
+
+[resource]
+script = ExtResource("2_ggk7t")
+boxes = Array[ExtResource("1_arroa")]([SubResource("Resource_565pc"), SubResource("Resource_3jd4g"), SubResource("Resource_hmvuv"), SubResource("Resource_ob3sf")])

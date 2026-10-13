@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://ui/end_screen.gd" id="1_70k24"]
 
-[node name="EndScreen" type="ColorRect" unique_id=352774743]
+[node name="EndScreen" type="ColorRect" unique_id=1782753076]
 anchor_right = 1.0
 anchor_bottom = 1.0
 color = Color(0, 0, 0, 1)
@@ -10,7 +10,7 @@ script = ExtResource("1_70k24")
 fade_time = 1.5
 wait_time = 1.0
 
-[node name="Label" type="Label" parent="." unique_id=2127754938]
+[node name="Label" type="Label" parent="." unique_id=48023358]
 layout_mode = 0
 anchor_right = 1.0
 anchor_bottom = 1.0

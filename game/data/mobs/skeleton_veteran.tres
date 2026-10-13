@@ -1,0 +1,28 @@
+[gd_resource type="Resource" script_class="MobData" format=3]
+
+[ext_resource type="Resource" path="res://data/attacks/skeleton_sword.tres" id="1_s5xbb"]
+[ext_resource type="Resource" path="res://data/animations/skeleton_strike.tres" id="2_lmexy"]
+[ext_resource type="Resource" path="res://data/animations/skeleton_death.tres" id="3_85t4u"]
+[ext_resource type="Resource" path="res://data/animations/skeleton_hurt.tres" id="4_uwtcv"]
+[ext_resource type="Resource" path="res://data/animations/skeleton_idle.tres" id="5_f8ex0"]
+[ext_resource type="Resource" path="res://data/models/skeleton_veteran.tres" id="6_u0be5"]
+[ext_resource type="Script" path="res://mobs/mob_data.gd" id="7_7nmii"]
+[ext_resource type="Resource" path="res://data/animations/skeleton_walk.tres" id="8_snlue"]
+[ext_resource type="Resource" path="res://data/animations/skeleton_windup.tres" id="9_3oi38"]
+
+[resource]
+script = ExtResource("7_7nmii")
+health = 80
+move_speed = 3.0
+perception = 7.0
+hurt_radius = 0.35
+wait_distance = 3.0
+attack = ExtResource("1_s5xbb")
+attack_count = 2
+model = ExtResource("6_u0be5")
+idle_animation = ExtResource("5_f8ex0")
+walk_animation = ExtResource("8_snlue")
+windup_animation = ExtResource("9_3oi38")
+attack_animation = ExtResource("2_lmexy")
+hurt_animation = ExtResource("4_uwtcv")
+death_animation = ExtResource("3_85t4u")

@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="ArenaWave" format=3]
+
+[ext_resource type="PackedScene" path="res://mobs/necromancer.tscn" id="1_xsj6s"]
+[ext_resource type="PackedScene" path="res://mobs/wolf.tscn" id="2_y1daw"]
+[ext_resource type="Script" path="res://world/arena_wave.gd" id="3_srgcy"]
+
+[resource]
+script = ExtResource("3_srgcy")
+mobs = Array[PackedScene]([ExtResource("1_xsj6s"), ExtResource("2_y1daw"), ExtResource("2_y1daw"), ExtResource("2_y1daw")])

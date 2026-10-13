@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="WorldRules" format=3]
+
+[ext_resource type="Script" path="res://world/world_rules.gd" id="1_w8yhf"]
+
+[resource]
+script = ExtResource("1_w8yhf")
+area_fade_time = 0.5

@@ -4,16 +4,16 @@
 [ext_resource type="Script" path="res://tools/models/block_model.gd" id="2_rlv57"]
 [ext_resource type="Resource" path="res://data/models/lamp.tres" id="3_ylufj"]
 
-[node name="Lamp" type="Node3D" unique_id=210682601]
+[node name="Lamp" type="Node3D" unique_id=1180561713]
 script = ExtResource("1_dj3bw")
 glow = 0.6
 
-[node name="Lantern" type="Node3D" parent="." unique_id=1832799565]
+[node name="Lantern" type="Node3D" parent="." unique_id=782799379]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
 script = ExtResource("2_rlv57")
 model = ExtResource("3_ylufj")
 
-[node name="Light" type="OmniLight3D" parent="." unique_id=959746014]
+[node name="Light" type="OmniLight3D" parent="." unique_id=476379832]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.3, 0)
 light_color = Color(1, 0.78431374, 0.4392157, 1)
 light_energy = 1.4

@@ -7,15 +7,15 @@
 [sub_resource type="BoxShape3D" id="BoxShape3D_edvhn"]
 size = Vector3(6, 2, 0.25)
 
-[node name="Gate" type="StaticBody3D" unique_id=850881930]
+[node name="Gate" type="StaticBody3D" unique_id=1202991025]
 script = ExtResource("1_0ue6y")
 drop = 2.1
 move_time = 0.6
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=67757798]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=152321125]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("BoxShape3D_edvhn")
 
-[node name="Bars" type="Node3D" parent="." unique_id=450781324]
+[node name="Bars" type="Node3D" parent="." unique_id=1837283401]
 script = ExtResource("2_wh8b5")
 model = ExtResource("3_rkl1j")

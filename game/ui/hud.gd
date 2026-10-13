@@ -1,28 +1,104 @@
 class_name Hud
 extends CanvasLayer
-## HUD (09-interface): os corações de Nate no alto, à esquerda. O centro da tela fica livre para os avisos.
+## HUD (09-interface): corações, frasco e efeitos em Nate no alto, à esquerda; as magias embaixo, à direita,
+## com a recarga de cada uma e o sinal de combinação pronta. O centro da tela fica livre para os avisos.
 
 @export var heart_full: Texture2D
 @export var heart_empty: Texture2D
+## Ícone de cada efeito de status, na ordem de StatusEffects.Effect.
+@export var status_icons: Array[Texture2D] = []
 ## Quantas vezes os ícones de 16 px são ampliados.
 @export var icon_scale := 1
+## Transparência do sinal de combinação quando ela ainda não está pronta.
+@export var combo_dim := 0.0
 
-@onready var _hearts: HBoxContainer = $Hearts
+var _player: Player
+
+@onready var _hearts: HBoxContainer = %Hearts
+@onready var _flask: Control = %Flask
+@onready var _flask_charges: Label = %FlaskCharges
+@onready var _statuses: HBoxContainer = %Statuses
+@onready var _spells: Control = %Spells
+@onready var _slots: Array[Control] = [%Slot1, %Slot2]
+@onready var _icons: Array[TextureRect] = [%Icon1, %Icon2]
+@onready var _cooldowns: Array[ColorRect] = [%Cooldown1, %Cooldown2]
+@onready var _keys: Array[TextureRect] = [%Key1, %Key2]
+@onready var _combo: TextureRect = %Combo
 
 
 func _ready() -> void:
-	var player := get_tree().get_first_node_in_group(&"player") as Player
-	if player:
-		player.health.changed.connect(_show_hearts)
-		_show_hearts(player.health.value, player.health.max_value)
+	_player = get_tree().get_first_node_in_group(&"player") as Player
+	if _player == null:
+		return
+	_player.health.changed.connect(_show_hearts)
+	_show_hearts(_player.health.value, _player.health.max_value)
+	_player.flask.changed.connect(_show_flask)
+	_show_flask(_player.flask.charges, _player.flask.max_charges)
+	_player.status.changed.connect(_show_statuses)
+	_show_statuses()
+	GameState.elements_changed.connect(_show_spells)
+	InputManager.device_changed.connect(_on_device_changed)
+	_show_spells()
+
+
+func _process(_delta: float) -> void:
+	if _player == null or not _spells.visible:
+		return
+	for slot in 2:
+		var id := GameState.equipped_element_id(slot)
+		_cooldowns[slot].anchor_bottom = _player.spells.cooldown_share(id) if id != &"" else 0.0
+	_combo.modulate.a = 1.0 if _player.spells.combo_ready() else combo_dim
 
 
 func _show_hearts(value: int, max_value: int) -> void:
 	for heart in _hearts.get_children():
 		heart.free()
 	for i in max_value:
-		var heart := TextureRect.new()
-		heart.texture = heart_full if i < value else heart_empty
-		heart.custom_minimum_size = heart.texture.get_size() * icon_scale
-		heart.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
-		_hearts.add_child(heart)
+		_hearts.add_child(_icon(heart_full if i < value else heart_empty))
+
+
+# O frasco aparece quando Nate o ganha, no primeiro santuário (04-player).
+func _show_flask(charges: int, _max_charges: int) -> void:
+	_flask.visible = GameState.has_flask()
+	_flask_charges.text = str(charges)
+
+
+func _show_statuses() -> void:
+	for icon in _statuses.get_children():
+		icon.free()
+	for effect in _player.status.active():
+		_statuses.add_child(_icon(status_icons[effect]))
+
+
+# Os 2 elementos equipados; a combinação aparece com os dois escolhidos e quando ela existe (05-itens).
+func _show_spells() -> void:
+	_spells.visible = not GameState.learned_elements().is_empty()
+	for slot in 2:
+		var element := GameState.equipped_element(slot)
+		_slots[slot].modulate.a = 1.0 if element else combo_dim
+		_icons[slot].texture = element.icon if element else null
+	var first := GameState.equipped_element_id(0)
+	var second := GameState.equipped_element_id(1)
+	var combos := _player.spells.combos
+	var key := ComboTable.key(first, second)
+	_combo.visible = first != &"" and second != &"" and combos.icons.has(key)
+	_combo.texture = combos.icons.get(key)
+	_show_keys()
+
+
+func _on_device_changed(_device: int) -> void:
+	_show_keys()
+
+
+func _show_keys() -> void:
+	for slot in 2:
+		var icons := InputManager.icons_for([&"spell_1" if slot == 0 else &"spell_2"])
+		_keys[slot].texture = icons[0] if not icons.is_empty() else null
+
+
+func _icon(texture: Texture2D) -> TextureRect:
+	var icon := TextureRect.new()
+	icon.texture = texture
+	icon.custom_minimum_size = texture.get_size() * icon_scale
+	icon.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
+	return icon

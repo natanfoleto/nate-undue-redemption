@@ -1,0 +1,129 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://ui/memory_scene.gd" id="1_q6w68"]
+[ext_resource type="Texture2D" path="res://assets/textures/mud.png" id="2_dx657"]
+[ext_resource type="Texture2D" path="res://assets/textures/basalt.png" id="3_oef0d"]
+[ext_resource type="Script" path="res://tools/models/block_model.gd" id="4_dpf2p"]
+[ext_resource type="Resource" path="res://data/models/hero.tres" id="5_bhh2w"]
+[ext_resource type="Script" path="res://tools/models/model_animator.gd" id="6_fchp4"]
+[ext_resource type="Resource" path="res://data/animations/nate_walk.tres" id="7_v40pw"]
+
+[sub_resource type="Environment" id="Environment_rsgoo"]
+background_mode = 1
+background_color = Color(0.023529412, 0.02745098, 0.039215688, 1)
+ambient_light_source = 2
+ambient_light_color = Color(0.35, 0.4, 0.6, 1)
+ambient_light_energy = 0.3
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_t5isj"]
+albedo_color = Color(0.45, 0.6, 0.62, 1)
+albedo_texture = ExtResource("2_dx657")
+uv1_triplanar = true
+uv1_world_triplanar = true
+texture_filter = 0
+
+[sub_resource type="BoxMesh" id="BoxMesh_gmh5j"]
+material = SubResource("StandardMaterial3D_t5isj")
+size = Vector3(6, 1, 22)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lksq3"]
+albedo_color = Color(0.6, 0.7, 0.85, 1)
+albedo_texture = ExtResource("3_oef0d")
+uv1_triplanar = true
+uv1_world_triplanar = true
+texture_filter = 0
+
+[sub_resource type="BoxMesh" id="BoxMesh_jxmd5"]
+material = SubResource("StandardMaterial3D_lksq3")
+size = Vector3(1, 3, 22)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_w8l62"]
+albedo_color = Color(0.6, 0.7, 0.85, 1)
+albedo_texture = ExtResource("3_oef0d")
+uv1_triplanar = true
+uv1_world_triplanar = true
+texture_filter = 0
+
+[sub_resource type="BoxMesh" id="BoxMesh_2pljt"]
+material = SubResource("StandardMaterial3D_w8l62")
+size = Vector3(1, 3, 22)
+
+[node name="Memory2" type="CanvasLayer" unique_id=834527249 node_paths=PackedStringArray("camera_from", "camera_to", "walker", "walker_to")]
+layer = 30
+script = ExtResource("1_q6w68")
+duration = 8.0
+min_time = 1.5
+fade_time = 0.6
+camera_from = NodePath("View/SubViewport/Stage/CameraFrom")
+camera_to = NodePath("View/SubViewport/Stage/CameraTo")
+walker = NodePath("View/SubViewport/Stage/Hero")
+walker_to = NodePath("View/SubViewport/Stage/WalkerTo")
+
+[node name="View" type="SubViewportContainer" parent="." unique_id=1693399244]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+stretch = true
+
+[node name="SubViewport" type="SubViewport" parent="View" unique_id=718362521]
+own_world_3d = true
+size = Vector2i(1280, 720)
+
+[node name="Stage" type="Node3D" parent="View/SubViewport" unique_id=620425502]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="View/SubViewport/Stage" unique_id=470334324]
+environment = SubResource("Environment_rsgoo")
+
+[node name="Camera" type="Camera3D" parent="View/SubViewport/Stage" unique_id=2012366363]
+unique_name_in_owner = true
+fov = 45.0
+
+[node name="Floor" type="MeshInstance3D" parent="View/SubViewport/Stage" unique_id=142223550]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+mesh = SubResource("BoxMesh_gmh5j")
+
+[node name="WallL" type="MeshInstance3D" parent="View/SubViewport/Stage" unique_id=1093463607]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5, 1.5, 0)
+mesh = SubResource("BoxMesh_jxmd5")
+
+[node name="WallR" type="MeshInstance3D" parent="View/SubViewport/Stage" unique_id=1752475756]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 1.5, 0)
+mesh = SubResource("BoxMesh_2pljt")
+
+[node name="Hero" type="Node3D" parent="View/SubViewport/Stage" unique_id=1736495264]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 8)
+script = ExtResource("4_dpf2p")
+model = ExtResource("5_bhh2w")
+
+[node name="ModelAnimator" type="Node" parent="View/SubViewport/Stage/Hero" unique_id=1990852385]
+script = ExtResource("6_fchp4")
+animation = ExtResource("7_v40pw")
+
+[node name="AmuletLight" type="OmniLight3D" parent="View/SubViewport/Stage/Hero" unique_id=677949313]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.3, -0.3)
+light_color = Color(0.84705883, 1, 0.9098039, 1)
+light_energy = 3.0
+
+[node name="WalkerTo" type="Marker3D" parent="View/SubViewport/Stage" unique_id=1256563894]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -6)
+
+[node name="CameraFrom" type="Marker3D" parent="View/SubViewport/Stage" unique_id=1849948576]
+transform = Transform3D(0.99026805, -0.065337814, 0.12288255, 0, 0.88294756, 0.46947157, -0.1391731, -0.4649027, 0.8743548, 1, 3.4, 13.5)
+
+[node name="CameraTo" type="Marker3D" parent="View/SubViewport/Stage" unique_id=1025121264]
+transform = Transform3D(0.99026805, -0.065337814, 0.12288255, 0, 0.88294756, 0.46947157, -0.1391731, -0.4649027, 0.8743548, 1, 3.4, -0.5)
+
+[node name="Tint" type="ColorRect" parent="." unique_id=1054546252]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+color = Color(0.85, 0.75, 0.5, 0.12)
+
+[node name="Fade" type="ColorRect" parent="." unique_id=300845743]
+unique_name_in_owner = true
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+color = Color(0, 0, 0, 1)

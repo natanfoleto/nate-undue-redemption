@@ -1,0 +1,46 @@
+[gd_resource type="Resource" script_class="AnimationData" format=3]
+
+[ext_resource type="Script" path="res://tools/models/pose_data.gd" id="1_xco1p"]
+[ext_resource type="Script" path="res://tools/models/animation_data.gd" id="2_6b6yx"]
+
+[sub_resource type="Resource" id="Resource_wq71e"]
+script = ExtResource("1_xco1p")
+rotations = Dictionary[StringName, Vector3]({
+&"head": Vector3(50, 0, 0),
+&"neck_1": Vector3(-55, 0, 0),
+&"neck_2": Vector3(-35, 0, 0)
+})
+
+[sub_resource type="Resource" id="Resource_7jd6w"]
+script = ExtResource("1_xco1p")
+time = 0.5
+rotations = Dictionary[StringName, Vector3]({
+&"head": Vector3(60, 0, 0),
+&"neck_1": Vector3(-52, 0, 0),
+&"neck_2": Vector3(-35, 0, 0)
+})
+
+[sub_resource type="Resource" id="Resource_xanrt"]
+script = ExtResource("1_xco1p")
+time = 1.0
+rotations = Dictionary[StringName, Vector3]({
+&"head": Vector3(50, 0, 0),
+&"neck_1": Vector3(-55, 0, 0),
+&"neck_2": Vector3(-35, 0, 0)
+})
+
+[sub_resource type="Resource" id="Resource_kto2q"]
+script = ExtResource("1_xco1p")
+time = 1.5
+rotations = Dictionary[StringName, Vector3]({
+&"head": Vector3(60, 0, 0),
+&"neck_1": Vector3(-52, 0, 0),
+&"neck_2": Vector3(-35, 0, 0)
+})
+
+[resource]
+script = ExtResource("2_6b6yx")
+length = 2.0
+loop = true
+blend_time = 0.6
+poses = Array[ExtResource("1_xco1p")]([SubResource("Resource_wq71e"), SubResource("Resource_7jd6w"), SubResource("Resource_xanrt"), SubResource("Resource_kto2q")])

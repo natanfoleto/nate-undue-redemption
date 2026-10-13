@@ -1,0 +1,137 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://ui/inventory.gd" id="1_wurve"]
+[ext_resource type="Texture2D" path="res://assets/ui/hud/heart_full.png" id="2_n584p"]
+[ext_resource type="Texture2D" path="res://assets/ui/hud/heart_empty.png" id="3_ymwe8"]
+[ext_resource type="Texture2D" path="res://assets/ui/hud/flask.png" id="4_nyaht"]
+[ext_resource type="Texture2D" path="res://assets/ui/hud/amulet.png" id="5_137pv"]
+
+[node name="Inventory" type="CanvasLayer" unique_id=1961183245]
+layer = 9
+script = ExtResource("1_wurve")
+heart_full = ExtResource("2_n584p")
+heart_empty = ExtResource("3_ymwe8")
+flask_icon = ExtResource("4_nyaht")
+amulet_icon = ExtResource("5_137pv")
+icon_scale = 2
+item_size = 72
+frame_width = 2
+focus_width = 4
+glow_size = 6
+asleep_alpha = 0.4
+marajoara_color = Color(0.24705882, 0.68235296, 0.5411765, 1)
+common_color = Color(0.5411765, 0.5411765, 0.5411765, 1)
+item_back = Color(0, 0, 0, 0.5)
+better_color = Color(0.29803923, 0.8156863, 0.29803923, 1)
+worse_color = Color(0.8784314, 0.28235295, 0.28235295, 1)
+font_size = 22
+
+[node name="Panel" type="ColorRect" parent="." unique_id=504825614]
+unique_name_in_owner = true
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color(0.05, 0.06, 0.08, 0.92)
+
+[node name="Margin" type="MarginContainer" parent="Panel" unique_id=964642442]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme_override_constants/margin_left = 40
+theme_override_constants/margin_top = 40
+theme_override_constants/margin_right = 40
+theme_override_constants/margin_bottom = 40
+
+[node name="Column" type="VBoxContainer" parent="Panel/Margin" unique_id=1166926709]
+layout_mode = 2
+theme_override_constants/separation = 24
+
+[node name="Top" type="HBoxContainer" parent="Panel/Margin/Column" unique_id=1968575488]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 40
+
+[node name="Left" type="VBoxContainer" parent="Panel/Margin/Column/Top" unique_id=1173584325]
+custom_minimum_size = Vector2(420, 0)
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="NateTitle" type="Label" parent="Panel/Margin/Column/Top/Left" unique_id=1160700214]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+
+[node name="Hearts" type="HBoxContainer" parent="Panel/Margin/Column/Top/Left" unique_id=1734338333]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="StatsRow" type="HBoxContainer" parent="Panel/Margin/Column/Top/Left" unique_id=1505137319]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="FlaskBox" type="HBoxContainer" parent="Panel/Margin/Column/Top/Left/StatsRow" unique_id=1959645198]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="FlaskIcon" type="TextureRect" parent="Panel/Margin/Column/Top/Left/StatsRow/FlaskBox" unique_id=373996737]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+texture = ExtResource("4_nyaht")
+expand_mode = 1
+
+[node name="FlaskCharges" type="Label" parent="Panel/Margin/Column/Top/Left/StatsRow/FlaskBox" unique_id=1760233907]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+
+[node name="Amulet" type="TextureRect" parent="Panel/Margin/Column/Top/Left/StatsRow" unique_id=55238865]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+texture = ExtResource("5_137pv")
+expand_mode = 1
+
+[node name="SlotList" type="VBoxContainer" parent="Panel/Margin/Column/Top/Left" unique_id=1569151145]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="Combo" type="Label" parent="Panel/Margin/Column/Top/Left" unique_id=925383942]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 22
+
+[node name="Right" type="VBoxContainer" parent="Panel/Margin/Column/Top" unique_id=661820794]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 12
+
+[node name="Category" type="Label" parent="Panel/Margin/Column/Top/Right" unique_id=1777423407]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 28
+
+[node name="Items" type="GridContainer" parent="Panel/Margin/Column/Top/Right" unique_id=1544776911]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/h_separation = 10
+theme_override_constants/v_separation = 10
+columns = 6
+
+[node name="Details" type="PanelContainer" parent="Panel/Margin/Column" unique_id=1649675239]
+custom_minimum_size = Vector2(0, 200)
+layout_mode = 2
+
+[node name="DetailsBox" type="VBoxContainer" parent="Panel/Margin/Column/Details" unique_id=1394374410]
+layout_mode = 2
+
+[node name="ItemName" type="Label" parent="Panel/Margin/Column/Details/DetailsBox" unique_id=1937266636]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 26
+
+[node name="Stats" type="GridContainer" parent="Panel/Margin/Column/Details/DetailsBox" unique_id=1314548160]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/h_separation = 24
+columns = 3

@@ -15,6 +15,8 @@ const CRITICAL_POPUP := preload("res://combat/critical_popup.tscn")
 @export var save_id: StringName
 
 var state := State.IDLE
+## Invocado por um Necromante: some quando Nate volta depois de morrer, e se desfaz quando quem invocou morre.
+var summoned := false
 
 var _home := Vector3.ZERO
 var _home_facing := Vector3.FORWARD
@@ -29,13 +31,16 @@ var _attack_direction := Vector3.FORWARD
 var _already_hit: Array[Node3D] = []
 var _push_velocity := Vector3.ZERO
 var _push_left := 0.0
+var _strikes_done := 0
 
 @onready var health: Health = $Health
+@onready var status: StatusEffects = $StatusEffects
 @onready var _model: BlockModel = $BlockModel
 @onready var _animator: ModelAnimator = $BlockModel/ModelAnimator
 @onready var _hurtbox: Hurtbox = $Hurtbox
 @onready var _marker: WarningMarker = $WarningMarker
 @onready var _health_bar: HealthBar3D = $HealthBar
+@onready var _status_visuals: StatusVisuals = $StatusVisuals
 
 
 func _ready() -> void:
@@ -52,6 +57,7 @@ func _ready() -> void:
 	_model.model = data.model
 	_model.scale = Vector3.ONE * data.model_scale
 	_health_bar.position.y = _model_height() + _health_bar.lift
+	_status_visuals.fit(_model_height())
 	health.reset(data.health)
 	health.died.connect(_die)
 	Events.player_respawned.connect(reset)
@@ -62,6 +68,9 @@ func _ready() -> void:
 func reset() -> void:
 	if state == State.DEAD:
 		return
+	if summoned:
+		queue_free()
+		return
 	_end_attack()
 	global_position = _home
 	_facing = _home_facing
@@ -70,6 +79,7 @@ func reset() -> void:
 	_cooldown_left = 0.0
 	_unseen_time = 0.0
 	health.reset(data.health)
+	status.clear()
 	_health_bar.visible = false
 	state = State.IDLE
 	_animator.play(data.idle_animation)
@@ -84,6 +94,8 @@ func take_hit(hit: Hit) -> void:
 	if health.is_dead():
 		return
 	_health_bar.show_value(health.value, health.max_value)
+	if hit.effect >= 0:
+		status.apply(hit.effect, hit.effect_duration)
 	if CombatRules.knockback_affects(data.weight, hit.knockback):
 		# Interrompido: perde o golpe que preparava e fica um tempo sem agir.
 		_push(hit.direction, Balance.combat.knockback_distance(hit.knockback))
@@ -94,12 +106,30 @@ func take_hit(hit: Hit) -> void:
 		_enter(State.CHASE, 0.0)
 
 
+## Dano da queimadura (03-regras): em pontos.
+func take_status_damage(_hearts: int, points: int) -> void:
+	if state == State.DEAD:
+		return
+	health.damage(points)
+	if not health.is_dead():
+		_health_bar.show_value(health.value, health.max_value)
+
+
 func _physics_process(delta: float) -> void:
 	if state == State.DEAD:
 		return
 	_cooldown_left = maxf(_cooldown_left - delta, 0.0)
 	_state_left -= delta
 	_target = get_tree().get_first_node_in_group(&"player") as Node3D
+	# Atordoado: não se move nem ataca, e perde o golpe que preparava (03-regras).
+	if status.has(StatusEffects.Effect.STUN):
+		if state in [State.WINDUP, State.ACTIVE, State.RECOVERY]:
+			_end_attack()
+			_enter(State.CHASE, 0.0)
+		velocity = Vector3.ZERO
+		_apply_push(delta)
+		move_and_slide()
+		return
 	match state:
 		State.IDLE:
 			_idle()
@@ -115,11 +145,15 @@ func _physics_process(delta: float) -> void:
 			_stagger()
 		State.RETURN:
 			_return_home(delta)
+	_apply_push(delta)
+	move_and_slide()
+	_model.rotation.y = atan2(-_facing.x, -_facing.z)
+
+
+func _apply_push(delta: float) -> void:
 	if _push_left > 0.0:
 		_push_left -= delta
 		velocity = _push_velocity
-	move_and_slide()
-	_model.rotation.y = atan2(-_facing.x, -_facing.z)
 
 
 func _idle() -> void:
@@ -139,9 +173,12 @@ func _chase(delta: float) -> void:
 			return
 	var offset := _flat(_last_seen - global_position)
 	var distance := offset.length()
+	if _special_action(offset, delta):
+		return
 	var limit := Balance.combat.max_attackers
 	var can_attack := _cooldown_left == 0.0 and _unseen_time == 0.0
 	if can_attack and distance <= data.attack.reach and AttackQueue.try_enter(self, limit):
+		_strikes_done = 0
 		_start_attack(offset)
 		return
 	if not offset.is_zero_approx():
@@ -149,7 +186,7 @@ func _chase(delta: float) -> void:
 	# Com vez na fila, chega ao alcance do golpe; sem vez, cerca Nate e espera.
 	var stand := data.attack.reach if can_attack and AttackQueue.has_room(self, limit) else data.wait_distance
 	if distance > stand:
-		velocity = _facing * data.move_speed
+		velocity = _facing * _speed()
 		_animator.play(data.walk_animation)
 	else:
 		velocity = Vector3.ZERO
@@ -191,7 +228,22 @@ func _active() -> void:
 	Strike.hit_area(attack, self, _attack_origin, _attack_direction, Hurtbox.Faction.PLAYER, _already_hit, _build_hit)
 	if _state_left <= 0.0:
 		velocity = Vector3.ZERO
-		_enter(State.RECOVERY, attack.recovery)
+		_end_strike()
+
+
+# Fim do tempo ativo: o próximo golpe da sequência (com o próprio aviso) ou a recuperação.
+func _end_strike() -> void:
+	_strikes_done += 1
+	if _strikes_done < data.attack_count and _can_see_target():
+		_start_attack(_flat(_target.global_position - global_position))
+		return
+	_enter(State.RECOVERY, data.attack.recovery)
+
+
+## Ação própria de um tipo de mob durante a perseguição (o Necromante recua e invoca). Verdadeiro quando ela
+## tomou conta do quadro.
+func _special_action(_offset: Vector3, _delta: float) -> bool:
+	return false
 
 
 func _recovery() -> void:
@@ -221,12 +273,23 @@ func _return_home(delta: float) -> void:
 		_animator.play(data.idle_animation)
 		return
 	_facing = offset.normalized()
-	velocity = _facing * data.move_speed
+	velocity = _facing * _speed()
 	_animator.play(data.walk_animation)
+
+
+func _speed() -> float:
+	return data.move_speed * status.speed_share()
+
+
+## Se desfaz na hora (os esqueletos invocados, quando o Necromante morre).
+func crumble() -> void:
+	if state != State.DEAD:
+		health.damage(health.value)
 
 
 func _die() -> void:
 	_end_attack()
+	status.clear()
 	_enter(State.DEAD, 0.0)
 	velocity = Vector3.ZERO
 	collision_layer = 0

@@ -57,3 +57,22 @@ func test_new_game_erases_the_save() -> void:
 	_save.call("new_game")
 	assert_bool(_save.call("has_save")).is_false()
 	assert_bool(_save.call("has_record", "killed", &"mine_wolf_1")).is_false()
+
+
+func test_old_save_keeps_its_respawn_in_the_first_area() -> void:
+	# Jogo salvo da etapa 4: sem a área do ponto de retorno, sem santuários e sem elementos equipados.
+	var old := {"version": 1, "respawn_point": "mine_entrance", "equipped": {"melee": "machete"}, "items": ["machete"], "killed": ["prologue_wolf"]}
+	SaveFile.new(PATH).write(old)
+	var reopened: Node = auto_free(load("res://autoload/save_system.gd").new())
+	reopened.call("open", PATH)
+	var data: Dictionary = reopened.get("data")
+	assert_str(data["respawn_area"]).is_equal("res://world/areas/mine.tscn")
+	assert_array(data["sanctuaries"]).is_empty()
+	assert_array(data["equipped_elements"]).is_equal(["", ""])
+	assert_int(int(data["version"])).is_equal(2)
+	assert_bool(reopened.call("has_record", "killed", &"prologue_wolf")).is_true()
+
+
+func test_new_game_has_no_respawn_area() -> void:
+	assert_str(_save.get("data")["respawn_area"]).is_empty()
+	assert_int(int(_save.get("data")["version"])).is_equal(2)

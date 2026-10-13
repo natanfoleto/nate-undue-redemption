@@ -6,3 +6,5 @@ extends Resource
 @export var actions: Array[StringName] = []
 ## Chave do nome da ação na tabela de tradução.
 @export var text_key: StringName
+## Só sai quando todas as ações são apertadas juntas (a combinação).
+@export var together := false

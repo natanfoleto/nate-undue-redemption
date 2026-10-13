@@ -1,0 +1,44 @@
+[gd_resource type="Resource" script_class="NecromancerData" format=3]
+
+[ext_resource type="Resource" path="res://data/attacks/plague.tres" id="1_ra0nk"]
+[ext_resource type="Resource" path="res://data/animations/necromancer_cast.tres" id="2_jfsn5"]
+[ext_resource type="Resource" path="res://data/animations/necromancer_death.tres" id="3_ce1jj"]
+[ext_resource type="Resource" path="res://data/animations/necromancer_hurt.tres" id="4_s4tnb"]
+[ext_resource type="Resource" path="res://data/animations/necromancer_idle.tres" id="5_jsj4b"]
+[ext_resource type="Resource" path="res://data/models/necromancer.tres" id="6_4kwwy"]
+[ext_resource type="Resource" path="res://data/models/plague.tres" id="7_ksqs0"]
+[ext_resource type="Script" path="res://mobs/necromancer_data.gd" id="8_q0e23"]
+[ext_resource type="Resource" path="res://data/attacks/summon.tres" id="9_0d6w3"]
+[ext_resource type="Resource" path="res://data/animations/necromancer_summon.tres" id="10_5k2xg"]
+[ext_resource type="PackedScene" path="res://mobs/skeleton.tscn" id="11_rpeey"]
+[ext_resource type="Resource" path="res://data/animations/necromancer_walk.tres" id="12_b8gjr"]
+[ext_resource type="Resource" path="res://data/animations/necromancer_windup.tres" id="13_m3pt3"]
+
+[resource]
+script = ExtResource("8_q0e23")
+plague_effect = 2
+plague_effect_duration = 2.0
+plague_height = 1.2
+plague_model = ExtResource("7_ksqs0")
+plague_color = Color(0.627451, 0.3137255, 0.8784314, 1)
+plague_glow = 0.6
+retreat_distance = 4.0
+summon = ExtResource("9_0d6w3")
+summon_scene = ExtResource("11_rpeey")
+summon_count = 2
+summon_max = 3
+summon_distance = 1.5
+summon_animation = ExtResource("10_5k2xg")
+health = 40
+move_speed = 3.0
+perception = 10.0
+hurt_radius = 0.35
+wait_distance = 6.0
+attack = ExtResource("1_ra0nk")
+model = ExtResource("6_4kwwy")
+idle_animation = ExtResource("5_jsj4b")
+walk_animation = ExtResource("12_b8gjr")
+windup_animation = ExtResource("13_m3pt3")
+attack_animation = ExtResource("2_jfsn5")
+hurt_animation = ExtResource("4_s4tnb")
+death_animation = ExtResource("3_ce1jj")

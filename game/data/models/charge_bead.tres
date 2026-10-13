@@ -1,0 +1,34 @@
+[gd_resource type="Resource" script_class="ModelData" format=3]
+
+[ext_resource type="Script" path="res://tools/models/box_data.gd" id="1_idiso"]
+[ext_resource type="Script" path="res://tools/models/model_data.gd" id="2_bc8dx"]
+
+[sub_resource type="Resource" id="Resource_hrsio"]
+resource_name = "tip"
+script = ExtResource("1_idiso")
+name = &"tip"
+size = Vector3i(2, 2, 2)
+position = Vector3(-1, 4, -1)
+color = Color(0.24705882, 0.68235296, 0.5411765, 1)
+
+[sub_resource type="Resource" id="Resource_ow2t4"]
+resource_name = "body"
+script = ExtResource("1_idiso")
+name = &"body"
+size = Vector3i(4, 3, 2)
+position = Vector3(-2, 1, -1)
+texture_offset = Vector2i(0, 4)
+color = Color(0.24705882, 0.68235296, 0.5411765, 1)
+
+[sub_resource type="Resource" id="Resource_p7e2b"]
+resource_name = "bottom"
+script = ExtResource("1_idiso")
+name = &"bottom"
+size = Vector3i(2, 1, 2)
+position = Vector3(-1, 0, -1)
+texture_offset = Vector2i(0, 9)
+color = Color(0.12156863, 0.47843137, 0.3529412, 1)
+
+[resource]
+script = ExtResource("2_bc8dx")
+boxes = Array[ExtResource("1_idiso")]([SubResource("Resource_hrsio"), SubResource("Resource_ow2t4"), SubResource("Resource_p7e2b")])

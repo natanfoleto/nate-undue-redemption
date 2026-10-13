@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="StatusRules" format=3]
+
+[ext_resource type="Script" path="res://combat/status_rules.gd" id="1_jngr8"]
+
+[resource]
+script = ExtResource("1_jngr8")
+slow_speed_share = 0.5
+slow_linger = 1.0
+poison_delay = 2.0
+poison_hearts = 1
+burn_damage = 4
+burn_interval = 0.5
+burn_duration = 2.0
+water_duration_share = 0.5

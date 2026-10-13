@@ -4,6 +4,8 @@ class_name HitShape
 
 ## Camada de física das paredes e do chão.
 const WORLD_LAYER := 1
+## Camada 4 (valor 8): barreiras invisíveis que seguram quem anda, mas não os tiros nem a visão.
+const BARRIER_LAYER := 8
 ## Altura em que se olha se há parede entre dois pontos, em blocos: a do peito de Nate.
 const WALL_CHECK_HEIGHT := 1.0
 

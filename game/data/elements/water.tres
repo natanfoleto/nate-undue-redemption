@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="ElementData" format=3]
+
+[ext_resource type="Texture2D" path="res://assets/ui/scrolls/water.png" id="1_re5ay"]
+[ext_resource type="Texture2D" path="res://assets/ui/elements/water.png" id="2_gdyd3"]
+[ext_resource type="Script" path="res://combat/element_data.gd" id="3_7am1y"]
+[ext_resource type="Resource" path="res://data/spells/cutting_wave.tres" id="4_nbgt6"]
+
+[resource]
+script = ExtResource("3_7am1y")
+name_key = &"ELEMENT_WATER"
+icon = ExtResource("2_gdyd3")
+drawing = ExtResource("1_re5ay")
+spell = ExtResource("4_nbgt6")

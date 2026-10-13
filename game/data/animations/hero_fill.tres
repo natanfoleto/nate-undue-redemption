@@ -1,0 +1,46 @@
+[gd_resource type="Resource" script_class="AnimationData" format=3]
+
+[ext_resource type="Script" path="res://tools/models/pose_data.gd" id="1_dr2co"]
+[ext_resource type="Script" path="res://tools/models/animation_data.gd" id="2_d1x61"]
+
+[sub_resource type="Resource" id="Resource_jeqie"]
+script = ExtResource("1_dr2co")
+rotations = Dictionary[StringName, Vector3]({
+&"arm_r": Vector3(75, 0, 0),
+&"body": Vector3(-10, 0, 0),
+&"head": Vector3(-15, 0, 0)
+})
+
+[sub_resource type="Resource" id="Resource_17wmj"]
+script = ExtResource("1_dr2co")
+time = 1.2
+rotations = Dictionary[StringName, Vector3]({
+&"arm_r": Vector3(75, 0, 0),
+&"body": Vector3(-10, 0, 0),
+&"head": Vector3(-15, 0, 0)
+})
+
+[sub_resource type="Resource" id="Resource_yde1u"]
+script = ExtResource("1_dr2co")
+time = 1.6
+rotations = Dictionary[StringName, Vector3]({
+&"arm_r": Vector3(150, 0, 25),
+&"forearm_r": Vector3(20, 0, 0),
+&"head": Vector3(18, 0, 0)
+})
+
+[sub_resource type="Resource" id="Resource_ke5gx"]
+script = ExtResource("1_dr2co")
+time = 2.6
+rotations = Dictionary[StringName, Vector3]({
+&"arm_r": Vector3(150, 0, 25),
+&"forearm_r": Vector3(20, 0, 0),
+&"head": Vector3(18, 0, 0)
+})
+
+[resource]
+script = ExtResource("2_d1x61")
+length = 3.0
+loop = true
+blend_time = 0.3
+poses = Array[ExtResource("1_dr2co")]([SubResource("Resource_jeqie"), SubResource("Resource_17wmj"), SubResource("Resource_yde1u"), SubResource("Resource_ke5gx")])

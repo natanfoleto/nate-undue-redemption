@@ -3,7 +3,10 @@ extends Node
 ## Tudo o que é salvo tem um identificador único no mapa. As opções ficam em outro arquivo.
 
 const PATH := "user://save.json"
-const VERSION := 1
+## Versão do formato. A 2 (etapa 5) guarda a área do ponto de retorno.
+const VERSION := 2
+## A primeira área do jogo: na versão 1, todo ponto de retorno ficava nela.
+const FIRST_AREA := "res://world/areas/mine.tscn"
 
 ## Listas de identificadores que o jogo guarda.
 const KILLED := "killed"
@@ -12,6 +15,7 @@ const ITEMS := "items"
 const ELEMENTS := "elements"
 const UPGRADES := "upgrades"
 const MURALS := "murals"
+const SANCTUARIES := "sanctuaries"
 
 var data: Dictionary = {}
 
@@ -31,6 +35,7 @@ func open(path: String) -> void:
 	var fresh := _new_game()
 	data = fresh.merged(_file.read(), true)
 	data["equipped"] = (fresh["equipped"] as Dictionary).merged(data["equipped"], true)
+	_migrate()
 
 
 ## Se já existe um jogo salvo, para o menu mostrar "Continuar".
@@ -62,6 +67,19 @@ func has_record(list: String, id: StringName) -> bool:
 	return String(id) in (data.get(list, []) as Array)
 
 
+# Fechar o jogo funciona como uma morte (02-core-loop): tudo já está salvo; grava só o tempo de jogo.
+func _notification(what: int) -> void:
+	if what == NOTIFICATION_WM_CLOSE_REQUEST and get_tree().current_scene is AreaLevel:
+		save()
+
+
+# Jogo salvo da versão 1: o ponto de retorno ainda não guardava a área, e todos ficavam na Mina.
+func _migrate() -> void:
+	if int(data.get("version", 1)) < 2 and data.get("respawn_point", "") != "" and data.get("respawn_area", "") == "":
+		data["respawn_area"] = FIRST_AREA
+	data["version"] = VERSION
+
+
 func _on_enemy_died(enemy: Node3D) -> void:
 	var id: StringName = enemy.get(&"save_id") if &"save_id" in enemy else &""
 	record(KILLED, id)
@@ -77,13 +95,16 @@ static func _new_game() -> Dictionary:
 	return {
 		"version": VERSION,
 		"respawn_point": "",
+		"respawn_area": "",
 		"equipped": {"melee": "machete"},
+		"equipped_elements": ["", ""],
 		KILLED: [],
 		OPENED: [],
 		ITEMS: ["machete"],
 		ELEMENTS: [],
 		UPGRADES: [],
 		MURALS: [],
+		SANCTUARIES: [],
 		"play_time": 0.0,
 		"deaths": 0,
 	}

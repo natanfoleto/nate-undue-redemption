@@ -93,4 +93,6 @@ func _build_hit(_receiver: Node3D, attack: AttackData, direction: Vector3) -> Hi
 	hit.attacker = _player
 	hit.knockback = attack.knockback
 	hit.direction = direction
+	hit.effect = weapon.effect
+	hit.effect_duration = weapon.effect_duration
 	return hit

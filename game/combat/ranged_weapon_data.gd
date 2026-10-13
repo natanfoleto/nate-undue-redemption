@@ -1,9 +1,7 @@
 class_name RangedWeaponData
-extends Resource
+extends ItemData
 ## Arma à distância (05-itens): puxar até a força total e soltar, sem munição. Números do 11-balanceamento.
 
-## Chave do nome na tabela de tradução.
-@export var name_key: StringName
 ## Dano, em pontos.
 @export var damage := 0
 ## Tempo para puxar até a força total, em segundos.
@@ -13,8 +11,10 @@ extends Resource
 ## Velocidade do projétil, em blocos/s.
 @export var projectile_speed := 0.0
 @export var knockback := AttackData.Knockback.NONE
-## Modelo da arma na mão de Nate e do projétil em voo.
-@export var model: ModelData
+## Efeito de status em quem é acertado (-1 para nenhum) e por quanto tempo, em segundos (Zarabatana marajoara).
+@export var effect := -1
+@export var effect_duration := 0.0
+## Modelo do projétil em voo.
 @export var projectile_model: ModelData
 
 

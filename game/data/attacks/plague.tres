@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="AttackData" format=3]
+
+[ext_resource type="Script" path="res://combat/attack_data.gd" id="1_lqy0v"]
+
+[resource]
+script = ExtResource("1_lqy0v")
+damage_hearts = 1
+shape = 3
+reach = 12.0
+projectile_speed = 8.0
+windup = 0.8
+active = 0.2
+recovery = 0.5
+cooldown = 3.0

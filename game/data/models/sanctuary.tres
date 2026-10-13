@@ -1,0 +1,70 @@
+[gd_resource type="Resource" script_class="ModelData" format=3]
+
+[ext_resource type="Script" path="res://tools/models/box_data.gd" id="1_enfwg"]
+[ext_resource type="Script" path="res://tools/models/model_data.gd" id="2_d0c0k"]
+
+[sub_resource type="Resource" id="Resource_8kb51"]
+resource_name = "base"
+script = ExtResource("1_enfwg")
+name = &"base"
+size = Vector3i(32, 4, 32)
+position = Vector3(-16, 0, -16)
+color = Color(0.3529412, 0.33333334, 0.3137255, 1)
+
+[sub_resource type="Resource" id="Resource_t4xmx"]
+resource_name = "step"
+script = ExtResource("1_enfwg")
+name = &"step"
+size = Vector3i(24, 4, 24)
+position = Vector3(-12, 4, -12)
+texture_offset = Vector2i(0, 36)
+color = Color(0.41568628, 0.39215687, 0.36078432, 1)
+
+[sub_resource type="Resource" id="Resource_t54ug"]
+resource_name = "pillar"
+script = ExtResource("1_enfwg")
+name = &"pillar"
+size = Vector3i(10, 24, 10)
+position = Vector3(-5, 8, -5)
+texture_offset = Vector2i(0, 64)
+color = Color(0.5411765, 0.47843137, 0.4, 1)
+
+[sub_resource type="Resource" id="Resource_1wnkx"]
+resource_name = "band_red"
+script = ExtResource("1_enfwg")
+name = &"band_red"
+size = Vector3i(12, 2, 12)
+position = Vector3(-6, 14, -6)
+texture_offset = Vector2i(0, 98)
+color = Color(0.70980394, 0.2509804, 0.16470589, 1)
+
+[sub_resource type="Resource" id="Resource_6uqg5"]
+resource_name = "band_black"
+script = ExtResource("1_enfwg")
+name = &"band_black"
+size = Vector3i(12, 1, 12)
+position = Vector3(-6, 24, -6)
+texture_offset = Vector2i(0, 112)
+color = Color(0.11372549, 0.101960786, 0.09019608, 1)
+
+[sub_resource type="Resource" id="Resource_2012y"]
+resource_name = "bowl"
+script = ExtResource("1_enfwg")
+name = &"bowl"
+size = Vector3i(14, 3, 14)
+position = Vector3(-7, 32, -7)
+texture_offset = Vector2i(0, 125)
+color = Color(0.41568628, 0.39215687, 0.36078432, 1)
+
+[sub_resource type="Resource" id="Resource_fw7n5"]
+resource_name = "glow"
+script = ExtResource("1_enfwg")
+name = &"glow"
+size = Vector3i(6, 6, 6)
+position = Vector3(-3, 35, -3)
+texture_offset = Vector2i(0, 142)
+color = Color(0.24705882, 0.68235296, 0.5411765, 1)
+
+[resource]
+script = ExtResource("2_d0c0k")
+boxes = Array[ExtResource("1_enfwg")]([SubResource("Resource_8kb51"), SubResource("Resource_t4xmx"), SubResource("Resource_t54ug"), SubResource("Resource_1wnkx"), SubResource("Resource_6uqg5"), SubResource("Resource_2012y"), SubResource("Resource_fw7n5")])

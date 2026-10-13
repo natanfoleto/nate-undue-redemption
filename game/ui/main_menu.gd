@@ -17,6 +17,7 @@ func _ready() -> void:
 	_continue.text = tr(&"MENU_CONTINUE")
 	_new_game.text = tr(&"MENU_NEW_GAME")
 	_quit.text = tr(&"MENU_QUIT")
+	_confirm.title = tr(&"MENU_CONFIRM_TITLE")
 	_confirm.dialog_text = tr(&"MENU_CONFIRM_NEW")
 	_confirm.ok_button_text = tr(&"MENU_YES")
 	_confirm.cancel_button_text = tr(&"MENU_NO")
@@ -40,5 +41,7 @@ func _start_new_game() -> void:
 	_play()
 
 
+# Continua na área do último ponto de retorno; o jogo novo começa na primeira área.
 func _play() -> void:
-	get_tree().change_scene_to_file(first_area)
+	var area := GameState.respawn_area()
+	get_tree().change_scene_to_file(area if area != "" else first_area)

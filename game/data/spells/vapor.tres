@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="SpellData" format=3]
+
+[ext_resource type="Resource" path="res://data/attacks/vapor_cloud.tres" id="1_d4rmj"]
+[ext_resource type="Script" path="res://combat/spell_data.gd" id="2_tcdge"]
+
+[resource]
+script = ExtResource("2_tcdge")
+name_key = &"SPELL_VAPOR"
+delivery = 2
+attack = ExtResource("1_d4rmj")
+effect = 3
+lasting = 4.0
+offset = 4.0
+color = Color(0.9411765, 0.78431374, 0.6901961, 1)

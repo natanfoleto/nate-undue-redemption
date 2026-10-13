@@ -9,6 +9,8 @@ signal used(text_key: StringName)
 @export var actions: Array[StringName] = []
 ## Chave do nome da ação na tabela de tradução.
 @export var text_key: StringName
+## A dica só sai quando todas as ações são apertadas juntas (a combinação); senão, qualquer uma tira a dica.
+@export var together := false
 ## Quantas vezes os ícones de 16 px são ampliados.
 @export var icon_scale := 1
 
@@ -22,9 +24,12 @@ func _ready() -> void:
 	_show_icons()
 
 
-func _unhandled_input(event: InputEvent) -> void:
+# Em _input, e não em _unhandled_input: as telas que abrem com o botão (o inventário) o consomem.
+func _input(event: InputEvent) -> void:
 	for action in actions:
 		if event.is_action_pressed(action):
+			if together and not actions.all(func(other: StringName) -> bool: return Input.is_action_pressed(other)):
+				return
 			used.emit(text_key)
 			queue_free()
 			return

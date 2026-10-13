@@ -42,3 +42,17 @@ extends Resource
 @export var death_time := 0.0
 ## Tempo da tela clareando quando Nate volta, em segundos.
 @export var respawn_fade_time := 0.0
+
+@export_group("Frasco")
+## Cargas do frasco sem melhorias.
+@export var flask_charges := 0
+## Corações curados por carga.
+@export var flask_heal := 0
+## Tempo para beber, em segundos.
+@export var flask_time := 0.0
+## Parte da velocidade com que Nate anda enquanto bebe.
+@export var flask_speed_share := 0.0
+
+@export_group("Muiraquitã")
+## Raio da Luz Ancestral, em blocos.
+@export var light_radius := 0.0

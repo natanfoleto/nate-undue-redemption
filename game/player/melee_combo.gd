@@ -116,7 +116,7 @@ func _hit_count() -> int:
 
 
 func _build_hit(receiver: Node3D) -> Hit:
-	var hit := Damage.roll(_attack.damage_points, 0.0, Balance.player.critical_chance, Balance.combat, _rng)
+	var hit := Damage.roll(_attack.damage_points, 0.0, Balance.player.critical_chance + weapon.critical_bonus, Balance.combat, _rng)
 	hit.attacker = _player
 	hit.knockback = _attack.knockback
 	var away := receiver.global_position - _player.global_position

@@ -1,0 +1,54 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://ui/sanctuary_menu.gd" id="1_vynqq"]
+
+[node name="SanctuaryMenu" type="CanvasLayer" unique_id=1296887018]
+layer = 9
+script = ExtResource("1_vynqq")
+font_size = 28
+
+[node name="Panel" type="ColorRect" parent="." unique_id=1393396513]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color(0, 0, 0, 0.55)
+
+[node name="Center" type="CenterContainer" parent="Panel" unique_id=1530697930]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="Column" type="VBoxContainer" parent="Panel/Center" unique_id=1314800205]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="Title" type="Label" parent="Panel/Center/Column" unique_id=90165916]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 36
+horizontal_alignment = 1
+
+[node name="Main" type="VBoxContainer" parent="Panel/Center/Column" unique_id=234046007]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="Rest" type="Button" parent="Panel/Center/Column/Main" unique_id=1205865375]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(360, 0)
+layout_mode = 2
+
+[node name="Travel" type="Button" parent="Panel/Center/Column/Main" unique_id=2069391417]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(360, 0)
+layout_mode = 2
+
+[node name="Leave" type="Button" parent="Panel/Center/Column/Main" unique_id=66607074]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(360, 0)
+layout_mode = 2
+
+[node name="Places" type="VBoxContainer" parent="Panel/Center/Column" unique_id=255542570]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/separation = 12

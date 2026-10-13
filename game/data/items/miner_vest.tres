@@ -1,11 +1,13 @@
 [gd_resource type="Resource" script_class="ArmorData" format=3]
 
 [ext_resource type="Resource" path="res://data/models/miner_vest.tres" id="1_ev1nn"]
+[ext_resource type="Texture2D" path="res://assets/ui/items/miner_vest.png" id="1_r5j5p"]
 [ext_resource type="Script" path="res://combat/armor_data.gd" id="2_r5j5p"]
 
 [resource]
 script = ExtResource("2_r5j5p")
-name_key = &"ITEM_MINER_VEST"
 extra_hearts = 1
 move_speed = 5.0
+name_key = &"ITEM_MINER_VEST"
+icon = ExtResource("1_r5j5p")
 model = ExtResource("1_ev1nn")

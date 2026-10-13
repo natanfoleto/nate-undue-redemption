@@ -1,0 +1,43 @@
+[gd_resource type="Resource" script_class="ModelData" format=3]
+
+[ext_resource type="Script" path="res://tools/models/box_data.gd" id="1_cq5sm"]
+[ext_resource type="Script" path="res://tools/models/model_data.gd" id="2_4n043"]
+
+[sub_resource type="Resource" id="Resource_kdqce"]
+resource_name = "slab"
+script = ExtResource("1_cq5sm")
+name = &"slab"
+size = Vector3i(32, 36, 4)
+position = Vector3(-16, 0, -2)
+color = Color(0.47843137, 0.44705883, 0.40784314, 1)
+
+[sub_resource type="Resource" id="Resource_rx8ep"]
+resource_name = "line_1"
+script = ExtResource("1_cq5sm")
+name = &"line_1"
+size = Vector3i(24, 1, 1)
+position = Vector3(-12, 26, -3)
+texture_offset = Vector2i(0, 40)
+color = Color(0.11372549, 0.101960786, 0.09019608, 1)
+
+[sub_resource type="Resource" id="Resource_mc6q5"]
+resource_name = "line_2"
+script = ExtResource("1_cq5sm")
+name = &"line_2"
+size = Vector3i(24, 1, 1)
+position = Vector3(-12, 10, -3)
+texture_offset = Vector2i(0, 42)
+color = Color(0.11372549, 0.101960786, 0.09019608, 1)
+
+[sub_resource type="Resource" id="Resource_i21dr"]
+resource_name = "ring"
+script = ExtResource("1_cq5sm")
+name = &"ring"
+size = Vector3i(4, 4, 1)
+position = Vector3(-2, 16, -3)
+texture_offset = Vector2i(0, 44)
+color = Color(0.24705882, 0.68235296, 0.5411765, 1)
+
+[resource]
+script = ExtResource("2_4n043")
+boxes = Array[ExtResource("1_cq5sm")]([SubResource("Resource_kdqce"), SubResource("Resource_rx8ep"), SubResource("Resource_mc6q5"), SubResource("Resource_i21dr")])

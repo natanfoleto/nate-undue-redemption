@@ -29,9 +29,29 @@ O prólogo e a Mina já têm um rascunho jogável, em `game/world/areas/mine.tsc
 | Desvio da Picareta | corredor de 10 × 2 blocos até uma sala de 5 × 8 | a Picareta |
 | Túnel do mural 1 | 4 × 10 blocos, com paredes de pedra do povo antigo | o lugar do mural 1 |
 | Arena da Mina | 18 × 16 blocos, com portão na entrada e na saída | as 2 ondas do `11-balanceamento.md` |
-| Sala do elevador | 12 × 8 blocos | o elevador, que desce e termina a parte jogável até o Bosque existir |
+| Sala do elevador | 12 × 8 blocos | o elevador, que desce até o Bosque de Fungos |
 
-O caminho principal tem cerca de 135 blocos andando, sem contar as lutas. O canto escuro do +1 coração e a arena opcional ainda não estão no rascunho: entram quando a Luz Ancestral e a Terra existirem.
+O caminho principal tem cerca de 135 blocos andando, sem contar as lutas. O canto escuro do +1 coração fica a leste do saguão da entrada: um corredor de 6 × 2 blocos até uma sala de 5 × 8, escura. A parede rachada da Armadura de minerador e a arena opcional ainda esperam a Terra (etapa 6).
+
+O Bosque de Fungos tem um rascunho jogável em `game/world/areas/forest.tscn` (etapa 5). As medidas também são propostas, para conferir jogando.
+
+| Trecho | Medidas | O que tem |
+|---------|---------|-----------|
+| Chegada do elevador | 16 × 12 blocos de musgo | o elevador quebrado, o S1 e a porta que só abre por um lado, na parede leste |
+| Corredor norte | 6 × 10 blocos | 2 cogumelos de esporos e 2 Lobos |
+| Desvio da Zarabatana | passagem de 3 × 2 blocos até uma sala de 5 × 8 | a Zarabatana marajoara, 1 Lobo e 1 Esqueleto |
+| Sala do baú | 18 × 14 blocos | o baú com a Lança marajoara, o primeiro Necromante e 1 Esqueleto; na parede oeste, a parede rachada do +1 coração (volta com Terra) |
+| Arena 1 | 18 × 16 blocos, com portão na entrada e na saída | as 2 ondas do `11-balanceamento.md` |
+| Sala do pergaminho de Fogo | 8 × 8 blocos | o pergaminho de Fogo; a oeste, o canto escuro da Azagaia (corredor de 6 × 2 e sala de 4 × 6) |
+| Corredor do mural 2 | 24 × 4 blocos | o lugar do mural 2 na parede norte e 2 Esqueletos |
+| Caverna dos dinossauros | 24 × 27 blocos, com cogumelos gigantes | 2 dinossauros, 2 Lobos e 1 Necromante; o desvio do Manto cercado de cogumelos de esporos; uma fresta de 1 bloco até o mural 3 escondido |
+| Arena opcional | corredor escuro de 7 × 2 blocos, arena de 18 × 16 e uma sala de 5 × 6 | as 2 ondas do `11-balanceamento.md` e o pergaminho de Água |
+| Sala do meio | 16 × 12 blocos | 2 Esqueletos e 1 Lobo; a leste, o desvio do +1 coração (2 Lobos); a oeste, o corredor do atalho até a porta do S1 (cerca de 40 blocos) |
+| S2 | 16 × 10 blocos | o S2 |
+| Arena 2 | 18 × 16 blocos, com portão na entrada e na saída | as 3 ondas do `11-balanceamento.md` |
+| Passagem escura | 18 × 4 blocos | exige a Luz Ancestral; no fim, a parte jogável termina até as Ruínas existirem |
+
+O caminho principal do Bosque tem cerca de 190 blocos andando, sem contar as lutas.
 
 ## Trecho a trecho
 

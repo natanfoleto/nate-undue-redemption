@@ -1,0 +1,40 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://ui/scroll_view.gd" id="1_gis3u"]
+[ext_resource type="Texture2D" path="res://assets/ui/scrolls/paper.png" id="2_jkf1r"]
+
+[node name="ScrollView" type="CanvasLayer" unique_id=1343778696]
+layer = 9
+script = ExtResource("1_gis3u")
+open_time = 0.5
+min_time = 1.0
+
+[node name="Shade" type="ColorRect" parent="." unique_id=1658017951]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color(0, 0, 0, 0.6)
+
+[node name="Center" type="CenterContainer" parent="Shade" unique_id=104570131]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="Paper" type="TextureRect" parent="Shade/Center" unique_id=789538795]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(576, 480)
+layout_mode = 2
+texture = ExtResource("2_jkf1r")
+expand_mode = 1
+
+[node name="Drawing" type="TextureRect" parent="Shade/Center/Paper" unique_id=76682374]
+unique_name_in_owner = true
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 96.0
+offset_top = 48.0
+offset_right = -96.0
+offset_bottom = -48.0
+expand_mode = 1
+stretch_mode = 5

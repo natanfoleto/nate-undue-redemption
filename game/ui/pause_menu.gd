@@ -20,9 +20,13 @@ func _ready() -> void:
 
 
 func _unhandled_input(event: InputEvent) -> void:
-	if event.is_action_pressed(&"pause"):
-		_set_paused(not get_tree().paused)
-		get_viewport().set_input_as_handled()
+	if not event.is_action_pressed(&"pause"):
+		return
+	# Outra tela já parou o jogo (inventário, santuário, pergaminho): ela cuida do botão.
+	if get_tree().paused and not _panel.visible:
+		return
+	_set_paused(not _panel.visible)
+	get_viewport().set_input_as_handled()
 
 
 func _set_paused(paused: bool) -> void:
@@ -33,5 +37,6 @@ func _set_paused(paused: bool) -> void:
 
 
 func _go_to_menu() -> void:
+	SaveSystem.save()
 	get_tree().paused = false
 	get_tree().change_scene_to_file(main_menu)

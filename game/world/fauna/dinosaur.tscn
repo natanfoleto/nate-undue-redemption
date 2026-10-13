@@ -1,0 +1,39 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://world/fauna/dinosaur.gd" id="1_nom08"]
+[ext_resource type="Resource" path="res://data/animations/dinosaur_idle.tres" id="2_e00s7"]
+[ext_resource type="Resource" path="res://data/animations/dinosaur_walk.tres" id="3_8ai42"]
+[ext_resource type="Resource" path="res://data/animations/dinosaur_eat.tres" id="4_ns4xk"]
+[ext_resource type="Script" path="res://tools/models/block_model.gd" id="5_le78e"]
+[ext_resource type="Resource" path="res://data/models/dinosaur.tres" id="6_syvwb"]
+[ext_resource type="Script" path="res://tools/models/model_animator.gd" id="7_ofgyc"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_m8efb"]
+size = Vector3(1.8, 3, 3.6)
+
+[node name="Dinosaur" type="CharacterBody3D" unique_id=1097731142]
+motion_mode = 1
+script = ExtResource("1_nom08")
+idle_animation = ExtResource("2_e00s7")
+walk_animation = ExtResource("3_8ai42")
+eat_animation = ExtResource("4_ns4xk")
+walk_speed = 1.0
+wander_radius = 4.0
+idle_time = Vector2(3, 6)
+eat_time = 5.0
+eat_chance = 0.5
+walk_timeout = 8.0
+spot_color = Color(0.49803922, 0.8392157, 0.627451, 1)
+spot_glow = 0.8
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=782168324]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+shape = SubResource("BoxShape3D_m8efb")
+
+[node name="BlockModel" type="Node3D" parent="." unique_id=1220280164]
+script = ExtResource("5_le78e")
+model = ExtResource("6_syvwb")
+
+[node name="ModelAnimator" type="Node" parent="BlockModel" unique_id=931893914]
+script = ExtResource("7_ofgyc")
+animation = ExtResource("2_e00s7")

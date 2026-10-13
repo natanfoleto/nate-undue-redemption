@@ -26,8 +26,8 @@ func _ready() -> void:
 		_set_open(true, false)
 
 
-func open() -> void:
-	_set_open(true, true)
+func open(animated := true) -> void:
+	_set_open(true, animated)
 
 
 func close() -> void:

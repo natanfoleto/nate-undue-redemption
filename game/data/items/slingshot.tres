@@ -1,16 +1,18 @@
 [gd_resource type="Resource" script_class="RangedWeaponData" format=3]
 
+[ext_resource type="Texture2D" path="res://assets/ui/items/slingshot.png" id="1_hd7h3"]
 [ext_resource type="Resource" path="res://data/models/slingshot.tres" id="1_ncry1"]
 [ext_resource type="Resource" path="res://data/models/stone.tres" id="2_hd7h3"]
 [ext_resource type="Script" path="res://combat/ranged_weapon_data.gd" id="3_57mhx"]
 
 [resource]
 script = ExtResource("3_57mhx")
-name_key = &"ITEM_SLINGSHOT"
 damage = 6
 draw_time = 0.4
 reach = 10.0
 projectile_speed = 20.0
 knockback = 1
-model = ExtResource("1_ncry1")
 projectile_model = ExtResource("2_hd7h3")
+name_key = &"ITEM_SLINGSHOT"
+icon = ExtResource("1_hd7h3")
+model = ExtResource("1_ncry1")

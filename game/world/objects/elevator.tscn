@@ -1,15 +1,27 @@
 [gd_scene format=3]
 
-[ext_resource type="Script" path="res://world/objects/elevator.gd" id="1_k4a3n"]
-[ext_resource type="Script" path="res://tools/models/block_model.gd" id="2_ds8ph"]
-[ext_resource type="Resource" path="res://data/models/elevator.tres" id="3_31ty5"]
+[ext_resource type="Script" path="res://world/objects/elevator.gd" id="1_31ty5"]
+[ext_resource type="Resource" path="res://data/effects/spell_effects.tres" id="2_pwuu2"]
+[ext_resource type="Script" path="res://world/respawn_point.gd" id="3_pr1ns"]
+[ext_resource type="Script" path="res://tools/models/block_model.gd" id="4_kp1j6"]
+[ext_resource type="Resource" path="res://data/models/elevator.tres" id="5_pmqfb"]
 
-[node name="Elevator" type="StaticBody3D" unique_id=1695263048]
-script = ExtResource("1_k4a3n")
+[node name="Elevator" type="StaticBody3D" unique_id=794454788]
+script = ExtResource("1_31ty5")
 depth = 6.0
-descent_time = 3.0
+travel_time = 3.0
+broken_tilt = 8.0
+crash_time = 0.15
+repair_time = 0.8
+dust_color = Color(0.5411765, 0.47843137, 0.4, 1)
+dust_radius = 1.5
+dust_look = ExtResource("2_pwuu2")
 reach = 1.6
 
-[node name="Platform" type="Node3D" parent="." unique_id=1349881613]
-script = ExtResource("2_ds8ph")
-model = ExtResource("3_31ty5")
+[node name="Arrival" type="Marker3D" parent="." unique_id=438583630]
+script = ExtResource("3_pr1ns")
+automatic = false
+
+[node name="Platform" type="Node3D" parent="." unique_id=481547661]
+script = ExtResource("4_kp1j6")
+model = ExtResource("5_pmqfb")

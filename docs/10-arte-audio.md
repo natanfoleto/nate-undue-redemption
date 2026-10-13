@@ -23,10 +23,12 @@ Origem dos assets, guia de estilo e a lista completa de assets e sons, que sai d
 ### Registro de assets prontos
 | Asset | Origem (link) | Licença | Crédito exigido |
 |-------|---------------|---------|-----------------|
-| Texturas de 16 px da sala de teste, da clareira e da Mina (`assets/textures/`: cobblestone, cobblestone_mossy, dirt, grass_top, grass_side, oak_log_side, oak_log_top, oak_leaves, oak_planks, stone_generic e sandstone_carved), provisórias | "16x16 block texture set", de ARoachIFoundOnMyPillow: https://opengameart.org/content/16x16-block-texture-set | CC0 | não |
+| Texturas de 16 px da sala de teste, da clareira, da Mina e do Bosque (`assets/textures/`: cobblestone, cobblestone_mossy, dirt, grass_top, grass_side, oak_log_side, oak_log_top, oak_leaves, oak_planks, stone_generic, sandstone_carved, mud, basalt e serpentine), provisórias | "16x16 block texture set", de ARoachIFoundOnMyPillow: https://opengameart.org/content/16x16-block-texture-set | CC0 | não |
 | 36 ícones de botão de teclado e mouse, Xbox e PlayStation (`assets/ui/buttons/`), provisórios | "Input Prompts Pixel 16×", de Kenney: https://opengameart.org/content/input-prompts-pixel-16%C3%97 | CC0 | não (crédito opcional ao Kenney) |
 
 Os ícones definitivos são feitos para o jogo (`09-interface.md`). O pacote dos materiais comuns é escolhido na etapa 4.
+
+Feitos para o jogo na etapa 5, provisórios: as texturas dos fungos (`mushroom_stem`, `mushroom_cap_cyan` e `mushroom_cap_lime`), os ícones de 16 × 16 dos itens, dos elementos, da combinação Vapor, dos efeitos de status, do frasco, do muiraquitã e das melhorias, os desenhos dos pergaminhos de Fogo e Água e o papel do pergaminho aberto (`assets/ui/`).
 
 ### Plano de produção
 Assets prontos entram como provisórios logo no começo da produção, para testar os sistemas cedo, e são trocados pelos definitivos aos poucos.

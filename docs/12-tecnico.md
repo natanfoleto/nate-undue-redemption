@@ -59,17 +59,24 @@ Autoloads do Godot:
 - A fórmula de dano fica numa função só, coberta por teste automático.
 - Cada golpe é um recurso com a forma da área, os três tempos, o dano, o recuo e o tipo de aviso. Os golpes de Nate saem da arma: o tempo de cada golpe se divide em preparação, tempo ativo e recuperação pela regra do `11-balanceamento.md`.
 - O projétil sai do centro de Nate, na altura da mão, e voa na linha da mira.
-- Camadas de física: 1 o mundo, 2 Nate e 3 os mobs. Nate e os mobs se encostam sem se ferir.
-- Os scripts ficam em `game/combat/`; os mobs, em `game/mobs/`, com uma cena base e uma cena por tipo, que só troca os dados.
+- Camadas de física: 1 o mundo, 2 Nate e 3 os mobs. Nate e os mobs se encostam sem se ferir, e os dois esbarram também nas barreiras da camada 4.
+- Efeitos de status num componente (`StatusEffects`), com os sinais na tela (`StatusVisuals`); os números ficam em `data/balance/status.tres`.
+- Magias: cada elemento (`ElementData`) tem uma magia (`SpellData`), e a tabela de combinações (`ComboTable`) dá a magia dos dois juntos. O componente `SpellCaster` de Nate lança e conta as recargas; as áreas que ficam no chão são `SpellArea`, e os efeitos visuais, `SpellEffects`.
+- Os itens de equipamento dividem a base `ItemData` (nome, ícone, raridade e modelo).
+- Os scripts ficam em `game/combat/`; os mobs, em `game/mobs/`, com uma cena base e uma cena por tipo, que troca os dados. O Necromante troca também o script, filho da base `Mob`, para recuar e invocar.
 
 ### Áreas e objetos
 - Cada área é uma cena em `game/world/areas/`, com o script `AreaLevel`, que põe Nate no último ponto de retorno ao abrir.
 - Objetos do cenário em `game/world/objects/` (baú, alavanca, portão, item no chão, elevador, lampião) e armadilhas em `game/world/traps/`. Cada um tem um identificador único no mapa e grava o próprio estado no `SaveSystem`.
 - A arena (`Arena`) fecha os portões quando Nate entra, solta as ondas dos arquivos de `game/data/arenas/` e reinicia se Nate morre no meio.
 - A luz muda por zona (`LightingZone`): embaixo da terra o sol some e a luz vem dos lampiões.
+- Áreas escuras (`DarkArea`): uma tampa preta sobre a área, aberta num círculo em volta de Nate quando ele tem a Luz Ancestral, e uma barreira que o segura na borda até lá.
+- Troca de área pelo `GameState`: a tela escurece, a cena carrega e Nate aparece no ponto de chegada (o elevador, um santuário). A saída de uma área é um `AreaExit`; sem a próxima área, ele mostra o fim da parte jogável.
+- Santuários com o menu de descanso e viagem; os dados de cada um (nome, área e memória) ficam em `game/data/sanctuaries/`. As memórias são cenas em `game/world/memories/`, e a fauna de cenário, em `game/world/fauna/`.
 - Camada de física 4: barreiras invisíveis, como a beira de uma vala; seguram quem anda, mas não os tiros nem a visão.
-- O `GameState` guarda o ponto de retorno e o equipamento; o jogo novo começa com o facão. O jogo salvo também guarda as dicas de controle já usadas.
-- Menus em `game/ui/`: o principal é a entrada do jogo (`main.tscn`), e a pausa abre no Esc.
+- O `GameState` guarda o ponto de retorno (e a área dele), o equipamento, os elementos e as melhorias; o jogo novo começa com o facão. O jogo salvo também guarda as dicas de controle já usadas, os santuários visitados e o tempo de jogo.
+- O identificador de uma melhoria no mapa começa com o tipo dela (`heart_` ou `charge_`).
+- Menus em `game/ui/`: o principal é a entrada do jogo (`main.tscn`), a pausa abre no Esc e o inventário no Tab. Quem para o jogo (inventário, santuário, pergaminho, memória) cuida dos próprios botões enquanto está aberto.
 
 ### Inteligência dos mobs
 - Máquina de estados simples: parado, perseguir, atacar e voltar.

@@ -205,3 +205,18 @@ Números que a produção precisou para o jogo funcionar e que os outros documen
 | Animações dos objetos | portão desce 2,1 blocos em 0,6 s; tampa do baú abre 100° em 0,4 s; alavanca vira 70° em 0,25 s; pedra cai de 3 blocos em 0,25 s; elevador desce 6 blocos em 3 s | cenas de `world/objects/` e `world/traps/` |
 | Luz da Mina | lampião com alcance de 8 blocos; luz ambiente a 0,3 dentro da Mina, contra 0,7 na superfície, trocando em 1,5 s | `world/objects/lamp.tscn` e `world/areas/mine.tscn` |
 | Fim da parte jogável | tela escurece em 1,5 s e aceita um botão depois de 1 s | `ui/end_screen.tscn` |
+| Tempo para apertar o outro botão e sair a combinação | 0,1 s | `player/player.tscn` (SpellCaster) |
+| Necromante | círculo em que recebe golpes de raio 0,35 bloco; espera a vez de atacar a 6 blocos; as marcas de invocação têm raio de 0,6 bloco, a 1,5 bloco de cada lado dele; leque da praga do Ancião de 30° | `data/mobs/`, `data/attacks/summon.tres` |
+| Cogumelo de esporos | incha quando alguém chega a 1,5 bloco; inchado fica 1,3 vez maior e, estourado, 0,4 vez | `world/traps/spore_mushroom.tscn` |
+| Dinossauro do Bosque | anda a 1 bloco/s, até 4 blocos de casa; fica parado de 3 a 6 s e come por 5 s | `world/fauna/dinosaur.tscn` |
+| Troca de área, viagem rápida e descanso | a tela escurece e clareia em 0,5 s | `data/balance/world.tres` |
+| Santuário | alcance para interagir de 2 blocos; acende em 1 s na primeira visita | `world/objects/sanctuary.tscn` |
+| Elevador entre a Mina e o Bosque | a chegada anda metade da viagem (3 blocos em 1,5 s); quebrado, fica inclinado 8°; o conserto leva 0,8 s | `world/objects/elevator.tscn` |
+| Porta que só abre por um lado | a laje desce 2,3 blocos em 0,8 s | `world/objects/one_way_door.tscn` |
+| Pergaminho aberto | abre em 0,5 s e fecha com qualquer botão depois de 1 s | `ui/scroll_view.tscn` |
+| Muiraquitã acordando | pulso de luz de 1,6 s | `player/player.tscn` |
+| Memórias | 7 s (memória 1) e 8 s (memória 2); dá para pular depois de 1,5 s; a tela clareia em 0,6 s | `world/memories/` |
+| Áreas escuras | o círculo da Luz Ancestral tem borda suave de 1,5 bloco | `world/areas/` |
+| Efeitos das magias | estouro de 24 cubinhos em 0,5 s, com clarão do dobro do raio; onda a 55% de opacidade; nuvem de 40 cubinhos; praga saindo a 1,2 bloco do chão | `data/effects/spell_effects.tres`, `data/mobs/` |
+| Luz do Bosque | luz ambiente a 0,85; luz dos cogumelos gigantes com alcance de 8 blocos e dos fungos pequenos com 6 | `world/areas/forest.tscn` |
+| Área que começa a luta das arenas do Bosque | 15 × 13 blocos, dentro dos 18 × 16 do chão | `world/areas/forest.tscn` |

@@ -1,81 +1,129 @@
 [gd_scene format=3]
 
-[ext_resource type="Script" path="res://player/player.gd" id="1_65viv"]
-[ext_resource type="Resource" path="res://data/animations/nate_idle.tres" id="2_x7c3f"]
-[ext_resource type="Resource" path="res://data/animations/nate_walk.tres" id="3_bjvpn"]
-[ext_resource type="Resource" path="res://data/animations/nate_roll.tres" id="4_s7qer"]
-[ext_resource type="Resource" path="res://data/animations/nate_hurt.tres" id="5_g4c7l"]
-[ext_resource type="Resource" path="res://data/animations/nate_death.tres" id="6_knn7v"]
-[ext_resource type="Script" path="res://tools/models/block_model.gd" id="7_7pqkx"]
-[ext_resource type="Resource" path="res://data/models/nate.tres" id="8_uw77l"]
-[ext_resource type="Script" path="res://tools/models/model_animator.gd" id="9_rptt4"]
-[ext_resource type="Resource" path="res://data/models/aim_arrow.tres" id="10_r7pn3"]
-[ext_resource type="Script" path="res://combat/health.gd" id="11_b8hi5"]
-[ext_resource type="Script" path="res://combat/hurtbox.gd" id="12_2uvqg"]
-[ext_resource type="Script" path="res://player/melee_combo.gd" id="13_1s1yo"]
-[ext_resource type="Script" path="res://tools/models/animation_data.gd" id="14_5ejfk"]
-[ext_resource type="Resource" path="res://data/animations/nate_hit_1.tres" id="15_jd2rm"]
-[ext_resource type="Resource" path="res://data/animations/nate_hit_2.tres" id="16_q28gw"]
-[ext_resource type="Resource" path="res://data/animations/nate_hit_3.tres" id="17_ge24q"]
-[ext_resource type="Script" path="res://player/ranged_shot.gd" id="18_pnw6m"]
-[ext_resource type="Resource" path="res://data/animations/nate_draw.tres" id="19_1so5t"]
-[ext_resource type="Resource" path="res://data/animations/nate_release.tres" id="20_55jnj"]
+[ext_resource type="Script" path="res://player/player.gd" id="1_jd2rm"]
+[ext_resource type="Resource" path="res://data/animations/nate_idle.tres" id="2_q28gw"]
+[ext_resource type="Resource" path="res://data/animations/nate_walk.tres" id="3_ge24q"]
+[ext_resource type="Resource" path="res://data/animations/nate_roll.tres" id="4_pnw6m"]
+[ext_resource type="Resource" path="res://data/animations/nate_hurt.tres" id="5_1so5t"]
+[ext_resource type="Resource" path="res://data/animations/nate_death.tres" id="6_55jnj"]
+[ext_resource type="Script" path="res://tools/models/block_model.gd" id="7_dx5ib"]
+[ext_resource type="Resource" path="res://data/models/nate.tres" id="8_a2xo5"]
+[ext_resource type="Script" path="res://tools/models/model_animator.gd" id="9_art4l"]
+[ext_resource type="Resource" path="res://data/models/aim_arrow.tres" id="10_fjxoa"]
+[ext_resource type="Script" path="res://combat/health.gd" id="11_gswnw"]
+[ext_resource type="Script" path="res://combat/hurtbox.gd" id="12_xcnuv"]
+[ext_resource type="Script" path="res://player/melee_combo.gd" id="13_j55il"]
+[ext_resource type="Script" path="res://tools/models/animation_data.gd" id="14_hjies"]
+[ext_resource type="Resource" path="res://data/animations/nate_hit_1.tres" id="15_mmwog"]
+[ext_resource type="Resource" path="res://data/animations/nate_hit_2.tres" id="16_8pxes"]
+[ext_resource type="Resource" path="res://data/animations/nate_hit_3.tres" id="17_fmu53"]
+[ext_resource type="Script" path="res://player/ranged_shot.gd" id="18_w7j2h"]
+[ext_resource type="Resource" path="res://data/animations/nate_draw.tres" id="19_n0b8q"]
+[ext_resource type="Resource" path="res://data/animations/nate_release.tres" id="20_jfgyi"]
+[ext_resource type="Script" path="res://player/spell_caster.gd" id="21_237xx"]
+[ext_resource type="Resource" path="res://data/animations/nate_cast.tres" id="22_wpyo2"]
+[ext_resource type="Resource" path="res://data/spells/combos.tres" id="23_7crtr"]
+[ext_resource type="Resource" path="res://data/effects/spell_effects.tres" id="24_vgvch"]
+[ext_resource type="Script" path="res://player/flask.gd" id="25_a1u5o"]
+[ext_resource type="Resource" path="res://data/animations/nate_drink.tres" id="26_3dxkp"]
+[ext_resource type="Resource" path="res://data/models/moringa.tres" id="27_6wior"]
+[ext_resource type="Script" path="res://combat/status_effects.gd" id="28_p5tca"]
+[ext_resource type="PackedScene" path="res://combat/status_visuals.tscn" id="29_jbx34"]
+[ext_resource type="Script" path="res://combat/status_visuals.gd" id="30_s3g0c"]
+[ext_resource type="Texture2D" path="res://assets/ui/status/stun.png" id="31_35wys"]
+[ext_resource type="Texture2D" path="res://assets/ui/status/slow.png" id="32_pjwc4"]
+[ext_resource type="Texture2D" path="res://assets/ui/status/poison.png" id="33_or4qq"]
+[ext_resource type="Texture2D" path="res://assets/ui/status/burn.png" id="34_hggc2"]
 
-[sub_resource type="CylinderShape3D" id="CylinderShape3D_dx5ib"]
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_b2j0d"]
 height = 1.8
 radius = 0.3
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_a2xo5"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7l6ig"]
 transparency = 1
 cull_mode = 2
 shading_mode = 0
 albedo_color = Color(1, 1, 1, 0.6)
 
-[node name="Player" type="CharacterBody3D" unique_id=1905385109]
+[node name="Player" type="CharacterBody3D" unique_id=2045110904]
 collision_layer = 2
-collision_mask = 5
+collision_mask = 13
 motion_mode = 1
-script = ExtResource("1_65viv")
-idle_animation = ExtResource("2_x7c3f")
-walk_animation = ExtResource("3_bjvpn")
-roll_animation = ExtResource("4_s7qer")
-hurt_animation = ExtResource("5_g4c7l")
-death_animation = ExtResource("6_knn7v")
+script = ExtResource("1_jd2rm")
+idle_animation = ExtResource("2_q28gw")
+walk_animation = ExtResource("3_ge24q")
+roll_animation = ExtResource("4_pnw6m")
+hurt_animation = ExtResource("5_1so5t")
+death_animation = ExtResource("6_55jnj")
 swing_width = 0.5
+light_color = Color(0.84705883, 1, 0.9098039, 1)
+amulet_glow = 1.5
+awaken_glow = 4.0
+awaken_light = 4.0
+awaken_time = 1.6
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=726416635]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1763825714]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-shape = SubResource("CylinderShape3D_dx5ib")
+shape = SubResource("CylinderShape3D_b2j0d")
 
-[node name="BlockModel" type="Node3D" parent="." unique_id=1498449568]
-script = ExtResource("7_7pqkx")
-model = ExtResource("8_uw77l")
+[node name="BlockModel" type="Node3D" parent="." unique_id=1100180805]
+script = ExtResource("7_dx5ib")
+model = ExtResource("8_a2xo5")
 
-[node name="ModelAnimator" type="Node" parent="BlockModel" unique_id=77925299]
-script = ExtResource("9_rptt4")
-animation = ExtResource("2_x7c3f")
+[node name="ModelAnimator" type="Node" parent="BlockModel" unique_id=1712914910]
+script = ExtResource("9_art4l")
+animation = ExtResource("2_q28gw")
 
-[node name="AimArrow" type="Node3D" parent="." unique_id=1796517649]
-script = ExtResource("7_7pqkx")
-model = ExtResource("10_r7pn3")
+[node name="AimArrow" type="Node3D" parent="." unique_id=1516011361]
+script = ExtResource("7_dx5ib")
+model = ExtResource("10_fjxoa")
 
-[node name="Health" type="Node" parent="." unique_id=161347368]
-script = ExtResource("11_b8hi5")
+[node name="Health" type="Node" parent="." unique_id=451626965]
+script = ExtResource("11_gswnw")
 
-[node name="Hurtbox" type="Node3D" parent="." unique_id=2046987682]
-script = ExtResource("12_2uvqg")
+[node name="Hurtbox" type="Node3D" parent="." unique_id=766624820]
+script = ExtResource("12_xcnuv")
 faction = 0
 
-[node name="MeleeCombo" type="Node" parent="." unique_id=320067412]
-script = ExtResource("13_1s1yo")
-hit_animations = Array[ExtResource("14_5ejfk")]([ExtResource("15_jd2rm"), ExtResource("16_q28gw"), ExtResource("17_ge24q")])
+[node name="MeleeCombo" type="Node" parent="." unique_id=1401237884]
+script = ExtResource("13_j55il")
+hit_animations = Array[ExtResource("14_hjies")]([ExtResource("15_mmwog"), ExtResource("16_8pxes"), ExtResource("17_fmu53")])
 
-[node name="RangedShot" type="Node" parent="." unique_id=869470488]
-script = ExtResource("18_pnw6m")
-draw_animation = ExtResource("19_1so5t")
-release_animation = ExtResource("20_55jnj")
+[node name="RangedShot" type="Node" parent="." unique_id=1317274422]
+script = ExtResource("18_w7j2h")
+draw_animation = ExtResource("19_n0b8q")
+release_animation = ExtResource("20_jfgyi")
 
-[node name="Swing" type="MeshInstance3D" parent="." unique_id=848460874]
+[node name="SpellCaster" type="Node" parent="." unique_id=21716518]
+script = ExtResource("21_237xx")
+cast_animation = ExtResource("22_wpyo2")
+combos = ExtResource("23_7crtr")
+combo_window = 0.1
+projectile_glow = 1.5
+effect_look = ExtResource("24_vgvch")
+
+[node name="Flask" type="Node" parent="." unique_id=1106169540]
+script = ExtResource("25_a1u5o")
+drink_animation = ExtResource("26_3dxkp")
+model = ExtResource("27_6wior")
+
+[node name="StatusEffects" type="Node" parent="." unique_id=1259443021]
+script = ExtResource("28_p5tca")
+stun_proof = true
+
+[node name="StatusVisuals" type="Node3D" parent="." unique_id=1214121785 node_paths=PackedStringArray("status") instance=ExtResource("29_jbx34")]
+script = ExtResource("30_s3g0c")
+icons = Array[Texture2D]([ExtResource("31_35wys"), ExtResource("32_pjwc4"), ExtResource("33_or4qq"), ExtResource("34_hggc2")])
+icon_size = 0.3
+icon_lift = 0.65
+status = NodePath("../StatusEffects")
+
+[node name="AncestralLight" type="OmniLight3D" parent="." unique_id=1978311041]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4, 0)
+visible = false
+shadow_enabled = true
+
+[node name="Swing" type="MeshInstance3D" parent="." unique_id=761616215]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0)
-material_override = SubResource("StandardMaterial3D_a2xo5")
+material_override = SubResource("StandardMaterial3D_7l6ig")
 cast_shadow = 0

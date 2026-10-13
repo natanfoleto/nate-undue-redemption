@@ -99,12 +99,29 @@ func get_part(part_name: StringName) -> Node3D:
 	return _parts.get(part_name)
 
 
-## Brilho branco do aviso de golpe comum (10-arte-audio), de 0 (nenhum) a 1.
-func set_glow(strength: float) -> void:
+## Brilho branco do aviso de golpe comum (10-arte-audio), de 0 (nenhum) a 1. Outra cor serve para o que
+## brilha sozinho (a Bola de Fogo, a praga).
+func set_glow(strength: float, color := Color.WHITE) -> void:
 	if _material == null:
 		return
+	_material.emission = color
 	_material.emission_enabled = strength > 0.0
 	_material.emission_energy_multiplier = strength
+
+
+## Brilho próprio de uma parte, na cor dada (o muiraquitã aceso), de 0 (nenhum) a 1 ou mais.
+func set_part_glow(part_name: StringName, color: Color, strength: float) -> void:
+	var part := _parts.get(part_name) as MeshInstance3D
+	if part == null or _material == null:
+		return
+	if strength <= 0.0:
+		part.material_override = _material
+		return
+	var material := _material.duplicate() as StandardMaterial3D
+	material.emission_enabled = true
+	material.emission = color
+	material.emission_energy_multiplier = strength
+	part.material_override = material
 
 
 ## Põe as partes na pose: o giro e o deslocamento contam a partir do repouso.

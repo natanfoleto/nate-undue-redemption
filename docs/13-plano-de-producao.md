@@ -1,6 +1,6 @@
 # Plano de produção
 
-Como construir o jogo a partir da documentação. São etapas curtas, e cada uma termina com algo jogável. As etapas 0 a 4 estão detalhadas; as seguintes estão em linhas gerais e ganham detalhe quando chegar a vez delas.
+Como construir o jogo a partir da documentação. São etapas curtas, e cada uma termina com algo jogável. As etapas 0 a 5 estão detalhadas; as seguintes estão em linhas gerais e ganham detalhe quando chegar a vez delas.
 
 ## Princípios
 - **Jogável cedo:** toda etapa termina com algo que dá para jogar e testar.
@@ -75,8 +75,22 @@ Concluída em 2026-10-12, menos o teste com alguém que nunca jogou, que fica co
 
 Feita em 2026-10-12, menos a arte e o som definitivos, que esperam decisões do responsável. O rascunho do mapa está no `08-mapa.md`, e o enquadramento de 14 blocos continua até ser conferido jogando. Junto vieram o menu principal (Continuar, Novo jogo e Sair) e a pausa (Continuar e Voltar ao menu principal); as outras opções dos menus ficam para o acabamento.
 
-## Etapas 5 a 8, em linhas gerais
-- **5. Bosque de Fungos:** santuários, frasco, memórias 1 e 2, viagem rápida, pergaminhos de Fogo e Água, Luz Ancestral e áreas escuras, magias e combinações, Necromante, cogumelos de esporos, inventário, arenas, atalhos e os segredos do Bosque.
+## Etapa 5: Bosque de Fungos
+- Efeitos de status (atordoado, lento, veneno e queimadura), com partículas, ícones sobre os mobs e ao lado dos corações, cobertos por teste.
+- Frasco: 3 cargas, 2 corações por carga, 0,6 s para beber; ganho no S1; recarrega no descanso e na volta depois de morrer.
+- Santuários S1 e S2: acendem na primeira visita, mostram a memória (1 e 2) e abrem o menu com Descansar e Viajar.
+- Troca de área com a tela escurecendo: o elevador da Mina desce até o Bosque e quebra na chegada; consertado, vira atalho. A morte com o último santuário em outra área leva até ele.
+- Pergaminhos de Fogo e Água: o rolo abre na tela; o primeiro acorda o muiraquitã, que dá a Luz Ancestral nas áreas escuras.
+- Magias: Bola de Fogo, Onda Cortante e a combinação Vapor, com as recargas no HUD.
+- Necromante e Necromante Ancião (praga com veneno, invocação de esqueletos, recuo); Esqueleto Veterano (2 golpes seguidos).
+- Cogumelos de esporos, dinossauros do Bosque e cogumelos gigantes que brilham.
+- Inventário (Tab): os 5 espaços, os itens de cada categoria e a comparação com o equipado.
+- Itens do Bosque: Lança, Zarabatana e Azagaia marajoara, Manto de fibras e o +1 coração; na Mina, o +1 coração do canto escuro.
+- Rascunho do mapa do Bosque, com as 2 arenas, a arena opcional, a porta que só abre por um lado e a passagem escura.
+
+Feita em 2026-10-12, menos a arte e o som definitivos e o teste com controle, como na etapa 4. As memórias são cenas curtas provisórias, feitas no motor; os murais 2 e 3 têm o lugar no mapa e ganham a tela e a galeria na etapa 6. A passagem escura termina a parte jogável até as Ruínas existirem. Junto vieram as correções da revisão da etapa 4: a arena vencida reabre os portões ao carregar o jogo, as barreiras (camada 4) seguram Nate e os mobs, os corações da armadura chegam vazios, a dica de um item já pego volta se ainda não foi usada, o título da confirmação de "Novo jogo" passa pela tabela de textos e o tempo de jogo passa a contar.
+
+## Etapas 6 a 8, em linhas gerais
 - **6. Ruínas:** Golem e as variantes, pergaminhos de Terra e Ar, paredes rachadas (também as das áreas anteriores), lanças do chão, ponte de alavanca, murais e galeria, memória 3 e a sala do Selo.
 - **7. Grande Prisão:** antessala com a memória 4, a Boiúna com as duas fases e os pilares, a cena da troca de fase, o final, os créditos, o resumo e o pós-jogo.
 - **8. Acabamento:** abertura, menus e opções (trocar botões e acessibilidade), mapa por área e tela de progresso, música, testes com jogadores de fora para conferir os 30 min, ajustes no `11-balanceamento.md` e exportação para Windows e macOS.

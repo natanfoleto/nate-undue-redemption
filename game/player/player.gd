@@ -1,7 +1,7 @@
 class_name Player
 extends CharacterBody3D
 ## Nate (04-player): anda, olha para onde anda, mira, rola, luta e leva golpes. Os números vêm do Balance.
-## O combo e o tiro ficam nos componentes filhos MeleeCombo e RangedShot.
+## O combo, o tiro, as magias e o frasco ficam nos componentes filhos MeleeCombo, RangedShot, SpellCaster e Flask.
 
 @export var idle_animation: AnimationData
 @export var walk_animation: AnimationData
@@ -14,6 +14,14 @@ extends CharacterBody3D
 @export var ranged_weapon: RangedWeaponData
 ## Largura do arco do rastro do golpe, em blocos, a partir da borda do alcance.
 @export var swing_width := 0.0
+## Cor do muiraquitã aceso e da Luz Ancestral (10-arte-audio).
+@export var light_color := Color.WHITE
+## Força do brilho do muiraquitã aceso.
+@export var amulet_glow := 0.0
+## O muiraquitã acordando: brilho e luz a mais no auge do pulso, e a duração, em segundos.
+@export var awaken_glow := 0.0
+@export var awaken_light := 0.0
+@export var awaken_time := 0.0
 
 ## Direção da mira no chão, de tamanho 1. Os ataques vão nessa direção, puxados pela ajuda de mira.
 var aim_direction := Vector3.FORWARD
@@ -34,9 +42,13 @@ var _melee_model: BlockModel
 var _ranged_model: BlockModel
 var _armor: ArmorData
 var _armor_model: BlockModel
+var _flask_model: BlockModel
 var _cinematic := false
 
 @onready var health: Health = $Health
+@onready var status: StatusEffects = $StatusEffects
+@onready var spells: SpellCaster = $SpellCaster
+@onready var flask: Flask = $Flask
 @onready var _model: BlockModel = $BlockModel
 @onready var _animator: ModelAnimator = $BlockModel/ModelAnimator
 @onready var _aim_arrow: Node3D = $AimArrow
@@ -44,6 +56,7 @@ var _cinematic := false
 @onready var _melee: MeleeCombo = $MeleeCombo
 @onready var _ranged: RangedShot = $RangedShot
 @onready var _swing: MeshInstance3D = $Swing
+@onready var _light: OmniLight3D = $AncestralLight
 
 
 func _ready() -> void:
@@ -53,7 +66,15 @@ func _ready() -> void:
 	_hurtbox.radius = Balance.player.hurt_radius
 	_equip()
 	health.reset(max_hearts())
+	flask.refill()
+	($StatusVisuals as StatusVisuals).fit(_model.height())
+	_light.omni_range = Balance.player.light_radius
+	_light.light_color = light_color
+	_light.visible = false
+	_show_amulet()
 	GameState.equipment_changed.connect(_on_equipment_changed)
+	GameState.upgrades_changed.connect(_on_upgrades_changed)
+	GameState.elements_changed.connect(_show_amulet)
 
 
 func _physics_process(delta: float) -> void:
@@ -76,12 +97,14 @@ func _physics_process(delta: float) -> void:
 		_read_actions(move)
 	var step := _melee.update(delta)
 	_ranged.update(delta)
+	spells.update(delta)
+	flask.update(delta)
 	if is_rolling():
 		_update_roll(delta)
 	elif _melee.is_busy():
 		velocity = step
 	elif in_control:
-		_walk(move * (Balance.player.drawing_speed_share if _ranged.is_drawing() else 1.0), delta)
+		_walk(move * _speed_share(), delta)
 	else:
 		velocity = Vector3.ZERO
 	if _push_left > 0.0:
@@ -92,20 +115,35 @@ func _physics_process(delta: float) -> void:
 	_update_aim(move)
 	_update_animation()
 	_update_blink()
+	_update_light()
 
 
 func is_rolling() -> bool:
 	return _roll_time_left > 0.0
 
 
-## Corações máximos: os de Nate mais os da armadura (05-itens).
+## Corações máximos: os de Nate, os das melhorias e os da armadura (05-itens).
 func max_hearts() -> int:
-	return Balance.player.max_hearts + (_armor.extra_hearts if _armor else 0)
+	return Balance.player.max_hearts + GameState.upgrade_count(GameState.HEART_UPGRADE) + (_armor.extra_hearts if _armor else 0)
 
 
-## Velocidade de andar: a armadura pesada deixa Nate mais lento (11-balanceamento).
+## Velocidade de andar: a armadura pesada e a lentidão deixam Nate mais lento (11-balanceamento).
 func move_speed() -> float:
-	return _armor.move_speed if _armor else Balance.player.move_speed
+	return (_armor.move_speed if _armor else Balance.player.move_speed) * status.speed_share()
+
+
+# Puxando o tiro ou bebendo do frasco, Nate anda mais devagar (04-player).
+func _speed_share() -> float:
+	if _ranged.is_drawing():
+		return Balance.player.drawing_speed_share
+	if flask.is_drinking():
+		return Balance.player.flask_speed_share
+	return 1.0
+
+
+## Com a Água equipada, os efeitos em Nate duram menos (05-itens).
+static func status_duration_share() -> float:
+	return Balance.status.water_duration_share if GameState.has_element_equipped(&"water") else 1.0
 
 
 ## Novo ponto de retorno (02-core-loop): para onde Nate volta ao morrer.
@@ -115,16 +153,40 @@ func set_spawn(where: Vector3, spawn_facing: Vector3) -> void:
 	facing = spawn_facing
 
 
-## Durante uma cena (a descida do elevador), Nate não responde aos botões.
+## Durante uma cena (a descida do elevador, o santuário), Nate não responde aos botões.
 func set_cinematic(on: bool) -> void:
 	_cinematic = on
 	_melee.cancel()
 	_ranged.cancel()
 	_aim_arrow.visible = not on
+	if on:
+		velocity = Vector3.ZERO
+		_animator.play(idle_animation)
+
+
+## Descanso no santuário (02-core-loop): vida e frasco cheios, sem efeitos.
+func rest() -> void:
+	health.reset(max_hearts())
+	flask.refill()
+	status.clear()
+
+
+## Cura do frasco, em corações inteiros.
+func heal(hearts: int) -> void:
+	health.heal(hearts)
 
 
 func is_dead() -> bool:
 	return _dead
+
+
+func is_cinematic() -> bool:
+	return _cinematic
+
+
+## Puxando o tiro.
+func is_drawing() -> bool:
+	return _ranged.is_drawing()
 
 
 ## Rolando ou logo depois de levar golpe, nada fere Nate (03-regras).
@@ -159,10 +221,19 @@ func take_hit(hit: Hit) -> void:
 	if health.is_dead():
 		_die()
 		return
+	if hit.effect >= 0:
+		status.apply(hit.effect, hit.effect_duration, status_duration_share())
 	_push(hit.direction, Balance.combat.knockback_distance(hit.knockback))
 	_control_left = Balance.player.hit_stun
 	_hurt_invincible_left = Balance.player.hit_invincibility
 	play_animation(hurt_animation, 1.0)
+
+
+## Dano do veneno (03-regras): em corações, mas nunca tira o último.
+func take_status_damage(hearts: int, _points: int) -> void:
+	if _dead:
+		return
+	health.damage(mini(hearts, health.value - 1))
 
 
 ## De onde sai o tiro: o centro de Nate, na altura da mão que segura a baladeira, para o projétil voar
@@ -207,6 +278,8 @@ func set_ranged_glow(on: bool) -> void:
 func _read_actions(move: Vector3) -> void:
 	# A esquiva cancela a recuperação dos golpes e o tiro (04-player).
 	var can_dodge := not is_rolling() and (not _melee.is_busy() or _melee.in_recovery())
+	if flask.is_drinking():
+		return
 	if Input.is_action_just_pressed(&"dodge") and can_dodge and is_zero_approx(_roll_cooldown_left):
 		_melee.cancel()
 		_ranged.cancel()
@@ -221,7 +294,16 @@ func _read_actions(move: Vector3) -> void:
 	# Pelo estado do botão, e não pelo quadro em que foi solto: com o jogo pausado, esse quadro não roda.
 	if _ranged.is_drawing() and not Input.is_action_pressed(&"ranged_attack"):
 		_ranged.release()
-	if Input.is_action_just_pressed(&"interact") and not _melee.is_busy() and not _ranged.is_busy():
+	var hands_free := not _melee.is_busy() and not _ranged.is_busy()
+	if hands_free and GameState.learned_elements().size() > 0:
+		if Input.is_action_just_pressed(&"spell_1"):
+			spells.press(0)
+		if Input.is_action_just_pressed(&"spell_2"):
+			spells.press(1)
+	if Input.is_action_just_pressed(&"flask") and hands_free:
+		flask.press()
+		return
+	if Input.is_action_just_pressed(&"interact") and hands_free:
 		var target := _nearest_interactable()
 		if target:
 			target.interact()
@@ -261,7 +343,7 @@ func _update_roll(delta: float) -> void:
 	_roll_time_left -= step
 	if _roll_time_left <= 0.0:
 		_roll_time_left = 0.0
-		_roll_cooldown_left = stats.roll_cooldown
+		_roll_cooldown_left = _armor.roll_cooldown if _armor and _armor.roll_cooldown > 0.0 else stats.roll_cooldown
 
 
 func _push(direction: Vector3, distance: float) -> void:
@@ -324,11 +406,17 @@ func _die() -> void:
 	_dead = true
 	_melee.cancel()
 	_ranged.cancel()
+	flask.cancel()
 	_aim_arrow.visible = false
 	_model.visible = true
 	play_animation(death_animation, 1.0)
 	Events.player_died.emit()
 	await get_tree().create_timer(Balance.player.death_time, false).timeout
+	# O último santuário pode ficar em outra área (depois de subir pelo elevador).
+	var area := GameState.respawn_area()
+	if area != "" and area != get_tree().current_scene.scene_file_path:
+		GameState.change_area(area, &"")
+		return
 	_respawn()
 
 
@@ -343,7 +431,10 @@ func _respawn() -> void:
 	_roll_time_left = 0.0
 	_roll_cooldown_left = 0.0
 	_dead = false
+	status.clear()
+	spells.reset()
 	health.reset(max_hearts())
+	flask.refill()
 	_aim_arrow.visible = true
 	play_animation(idle_animation, 1.0)
 	Events.player_respawned.emit()
@@ -352,6 +443,52 @@ func _respawn() -> void:
 func _on_equipment_changed() -> void:
 	_equip()
 	health.set_max(max_hearts())
+
+
+# O coração e a carga novos chegam cheios (05-itens).
+func _on_upgrades_changed() -> void:
+	health.set_max(max_hearts(), true)
+	flask.refill_new()
+
+
+## Mostra a moringa na mão enquanto Nate bebe.
+func show_flask(on: bool) -> void:
+	if _flask_model:
+		_flask_model.visible = on
+	if on and _ranged_model:
+		_ranged_model.visible = false
+
+
+## O muiraquitã acordando (05-itens): um pulso de luz em volta de Nate, e depois ele fica aceso.
+func awaken_amulet() -> void:
+	_light.visible = true
+	var tween := create_tween()
+	tween.tween_method(_pulse_amulet, 0.0, 1.0, awaken_time / 2.0)
+	tween.tween_method(_pulse_amulet, 1.0, 0.0, awaken_time / 2.0)
+	await tween.finished
+	_light.light_energy = 1.0
+	_show_amulet()
+
+
+func _pulse_amulet(weight: float) -> void:
+	_model.set_part_glow(&"muiraquita", light_color, amulet_glow + weight * awaken_glow)
+	_light.light_energy = weight * awaken_light
+
+
+# O muiraquitã acorda no primeiro pergaminho e passa a brilhar (05-itens).
+func _show_amulet() -> void:
+	_model.set_part_glow(&"muiraquita", light_color, amulet_glow if GameState.has_light() else 0.0)
+
+
+# A Luz Ancestral acende sozinha nas áreas escuras (05-itens).
+func _update_light() -> void:
+	var dark := false
+	if GameState.has_light():
+		for area: DarkArea in get_tree().get_nodes_in_group(&"dark_areas"):
+			if area.contains(global_position):
+				dark = true
+				break
+	_light.visible = dark
 
 
 # Prende as armas nas mãos e a armadura no corpo, e prepara o rastro do golpe com o tamanho da arma.
@@ -363,7 +500,7 @@ func _equip() -> void:
 		melee = GameState.equipped(GameState.MELEE) as MeleeWeaponData
 		ranged = GameState.equipped(GameState.RANGED) as RangedWeaponData
 		_armor = GameState.equipped(GameState.ARMOR) as ArmorData
-	for model in [_melee_model, _ranged_model, _armor_model]:
+	for model in [_melee_model, _ranged_model, _armor_model, _flask_model]:
 		if is_instance_valid(model):
 			model.queue_free()
 	_melee.weapon = melee
@@ -376,6 +513,8 @@ func _equip() -> void:
 		show_ranged_weapon(false)
 	if _armor:
 		_armor_model = _attach(_armor.model, &"body")
+	_flask_model = _attach(flask.model, &"hand_l")
+	show_flask(false)
 	_swing.visible = false
 
 

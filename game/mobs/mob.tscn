@@ -1,45 +1,63 @@
 [gd_scene format=3]
 
-[ext_resource type="Script" path="res://mobs/mob.gd" id="1_fbdti"]
-[ext_resource type="Script" path="res://tools/models/block_model.gd" id="2_m7rfr"]
-[ext_resource type="Script" path="res://tools/models/model_animator.gd" id="3_caukr"]
-[ext_resource type="Script" path="res://combat/hurtbox.gd" id="4_bh0fw"]
-[ext_resource type="Script" path="res://combat/health.gd" id="5_4qlem"]
-[ext_resource type="Script" path="res://combat/warning_marker.gd" id="6_f70jn"]
-[ext_resource type="Script" path="res://combat/health_bar_3d.gd" id="7_1a7i1"]
+[ext_resource type="Script" path="res://mobs/mob.gd" id="1_dh1gf"]
+[ext_resource type="Script" path="res://tools/models/block_model.gd" id="2_0scjv"]
+[ext_resource type="Script" path="res://tools/models/model_animator.gd" id="3_1hpph"]
+[ext_resource type="Script" path="res://combat/hurtbox.gd" id="4_ioj85"]
+[ext_resource type="Script" path="res://combat/health.gd" id="5_ytv2t"]
+[ext_resource type="Script" path="res://combat/warning_marker.gd" id="6_8xr2h"]
+[ext_resource type="Script" path="res://combat/health_bar_3d.gd" id="7_rvvv5"]
+[ext_resource type="Script" path="res://combat/status_effects.gd" id="8_ugat2"]
+[ext_resource type="PackedScene" path="res://combat/status_visuals.tscn" id="9_lk7nx"]
+[ext_resource type="Script" path="res://combat/status_visuals.gd" id="10_6u5om"]
+[ext_resource type="Texture2D" path="res://assets/ui/status/stun.png" id="11_nejl3"]
+[ext_resource type="Texture2D" path="res://assets/ui/status/slow.png" id="12_qf7f8"]
+[ext_resource type="Texture2D" path="res://assets/ui/status/poison.png" id="13_r04vm"]
+[ext_resource type="Texture2D" path="res://assets/ui/status/burn.png" id="14_wpmjk"]
 
-[sub_resource type="CylinderShape3D" id="CylinderShape3D_dh1gf"]
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_n58ak"]
 height = 0.9
 radius = 0.35
 
-[node name="Mob" type="CharacterBody3D" unique_id=1644499771]
+[node name="Mob" type="CharacterBody3D" unique_id=1405957473]
 collision_layer = 4
-collision_mask = 7
+collision_mask = 15
 motion_mode = 1
-script = ExtResource("1_fbdti")
+script = ExtResource("1_dh1gf")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=404767670]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=122574017]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.55, 0)
-shape = SubResource("CylinderShape3D_dh1gf")
+shape = SubResource("CylinderShape3D_n58ak")
 
-[node name="BlockModel" type="Node3D" parent="." unique_id=176435738]
-script = ExtResource("2_m7rfr")
+[node name="BlockModel" type="Node3D" parent="." unique_id=172975905]
+script = ExtResource("2_0scjv")
 
-[node name="ModelAnimator" type="Node" parent="BlockModel" unique_id=1795339833]
-script = ExtResource("3_caukr")
+[node name="ModelAnimator" type="Node" parent="BlockModel" unique_id=254354751]
+script = ExtResource("3_1hpph")
 
-[node name="Hurtbox" type="Node3D" parent="." unique_id=2029630429]
-script = ExtResource("4_bh0fw")
+[node name="Hurtbox" type="Node3D" parent="." unique_id=409494116]
+script = ExtResource("4_ioj85")
 
-[node name="Health" type="Node" parent="." unique_id=1405816887]
-script = ExtResource("5_4qlem")
+[node name="Health" type="Node" parent="." unique_id=844121030]
+script = ExtResource("5_ytv2t")
 
-[node name="WarningMarker" type="MeshInstance3D" parent="." unique_id=1380550520]
-script = ExtResource("6_f70jn")
+[node name="WarningMarker" type="MeshInstance3D" parent="." unique_id=384014407]
+script = ExtResource("6_8xr2h")
 
-[node name="HealthBar" type="Node3D" parent="." unique_id=1250574402]
-script = ExtResource("7_1a7i1")
+[node name="HealthBar" type="Node3D" parent="." unique_id=883788954]
+script = ExtResource("7_rvvv5")
 size = Vector2(0.8, 0.1)
 lift = 0.3
 back_color = Color(0.101960786, 0.101960786, 0.101960786, 1)
 fill_color = Color(0.84705883, 0.2509804, 0.2509804, 1)
+
+[node name="StatusEffects" type="Node" parent="." unique_id=792123056]
+script = ExtResource("8_ugat2")
+
+[node name="StatusVisuals" type="Node3D" parent="." unique_id=1214121785 node_paths=PackedStringArray("status") instance=ExtResource("9_lk7nx")]
+script = ExtResource("10_6u5om")
+icons = Array[Texture2D]([ExtResource("11_nejl3"), ExtResource("12_qf7f8"), ExtResource("13_r04vm"), ExtResource("14_wpmjk")])
+show_icons = true
+icon_size = 0.3
+icon_lift = 0.65
+status = NodePath("../StatusEffects")

@@ -6,15 +6,15 @@
 [ext_resource type="Resource" path="res://data/models/falling_rock.tres" id="4_dn0sm"]
 [ext_resource type="Script" path="res://combat/warning_marker.gd" id="5_4l7je"]
 
-[node name="FallingRock" type="Node3D" unique_id=39943844]
+[node name="FallingRock" type="Node3D" unique_id=354783211]
 script = ExtResource("1_au4ih")
 attack = ExtResource("2_2ai4d")
 fall_height = 3.0
 fall_time = 0.25
 
-[node name="Rock" type="Node3D" parent="." unique_id=1989721262]
+[node name="Rock" type="Node3D" parent="." unique_id=991594616]
 script = ExtResource("3_8vhae")
 model = ExtResource("4_dn0sm")
 
-[node name="WarningMarker" type="MeshInstance3D" parent="." unique_id=489585390]
+[node name="WarningMarker" type="MeshInstance3D" parent="." unique_id=1688506605]
 script = ExtResource("5_4l7je")

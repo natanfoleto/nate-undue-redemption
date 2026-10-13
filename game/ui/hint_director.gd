@@ -18,6 +18,10 @@ var _interact_shown := false
 func _ready() -> void:
 	for hint in start_hints:
 		_show(hint)
+	# A dica de um item que Nate já tem volta enquanto não for usada (o jogo pode ter fechado antes).
+	for item_id in item_hints:
+		if SaveSystem.has_record(SaveSystem.ITEMS, item_id) or SaveSystem.has_record(SaveSystem.ELEMENTS, item_id):
+			_show(item_hints[item_id])
 	Events.item_picked.connect(_on_item_picked)
 
 
@@ -46,6 +50,7 @@ func _show(hint: HintData) -> void:
 	var button_hint := hint_scene.instantiate() as ButtonHint
 	button_hint.actions = hint.actions
 	button_hint.text_key = hint.text_key
+	button_hint.together = hint.together
 	button_hint.used.connect(_on_used)
 	hints.add_hint(button_hint)
 

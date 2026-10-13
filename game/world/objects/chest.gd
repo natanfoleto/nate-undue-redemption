@@ -20,9 +20,10 @@ func can_interact() -> bool:
 
 func interact() -> void:
 	_open = true
+	# O item primeiro: se o jogo cair entre as duas gravações, o baú ainda abre de novo.
+	GameState.pick_up(item_id, item_slot)
 	_mark_done()
 	create_tween().tween_property(_lid, ^"rotation_degrees:x", open_angle, open_time)
-	GameState.pick_up(item_id, item_slot)
 	ItemFound.show_found(self, item_id)
 
 

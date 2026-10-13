@@ -1,0 +1,25 @@
+[gd_resource type="Resource" script_class="ModelData" format=3]
+
+[ext_resource type="Script" path="res://tools/models/box_data.gd" id="1_rlp4u"]
+[ext_resource type="Script" path="res://tools/models/model_data.gd" id="2_x2ypu"]
+
+[sub_resource type="Resource" id="Resource_561w6"]
+resource_name = "shell"
+script = ExtResource("1_rlp4u")
+name = &"shell"
+size = Vector3i(5, 5, 5)
+position = Vector3(-2.5, -2.5, -2.5)
+color = Color(1, 0.47843137, 0.101960786, 1)
+
+[sub_resource type="Resource" id="Resource_i5v57"]
+resource_name = "tip"
+script = ExtResource("1_rlp4u")
+name = &"tip"
+size = Vector3i(3, 3, 3)
+position = Vector3(-1.5, -1.5, -4.5)
+texture_offset = Vector2i(0, 10)
+color = Color(1, 0.8156863, 0.2509804, 1)
+
+[resource]
+script = ExtResource("2_x2ypu")
+boxes = Array[ExtResource("1_rlp4u")]([SubResource("Resource_561w6"), SubResource("Resource_i5v57")])

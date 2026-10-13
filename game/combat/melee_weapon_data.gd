@@ -1,10 +1,8 @@
 class_name MeleeWeaponData
-extends Resource
+extends ItemData
 ## Arma corpo a corpo (05-itens): o combo de 3 golpes com os números do 11-balanceamento.
 ## O tempo de cada golpe se divide em preparação, tempo ativo e recuperação pela regra de combate.
 
-## Chave do nome na tabela de tradução.
-@export var name_key: StringName
 ## Dano do 1º e do 2º golpe, em pontos.
 @export var damage := 0
 ## Dano do 3º golpe, em pontos.
@@ -14,8 +12,8 @@ extends Resource
 ## Alcance, em blocos, e abertura do setor, em graus.
 @export var reach := 0.0
 @export var angle := 0.0
-## Modelo da arma na mão de Nate.
-@export var model: ModelData
+## Chance de crítico a mais, de 0 a 1 (Lança marajoara).
+@export var critical_bonus := 0.0
 
 
 ## O golpe [param index] do combo (0, 1 ou 2).

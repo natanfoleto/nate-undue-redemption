@@ -1,0 +1,43 @@
+[gd_resource type="Resource" script_class="ModelData" format=3]
+
+[ext_resource type="Script" path="res://tools/models/box_data.gd" id="1_iiokm"]
+[ext_resource type="Script" path="res://tools/models/model_data.gd" id="2_2uy0i"]
+
+[sub_resource type="Resource" id="Resource_1knl8"]
+resource_name = "pillar_r"
+script = ExtResource("1_iiokm")
+name = &"pillar_r"
+size = Vector3i(4, 40, 6)
+position = Vector3(16, 0, -3)
+color = Color(0.3529412, 0.33333334, 0.3137255, 1)
+
+[sub_resource type="Resource" id="Resource_ipqqp"]
+resource_name = "pillar_l"
+script = ExtResource("1_iiokm")
+name = &"pillar_l"
+size = Vector3i(4, 40, 6)
+position = Vector3(-20, 0, -3)
+texture_offset = Vector2i(0, 46)
+color = Color(0.3529412, 0.33333334, 0.3137255, 1)
+
+[sub_resource type="Resource" id="Resource_762of"]
+resource_name = "lintel"
+script = ExtResource("1_iiokm")
+name = &"lintel"
+size = Vector3i(40, 4, 6)
+position = Vector3(-20, 36, -3)
+texture_offset = Vector2i(0, 92)
+color = Color(0.3529412, 0.33333334, 0.3137255, 1)
+
+[sub_resource type="Resource" id="Resource_quh3u"]
+resource_name = "pattern"
+script = ExtResource("1_iiokm")
+name = &"pattern"
+size = Vector3i(32, 1, 1)
+position = Vector3(-16, 37, -4)
+texture_offset = Vector2i(0, 102)
+color = Color(0.70980394, 0.2509804, 0.16470589, 1)
+
+[resource]
+script = ExtResource("2_2uy0i")
+boxes = Array[ExtResource("1_iiokm")]([SubResource("Resource_1knl8"), SubResource("Resource_ipqqp"), SubResource("Resource_762of"), SubResource("Resource_quh3u")])

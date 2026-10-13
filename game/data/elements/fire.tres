@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="ElementData" format=3]
+
+[ext_resource type="Texture2D" path="res://assets/ui/scrolls/fire.png" id="1_uujx7"]
+[ext_resource type="Texture2D" path="res://assets/ui/elements/fire.png" id="2_n3gww"]
+[ext_resource type="Script" path="res://combat/element_data.gd" id="3_g8x2m"]
+[ext_resource type="Resource" path="res://data/spells/fireball.tres" id="4_al8vx"]
+
+[resource]
+script = ExtResource("3_g8x2m")
+name_key = &"ELEMENT_FIRE"
+icon = ExtResource("2_n3gww")
+drawing = ExtResource("1_uujx7")
+spell = ExtResource("4_al8vx")

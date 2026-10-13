@@ -1,0 +1,34 @@
+[gd_resource type="Resource" script_class="ModelData" format=3]
+
+[ext_resource type="Script" path="res://tools/models/box_data.gd" id="1_lefs6"]
+[ext_resource type="Script" path="res://tools/models/model_data.gd" id="2_bb6sh"]
+
+[sub_resource type="Resource" id="Resource_qx3bp"]
+resource_name = "shaft"
+script = ExtResource("1_lefs6")
+name = &"shaft"
+size = Vector3i(1, 1, 18)
+position = Vector3(-0.5, -0.5, -12)
+color = Color(0.65882355, 0.47843137, 0.25882354, 1)
+
+[sub_resource type="Resource" id="Resource_ldo4s"]
+resource_name = "head"
+script = ExtResource("1_lefs6")
+name = &"head"
+size = Vector3i(3, 1, 4)
+position = Vector3(-1.5, -0.5, -16)
+texture_offset = Vector2i(0, 19)
+color = Color(0.56078434, 0.654902, 0.6039216, 1)
+
+[sub_resource type="Resource" id="Resource_wxkod"]
+resource_name = "band"
+script = ExtResource("1_lefs6")
+name = &"band"
+size = Vector3i(2, 2, 1)
+position = Vector3(-1, -1, -2)
+texture_offset = Vector2i(0, 24)
+color = Color(0.70980394, 0.2509804, 0.16470589, 1)
+
+[resource]
+script = ExtResource("2_bb6sh")
+boxes = Array[ExtResource("1_lefs6")]([SubResource("Resource_qx3bp"), SubResource("Resource_ldo4s"), SubResource("Resource_wxkod")])

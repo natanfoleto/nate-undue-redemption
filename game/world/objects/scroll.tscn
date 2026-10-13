@@ -1,0 +1,26 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://world/objects/scroll.gd" id="1_dqhn3"]
+[ext_resource type="Script" path="res://tools/models/block_model.gd" id="2_n368x"]
+[ext_resource type="Resource" path="res://data/models/scroll.tres" id="3_j0qvj"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_56q47"]
+size = Vector3(0.8, 1, 0.8)
+
+[node name="Scroll" type="StaticBody3D" unique_id=731417281]
+script = ExtResource("1_dqhn3")
+reach = 1.5
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=446581490]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+shape = SubResource("BoxShape3D_56q47")
+
+[node name="Model" type="Node3D" parent="." unique_id=31286640]
+script = ExtResource("2_n368x")
+model = ExtResource("3_j0qvj")
+
+[node name="Light" type="OmniLight3D" parent="." unique_id=1886567293]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+light_color = Color(1, 0.9098039, 0.6901961, 1)
+light_energy = 0.8
+omni_range = 4.0

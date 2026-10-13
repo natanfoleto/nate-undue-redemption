@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="MeleeWeaponData" format=3]
+
+[ext_resource type="Texture2D" path="res://assets/ui/items/spear.png" id="1_wg25x"]
+[ext_resource type="Resource" path="res://data/models/spear.tres" id="2_xbwta"]
+[ext_resource type="Script" path="res://combat/melee_weapon_data.gd" id="3_7q4im"]
+
+[resource]
+script = ExtResource("3_7q4im")
+damage = 10
+damage_third = 15
+time_per_hit = 0.5
+reach = 3.0
+angle = 30.0
+critical_bonus = 0.15
+name_key = &"ITEM_SPEAR"
+icon = ExtResource("1_wg25x")
+marajoara = true
+model = ExtResource("2_xbwta")

@@ -1,0 +1,26 @@
+[gd_resource type="Resource" script_class="AnimationData" format=3]
+
+[ext_resource type="Script" path="res://tools/models/pose_data.gd" id="1_yy35n"]
+[ext_resource type="Script" path="res://tools/models/animation_data.gd" id="2_igrod"]
+
+[sub_resource type="Resource" id="Resource_m3q8k"]
+script = ExtResource("1_yy35n")
+
+[sub_resource type="Resource" id="Resource_bjs2b"]
+script = ExtResource("1_yy35n")
+time = 0.1
+rotations = Dictionary[StringName, Vector3]({
+&"arm_l": Vector3(-20, 0, -15),
+&"arm_r": Vector3(-20, 0, 15),
+&"body": Vector3(14, 0, 0),
+&"hood": Vector3(12, 0, 0)
+})
+
+[sub_resource type="Resource" id="Resource_xyb4j"]
+script = ExtResource("1_yy35n")
+time = 0.4
+
+[resource]
+script = ExtResource("2_igrod")
+length = 0.4
+poses = Array[ExtResource("1_yy35n")]([SubResource("Resource_m3q8k"), SubResource("Resource_bjs2b"), SubResource("Resource_xyb4j")])

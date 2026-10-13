@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="ArmorData" format=3]
+
+[ext_resource type="Texture2D" path="res://assets/ui/items/fiber_cloak.png" id="1_k57wl"]
+[ext_resource type="Resource" path="res://data/models/fiber_cloak.tres" id="2_jx2wm"]
+[ext_resource type="Script" path="res://combat/armor_data.gd" id="3_2vjt8"]
+
+[resource]
+script = ExtResource("3_2vjt8")
+extra_hearts = 1
+move_speed = 5.0
+roll_cooldown = 0.7
+name_key = &"ITEM_FIBER_CLOAK"
+icon = ExtResource("1_k57wl")
+marajoara = true
+model = ExtResource("2_jx2wm")

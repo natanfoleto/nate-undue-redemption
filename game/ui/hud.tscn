@@ -1,25 +1,152 @@
 [gd_scene format=3]
 
-[ext_resource type="Script" path="res://ui/hud.gd" id="1_7ihmi"]
-[ext_resource type="Texture2D" path="res://assets/ui/hud/heart_full.png" id="2_en2x2"]
-[ext_resource type="Texture2D" path="res://assets/ui/hud/heart_empty.png" id="3_1v5rv"]
-[ext_resource type="Script" path="res://ui/death_screen.gd" id="4_q43x7"]
+[ext_resource type="Script" path="res://ui/hud.gd" id="1_spcu4"]
+[ext_resource type="Texture2D" path="res://assets/ui/hud/heart_full.png" id="2_ff8ar"]
+[ext_resource type="Texture2D" path="res://assets/ui/hud/heart_empty.png" id="3_m0eg6"]
+[ext_resource type="Texture2D" path="res://assets/ui/status/stun.png" id="4_b00kl"]
+[ext_resource type="Texture2D" path="res://assets/ui/status/slow.png" id="5_so1yu"]
+[ext_resource type="Texture2D" path="res://assets/ui/status/poison.png" id="6_65xic"]
+[ext_resource type="Texture2D" path="res://assets/ui/status/burn.png" id="7_mp5xd"]
+[ext_resource type="Texture2D" path="res://assets/ui/hud/flask.png" id="8_u6vop"]
+[ext_resource type="Script" path="res://ui/death_screen.gd" id="9_xtm2r"]
 
-[node name="Hud" type="CanvasLayer" unique_id=221680501]
-script = ExtResource("1_7ihmi")
-heart_full = ExtResource("2_en2x2")
-heart_empty = ExtResource("3_1v5rv")
+[node name="Hud" type="CanvasLayer" unique_id=1059239708]
+script = ExtResource("1_spcu4")
+heart_full = ExtResource("2_ff8ar")
+heart_empty = ExtResource("3_m0eg6")
+status_icons = Array[Texture2D]([ExtResource("4_b00kl"), ExtResource("5_so1yu"), ExtResource("6_65xic"), ExtResource("7_mp5xd")])
 icon_scale = 3
+combo_dim = 0.35
 
-[node name="Hearts" type="HBoxContainer" parent="." unique_id=1229250195]
+[node name="Top" type="VBoxContainer" parent="." unique_id=1527498876]
 offset_left = 16.0
 offset_top = 16.0
 offset_right = 16.0
 offset_bottom = 16.0
+theme_override_constants/separation = 8
 
-[node name="DeathScreen" type="ColorRect" parent="." unique_id=1633924500]
+[node name="Row" type="HBoxContainer" parent="Top" unique_id=135667998]
+layout_mode = 2
+theme_override_constants/separation = 24
+
+[node name="Hearts" type="HBoxContainer" parent="Top/Row" unique_id=2088251021]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="Flask" type="HBoxContainer" parent="Top/Row" unique_id=1922116927]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="FlaskIcon" type="TextureRect" parent="Top/Row/Flask" unique_id=2017348404]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+texture = ExtResource("8_u6vop")
+expand_mode = 1
+
+[node name="FlaskCharges" type="Label" parent="Top/Row/Flask" unique_id=2139638973]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 8
+
+[node name="Statuses" type="HBoxContainer" parent="Top" unique_id=1442655013]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="Spells" type="HBoxContainer" parent="." unique_id=1667220011]
+unique_name_in_owner = true
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -16.0
+offset_top = -16.0
+offset_right = -16.0
+offset_bottom = -16.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_constants/separation = 12
+
+[node name="Slot1" type="VBoxContainer" parent="Spells" unique_id=148385176]
+unique_name_in_owner = true
+layout_mode = 2
+alignment = 2
+
+[node name="Back" type="ColorRect" parent="Spells/Slot1" unique_id=667104885]
+custom_minimum_size = Vector2(56, 56)
+layout_mode = 2
+color = Color(0, 0, 0, 0.5)
+
+[node name="Icon1" type="TextureRect" parent="Spells/Slot1/Back" unique_id=1358799554]
+unique_name_in_owner = true
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 4.0
+offset_top = 4.0
+offset_right = -4.0
+offset_bottom = -4.0
+expand_mode = 1
+
+[node name="Cooldown1" type="ColorRect" parent="Spells/Slot1/Back" unique_id=603896335]
+unique_name_in_owner = true
+layout_mode = 0
+anchor_right = 1.0
+color = Color(0, 0, 0, 0.65)
+
+[node name="Key1" type="TextureRect" parent="Spells/Slot1" unique_id=1100186588]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Slot2" type="VBoxContainer" parent="Spells" unique_id=1955946346]
+unique_name_in_owner = true
+layout_mode = 2
+alignment = 2
+
+[node name="Back" type="ColorRect" parent="Spells/Slot2" unique_id=1003076889]
+custom_minimum_size = Vector2(56, 56)
+layout_mode = 2
+color = Color(0, 0, 0, 0.5)
+
+[node name="Icon2" type="TextureRect" parent="Spells/Slot2/Back" unique_id=405744498]
+unique_name_in_owner = true
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 4.0
+offset_top = 4.0
+offset_right = -4.0
+offset_bottom = -4.0
+expand_mode = 1
+
+[node name="Cooldown2" type="ColorRect" parent="Spells/Slot2/Back" unique_id=1679823790]
+unique_name_in_owner = true
+layout_mode = 0
+anchor_right = 1.0
+color = Color(0, 0, 0, 0.65)
+
+[node name="Key2" type="TextureRect" parent="Spells/Slot2" unique_id=604814866]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Combo" type="TextureRect" parent="Spells" unique_id=1814491549]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+size_flags_vertical = 4
+expand_mode = 1
+
+[node name="DeathScreen" type="ColorRect" parent="." unique_id=670461129]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 color = Color(0, 0, 0, 1)
-script = ExtResource("4_q43x7")
+script = ExtResource("9_xtm2r")

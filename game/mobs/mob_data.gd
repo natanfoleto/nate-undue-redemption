@@ -14,6 +14,8 @@ extends Resource
 ## Distância em que espera a vez de atacar, cercando Nate, em blocos.
 @export var wait_distance := 0.0
 @export var attack: AttackData
+## Golpes seguidos a cada vez na fila, cada um com o próprio aviso (o Esqueleto Veterano dá 2).
+@export var attack_count := 1
 
 @export_group("Modelo")
 @export var model: ModelData

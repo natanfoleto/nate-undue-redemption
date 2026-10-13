@@ -12,3 +12,6 @@ var points := 0
 ## Dano em corações, contra Nate.
 var hearts := 0
 var critical := false
+## Efeito de status que o golpe aplica (-1 para nenhum) e por quanto tempo, em segundos.
+var effect := -1
+var effect_duration := 0.0

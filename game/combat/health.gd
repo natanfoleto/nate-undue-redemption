@@ -17,10 +17,19 @@ func reset(new_max: int) -> void:
 	changed.emit(value, max_value)
 
 
-## Muda o máximo (uma armadura com corações extras) e soma ou tira a diferença da vida atual.
-func set_max(new_max: int) -> void:
-	value = clampi(value + new_max - max_value, 0, new_max)
+## Muda o máximo. Os corações a mais chegam vazios (armadura) ou cheios, com [param fill] (melhoria); com um
+## máximo menor, a vida atual é cortada nele (05-itens).
+func set_max(new_max: int, fill := false) -> void:
+	var gained := maxi(new_max - max_value, 0) if fill else 0
+	value = clampi(value + gained, 0, new_max)
 	max_value = new_max
+	changed.emit(value, max_value)
+
+
+func heal(amount: int) -> void:
+	if is_dead() or amount <= 0:
+		return
+	value = mini(value + amount, max_value)
 	changed.emit(value, max_value)
 
 

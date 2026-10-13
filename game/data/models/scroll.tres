@@ -1,0 +1,52 @@
+[gd_resource type="Resource" script_class="ModelData" format=3]
+
+[ext_resource type="Script" path="res://tools/models/box_data.gd" id="1_gckoq"]
+[ext_resource type="Script" path="res://tools/models/model_data.gd" id="2_82yb3"]
+
+[sub_resource type="Resource" id="Resource_ox80f"]
+resource_name = "pedestal"
+script = ExtResource("1_gckoq")
+name = &"pedestal"
+size = Vector3i(12, 12, 12)
+position = Vector3(-6, 0, -6)
+color = Color(0.41568628, 0.39215687, 0.36078432, 1)
+
+[sub_resource type="Resource" id="Resource_b214j"]
+resource_name = "top"
+script = ExtResource("1_gckoq")
+name = &"top"
+size = Vector3i(14, 2, 14)
+position = Vector3(-7, 12, -7)
+texture_offset = Vector2i(0, 24)
+color = Color(0.3529412, 0.33333334, 0.3137255, 1)
+
+[sub_resource type="Resource" id="Resource_xpkvn"]
+resource_name = "roll"
+script = ExtResource("1_gckoq")
+name = &"roll"
+size = Vector3i(10, 3, 3)
+position = Vector3(-5, 14, -1.5)
+texture_offset = Vector2i(0, 40)
+color = Color(0.9098039, 0.8509804, 0.6901961, 1)
+
+[sub_resource type="Resource" id="Resource_crqjg"]
+resource_name = "band_red"
+script = ExtResource("1_gckoq")
+name = &"band_red"
+size = Vector3i(1, 4, 4)
+position = Vector3(-3, 13.5, -2)
+texture_offset = Vector2i(0, 46)
+color = Color(0.70980394, 0.2509804, 0.16470589, 1)
+
+[sub_resource type="Resource" id="Resource_3sjw1"]
+resource_name = "band_black"
+script = ExtResource("1_gckoq")
+name = &"band_black"
+size = Vector3i(1, 4, 4)
+position = Vector3(2, 13.5, -2)
+texture_offset = Vector2i(0, 54)
+color = Color(0.11372549, 0.101960786, 0.09019608, 1)
+
+[resource]
+script = ExtResource("2_82yb3")
+boxes = Array[ExtResource("1_gckoq")]([SubResource("Resource_ox80f"), SubResource("Resource_b214j"), SubResource("Resource_xpkvn"), SubResource("Resource_crqjg"), SubResource("Resource_3sjw1")])

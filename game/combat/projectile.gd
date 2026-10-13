@@ -6,15 +6,18 @@ var _attack: AttackData
 var _direction := Vector3.ZERO
 var _faction := Hurtbox.Faction.ENEMY
 var _build_hit: Callable
+var _on_stop: Callable
 var _traveled := 0.0
 
 
-## Dispara na direção dada. [param build_hit] recebe quem foi acertado e devolve o Hit.
-func launch(attack: AttackData, direction: Vector3, faction: Hurtbox.Faction, build_hit: Callable) -> void:
+## Dispara na direção dada. [param build_hit] recebe quem foi acertado e devolve o Hit; vazio, o projétil não
+## fere quem acerta (a Bola de Fogo fere só pela explosão). [param on_stop] recebe o ponto onde ele parou.
+func launch(attack: AttackData, direction: Vector3, faction: Hurtbox.Faction, build_hit: Callable, on_stop := Callable()) -> void:
 	_attack = attack
 	_direction = Vector3(direction.x, 0.0, direction.z).normalized()
 	_faction = faction
 	_build_hit = build_hit
+	_on_stop = on_stop
 	rotation.y = atan2(-_direction.x, -_direction.z)
 
 
@@ -28,8 +31,9 @@ func _physics_process(delta: float) -> void:
 		to = wall.position
 	var target := _first_target(from, to)
 	if target:
-		target.receiver.call(&"take_hit", _build_hit.call(target.receiver))
-		queue_free()
+		if _build_hit.is_valid():
+			target.receiver.call(&"take_hit", _build_hit.call(target.receiver))
+		_stop(target.global_position)
 		return
 	# Alvos do cenário, como alavancas distantes, também levam o tiro (04-player).
 	if not wall.is_empty() and wall.collider.has_method(&"take_shot"):
@@ -37,7 +41,13 @@ func _physics_process(delta: float) -> void:
 	global_position = to
 	_traveled += step
 	if not wall.is_empty() or _traveled >= _attack.reach:
-		queue_free()
+		_stop(to)
+
+
+func _stop(where: Vector3) -> void:
+	if _on_stop.is_valid():
+		_on_stop.call(where)
+	queue_free()
 
 
 # O alvo mais perto do começo do trecho voado neste quadro.

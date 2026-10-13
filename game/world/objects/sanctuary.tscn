@@ -1,0 +1,35 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://world/objects/sanctuary.gd" id="1_ttj5a"]
+[ext_resource type="Script" path="res://tools/models/block_model.gd" id="2_u6x3i"]
+[ext_resource type="Resource" path="res://data/models/sanctuary.tres" id="3_55ugl"]
+[ext_resource type="Script" path="res://world/respawn_point.gd" id="4_tc8dw"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_v4kqd"]
+size = Vector3(2, 2.5, 2)
+
+[node name="Sanctuary" type="StaticBody3D" unique_id=2028694527]
+script = ExtResource("1_ttj5a")
+glow_color = Color(0.56078434, 1, 0.8156863, 1)
+lit_glow = 2.0
+light_energy = 1.5
+light_up_time = 1.0
+reach = 2.0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=847551187]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.25, 0)
+shape = SubResource("BoxShape3D_v4kqd")
+
+[node name="Model" type="Node3D" parent="." unique_id=1381987442]
+script = ExtResource("2_u6x3i")
+model = ExtResource("3_55ugl")
+
+[node name="Light" type="OmniLight3D" parent="." unique_id=602731736]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, 0)
+light_color = Color(0.56078434, 1, 0.8156863, 1)
+omni_range = 7.0
+
+[node name="SpawnPoint" type="Marker3D" parent="." unique_id=195324370]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.8)
+script = ExtResource("4_tc8dw")
+automatic = false
