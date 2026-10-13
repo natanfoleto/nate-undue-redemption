@@ -10,3 +10,5 @@ reach = 1.0
 windup = 1.0
 knockback = 1
 warning = 1
+warning_sound = &"rock_warning"
+strike_sound = &"rock_fall"

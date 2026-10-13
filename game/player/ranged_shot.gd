@@ -42,6 +42,7 @@ func press() -> void:
 	_drawn = 0.0
 	_player.play_overlay(draw_animation, draw_animation.length / weapon.draw_time)
 	_player.show_ranged_weapon(true)
+	AudioManager.play(&"draw", _player.global_position)
 
 
 func release() -> void:
@@ -70,7 +71,9 @@ func update(delta: float) -> void:
 			var was_full := is_full()
 			_drawn += delta
 			if is_full() and not was_full:
-				_player.set_ranged_glow(true) # Sinal da força total (10-arte-audio).
+				# Sinal da força total: o brilho e o clique curto (10-arte-audio).
+				_player.set_ranged_glow(true)
+				AudioManager.play(&"shot_ready", _player.global_position)
 		Phase.RECOVERY:
 			_phase_left -= delta
 			if _phase_left <= 0.0:
@@ -88,6 +91,7 @@ func _fire() -> void:
 	projectile.set_floor(_player.global_position.y)
 	projectile.launch(attack, direction, Hurtbox.Faction.ENEMY, _build_hit.bind(attack, direction))
 	_player.set_ranged_glow(false)
+	AudioManager.play(&"shoot", _player.global_position)
 
 
 func _build_hit(_receiver: Node3D, attack: AttackData, direction: Vector3) -> Hit:

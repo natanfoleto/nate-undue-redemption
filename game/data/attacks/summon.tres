@@ -9,3 +9,4 @@ windup = 1.2
 recovery = 0.8
 cooldown = 12.0
 warning = 1
+warning_sound = &"necromancer_summon"

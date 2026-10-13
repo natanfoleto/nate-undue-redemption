@@ -21,6 +21,8 @@ func _ready() -> void:
 	_confirm.dialog_text = tr(&"MENU_CONFIRM_NEW")
 	_confirm.ok_button_text = tr(&"MENU_YES")
 	_confirm.cancel_button_text = tr(&"MENU_NO")
+	AudioManager.play_music(AudioManager.rules.menu_music)
+	AudioManager.play_ambience(null)
 	_continue.visible = SaveSystem.has_save()
 	_continue.pressed.connect(_play)
 	_new_game.pressed.connect(_on_new_game)

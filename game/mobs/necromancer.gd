@@ -69,6 +69,7 @@ func _start_summon(offset: Vector3) -> void:
 		_summon_markers[i].show_attack(necromancer.summon, spot, _facing)
 	_enter(State.WINDUP, necromancer.summon.windup)
 	_animator.play(necromancer.summon_animation)
+	AudioManager.play(necromancer.summon.warning_sound, global_position)
 
 
 func _windup() -> void:

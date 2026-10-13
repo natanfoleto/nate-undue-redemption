@@ -39,12 +39,14 @@ func _unhandled_input(event: InputEvent) -> void:
 		return
 	get_viewport().set_input_as_handled()
 	if _gallery.visible:
+		AudioManager.play(&"ui_back")
 		_show_list()
 		return
 	_set_paused(not _panel.visible)
 
 
 func _set_paused(paused: bool) -> void:
+	AudioManager.play(&"ui_open" if paused else &"ui_close")
 	get_tree().paused = paused
 	_panel.visible = paused
 	if paused:

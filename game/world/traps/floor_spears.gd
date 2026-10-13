@@ -59,8 +59,10 @@ func _enter(next: Phase) -> void:
 	match next:
 		Phase.WARNING:
 			_marker.show_attack(attack, _area_origin(), -global_basis.z)
+			AudioManager.play(attack.warning_sound, global_position)
 		Phase.UP:
 			_marker.hide_attack()
+			AudioManager.play(attack.strike_sound, global_position)
 			_plate.set_glow(0.0)
 			_already_hit.clear()
 			create_tween().tween_property(_spears, ^"position:y", 0.0, move_time)

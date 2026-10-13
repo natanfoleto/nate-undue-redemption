@@ -28,6 +28,7 @@ func interact() -> void:
 	_open = true
 	_collision.set_deferred(&"disabled", true)
 	create_tween().tween_property(_slab, ^"position:y", -drop, move_time)
+	AudioManager.play(&"door_open", global_position)
 
 
 func _restore_done() -> void:

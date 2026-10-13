@@ -8,8 +8,8 @@ Origem dos assets, guia de estilo e a lista completa de assets e sons, que sai d
 | Personagens e criaturas (Nate, mobs, Boiúna, dinossauro) | por código: blocos definidos no código, com animações também por código |
 | Objetos do cenário (baú, alavanca, portão etc.) | montados com blocos, como os personagens |
 | Cenário | blocos montados no motor; texturas de materiais comuns (pedra, terra, madeira, metal) de um único pacote pronto CC0, pintado à mão; texturas marajoara e dos fungos bioluminescentes feitas para o jogo |
-| Efeitos sonoros | prontos, com licença livre, ajustados para o jogo (corte, volume e tom) |
-| Música | pronta, com licença livre e crédito ao autor quando a licença pedir |
+| Efeitos sonoros | prontos, com licença livre, ajustados para o jogo (volume e tom, no banco de sons): a família de pacotes de Kenney, as criaturas de rubberduck e as magias de leohpaz |
+| Música | pronta, com licença livre e crédito ao autor quando a licença pedir; por enquanto, faixas CC0 de Alexander Ehlers e de Kistol |
 | Ícones da interface | pixel art feita para o jogo: cerca de 40 ícones de 16×16 pixels, ampliados na tela |
 | Fonte | fonte pixel com licença livre (OFL) e com os acentos do português |
 
@@ -23,7 +23,13 @@ Origem dos assets, guia de estilo e a lista completa de assets e sons, que sai d
 ### Registro de assets prontos
 | Asset | Origem (link) | Licença | Crédito exigido |
 |-------|---------------|---------|-----------------|
-| Texturas pintadas à mão do cenário, da sala de teste e das memórias (`assets/textures/painted/`: grass, grass_side, dirt, stone, cobble, mossy_cobble, stone_brick, sandstone_brick, bark, leaves, planks, gravel, clay e desert_stone), reduzidas de 128 para 32 px; a grama perde 25% da cor, e `grass_side` junta a terra com a franja de grama do pacote | "Big pack of hand painted tiling textures", de drummyfish: https://opengameart.org/node/91360 | CC0 | não (crédito apreciado) |
+| Texturas pintadas à mão do cenário, da sala de teste e das memórias (`assets/textures/painted/`: grass, grass_side, dirt, stone, cobble, mossy_cobble, stone_brick, sandstone_brick, bark, leaves, jungle_leaves, planks, wood, gravel, clay, clay_brick, desert_stone, sand e rail), reduzidas de 128 para 32 px; a grama perde 25% da cor, e `grass_side` junta a terra com a franja de grama do pacote. Plantas (grass_tuft, grass_tall, jungle_grass, papyrus, flower_blue, flower_yellow e flower_red), com o recorte limpo. Água, rio e lava animados (water_strip, river_strip e lava_strip: 8 quadros de 32 px, um embaixo do outro) | "Big pack of hand painted tiling textures", de drummyfish: https://opengameart.org/node/91360 | CC0 | não (crédito apreciado) |
+| Sons de Nate, das armas, dos objetos e da interface (`assets/audio/kenney/`), provisórios | "RPG Audio", "Impact Sounds" e "Interface Sounds", de Kenney: https://kenney.nl/assets/rpg-audio, https://kenney.nl/assets/impact-sounds e https://kenney.nl/assets/interface-sounds | CC0 | não (crédito opcional a Kenney) |
+| Vozes dos mobs (`assets/audio/rubberduck/`), provisórias | "80 CC0 creature SFX" e "80 CC0 creture SFX #2", de rubberduck: https://opengameart.org/content/80-cc0-creature-sfx e https://opengameart.org/content/80-cc0-creture-sfx-2 | CC0 | não |
+| Sons das magias e da praga (`assets/audio/leohpaz/`), provisórios | "8 Magic Attacks", de leohpaz: https://opengameart.org/content/8-magic-attacks | CC-BY 4.0 | sim: leohpaz |
+| Música do menu, das memórias, das arenas, do Bosque e das Ruínas (`assets/audio/music/`: great_mission, doomed, waking_the_devil, spacetime e warped), provisória | "Free Music Pack", de Alexander Ehlers (tricksntraps): https://opengameart.org/content/free-music-pack | CC0 | não |
+| Música do prólogo e da Mina (`assets/audio/music/krakatoa.ogg`), provisória | "Krakatoa", de Kistol: https://opengameart.org/content/krakatoa | CC0 | não |
+| Som de fundo da Mina e das Ruínas (`assets/audio/ambience/dungeon_ambient_1.ogg`), provisório | "Loopable Dungeon Ambience", de JaggedStone: https://opengameart.org/content/loopable-dungeon-ambience | CC0 | não |
 | 36 ícones de botão de teclado e mouse, Xbox e PlayStation (`assets/ui/buttons/`), provisórios | "Input Prompts Pixel 16×", de Kenney: https://opengameart.org/content/input-prompts-pixel-16%C3%97 | CC0 | não (crédito opcional ao Kenney) |
 
 Os ícones definitivos são feitos para o jogo (`09-interface.md`). O pacote dos materiais comuns é o do drummyfish, pintado à mão, escolhido depois do primeiro teste de jogo para o cenário não ficar idêntico ao Minecraft. Ele troca o "16x16 block texture set" (ARoachIFoundOnMyPillow, CC0), usado até a etapa 6.
@@ -41,6 +47,7 @@ Assets prontos entram como provisórios logo no começo da produção, para test
 - **Densidade:** personagens, objetos e ícones usam 16 px por bloco (1 pixel equivale a 1/16 de bloco); Nate, com 2 blocos de altura, tem 32 pixels de altura. As texturas prontas do cenário têm 32 px por bloco, pintadas à mão, mais detalhadas que as do Minecraft; as feitas para o jogo (marajoara e fungos) seguem com 16 px.
 - **Quinas chanfradas:** as caixas dos personagens e criaturas têm as quinas chanfradas, de cerca de 1 px, para arredondar ombros, cabeça e mãos (quanto em cada modelo: `11-balanceamento.md`).
 - **Chão em manchas:** a grama da clareira e o chão da Mina misturam 3 tons em manchas, e a grama tem terra nas laterais, para o relevo aparecer e o chão não ficar chapado.
+- **Profundidade:** abaixo do chão, a rocha fica mais escura, e o fundo dos abismos tem cor e luz próprias (água escura, água brilhante e fungos, lava), para a câmera ler a altura de cada parte.
 - **Luz:** o subterrâneo é escuro, mas cada área tem a sua luz: lampiões na Mina, fungos que brilham no Bosque e padrões marajoara acesos nas Ruínas. Escuridão total só nas áreas que exigem a Luz Ancestral. Em todo lugar, a luz precisa bastar para ler os avisos (pilar 2).
 - **Efeitos visuais:** partículas blocadas, feitas de pequenos cubos e quadrados: faíscas, poeira, fogo, água e escuridão.
 
@@ -136,30 +143,32 @@ Mostram a vida pessoal do herói antigo. Cada uma prepara o que vem logo depois:
 ## Áudio
 
 ### Música
-Sete faixas instrumentais, sem letra, com flautas, tambores e marimbas para dar clima amazônico.
+Sete faixas instrumentais, sem letra, com flautas, tambores e marimbas para dar clima amazônico. As provisórias são as faixas prontas abaixo; só "Krakatoa", de percussão e marimba, tem o clima amazônico.
 
-| Faixa | Onde toca |
-|-------|-----------|
-| Tema principal | menu, cena final e créditos |
-| Mina | prólogo e Mina |
-| Bosque de Fungos | Bosque |
-| Ruínas | Ruínas |
-| Memórias | as 4 memórias |
-| Arenas | todas as arenas |
-| Boiúna | luta final, mais intensa na fase 2 |
+| Faixa | Onde toca | Faixa provisória |
+|-------|-----------|------------------|
+| Tema principal | menu, cena final e créditos | "Great mission" (Alexander Ehlers) |
+| Mina | prólogo e Mina | "Krakatoa" (Kistol) |
+| Bosque de Fungos | Bosque | "Spacetime" (Alexander Ehlers) |
+| Ruínas | Ruínas | "Warped" (Alexander Ehlers) |
+| Memórias | as 4 memórias, por cima da música da área | "Doomed" (Alexander Ehlers) |
+| Arenas | todas as arenas, da primeira onda até a vitória, por cima da música da área | "Waking the devil" (Alexander Ehlers) |
+| Boiúna | luta final, mais intensa na fase 2 | `[A DEFINIR na etapa 7]` |
 
 ### Ambiente
-| Área | Sons de fundo |
-|------|---------------|
-| Prólogo | pássaros e insetos |
-| Mina | gotas, madeira rangendo e vento nos túneis |
-| Bosque de Fungos | zumbido grave e fungos pulsando |
-| Ruínas | eco e pedra |
-| Grande Prisão | silêncio grave e a respiração da Boiúna |
+| Área | Sons de fundo | Som provisório |
+|------|---------------|----------------|
+| Prólogo | pássaros e insetos | nenhum ainda |
+| Mina | gotas, madeira rangendo e vento nos túneis | "Loopable Dungeon Ambience" (JaggedStone), só embaixo da terra |
+| Bosque de Fungos | zumbido grave e fungos pulsando | nenhum ainda |
+| Ruínas | eco e pedra | "Loopable Dungeon Ambience" (JaggedStone) |
+| Grande Prisão | silêncio grave e a respiração da Boiúna | `[A DEFINIR na etapa 7]` |
 
 ### Regras de som
 - Todo ataque inimigo tem som de aviso próprio (`03-regras.md`).
-- Os sons de aviso sempre ficam acima da música na mixagem.
+- Os sons de aviso sempre ficam acima da música na mixagem: eles tocam num canal próprio, um pouco mais alto, e a música abaixa sozinha enquanto um aviso toca.
+- Os sons do mundo saem do ponto onde acontecem e ficam mais baixos longe de Nate; os da interface tocam na tela.
+- Passos conforme o chão: grama e musgo, madeira (tábuas, pontes e a plataforma do elevador) e pedra ou terra.
 - Golpes e acertos de Nate soam em três pesos: leve, médio e pesado (`05-itens.md`).
 
 ## Lista completa de assets e sons

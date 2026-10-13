@@ -109,6 +109,9 @@ func _launch(spell: SpellData) -> void:
 	var direction := _player.assisted_aim()
 	var origin := _player.global_position
 	var world := _player.get_parent()
+	# A Bola de Fogo soa ao explodir; as outras magias, ao sair.
+	if spell.delivery != SpellData.Delivery.PROJECTILE:
+		AudioManager.play(spell.sound, origin)
 	match spell.delivery:
 		SpellData.Delivery.PROJECTILE:
 			var projectile := PROJECTILE.instantiate() as Projectile
@@ -157,6 +160,7 @@ func _show_instant(spell: SpellData, world: Node, origin: Vector3, direction: Ve
 func _explode(where: Vector3, spell: SpellData) -> void:
 	var hit_list: Array[Node3D] = []
 	var center := Vector3(where.x, _player.global_position.y, where.z)
+	AudioManager.play(spell.sound, center)
 	Strike.hit_area(spell.explosion, _player, center, Vector3.FORWARD, Hurtbox.Faction.ENEMY, hit_list, _build_hit.bind(spell, center))
 	SpellEffects.burst(_player.get_parent(), center, spell.color, spell.explosion.reach, effect_look)
 

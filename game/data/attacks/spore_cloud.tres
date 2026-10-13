@@ -7,3 +7,5 @@ script = ExtResource("1_pi4vp")
 reach = 2.0
 windup = 1.0
 warning = 1
+warning_sound = &"spore_swell"
+strike_sound = &"spore_burst"

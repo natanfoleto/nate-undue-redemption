@@ -92,6 +92,8 @@ func _start(index: int) -> void:
 	_enter(Phase.WINDUP, _attack.windup)
 	var animation := hit_animations[index]
 	_player.play_overlay(animation, animation.length / _attack.total_time(), true)
+	# O último golpe do combo, o mais forte, tem o som mais pesado.
+	AudioManager.play(&"swing_heavy" if index == _hit_count() - 1 else &"swing", _player.global_position)
 
 
 func _finish() -> void:

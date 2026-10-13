@@ -19,6 +19,7 @@ func interact() -> void:
 	var first := not GameState.has_light()
 	_set_read()
 	var view := (load(VIEW_SCENE) as PackedScene).instantiate() as ScrollView
+	AudioManager.play(&"scroll_open")
 	get_tree().current_scene.add_child(view)
 	await view.show_element(load(GameState.ELEMENTS_FOLDER + element_id + ".tres"))
 	# O elemento primeiro: se o jogo fechar com o rolo aberto, o pergaminho continua lá para ler de novo.

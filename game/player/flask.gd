@@ -24,9 +24,13 @@ func is_drinking() -> bool:
 
 
 func press() -> void:
-	if is_drinking() or not GameState.has_flask() or charges <= 0:
+	if is_drinking() or not GameState.has_flask():
+		return
+	if charges <= 0:
+		AudioManager.play(&"drink_empty", _player.global_position)
 		return
 	charges -= 1
+	AudioManager.play(&"drink", _player.global_position)
 	_left = Balance.player.flask_time
 	_player.play_overlay(drink_animation, drink_animation.length / _left)
 	_player.show_flask(true)
@@ -40,6 +44,7 @@ func update(delta: float) -> void:
 	if _left <= 0.0:
 		_left = 0.0
 		_player.heal(Balance.player.flask_heal)
+		AudioManager.play(&"drink_done", _player.global_position)
 		_stop()
 
 

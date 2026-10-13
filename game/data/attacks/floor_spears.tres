@@ -12,3 +12,5 @@ width = 1.0
 windup = 1.0
 knockback = 1
 warning = 1
+warning_sound = &"spears_warning"
+strike_sound = &"spears_up"

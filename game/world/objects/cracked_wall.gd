@@ -63,6 +63,8 @@ func _hit() -> void:
 	if _broken:
 		return
 	if not GameState.has_learned(&"earth"):
+		# Sem a Terra, a parede responde com o som de pedra firme (08-mapa).
+		AudioManager.play(&"wall_firm", global_position)
 		var tween := create_tween()
 		tween.tween_property(_mesh, ^"position:x", shake, shake_time / 4.0)
 		tween.tween_property(_mesh, ^"position:x", -shake, shake_time / 2.0)
@@ -70,5 +72,6 @@ func _hit() -> void:
 		return
 	_broken = true
 	SaveSystem.record(SaveSystem.OPENED, save_id)
+	AudioManager.play(&"wall_break", global_position)
 	SpellEffects.burst(get_parent(), global_position, dust_color, maxf(size.x, size.z), dust_look)
 	queue_free()

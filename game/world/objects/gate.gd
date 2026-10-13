@@ -59,10 +59,13 @@ func is_open() -> bool:
 
 
 func _set_open(value: bool, animated: bool) -> void:
+	var changed := value != _open
 	_open = value
 	_collision.set_deferred(&"disabled", value)
 	var target := -drop if value else 0.0
 	if animated:
 		create_tween().tween_property(_bars, ^"position:y", target, move_time)
+		if changed:
+			AudioManager.play(&"gate_open" if value else &"gate_close", global_position)
 	else:
 		_bars.position.y = target

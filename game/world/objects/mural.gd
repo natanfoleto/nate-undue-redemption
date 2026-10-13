@@ -40,6 +40,7 @@ func interact() -> void:
 	player.set_cinematic(true)
 	SaveSystem.record(SaveSystem.MURALS, record_id(mural_id))
 	var view := (load(VIEW_SCENE) as PackedScene).instantiate() as MuralView
+	AudioManager.play(&"mural_open")
 	get_tree().current_scene.add_child(view)
 	await view.show_image(image(mural_id))
 	player.set_cinematic(false)

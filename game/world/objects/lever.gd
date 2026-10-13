@@ -35,6 +35,7 @@ func _pull() -> void:
 	_pulled = true
 	_mark_done()
 	create_tween().tween_property(_handle, ^"rotation_degrees:x", pulled_angle, pull_time)
+	AudioManager.play(&"lever", global_position)
 	pulled.emit()
 
 

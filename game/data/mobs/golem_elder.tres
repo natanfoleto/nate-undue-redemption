@@ -33,3 +33,5 @@ second_windup_animation = ExtResource("10_cobf6")
 second_attack_animation = ExtResource("9_cmyva")
 hurt_animation = ExtResource("4_5dn1x")
 death_animation = ExtResource("3_qxgx7")
+hurt_sound = &"golem_hurt"
+death_sound = &"golem_death"

@@ -9,3 +9,4 @@ name_key = &"SPELL_EARTH_COLLAPSE"
 attack = ExtResource("1_ka2i1")
 cooldown = 10.0
 color = Color(0.627451, 0.4392157, 0.22745098, 1)
+sound = &"spell_earth"

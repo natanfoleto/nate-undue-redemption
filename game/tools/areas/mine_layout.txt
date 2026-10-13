@@ -1,0 +1,126 @@
+
+                                ##############
+                                #wwwwwwwwwwww#
+                                #wwwwVVVwwwww#
+                               ##wwwwVVVwwwww##
+                               #lwwwwVVVwwwwwl#
+                               ##wwwwwwwwwwww##
+                                #wwwwwwwwwwww#
+                                #wwwwwwwwwwww#
+                                #wwwwwwwwwwww#
+                             #######aaaaaa#######
+                             #..................#
+           ########         ##.o..............o.##
+           #......#         #l..................l#
+           #......#         ##..................##
+           #..q...#          #..................#
+           #......#          #..................#
+           #......#          #..................#
+           #......#          #........o.........#
+     #########jj#########    #..................#
+     #..................#    #..................#
+     #..................#    #..................#
+     #..u............u..#    #..................#
+     #..................#   ##..................##
+     #..................#   #l..................l#
+     #..................#   ##.o..............o.##
+     #..................#    #..................#
+     #........u.........#    ########aaaa########
+     #..................#          ##....#
+     #..................#          #l....#
+     #..................############M....M
+     #..................i...........X....M
+     #..................i...........X....M
+     #..u............u..############M....M
+     #..................#           M....M
+     #..................#           M....M
+     ####################        ####....#
+                              ####l##....#######
+               #######        #wwwwwwwwwwwwwwww#
+               #.....#       ##wwwwwwwwwwwwwwCw########
+               #.....#       #lwwwwwwwwwwwwwwww#......#
+               #.....##########wwwwwwwwwwwwwwwwX......#
+              ##.p.............wwwwwwwwwwwwwwwwX...y..#
+              #l...............wwwwwwwwwwwwwwwwX......#
+              ##.....##########wwWwwwwwwwwwwwwwX......#
+               #.....#        #wwwwwwwwwwwwWwww#......#
+               #.....#        #wwwwwwwwwwwwwwwwl#######
+               #######        #wwwwwwwwwwwwwwww##
+                              ###l###....#######
+                                ### #....#
+                                    #..W.#
+                                    #....#
+                                    #.K..#
+                                    #....#
+                                   ##....#
+                                   #l....#
+                                   ##....#
+                                    #....#
+                                    #..r.#
+                                    #....#
+                      ~~~~~~~~~~~~~~#....#
+                      ~~~~~~~~~~~~~~#....#
+                      ~~~~~~~~~~~~~~#....#
+                      ~~~~~~~~~~~~~~l....#
+                      ~~~~~~~~~~~~~~#....#
+   ###################~~~~~~~~~~~~~~#....#
+   #........L........#~~~~~~~~~~~~~~#.r..#
+   #.................#~~~~~~~~~~~~~~#....#
+   #.................#~~~~~~~~~~~~~~#....#
+   #.................#~~~~~~~~~~~~~~#....#
+   #.................#~~~~~~~~~~~~~~#....#
+   #~~~~~~~~~~~~~~~~~#~~~l~~~~~l~~~~l....#
+   #~~~~~~~~~~~~~~~~~#...................#
+   #.................G........K..........#
+   #.................G...................#
+   #...............l.#...................#
+   #.................#~~~l~~~~~l~~~~######
+   #.................#~~~~~~~~~~~~~~
+   #.................#~~~~~~~~~~~~~~
+   #.................###############
+   #.....b...........#.............#    #######
+   #.................#.l.........l.#    #ddddd#
+   #.l.............................#    #ddddd#
+   #...............................######ddddd#
+   #...............................ddddddddhdd#
+   ##################..............ddddddddddd#
+                    ##.............######ddddd#
+                     #.............#    #ddddd#
+                     #.............#    #ddddd#
+                     #.....EE......#    #######
+                     #.............#
+                     ######ff#######
+          RRRRRRRRRRRRRRRRRffRRRRRRRRRRRRRRRRR
+          RRRRRRRRRRRRRRRRRffRRRRRRRRRRRRRRRRR
+          RRRRRRRRRRRRRRRRRFfRRRRRRRRRRRRRRRRR
+          RRRRRRRRRRRRRRRRRffRRRRRRRRRRRRRRRRR
+          TTRRRRRRmmmmRRRRRffRRRRRRRRRRRRRRRTT
+          TTRRRRRRmmmmRRRRRffRRRRRRRRRRRRRRRTT
+          TTggggggggggggggggggggggggggggggggTT
+          TTggggggggggggggggggggggggggggggggTT
+          TTggggggggggggggggggggggggggggggggTT
+          TTggggggggggggggggggggggggggggggggTT
+          TTggggggggggggggggPgggggggggggggggTT
+          TTgggggggggggggggggggggggggggTggggTT
+          TTgggTggggggggggggggggggggggggggggTT
+          TTggggggggggggggggggggggggggggggggTT
+          TTggggggggggggggggggggggggggggggggTT
+          TTggggggggggggggggggggggggggggggggTT
+          TTggggggggggggggggggggggTgggggggggTT
+          TTggggggggggggggggggggggggggggggggTT
+          TTggggggggggggggggggggggggggggggggTT
+          TTggggggggggggggggggggggggggggggggTT
+          TTggggggggggTgggggggggggggggggggggTT
+          TTggggggggggggggggggggggggggggggggTT
+          TTggggggggggggggggggggggggggggggggTT
+          TTggggggggggggggggggggggggggggggggTT
+          TTggTgggggggggggggggggggggggggggggTT
+          TTggggggggggggggggggggggggggggggggTT
+          TTgggggggggggggggggggggggggggggTggTT
+          TTggggggggggggggggggggggggggggggggTT
+          TTgggggggggggggggSggggggggggggggggTT
+          TTggggggggggggggggggggggggggggggggTT
+          TTggggggggggggggggggggggggggggggggTT
+          TTggggggggggggggggggggggggggggggggTT
+          TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT
+          TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT

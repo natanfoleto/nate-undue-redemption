@@ -14,3 +14,5 @@ recovery = 0.8
 cooldown = 2.0
 knockback = 1
 lunge = 3.0
+warning_sound = &"wolf_warning"
+strike_sound = &"wolf_strike"

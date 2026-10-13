@@ -57,6 +57,8 @@ func _physics_process(delta: float) -> void:
 		wall.collider.call(&"take_shot")
 	global_position = to
 	_traveled += step
+	if not wall.is_empty():
+		AudioManager.play(&"projectile_wall", to)
 	if not wall.is_empty() or _traveled >= _attack.reach:
 		_stop(to)
 

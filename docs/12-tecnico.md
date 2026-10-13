@@ -20,8 +20,11 @@ Motor, arquitetura, estrutura de pastas e convenções de código.
 - Uma cena por área: Prólogo e Mina, Bosque de Fungos, Ruínas e Grande Prisão (`08-mapa.md`).
 - A troca de cena acontece nas passagens que já existem: o elevador (Mina → Bosque), a passagem escura (Bosque → Ruínas) e a porta da Grande Prisão. Na viagem rápida, a área de destino carrega durante um escurecimento da tela.
 - O cenário é pintado bloco a bloco com o GridMap do Godot, com uma biblioteca de blocos por área: texturas de 32 px (as prontas) e de 16 px (as feitas para o jogo), projetadas pelo mundo para continuarem de um bloco para o outro (`10-arte-audio.md`). A grama tem a face de cima diferente das laterais. Detalhes menores que um bloco viram objetos à parte.
-- **Relevo:** o chão tem platôs de 1 e 2 blocos e escadas (uma peça da biblioteca, com rampa na colisão) (`08-mapa.md`). Cada área sai de dois rascunhos em texto: o do mapa, com um caractere por bloco, e o das alturas, em que o dígito é a altura do chão e n, s, e e w são escadas subindo para aquele lado. Um montador de terreno faz o chão, as escadas, as paredes naturais (baixas na frente da câmera, altas e irregulares atrás), os morros, as beiradas dos platôs e o mapa de navegação dos mobs.
-- As paredes baixas ganham blocos invisíveis num GridMap à parte (`Sight`, camada 1), que seguram os tiros e a visão dos mobs até 3 blocos acima do chão.
+- **Relevo:** o chão tem platôs de 1 e 2 blocos e escadas (uma peça da biblioteca, com rampa na colisão) (`08-mapa.md`). Cada área sai de dois rascunhos em texto: o do mapa, com um caractere por bloco (o que é chão, abismo ou o resto), e o das alturas, em que o dígito é a altura do chão, n, s, e e w são escadas subindo para aquele lado e de A a J é ponte na altura 0 a 9.
+- **Geradores das áreas:** ficam em `game/tools/areas/`, junto com os rascunhos. Os rascunhos saem dos scripts em Python (`python3 game/tools/areas/mine_layout.py`, que também confere se o caminho principal se alcança); as bibliotecas de blocos e as áreas, dos scripts do Godot, a partir da raiz do repositório: `godot --headless --path game -s res://tools/areas/make_blocks.gd` e depois `make_mine.gd`, `make_forest.gd` e `make_ruins.gd`. Os geradores acham cada bloco da biblioteca pelo nome.
+- **Montador do terreno** (`terrain_builder.gd`): faz o chão, as escadas, as paredes, as pontes e o terreno de fora até 24 blocos além do chão, para a câmera nunca ver o vazio: abismo onde há chão atrás na diagonal da câmera, morro na borda de fora. Cada coluna tem um teto, o da linha de visão da câmera até o chão atrás dela, e só tem os blocos que aparecem (do topo da vizinha mais baixa até o próprio topo). Ele também marca as beiradas dos platôs e assa o mapa de navegação dos mobs.
+- Cada área tem quatro GridMaps: `Terrain` (o terreno, camada 1), `Sight` (blocos invisíveis em cima das paredes baixas, que seguram os tiros e a visão dos mobs até 3 blocos acima do chão, camada 1), `Barriers` (barreiras invisíveis na beira dos abismos, camada 4) e `Decor` (cercas, capim e flores, sem colisão).
+- Água, rio e lava usam o shader `world/blocks/liquid.gdshader`: a textura é uma faixa de quadros que troca com o tempo.
 
 ### Modelos e animações
 - Cada modelo é um arquivo de dados com a lista de caixas: tamanho, posição, ponto de giro e região da textura. Um script único, o montador, monta o modelo no jogo.
@@ -96,6 +99,12 @@ Autoloads do Godot:
 - Só o jogo salvo usa JSON, por segurança.
 - Os números do `11-balanceamento.md` ficam nesses arquivos de dados, um por categoria (armas, magias, mobs, Boiúna etc.). Mudar um número não exige mexer no código.
 
+### Som
+- O `AudioManager` toca os sons pelo nome, do banco `data/audio/sounds.tres` (`SoundBank`): cada som (`SoundData`) tem uma ou mais gravações, uma sorteada a cada vez, o volume, o tom e quanto ele varia, e o canal. Os números da mixagem e as músicas gerais (menu, arenas e memórias) ficam em `data/audio/audio_rules.tres` (`AudioRules`); os tipos ficam em `game/audio/`.
+- Canais em `default_bus_layout.tres`: Music, Ambience, Effects e Warnings. Um compressor no canal da música, ligado ao dos avisos, abaixa a música enquanto um aviso de golpe toca.
+- Os sons do mundo saem de um ponto e quem ouve fica em Nate, virado como a câmera; os da interface tocam na tela. Os botões dos menus tocam sozinhos ao trocar de foco e ao serem apertados.
+- Os dados dizem o som de cada coisa: o aviso e o golpe de cada ataque (`AttackData`), a ferida e a morte de cada mob (`MobData`) e o de cada magia (`SpellData`). Cada área (`AreaLevel`) diz a sua música e o som de fundo; a zona de luz da Mina troca o som de fundo ao entrar embaixo da terra; a arena e a memória põem a música delas por cima da da área e tiram no fim.
+
 ### Câmera e luz
 - Câmera ortográfica, com ângulo isométrico: 45° de inclinação e 45° de giro. O enquadramento é de 14 blocos de altura de tela, provisório até o rascunho do mapa. Os números ficam em `11-balanceamento.md`.
 - Fungos e padrões marajoara brilham pelo próprio material, com poucas luzes reais. A Luz Ancestral é uma luz presa em Nate.
@@ -129,7 +138,8 @@ game/
 ├── boss/          Boiúna
 ├── world/         áreas, armadilhas e objetos
 ├── ui/            HUD, inventário, menus e mapa
-├── tools/         montador, prévia e gerador das imagens do mapa
+├── audio/         tipos do banco de sons e das regras da mixagem
+├── tools/         montador e prévia dos modelos, geradores das áreas (tools/areas/) e das imagens do mapa
 ├── localization/  tabela de textos
 └── tests/         testes de regras e de salvamento
 ```
@@ -150,7 +160,7 @@ game/
 - **Testes automáticos:** para as regras de combate (fórmula de dano, efeitos de status, recuo) e para o salvamento, com o gdUnit4 6.2.2, fixado junto com o Godot. O resto é testado jogando.
   - Os testes ficam em `game/tests/`. No editor, rodam pelo painel GdUnit; no terminal, a partir da raiz do repositório:
     `godot --headless --path game -s res://addons/gdUnit4/bin/GdUnitCmdTool.gd -a res://tests --ignoreHeadlessMode`
-  - O gdUnit4 e os testes ficam fora das exportações do jogo.
-- **Git:** os arquivos gerados pelo Godot (`.godot/`), os relatórios dos testes (`reports/`) e as exportações ficam fora do git. Sem Git LFS no começo: texturas pequenas (até 32 px) e sons pequenos cabem no git normal.
+  - O gdUnit4, os testes e os geradores das áreas (`tools/areas/`) ficam fora das exportações do jogo.
+- **Git:** os arquivos gerados pelo Godot (`.godot/`), os relatórios dos testes (`reports/`) e as exportações ficam fora do git. Sem Git LFS no começo: texturas pequenas (até 32 px) e sons cabem no git normal; a música provisória soma cerca de 26 MB. Se a música definitiva pesar muito mais, vale passar o áudio para o Git LFS.
 - **Assets prontos:** entram como provisórios no começo da produção e são registrados com origem e licença no `10-arte-audio.md`. Os créditos do jogo listam os que pedem crédito.
 - **Ordem:** o montador de modelos e a prévia vêm antes dos primeiros modelos.

@@ -14,3 +14,5 @@ knockback = 1
 warning = 1
 effect = 1
 effect_duration = 2.0
+warning_sound = &"golem_warning"
+strike_sound = &"golem_quake"

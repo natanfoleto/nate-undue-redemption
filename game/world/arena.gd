@@ -35,6 +35,7 @@ func _physics_process(_delta: float) -> void:
 				state = State.FIGHTING
 				for gate in gates:
 					gate.close()
+				AudioManager.push_music(AudioManager.rules.arena_music)
 				_next_wave()
 		State.FIGHTING:
 			# Sem tipo no parâmetro: um mob já liberado não pode ser passado como Node3D.
@@ -50,6 +51,7 @@ func _next_wave() -> void:
 		SaveSystem.record(SaveSystem.OPENED, save_id)
 		for gate in gates:
 			gate.open()
+		AudioManager.pop_music()
 		return
 	if waves[_wave] == null or spawn_points.is_empty():
 		push_warning("Arena %s: onda %d vazia ou sem pontos de surgir." % [save_id, _wave + 1])
@@ -75,6 +77,7 @@ func _reset() -> void:
 	_alive.clear()
 	_wave = -1
 	state = State.WAITING
+	AudioManager.pop_music()
 	for gate in gates:
 		gate.open()
 

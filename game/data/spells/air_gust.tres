@@ -11,3 +11,4 @@ cooldown = 10.0
 color = Color(0.9098039, 0.93333334, 0.9490196, 1)
 self_speed_bonus = 0.3
 self_duration = 3.0
+sound = &"spell_air"

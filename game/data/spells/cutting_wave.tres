@@ -9,3 +9,4 @@ name_key = &"SPELL_CUTTING_WAVE"
 attack = ExtResource("1_hiyhl")
 cooldown = 8.0
 color = Color(0.5411765, 0.8156863, 1, 1)
+sound = &"spell_water"

@@ -27,6 +27,7 @@ var _ending := false
 func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_ALWAYS
 	get_tree().paused = true
+	AudioManager.push_music(AudioManager.rules.memory_music)
 	_camera.global_transform = camera_from.global_transform
 	_fade.color.a = 1.0
 	var tween := create_tween().set_parallel()
@@ -54,5 +55,6 @@ func _end() -> void:
 	tween.tween_property(_fade, ^"color:a", 1.0, fade_time)
 	await tween.finished
 	get_tree().paused = false
+	AudioManager.pop_music()
 	finished.emit()
 	queue_free()

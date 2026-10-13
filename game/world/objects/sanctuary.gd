@@ -46,6 +46,7 @@ func interact() -> void:
 ## Descanso (02-core-loop): a tela escurece, vida e frasco enchem e o jogo salva.
 func rest() -> void:
 	var player := get_tree().get_first_node_in_group(&"player") as Player
+	AudioManager.play(&"sanctuary_rest")
 	await GameState.fade_out()
 	player.rest()
 	SaveSystem.save()
@@ -61,8 +62,10 @@ func _first_visit(player: Player) -> void:
 	SaveSystem.record(SaveSystem.SANCTUARIES, data.id())
 	var tween := create_tween()
 	tween.tween_method(_show_lit, 0.0, 1.0, light_up_time)
+	AudioManager.play(&"sanctuary_light", global_position)
 	await tween.finished
 	if new_flask:
+		AudioManager.play(&"item_found")
 		ItemFound.show_name(self, &"ITEM_FLASK")
 		Events.item_picked.emit(GameState.FLASK)
 	player.rest()

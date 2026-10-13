@@ -11,3 +11,4 @@ attack = ExtResource("1_tlwhe")
 lasting = 6.0
 color = Color(0.84705883, 0.7529412, 0.5411765, 1)
 shield = true
+sound = &"spell_sand"

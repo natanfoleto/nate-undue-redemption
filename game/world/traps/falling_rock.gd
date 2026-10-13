@@ -35,6 +35,7 @@ func _physics_process(delta: float) -> void:
 				state = State.WARNING
 				_left = attack.windup
 				_marker.show_attack(attack, global_position, Vector3.FORWARD)
+				AudioManager.play(attack.warning_sound, global_position)
 		State.WARNING:
 			_left -= delta
 			_marker.set_progress(clampf(1.0 - _left / attack.windup, 0.0, 1.0))
@@ -52,6 +53,7 @@ func _physics_process(delta: float) -> void:
 func _land() -> void:
 	state = State.FALLEN
 	_marker.hide_attack()
+	AudioManager.play(attack.strike_sound, global_position)
 	SaveSystem.record(SaveSystem.OPENED, save_id)
 	for faction: Hurtbox.Faction in [Hurtbox.Faction.PLAYER, Hurtbox.Faction.ENEMY]:
 		Strike.hit_area(attack, self, global_position, Vector3.FORWARD, faction, _already_hit, _build_hit)

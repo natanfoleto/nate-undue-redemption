@@ -109,6 +109,14 @@ Depois da etapa 6, o responsável jogou e pediu (2026-10-12):
 
 Feitos em 2026-10-13, com os documentos atualizados, junto com a revisão de código das etapas 6 e dos ajustes. Ela corrigiu: a ponte de alavanca, que com a gravidade nova não segurava Nate; os murais de uma área, que mostravam todos o mesmo desenho na parede; o mob atingido de longe, que corria para um canto do mapa; a ajuda de mira, que não puxa mais para inimigos em outra altura; e as magias que só empurram, que não dão mais crítico de 0. Fica para depois, como o responsável preferiu: mais plantas e mato na floresta.
 
+## Cenário cheio, abismos e som
+Depois de jogar os ajustes, o responsável pediu (2026-10-13): nada do vazio preto em volta do mapa; florestas, montanhas e vilarejos do lado de fora; paredes extensas de pedra dentro das cavernas; e profundidade no cenário, com pontes e descidas. Também aprovou baixar os pacotes de som e trazer os geradores das áreas para o repositório. As escolhas dele:
+- No fundo dos abismos, um para cada área: água escura na Mina, água brilhante e fungos no Bosque, lava nas Ruínas.
+- Lá fora, a vila abandonada dos mineiros, a mata e, mais embaixo, o rio Nhamundá com a cidade do outro lado.
+- Um trecho novo por área no caminho, sem mudar salas, lutas e itens: a ponte de tábuas sobre a galeria inundada da Mina, o pé de cogumelo caído sobre a fenda do Bosque e a ponte de pedra sobre a fenda de lava das Ruínas; a vala da Mina e os vãos das Ruínas ficaram fundos.
+
+Feito em 2026-10-13: o terreno preenche tudo o que a câmera alcança (`08-mapa.md`), com água, rio e lava animados, plantas, cercas na beira dos abismos e o mapa de navegação passando pelas pontes; o som provisório toca em todo o jogo, com música por área, a das arenas e a das memórias, som de fundo na Mina e nas Ruínas, avisos de golpe acima da música e passos conforme o chão (`10-arte-audio.md`). Os geradores e os rascunhos dos mapas ficam em `game/tools/areas/` (`12-tecnico.md`).
+
 ## Etapas 7 e 8, em linhas gerais
 - **7. Grande Prisão:** antessala com a memória 4, a Boiúna com as duas fases e os pilares, a cena da troca de fase, o final, os créditos, o resumo e o pós-jogo.
 - **8. Acabamento:** abertura, menus e opções (trocar botões e acessibilidade), mapa por área e tela de progresso, música, testes com jogadores de fora para conferir os 30 min, ajustes no `11-balanceamento.md` e exportação para Windows e macOS.

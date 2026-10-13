@@ -36,6 +36,9 @@ enum Warning { POSE, GROUND_MARK }
 ## Efeito de status em quem é acertado (-1 para nenhum) e por quanto tempo, em segundos (o abalo do Golem).
 @export var effect := -1
 @export var effect_duration := 0.0
+## Sons do banco (data/audio/sounds.tres): o aviso, no começo da preparação, e o do golpe, quando ele sai.
+@export var warning_sound: StringName
+@export var strike_sound: StringName
 
 
 ## Duração do golpe inteiro, em segundos.

@@ -23,7 +23,7 @@ O prólogo e a Mina já têm um rascunho jogável, em `game/world/areas/mine.tsc
 | Clareira do prólogo | 32 × 26 blocos de grama, cercada de mata, com o paredão de pedra e a boca velha da mina ao norte e dois morrinhos de 1 bloco, com degraus | o começo, o lobo e a fenda de 2 blocos de largura até a Mina |
 | Saguão da entrada da Mina | 13 × 11 blocos | o ponto de retorno da Mina |
 | Sala do Estilingue | 17 × 12 blocos, cortada por uma vala de 2 blocos; do outro lado, uma beirada de 5 blocos com a alavanca | o Estilingue no chão e o portão que a alavanca abre |
-| Corredor do portão | 15 × 4 blocos | 1 Esqueleto |
+| Corredor do portão | 19 × 4 blocos, 14 deles numa ponte de tábuas sobre a galeria inundada (14 × 19 blocos, com 7 de fundo e água escura), com cerca dos dois lados e postes de lampião que sobem da água | 1 Esqueleto, que luta em cima da ponte |
 | Corredor das pedras | 4 × 28 blocos, subindo para o norte | 2 pedras que caem, 1 Lobo e 1 Esqueleto |
 | Sala do baú | 16 × 10 blocos | o baú com o Colete de minerador, 2 Lobos e a parede rachada da Armadura de minerador |
 | Desvio da Picareta | corredor de 10 × 2 blocos até uma sala de 5 × 8 | a Picareta |
@@ -46,6 +46,7 @@ O Bosque de Fungos tem um rascunho jogável em `game/world/areas/forest.tscn` (e
 | Corredor do mural 2 | 24 × 4 blocos | o lugar do mural 2 na parede norte e 2 Esqueletos |
 | Caverna dos dinossauros | 24 × 27 blocos, com cogumelos gigantes | 2 dinossauros, 2 Lobos e 1 Necromante; o desvio do Manto, num terraço 1 bloco mais alto, com escada, cercado de cogumelos de esporos; uma fresta de 1 bloco até o mural 3 escondido |
 | Arena opcional | corredor escuro de 7 × 2 blocos, arena de 18 × 16 e uma sala de 5 × 6 | as 2 ondas do `11-balanceamento.md` e o pergaminho de Água |
+| Corredor da fenda | 4 × 8 blocos, da caverna dos dinossauros até a sala do meio; 6 deles num pé de cogumelo caído, que faz de ponte sobre uma fenda de água brilhante e fungos acesos | 1 cogumelo de esporos em cima da ponte |
 | Sala do meio | 16 × 12 blocos | 2 Esqueletos e 1 Lobo; a leste, o desvio do +1 coração (2 Lobos); a oeste, o corredor do atalho até a porta do S1 (cerca de 40 blocos) |
 | S2 | 16 × 10 blocos | o S2 |
 | Arena 2 | 18 × 16 blocos, com portão na entrada e na saída | as 3 ondas do `11-balanceamento.md` |
@@ -64,7 +65,7 @@ As Ruínas têm um rascunho jogável em `game/world/areas/ruins.tscn` (etapa 6).
 | Salão do S3 | 18 × 16 blocos | o S3; a leste, o vão de 4 blocos que a ponte cobre |
 | Arena 1 | 18 × 16 blocos, com portão na entrada e na saída | as 2 ondas do `11-balanceamento.md` |
 | Sala do pergaminho de Terra | 8 × 8 blocos | o pergaminho de Terra; a oeste, o nicho do +1 coração; a leste, a parede rachada do caminho principal |
-| Corredor das minas antigas | 34 × 2 blocos e depois 2 × 22, para o sul | 2 Esqueletos Veteranos, 1 Necromante, 1 Golem e lanças do chão; a leste, a galeria das 3 alavancas do Arco |
+| Corredor das minas antigas | 34 × 2 blocos e depois 2 × 22, para o sul, com uma ponte de pedra de 4 blocos sobre uma fenda de lava, com balaustrada | 2 Esqueletos Veteranos, 1 Necromante, 1 Golem (na cabeceira da ponte) e lanças do chão; a leste, a galeria das 3 alavancas do Arco |
 | Salão antes da arena 2 | 18 × 14 blocos | a alavanca da ponte, 2 Lobos Alfa, 1 Veterano e 1 Necromante Ancião; a fresta do mural 6 e a parede rachada da Lâmina de pedra verde |
 | Arena 2 | 18 × 16 blocos, com portão na entrada e na saída | as 2 ondas do `11-balanceamento.md` |
 | Sala do Selo | 12 × 12 blocos | o mural 4, o Selo e o mural 5; a saída para a Grande Prisão |
@@ -75,7 +76,10 @@ O caminho principal das Ruínas tem cerca de 150 blocos andando, sem contar as l
 ### Relevo e bordas
 - O chão tem platôs de 1 e 2 blocos, ligados por escadas. Nate e os mobs sobem e descem por elas; nas beiradas sem escada, moitas (na clareira) ou pedras (no Bosque) seguram quem anda: não há quedas. Golpes só acertam quem está mais ou menos na mesma altura (`03-regras.md`).
 - **Clareira:** dois morrinhos com degraus. **Mina:** o corredor das pedras sobe 1 bloco para o norte, e tudo dali em diante fica 1 bloco acima. **Bosque:** a chegada do elevador, o S2, a arena 2 e a passagem escura ficam embaixo; o resto, 1 bloco acima; o terraço do Manto, 2. **Ruínas:** a chegada, o corredor das lanças e o desvio da Couraça ficam embaixo; uma escadaria sobe ao salão do S3; a arena 2, a sala do Selo e a saída ficam mais 1 bloco acima.
-- No lugar das paredes retas, bordas naturais, como no Minecraft Dungeons. Na frente da câmera (sul e leste do chão), a parede é baixa e cai como barranco no escuro, para não esconder Nate; atrás (norte e oeste), ela sobe alta e irregular, com morros de pedra subindo depois dela. Na clareira, a borda é de mata: árvores altas atrás, moitas baixas na frente.
+- **Nada de vazio:** o terreno preenche tudo o que a câmera alcança, como no Minecraft Dungeons. Rente ao chão fica a parede: baixa na frente da câmera (sul e leste do chão), para não esconder Nate, e alta e irregular atrás (norte e oeste). Depois dela, onde há outra sala na diagonal da câmera, o terreno desce num abismo; atrás de tudo, na borda de fora, sobem morros. Nenhuma coluna tampa a visão de Nate: a altura de cada uma tem um teto, o da linha de visão da câmera até o chão atrás dela.
+- **Fundo dos abismos:** água escura de galeria inundada, com esteios de madeira, na Mina; água que brilha, com fungos acesos, no Bosque; lava, que ilumina as paredes de baixo para cima, nas Ruínas. Pedras sobem do fundo aqui e ali, e a rocha fica mais escura abaixo do chão.
+- **Mundo de fora:** em volta da clareira, mata fechada subindo em morros a oeste; a leste, num terraço mais baixo, a vila abandonada dos mineiros da família, com barracos de telhado caindo, um trilho e uma vagoneta; ao sul, a encosta desce até o rio Nhamundá, com areia, papiro e canoas, e a cidade do outro lado, com casas de madeira pintada. Capim e flores pela clareira e pela mata.
+- **Abismos e pontes no caminho:** a vala da sala do Estilingue, a galeria inundada da Mina, a fenda do Bosque, a fenda de lava das Ruínas e os vãos da ponte de alavanca e da galeria do Arco são abismos de verdade. Na beira deles, cerca (ou balaustrada) e uma barreira invisível seguram quem anda; os tiros passam por cima.
 - As paredes baixas seguram os tiros e a visão dos mobs como as outras, com blocos invisíveis por cima. Em volta das áreas escuras e atrás dos murais, a parede da frente é um pouco mais alta. Números: `11-balanceamento.md`.
 
 ## Trecho a trecho
@@ -309,7 +313,7 @@ As três ferem Nate e os mobs (`03-regras.md`). Os mobs contornam as armadilhas 
 | Baú | interagir: abre, e o item vai para o inventário | abrir | abrir; achar item |
 | Alavanca | interagir de perto ou acertar com tiro de longe: abre um portão ou baixa uma ponte | mudar de posição | alavanca |
 | Portão | abre com a alavanca | abrir | abrir |
-| Ponte de alavanca | baixa com a alavanca; deitada sobre o vão, vira chão firme, e só então dá para atravessar | baixar | ponte |
+| Ponte de alavanca | baixa com a alavanca; deitada sobre o vão, vira chão firme, e só então dá para atravessar; dos lados dela, uma barreira segura quem atravessa | baixar | ponte |
 | Porta que só abre por um lado | atalho: abre só pelo lado de dentro | abrir | abrir |
 | Elevador da mina | desce e quebra na chegada ao Bosque; consertado, liga S1 e a Mina | descer, quebrar, subir | elevador; quebra |
 | Parede rachada | quebra com qualquer golpe quando Nate já aprendeu Terra; sem Terra, responde com som de pedra firme | quebrar | quebrar; pedra firme |

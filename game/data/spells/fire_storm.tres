@@ -11,3 +11,4 @@ attack = ExtResource("1_rmyio")
 effect = 3
 lasting = 4.0
 color = Color(0.9411765, 0.627451, 0.3764706, 1)
+sound = &"spell_firestorm"

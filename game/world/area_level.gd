@@ -9,6 +9,9 @@ extends Node3D
 ## Saída para a próxima área; até ela existir, chegar nela termina a parte jogável.
 @export var exit: AreaExit
 @export var end_screen: EndScreen
+## A música da área e o som de fundo (10-arte-audio); vazios, nada toca.
+@export var music: AudioStream
+@export var ambience: AudioStream
 
 
 func _ready() -> void:
@@ -30,4 +33,6 @@ func _ready() -> void:
 	player.facing = point.facing()
 	if exit:
 		exit.reached.connect(end_screen.show_end)
+	AudioManager.play_music(music)
+	AudioManager.play_ambience(ambience)
 	GameState.fade_in()

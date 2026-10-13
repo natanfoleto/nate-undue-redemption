@@ -24,6 +24,8 @@ func interact() -> void:
 	GameState.pick_up(item_id, item_slot)
 	_mark_done()
 	create_tween().tween_property(_lid, ^"rotation_degrees:x", open_angle, open_time)
+	AudioManager.play(&"chest_open", global_position)
+	AudioManager.play(&"item_found")
 	ItemFound.show_found(self, item_id)
 
 

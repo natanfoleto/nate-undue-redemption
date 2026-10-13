@@ -15,3 +15,5 @@ cooldown = 2.0
 knockback = 2
 warning = 1
 lunge = 4.0
+warning_sound = &"wolf_warning"
+strike_sound = &"wolf_strike"

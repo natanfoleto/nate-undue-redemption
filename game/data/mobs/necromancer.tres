@@ -42,3 +42,5 @@ windup_animation = ExtResource("13_m3pt3")
 attack_animation = ExtResource("2_jfsn5")
 hurt_animation = ExtResource("4_s4tnb")
 death_animation = ExtResource("3_ce1jj")
+hurt_sound = &"necromancer_hurt"
+death_sound = &"necromancer_death"

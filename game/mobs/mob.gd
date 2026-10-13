@@ -96,8 +96,12 @@ func take_hit(hit: Hit) -> void:
 	health.damage(hit.points)
 	if hit.critical:
 		CriticalPopup.spawn(CRITICAL_POPUP, get_parent(), global_position + Vector3.UP * _model_height(), hit.points)
+	if hit.points > 0:
+		# O acerto em três pesos (10-arte-audio): crítico, recuo longo e o resto.
+		AudioManager.play(&"hit_critical" if hit.critical else &"hit_heavy" if hit.knockback == AttackData.Knockback.LONG else &"hit", global_position)
 	if health.is_dead():
 		return
+	AudioManager.play(data.hurt_sound, global_position)
 	_health_bar.show_value(health.value, health.max_value)
 	if hit.effect >= 0:
 		status.apply(hit.effect, hit.effect_duration)
@@ -242,6 +246,8 @@ func _start_attack(offset: Vector3) -> void:
 	velocity = Vector3.ZERO
 	if attack.warning == AttackData.Warning.GROUND_MARK:
 		_marker.show_attack(attack, _attack_origin, _attack_direction)
+	# Todo golpe tem o som de aviso próprio (10-arte-audio).
+	AudioManager.play(attack.warning_sound, global_position)
 	_enter(State.WINDUP, attack.windup)
 	_animator.play(data.second_windup_animation if second else data.windup_animation)
 
@@ -260,6 +266,7 @@ func _windup() -> void:
 		_model.set_glow(0.0)
 		_enter(State.ACTIVE, attack.active)
 		_animator.play(data.second_attack_animation if attack != data.attack else data.attack_animation)
+		AudioManager.play(attack.strike_sound, global_position)
 
 
 func _active() -> void:
@@ -338,6 +345,7 @@ func _die() -> void:
 	remove_from_group(&"enemies")
 	_health_bar.visible = false
 	_animator.play(data.death_animation)
+	AudioManager.play(data.death_sound, global_position)
 	died.emit(self)
 	Events.enemy_died.emit(self)
 	await get_tree().create_timer(data.death_animation.length, false).timeout

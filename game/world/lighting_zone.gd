@@ -12,9 +12,12 @@ extends Node3D
 @export var inside_ambient_energy := 0.0
 ## Tempo da troca de luz, em segundos.
 @export var change_time := 0.0
+## Som de fundo dentro da zona (as gotas e o vento da mina); fora dela, nenhum.
+@export var inside_ambience: AudioStream
 
 var _outside_sun := 0.0
 var _outside_ambient := 0.0
+var _was_inside := false
 
 
 func _ready() -> void:
@@ -25,11 +28,17 @@ func _ready() -> void:
 
 
 func _snap() -> void:
-	_apply(1.0 if _player_inside() else 0.0)
+	_was_inside = _player_inside()
+	_apply(1.0 if _was_inside else 0.0)
+	AudioManager.play_ambience(inside_ambience if _was_inside else null)
 
 
 func _process(delta: float) -> void:
-	var target := 1.0 if _player_inside() else 0.0
+	var inside := _player_inside()
+	if inside != _was_inside:
+		_was_inside = inside
+		AudioManager.play_ambience(inside_ambience if inside else null)
+	var target := 1.0 if inside else 0.0
 	var current := inverse_lerp(_outside_sun, inside_sun_energy, sun.light_energy) if _outside_sun != inside_sun_energy else target
 	var step := delta / change_time if change_time > 0.0 else 1.0
 	_apply(move_toward(current, target, step))

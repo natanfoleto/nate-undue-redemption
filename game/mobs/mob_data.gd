@@ -36,3 +36,8 @@ extends Resource
 @export var second_attack_animation: AnimationData
 @export var hurt_animation: AnimationData
 @export var death_animation: AnimationData
+
+@export_group("Sons")
+## Sons do banco (data/audio/sounds.tres): ao levar um golpe e ao morrer.
+@export var hurt_sound: StringName
+@export var death_sound: StringName

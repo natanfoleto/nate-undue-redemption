@@ -49,6 +49,7 @@ var _boost_left := 0.0
 var _regen_wait_left := 0.0
 var _regen_tick_left := 0.0
 var _fall_speed := 0.0
+var _step_left := 0.0
 var _shield: SpellArea
 
 @onready var health: Health = $Health
@@ -117,6 +118,7 @@ func _physics_process(delta: float) -> void:
 		_push_left -= delta
 		velocity = _push_velocity
 	_move(delta)
+	_update_steps()
 	_update_facing()
 	_update_aim(move)
 	_update_animation()
@@ -263,6 +265,7 @@ func take_hit(hit: Hit) -> void:
 			status.apply(hit.effect, hit.effect_duration, status_duration_share())
 	_melee.cancel()
 	_ranged.cancel()
+	AudioManager.play(&"nate_hurt", global_position)
 	if health.is_dead():
 		_die()
 		return
@@ -404,11 +407,42 @@ func _move(delta: float) -> void:
 	move_and_slide()
 
 
+# Passos: um som a cada tantos blocos andados no chão, conforme o bloco embaixo de Nate (10-arte-audio).
+func _update_steps() -> void:
+	if not is_on_floor() or is_rolling():
+		return
+	var moved := Vector2(get_position_delta().x, get_position_delta().z).length()
+	if is_zero_approx(moved):
+		return
+	_step_left -= moved
+	if _step_left > 0.0:
+		return
+	_step_left += AudioManager.rules.step_distance
+	AudioManager.play(_step_sound(), global_position)
+
+
+# Grama e musgo; madeira (tábuas, pontes, a plataforma do elevador); o resto é pedra e terra.
+func _step_sound() -> StringName:
+	var terrain := get_tree().current_scene.get_node_or_null(^"Terrain") as GridMap
+	if terrain == null:
+		return &"step_stone"
+	var item := terrain.get_cell_item(terrain.local_to_map(terrain.to_local(global_position + Vector3.DOWN * 0.5)))
+	if item == GridMap.INVALID_CELL_ITEM:
+		return &"step_wood"
+	var block := terrain.mesh_library.get_item_name(item)
+	if block.begins_with("Grama") or block.ends_with("musgo"):
+		return &"step_grass"
+	if block in ["Tábuas", "Madeira velha", "Pé de cogumelo", "Tronco"]:
+		return &"step_wood"
+	return &"step_stone"
+
+
 func _start_roll(move: Vector3) -> void:
 	var stats := Balance.player
 	_roll_direction = facing if move.is_zero_approx() else move
 	_roll_time_left = stats.roll_duration
 	play_animation(roll_animation, roll_animation.length / stats.roll_duration)
+	AudioManager.play(&"roll", global_position)
 
 
 # Anda exatamente a distância do rolamento: o último passo da física só cobre o tempo que faltava.
@@ -486,6 +520,7 @@ func _die() -> void:
 	_aim_arrow.visible = false
 	_model.visible = true
 	play_animation(death_animation, 1.0)
+	AudioManager.play(&"nate_death", global_position)
 	Events.player_died.emit()
 	await get_tree().create_timer(Balance.player.death_time, false).timeout
 	# O último santuário pode ficar em outra área (depois de subir pelo elevador).
@@ -558,6 +593,7 @@ func _pulse_amulet(weight: float) -> void:
 ## A lasca se encaixando (05-itens): o muiraquitã fica inteiro, com o mesmo pulso de luz do despertar.
 func fit_seal() -> void:
 	_show_amulet()
+	AudioManager.play(&"seal", global_position)
 	await awaken_amulet()
 
 

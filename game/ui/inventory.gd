@@ -90,6 +90,7 @@ func _unhandled_input(event: InputEvent) -> void:
 
 func _open() -> void:
 	get_tree().paused = true
+	AudioManager.play(&"ui_open")
 	_panel.visible = true
 	_refresh()
 	_open_slot(_slot)
@@ -97,6 +98,7 @@ func _open() -> void:
 
 
 func _close() -> void:
+	AudioManager.play(&"ui_close")
 	_panel.visible = false
 	get_tree().paused = false
 

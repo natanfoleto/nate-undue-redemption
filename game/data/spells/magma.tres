@@ -9,3 +9,4 @@ name_key = &"SPELL_MAGMA"
 attack = ExtResource("1_wm8j5")
 effect = 3
 color = Color(0.8784314, 0.3764706, 0.16470589, 1)
+sound = &"spell_magma"

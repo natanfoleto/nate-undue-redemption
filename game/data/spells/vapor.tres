@@ -12,3 +12,4 @@ effect = 3
 lasting = 4.0
 offset = 4.0
 color = Color(0.9411765, 0.78431374, 0.6901961, 1)
+sound = &"spell_steam"

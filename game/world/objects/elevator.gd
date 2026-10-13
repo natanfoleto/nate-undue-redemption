@@ -59,6 +59,7 @@ func interact() -> void:
 
 func _repair() -> void:
 	SaveSystem.record(SaveSystem.OPENED, repair_id)
+	AudioManager.play(&"elevator_repair", global_position)
 	_busy = true
 	var tween := create_tween()
 	tween.tween_property(_platform, ^"rotation_degrees:z", 0.0, repair_time)
@@ -69,6 +70,7 @@ func _travel() -> void:
 	_busy = true
 	var player := get_tree().get_first_node_in_group(&"player") as Player
 	player.set_cinematic(true)
+	AudioManager.play(&"elevator_move", global_position)
 	var tween := create_tween().set_parallel()
 	tween.tween_property(_platform, ^"position:y", _platform.position.y + travel_direction * depth, travel_time)
 	tween.tween_property(player, ^"global_position:y", player.global_position.y + travel_direction * depth, travel_time)
@@ -94,6 +96,7 @@ func _arrive() -> void:
 		# A queda: a plataforma bate, entorta e solta poeira.
 		var crash := create_tween()
 		crash.tween_property(_platform, ^"rotation_degrees:z", broken_tilt, crash_time)
+		AudioManager.play(&"elevator_crash", global_position)
 		SpellEffects.burst(get_parent(), global_position, dust_color, dust_radius, dust_look)
 		await crash.finished
 	player.set_cinematic(false)

@@ -12,3 +12,5 @@ windup = 0.8
 active = 0.2
 recovery = 0.5
 cooldown = 3.0
+warning_sound = &"necromancer_warning"
+strike_sound = &"necromancer_strike"

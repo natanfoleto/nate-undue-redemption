@@ -44,6 +44,7 @@ func _physics_process(delta: float) -> void:
 func _start_flee() -> void:
 	_fleeing = true
 	_end_attack()
+	AudioManager.play(&"wolf_howl", global_position)
 	remove_from_group(&"enemies")
 	_hurtbox.queue_free()
 	# Atravessa Nate e os outros mobs até a fenda.

@@ -38,6 +38,7 @@ func _physics_process(_delta: float) -> void:
 		# O item primeiro: se o jogo cair entre as duas gravações, ele continua no chão.
 		GameState.pick_up(item_id, item_slot)
 		SaveSystem.record(SaveSystem.OPENED, save_id)
+	AudioManager.play(&"upgrade_found" if upgrade else &"item_found")
 	ItemFound.show_name(self, _item().name_key)
 	queue_free()
 

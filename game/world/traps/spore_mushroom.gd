@@ -41,6 +41,7 @@ func _physics_process(delta: float) -> void:
 				state = State.SWELLING
 				_left = attack.windup
 				_marker.show_attack(attack, global_position, Vector3.FORWARD)
+				AudioManager.play(attack.warning_sound, global_position)
 		State.SWELLING:
 			var progress := clampf(1.0 - _left / attack.windup, 0.0, 1.0)
 			_marker.set_progress(progress)
@@ -51,6 +52,7 @@ func _physics_process(delta: float) -> void:
 				_marker.hide_attack()
 				_model.scale = Vector3.ONE * popped_scale
 				_cloud.emitting = true
+				AudioManager.play(attack.strike_sound, global_position)
 		State.CLOUD:
 			_slow_inside()
 			if _left <= 0.0:

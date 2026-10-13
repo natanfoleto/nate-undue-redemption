@@ -31,3 +31,5 @@ enum Delivery { PROJECTILE, INSTANT, LASTING, AROUND }
 @export var self_duration := 0.0
 ## Segura o próximo golpe que Nate receber, enquanto a área dura (Escudo de Areia).
 @export var shield := false
+## Som do banco (data/audio/sounds.tres) ao lançar a magia.
+@export var sound: StringName

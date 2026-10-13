@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="AudioRules" format=3]
+
+[ext_resource type="AudioStream" path="res://assets/audio/music/waking_the_devil.mp3" id="1_xmghn"]
+[ext_resource type="AudioStream" path="res://assets/audio/music/doomed.mp3" id="2_b6dfm"]
+[ext_resource type="AudioStream" path="res://assets/audio/music/great_mission.mp3" id="3_3fyib"]
+[ext_resource type="Script" path="res://audio/audio_rules.gd" id="4_crmqu"]
+
+[resource]
+script = ExtResource("4_crmqu")
+music_volume_db = -10.0
+ambience_volume_db = -14.0
+fade_time = 2.0
+silent_db = -60.0
+step_distance = 1.6
+unit_size = 8.0
+max_distance = 28.0
+world_voices = 24
+screen_voices = 6
+menu_music = ExtResource("3_3fyib")
+arena_music = ExtResource("1_xmghn")
+memory_music = ExtResource("2_b6dfm")

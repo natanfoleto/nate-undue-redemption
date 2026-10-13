@@ -10,3 +10,4 @@ attack = ExtResource("1_mxsx8")
 effect = 0
 effect_duration = 2.0
 color = Color(0.6901961, 0.8784314, 1, 1)
+sound = &"spell_ice"
