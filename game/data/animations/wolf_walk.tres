@@ -1,0 +1,32 @@
+[gd_resource type="Resource" script_class="AnimationData" format=3]
+
+[ext_resource type="Script" path="res://tools/models/pose_data.gd" id="1_yq188"]
+[ext_resource type="Script" path="res://tools/models/animation_data.gd" id="2_et1l8"]
+
+[sub_resource type="Resource" id="Resource_cj1mn"]
+script = ExtResource("1_yq188")
+rotations = Dictionary[StringName, Vector3]({
+&"leg_bl": Vector3(45, 0, 0),
+&"leg_br": Vector3(-45, 0, 0),
+&"leg_fl": Vector3(-45, 0, 0),
+&"leg_fr": Vector3(45, 0, 0),
+&"tail": Vector3(10, 0, 0)
+})
+
+[sub_resource type="Resource" id="Resource_hlfv4"]
+script = ExtResource("1_yq188")
+time = 0.15
+rotations = Dictionary[StringName, Vector3]({
+&"leg_bl": Vector3(-45, 0, 0),
+&"leg_br": Vector3(45, 0, 0),
+&"leg_fl": Vector3(45, 0, 0),
+&"leg_fr": Vector3(-45, 0, 0),
+&"tail": Vector3(10, 0, 0)
+})
+
+[resource]
+script = ExtResource("2_et1l8")
+length = 0.3
+loop = true
+blend_time = 0.1
+poses = Array[ExtResource("1_yq188")]([SubResource("Resource_cj1mn"), SubResource("Resource_hlfv4")])

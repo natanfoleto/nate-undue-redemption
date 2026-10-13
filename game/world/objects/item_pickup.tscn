@@ -1,0 +1,26 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://world/objects/item_pickup.gd" id="1_o24qt"]
+[ext_resource type="Script" path="res://tools/models/block_model.gd" id="2_ng88i"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_etbm2"]
+transparency = 1
+shading_mode = 0
+albedo_color = Color(1, 0.95, 0.75, 0.3)
+
+[sub_resource type="BoxMesh" id="BoxMesh_ef8d1"]
+material = SubResource("StandardMaterial3D_etbm2")
+size = Vector3(0.35, 3, 0.35)
+
+[node name="ItemPickup" type="Node3D" unique_id=1685028023]
+script = ExtResource("1_o24qt")
+pickup_radius = 0.75
+
+[node name="BlockModel" type="Node3D" parent="." unique_id=2144118295]
+transform = Transform3D(0.664463, -0.24184474, 0.70710677, 0.34202012, 0.9396926, 0, -0.664463, 0.24184474, 0.70710677, 0, 0.8, 0)
+script = ExtResource("2_ng88i")
+
+[node name="Beam" type="MeshInstance3D" parent="." unique_id=1662289627]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+cast_shadow = 0
+mesh = SubResource("BoxMesh_ef8d1")

@@ -1,0 +1,27 @@
+[gd_resource type="Resource" script_class="MobData" format=3]
+
+[ext_resource type="Resource" path="res://data/attacks/wolf_bite.tres" id="1_ee7v0"]
+[ext_resource type="Resource" path="res://data/animations/wolf_leap.tres" id="2_bfdjk"]
+[ext_resource type="Resource" path="res://data/animations/wolf_death.tres" id="3_7db1c"]
+[ext_resource type="Resource" path="res://data/animations/wolf_hurt.tres" id="4_stwpw"]
+[ext_resource type="Resource" path="res://data/animations/wolf_idle.tres" id="5_5i8uf"]
+[ext_resource type="Resource" path="res://data/models/wolf.tres" id="6_bbmmf"]
+[ext_resource type="Script" path="res://mobs/mob_data.gd" id="7_vi200"]
+[ext_resource type="Resource" path="res://data/animations/wolf_walk.tres" id="8_t2f5o"]
+[ext_resource type="Resource" path="res://data/animations/wolf_windup.tres" id="9_kvp1y"]
+
+[resource]
+script = ExtResource("7_vi200")
+health = 30
+move_speed = 4.5
+perception = 10.0
+hurt_radius = 0.4
+wait_distance = 4.0
+attack = ExtResource("1_ee7v0")
+model = ExtResource("6_bbmmf")
+idle_animation = ExtResource("5_5i8uf")
+walk_animation = ExtResource("8_t2f5o")
+windup_animation = ExtResource("9_kvp1y")
+attack_animation = ExtResource("2_bfdjk")
+hurt_animation = ExtResource("4_stwpw")
+death_animation = ExtResource("3_7db1c")

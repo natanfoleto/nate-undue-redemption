@@ -3,6 +3,8 @@ extends HBoxContainer
 ## Uma dica de controle (09-interface): os ícones dos botões e o nome da ação. Some quando a ação é usada.
 ## Os ícones trocam sozinhos quando o jogador muda de dispositivo.
 
+signal used(text_key: StringName)
+
 ## Ações da dica, na ordem dos ícones; usar qualquer uma delas tira a dica.
 @export var actions: Array[StringName] = []
 ## Chave do nome da ação na tabela de tradução.
@@ -23,6 +25,7 @@ func _ready() -> void:
 func _unhandled_input(event: InputEvent) -> void:
 	for action in actions:
 		if event.is_action_pressed(action):
+			used.emit(text_key)
 			queue_free()
 			return
 

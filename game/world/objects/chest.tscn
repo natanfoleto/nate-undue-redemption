@@ -1,0 +1,28 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://world/objects/chest.gd" id="1_chxw0"]
+[ext_resource type="Script" path="res://tools/models/block_model.gd" id="2_74owh"]
+[ext_resource type="Resource" path="res://data/models/chest_base.tres" id="3_7tero"]
+[ext_resource type="Resource" path="res://data/models/chest_lid.tres" id="4_1lhn6"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_fwirs"]
+size = Vector3(0.75, 0.6, 0.5)
+
+[node name="Chest" type="StaticBody3D" unique_id=2089362152]
+script = ExtResource("1_chxw0")
+open_angle = 100.0
+open_time = 0.4
+reach = 1.5
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1397935915]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.3, 0)
+shape = SubResource("BoxShape3D_fwirs")
+
+[node name="Model" type="Node3D" parent="." unique_id=1874304954]
+script = ExtResource("2_74owh")
+model = ExtResource("3_7tero")
+
+[node name="Lid" type="Node3D" parent="." unique_id=1334137382]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.375, 0.25)
+script = ExtResource("2_74owh")
+model = ExtResource("4_1lhn6")

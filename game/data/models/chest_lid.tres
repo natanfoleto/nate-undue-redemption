@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="ModelData" format=3]
+
+[ext_resource type="Script" path="res://tools/models/box_data.gd" id="1_yaw3l"]
+[ext_resource type="Script" path="res://tools/models/model_data.gd" id="2_kvnsf"]
+
+[sub_resource type="Resource" id="Resource_smkxn"]
+resource_name = "lid"
+script = ExtResource("1_yaw3l")
+name = &"lid"
+size = Vector3i(12, 3, 8)
+position = Vector3(-6, 0, -8)
+color = Color(0.2901961, 0.19607843, 0.1254902, 1)
+
+[resource]
+script = ExtResource("2_kvnsf")
+boxes = Array[ExtResource("1_yaw3l")]([SubResource("Resource_smkxn")])

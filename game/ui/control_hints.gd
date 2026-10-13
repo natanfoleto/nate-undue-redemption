@@ -1,6 +1,6 @@
 class_name ControlHints
 extends VBoxContainer
-## Lista de dicas de controle presa perto de Nate na tela (09-interface). Some quando não sobra dica.
+## Lista de dicas de controle presa perto de Nate na tela (09-interface). Fica escondida quando não há dica.
 
 ## Quem as dicas acompanham.
 @export var target: Node3D
@@ -8,9 +8,14 @@ extends VBoxContainer
 @export var height := 0.0
 
 
+## Põe uma dica nova na lista.
+func add_hint(hint: ButtonHint) -> void:
+	add_child(hint)
+
+
 func _process(_delta: float) -> void:
-	if get_child_count() == 0:
-		queue_free()
+	visible = get_child_count() > 0
+	if not visible:
 		return
 	var camera := get_viewport().get_camera_3d()
 	if target == null or camera == null:

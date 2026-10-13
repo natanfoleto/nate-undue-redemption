@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="HintData" format=3]
+
+[ext_resource type="Script" path="res://ui/hint_data.gd" id="1_83pp4"]
+
+[resource]
+script = ExtResource("1_83pp4")
+actions = Array[StringName]([&"move_up", &"move_left", &"move_down", &"move_right"])
+text_key = &"HINT_MOVE"

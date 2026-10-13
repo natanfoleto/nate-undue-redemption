@@ -1,0 +1,178 @@
+[gd_resource type="Resource" script_class="ModelData" format=3]
+
+[ext_resource type="Script" path="res://tools/models/box_data.gd" id="1_ulng4"]
+[ext_resource type="Script" path="res://tools/models/model_data.gd" id="2_1x0pj"]
+
+[sub_resource type="Resource" id="Resource_at4y7"]
+resource_name = "bar_0"
+script = ExtResource("1_ulng4")
+name = &"bar_0"
+size = Vector3i(2, 32, 2)
+position = Vector3(-31, 0, -1)
+color = Color(0.22745098, 0.23137255, 0.2509804, 1)
+
+[sub_resource type="Resource" id="Resource_qx188"]
+resource_name = "bar_1"
+script = ExtResource("1_ulng4")
+name = &"bar_1"
+size = Vector3i(2, 32, 2)
+position = Vector3(-27, 0, -1)
+texture_offset = Vector2i(8, 0)
+color = Color(0.22745098, 0.23137255, 0.2509804, 1)
+
+[sub_resource type="Resource" id="Resource_mp7so"]
+resource_name = "bar_2"
+script = ExtResource("1_ulng4")
+name = &"bar_2"
+size = Vector3i(2, 32, 2)
+position = Vector3(-23, 0, -1)
+texture_offset = Vector2i(16, 0)
+color = Color(0.22745098, 0.23137255, 0.2509804, 1)
+
+[sub_resource type="Resource" id="Resource_uj8gi"]
+resource_name = "bar_3"
+script = ExtResource("1_ulng4")
+name = &"bar_3"
+size = Vector3i(2, 32, 2)
+position = Vector3(-19, 0, -1)
+texture_offset = Vector2i(24, 0)
+color = Color(0.22745098, 0.23137255, 0.2509804, 1)
+
+[sub_resource type="Resource" id="Resource_hd0xc"]
+resource_name = "bar_4"
+script = ExtResource("1_ulng4")
+name = &"bar_4"
+size = Vector3i(2, 32, 2)
+position = Vector3(-15, 0, -1)
+texture_offset = Vector2i(32, 0)
+color = Color(0.22745098, 0.23137255, 0.2509804, 1)
+
+[sub_resource type="Resource" id="Resource_as8rt"]
+resource_name = "bar_5"
+script = ExtResource("1_ulng4")
+name = &"bar_5"
+size = Vector3i(2, 32, 2)
+position = Vector3(-11, 0, -1)
+texture_offset = Vector2i(40, 0)
+color = Color(0.22745098, 0.23137255, 0.2509804, 1)
+
+[sub_resource type="Resource" id="Resource_db2nx"]
+resource_name = "bar_6"
+script = ExtResource("1_ulng4")
+name = &"bar_6"
+size = Vector3i(2, 32, 2)
+position = Vector3(-7, 0, -1)
+texture_offset = Vector2i(48, 0)
+color = Color(0.22745098, 0.23137255, 0.2509804, 1)
+
+[sub_resource type="Resource" id="Resource_dqnkl"]
+resource_name = "bar_7"
+script = ExtResource("1_ulng4")
+name = &"bar_7"
+size = Vector3i(2, 32, 2)
+position = Vector3(-3, 0, -1)
+texture_offset = Vector2i(56, 0)
+color = Color(0.22745098, 0.23137255, 0.2509804, 1)
+
+[sub_resource type="Resource" id="Resource_kq7ki"]
+resource_name = "bar_8"
+script = ExtResource("1_ulng4")
+name = &"bar_8"
+size = Vector3i(2, 32, 2)
+position = Vector3(1, 0, -1)
+texture_offset = Vector2i(64, 0)
+color = Color(0.22745098, 0.23137255, 0.2509804, 1)
+
+[sub_resource type="Resource" id="Resource_jubcf"]
+resource_name = "bar_9"
+script = ExtResource("1_ulng4")
+name = &"bar_9"
+size = Vector3i(2, 32, 2)
+position = Vector3(5, 0, -1)
+texture_offset = Vector2i(72, 0)
+color = Color(0.22745098, 0.23137255, 0.2509804, 1)
+
+[sub_resource type="Resource" id="Resource_bipc1"]
+resource_name = "bar_10"
+script = ExtResource("1_ulng4")
+name = &"bar_10"
+size = Vector3i(2, 32, 2)
+position = Vector3(9, 0, -1)
+texture_offset = Vector2i(80, 0)
+color = Color(0.22745098, 0.23137255, 0.2509804, 1)
+
+[sub_resource type="Resource" id="Resource_ywbn2"]
+resource_name = "bar_11"
+script = ExtResource("1_ulng4")
+name = &"bar_11"
+size = Vector3i(2, 32, 2)
+position = Vector3(13, 0, -1)
+texture_offset = Vector2i(88, 0)
+color = Color(0.22745098, 0.23137255, 0.2509804, 1)
+
+[sub_resource type="Resource" id="Resource_4agmr"]
+resource_name = "bar_12"
+script = ExtResource("1_ulng4")
+name = &"bar_12"
+size = Vector3i(2, 32, 2)
+position = Vector3(17, 0, -1)
+texture_offset = Vector2i(96, 0)
+color = Color(0.22745098, 0.23137255, 0.2509804, 1)
+
+[sub_resource type="Resource" id="Resource_u3x1h"]
+resource_name = "bar_13"
+script = ExtResource("1_ulng4")
+name = &"bar_13"
+size = Vector3i(2, 32, 2)
+position = Vector3(21, 0, -1)
+texture_offset = Vector2i(104, 0)
+color = Color(0.22745098, 0.23137255, 0.2509804, 1)
+
+[sub_resource type="Resource" id="Resource_3jir8"]
+resource_name = "bar_14"
+script = ExtResource("1_ulng4")
+name = &"bar_14"
+size = Vector3i(2, 32, 2)
+position = Vector3(25, 0, -1)
+texture_offset = Vector2i(112, 0)
+color = Color(0.22745098, 0.23137255, 0.2509804, 1)
+
+[sub_resource type="Resource" id="Resource_r838d"]
+resource_name = "bar_15"
+script = ExtResource("1_ulng4")
+name = &"bar_15"
+size = Vector3i(2, 32, 2)
+position = Vector3(29, 0, -1)
+texture_offset = Vector2i(120, 0)
+color = Color(0.22745098, 0.23137255, 0.2509804, 1)
+
+[sub_resource type="Resource" id="Resource_edwf7"]
+resource_name = "cross_0"
+script = ExtResource("1_ulng4")
+name = &"cross_0"
+size = Vector3i(64, 2, 1)
+position = Vector3(-32, 6, -0.5)
+texture_offset = Vector2i(0, 36)
+color = Color(0.22745098, 0.23137255, 0.2509804, 1)
+
+[sub_resource type="Resource" id="Resource_tjr0e"]
+resource_name = "cross_1"
+script = ExtResource("1_ulng4")
+name = &"cross_1"
+size = Vector3i(64, 2, 1)
+position = Vector3(-32, 16, -0.5)
+texture_offset = Vector2i(0, 42)
+color = Color(0.22745098, 0.23137255, 0.2509804, 1)
+
+[sub_resource type="Resource" id="Resource_jeyjd"]
+resource_name = "cross_2"
+script = ExtResource("1_ulng4")
+name = &"cross_2"
+size = Vector3i(64, 2, 1)
+position = Vector3(-32, 26, -0.5)
+texture_offset = Vector2i(0, 48)
+color = Color(0.22745098, 0.23137255, 0.2509804, 1)
+
+[resource]
+script = ExtResource("2_1x0pj")
+boxes = Array[ExtResource("1_ulng4")]([SubResource("Resource_at4y7"), SubResource("Resource_qx188"), SubResource("Resource_mp7so"), SubResource("Resource_uj8gi"), SubResource("Resource_hd0xc"), SubResource("Resource_as8rt"), SubResource("Resource_db2nx"), SubResource("Resource_dqnkl"), SubResource("Resource_kq7ki"), SubResource("Resource_jubcf"), SubResource("Resource_bipc1"), SubResource("Resource_ywbn2"), SubResource("Resource_4agmr"), SubResource("Resource_u3x1h"), SubResource("Resource_3jir8"), SubResource("Resource_r838d"), SubResource("Resource_edwf7"), SubResource("Resource_tjr0e"), SubResource("Resource_jeyjd")])

@@ -15,6 +15,24 @@ Prólogo (superfície) → Mina → elevador → Bosque de Fungos → passagem e
 
 Arenas opcionais têm ondas maiores, com variantes.
 
+## Rascunho no motor
+O prólogo e a Mina já têm um rascunho jogável, em `game/world/areas/mine.tscn` (etapa 4 do `13-plano-de-producao.md`). As medidas são propostas, para conferir jogando.
+
+| Trecho | Medidas | O que tem |
+|---------|---------|-----------|
+| Clareira do prólogo | 32 × 26 blocos de grama, cercada de mata, com o paredão de pedra e a boca velha da mina ao norte | o começo, o lobo e a fenda de 2 blocos de largura até a Mina |
+| Saguão da entrada da Mina | 13 × 11 blocos | o ponto de retorno da Mina |
+| Sala da Baladeira | 17 × 12 blocos, cortada por uma vala de 2 blocos; do outro lado, uma beirada de 5 blocos com a alavanca | a Baladeira no chão e o portão que a alavanca abre |
+| Corredor do portão | 15 × 4 blocos | 1 Esqueleto |
+| Corredor das pedras | 4 × 28 blocos, subindo para o norte | 2 pedras que caem, 1 Lobo e 1 Esqueleto |
+| Sala do baú | 16 × 10 blocos | o baú com o Colete de minerador, 2 Lobos e a parede rachada da Armadura de minerador |
+| Desvio da Picareta | corredor de 10 × 2 blocos até uma sala de 5 × 8 | a Picareta |
+| Túnel do mural 1 | 4 × 10 blocos, com paredes de pedra do povo antigo | o lugar do mural 1 |
+| Arena da Mina | 18 × 16 blocos, com portão na entrada e na saída | as 2 ondas do `11-balanceamento.md` |
+| Sala do elevador | 12 × 8 blocos | o elevador, que desce e termina a parte jogável até o Bosque existir |
+
+O caminho principal tem cerca de 135 blocos andando, sem contar as lutas. O canto escuro do +1 coração e a arena opcional ainda não estão no rascunho: entram quando a Luz Ancestral e a Terra existirem.
+
 ## Trecho a trecho
 
 ### Prólogo: borda da mina

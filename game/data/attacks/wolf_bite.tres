@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="AttackData" format=3]
+
+[ext_resource type="Script" path="res://combat/attack_data.gd" id="1_dch7x"]
+
+[resource]
+script = ExtResource("1_dch7x")
+damage_hearts = 1
+shape = 2
+reach = 3.0
+width = 1.0
+windup = 0.6
+active = 0.3
+recovery = 0.8
+cooldown = 2.0
+knockback = 1
+lunge = 3.0

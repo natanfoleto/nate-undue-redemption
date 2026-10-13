@@ -1,0 +1,36 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://ui/pause_menu.gd" id="1_50142"]
+
+[node name="PauseMenu" type="CanvasLayer" unique_id=2120774111]
+layer = 10
+script = ExtResource("1_50142")
+main_menu = "res://main.tscn"
+
+[node name="Panel" type="ColorRect" parent="." unique_id=1205477997]
+unique_name_in_owner = true
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color(0, 0, 0, 0.6)
+
+[node name="Center" type="CenterContainer" parent="Panel" unique_id=184041259]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="Column" type="VBoxContainer" parent="Panel/Center" unique_id=781535691]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="Resume" type="Button" parent="Panel/Center/Column" unique_id=1334725460]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(360, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 28
+
+[node name="ToMenu" type="Button" parent="Panel/Center/Column" unique_id=118715258]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(360, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 28

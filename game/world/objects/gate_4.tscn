@@ -1,0 +1,21 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://world/objects/gate.gd" id="1_kuxrb"]
+[ext_resource type="Script" path="res://tools/models/block_model.gd" id="2_mmej0"]
+[ext_resource type="Resource" path="res://data/models/gate_4.tres" id="3_63xsj"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ptoud"]
+size = Vector3(4, 2, 0.25)
+
+[node name="Gate" type="StaticBody3D" unique_id=1892546592]
+script = ExtResource("1_kuxrb")
+drop = 2.1
+move_time = 0.6
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1823307146]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("BoxShape3D_ptoud")
+
+[node name="Bars" type="Node3D" parent="." unique_id=864625765]
+script = ExtResource("2_mmej0")
+model = ExtResource("3_63xsj")

@@ -1,7 +1,7 @@
 [gd_scene format=3]
 
-[ext_resource type="PackedScene" path="res://world/test_room.tscn" id="1_room"]
+[ext_resource type="PackedScene" path="res://ui/main_menu.tscn" id="1_menu"]
 
-[node name="Main" type="Node3D"]
+[node name="Main" type="Node"]
 
-[node name="TestRoom" parent="." instance=ExtResource("1_room")]
+[node name="MainMenu" parent="." instance=ExtResource("1_menu")]

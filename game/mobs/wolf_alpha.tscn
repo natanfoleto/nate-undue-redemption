@@ -1,0 +1,14 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" path="res://mobs/mob.tscn" id="1_mob"]
+[ext_resource type="Resource" path="res://data/mobs/wolf_alpha.tres" id="2_data"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_body"]
+radius = 0.45
+height = 0.9
+
+[node name="WolfAlpha" instance=ExtResource("1_mob")]
+data = ExtResource("2_data")
+
+[node name="CollisionShape3D" parent="." index="0"]
+shape = SubResource("CylinderShape3D_body")

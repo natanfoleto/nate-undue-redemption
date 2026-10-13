@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="AnimationData" format=3]
+
+[ext_resource type="Script" path="res://tools/models/pose_data.gd" id="1_1utke"]
+[ext_resource type="Script" path="res://tools/models/animation_data.gd" id="2_2cbiq"]
+
+[sub_resource type="Resource" id="Resource_marop"]
+script = ExtResource("1_1utke")
+
+[sub_resource type="Resource" id="Resource_07jgg"]
+script = ExtResource("1_1utke")
+time = 0.3
+rotations = Dictionary[StringName, Vector3]({
+&"arm_l": Vector3(-20, 0, 0),
+&"arm_r": Vector3(165, 0, 0),
+&"body": Vector3(8, 0, 0)
+})
+
+[resource]
+script = ExtResource("2_2cbiq")
+length = 0.3
+blend_time = 0.05
+poses = Array[ExtResource("1_1utke")]([SubResource("Resource_marop"), SubResource("Resource_07jgg")])

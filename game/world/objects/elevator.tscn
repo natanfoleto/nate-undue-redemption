@@ -1,0 +1,15 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://world/objects/elevator.gd" id="1_k4a3n"]
+[ext_resource type="Script" path="res://tools/models/block_model.gd" id="2_ds8ph"]
+[ext_resource type="Resource" path="res://data/models/elevator.tres" id="3_31ty5"]
+
+[node name="Elevator" type="StaticBody3D" unique_id=1695263048]
+script = ExtResource("1_k4a3n")
+depth = 6.0
+descent_time = 3.0
+reach = 1.6
+
+[node name="Platform" type="Node3D" parent="." unique_id=1349881613]
+script = ExtResource("2_ds8ph")
+model = ExtResource("3_31ty5")

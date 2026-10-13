@@ -22,6 +22,8 @@ extends Node3D
 
 var _parts: Dictionary[StringName, Node3D] = {}
 var _rest_positions: Dictionary[StringName, Vector3] = {}
+var _material: StandardMaterial3D
+var _height := 0.0
 
 
 func _ready() -> void:
@@ -38,16 +40,19 @@ func rebuild() -> void:
 			part.free()
 	_parts.clear()
 	_rest_positions.clear()
+	_material = null
+	_height = 0.0
 	if model == null:
 		return
 
 	var texture: Texture2D = texture_override if texture_override else model.texture
 	if texture == null:
 		texture = model.make_flat_texture()
-	var material := StandardMaterial3D.new()
-	material.albedo_texture = texture
-	material.texture_filter = BaseMaterial3D.TEXTURE_FILTER_NEAREST # Pixels nítidos.
-	material.specular_mode = BaseMaterial3D.SPECULAR_DISABLED
+	_material = StandardMaterial3D.new()
+	_material.albedo_texture = texture
+	_material.texture_filter = BaseMaterial3D.TEXTURE_FILTER_NEAREST # Pixels nítidos.
+	_material.specular_mode = BaseMaterial3D.SPECULAR_DISABLED
+	_material.emission = Color.WHITE
 	var texture_size := Vector2(texture.get_size())
 
 	var boxes: Dictionary[StringName, BoxData] = {}
@@ -61,7 +66,8 @@ func rebuild() -> void:
 			push_warning("Modelo %s: a caixa \"%s\" se repete e foi ignorada." % [model.resource_path, key])
 			continue
 		boxes[key] = box
-		_parts[key] = _make_part(box, key, material, texture_size)
+		_parts[key] = _make_part(box, key, _material, texture_size)
+		_height = maxf(_height, (box.position.y + box.size.y) / BoxData.PIXELS_PER_BLOCK)
 
 	for key in _parts:
 		var box := boxes[key]
@@ -81,6 +87,24 @@ func rebuild() -> void:
 			parent_node.add_child(part)
 		part.position = (box.pivot - parent_pivot) / BoxData.PIXELS_PER_BLOCK
 		_rest_positions[key] = part.position
+
+
+## Altura do modelo em repouso, em blocos, sem contar a escala.
+func height() -> float:
+	return _height
+
+
+## A parte de uma caixa, para prender coisas nela (a arma na mão de Nate). Nula se não existe.
+func get_part(part_name: StringName) -> Node3D:
+	return _parts.get(part_name)
+
+
+## Brilho branco do aviso de golpe comum (10-arte-audio), de 0 (nenhum) a 1.
+func set_glow(strength: float) -> void:
+	if _material == null:
+		return
+	_material.emission_enabled = strength > 0.0
+	_material.emission_energy_multiplier = strength
 
 
 ## Põe as partes na pose: o giro e o deslocamento contam a partir do repouso.

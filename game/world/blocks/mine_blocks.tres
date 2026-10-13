@@ -1,0 +1,201 @@
+[gd_resource type="MeshLibrary" format=3]
+
+[ext_resource type="Texture2D" path="res://assets/textures/cobblestone.png" id="1_5wk7a"]
+[ext_resource type="Texture2D" path="res://assets/textures/dirt.png" id="2_k1fpu"]
+[ext_resource type="Texture2D" path="res://assets/textures/grass_top.png" id="3_aan2w"]
+[ext_resource type="Texture2D" path="res://assets/textures/oak_log_side.png" id="4_y8vn2"]
+[ext_resource type="Texture2D" path="res://assets/textures/oak_leaves.png" id="5_nrxsw"]
+[ext_resource type="Texture2D" path="res://assets/textures/oak_planks.png" id="6_j5vv5"]
+[ext_resource type="Texture2D" path="res://assets/textures/stone_generic.png" id="7_v1j3x"]
+[ext_resource type="Texture2D" path="res://assets/textures/sandstone_carved.png" id="8_e2or5"]
+[ext_resource type="Texture2D" path="res://assets/textures/cobblestone_mossy.png" id="9_orv4h"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hwkfa"]
+specular_mode = 2
+albedo_texture = ExtResource("1_5wk7a")
+uv1_triplanar = true
+uv1_world_triplanar = true
+texture_filter = 0
+
+[sub_resource type="BoxMesh" id="BoxMesh_4qflp"]
+material = SubResource("StandardMaterial3D_hwkfa")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_lk5e5"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_h3gps"]
+specular_mode = 2
+albedo_color = Color(0.95, 0.82, 0.62, 1)
+albedo_texture = ExtResource("2_k1fpu")
+uv1_triplanar = true
+uv1_world_triplanar = true
+texture_filter = 0
+
+[sub_resource type="BoxMesh" id="BoxMesh_us4mv"]
+material = SubResource("StandardMaterial3D_h3gps")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_75gca"]
+specular_mode = 2
+albedo_texture = ExtResource("3_aan2w")
+uv1_triplanar = true
+uv1_world_triplanar = true
+texture_filter = 0
+
+[sub_resource type="BoxMesh" id="BoxMesh_k5ren"]
+material = SubResource("StandardMaterial3D_75gca")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sxeii"]
+specular_mode = 2
+albedo_color = Color(0.75, 0.68, 0.62, 1)
+albedo_texture = ExtResource("4_y8vn2")
+uv1_triplanar = true
+uv1_world_triplanar = true
+texture_filter = 0
+
+[sub_resource type="BoxMesh" id="BoxMesh_xqwjx"]
+material = SubResource("StandardMaterial3D_sxeii")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7f41p"]
+transparency = 2
+alpha_scissor_threshold = 0.5
+alpha_antialiasing_mode = 0
+specular_mode = 2
+albedo_color = Color(0.78, 0.9, 0.72, 1)
+albedo_texture = ExtResource("5_nrxsw")
+uv1_triplanar = true
+uv1_world_triplanar = true
+texture_filter = 0
+
+[sub_resource type="BoxMesh" id="BoxMesh_fkgd8"]
+material = SubResource("StandardMaterial3D_7f41p")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cxabr"]
+specular_mode = 2
+albedo_color = Color(0.55, 0.45, 0.4, 1)
+albedo_texture = ExtResource("6_j5vv5")
+uv1_triplanar = true
+uv1_world_triplanar = true
+texture_filter = 0
+
+[sub_resource type="BoxMesh" id="BoxMesh_4qmnr"]
+material = SubResource("StandardMaterial3D_cxabr")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_j63v4"]
+specular_mode = 2
+albedo_color = Color(0.72, 0.72, 0.75, 1)
+albedo_texture = ExtResource("7_v1j3x")
+uv1_triplanar = true
+uv1_world_triplanar = true
+texture_filter = 0
+
+[sub_resource type="BoxMesh" id="BoxMesh_1hgbd"]
+material = SubResource("StandardMaterial3D_j63v4")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ejsyg"]
+specular_mode = 2
+albedo_texture = ExtResource("8_e2or5")
+uv1_triplanar = true
+uv1_world_triplanar = true
+texture_filter = 0
+
+[sub_resource type="BoxMesh" id="BoxMesh_enxpw"]
+material = SubResource("StandardMaterial3D_ejsyg")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_02khj"]
+specular_mode = 2
+albedo_color = Color(0.85, 0.85, 0.85, 1)
+albedo_texture = ExtResource("9_orv4h")
+uv1_triplanar = true
+uv1_world_triplanar = true
+texture_filter = 0
+
+[sub_resource type="BoxMesh" id="BoxMesh_amuce"]
+material = SubResource("StandardMaterial3D_02khj")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_78qqf"]
+specular_mode = 2
+albedo_color = Color(0.35, 0.3, 0.26, 1)
+albedo_texture = ExtResource("2_k1fpu")
+uv1_triplanar = true
+uv1_world_triplanar = true
+texture_filter = 0
+
+[sub_resource type="BoxMesh" id="BoxMesh_k3675"]
+material = SubResource("StandardMaterial3D_78qqf")
+
+[resource]
+item/0/name = "Parede de pedra"
+item/0/mesh = SubResource("BoxMesh_4qflp")
+item/0/mesh_transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+item/0/mesh_cast_shadow = 1
+item/0/shapes = [SubResource("BoxShape3D_lk5e5"), Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)]
+item/0/navigation_mesh_transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+item/0/navigation_layers = 1
+item/1/name = "Chão de terra"
+item/1/mesh = SubResource("BoxMesh_us4mv")
+item/1/mesh_transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+item/1/mesh_cast_shadow = 1
+item/1/shapes = [SubResource("BoxShape3D_lk5e5"), Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)]
+item/1/navigation_mesh_transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+item/1/navigation_layers = 1
+item/2/name = "Grama"
+item/2/mesh = SubResource("BoxMesh_k5ren")
+item/2/mesh_transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+item/2/mesh_cast_shadow = 1
+item/2/shapes = [SubResource("BoxShape3D_lk5e5"), Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)]
+item/2/navigation_mesh_transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+item/2/navigation_layers = 1
+item/3/name = "Tronco"
+item/3/mesh = SubResource("BoxMesh_xqwjx")
+item/3/mesh_transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+item/3/mesh_cast_shadow = 1
+item/3/shapes = [SubResource("BoxShape3D_lk5e5"), Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)]
+item/3/navigation_mesh_transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+item/3/navigation_layers = 1
+item/4/name = "Folhas"
+item/4/mesh = SubResource("BoxMesh_fkgd8")
+item/4/mesh_transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+item/4/mesh_cast_shadow = 1
+item/4/shapes = [SubResource("BoxShape3D_lk5e5"), Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)]
+item/4/navigation_mesh_transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+item/4/navigation_layers = 1
+item/5/name = "Tábuas escuras"
+item/5/mesh = SubResource("BoxMesh_4qmnr")
+item/5/mesh_transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+item/5/mesh_cast_shadow = 1
+item/5/shapes = [SubResource("BoxShape3D_lk5e5"), Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)]
+item/5/navigation_mesh_transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+item/5/navigation_layers = 1
+item/6/name = "Rocha"
+item/6/mesh = SubResource("BoxMesh_1hgbd")
+item/6/mesh_transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+item/6/mesh_cast_shadow = 1
+item/6/shapes = [SubResource("BoxShape3D_lk5e5"), Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)]
+item/6/navigation_mesh_transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+item/6/navigation_layers = 1
+item/7/name = "Pedra do povo antigo"
+item/7/mesh = SubResource("BoxMesh_enxpw")
+item/7/mesh_transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+item/7/mesh_cast_shadow = 1
+item/7/shapes = [SubResource("BoxShape3D_lk5e5"), Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)]
+item/7/navigation_mesh_transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+item/7/navigation_layers = 1
+item/8/name = "Parede rachada"
+item/8/mesh = SubResource("BoxMesh_amuce")
+item/8/mesh_transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+item/8/mesh_cast_shadow = 1
+item/8/shapes = [SubResource("BoxShape3D_lk5e5"), Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)]
+item/8/navigation_mesh_transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+item/8/navigation_layers = 1
+item/9/name = "Fundo da vala"
+item/9/mesh = SubResource("BoxMesh_k3675")
+item/9/mesh_transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+item/9/mesh_cast_shadow = 1
+item/9/shapes = [SubResource("BoxShape3D_lk5e5"), Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)]
+item/9/navigation_mesh_transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+item/9/navigation_layers = 1
+item/10/name = "Barreira"
+item/10/mesh_transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+item/10/mesh_cast_shadow = 1
+item/10/shapes = [SubResource("BoxShape3D_lk5e5"), Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)]
+item/10/navigation_mesh_transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+item/10/navigation_layers = 1

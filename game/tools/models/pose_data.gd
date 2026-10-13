@@ -25,6 +25,23 @@ func blended(other: PoseData, weight: float, shortest := false) -> PoseData:
 	return result
 
 
+## Esta pose com outra por cima: só as partes que a outra cita mudam, na medida do peso (0 a 1).
+## É como os braços puxam o tiro enquanto as pernas andam.
+func overlaid(other: PoseData, weight: float) -> PoseData:
+	var result := PoseData.new()
+	result.rotations = rotations.duplicate()
+	result.offsets = offsets.duplicate()
+	for part in other.rotations:
+		var start: Vector3 = rotations.get(part, Vector3.ZERO)
+		var change: Vector3 = other.rotations[part] - start
+		change = Vector3(wrapf(change.x, -180.0, 180.0), wrapf(change.y, -180.0, 180.0), wrapf(change.z, -180.0, 180.0))
+		result.rotations[part] = start + change * weight
+	for part in other.offsets:
+		var start: Vector3 = offsets.get(part, Vector3.ZERO)
+		result.offsets[part] = start.lerp(other.offsets[part], weight)
+	return result
+
+
 static func _blend_values(from: Dictionary[StringName, Vector3], to: Dictionary[StringName, Vector3], weight: float, shortest: bool) -> Dictionary[StringName, Vector3]:
 	var result: Dictionary[StringName, Vector3] = {}
 	for part in from.keys() + to.keys():

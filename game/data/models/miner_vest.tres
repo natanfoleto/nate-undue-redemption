@@ -1,0 +1,34 @@
+[gd_resource type="Resource" script_class="ModelData" format=3]
+
+[ext_resource type="Script" path="res://tools/models/box_data.gd" id="1_el74t"]
+[ext_resource type="Script" path="res://tools/models/model_data.gd" id="2_ybpb4"]
+
+[sub_resource type="Resource" id="Resource_f5085"]
+resource_name = "vest"
+script = ExtResource("1_el74t")
+name = &"vest"
+size = Vector3i(10, 9, 5)
+position = Vector3(-5, 2, -2.5)
+color = Color(0.43137255, 0.3372549, 0.21960784, 1)
+
+[sub_resource type="Resource" id="Resource_wcpa3"]
+resource_name = "pocket_r"
+script = ExtResource("1_el74t")
+name = &"pocket_r"
+size = Vector3i(3, 2, 1)
+position = Vector3(1, 4, -3)
+texture_offset = Vector2i(0, 16)
+color = Color(0.5411765, 0.43529412, 0.2901961, 1)
+
+[sub_resource type="Resource" id="Resource_ftkf6"]
+resource_name = "pocket_l"
+script = ExtResource("1_el74t")
+name = &"pocket_l"
+size = Vector3i(3, 2, 1)
+position = Vector3(-4, 4, -3)
+texture_offset = Vector2i(10, 16)
+color = Color(0.5411765, 0.43529412, 0.2901961, 1)
+
+[resource]
+script = ExtResource("2_ybpb4")
+boxes = Array[ExtResource("1_el74t")]([SubResource("Resource_f5085"), SubResource("Resource_wcpa3"), SubResource("Resource_ftkf6")])

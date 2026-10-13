@@ -179,3 +179,29 @@ O tempo ativo é de 0,2 s; no salto do lobo, de 0,3 s.
 | Cuspe de escuridão | preparação de 1 s; 3 círculos de raio 1,5 bloco; 2 corações; sem recuo; poças por 4 s |
 | Emboscada | preparação de 1,2 s; linha de 2 blocos de largura; 3 corações; recuo longo; cabeça exposta por 2,5 s; uma a cada 5 s |
 | Cerco | anel de raio 3 blocos, que fecha em 1,2 s; 2 corações; recuo curto |
+
+## Valores provisórios da produção
+Números que a produção precisou para o jogo funcionar e que os outros documentos não fixavam. Ficam em uso até a decisão; cada um está nos arquivos de dados de `game/data/` ou na cena indicada.
+
+| Valor | Número em uso | Onde |
+|-------|---------------|------|
+| Círculo em que Nate recebe golpes | raio de 0,3 bloco | `data/balance/player.tres` |
+| Círculo em que o lobo recebe golpes | raio de 0,4 bloco (Alfa: 0,5) | `data/mobs/` |
+| Largura da linha do salto do lobo | 1 bloco (Alfa: 1 bloco) | `data/attacks/` |
+| Tempo do empurrão do recuo | 0,2 s, o mesmo tempo sem controle de Nate | `data/balance/combat.tres` |
+| Altura em que uma parede bloqueia golpes, tiros e a visão dos mobs | 1 bloco, a do peito de Nate | `combat/hit_shape.gd` |
+| Distância em que o lobo espera a vez de atacar | 4 blocos (Alfa: 5) | `data/mobs/` |
+| Tamanho do Lobo Alfa | 1,25 vez o lobo | `data/mobs/wolf_alpha.tres` |
+| Piscar da invencibilidade | troca a cada 0,1 s | `data/balance/player.tres` |
+| Tela clareando quando Nate volta | 0,5 s | `data/balance/player.tres` |
+| Marcas e efeitos na tela | rastro do golpe de 0,5 bloco de largura; número do crítico subindo 0,6 bloco em 0,8 s; barra de vida dos mobs de 0,8 × 0,1 bloco, 0,3 bloco acima da cabeça | cenas de `player/`, `combat/` e `mobs/` |
+| Círculo em que o Esqueleto recebe golpes | raio de 0,35 bloco | `data/mobs/skeleton.tres` |
+| Distância em que o Esqueleto espera a vez de atacar | 3 blocos | `data/mobs/skeleton.tres` |
+| Alcance para interagir | 1,5 bloco (elevador: 1,6, do centro da plataforma) | cenas de `world/objects/` |
+| Distância para pegar um item do chão | 0,75 bloco | `world/objects/item_pickup.tscn` |
+| Distância que ativa um ponto de retorno | 2 blocos | `world/areas/mine.tscn` |
+| Área que começa a luta da arena da Mina | 16 × 14 blocos, dentro dos 18 × 16 do chão | `world/areas/mine.tscn` |
+| Lobo do prólogo fugindo | na velocidade do lobo | `mobs/prologue_wolf.gd` |
+| Animações dos objetos | portão desce 2,1 blocos em 0,6 s; tampa do baú abre 100° em 0,4 s; alavanca vira 70° em 0,25 s; pedra cai de 3 blocos em 0,25 s; elevador desce 6 blocos em 3 s | cenas de `world/objects/` e `world/traps/` |
+| Luz da Mina | lampião com alcance de 8 blocos; luz ambiente a 0,3 dentro da Mina, contra 0,7 na superfície, trocando em 1,5 s | `world/objects/lamp.tscn` e `world/areas/mine.tscn` |
+| Fim da parte jogável | tela escurece em 1,5 s e aceita um botão depois de 1 s | `ui/end_screen.tscn` |

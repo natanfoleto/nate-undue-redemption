@@ -1,0 +1,25 @@
+[gd_resource type="Resource" script_class="ModelData" format=3]
+
+[ext_resource type="Script" path="res://tools/models/box_data.gd" id="1_vcw6k"]
+[ext_resource type="Script" path="res://tools/models/model_data.gd" id="2_8xnd0"]
+
+[sub_resource type="Resource" id="Resource_pj0tg"]
+resource_name = "stick"
+script = ExtResource("1_vcw6k")
+name = &"stick"
+size = Vector3i(1, 9, 1)
+position = Vector3(-0.5, 0, -0.5)
+color = Color(0.41960785, 0.2901961, 0.16862746, 1)
+
+[sub_resource type="Resource" id="Resource_em4c1"]
+resource_name = "knob"
+script = ExtResource("1_vcw6k")
+name = &"knob"
+size = Vector3i(3, 3, 3)
+position = Vector3(-1.5, 9, -1.5)
+texture_offset = Vector2i(0, 12)
+color = Color(0.65882355, 0.22745098, 0.17254902, 1)
+
+[resource]
+script = ExtResource("2_8xnd0")
+boxes = Array[ExtResource("1_vcw6k")]([SubResource("Resource_pj0tg"), SubResource("Resource_em4c1")])

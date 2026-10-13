@@ -1,0 +1,10 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" path="res://mobs/wolf.tscn" id="1_wolf"]
+[ext_resource type="Script" path="res://mobs/prologue_wolf.gd" id="2_script"]
+[ext_resource type="Resource" path="res://data/animations/wolf_limp.tres" id="3_limp"]
+
+[node name="PrologueWolf" instance=ExtResource("1_wolf")]
+script = ExtResource("2_script")
+flee_health = 10
+limp_animation = ExtResource("3_limp")

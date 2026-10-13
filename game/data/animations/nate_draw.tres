@@ -1,0 +1,25 @@
+[gd_resource type="Resource" script_class="AnimationData" format=3]
+
+[ext_resource type="Script" path="res://tools/models/pose_data.gd" id="1_v5wvo"]
+[ext_resource type="Script" path="res://tools/models/animation_data.gd" id="2_0slsh"]
+
+[sub_resource type="Resource" id="Resource_on7k0"]
+script = ExtResource("1_v5wvo")
+rotations = Dictionary[StringName, Vector3]({
+&"arm_l": Vector3(40, 0, 0),
+&"arm_r": Vector3(40, 0, 0)
+})
+
+[sub_resource type="Resource" id="Resource_evsw3"]
+script = ExtResource("1_v5wvo")
+time = 0.4
+rotations = Dictionary[StringName, Vector3]({
+&"arm_l": Vector3(90, 10, 0),
+&"arm_r": Vector3(80, -35, 0)
+})
+
+[resource]
+script = ExtResource("2_0slsh")
+length = 0.4
+blend_time = 0.05
+poses = Array[ExtResource("1_v5wvo")]([SubResource("Resource_on7k0"), SubResource("Resource_evsw3")])

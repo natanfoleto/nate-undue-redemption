@@ -1,0 +1,28 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://world/objects/lever.gd" id="1_6jna7"]
+[ext_resource type="Script" path="res://tools/models/block_model.gd" id="2_g60rq"]
+[ext_resource type="Resource" path="res://data/models/lever_base.tres" id="3_xhxgd"]
+[ext_resource type="Resource" path="res://data/models/lever_handle.tres" id="4_35r6b"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_15plb"]
+size = Vector3(0.5, 2, 0.5)
+
+[node name="Lever" type="StaticBody3D" unique_id=49328274]
+script = ExtResource("1_6jna7")
+pulled_angle = 35.0
+pull_time = 0.25
+reach = 1.5
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1466000440]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("BoxShape3D_15plb")
+
+[node name="Base" type="Node3D" parent="." unique_id=648898312]
+script = ExtResource("2_g60rq")
+model = ExtResource("3_xhxgd")
+
+[node name="Handle" type="Node3D" parent="." unique_id=1937854045]
+transform = Transform3D(1, 0, 0, 0, 0.81915206, 0.57357645, 0, -0.57357645, 0.81915206, 0, 0.1875, 0)
+script = ExtResource("2_g60rq")
+model = ExtResource("4_35r6b")

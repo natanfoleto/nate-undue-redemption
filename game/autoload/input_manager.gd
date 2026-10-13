@@ -66,7 +66,8 @@ func _device_of(event: InputEvent) -> Device:
 
 
 func _is_playstation(joypad: int) -> bool:
-	if Input.get_joy_info(joypad).get("vendor_id", 0) == SONY_VENDOR_ID:
+	# O Godot entrega o código do fabricante como texto.
+	if int(Input.get_joy_info(joypad).get("vendor_id", 0)) == SONY_VENDOR_ID:
 		return true
 	var joy_name := Input.get_joy_name(joypad).to_lower()
 	return PLAYSTATION_NAMES.any(func(hint: String) -> bool: return joy_name.contains(hint))

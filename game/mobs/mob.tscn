@@ -1,0 +1,45 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://mobs/mob.gd" id="1_fbdti"]
+[ext_resource type="Script" path="res://tools/models/block_model.gd" id="2_m7rfr"]
+[ext_resource type="Script" path="res://tools/models/model_animator.gd" id="3_caukr"]
+[ext_resource type="Script" path="res://combat/hurtbox.gd" id="4_bh0fw"]
+[ext_resource type="Script" path="res://combat/health.gd" id="5_4qlem"]
+[ext_resource type="Script" path="res://combat/warning_marker.gd" id="6_f70jn"]
+[ext_resource type="Script" path="res://combat/health_bar_3d.gd" id="7_1a7i1"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_dh1gf"]
+height = 0.9
+radius = 0.35
+
+[node name="Mob" type="CharacterBody3D" unique_id=1644499771]
+collision_layer = 4
+collision_mask = 7
+motion_mode = 1
+script = ExtResource("1_fbdti")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=404767670]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.55, 0)
+shape = SubResource("CylinderShape3D_dh1gf")
+
+[node name="BlockModel" type="Node3D" parent="." unique_id=176435738]
+script = ExtResource("2_m7rfr")
+
+[node name="ModelAnimator" type="Node" parent="BlockModel" unique_id=1795339833]
+script = ExtResource("3_caukr")
+
+[node name="Hurtbox" type="Node3D" parent="." unique_id=2029630429]
+script = ExtResource("4_bh0fw")
+
+[node name="Health" type="Node" parent="." unique_id=1405816887]
+script = ExtResource("5_4qlem")
+
+[node name="WarningMarker" type="MeshInstance3D" parent="." unique_id=1380550520]
+script = ExtResource("6_f70jn")
+
+[node name="HealthBar" type="Node3D" parent="." unique_id=1250574402]
+script = ExtResource("7_1a7i1")
+size = Vector2(0.8, 0.1)
+lift = 0.3
+back_color = Color(0.101960786, 0.101960786, 0.101960786, 1)
+fill_color = Color(0.84705883, 0.2509804, 0.2509804, 1)

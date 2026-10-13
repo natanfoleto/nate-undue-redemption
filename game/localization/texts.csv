@@ -2,3 +2,19 @@ keys,pt_BR
 GAME_TITLE,Nate: Undue Redemption
 HINT_MOVE,Andar
 HINT_DODGE,Esquivar
+HINT_ATTACK,Atacar
+HINT_SHOOT,Atirar
+HINT_INTERACT,Interagir
+MENU_CONTINUE,Continuar
+MENU_NEW_GAME,Novo jogo
+MENU_QUIT,Sair
+MENU_CONFIRM_NEW,Apagar o jogo salvo e começar de novo?
+MENU_YES,Sim
+MENU_NO,Não
+PAUSE_RESUME,Continuar
+PAUSE_MAIN_MENU,Voltar ao menu principal
+ITEM_MACHETE,Facão
+ITEM_SLINGSHOT,Baladeira
+ITEM_PICKAXE,Picareta
+ITEM_MINER_VEST,Colete de minerador
+SLICE_END,O elevador desce para Agartha. A aventura continua no Bosque de Fungos.

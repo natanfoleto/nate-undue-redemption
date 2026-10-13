@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="MeleeWeaponData" format=3]
+
+[ext_resource type="Resource" path="res://data/models/machete.tres" id="1_xmhor"]
+[ext_resource type="Script" path="res://combat/melee_weapon_data.gd" id="2_omm6d"]
+
+[resource]
+script = ExtResource("2_omm6d")
+name_key = &"ITEM_MACHETE"
+damage = 10
+damage_third = 15
+time_per_hit = 0.5
+reach = 1.5
+angle = 90.0
+model = ExtResource("1_xmhor")

@@ -16,3 +16,29 @@ extends Resource
 @export var roll_duration := 0.0
 ## Recarga do rolamento, em segundos, contada do fim dele.
 @export var roll_cooldown := 0.0
+
+@export_group("Combate")
+## Corações no começo do jogo.
+@export var max_hearts := 0
+## Chance de crítico, de 0 a 1.
+@export var critical_chance := 0.0
+## Raio do círculo em que Nate recebe golpes, em blocos.
+@export var hurt_radius := 0.0
+## Passo à frente em cada golpe corpo a corpo, em blocos.
+@export var melee_step := 0.0
+## Tempo para continuar o combo depois da recuperação de um golpe, em segundos.
+@export var combo_window := 0.0
+## Recuperação depois do tiro, em segundos.
+@export var shot_recovery := 0.0
+## Parte da velocidade com que Nate anda enquanto puxa o tiro.
+@export var drawing_speed_share := 0.0
+## Tempo sem controle a cada golpe levado, em segundos.
+@export var hit_stun := 0.0
+## Tempo invencível depois de levar golpe, em segundos.
+@export var hit_invincibility := 0.0
+## Intervalo do piscar enquanto está invencível depois de levar golpe, em segundos.
+@export var blink_interval := 0.0
+## Tempo da tela escurecendo depois da morte, até Nate voltar, em segundos.
+@export var death_time := 0.0
+## Tempo da tela clareando quando Nate volta, em segundos.
+@export var respawn_fade_time := 0.0

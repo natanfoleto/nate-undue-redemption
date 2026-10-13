@@ -1,37 +1,81 @@
 [gd_scene format=3]
 
-[ext_resource type="Script" path="res://player/player.gd" id="1_rgyib"]
-[ext_resource type="Resource" path="res://data/animations/nate_idle.tres" id="2_hg6s5"]
-[ext_resource type="Resource" path="res://data/animations/nate_walk.tres" id="3_8t03j"]
-[ext_resource type="Resource" path="res://data/animations/nate_roll.tres" id="4_2ieo8"]
-[ext_resource type="Script" path="res://tools/models/block_model.gd" id="5_ebec5"]
-[ext_resource type="Resource" path="res://data/models/nate.tres" id="6_yllr7"]
-[ext_resource type="Script" path="res://tools/models/model_animator.gd" id="7_kb6p2"]
-[ext_resource type="Resource" path="res://data/models/aim_arrow.tres" id="8_wodsf"]
+[ext_resource type="Script" path="res://player/player.gd" id="1_65viv"]
+[ext_resource type="Resource" path="res://data/animations/nate_idle.tres" id="2_x7c3f"]
+[ext_resource type="Resource" path="res://data/animations/nate_walk.tres" id="3_bjvpn"]
+[ext_resource type="Resource" path="res://data/animations/nate_roll.tres" id="4_s7qer"]
+[ext_resource type="Resource" path="res://data/animations/nate_hurt.tres" id="5_g4c7l"]
+[ext_resource type="Resource" path="res://data/animations/nate_death.tres" id="6_knn7v"]
+[ext_resource type="Script" path="res://tools/models/block_model.gd" id="7_7pqkx"]
+[ext_resource type="Resource" path="res://data/models/nate.tres" id="8_uw77l"]
+[ext_resource type="Script" path="res://tools/models/model_animator.gd" id="9_rptt4"]
+[ext_resource type="Resource" path="res://data/models/aim_arrow.tres" id="10_r7pn3"]
+[ext_resource type="Script" path="res://combat/health.gd" id="11_b8hi5"]
+[ext_resource type="Script" path="res://combat/hurtbox.gd" id="12_2uvqg"]
+[ext_resource type="Script" path="res://player/melee_combo.gd" id="13_1s1yo"]
+[ext_resource type="Script" path="res://tools/models/animation_data.gd" id="14_5ejfk"]
+[ext_resource type="Resource" path="res://data/animations/nate_hit_1.tres" id="15_jd2rm"]
+[ext_resource type="Resource" path="res://data/animations/nate_hit_2.tres" id="16_q28gw"]
+[ext_resource type="Resource" path="res://data/animations/nate_hit_3.tres" id="17_ge24q"]
+[ext_resource type="Script" path="res://player/ranged_shot.gd" id="18_pnw6m"]
+[ext_resource type="Resource" path="res://data/animations/nate_draw.tres" id="19_1so5t"]
+[ext_resource type="Resource" path="res://data/animations/nate_release.tres" id="20_55jnj"]
 
-[sub_resource type="CylinderShape3D" id="CylinderShape3D_32hag"]
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_dx5ib"]
 height = 1.8
 radius = 0.3
 
-[node name="Player" type="CharacterBody3D" unique_id=1375924052]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_a2xo5"]
+transparency = 1
+cull_mode = 2
+shading_mode = 0
+albedo_color = Color(1, 1, 1, 0.6)
+
+[node name="Player" type="CharacterBody3D" unique_id=1905385109]
+collision_layer = 2
+collision_mask = 5
 motion_mode = 1
-script = ExtResource("1_rgyib")
-idle_animation = ExtResource("2_hg6s5")
-walk_animation = ExtResource("3_8t03j")
-roll_animation = ExtResource("4_2ieo8")
+script = ExtResource("1_65viv")
+idle_animation = ExtResource("2_x7c3f")
+walk_animation = ExtResource("3_bjvpn")
+roll_animation = ExtResource("4_s7qer")
+hurt_animation = ExtResource("5_g4c7l")
+death_animation = ExtResource("6_knn7v")
+swing_width = 0.5
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=745704377]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=726416635]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-shape = SubResource("CylinderShape3D_32hag")
+shape = SubResource("CylinderShape3D_dx5ib")
 
-[node name="BlockModel" type="Node3D" parent="." unique_id=126290212]
-script = ExtResource("5_ebec5")
-model = ExtResource("6_yllr7")
+[node name="BlockModel" type="Node3D" parent="." unique_id=1498449568]
+script = ExtResource("7_7pqkx")
+model = ExtResource("8_uw77l")
 
-[node name="ModelAnimator" type="Node" parent="BlockModel" unique_id=154411258]
-script = ExtResource("7_kb6p2")
-animation = ExtResource("2_hg6s5")
+[node name="ModelAnimator" type="Node" parent="BlockModel" unique_id=77925299]
+script = ExtResource("9_rptt4")
+animation = ExtResource("2_x7c3f")
 
-[node name="AimArrow" type="Node3D" parent="." unique_id=231681438]
-script = ExtResource("5_ebec5")
-model = ExtResource("8_wodsf")
+[node name="AimArrow" type="Node3D" parent="." unique_id=1796517649]
+script = ExtResource("7_7pqkx")
+model = ExtResource("10_r7pn3")
+
+[node name="Health" type="Node" parent="." unique_id=161347368]
+script = ExtResource("11_b8hi5")
+
+[node name="Hurtbox" type="Node3D" parent="." unique_id=2046987682]
+script = ExtResource("12_2uvqg")
+faction = 0
+
+[node name="MeleeCombo" type="Node" parent="." unique_id=320067412]
+script = ExtResource("13_1s1yo")
+hit_animations = Array[ExtResource("14_5ejfk")]([ExtResource("15_jd2rm"), ExtResource("16_q28gw"), ExtResource("17_ge24q")])
+
+[node name="RangedShot" type="Node" parent="." unique_id=869470488]
+script = ExtResource("18_pnw6m")
+draw_animation = ExtResource("19_1so5t")
+release_animation = ExtResource("20_55jnj")
+
+[node name="Swing" type="MeshInstance3D" parent="." unique_id=848460874]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0)
+material_override = SubResource("StandardMaterial3D_a2xo5")
+cast_shadow = 0

@@ -23,7 +23,7 @@ Origem dos assets, guia de estilo e a lista completa de assets e sons, que sai d
 ### Registro de assets prontos
 | Asset | Origem (link) | Licença | Crédito exigido |
 |-------|---------------|---------|-----------------|
-| Textura de pedra da sala de teste (`assets/textures/cobblestone.png`), provisória | "16x16 block texture set", de ARoachIFoundOnMyPillow: https://opengameart.org/content/16x16-block-texture-set | CC0 | não |
+| Texturas de 16 px da sala de teste, da clareira e da Mina (`assets/textures/`: cobblestone, cobblestone_mossy, dirt, grass_top, grass_side, oak_log_side, oak_log_top, oak_leaves, oak_planks, stone_generic e sandstone_carved), provisórias | "16x16 block texture set", de ARoachIFoundOnMyPillow: https://opengameart.org/content/16x16-block-texture-set | CC0 | não |
 | 36 ícones de botão de teclado e mouse, Xbox e PlayStation (`assets/ui/buttons/`), provisórios | "Input Prompts Pixel 16×", de Kenney: https://opengameart.org/content/input-prompts-pixel-16%C3%97 | CC0 | não (crédito opcional ao Kenney) |
 
 Os ícones definitivos são feitos para o jogo (`09-interface.md`). O pacote dos materiais comuns é escolhido na etapa 4.

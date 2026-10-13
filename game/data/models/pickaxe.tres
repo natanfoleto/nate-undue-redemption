@@ -1,0 +1,25 @@
+[gd_resource type="Resource" script_class="ModelData" format=3]
+
+[ext_resource type="Script" path="res://tools/models/box_data.gd" id="1_6o8mj"]
+[ext_resource type="Script" path="res://tools/models/model_data.gd" id="2_5mcp1"]
+
+[sub_resource type="Resource" id="Resource_58tyt"]
+resource_name = "handle"
+script = ExtResource("1_6o8mj")
+name = &"handle"
+size = Vector3i(1, 1, 11)
+position = Vector3(-0.5, -0.5, -11)
+color = Color(0.41960785, 0.2901961, 0.16862746, 1)
+
+[sub_resource type="Resource" id="Resource_i2mbs"]
+resource_name = "head"
+script = ExtResource("1_6o8mj")
+name = &"head"
+size = Vector3i(7, 2, 2)
+position = Vector3(-3.5, -1, -13)
+texture_offset = Vector2i(0, 14)
+color = Color(0.5529412, 0.5647059, 0.5882353, 1)
+
+[resource]
+script = ExtResource("2_5mcp1")
+boxes = Array[ExtResource("1_6o8mj")]([SubResource("Resource_58tyt"), SubResource("Resource_i2mbs")])

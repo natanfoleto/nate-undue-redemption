@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="CombatRules" format=3]
+
+[ext_resource type="Script" path="res://combat/combat_rules.gd" id="1_fpn2b"]
+
+[resource]
+script = ExtResource("1_fpn2b")
+short_knockback = 1.0
+long_knockback = 3.0
+knockback_time = 0.2
+interrupt_time = 0.4
+damage_variation_min = 0.9
+damage_variation_max = 1.1
+critical_multiplier = 2.0
+max_attackers = 5
+give_up_time = 4.0
+melee_windup_share = 0.3
+melee_active_share = 0.2
+melee_recovery_share = 0.5
+combo_knockbacks = Array[int]([1, 1, 2])

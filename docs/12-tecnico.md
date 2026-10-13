@@ -35,7 +35,7 @@ Motor, arquitetura, estrutura de pastas e convenções de código.
 
 ### Salvamento
 - Um arquivo JSON na pasta do usuário, regravado a cada conquista (item, atalho, mural, inimigo morto) e a cada descanso (`02-core-loop.md`).
-- Gravação segura: o jogo escreve num arquivo temporário e só no fim o troca pelo antigo, para não corromper o jogo salvo se o computador desligar no meio.
+- Gravação segura: o jogo escreve num arquivo temporário e só no fim o troca pelo antigo, para não corromper o jogo salvo se o computador desligar no meio. Na troca, o arquivo antigo vira uma cópia de segurança, que o jogo lê se o principal estiver estragado.
 - Tudo o que é salvo (mob, baú, atalho, mural, pergaminho, melhoria) tem um identificador único no mapa.
 - O arquivo guarda: último santuário, itens, elementos aprendidos, melhorias, o que está equipado, objetos abertos, inimigos mortos, murais vistos, tempo de jogo e mortes (para o resumo do fim).
 - As opções do menu ficam num arquivo à parte, que não é apagado por "Novo jogo".
@@ -45,11 +45,11 @@ Autoloads do Godot:
 
 | Sistema | Função |
 |---------|--------|
-| `GameState` | progresso, último santuário e troca de área |
+| `GameState` | progresso, ponto de retorno (o último santuário, ou o começo antes dele), equipamento e troca de área |
 | `SaveSystem` | grava e lê o JSON, com gravação segura |
 | `Events` | canal de sinais (ex.: inimigo morreu, item achado, atalho aberto); o salvamento ouve esses sinais |
 | `Balance` | carrega os arquivos de dados com os números do `11-balanceamento.md` |
-| `InputManager` | último dispositivo usado (para os ícones de botão) e botões trocados |
+| `InputManager` | último dispositivo usado (para os ícones de botão e para a mira seguir o cursor ou o analógico) e botões trocados |
 | `AudioManager` | música por área, sons de ambiente e mixagem com os avisos acima da música |
 
 ### Combate
@@ -57,6 +57,19 @@ Autoloads do Godot:
 - A marca de aviso é desenhada a partir da mesma forma do golpe: o que se vê é o que acerta.
 - Componentes reutilizáveis, como nós filhos: vida, efeitos de status, recuo e área de golpe.
 - A fórmula de dano fica numa função só, coberta por teste automático.
+- Cada golpe é um recurso com a forma da área, os três tempos, o dano, o recuo e o tipo de aviso. Os golpes de Nate saem da arma: o tempo de cada golpe se divide em preparação, tempo ativo e recuperação pela regra do `11-balanceamento.md`.
+- O projétil sai do centro de Nate, na altura da mão, e voa na linha da mira.
+- Camadas de física: 1 o mundo, 2 Nate e 3 os mobs. Nate e os mobs se encostam sem se ferir.
+- Os scripts ficam em `game/combat/`; os mobs, em `game/mobs/`, com uma cena base e uma cena por tipo, que só troca os dados.
+
+### Áreas e objetos
+- Cada área é uma cena em `game/world/areas/`, com o script `AreaLevel`, que põe Nate no último ponto de retorno ao abrir.
+- Objetos do cenário em `game/world/objects/` (baú, alavanca, portão, item no chão, elevador, lampião) e armadilhas em `game/world/traps/`. Cada um tem um identificador único no mapa e grava o próprio estado no `SaveSystem`.
+- A arena (`Arena`) fecha os portões quando Nate entra, solta as ondas dos arquivos de `game/data/arenas/` e reinicia se Nate morre no meio.
+- A luz muda por zona (`LightingZone`): embaixo da terra o sol some e a luz vem dos lampiões.
+- Camada de física 4: barreiras invisíveis, como a beira de uma vala; seguram quem anda, mas não os tiros nem a visão.
+- O `GameState` guarda o ponto de retorno e o equipamento; o jogo novo começa com o facão. O jogo salvo também guarda as dicas de controle já usadas.
+- Menus em `game/ui/`: o principal é a entrada do jogo (`main.tscn`), e a pausa abre no Esc.
 
 ### Inteligência dos mobs
 - Máquina de estados simples: parado, perseguir, atacar e voltar.

@@ -50,7 +50,7 @@ Concluída em 2026-10-12.
 - Ícones de botão trocando conforme o dispositivo.
 - Todos os números lidos de `game/data/`, pelo `Balance`.
 
-Concluída em 2026-10-12.
+Concluída em 2026-10-12 no teclado e mouse; falta o teste com controle, que fica para quando houver um.
 
 ## Etapa 3: combate contra o lobo
 - Área de golpe no plano do chão: as quatro formas, os três tempos e a marca de aviso desenhada pela mesma forma.
@@ -62,6 +62,8 @@ Concluída em 2026-10-12.
 - Morte de Nate e volta ao começo da sala.
 - Teste com alguém que nunca jogou: entende por que levou cada golpe?
 
+Concluída em 2026-10-12, menos o teste com alguém que nunca jogou, que fica com o responsável. A sala de teste tem três lobos e, depois deles, um Lobo Alfa, para ver a marca de aviso do golpe forte.
+
 ## Etapa 4: prólogo e Mina
 - Rascunho do mapa do prólogo e da Mina, definindo o tamanho do enquadramento da câmera (pendência do `12-tecnico.md`).
 - Esqueleto Guerreiro e a armadilha das pedras que caem.
@@ -70,6 +72,8 @@ Concluída em 2026-10-12.
 - Prólogo com o lobo que foge pela fenda, e dicas de botão na tela.
 - Salvamento em JSON a cada conquista, coberto por teste; HUD com corações; morte rápida.
 - Arte e som definitivos do prólogo e da Mina; registro das licenças no `10-arte-audio.md`.
+
+Feita em 2026-10-12, menos a arte e o som definitivos, que esperam decisões do responsável. O rascunho do mapa está no `08-mapa.md`, e o enquadramento de 14 blocos continua até ser conferido jogando. Junto vieram o menu principal (Continuar, Novo jogo e Sair) e a pausa (Continuar e Voltar ao menu principal); as outras opções dos menus ficam para o acabamento.
 
 ## Etapas 5 a 8, em linhas gerais
 - **5. Bosque de Fungos:** santuários, frasco, memórias 1 e 2, viagem rápida, pergaminhos de Fogo e Água, Luz Ancestral e áreas escuras, magias e combinações, Necromante, cogumelos de esporos, inventário, arenas, atalhos e os segredos do Bosque.
