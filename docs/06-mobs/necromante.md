@@ -18,7 +18,7 @@ Valores exatos: `11-balanceamento.md`.
 
 | Ataque | Tipo | Dano | Área | Aviso | Recuo | Efeito |
 |--------|------|------|------|-------|-------|--------|
-| Praga | comum | 1 coração | projétil | ergue o cajado, pelo menos 0,6 s até o disparo; o voo dá tempo extra | nenhum | veneno |
+| Praga | comum | 20 de vida | projétil | ergue o cajado, pelo menos 0,6 s até o disparo; o voo dá tempo extra | nenhum | veneno |
 | Invocar | área | — | marca no chão onde os esqueletos vão surgir | pelo menos 1 s | — | surgem Esqueletos Guerreiros |
 
 - **Invocar:** mantém até 3 esqueletos invocados vivos ao mesmo tempo. Invocar não conta no limite de 5 mobs atacando (`README.md`). Recarga: `11-balanceamento.md`.

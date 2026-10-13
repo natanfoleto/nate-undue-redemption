@@ -35,9 +35,9 @@ Valores exatos: `11-balanceamento.md`.
 
 | Ataque | Tipo | Dano | Área | Aviso | Recuo | Depois do golpe |
 |--------|------|------|------|-------|-------|-----------------|
-| Bote | forte | 3 corações | linha do fosso até onde Nate está | a cabeça recua e os olhos brilham | longo | a cabeça fica no chão alguns segundos: janela para bater |
-| Varrida de cauda | área | 2 corações | um setor da arena | a cauda se ergue | longo | — |
-| Cuspe de escuridão | área | 2 corações | círculos em pontos da arena | a garganta incha | nenhum | ficam poças por alguns segundos, que deixam lento quem pisa |
+| Bote | forte | 60 de vida | linha do fosso até onde Nate está | a cabeça recua e os olhos brilham | longo | a cabeça fica no chão alguns segundos: janela para bater |
+| Varrida de cauda | área | 40 de vida | um setor da arena | a cauda se ergue | longo | — |
+| Cuspe de escuridão | área | 40 de vida | círculos em pontos da arena | a garganta incha | nenhum | ficam poças por alguns segundos, que deixam lento quem pisa |
 
 ### Fase 2: na escuridão
 - A arena apaga. Nate só enxerga dentro do brilho da Luz Ancestral do muiraquitã (`05-itens.md`).
@@ -47,8 +47,8 @@ Valores exatos: `11-balanceamento.md`.
 
 | Ataque | Tipo | Dano | Área | Aviso | Recuo | Depois do golpe |
 |--------|------|------|------|-------|-------|-----------------|
-| Emboscada | forte | 3 corações | linha até Nate | os olhos aparecem na borda da Luz Ancestral | longo | a cabeça fica exposta: janela para bater |
-| Cerco | área | 2 corações | anel em volta de Nate | o corpo começa a circular | curto | — |
+| Emboscada | forte | 60 de vida | linha até Nate | os olhos aparecem na borda da Luz Ancestral | longo | a cabeça fica exposta: janela para bater |
+| Cerco | área | 40 de vida | anel em volta de Nate | o corpo começa a circular | curto | — |
 
 No Cerco, Nate escapa saindo do anel antes de ele fechar.
 

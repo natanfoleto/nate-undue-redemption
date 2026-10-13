@@ -18,7 +18,7 @@ Valores exatos: `11-balanceamento.md`.
 
 | Ataque | Tipo | Dano | Área | Aviso | Recuo | Efeito |
 |--------|------|------|------|-------|-------|--------|
-| Golpe de espada | comum | 1 coração | setor curto à frente | ergue a espada, pelo menos 0,6 s | curto | — |
+| Golpe de espada | comum | 20 de vida | setor curto à frente | ergue a espada, pelo menos 0,6 s | curto | — |
 
 - **Invocado:** o Necromante faz esqueletos surgirem do chão. Esses se desfazem quando o Necromante morre (`necromante.md`).
 

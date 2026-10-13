@@ -6,7 +6,7 @@
 
 [resource]
 script = ExtResource("3_21373")
-extra_hearts = 2
+extra_health = 40
 move_speed = 4.5
 damage_bonus = 0.15
 name_key = &"ITEM_CUIRASS"

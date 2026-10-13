@@ -11,6 +11,10 @@ const SHADER := preload("res://world/darkness.gdshader")
 @export var cover_height := 0.0
 ## Largura da borda suave do círculo de luz, em blocos.
 @export var light_edge := 0.0
+## Os blocos escuros (um ponto por bloco, branco no escuro), com a margem em volta: a tampa segue essa forma, com a
+## borda suave; e a margem, em blocos, para a borda sumir aos poucos fora da área.
+@export var mask: Texture2D
+@export var margin := 0.0
 
 var _material := ShaderMaterial.new()
 var _barrier: CollisionShape3D
@@ -21,8 +25,9 @@ func _ready() -> void:
 	_material.shader = SHADER
 	_material.set_shader_parameter(&"edge", light_edge)
 	_material.set_shader_parameter(&"floor_height", global_position.y)
+	_material.set_shader_parameter(&"mask", mask)
 	var mesh := PlaneMesh.new()
-	mesh.size = area_size
+	mesh.size = area_size + Vector2.ONE * margin * 2.0
 	var cover := MeshInstance3D.new()
 	cover.mesh = mesh
 	cover.material_override = _material

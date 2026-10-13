@@ -1,15 +1,13 @@
 class_name Flask
 extends Node
-## Frasco (04-player, 05-itens): a única cura. Beber leva um tempo, com Nate andando mais devagar, sem atacar
-## nem esquivar; a cura vem no fim, mesmo se ele levar um golpe, e a carga nunca se perde. Recarrega no
-## santuário e quando Nate volta depois de morrer. O pai é o Player.
+## Poção de vida (04-player, 05-itens): a única cura. Beber leva um tempo, com Nate andando mais devagar, sem atacar
+## nem dar o dash; a cura vem no fim, mesmo se ele levar um golpe, e a carga nunca se perde. Com a vida cheia, Nate
+## não bebe. Recarrega no santuário e quando Nate volta depois de morrer. O pai é o Player.
 
 signal changed(charges: int, max_charges: int)
 
 ## A pose de beber, por cima do andar.
 @export var drink_animation: AnimationData
-## A moringa na mão de Nate enquanto ele bebe.
-@export var model: ModelData
 
 var charges := 0
 var max_charges := 0
@@ -26,7 +24,7 @@ func is_drinking() -> bool:
 func press() -> void:
 	if is_drinking() or not GameState.has_flask():
 		return
-	if charges <= 0:
+	if charges <= 0 or _player.health.value >= _player.health.max_value:
 		AudioManager.play(&"drink_empty", _player.global_position)
 		return
 	charges -= 1

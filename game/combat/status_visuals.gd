@@ -1,7 +1,7 @@
 class_name StatusVisuals
 extends Node3D
 ## Sinais dos efeitos de status (10-arte-audio): partículas em quem sofre e, nos mobs, um ícone para cada
-## efeito sobre a cabeça (09-interface). Em Nate, os ícones ficam no HUD, ao lado dos corações.
+## efeito sobre a cabeça (09-interface). Em Nate, os ícones ficam no HUD, embaixo da barra de vida.
 ## A cena tem uma partícula por efeito, com o nome do efeito (STUN, SLOW, POISON, BURN).
 
 ## Ícone de cada efeito, na ordem de StatusEffects.Effect.

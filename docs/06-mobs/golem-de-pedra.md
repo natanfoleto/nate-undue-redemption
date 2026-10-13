@@ -18,8 +18,8 @@ Valores exatos: `11-balanceamento.md`.
 
 | Ataque | Tipo | Dano | Área | Aviso | Recuo | Efeito |
 |--------|------|------|------|-------|-------|--------|
-| Socão | forte | 2 corações | à frente, perto | marca no chão, pelo menos 1 s | longo | — |
-| Abalo | área | 2 corações | círculo ao redor | marca no chão, pelo menos 1 s | curto | lento |
+| Socão | forte | 40 de vida | à frente, perto | marca no chão, pelo menos 1 s | longo | — |
+| Abalo | área | 40 de vida | círculo ao redor | marca no chão, pelo menos 1 s | curto | lento |
 
 - **Resistência:** ignora o recuo curto. Só o 3º golpe do combo, a Azagaia marajoara e magias com recuo longo o empurram e interrompem (`03-regras.md`).
 

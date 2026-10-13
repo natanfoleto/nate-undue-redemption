@@ -37,6 +37,12 @@ custom_minimum_size = Vector2(360, 0)
 layout_mode = 2
 theme_override_font_sizes/font_size = 28
 
+[node name="SettingsButton" type="Button" parent="Panel/Center/List" unique_id=1020619475]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(360, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 28
+
 [node name="ToMenu" type="Button" parent="Panel/Center/List" unique_id=969102339]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(360, 0)
@@ -63,6 +69,45 @@ theme_override_constants/v_separation = 12
 columns = 4
 
 [node name="GalleryBack" type="Button" parent="Panel/Center/Gallery" unique_id=1484121752]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 28
+
+[node name="Settings" type="VBoxContainer" parent="Panel/Center" unique_id=361446540]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="SettingsTitle" type="Label" parent="Panel/Center/Settings" unique_id=208002471]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 28
+horizontal_alignment = 1
+
+[node name="MusicLabel" type="Label" parent="Panel/Center/Settings" unique_id=944993984]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 22
+
+[node name="MusicSlider" type="HSlider" parent="Panel/Center/Settings" unique_id=74419155]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(360, 32)
+layout_mode = 2
+step = 5.0
+
+[node name="EffectsLabel" type="Label" parent="Panel/Center/Settings" unique_id=1066099363]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 22
+
+[node name="EffectsSlider" type="HSlider" parent="Panel/Center/Settings" unique_id=739382999]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(360, 32)
+layout_mode = 2
+step = 5.0
+
+[node name="SettingsBack" type="Button" parent="Panel/Center/Settings" unique_id=1055783693]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_font_sizes/font_size = 28

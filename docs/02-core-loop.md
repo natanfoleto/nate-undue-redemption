@@ -8,14 +8,14 @@ Nate atravessa Agartha de santuário em santuário. Em cada área, ele luta cont
 ## Minuto a minuto
 
 ### Loop de momento (segundos)
-Andar → ver o aviso do ataque inimigo → esquivar ou se posicionar → atacar de perto, à distância ou com magia → usar o frasco quando a vida baixa no meio da luta.
+Andar → ver o aviso do ataque inimigo → esquivar ou se posicionar → atacar de perto, à distância ou com magia → beber a poção de vida quando a vida baixa no meio da luta.
 
 Controles em `04-player.md`; dano, recuo e invencibilidade em `03-regras.md`.
 
 ### Loop de área (minutos)
-1. **Santuário:** Nate descansa. Vida e frasco cheios, jogo salvo, memória na primeira visita. Descansar não reinicia os inimigos: só a morte faz isso.
+1. **Santuário:** Nate descansa. Vida e cargas da poção cheias, jogo salvo, memória na primeira visita. Descansar não reinicia os inimigos: só a morte faz isso.
 2. **Exploração:** caminho principal e desvios, com mobs espalhados, baús e segredos.
-3. **Lutas:** cada luta gasta vida e cargas do frasco. A vida volta sozinha fora de luta; as cargas, só no santuário. O que sobra delas decide se Nate avança ou volta para recarregar.
+3. **Lutas:** cada luta gasta vida e cargas da poção. A vida volta sozinha fora de combate; as cargas, só no santuário. O que sobra delas decide se Nate avança ou volta para recarregar.
 4. **Atalho:** abrir um caminho curto de volta ao santuário, ou chegar ao próximo.
 5. **Arena:** o clímax da área, guardando um pergaminho ou uma passagem.
 6. **Próxima área.** Cada poder novo de exploração (Luz Ancestral, Terra) também abre segredos nas áreas já visitadas, para quem quiser voltar.
@@ -75,15 +75,15 @@ Lugar de cada passagem, pergaminho e segredo: `08-mapa.md`.
 - Posição e ondas de cada arena: `08-mapa.md`.
 
 ## Cura
-- **Fora de luta, a vida volta sozinha:** depois de um tempo sem levar golpe, 1 coração por vez, até o máximo (tempos: `04-player.md`). Entre uma luta e outra, Nate não precisa voltar ao santuário só para recuperar a vida.
-- **Frasco com cargas,** para curar no meio da luta. Nate sai do santuário com o frasco cheio, gasta cargas nas lutas e volta pelos atalhos ou avança até o próximo santuário para recarregar.
+- **Fora de combate, a vida volta sozinha:** sem inimigo atrás de Nate e depois de um tempo sem levar dano, uns pontos por segundo, até o máximo (tempos: `04-player.md`). Entre uma luta e outra, Nate não precisa voltar ao santuário só para recuperar a vida.
+- **Poção de vida com cargas,** para curar no meio da luta. Nate sai do santuário com a poção cheia, gasta cargas nas lutas e volta pelos atalhos ou avança até o próximo santuário para recarregar.
 - Recarrega ao descansar no santuário.
-- Nate ganha o frasco no primeiro santuário, no Bosque. Prólogo e Mina não têm frasco, só a vida que volta fora de luta (`04-player.md`).
+- Nate ganha a poção no primeiro santuário, no Bosque. Prólogo e Mina não têm poção, só a vida que volta fora de combate (`04-player.md`).
 - Cargas extras vêm de melhorias escondidas (ver Progressão de poder).
-- 3 cargas; cada carga cura 2 corações (`05-itens.md`).
+- 3 cargas; cada carga cura 40 de vida (`05-itens.md`).
 
 ## Morte e salvamento
-- Nate volta ao último santuário com vida e frasco cheios, sem perder nada.
+- Nate volta ao último santuário com a vida e a poção cheias, sem perder nada.
 - Antes do primeiro santuário (no Bosque), volta ao início do prólogo ou da Mina.
 
 | O quê | Depois da morte |
@@ -105,7 +105,7 @@ Nate fica mais forte com o que acha no mapa. Não há XP nem moeda.
 | Fonte | Onde se acha |
 |-------|--------------|
 | Equipamento | cada peça tem um lugar fixo (baús, segredos, arenas); nada é sorteado |
-| Melhorias permanentes | escondidas em segredos (ex.: +vida máxima, +1 carga no frasco) |
+| Melhorias permanentes | escondidas em segredos (ex.: +20 de vida máxima, +1 carga na poção) |
 | Magias | 4 pergaminhos de elemento: Fogo e Terra no caminho principal; Água e Ar em segredos e arenas opcionais |
 
 - Mobs não deixam nada ao morrer (`05-itens.md`).

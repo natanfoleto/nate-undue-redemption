@@ -6,9 +6,16 @@ extends Node
 
 const BANK_PATH := "res://data/audio/sounds.tres"
 const RULES_PATH := "res://data/audio/audio_rules.tres"
+## As opções do jogador ficam num arquivo à parte, que "Novo jogo" não apaga (12-tecnico).
+const SETTINGS_PATH := "user://settings.cfg"
+const MUSIC_BUSES: Array[StringName] = [&"Music", &"Ambience"]
+const EFFECT_BUSES: Array[StringName] = [&"Effects", &"Warnings"]
 
 var bank: SoundBank
 var rules: AudioRules
+## Volumes das opções (09-interface), de 0 a 1: a música, junto com o som de fundo, e os efeitos, junto com os avisos.
+var music_volume := 1.0
+var effects_volume := 1.0
 
 var _world_voices: Array[AudioStreamPlayer3D] = []
 var _screen_voices: Array[AudioStreamPlayer] = []
@@ -28,6 +35,8 @@ var _music_stack: Array[AudioStream] = []
 var _menu_sound_frame := -1
 var _listener: AudioListener3D
 var _rng := RandomNumberGenerator.new()
+# O volume de cada canal na mixagem (default_bus_layout.tres), antes das opções.
+var _base_db := {}
 
 
 func _ready() -> void:
@@ -35,6 +44,9 @@ func _ready() -> void:
 	bank = load(BANK_PATH)
 	rules = load(RULES_PATH)
 	_rng.randomize()
+	for bus: StringName in MUSIC_BUSES + EFFECT_BUSES:
+		_base_db[bus] = AudioServer.get_bus_volume_db(AudioServer.get_bus_index(bus))
+	_load_settings()
 	for i in rules.world_voices:
 		var voice := AudioStreamPlayer3D.new()
 		voice.unit_size = rules.unit_size
@@ -113,6 +125,20 @@ func _free_world_voice() -> int:
 	return oldest
 
 
+## Muda o volume da música (de 0 a 1) e guarda nas opções.
+func set_music_volume(value: float) -> void:
+	music_volume = clampf(value, 0.0, 1.0)
+	_apply_volumes()
+	_save_settings()
+
+
+## Muda o volume dos efeitos (de 0 a 1) e guarda nas opções.
+func set_effects_volume(value: float) -> void:
+	effects_volume = clampf(value, 0.0, 1.0)
+	_apply_volumes()
+	_save_settings()
+
+
 ## Troca a música, sumindo com a de antes. A mesma música continua de onde estava; vazia, a música para.
 func play_music(stream: AudioStream) -> void:
 	_music_stack.clear()
@@ -177,6 +203,30 @@ func _set_loop(stream: AudioStream) -> void:
 		stream.set(&"loop", true)
 
 
+func _apply_volumes() -> void:
+	for bus: StringName in MUSIC_BUSES + EFFECT_BUSES:
+		var share := music_volume if bus in MUSIC_BUSES else effects_volume
+		var index := AudioServer.get_bus_index(bus)
+		AudioServer.set_bus_mute(index, share <= 0.0)
+		AudioServer.set_bus_volume_db(index, _base_db[bus] + linear_to_db(maxf(share, 0.001)))
+
+
+func _load_settings() -> void:
+	var settings := ConfigFile.new()
+	if settings.load(SETTINGS_PATH) == OK:
+		music_volume = clampf(settings.get_value("audio", "music", 1.0), 0.0, 1.0)
+		effects_volume = clampf(settings.get_value("audio", "effects", 1.0), 0.0, 1.0)
+	_apply_volumes()
+
+
+func _save_settings() -> void:
+	var settings := ConfigFile.new()
+	settings.load(SETTINGS_PATH)
+	settings.set_value("audio", "music", music_volume)
+	settings.set_value("audio", "effects", effects_volume)
+	settings.save(SETTINGS_PATH)
+
+
 func _loop_player(bus: StringName) -> AudioStreamPlayer:
 	var voice := AudioStreamPlayer.new()
 	voice.bus = bus
@@ -187,7 +237,8 @@ func _loop_player(bus: StringName) -> AudioStreamPlayer:
 
 func _on_node_added(node: Node) -> void:
 	var button := node as BaseButton
-	if button and not button.pressed.is_connected(_on_button_pressed):
+	# Os espaços de item tocam os próprios sons: pegar, trocar e recusar (ItemMoves).
+	if button and not button is ItemCell and not button.pressed.is_connected(_on_button_pressed):
 		button.pressed.connect(_on_button_pressed)
 
 

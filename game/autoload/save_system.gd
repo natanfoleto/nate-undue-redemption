@@ -3,8 +3,9 @@ extends Node
 ## Tudo o que é salvo tem um identificador único no mapa. As opções ficam em outro arquivo.
 
 const PATH := "user://save.json"
-## Versão do formato. A 2 (etapa 5) guarda a área do ponto de retorno.
-const VERSION := 2
+## Versão do formato. A 2 (etapa 5) guarda a área do ponto de retorno; a 3, a barra fixa, a mochila e a armadura no
+## lugar do equipamento.
+const VERSION := 3
 ## A primeira área do jogo: na versão 1, todo ponto de retorno ficava nela.
 const FIRST_AREA := "res://world/areas/mine.tscn"
 
@@ -34,7 +35,6 @@ func open(path: String) -> void:
 	# Um jogo salvo de uma versão anterior ganha os campos que faltam, com os valores de um jogo novo.
 	var fresh := _new_game()
 	data = fresh.merged(_file.read(), true)
-	data["equipped"] = (fresh["equipped"] as Dictionary).merged(data["equipped"], true)
 	_migrate()
 
 
@@ -73,10 +73,21 @@ func _notification(what: int) -> void:
 		save()
 
 
-# Jogo salvo da versão 1: o ponto de retorno ainda não guardava a área, e todos ficavam na Mina.
+# Jogo salvo da versão 1: o ponto de retorno ainda não guardava a área, e todos ficavam na Mina. Da versão 2: as
+# armas equipadas abrem a barra, a armadura continua vestida e os outros itens vão para os primeiros lugares livres.
 func _migrate() -> void:
-	if int(data.get("version", 1)) < 2 and data.get("respawn_point", "") != "" and data.get("respawn_area", "") == "":
+	var version := int(data.get("version", 1))
+	if version < 2 and data.get("respawn_point", "") != "" and data.get("respawn_area", "") == "":
 		data["respawn_area"] = FIRST_AREA
+	if version < 3:
+		var equipped: Dictionary = data.get("equipped", {})
+		data["hotbar"] = [equipped.get("melee", ""), equipped.get("ranged", "")].filter(func(id: String) -> bool: return id != "")
+		data["bag"] = []
+		data["armor"] = equipped.get("armor", "")
+		data["hand"] = 0
+		data.erase("equipped")
+		for id: String in data[ITEMS]:
+			ItemPlaces.place(data, id)
 	data["version"] = VERSION
 
 
@@ -90,13 +101,16 @@ func _on_player_died() -> void:
 	save()
 
 
-# Nate começa com o facão, sem armadura (05-itens).
+# Nate começa com o facão na mão, sem armadura (05-itens).
 static func _new_game() -> Dictionary:
 	return {
 		"version": VERSION,
 		"respawn_point": "",
 		"respawn_area": "",
-		"equipped": {"melee": "machete"},
+		"hotbar": ["machete", "", "", "", ""],
+		"hand": 0,
+		"bag": [],
+		"armor": "",
 		"equipped_elements": ["", ""],
 		KILLED: [],
 		OPENED: [],

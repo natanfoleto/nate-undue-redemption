@@ -6,6 +6,9 @@ import os
 import sys
 
 HERE = os.path.dirname(os.path.abspath(__file__))
+sys.path.insert(0, HERE)
+sys.dont_write_bytecode = True  # Sem __pycache__ dentro do repositório.
+from shapes import roughen  # noqa: E402
 OUT = sys.argv[1] if len(sys.argv) > 1 else os.path.join(HERE, 'ruins_layout.txt')
 
 W, H = 100, 84
@@ -161,39 +164,40 @@ def reachable(start, passable):
     return seen
 
 
-lines = ["".join(row).rstrip() for row in grid]
-open(OUT, "w").write("\n".join(lines) + "\n")
+def results(grid):
+    """Cada conferência: o nome e se ela vale (as que dizem "não deve" valem quando o lugar não se alcança)."""
+    start = find('R')[0]
+    # Antes da Terra: a parede rachada (X) segura; a ponte (B) está levantada; o portão do Arco (g) fechado.
+    no_earth = reachable(start, WALK)
+    with_earth = reachable(start, WALK | set("X"))
+    with_bow = reachable(start, WALK | set("XBg"))
 
-start = find('R')[0]
-# Antes da Terra: a parede rachada (X) segura; a ponte (B) está levantada; o portão do Arco (g) fechado.
-no_earth = reachable(start, WALK)
-with_earth = reachable(start, WALK | set("X"))
-with_bridge = reachable(start, WALK | set("XB"))
-with_bow = reachable(start, WALK | set("XBg"))
+    def ok(ch, area):
+        cells = find(ch)
+        return bool(cells) and all(cell in area for cell in cells)
+
+    def near(ch, area):
+        return any((x + dx, z + dz) in area for x, z in find(ch) for dx, dz in ((1, 0), (-1, 0), (0, 1), (0, -1)))
+
+    found = []
+    for name, ch, area in [("Tacape (baú)", 'C', no_earth), ("S3", '3', no_earth), ("pergaminho de Terra", 'T', no_earth),
+                           ("alavanca da ponte", 'L', with_earth), ("Selo", 'S', with_earth), ("saída", 'x', with_earth),
+                           ("+1 carga", 'Q', no_earth), ("+1 coração", 'h', no_earth), ("Couraça", 'c', no_earth),
+                           ("Lâmina (parede rachada)", 'k', with_earth), ("Arco (alavancas)", 'w', with_bow),
+                           ("pergaminho de Ar", 'Y', no_earth)]:
+        found.append((name, ok(ch, area)))
+    found.append(("Selo não alcança antes da Terra", not ok('S', no_earth)))
+    found.append(("Lâmina não alcança antes da Terra", not ok('k', no_earth)))
+    found.append(("murais 4, 5 e 6", near('4', with_earth) and near('5', with_earth) and near('6', with_earth)))
+    found.append(("alavancas do Arco do outro lado do vão", all(c not in with_earth for c in find('l'))))
+    # Linha de tiro: do lado do S3, nenhum lugar acerta a alavanca da ponte (as paredes do vão seguram o tiro).
+    lever = find('L')[0]
+    target = (lever[0] + 0.5, lever[1] + 0.5)
+    spots = [(x + 0.5, z + 0.5) for z in range(H) for x in range(W) if (x, z) in no_earth and x <= 22]
+    found.append(("alavanca da ponte fora do tiro pelo lado do S3", all(blocked(spot, target) for spot in spots)))
+    return found
 
 
-def ok(ch, area):
-    cells = find(ch)
-    return bool(cells) and all(cell in area for cell in cells)
-
-
-def near(ch, area):
-    return any((x + dx, z + dz) in area for x, z in find(ch) for dx, dz in ((1, 0), (-1, 0), (0, 1), (0, -1)))
-
-
-for name, ch, area in [("Tacape (baú)", 'C', no_earth), ("S3", '3', no_earth), ("pergaminho de Terra", 'T', no_earth),
-                       ("alavanca da ponte", 'L', with_earth), ("Selo", 'S', with_earth), ("saída", 'x', with_earth),
-                       ("+1 carga", 'Q', no_earth), ("+1 coração", 'h', no_earth), ("Couraça", 'c', no_earth),
-                       ("Lâmina (parede rachada)", 'k', with_earth), ("Arco (alavancas)", 'w', with_bow),
-                       ("pergaminho de Ar", 'Y', no_earth)]:
-    print(f"{name}: {'ok' if ok(ch, area) else 'NÃO ALCANÇA'}")
-print("Selo antes da Terra (não deve):", ok('S', no_earth))
-print("Lâmina antes da Terra (não deve):", ok('k', no_earth))
-print("mural 4, 5 e 6:", near('4', with_earth), near('5', with_earth), near('6', with_earth))
-print("alavancas do Arco à vista (do outro lado do vão):", all(c not in with_earth for c in find('l')))
-
-
-# Linha de tiro: do corredor do vão (lado do S3) até a alavanca da ponte, passando por blocos de parede?
 def blocked(a, b):
     steps = 200
     for i in range(steps + 1):
@@ -204,13 +208,17 @@ def blocked(a, b):
     return False
 
 
-lever = find('L')[0]
-target = (lever[0] + 0.5, lever[1] + 0.5)
-spots = [(x + 0.5, z + 0.5) for z in range(H) for x in range(W) if (x, z) in no_earth and x <= 22]
-print("alavanca da ponte fora do tiro pelo lado do S3:", all(blocked(spot, target) for spot in spots))
+def path_ok(grid):
+    return all(ok for _, ok in results(grid))
 
 
-# Alturas (relevo): um dígito por bloco com a altura do chão; n, s, e, w são escadas que sobem para aquele lado.
+def report(grid):
+    for name, ok in results(grid):
+        print(f"{name}: {'ok' if ok else 'FALHOU'}")
+
+
+# Alturas (relevo): um dígito por bloco com a altura do chão; n, s, e, w são escadas de pedra que sobem para aquele
+# lado (terrain_builder.gd). As Ruínas são construção: as subidas são escadarias.
 heights = [['1'] * W for _ in range(H)]
 
 
@@ -236,5 +244,19 @@ stairs(47, 38, 47, 41, 'e')
 for z in range(23, 27):
     for x in range(39, 41):
         heights[z][x] = 'B'
+
+# Os túneis das minas antigas (o chão de cascalho) menos quadrados (08-mapa); os salões do povo antigo são
+# construção e ficam retos, e as arenas ficam como estão.
+ARENAS = [(3, 17, 22, 34), (49, 31, 68, 48), (50, 65, 69, 80)]
+
+
+def outside_arenas(x, z):
+    return not any(x0 <= x <= x1 and z0 <= z <= z1 for x0, z0, x1, z1 in ARENAS)
+
+
+print('formas soltas (chão, parede):', roughen(grid, heights, ',', '#', 17, path_ok, region=outside_arenas))
+report(grid)
+lines = ["".join(row).rstrip() for row in grid]
+open(OUT, "w").write("\n".join(lines) + "\n")
 with open(OUT.replace('_layout', '_heights'), 'w') as f:
     f.write('\n'.join(''.join(row) for row in heights) + '\n')

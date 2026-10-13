@@ -117,8 +117,13 @@ func take_hit(hit: Hit) -> void:
 		_enter(State.CHASE, 0.0)
 
 
+## Atrás de Nate ou lutando com ele: Nate está em combate e a vida dele não volta (02-core-loop).
+func is_engaged() -> bool:
+	return state in [State.CHASE, State.WINDUP, State.ACTIVE, State.RECOVERY, State.STAGGER]
+
+
 ## Dano da queimadura (03-regras): em pontos.
-func take_status_damage(_hearts: int, points: int) -> void:
+func take_status_damage(_health: int, points: int) -> void:
 	if state == State.DEAD:
 		return
 	health.damage(points)
@@ -355,7 +360,7 @@ func _die() -> void:
 func _build_hit(receiver: Node3D) -> Hit:
 	var hit := Hit.new()
 	hit.attacker = self
-	hit.hearts = _attack.damage_hearts
+	hit.player_damage = _attack.player_damage
 	hit.knockback = _attack.knockback
 	hit.effect = _attack.effect
 	hit.effect_duration = _attack.effect_duration

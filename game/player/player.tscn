@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://player/player.gd" id="1_jd2rm"]
 [ext_resource type="Resource" path="res://data/animations/nate_idle.tres" id="2_q28gw"]
 [ext_resource type="Resource" path="res://data/animations/nate_walk.tres" id="3_ge24q"]
-[ext_resource type="Resource" path="res://data/animations/nate_roll.tres" id="4_pnw6m"]
+[ext_resource type="Resource" path="res://data/animations/nate_dash.tres" id="4_pnw6m"]
 [ext_resource type="Resource" path="res://data/animations/nate_hurt.tres" id="5_1so5t"]
 [ext_resource type="Resource" path="res://data/animations/nate_death.tres" id="6_55jnj"]
 [ext_resource type="Script" path="res://tools/models/block_model.gd" id="7_dx5ib"]
@@ -26,7 +26,6 @@
 [ext_resource type="Resource" path="res://data/effects/spell_effects.tres" id="24_vgvch"]
 [ext_resource type="Script" path="res://player/flask.gd" id="25_a1u5o"]
 [ext_resource type="Resource" path="res://data/animations/nate_drink.tres" id="26_3dxkp"]
-[ext_resource type="Resource" path="res://data/models/moringa.tres" id="27_6wior"]
 [ext_resource type="Script" path="res://combat/status_effects.gd" id="28_p5tca"]
 [ext_resource type="PackedScene" path="res://combat/status_visuals.tscn" id="29_jbx34"]
 [ext_resource type="Script" path="res://combat/status_visuals.gd" id="30_s3g0c"]
@@ -34,6 +33,7 @@
 [ext_resource type="Texture2D" path="res://assets/ui/status/slow.png" id="32_pjwc4"]
 [ext_resource type="Texture2D" path="res://assets/ui/status/poison.png" id="33_or4qq"]
 [ext_resource type="Texture2D" path="res://assets/ui/status/burn.png" id="34_hggc2"]
+[ext_resource type="PackedScene" path="res://player/dash_dust.tscn" id="35_dust"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_b2j0d"]
 radius = 0.3
@@ -54,10 +54,18 @@ floor_snap_length = 0.5
 script = ExtResource("1_jd2rm")
 idle_animation = ExtResource("2_q28gw")
 walk_animation = ExtResource("3_ge24q")
-roll_animation = ExtResource("4_pnw6m")
+dash_animation = ExtResource("4_pnw6m")
 hurt_animation = ExtResource("5_1so5t")
 death_animation = ExtResource("6_55jnj")
 swing_width = 0.5
+swing_start_scale = 0.35
+swing_grow_time = 0.09
+swing_fade_time = 0.14
+swing_alpha = 0.6
+afterimage_interval = 0.05
+afterimage_time = 0.25
+afterimage_color = Color(0.72, 0.95, 0.88, 0.45)
+dash_dust = ExtResource("35_dust")
 light_color = Color(0.84705883, 1, 0.9098039, 1)
 amulet_glow = 1.5
 awaken_glow = 4.0
@@ -107,7 +115,6 @@ effect_look = ExtResource("24_vgvch")
 [node name="Flask" type="Node" parent="." unique_id=290881087]
 script = ExtResource("25_a1u5o")
 drink_animation = ExtResource("26_3dxkp")
-model = ExtResource("27_6wior")
 
 [node name="StatusEffects" type="Node" parent="." unique_id=284131278]
 script = ExtResource("28_p5tca")

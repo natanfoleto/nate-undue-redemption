@@ -19,7 +19,7 @@ ITEM_PICKAXE,Picareta
 ITEM_MINER_VEST,Colete de minerador
 SLICE_END,A passagem escura leva às Ruínas. A aventura continua lá.
 MENU_CONFIRM_TITLE,Novo jogo
-HINT_FLASK,Beber do frasco
+HINT_FLASK,Beber a poção
 HINT_SPELL,Magia
 HINT_COMBO,Combinação
 HINT_INVENTORY,Inventário
@@ -27,8 +27,8 @@ ITEM_SPEAR,Lança marajoara
 ITEM_BLOWGUN,Zarabatana marajoara
 ITEM_JAVELIN,Azagaia marajoara
 ITEM_FIBER_CLOAK,Manto de fibras marajoara
-ITEM_FLASK,Frasco
-UPGRADE_HEART,+1 coração
+ITEM_FLASK,Poção de vida
+UPGRADE_HEART,+20 de vida
 UPGRADE_CHARGE,+1 carga
 ELEMENT_FIRE,Fogo
 ELEMENT_WATER,Água
@@ -39,16 +39,21 @@ SANCTUARY_1,Chegada do elevador
 SANCTUARY_2,Antes da passagem escura
 SANCTUARY_REST,Descansar
 SANCTUARY_TRAVEL,Viajar
-SANCTUARY_LEAVE,Sair
+SANCTUARY_LEAVE,Voltar
 SANCTUARY_BACK,Voltar
 INVENTORY_NATE,Nate
 INVENTORY_COMBO,Combinação
-SLOT_MELEE,Corpo a corpo
-SLOT_RANGED,Distância
+INVENTORY_TITLE,Inventário
+INVENTORY_LIFE,Vida
+INVENTORY_BAG,Mochila
+INVENTORY_ELEMENTS,Elementos
+INVENTORY_LEARNED,Elementos aprendidos
+INVENTORY_HELP_KEYBOARD,"Arraste, ou clique e clique de novo, para trocar os itens de lugar. Com o mouse em cima de um item, 1 a 5 o põem na barra."
+INVENTORY_HELP_GAMEPAD,"Confirmar pega o item, e confirmar de novo o solta no espaço escolhido. Voltar fecha."
+STAT_HEAL,Cura
+STAT_CHARGES,Cargas
+STAT_DRINK_TIME,Tempo para beber
 SLOT_ARMOR,Armadura
-SLOT_ELEMENT_1,Elemento 1
-SLOT_ELEMENT_2,Elemento 2
-SLOT_EMPTY,vazio
 RARITY_COMMON,comum
 RARITY_MARAJOARA,marajoara
 STAT_DAMAGE,Dano
@@ -60,9 +65,9 @@ STAT_DRAW_TIME,Tempo para puxar
 STAT_PROJECTILE_SPEED,Velocidade do tiro
 STAT_KNOCKBACK,Recuo
 STAT_EFFECT,Efeito
-STAT_HEARTS,Corações
+STAT_HEALTH,Vida
 STAT_SPEED,Velocidade
-STAT_ROLL_COOLDOWN,Recarga da esquiva
+STAT_DASH_COOLDOWN,Recarga do dash
 STAT_SPELL,Magia
 STAT_COOLDOWN,Recarga
 KNOCKBACK_NONE,nenhum
@@ -79,6 +84,9 @@ UNIT_SPEED,%s blocos/s
 PAUSE_MURALS,Murais
 PAUSE_MURALS_FOUND,Murais achados: %d de %d
 PAUSE_BACK,Voltar
+PAUSE_SETTINGS,Configurações
+SETTINGS_MUSIC,Música
+SETTINGS_EFFECTS,Efeitos sonoros
 ITEM_SEAL,Selo
 ITEM_TACAPE,Tacape marajoara
 ITEM_STONE_BLADE,Lâmina de pedra verde

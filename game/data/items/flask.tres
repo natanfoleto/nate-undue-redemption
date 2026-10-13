@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="PotionData" format=3]
+
+[ext_resource type="Texture2D" path="res://assets/ui/items/flask.png" id="1_4yspb"]
+[ext_resource type="Resource" path="res://data/models/potion.tres" id="2_v2fge"]
+[ext_resource type="Script" path="res://combat/potion_data.gd" id="3_xjn4v"]
+
+[resource]
+script = ExtResource("3_xjn4v")
+name_key = &"ITEM_FLASK"
+icon = ExtResource("1_4yspb")
+model = ExtResource("2_v2fge")

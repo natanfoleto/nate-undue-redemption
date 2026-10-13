@@ -26,11 +26,11 @@ const LAVA_LIGHT := Color("ff7a2e")
 # Luzes da lava: uma a cada tantos blocos, até esta distância do chão.
 const LAVA_LIGHT_EVERY := 7
 const LAVA_LIGHT_REACH := 9
-# Itens do chão: identificador no mapa, item e espaço.
+# Itens do chão: identificador no mapa e item.
 const PICKUPS := {
-	"w": [&"ruins_bow", &"bow", "ranged"],
-	"c": [&"ruins_cuirass", &"cuirass", "armor"],
-	"k": [&"ruins_stone_blade", &"stone_blade", "melee"],
+	"w": [&"ruins_bow", &"bow"],
+	"c": [&"ruins_cuirass", &"cuirass"],
+	"k": [&"ruins_stone_blade", &"stone_blade"],
 }
 const UPGRADES := {"h": [&"heart_ruins_1", &"heart"], "Q": [&"charge_ruins_1", &"charge"]}
 const MOBS := {
@@ -186,16 +186,27 @@ func _place_column(x: int, z: int) -> void:
 
 
 func _floor(x: int, z: int) -> void:
-	var ch := _cell(x, z)
-	var mine := ch == ","
-	if ch not in [".", ","]:
-		for side: Vector2i in [Vector2i(1, 0), Vector2i(-1, 0), Vector2i(0, 1), Vector2i(0, -1)]:
-			if _cell(x + side.x, z + side.y) == ",":
-				mine = true
+	# A borda entre o cascalho das minas e o piso do povo antigo fica misturada (o piso quebrado, o cascalho entrando):
+	# o chão vem de um bloco vizinho puxado pelo ruído.
+	var zone: Vector2i = _land.blend_source(x, z)
+	var mine := _is_mine_floor(zone.x, zone.y)
 	_land.place_floor(_terrain, x, z, _item("Chão das minas antigas") if mine else _item("Piso marajoara"), _item("Rocha"), _item("Escada"))
 	# Abaixo do chão, a beira dos vãos é de rocha queimada, como as paredes deles.
 	for y in range(_land.bottom(x, z), _land.height(x, z) - 1):
 		_terrain.set_cell_item(Vector3i(x, y, z), _item("Rocha queimada"))
+
+
+# Chão das minas antigas: o "," do rascunho, e os objetos encostados nele.
+func _is_mine_floor(x: int, z: int) -> bool:
+	var ch := _cell(x, z)
+	if ch == ",":
+		return true
+	if ch == ".":
+		return false
+	for side: Vector2i in [Vector2i(1, 0), Vector2i(-1, 0), Vector2i(0, 1), Vector2i(0, -1)]:
+		if _cell(x + side.x, z + side.y) == ",":
+			return true
+	return false
 
 
 # Os enfeites de fora: restos de muros e de padrões de jade no alto dos morros, e as luzes da lava perto do caminho.
@@ -284,7 +295,6 @@ func _build_objects() -> void:
 					var chest := _instance(_objects, "res://world/objects/chest.tscn", _center(x, z), PI)
 					chest.set("save_id", &"ruins_chest_tacape")
 					chest.set("item_id", &"tacape")
-					chest.set("item_slot", "melee")
 				"T", "Y":
 					var scroll := _instance(_objects, "res://world/objects/scroll.tscn", _center(x, z), 0.0)
 					var element := &"earth" if ch == "T" else &"air"
@@ -296,7 +306,6 @@ func _build_objects() -> void:
 					var pickup := _instance(_objects, "res://world/objects/item_pickup.tscn", _center(x, z), 0.0)
 					pickup.set("save_id", spec[0])
 					pickup.set("item_id", spec[1])
-					pickup.set("item_slot", spec[2])
 				"h", "Q":
 					var upgrade := _instance(_objects, "res://world/objects/item_pickup.tscn", _center(x, z), 0.0)
 					upgrade.set("save_id", UPGRADES[ch][0])

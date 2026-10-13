@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="CellLook" format=3]
+
+[ext_resource type="Script" path="res://ui/cell_look.gd" id="1_look"]
+
+[resource]
+script = ExtResource("1_look")
+size = 64
+icon_scale = 3
+back_color = Color(0.06, 0.05, 0.04, 0.72)
+marajoara_color = Color(0.24705882, 0.68235296, 0.5411765, 1)
+common_color = Color(0.6039216, 0.6039216, 0.6039216, 1)
+empty_color = Color(0.6039216, 0.6039216, 0.6039216, 0.35)
+frame_width = 2
+glow_width = 3
+hand_color = Color(1, 0.84, 0.36, 1)
+hand_width = 4
+focus_color = Color(1, 1, 1, 1)
+carried_alpha = 0.3
+font_size = 16
+text_margin = 3
+text_outline = 4

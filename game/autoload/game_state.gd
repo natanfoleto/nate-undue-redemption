@@ -1,24 +1,30 @@
 extends Node
-## Progresso da partida (12-tecnico): o ponto de retorno, o equipamento, os elementos, as melhorias e a troca
-## de área. Tudo fica no SaveSystem, que grava a cada conquista; ao voltar ao jogo, Nate aparece no último
-## ponto de retorno (02-core-loop).
+## Progresso da partida (12-tecnico): o ponto de retorno, os itens, os elementos, as melhorias e a troca de área.
+## Tudo fica no SaveSystem, que grava a cada conquista; ao voltar ao jogo, Nate aparece no último ponto de retorno
+## (02-core-loop).
 
-signal equipment_changed
+## Um item mudou de lugar (a barra, a mochila ou a armadura).
+signal inventory_changed
+## Nate pegou outro espaço da barra na mão.
+signal hand_changed
 signal elements_changed
 signal upgrades_changed
 
-## Espaços de equipamento (05-itens). Os elementos chegam com as magias.
-const MELEE := "melee"
-const RANGED := "ranged"
-const ARMOR := "armor"
+## Lugares dos itens (ItemPlaces): a barra fixa, com os itens de mão (armas e a poção), o espaço escolhido sendo o
+## que Nate segura; a mochila, com o resto; e a armadura vestida.
+const HOTBAR := ItemPlaces.HOTBAR
+const BAG := ItemPlaces.BAG
+const ARMOR := ItemPlaces.ARMOR
+const HOTBAR_SIZE := ItemPlaces.HOTBAR_SIZE
+const BAG_SIZE := ItemPlaces.BAG_SIZE
 
 ## Pasta dos itens: o identificador de um item é o nome do arquivo.
-const ITEMS_FOLDER := "res://data/items/"
+const ITEMS_FOLDER := ItemPlaces.ITEMS_FOLDER
 ## Pasta dos elementos, do mesmo jeito.
 const ELEMENTS_FOLDER := "res://data/elements/"
 ## Pasta dos santuários: o identificador é o nome do arquivo.
 const SANCTUARIES_FOLDER := "res://data/sanctuaries/"
-## O frasco, guardado na lista de itens quando Nate o ganha.
+## A poção de vida, guardada na lista de itens quando Nate a ganha.
 const FLASK := &"flask"
 ## O Selo, do mesmo jeito.
 const SEAL := &"seal"
@@ -131,25 +137,62 @@ func flask_charges() -> int:
 	return Balance.player.flask_charges + upgrade_count(CHARGE_UPGRADE)
 
 
-## O item equipado num espaço, ou nulo.
-func equipped(slot: String) -> Resource:
-	var id: String = (SaveSystem.data.get("equipped", {}) as Dictionary).get(slot, "")
-	return load(ITEMS_FOLDER + id + ".tres") if id != "" else null
+## O item num lugar: um espaço da barra ou da mochila, ou a armadura (sem índice). Nulo se o lugar está vazio.
+func item_at(place: String, index := 0) -> ItemData:
+	return ItemPlaces.load_item(ItemPlaces.id_at(SaveSystem.data, place, index))
 
 
-func equip(slot: String, item_id: StringName) -> void:
-	(SaveSystem.data["equipped"] as Dictionary)[slot] = String(item_id)
-	SaveSystem.save()
-	equipment_changed.emit()
+## O espaço da barra que Nate segura.
+func hand() -> int:
+	return clampi(int(SaveSystem.data.get("hand", 0)), 0, HOTBAR_SIZE - 1)
 
 
-## Pega um item: Nate guarda tudo o que acha (05-itens). Enquanto não há inventário, o item já entra
-## no espaço dele se o espaço estiver vazio.
-func pick_up(item_id: StringName, slot: String) -> void:
-	SaveSystem.record(SaveSystem.ITEMS, item_id)
-	if equipped(slot) == null:
-		equip(slot, item_id)
+## O item na mão de Nate, ou nulo (mão vazia).
+func hand_item() -> ItemData:
+	return item_at(HOTBAR, hand())
+
+
+## Pega outro espaço da barra na mão (os números, a roda do mouse); passa do último para o primeiro.
+func select_hand(index: int) -> void:
+	index = posmod(index, HOTBAR_SIZE)
+	if index == hand():
+		return
+	# Sem gravar: a escolha vai junto na próxima gravação.
+	SaveSystem.data["hand"] = index
+	hand_changed.emit()
+
+
+func worn_armor() -> ArmorData:
+	return item_at(ARMOR) as ArmorData
+
+
+## Se dá para trocar o conteúdo de dois lugares (o inventário).
+func can_move(from: String, from_index: int, to: String, to_index: int) -> bool:
+	return ItemPlaces.can_move(SaveSystem.data, from, from_index, to, to_index)
+
+
+## Troca o conteúdo de dois lugares (o inventário).
+func move(from: String, from_index: int, to: String, to_index: int) -> void:
+	if ItemPlaces.move(SaveSystem.data, from, from_index, to, to_index):
+		SaveSystem.save()
+		inventory_changed.emit()
+
+
+## Pega um item: Nate guarda tudo o que acha (05-itens). Uma arma nova já vai para a mão.
+func pick_up(item_id: StringName) -> void:
+	store(item_id)
+	var spot := ItemPlaces.list(SaveSystem.data, HOTBAR).find(String(item_id))
+	if spot >= 0 and not ItemPlaces.load_item(item_id) is PotionData:
+		select_hand(spot)
 	Events.item_picked.emit(item_id)
+
+
+## Guarda um item sem o aviso de item achado (a poção do primeiro santuário avisa depois da luz).
+func store(item_id: StringName) -> void:
+	SaveSystem.record(SaveSystem.ITEMS, item_id)
+	if ItemPlaces.place(SaveSystem.data, item_id):
+		SaveSystem.save()
+	inventory_changed.emit()
 
 
 ## Elementos aprendidos, em ordem.
@@ -209,17 +252,11 @@ func equip_element(slot: int, element_id: StringName) -> void:
 	elements_changed.emit()
 
 
-## Itens guardados de um espaço, em ordem de achado (o inventário).
-func owned(slot: String) -> Array[Resource]:
-	var list: Array[Resource] = []
-	for id: String in SaveSystem.data.get(SaveSystem.ITEMS, []):
-		var path := ITEMS_FOLDER + id + ".tres"
-		if not ResourceLoader.exists(path):
-			continue
-		var item: Resource = load(path)
-		if _slot_of(item) == slot:
-			list.append(item)
-	return list
+## Tira o elemento de um espaço (o inventário).
+func unequip_element(slot: int) -> void:
+	_element_slots()[slot] = ""
+	SaveSystem.save()
+	elements_changed.emit()
 
 
 ## O identificador de um item: o nome do arquivo.
@@ -229,16 +266,6 @@ static func item_id(item: Resource) -> StringName:
 
 func _element_slots() -> Array:
 	return SaveSystem.data.get_or_add("equipped_elements", ["", ""])
-
-
-static func _slot_of(item: Resource) -> String:
-	if item is MeleeWeaponData:
-		return MELEE
-	if item is RangedWeaponData:
-		return RANGED
-	if item is ArmorData:
-		return ARMOR
-	return ""
 
 
 func _current_area() -> String:

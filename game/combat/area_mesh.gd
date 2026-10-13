@@ -35,6 +35,49 @@ static func arc(radius_inner: float, radius_outer: float, angle_degrees: float) 
 	return surface.commit()
 
 
+## O rastro do golpe com as pontas arredondadas: a faixa curva entre [param radius_inner] e [param radius_outer] e,
+## em cada ponta, um meio círculo. O UV.y vai de 0 numa ponta até 1 na outra.
+static func slash(radius_inner: float, radius_outer: float, angle_degrees: float) -> ArrayMesh:
+	var surface := SurfaceTool.new()
+	surface.begin(Mesh.PRIMITIVE_TRIANGLES)
+	var angle := deg_to_rad(angle_degrees)
+	var middle := (radius_inner + radius_outer) / 2.0
+	var half := (radius_outer - radius_inner) / 2.0
+	var steps := maxi(ceili(SEGMENTS_PER_TURN * angle / TAU), 1)
+	for i in steps:
+		var a0 := -angle / 2.0 + angle * i / steps
+		var a1 := -angle / 2.0 + angle * (i + 1) / steps
+		var along0 := float(i) / steps
+		var along1 := float(i + 1) / steps
+		_slash_triangle(surface, [_point(a0, radius_inner), _point(a0, radius_outer), _point(a1, radius_outer)],
+			[Vector2(0, along0), Vector2(1, along0), Vector2(1, along1)])
+		_slash_triangle(surface, [_point(a0, radius_inner), _point(a1, radius_outer), _point(a1, radius_inner)],
+			[Vector2(0, along0), Vector2(1, along1), Vector2(0, along1)])
+	# As pontas: meio círculo em volta do meio da faixa, virado para fora do arco.
+	for end_sign: float in [-1.0, 1.0]:
+		var end_angle := end_sign * angle / 2.0
+		var center := _point(end_angle, middle)
+		var outward := Vector3(cos(end_angle), 0.0, sin(end_angle)) * end_sign
+		var radial := Vector3(sin(end_angle), 0.0, -cos(end_angle))
+		var cap_steps := SEGMENTS_PER_TURN / 4
+		var along := 0.0 if end_sign < 0.0 else 1.0
+		for i in cap_steps:
+			var p0 := -PI / 2.0 + PI * i / cap_steps
+			var p1 := -PI / 2.0 + PI * (i + 1) / cap_steps
+			var e0 := center + (outward * cos(p0) + radial * sin(p0)) * half
+			var e1 := center + (outward * cos(p1) + radial * sin(p1)) * half
+			_slash_triangle(surface, [center, e0, e1],
+				[Vector2(0.5, along), Vector2(0.5 + sin(p0) / 2.0, along), Vector2(0.5 + sin(p1) / 2.0, along)])
+	return surface.commit()
+
+
+static func _slash_triangle(surface: SurfaceTool, points: Array, uvs: Array) -> void:
+	for i in 3:
+		surface.set_normal(Vector3.UP)
+		surface.set_uv(uvs[i])
+		surface.add_vertex(points[i])
+
+
 static func _fan(radius: float, angle: float) -> ArrayMesh:
 	var surface := SurfaceTool.new()
 	surface.begin(Mesh.PRIMITIVE_TRIANGLES)

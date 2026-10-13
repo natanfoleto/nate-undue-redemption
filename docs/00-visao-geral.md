@@ -32,9 +32,9 @@ Jogo de ação e exploração em 3D com câmera fixa, num mundo subterrâneo per
 - 30 min de caminho principal; 45 min com todos os segredos
 - 1 herói com ataque corpo a corpo, ataque à distância e esquiva
 - 1 amuleto, o muiraquitã (Luz Ancestral e o Selo), e 4 elementos aprendidos em pergaminhos: 4 magias e 6 combinações
-- 4 tipos de mob (Lobo, Esqueleto Guerreiro, Necromante e Golem de Pedra), com uma variante de cada, e 1 dinossauro de cenário
+- 4 tipos de mob (Lobo, Esqueleto Guerreiro, Necromante e Golem de Pedra), com uma variante de cada
 - 1 chefe com 2 fases: a Boiúna, o predador
-- 13 peças de equipamento (5 armas corpo a corpo, 4 à distância e 4 armaduras), 6 melhorias escondidas e o frasco de cura; inventário simples
+- 13 peças de equipamento (5 armas corpo a corpo, 4 à distância e 4 armaduras), 6 melhorias escondidas e a poção de vida; inventário simples, com uma barra fixa de 5 espaços
 - 4 santuários, 7 murais e 3 tipos de armadilha
 - 5 arenas (1 na Mina, 2 no Bosque e 2 nas Ruínas) e 3 arenas opcionais, uma por área
 - 7 cenas curtas, feitas no motor: abertura, uma memória por santuário, troca de fase da Boiúna e final

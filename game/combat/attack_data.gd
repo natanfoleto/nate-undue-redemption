@@ -10,8 +10,8 @@ enum Warning { POSE, GROUND_MARK }
 
 ## Dano em pontos, contra os inimigos (golpes de Nate e armadilhas).
 @export var damage_points := 0
-## Dano em corações, contra Nate (golpes de mobs, do chefe e armadilhas).
-@export var damage_hearts := 0
+## Dano em Nate, em pontos de vida (03-regras).
+@export var player_damage := 0
 @export var shape := Shape.CIRCLE
 ## Raio do círculo ou do setor, comprimento do retângulo ou alcance do projétil, em blocos.
 @export var reach := 0.0

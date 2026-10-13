@@ -4,17 +4,19 @@ extends GdUnitTestSuite
 const PLAYER_ACTIONS: Array[StringName] = [
 	&"move_up", &"move_down", &"move_left", &"move_right",
 	&"aim_up", &"aim_down", &"aim_left", &"aim_right",
-	&"melee_attack", &"ranged_attack", &"dodge", &"spell_1", &"spell_2",
-	&"flask", &"interact", &"inventory", &"pause",
+	&"use_item", &"hotbar_1", &"hotbar_2", &"hotbar_3", &"hotbar_4", &"hotbar_5", &"hotbar_next", &"hotbar_previous",
+	&"dodge", &"spell_1", &"spell_2", &"flask", &"interact", &"inventory", &"pause",
 ]
 
 # No teclado e mouse, a mira segue o cursor: as ações de mira só existem no analógico.
 const CONTROLLER_ONLY_ACTIONS: Array[StringName] = [&"aim_up", &"aim_down", &"aim_left", &"aim_right"]
+# No controle, o direcional passa pelos espaços da barra um a um: os números só existem no teclado.
+const KEYBOARD_ONLY_ACTIONS: Array[StringName] = [&"hotbar_1", &"hotbar_2", &"hotbar_3", &"hotbar_4", &"hotbar_5"]
 
 
 func test_every_action_works_on_controller() -> void:
 	var missing := PLAYER_ACTIONS.filter(func(action: StringName) -> bool:
-		return not _has_event(action, _is_controller_event))
+		return action not in KEYBOARD_ONLY_ACTIONS and not _has_event(action, _is_controller_event))
 	assert_array(missing).is_empty()
 
 

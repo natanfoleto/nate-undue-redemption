@@ -20,10 +20,10 @@ O título resume o tema: uma redenção que ele não devia, mas que herdou da pr
 
 ## Agartha, o mundo perdido
 - Sistema subterrâneo gigantesco sob a floresta, isolado por milhares de anos, explorado como um mapa único e contínuo.
-- Dinossauros fictícios, ecossistemas subterrâneos, ruínas, minas e criaturas exclusivas que não existem na superfície.
+- Ecossistemas subterrâneos, ruínas, minas e criaturas exclusivas que não existem na superfície.
 - Áreas (detalhes em `08-mapa.md`):
   1. **A Mina:** galerias da velha mina da família de Nate. Entrada e tutorial.
-  2. **O Bosque de Fungos:** cogumelos gigantes bioluminescentes e dinossauros herbívoros, que vivem ali sem lutar. Primeiro santuário e primeiro pergaminho, quando o muiraquitã de Nate acorda.
+  2. **O Bosque de Fungos:** cogumelos gigantes bioluminescentes. Primeiro santuário e primeiro pergaminho, quando o muiraquitã de Nate acorda.
   3. **As Ruínas:** a cidade e as minas antigas dos Marajoara, com murais e mecanismos. Onde a traição é descoberta.
   4. **A Grande Prisão:** arena do chefe.
 

@@ -4,7 +4,7 @@
 
 [resource]
 script = ExtResource("1_d3i01")
-damage_hearts = 2
+player_damage = 40
 reach = 3.0
 windup = 1.4
 active = 0.2

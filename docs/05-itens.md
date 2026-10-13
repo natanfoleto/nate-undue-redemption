@@ -1,16 +1,19 @@
 # Itens
 
-Sistema de itens e as fichas de equipamento, muiraquitã e magias, frasco e melhorias. Os números exatos (dano, tempos, recargas e áreas) ficam em `11-balanceamento.md`.
+Sistema de itens e as fichas de equipamento, muiraquitã e magias, poção de vida e melhorias. Os números exatos (dano, tempos, recargas e áreas) ficam em `11-balanceamento.md`.
 
 ## Sistema
 
-### Espaços
-| Espaço | Quantos | O que dá |
-|--------|---------|----------|
-| Arma corpo a corpo | 1 | o combo de 3 golpes (`04-player.md`) |
-| Arma à distância | 1 | o tiro de puxar e soltar (`04-player.md`) |
-| Armadura | 1 | corações extras e, às vezes, um bônus; não reduz dano (`03-regras.md`) |
+### Lugares dos itens
+| Lugar | Espaços | O que guarda |
+|-------|---------|--------------|
+| Barra fixa | 5 | os itens de mão: armas de perto, armas de longe e a poção de vida. O espaço escolhido é o item na mão de Nate, que o botão de usar usa (`04-player.md`) |
+| Mochila | 15 | tudo o que não está na barra nem vestido |
+| Armadura | 1 | a armadura vestida: vida extra e, às vezes, um bônus; não reduz dano (`03-regras.md`) |
 | Elemento | 2 | uma magia em cada botão; os dois juntos lançam a combinação (`04-player.md`) |
+
+- Na barra, só itens de mão; a armadura nunca entra nela.
+- Cada item fica num lugar só. Os 5 da barra mais os 15 da mochila e a armadura cabem todos os itens do jogo.
 
 ### Raridade
 | Raridade | Origem | O que tem |
@@ -23,9 +26,8 @@ Sistema de itens e as fichas de equipamento, muiraquitã e magias, frasco e melh
 - Itens comuns precisam de perfis bem diferentes entre si, para não parecerem sem graça.
 
 ### Inventário e troca
-- Nate guarda tudo o que acha.
-- O item achado entra sozinho no espaço dele quando o espaço está vazio; os outros ficam no inventário, para trocar.
-- Equipamento e elementos são trocados a qualquer momento, no inventário, com o jogo pausado.
+- Nate guarda tudo o que acha. Uma arma, ou a poção, vai para o primeiro espaço vazio da barra (a arma já vai para a mão); com a barra cheia, para a mochila. A armadura é vestida se Nate estiver sem nenhuma; senão, vai para a mochila.
+- No inventário, com o jogo pausado, os itens trocam de lugar à vontade: entre a barra, a mochila e a armadura. Os elementos, entre os aprendidos e os 2 espaços.
 - Tela do inventário: `09-interface.md`.
 
 ### Visual
@@ -35,7 +37,7 @@ Sistema de itens e as fichas de equipamento, muiraquitã e magias, frasco e melh
 ### Onde os itens ficam
 - Cada item tem um lugar fixo no mapa: baús, segredos e arenas (`02-core-loop.md`). Não há tabelas de sorteio. A área de cada peça está nas fichas; o lugar exato fica em `08-mapa.md`.
 - Os mobs não deixam nada ao morrer. O prêmio de uma luta é o caminho livre, e por isso a derrota do mob precisa de um efeito satisfatório (`10-arte-audio.md`).
-- Itens não curam: a vida volta sozinha fora de luta, e na luta só o frasco cura (`04-player.md`).
+- Itens não curam: a vida volta sozinha fora de combate, e no combate só a poção de vida cura (`04-player.md`).
 - Achar um item mostra um feixe de luz sobre ele; ao pegar, partículas e um som de recompensa (`10-arte-audio.md`).
 
 ### Equipamento inicial
@@ -124,24 +126,24 @@ Recuo: Estilingue, curto; Zarabatana, nenhum; Arco, curto.
 - Ícone de cada arma no inventário.
 
 ### Armaduras
-**Papel no jogo:** dar corações extras e marcar o estilo, leve ou pesado.
+**Papel no jogo:** dar vida extra e marcar o estilo, leve ou pesado.
 **Descrição visual:** blocos e cores sobre o modelo base de Nate. As comuns são equipamento gasto de minerador; as marajoara, fibras trançadas e placas de cerâmica com padrões geométricos marajoara.
 
 #### Atributos
 Valores exatos: `11-balanceamento.md`.
 
-| Peça | Raridade | Peso | Corações | Velocidade | Efeito | Área |
-|------|----------|------|----------|------------|--------|------|
-| Colete de minerador | comum | leve | +1 | normal | — | Mina |
-| Armadura de minerador | comum | pesada | +2 | menor | — | Mina |
-| Manto de fibras marajoara | marajoara | leve | +1 | normal | esquiva recarrega mais rápido | Bosque |
-| Couraça de cerâmica marajoara | marajoara | pesada | +2 | menor | mais dano | Ruínas |
+| Peça | Raridade | Peso | Vida | Velocidade | Efeito | Área |
+|------|----------|------|------|------------|--------|------|
+| Colete de minerador | comum | leve | +20 | normal | — | Mina |
+| Armadura de minerador | comum | pesada | +40 | menor | — | Mina |
+| Manto de fibras marajoara | marajoara | leve | +20 | normal | dash recarrega mais rápido | Bosque |
+| Couraça de cerâmica marajoara | marajoara | pesada | +40 | menor | mais dano | Ruínas |
 
 #### Comportamento e habilidades
-- Os corações da armadura somam à vida máxima enquanto ela está equipada.
-- Ao equipar, os corações extras chegam vazios; ao tirar, a vida atual é cortada no novo máximo. Assim, trocar de armadura não cura.
+- A vida da armadura soma à vida máxima enquanto ela está vestida.
+- Ao vestir, a vida extra chega vazia; ao tirar, a vida atual é cortada no novo máximo. Assim, trocar de armadura não cura.
 - Armaduras pesadas fazem Nate andar mais devagar.
-- **Manto de fibras marajoara:** a esquiva recarrega mais rápido: 0,35 s em vez de 0,5 s.
+- **Manto de fibras marajoara:** o dash recarrega mais rápido: 0,35 s em vez de 0,5 s.
 - **Couraça de cerâmica marajoara:** mais dano (bônus de dano, `03-regras.md`).
 
 #### Interações
@@ -253,12 +255,12 @@ Valores exatos (recarga, dano, áreas e durações): `11-balanceamento.md`.
 | Tempestade de Fogo | Fogo + Ar | redemoinho ao redor de Nate, por alguns segundos | queimadura e recuo em quem chega perto |
 | Gelo | Água + Ar | rajada gelada em cone à frente | atordoa |
 | Lamaçal | Água + Terra | lama no chão, à frente, que fica alguns segundos | lento em quem passa |
-| Escudo de Areia | Terra + Ar | areia girando ao redor de Nate, por alguns segundos | o próximo golpe recebido não tira coração |
+| Escudo de Areia | Terra + Ar | areia girando ao redor de Nate, por alguns segundos | o próximo golpe recebido não tira vida |
 
 Recuo da Tempestade de Fogo: curto.
 
 #### Comportamento e habilidades
-- **Água equipada:** queimadura, veneno e lento duram metade do tempo em Nate. A Água não cura: na luta, só o frasco cura.
+- **Água equipada:** queimadura, veneno e lento duram metade do tempo em Nate. A Água não cura: no combate, só a poção de vida cura.
 - **Terra aprendida:** os golpes de Nate, tiros incluídos, quebram paredes rachadas. Sem a Terra, a parede responde com um som de pedra firme. A Terra é exigida uma vez no caminho principal, na parede rachada antes do Selo (`02-core-loop.md`).
 - As magias de Fogo são a fonte de queimadura de Nate; o veneno é só dos mobs (`03-regras.md`).
 - Nate não é ferido pelas próprias magias (`03-regras.md`).
@@ -281,20 +283,21 @@ Recuo da Tempestade de Fogo: curto.
 - 10 efeitos visuais de magia, definidos por código.
 - Ícone de cada elemento e de cada combinação (`09-interface.md`).
 
-## Frasco
-**Papel no jogo:** a cura do meio da luta (fora dela, a vida volta sozinha, `04-player.md`). Recarrega no santuário.
-**Descrição visual:** moringa de cerâmica marajoara (`10-arte-audio.md`).
+## Poção de vida
+**Papel no jogo:** a cura do meio do combate (fora dele, a vida volta sozinha, `04-player.md`). Um item de mão, que fica na barra fixa como as armas. Recarrega no santuário.
+**Descrição visual:** garrafinha de vidro com o líquido vermelho e rolha de cortiça (`10-arte-audio.md`).
 
 ### Atributos
 | Atributo | Valor |
 |----------|-------|
 | Cargas | 3 (até 5 com melhorias) |
-| Cura por carga | 2 corações |
+| Cura por carga | 40 |
 | Tempo para beber | 0,6 s |
 
 ### Comportamento e habilidades
-- Nate ganha o frasco no primeiro santuário, no Bosque.
-- Beber leva 0,6 s, com Nate andando em meia velocidade, sem atacar nem esquivar. A cura acontece no fim, mesmo se ele levar um golpe (`04-player.md`).
+- Nate ganha a poção no primeiro santuário, no Bosque; ela entra na barra fixa, sem ir para a mão.
+- Bebe com a poção na mão e o botão de usar, ou pelo atalho de beber, sem tirar a arma da mão (`04-player.md`).
+- Beber leva 0,6 s, com Nate andando em meia velocidade, sem atacar nem dar o dash. A cura acontece no fim, mesmo se ele levar um golpe. Com a vida cheia, Nate não bebe.
 - Recarrega ao descansar no santuário e quando Nate volta depois de morrer (`02-core-loop.md`).
 
 ### Interações
@@ -304,25 +307,25 @@ Recuo da Tempestade de Fogo: curto.
 - Beber (`04-player.md`).
 
 ### Sons necessários
-- Beber, cura concluída e tentar beber sem carga (`04-player.md`).
+- Beber, cura concluída e tentar beber sem carga ou com a vida cheia (`04-player.md`).
 
 ### Assets necessários
-- Modelo do frasco, que aparece na mão de Nate ao beber.
-- Ícone com as cargas (`09-interface.md`).
+- Modelo da poção, na mão de Nate.
+- Ícone da poção; as cargas aparecem no espaço dela na barra (`09-interface.md`).
 
 ## Melhorias
 **Papel no jogo:** recompensa permanente dos segredos (pilar 3).
-**Descrição visual:** contas de jade, uma em forma de coração (+1 coração) e outra em forma de gota (+1 carga) (`10-arte-audio.md`).
+**Descrição visual:** contas de jade, uma em forma de coração (+20 de vida) e outra em forma de gota (+1 carga) (`10-arte-audio.md`).
 
 ### Atributos
 | Melhoria | Quantas | Efeito |
 |----------|---------|--------|
-| +1 coração | 4 | vida máxima de 5 até 9 corações |
-| +1 carga | 2 | frasco de 3 até 5 cargas |
+| +20 de vida | 4 | vida máxima de 100 até 180 |
+| +1 carga | 2 | poção de 3 até 5 cargas |
 
 ### Comportamento e habilidades
 - Escondidas em segredos; lugar exato em `08-mapa.md`.
-- Valem na hora e para sempre. O coração e a carga novos chegam cheios.
+- Valem na hora e para sempre. A vida e a carga novas chegam cheias.
 
 ### Interações
 Nenhuma além do efeito.

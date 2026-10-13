@@ -1,0 +1,52 @@
+[gd_resource type="Resource" script_class="ModelData" format=3]
+
+[ext_resource type="Script" path="res://tools/models/box_data.gd" id="1_68v76"]
+[ext_resource type="Script" path="res://tools/models/model_data.gd" id="2_ekgoa"]
+
+[sub_resource type="Resource" id="Resource_nihcj"]
+resource_name = "liquid"
+script = ExtResource("1_68v76")
+name = &"liquid"
+size = Vector3i(6, 6, 6)
+position = Vector3(-3, -5, -3)
+color = Color(0.76862746, 0.15686275, 0.22745098, 1)
+
+[sub_resource type="Resource" id="Resource_0do2j"]
+resource_name = "shine"
+script = ExtResource("1_68v76")
+name = &"shine"
+size = Vector3i(1, 3, 1)
+position = Vector3(-3.5, -3, -3.5)
+texture_offset = Vector2i(0, 12)
+color = Color(1, 0.8392157, 0.85490197, 1)
+
+[sub_resource type="Resource" id="Resource_kpp8h"]
+resource_name = "glass"
+script = ExtResource("1_68v76")
+name = &"glass"
+size = Vector3i(4, 1, 4)
+position = Vector3(-2, 1, -2)
+texture_offset = Vector2i(0, 16)
+color = Color(0.8117647, 0.9098039, 0.9254902, 1)
+
+[sub_resource type="Resource" id="Resource_o1t31"]
+resource_name = "neck"
+script = ExtResource("1_68v76")
+name = &"neck"
+size = Vector3i(2, 2, 2)
+position = Vector3(-1, 2, -1)
+texture_offset = Vector2i(0, 21)
+color = Color(0.8117647, 0.9098039, 0.9254902, 1)
+
+[sub_resource type="Resource" id="Resource_oacto"]
+resource_name = "cork"
+script = ExtResource("1_68v76")
+name = &"cork"
+size = Vector3i(3, 2, 3)
+position = Vector3(-1.5, 4, -1.5)
+texture_offset = Vector2i(0, 25)
+color = Color(0.627451, 0.4392157, 0.22745098, 1)
+
+[resource]
+script = ExtResource("2_ekgoa")
+boxes = Array[ExtResource("1_68v76")]([SubResource("Resource_nihcj"), SubResource("Resource_0do2j"), SubResource("Resource_kpp8h"), SubResource("Resource_o1t31"), SubResource("Resource_oacto")])

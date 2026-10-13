@@ -1,7 +1,7 @@
 extends Node3D
 ## Sala de teste do combate (etapa 3 do 13-plano-de-producao): três lobos e, depois deles, um de cada vez, os
 ## inimigos da lista (o Lobo Alfa, para ver a marca de aviso do golpe forte, e o Necromante). Nate já tem o
-## frasco e os elementos do Bosque, para testar as magias.
+## estilingue e a poção na barra e os elementos do Bosque, para testar as magias.
 
 const TEST_SAVE := "user://test_room_save.json"
 
@@ -17,7 +17,8 @@ var _next := 0
 func _enter_tree() -> void:
 	SaveSystem.open(TEST_SAVE)
 	SaveSystem.new_game()
-	SaveSystem.record(SaveSystem.ITEMS, GameState.FLASK)
+	GameState.store(&"slingshot")
+	GameState.store(GameState.FLASK)
 	GameState.learn(&"fire")
 	GameState.learn(&"water")
 

@@ -10,16 +10,18 @@ extends Resource
 @export var aim_assist_angle := 0.0
 ## Alcance da ajuda de mira, em blocos.
 @export var aim_assist_range := 0.0
-## Distância do rolamento, em blocos.
-@export var roll_distance := 0.0
-## Duração do rolamento, em segundos. Nate fica invencível o tempo todo.
-@export var roll_duration := 0.0
-## Recarga do rolamento, em segundos, contada do fim dele.
-@export var roll_cooldown := 0.0
+## Distância do dash, em blocos.
+@export var dash_distance := 0.0
+## Duração do dash, em segundos. Nate fica invencível o tempo todo.
+@export var dash_duration := 0.0
+## Recarga do dash, em segundos, contada do fim dele.
+@export var dash_cooldown := 0.0
 
 @export_group("Combate")
-## Corações no começo do jogo.
-@export var max_hearts := 0
+## Vida no começo do jogo, em pontos.
+@export var max_health := 0
+## Vida a mais por melhoria de vida, em pontos.
+@export var upgrade_health := 0
 ## Chance de crítico, de 0 a 1.
 @export var critical_chance := 0.0
 ## Raio do círculo em que Nate recebe golpes, em blocos.
@@ -44,15 +46,15 @@ extends Resource
 @export var respawn_fade_time := 0.0
 
 @export_group("Vida")
-## Tempo sem levar golpe até a vida começar a voltar, em segundos.
+## Tempo sem levar dano até a vida começar a voltar, em segundos. Só volta fora de combate.
 @export var regen_delay := 0.0
-## Tempo entre um coração e o próximo, em segundos.
-@export var regen_interval := 0.0
+## Vida que volta, em pontos por segundo.
+@export var regen_rate := 0.0
 
 @export_group("Frasco")
 ## Cargas do frasco sem melhorias.
 @export var flask_charges := 0
-## Corações curados por carga.
+## Vida curada por carga, em pontos.
 @export var flask_heal := 0
 ## Tempo para beber, em segundos.
 @export var flask_time := 0.0

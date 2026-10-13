@@ -18,13 +18,13 @@ Valores exatos: `11-balanceamento.md`.
 
 | Ataque | Tipo | Dano | Área | Aviso | Recuo | Efeito |
 |--------|------|------|------|-------|-------|--------|
-| Salto com mordida | comum | 1 coração | salto curto em linha à frente | abaixa e rosna, pelo menos 0,6 s | curto | — |
+| Salto com mordida | comum | 20 de vida | salto curto em linha à frente | abaixa e rosna, pelo menos 0,6 s | curto | — |
 
 - **Prólogo:** um lobo sozinho ataca Nate na borda da mina. Quando a vida dele baixa até um limite, ele foge mancando pela fenda, e Nate o segue. Limite: `11-balanceamento.md`.
 
 ### Variante: Lobo Alfa
 - Maior e com mais vida, com outra cor.
-- O salto é forte: 2 corações e recuo longo, com marca no chão e aviso de pelo menos 1 s.
+- O salto é forte: 40 de vida e recuo longo, com marca no chão e aviso de pelo menos 1 s.
 - Aparece nas Ruínas e nas arenas opcionais.
 
 ## Interações

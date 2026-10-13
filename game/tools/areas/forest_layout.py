@@ -6,6 +6,9 @@ import os
 import sys
 
 HERE = os.path.dirname(os.path.abspath(__file__))
+sys.path.insert(0, HERE)
+sys.dont_write_bytecode = True  # Sem __pycache__ dentro do repositório.
+from shapes import roughen  # noqa: E402
 OUT = sys.argv[1] if len(sys.argv) > 1 else os.path.join(HERE, 'forest_layout.txt')
 
 W, H = 100, 76
@@ -35,8 +38,8 @@ fill(20, 64, 20, 65, 'D')
 fill(9, 50, 14, 59, '.')
 put(9, 56, 's')
 put(14, 53, 's')
-put(11, 51, 'W')
-put(13, 50, 'W')
+put(11, 53, 'W')
+put(13, 52, 'W')
 put(8, 58, 'u')
 put(15, 51, 'u')
 # Desvio da Zarabatana, a oeste do corredor.
@@ -82,13 +85,11 @@ put(30, 8, 'K')
 put(36, 7, 'K')
 put(22, 9, 'u')
 put(38, 6, 'u')
-# 6) Caverna dos dinossauros, cheia de cogumelos gigantes.
+# 6) Caverna dos cogumelos gigantes.
 fill(41, 2, 64, 28, ',')
 fill(46, 6, 58, 24, '.')
 for x, z in [(43, 5), (44, 18), (47, 26), (55, 3), (62, 14), (61, 27), (52, 12), (58, 21)]:
     put(x, z, 'U')
-put(48, 10, 'L')
-put(57, 18, 'L')
 put(45, 23, 's')
 put(60, 9, 's')
 put(52, 15, 'W')
@@ -162,7 +163,7 @@ fill(1, 44, 2, 46, '.')
 put(1, 45, 'H')
 put(3, 45, 'X')
 
-# Fenda de fungos que corta o corredor entre a caverna dos dinossauros e a sala do meio: o corredor passa por cima
+# Fenda de fungos que corta o corredor entre a caverna dos cogumelos e a sala do meio: o corredor passa por cima
 # num pé de cogumelo caído (marcado nas alturas), com cerca dos dois lados (08-mapa).
 fill(41, 30, 47, 35, '~')
 fill(52, 30, 59, 35, '~')
@@ -188,32 +189,46 @@ def reachable(start, passable):
     return seen
 
 
-lines = ["".join(row).rstrip() for row in grid]
-open(OUT, "w").write("\n".join(lines) + "\n")
+def results(grid):
+    """Cada conferência: o nome e se ela vale."""
+    start = find('1')[0]
+    # Sem a Luz Ancestral nem a Terra: o caminho principal até o pergaminho de Fogo.
+    before_light = reachable(start, (WALKABLE - set("dD")) | set("."))
+    with_light = reachable(start, WALKABLE - set("D") - set("X"))
+    found = []
+    for name, ch, area in [("pergaminho de Fogo", 'F', before_light), ("baú da Lança", 'C', before_light),
+                           ("Zarabatana", 'z', before_light), ("S2", '2', with_light), ("saída", 'x', with_light),
+                           ("Azagaia (escuro)", 'j', with_light), ("Manto", 'c', with_light),
+                           ("+1 coração", 'h', with_light), ("mural 2", 'm', None), ("mural 3", '3', None),
+                           ("pergaminho de Água", 'A', with_light)]:
+        cells = find(ch)
+        if area is None:
+            # Murais ficam na parede: basta um vizinho alcançável.
+            ok = any((x + dx, z + dz) in with_light for x, z in cells for dx, dz in ((1, 0), (-1, 0), (0, 1), (0, -1)))
+        else:
+            ok = bool(cells) and all(cell in area for cell in cells)
+        found.append((name, ok))
+    # A porta liga o meio do Bosque ao S1: do lado de fora dela, a sala do S1 fica do outro lado.
+    door = find('D')
+    found.append(("porta com o S1 do outro lado", (door[0][0] - 1, door[0][1]) in before_light))
+    found.append(("o canto escuro não se alcança sem a Luz", find('j')[0] not in before_light))
+    found.append(("a saída não se alcança sem a Luz", find('x')[0] not in before_light))
+    return found
 
-start = find('1')[0]
-# Sem a Luz Ancestral nem a Terra: o caminho principal até o pergaminho de Fogo.
-before_light = reachable(start, (WALKABLE - set("dD")) | set("."))
-with_light = reachable(start, WALKABLE - set("D") - set("X"))
-for name, ch, area in [("pergaminho de Fogo", 'F', before_light), ("baú da Lança", 'C', before_light),
-                       ("Zarabatana", 'z', before_light), ("S2", '2', with_light), ("saída", 'x', with_light),
-                       ("Azagaia (escuro)", 'j', with_light), ("Manto", 'c', with_light), ("+1 coração", 'h', with_light),
-                       ("mural 2", 'm', None), ("mural 3", '3', None), ("pergaminho de Água", 'A', with_light)]:
-    cells = find(ch)
-    if area is None:
-        # Murais ficam na parede: basta um vizinho alcançável.
-        ok = any((x + dx, z + dz) in with_light for x, z in cells for dx, dz in ((1, 0), (-1, 0), (0, 1), (0, -1)))
-    else:
-        ok = all(cell in area for cell in cells) and cells
-    print(f"{name}: {'ok' if ok else 'NÃO ALCANÇA'}")
-# A porta liga o meio do Bosque ao S1: do lado de fora dela, a sala do S1 fica do outro lado.
-door = find('D')
-print("porta:", door, "S1 do outro lado:", (door[0][0] - 1, door[0][1]) in before_light)
-print("o canto escuro não se alcança sem a Luz:", find('j')[0] not in before_light)
-print("a saída não se alcança sem a Luz:", find('x')[0] not in before_light)
+
+def path_ok(grid):
+    return all(ok for _, ok in results(grid))
 
 
-# Alturas (relevo): um dígito por bloco com a altura do chão; n, s, e, w são escadas que sobem para aquele lado.
+def report(grid):
+    for name, ok in results(grid):
+        print(f"{name}: {'ok' if ok else 'FALHOU'}")
+
+
+
+
+# Alturas (relevo): um dígito por bloco com a altura do chão; ^, v, > e < são rampas do próprio chão, que sobem para
+# aquele lado (terrain_builder.gd).
 heights = [['0'] * W for _ in range(H)]
 for z in range(H):
     for x in range(W):
@@ -227,25 +242,40 @@ def raise_area(x0, z0, x1, z1, h):
             heights[z][x] = str(h)
 
 
-def stairs(x0, z0, x1, z1, direction):
+def ramp(x0, z0, x1, z1, direction):
     for z in range(z0, z1 + 1):
         for x in range(x0, x1 + 1):
             heights[z][x] = direction
 
 
 # Embaixo: a chegada do elevador, o corredor norte, o desvio da Zarabatana, o atalho até a porta, o S2, a arena 2 e
-# a passagem escura. O resto do Bosque fica 1 bloco acima, e o terraço do Manto, 2.
+# a passagem escura. O resto do Bosque fica 1 bloco acima, e o terraço do Manto, 2; no meio da caverna dos cogumelos,
+# um morro também sobe a 2. Os corredores sobem em rampas longas de terra; o terraço e o morro, em rampas curtas que
+# surgem sozinhas por todos os lados.
 raise_area(0, 50, 23, 75, 0)
 raise_area(24, 51, 25, 65, 0)
 raise_area(40, 50, 99, 75, 0)
-stairs(9, 50, 14, 50, 'n')
-stairs(24, 50, 25, 50, 'n')
-stairs(46, 49, 49, 49, 'n')
+ramp(9, 50, 14, 51, '^')
+ramp(24, 50, 25, 51, '^')
+ramp(46, 49, 49, 50, '^')
 raise_area(52, 2, 64, 8, 2)
 # O pé de cogumelo caído sobre a fenda, na altura 1 (B).
 for z in range(30, 36):
     for x in range(48, 52):
         heights[z][x] = 'B'
-stairs(56, 9, 58, 9, 'n')
+raise_area(47, 16, 52, 21, 2)
+
+# Salas e corredores menos quadrados (08-mapa); as arenas ficam como estão.
+ARENAS = [(3, 12, 22, 29), (72, 5, 91, 22), (58, 49, 77, 66)]
+
+
+def outside_arenas(x, z):
+    return not any(x0 <= x <= x1 and z0 <= z <= z1 for x0, z0, x1, z1 in ARENAS)
+
+
+print('formas soltas (chão, parede):', roughen(grid, heights, '.,', '#', 11, path_ok, region=outside_arenas))
+report(grid)
+lines = ["".join(row).rstrip() for row in grid]
+open(OUT, "w").write("\n".join(lines) + "\n")
 with open(OUT.replace('_layout', '_heights'), 'w') as f:
     f.write('\n'.join(''.join(row) for row in heights) + '\n')

@@ -1,7 +1,7 @@
 class_name Damage
 ## Fórmula do dano que Nate causa (03-regras), numa função só, coberta por teste:
 ## dano do ataque × (1 + soma dos bônus) × variação × crítico, arredondado para o inteiro mais próximo.
-## O dano contra Nate não tem sorte: cada golpe tira sempre os mesmos corações.
+## O dano contra Nate não tem sorte: cada golpe tira sempre a mesma vida.
 
 
 ## Dano em pontos. [param bonus] é a soma dos bônus como fração (20% = 0,2).

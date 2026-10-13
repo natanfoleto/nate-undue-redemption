@@ -28,4 +28,6 @@ func shot() -> AttackData:
 	attack.reach = reach
 	attack.projectile_speed = projectile_speed
 	attack.knockback = knockback
+	attack.effect = effect
+	attack.effect_duration = effect_duration
 	return attack

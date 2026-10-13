@@ -126,6 +126,8 @@ func _build_terrain() -> void:
 	_decor = _grid("Decor", 0)
 	_land = (load(BUILDER) as GDScript).new()
 	_land.floor_chars = FLOOR_CHARS
+	_land.auto_ramps = true
+	_land.slope_chars = ".wg"
 	_land.setup(_rows, FileAccess.get_file_as_string(HEIGHTS).split("\n"))
 	_patches.seed = 7
 	_patches.frequency = 0.12
@@ -139,7 +141,7 @@ func _build_terrain() -> void:
 		for x in range(_land.low.x, _land.high.x):
 			_place_column(x, z)
 	_decorate()
-	# Beiradas dos morrinhos do prólogo: moitas que seguram quem anda; sobe-se e desce-se pelos degraus.
+	# Beiradas que sobram (desnível de 2 ou mais, sem rampa): moitas que seguram quem anda.
 	for cell: Vector2i in _land.ledges():
 		_terrain.set_cell_item(Vector3i(cell.x, _land.height(cell.x, cell.y), cell.y), _item("Folhas"))
 	_build_navigation()
@@ -194,9 +196,13 @@ func _outside_top(x: int, z: int) -> int:
 		return -4
 	if z > RIVER_SOUTH:
 		return -3 + mini((z - RIVER_SOUTH) / 8, 1)
-	var hills := clampf((10.0 - x) * 0.55, 0.0, 7.0) + float(_land.noise(x, z) % 2) * minf(1.0, maxf(10.0 - x, 0.0))
-	var east := clampf((x - 45.0) * 0.7, 0.0, 2.0)
-	var south := clampf((z - 125.0) * 0.6, 0.0, 3.0)
+	# As divisas dos morros, do terraço e da encosta ondulam com um ruído suave, sem linha reta.
+	var wavy_x: float = x + (_land.smooth_noise(x, z, 7.0, 21) - 0.5) * 8.0
+	var wavy_z: float = z + (_land.smooth_noise(x, z, 7.0, 22) - 0.5) * 6.0
+	var hills := clampf((10.0 - wavy_x) * 0.55, 0.0, 7.0) + float(_land.noise(x, z) % 2) * minf(1.0, maxf(10.0 - wavy_x, 0.0))
+	hills += roundf((_land.smooth_noise(x, z, 5.0, 23) - 0.5) * 2.0) * minf(1.0, maxf(12.0 - wavy_x, 0.0))
+	var east := clampf((wavy_x - 45.0) * 0.7, 0.0, 2.0)
+	var south := clampf((wavy_z - 125.0) * 0.6, 0.0, 3.0)
 	return roundi(hills - maxf(east, south))
 
 
@@ -216,7 +222,12 @@ func _place_column(x: int, z: int) -> void:
 			if ch == "V":
 				# O poço do elevador: a plataforma segura Nate.
 				return
-			var top_item := _grass(x, z) if surface else (_item("Tábuas") if ch == "w" else _dirt(x, z))
+			# A borda entre dois chões (a grama e a terra da fenda, as tábuas e a terra) fica misturada: o chão vem de um
+			# bloco vizinho puxado pelo ruído.
+			var zone: Vector2i = _land.blend_source(x, z)
+			if _cell(zone.x, zone.y) == "V":
+				zone = Vector2i(x, z)
+			var top_item := _grass(x, z) if _is_surface(zone.y) else (_item("Tábuas") if _cell(zone.x, zone.y) == "w" else _dirt(x, z))
 			_land.place_floor(_terrain, x, z, top_item, _item("Chão de terra"), _item("Escada"))
 			if not surface:
 				# Abaixo do chão, a beira das galerias inundadas é de rocha funda, como as paredes delas.
@@ -353,7 +364,7 @@ func _is_lone_tree(x: int, z: int) -> bool:
 
 # Capim e flores espalhados pela clareira, sem colisão; longe dos degraus e dos pontos dos objetos.
 func _clearing_plant(x: int, z: int) -> void:
-	if _land.stairs_at(x, z) != "" or _land.chance(x, z, 2) > 0.06:
+	if _land.stairs_at(x, z) != "" or not _land.ramp_at(x, z).is_empty() or _land.chance(x, z, 2) > 0.06:
 		return
 	var plants := ["Capim", "Capim", "Capim alto", "Flor amarela", "Flor azul"]
 	_decor_if_empty(Vector3i(x, _land.top(x, z), z), _item(plants[_land.noise(x, z) % plants.size()]))
@@ -538,14 +549,13 @@ func _build_objects(_player: Node3D) -> void:
 				"K":
 					_mob(mobs, "res://mobs/skeleton.tscn", "mine_skeleton", _center(x, z))
 				"b":
-					_pickup(objects, &"mine_slingshot", &"slingshot", "ranged", _center(x, z))
+					_pickup(objects, &"mine_slingshot", &"slingshot", _center(x, z))
 				"p":
-					_pickup(objects, &"mine_pickaxe", &"pickaxe", "melee", _center(x, z))
+					_pickup(objects, &"mine_pickaxe", &"pickaxe", _center(x, z))
 				"C":
 					var chest := _instance(objects, "res://world/objects/chest.tscn", _center(x, z), PI)
 					chest.set("save_id", &"mine_chest_vest")
 					chest.set("item_id", &"miner_vest")
-					chest.set("item_slot", "armor")
 				"L":
 					lever = _instance(objects, "res://world/objects/lever.tscn", _center(x, z), PI)
 					lever.set("save_id", &"mine_lever")
@@ -579,7 +589,7 @@ func _build_objects(_player: Node3D) -> void:
 				"X":
 					cracked.append(Vector2i(x, z))
 				"y":
-					_pickup(objects, &"mine_miner_armor", &"miner_armor", "armor", _center(x, z))
+					_pickup(objects, &"mine_miner_armor", &"miner_armor", _center(x, z))
 				"q":
 					var charge := _instance(objects, "res://world/objects/item_pickup.tscn", _center(x, z), 0.0)
 					charge.set("save_id", &"charge_mine_1")
@@ -671,9 +681,11 @@ func _build_dark_areas(objects: Node3D) -> void:
 			var low := Vector2i(x, z)
 			var high := Vector2i(x, z)
 			var queue: Array[Vector2i] = [Vector2i(x, z)]
+			var region: Array[Vector2i] = []
 			done[Vector2i(x, z)] = true
 			while not queue.is_empty():
 				var cell: Vector2i = queue.pop_back()
+				region.append(cell)
 				low = low.min(cell)
 				high = high.max(cell)
 				for side: Vector2i in [Vector2i(1, 0), Vector2i(-1, 0), Vector2i(0, 1), Vector2i(0, -1)]:
@@ -687,6 +699,8 @@ func _build_dark_areas(objects: Node3D) -> void:
 			dark.set("area_size", Vector2(high - low + Vector2i.ONE))
 			dark.set("cover_height", 2.05)
 			dark.set("light_edge", 1.5)
+			dark.set("mask", _dark_mask(region, low, high))
+			dark.set("margin", 1.0)
 			_add(objects, dark)
 
 
@@ -734,11 +748,10 @@ func _mob(parent: Node3D, scene_path: String, id_prefix: String, where: Vector3)
 	return mob
 
 
-func _pickup(parent: Node3D, save_id: StringName, item_id: StringName, slot: String, where: Vector3) -> void:
+func _pickup(parent: Node3D, save_id: StringName, item_id: StringName, where: Vector3) -> void:
 	var pickup := _instance(parent, "res://world/objects/item_pickup.tscn", where, 0.0)
 	pickup.set("save_id", save_id)
 	pickup.set("item_id", item_id)
-	pickup.set("item_slot", slot)
 
 
 func _instance(parent: Node3D, scene_path: String, where: Vector3, facing: float) -> Node3D:
@@ -800,3 +813,11 @@ func _typed(items: Array, base: StringName, script_path: String) -> Array:
 func _add(parent: Node, node: Node) -> void:
 	parent.add_child(node, true)
 	node.owner = _root
+
+
+# A forma da área escura: um ponto por bloco (branco no escuro), com 1 bloco de margem em volta.
+func _dark_mask(region: Array[Vector2i], low: Vector2i, high: Vector2i) -> ImageTexture:
+	var image := Image.create_empty(high.x - low.x + 3, high.y - low.y + 3, false, Image.FORMAT_L8)
+	for cell in region:
+		image.set_pixel(cell.x - low.x + 1, cell.y - low.y + 1, Color.WHITE)
+	return ImageTexture.create_from_image(image)

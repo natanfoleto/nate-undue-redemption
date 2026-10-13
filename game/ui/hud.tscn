@@ -1,87 +1,54 @@
 [gd_scene format=3]
 
 [ext_resource type="Script" path="res://ui/hud.gd" id="1_spcu4"]
-[ext_resource type="Texture2D" path="res://assets/ui/hud/heart_full.png" id="2_ff8ar"]
-[ext_resource type="Texture2D" path="res://assets/ui/hud/heart_empty.png" id="3_m0eg6"]
 [ext_resource type="Texture2D" path="res://assets/ui/status/stun.png" id="4_b00kl"]
 [ext_resource type="Texture2D" path="res://assets/ui/status/slow.png" id="5_so1yu"]
 [ext_resource type="Texture2D" path="res://assets/ui/status/poison.png" id="6_65xic"]
 [ext_resource type="Texture2D" path="res://assets/ui/status/burn.png" id="7_mp5xd"]
-[ext_resource type="Texture2D" path="res://assets/ui/hud/flask.png" id="8_u6vop"]
 [ext_resource type="Script" path="res://ui/death_screen.gd" id="9_xtm2r"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kc1f2"]
-bg_color = Color(0, 0, 0, 0.5)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color(1, 1, 1, 1)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6mpex"]
-bg_color = Color(0, 0, 0, 0.5)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color(1, 1, 1, 1)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mlhsj"]
-bg_color = Color(0, 0, 0, 0.5)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color(1, 1, 1, 1)
+[ext_resource type="Script" path="res://ui/health_bar.gd" id="10_hbar"]
+[ext_resource type="PackedScene" path="res://ui/hotbar.tscn" id="11_hotb"]
 
 [node name="Hud" type="CanvasLayer" unique_id=1655601135]
 script = ExtResource("1_spcu4")
-heart_full = ExtResource("2_ff8ar")
-heart_empty = ExtResource("3_m0eg6")
 status_icons = Array[Texture2D]([ExtResource("4_b00kl"), ExtResource("5_so1yu"), ExtResource("6_65xic"), ExtResource("7_mp5xd")])
 icon_scale = 3
 combo_dim = 0.35
-marajoara_color = Color(0.24705882, 0.68235296, 0.5411765, 1)
-common_color = Color(0.6039216, 0.6039216, 0.6039216, 1)
-flask_icon = ExtResource("8_u6vop")
-toast_time = 3.0
-toast_fade_time = 0.6
 
 [node name="Top" type="VBoxContainer" parent="." unique_id=1052509568]
 offset_left = 16.0
 offset_top = 16.0
 offset_right = 16.0
 offset_bottom = 16.0
+mouse_filter = 2
 theme_override_constants/separation = 8
 
-[node name="Row" type="HBoxContainer" parent="Top" unique_id=1138651626]
-layout_mode = 2
-theme_override_constants/separation = 24
-
-[node name="Hearts" type="HBoxContainer" parent="Top/Row" unique_id=1586135222]
+[node name="HealthBar" type="Control" parent="Top" unique_id=1586135222]
 unique_name_in_owner = true
 layout_mode = 2
-
-[node name="Flask" type="HBoxContainer" parent="Top/Row" unique_id=1479634198]
-unique_name_in_owner = true
-layout_mode = 2
-
-[node name="FlaskIcon" type="TextureRect" parent="Top/Row/Flask" unique_id=413015833]
-custom_minimum_size = Vector2(48, 48)
-layout_mode = 2
-texture = ExtResource("8_u6vop")
-expand_mode = 1
-
-[node name="FlaskCharges" type="Label" parent="Top/Row/Flask" unique_id=828791505]
-unique_name_in_owner = true
-layout_mode = 2
-theme_override_font_sizes/font_size = 32
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 8
+size_flags_horizontal = 0
+mouse_filter = 2
+script = ExtResource("10_hbar")
+width_per_point = 2.0
+bar_height = 22
+border_width = 2
+back_color = Color(0.08, 0.05, 0.05, 0.75)
+fill_color = Color(0.78, 0.16, 0.2, 1)
+low_color = Color(0.95, 0.3, 0.18, 1)
+low_share = 0.3
+lost_color = Color(1, 0.86, 0.7, 0.9)
+lost_delay = 0.4
+lost_speed = 60.0
+border_color = Color(0.1, 0.08, 0.07, 1)
+shine_share = 0.2
+shine_color = Color(1, 1, 1, 0.18)
+font_size = 16
+outline_size = 4
 
 [node name="Statuses" type="HBoxContainer" parent="Top" unique_id=951847726]
 unique_name_in_owner = true
 layout_mode = 2
+mouse_filter = 2
 
 [node name="Spells" type="HBoxContainer" parent="." unique_id=1769110494]
 unique_name_in_owner = true
@@ -96,6 +63,7 @@ offset_right = -16.0
 offset_bottom = -16.0
 grow_horizontal = 0
 grow_vertical = 0
+mouse_filter = 2
 theme_override_constants/separation = 12
 
 [node name="Slot1" type="VBoxContainer" parent="Spells" unique_id=1666050698]
@@ -106,6 +74,7 @@ alignment = 2
 [node name="Back" type="ColorRect" parent="Spells/Slot1" unique_id=660357259]
 custom_minimum_size = Vector2(56, 56)
 layout_mode = 2
+mouse_filter = 2
 color = Color(0, 0, 0, 0.5)
 
 [node name="Icon1" type="TextureRect" parent="Spells/Slot1/Back" unique_id=1683709644]
@@ -140,6 +109,7 @@ alignment = 2
 [node name="Back" type="ColorRect" parent="Spells/Slot2" unique_id=1913082568]
 custom_minimum_size = Vector2(56, 56)
 layout_mode = 2
+mouse_filter = 2
 color = Color(0, 0, 0, 0.5)
 
 [node name="Icon2" type="TextureRect" parent="Spells/Slot2/Back" unique_id=125885173]
@@ -173,85 +143,7 @@ layout_mode = 2
 size_flags_vertical = 4
 expand_mode = 1
 
-[node name="Bottom" type="VBoxContainer" parent="." unique_id=1153224501]
-anchors_preset = 2
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_left = 16.0
-offset_top = -16.0
-offset_bottom = -16.0
-grow_vertical = 0
-theme_override_constants/separation = 10
-
-[node name="Toast" type="HBoxContainer" parent="Bottom" unique_id=1285852280]
-unique_name_in_owner = true
-layout_mode = 2
-theme_override_constants/separation = 10
-
-[node name="ToastIcon" type="TextureRect" parent="Bottom/Toast" unique_id=600011887]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(40, 40)
-layout_mode = 2
-expand_mode = 1
-
-[node name="ToastLabel" type="Label" parent="Bottom/Toast" unique_id=430407904]
-unique_name_in_owner = true
-layout_mode = 2
-theme_override_font_sizes/font_size = 24
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 8
-
-[node name="Equipment" type="HBoxContainer" parent="Bottom" unique_id=275406085]
-layout_mode = 2
-theme_override_constants/separation = 8
-
-[node name="MeleeFrame" type="Panel" parent="Bottom/Equipment" unique_id=1485474564]
-custom_minimum_size = Vector2(52, 52)
-layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_kc1f2")
-
-[node name="Melee" type="TextureRect" parent="Bottom/Equipment/MeleeFrame" unique_id=32542764]
-unique_name_in_owner = true
-layout_mode = 0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 6.0
-offset_top = 6.0
-offset_right = -6.0
-offset_bottom = -6.0
-expand_mode = 1
-
-[node name="RangedFrame" type="Panel" parent="Bottom/Equipment" unique_id=65612639]
-custom_minimum_size = Vector2(52, 52)
-layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_6mpex")
-
-[node name="Ranged" type="TextureRect" parent="Bottom/Equipment/RangedFrame" unique_id=1822413916]
-unique_name_in_owner = true
-layout_mode = 0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 6.0
-offset_top = 6.0
-offset_right = -6.0
-offset_bottom = -6.0
-expand_mode = 1
-
-[node name="ArmorFrame" type="Panel" parent="Bottom/Equipment" unique_id=1268164346]
-custom_minimum_size = Vector2(52, 52)
-layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_mlhsj")
-
-[node name="Armor" type="TextureRect" parent="Bottom/Equipment/ArmorFrame" unique_id=1475549028]
-unique_name_in_owner = true
-layout_mode = 0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 6.0
-offset_top = 6.0
-offset_right = -6.0
-offset_bottom = -6.0
-expand_mode = 1
+[node name="Hotbar" parent="." unique_id=1479634198 instance=ExtResource("11_hotb")]
 
 [node name="DeathScreen" type="ColorRect" parent="." unique_id=16720311]
 anchors_preset = 15

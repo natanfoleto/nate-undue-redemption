@@ -5,7 +5,7 @@ Origem dos assets, guia de estilo e a lista completa de assets e sons, que sai d
 ## Origem dos assets
 | Tipo | Origem |
 |------|--------|
-| Personagens e criaturas (Nate, mobs, Boiúna, dinossauro) | por código: blocos definidos no código, com animações também por código |
+| Personagens e criaturas (Nate, mobs, Boiúna) | por código: blocos definidos no código, com animações também por código |
 | Objetos do cenário (baú, alavanca, portão etc.) | montados com blocos, como os personagens |
 | Cenário | blocos montados no motor; texturas de materiais comuns (pedra, terra, madeira, metal) de um único pacote pronto CC0, pintado à mão; texturas marajoara e dos fungos bioluminescentes feitas para o jogo |
 | Efeitos sonoros | prontos, com licença livre, ajustados para o jogo (volume e tom, no banco de sons): a família de pacotes de Kenney, as criaturas de rubberduck e as magias de leohpaz |
@@ -36,7 +36,9 @@ Os ícones definitivos são feitos para o jogo (`09-interface.md`). O pacote dos
 
 Feitos para o jogo na etapa 6, provisórios: as texturas marajoara das Ruínas (`marajoara_wall`, `marajoara_floor`, `marajoara_jade` e `spear_plate`), os ícones de Terra, Ar, das combinações, das armas e armaduras das Ruínas e da Mina, do Selo e do muiraquitã inteiro, os desenhos dos pergaminhos de Terra e Ar e as imagens dos 7 murais (`assets/murals/`).
 
-Feitos para o jogo na etapa 5, provisórios: as texturas dos fungos (`mushroom_stem`, `mushroom_cap_cyan` e `mushroom_cap_lime`), os ícones de 16 × 16 dos itens, dos elementos, da combinação Vapor, dos efeitos de status, do frasco, do muiraquitã e das melhorias, os desenhos dos pergaminhos de Fogo e Água e o papel do pergaminho aberto (`assets/ui/`).
+Feitos para o jogo na etapa 5, provisórios: as texturas dos fungos (`mushroom_stem`, `mushroom_cap_cyan` e `mushroom_cap_lime`), os ícones de 16 × 16 dos itens, dos elementos, da combinação Vapor, dos efeitos de status, do muiraquitã e das melhorias, os desenhos dos pergaminhos de Fogo e Água e o papel do pergaminho aberto (`assets/ui/`).
+
+Feitos para o jogo depois do segundo teste de jogo, provisórios: o som do golpe de lâmina (`assets/audio/ours/swoosh.wav`, um vush de vento) e o do dash (`dash.wav`, mais grave e longo), sintetizados de ruído filtrado; o ícone e o modelo da poção de vida (`assets/ui/items/flask.png`); a pose do dash e as peças de rampa e de canto do chão (`tools/areas/`).
 
 ### Plano de produção
 Assets prontos entram como provisórios logo no começo da produção, para testar os sistemas cedo, e são trocados pelos definitivos aos poucos.
@@ -46,7 +48,8 @@ Assets prontos entram como provisórios logo no começo da produção, para test
 ### Base
 - **Densidade:** personagens, objetos e ícones usam 16 px por bloco (1 pixel equivale a 1/16 de bloco); Nate, com 2 blocos de altura, tem 32 pixels de altura. As texturas prontas do cenário têm 32 px por bloco, pintadas à mão, mais detalhadas que as do Minecraft; as feitas para o jogo (marajoara e fungos) seguem com 16 px.
 - **Quinas chanfradas:** as caixas dos personagens e criaturas têm as quinas chanfradas, de cerca de 1 px, para arredondar ombros, cabeça e mãos (quanto em cada modelo: `11-balanceamento.md`).
-- **Chão em manchas:** a grama da clareira e o chão da Mina misturam 3 tons em manchas, e a grama tem terra nas laterais, para o relevo aparecer e o chão não ficar chapado.
+- **Chão em manchas:** a grama da clareira e o chão da Mina misturam 3 tons em manchas, e a grama tem terra nas laterais, para o relevo aparecer e o chão não ficar chapado. Onde um chão encontra outro, a borda ondula e mistura os dois (`08-mapa.md`).
+- **Rampas:** na natureza, o relevo sobe em rampas do próprio chão, com a textura de cima seguindo a inclinação e as laterais do bloco; escadas de pedra só nas construções (`08-mapa.md`).
 - **Profundidade:** abaixo do chão, a rocha fica mais escura, e o fundo dos abismos tem cor e luz próprias (água escura, água brilhante e fungos, lava), para a câmera ler a altura de cada parte.
 - **Luz:** o subterrâneo é escuro, mas cada área tem a sua luz: lampiões na Mina, fungos que brilham no Bosque e padrões marajoara acesos nas Ruínas. Escuridão total só nas áreas que exigem a Luz Ancestral. Em todo lugar, a luz precisa bastar para ler os avisos (pilar 2).
 - **Efeitos visuais:** partículas blocadas, feitas de pequenos cubos e quadrados: faíscas, poeira, fogo, água e escuridão.
@@ -74,7 +77,9 @@ Cada sinal tem forma própria, e não só cor, para ajudar daltônicos (`09-inte
 | Queimadura | chamas laranja; ícone de chama | crepitar |
 | Imune | a palavra "imune", em cinza | batida seca |
 | Invencível | Nate pisca | — |
-| Rastro do golpe | arco branco curto; nas armas marajoara, verde-jade | — |
+| Rastro do golpe | arco branco curto, com as pontas arredondadas, que nasce pequeno, cresce até o tamanho cheio e some devagar; nas armas marajoara, verde-jade | vush de vento, o mesmo em todos os golpes |
+| Dash | cópias translúcidas de Nate pelo caminho, que somem em 0,25 s, e poeira de cubos nos pés | vush de vento mais grave |
+| Item da mão | moldura dourada no espaço da barra fixa e o nome do item em cima dela | som curto de lâmina |
 
 ### Linguagem de cor
 - **Roxo:** a escuridão do predador. Só as criaturas dela e a Boiúna usam roxo.
@@ -99,11 +104,10 @@ Cada sinal tem forma própria, e não só cor, para ajudar daltônicos (`09-inte
 | Necromante | manto roxo-escuro, rosto em sombra, olhos roxos e cajado com pedra roxa; Ancião: manto preto com bordas roxas |
 | Golem de Pedra | pedra cinza com rachaduras que brilham em roxo; Ancião: pedra escura e rachaduras mais largas |
 | Boiúna | preta com reflexos roxos e olhos âmbar que brilham |
-| Dinossauro do Bosque | herbívoro de pescoço longo, com cerca de 5 blocos de altura, verde-musgo com manchas que brilham fraco; come cogumelos |
 | Luz Ancestral | brilho branco-esverdeado |
 | Magias | Fogo: laranja e amarelo; Água: azul-claro; Terra: marrom e ocre; Ar: branco e cinza-claro; cada combinação mistura as cores dos dois elementos |
-| Frasco | moringa de cerâmica marajoara |
-| Melhorias | contas de jade, uma em forma de coração (+1 coração) e outra em forma de gota (+1 carga) |
+| Poção de vida | garrafinha de vidro com o líquido vermelho, um brilho claro no vidro e rolha de cortiça |
+| Melhorias | contas de jade, uma em forma de coração (+20 de vida) e outra em forma de gota (+1 carga) |
 | Pergaminho | rolo de fibra clara com desenhos marajoara em preto e vermelho; ao ler, o rolo se abre na tela e mostra o desenho do elemento, sem texto |
 | Armas | de 0,75 a 1,5 bloco de comprimento |
 | Pedras que caem | 1 bloco |
@@ -130,7 +134,7 @@ Mostram a vida pessoal do herói antigo. Cada uma prepara o que vem logo depois:
 
 | Memória | Santuário | Conteúdo | O que prepara |
 |---------|-----------|----------|---------------|
-| 1 | S1 | o herói descansa num santuário e enche a moringa | o frasco e o descanso |
+| 1 | S1 | o herói descansa num santuário e enche a poção | a poção de vida e o descanso |
 | 2 | S2 | o herói atravessa a escuridão guiado pela luz do muiraquitã | a passagem escura |
 | 3 | S3 | o herói e o irmão enfrentam o predador lado a lado | a relação dos irmãos, antes da traição |
 | 4 | S4 | a traição: na hora de fechar a prisão, falta a lasca, e o predador só adormece | a luta final |
@@ -183,10 +187,9 @@ Tudo sai das fichas. Os detalhes de cada item estão na ficha indicada.
 | Armaduras sobre o modelo de Nate | 4 | `05-itens.md` |
 | Armas corpo a corpo | 5 | `05-itens.md` |
 | Armas à distância e seus projéteis | 4 + 4 | `05-itens.md` |
-| Muiraquitã, Selo, pergaminho, moringa e as 2 melhorias | 6 | `05-itens.md` |
+| Muiraquitã, Selo, pergaminho, poção de vida e as 2 melhorias | 6 | `05-itens.md` |
 | Mobs: Lobo, Esqueleto Guerreiro com espada, Necromante com cajado e Golem de Pedra; as variantes só trocam a cor | 4 | `06-mobs/` |
 | Projétil da praga | 1 | `06-mobs/necromante.md` |
-| Dinossauro do Bosque | 1 | `06-mobs/README.md` |
 | Gado do rebanho, na abertura | 1 | `10-arte-audio.md` |
 | Boiúna, em segmentos | 1 | `07-chefes/boiuna.md` |
 | Objetos do cenário: santuário, baú, alavanca, portão, ponte, porta que só abre por um lado, elevador, parede rachada, pilar e porta da Grande Prisão | 10 | `08-mapa.md` |
@@ -199,7 +202,7 @@ Tudo sai das fichas. Os detalhes de cada item estão na ficha indicada.
 | Materiais comuns: pedra, terra, madeira e metal | pacote pronto CC0, pintado à mão |
 | Padrões marajoara: paredes das Ruínas, santuários, pilares, placas das lanças e itens marajoara | feitas para o jogo |
 | Fungos bioluminescentes | feitas para o jogo |
-| Peles de personagens e criaturas: Nate, roupas das cenas, mobs e cores das variantes, Boiúna, dinossauro e gado | feitas para o jogo |
+| Peles de personagens e criaturas: Nate, roupas das cenas, mobs e cores das variantes, Boiúna e gado | feitas para o jogo |
 | Os 7 murais | feitos para o jogo |
 
 Tamanho de cada mural, em blocos: `[A DEFINIR no rascunho do mapa]`.
@@ -209,7 +212,6 @@ Tamanho de cada mural, em blocos: `[A DEFINIR no rascunho do mapa]`.
 |---------|---------|-------|
 | Nate | 11, mais 4 poses de tiro | `04-player.md`, `05-itens.md` |
 | Mobs | de 6 a 8 por tipo | `06-mobs/` |
-| Dinossauro do Bosque | 3: parado, andar devagar e comer | `06-mobs/README.md` |
 | Boiúna | 12 | `07-chefes/boiuna.md` |
 | Muiraquitã | 3: acordar, brilho e lasca se encaixando | `05-itens.md` |
 | Objetos e armadilhas | as das fichas | `08-mapa.md` |
@@ -219,6 +221,7 @@ Tamanho de cada mural, em blocos: `[A DEFINIR no rascunho do mapa]`.
 | Grupo | Efeitos |
 |-------|---------|
 | Golpes | rastro (branco e verde-jade), acerto e crítico |
+| Nate | rastro e poeira do dash |
 | Sinais | marca de aviso no chão, brilho de golpe comum, tiro na força total, feixe de item e piscar de invencibilidade |
 | Efeitos de status | estrelas, partículas azuis, bolhas verdes e chamas |
 | Magias | 10, uma por magia |

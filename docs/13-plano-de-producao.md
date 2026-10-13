@@ -83,7 +83,7 @@ Feita em 2026-10-12, menos a arte e o som definitivos, que esperam decisões do 
 - Pergaminhos de Fogo e Água: o rolo abre na tela; o primeiro acorda o muiraquitã, que dá a Luz Ancestral nas áreas escuras.
 - Magias: Bola de Fogo, Onda Cortante e a combinação Vapor, com as recargas no HUD.
 - Necromante e Necromante Ancião (praga com veneno, invocação de esqueletos, recuo); Esqueleto Veterano (2 golpes seguidos).
-- Cogumelos de esporos, dinossauros do Bosque e cogumelos gigantes que brilham.
+- Cogumelos de esporos e cogumelos gigantes que brilham (os dinossauros do Bosque saíram depois do segundo teste de jogo).
 - Inventário (Tab): os 5 espaços, os itens de cada categoria e a comparação com o equipado.
 - Itens do Bosque: Lança, Zarabatana e Azagaia marajoara, Manto de fibras e o +1 coração; na Mina, o +1 coração do canto escuro.
 - Rascunho do mapa do Bosque, com as 2 arenas, a arena opcional, a porta que só abre por um lado e a passagem escura.
@@ -116,6 +116,15 @@ Depois de jogar os ajustes, o responsável pediu (2026-10-13): nada do vazio pre
 - Um trecho novo por área no caminho, sem mudar salas, lutas e itens: a ponte de tábuas sobre a galeria inundada da Mina, o pé de cogumelo caído sobre a fenda do Bosque e a ponte de pedra sobre a fenda de lava das Ruínas; a vala da Mina e os vãos das Ruínas ficaram fundos.
 
 Feito em 2026-10-13: o terreno preenche tudo o que a câmera alcança (`08-mapa.md`), com água, rio e lava animados, plantas, cercas na beira dos abismos e o mapa de navegação passando pelas pontes; o som provisório toca em todo o jogo, com música por área, a das arenas e a das memórias, som de fundo na Mina e nas Ruínas, avisos de golpe acima da música e passos conforme o chão (`10-arte-audio.md`). Os geradores e os rascunhos dos mapas ficam em `game/tools/areas/` (`12-tecnico.md`).
+
+## Ajustes do segundo teste de jogo
+Depois de jogar o cenário cheio, o responsável pediu (2026-10-13), em 18 pontos: um som de vento só para todos os golpes de lâmina; o rastro do golpe com as pontas arredondadas, nascendo pequeno; a barra fixa de 5 espaços embaixo, no centro, visível com o inventário aberto, com os números de 1 a 5; o inventário numa caixa no centro; o elevador do Bosque sem o chão de grama pela metade; a água mais lenta; as configurações de volume na pausa; a esquiva melhor; a poção de vida nova, como item da barra; a barra de vida no lugar dos corações, com a vida voltando mais devagar e só fora de combate; salas menos quadradas e chão misturado na troca de material; relevo sem escada obrigatória; a sombra dos corredores escuros menos quadrada; sem os dinossauros; e "Voltar" no lugar de "Sair" no santuário. As escolhas dele:
+- **Barra fixa:** uma arma na mão, como no Minecraft: o número escolhe o item da mão, e o botão esquerdo usa (golpeia, atira ou bebe).
+- **Vida:** 100 de vida, que volta 2 por segundo fora de combate; cada coração vira 20 (golpe comum 20, forte 40, chefe até 60; armadura e melhorias +20 por coração); a poção cura 40.
+- **Esquiva:** dash com rastro, com a mesma distância, tempo, recarga e invencibilidade do rolamento.
+- **Relevo:** rampas do próprio chão na natureza; escadas só nas construções.
+
+Feitos em 2026-10-13, com os documentos atualizados. Em avaliação com o responsável: o visual novo de Nate (3 opções com textura pintada, para ele escolher).
 
 ## Etapas 7 e 8, em linhas gerais
 - **7. Grande Prisão:** antessala com a memória 4, a Boiúna com as duas fases e os pilares, a cena da troca de fase, o final, os créditos, o resumo e o pós-jogo.

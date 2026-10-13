@@ -78,7 +78,7 @@ func _area_origin() -> Vector3:
 func _build_hit(receiver: Node3D) -> Hit:
 	var hit := Hit.new()
 	hit.attacker = self
-	hit.hearts = attack.damage_hearts
+	hit.player_damage = attack.player_damage
 	hit.points = attack.damage_points
 	hit.knockback = attack.knockback
 	var away := receiver.global_position - global_position

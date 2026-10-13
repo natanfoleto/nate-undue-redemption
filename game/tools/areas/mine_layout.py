@@ -2,8 +2,12 @@
 o norte em cima). Confere se o caminho principal liga o começo ao elevador."""
 from collections import deque
 import os
+import sys
 
 HERE = os.path.dirname(os.path.abspath(__file__))
+sys.path.insert(0, HERE)
+sys.dont_write_bytecode = True  # Sem __pycache__ dentro do repositório.
+from shapes import roughen  # noqa: E402
 
 W, H = 64, 126
 grid = [[' '] * W for _ in range(H)]
@@ -119,42 +123,8 @@ fill(22, 76, 35, 78, '~')
 for x, z in [(25, 71), (31, 71), (25, 76), (31, 76)]:
     put(x, z, 'l')
 
-# Pedra que não encosta em nenhum chão vira vazio: só sobram as paredes.
-walkable = set('.wgfVaGEFbpCWKolrPSM~LmXdhyijqu')
-floorish = set('.wgfVaGEFbpCWKolrPSdhyijqu')
-for z in range(H):
-    for x in range(W):
-        if grid[z][x] != '#':
-            continue
-        near = any(0 <= z + dz < H and 0 <= x + dx < W and grid[z + dz][x + dx] in floorish
-                   for dz in (-1, 0, 1) for dx in (-1, 0, 1))
-        if not near:
-            grid[z][x] = ' '
-
-# Caminho principal: do começo ao elevador, com os portões abertos.
-passable = set('.wgfVaGEFbpCWKolrPS')
-start = next((x, z) for z in range(H) for x in range(W) if grid[z][x] == 'S')
-seen = {start}
-queue = deque([start])
-while queue:
-    x, z = queue.popleft()
-    for dx, dz in ((1, 0), (-1, 0), (0, 1), (0, -1)):
-        nx, nz = x + dx, z + dz
-        if 0 <= nx < W and 0 <= nz < H and (nx, nz) not in seen and grid[nz][nx] in passable:
-            seen.add((nx, nz))
-            queue.append((nx, nz))
-for name, ch in [('elevador', 'V'), ('baú', 'C'), ('Baladeira', 'b'), ('Picareta', 'p'), ('alavanca (não deve alcançar)', 'L')]:
-    cells = [(x, z) for z in range(H) for x in range(W) if grid[z][x] == ch]
-    reach = [c for c in cells if any((c[0] + dx, c[1] + dz) in seen for dx, dz in ((1, 0), (-1, 0), (0, 1), (0, -1)))]
-    print(f'{name}: {len(reach)}/{len(cells)} alcançáveis')
-
-if __name__ == '__main__':
-    with open(os.path.join(HERE, 'mine_layout.txt'), 'w') as f:
-        f.write('\n'.join(''.join(row).rstrip() for row in grid) + '\n')
-    print('\n'.join(''.join(row).rstrip() for row in grid))
-
-
-# Alturas (relevo): um dígito por bloco com a altura do chão; n, s, e, w são escadas que sobem para aquele lado.
+# Alturas (relevo): um dígito por bloco com a altura do chão; n, s, e, w são escadas de pedra que sobem para aquele
+# lado; ^, v, > e < são rampas do próprio chão (terrain_builder.gd).
 heights = [['0'] * W for _ in range(H)]
 FLOOR_CHARS = set('.wgfVaGEFbpCWKolrPSdhyijqu~LmTX')
 
@@ -171,25 +141,84 @@ def bridge(x0, z0, x1, z1, letter):
             heights[z][x] = letter
 
 
-def stairs(x0, z0, x1, z1, direction):
+def ramp(x0, z0, x1, z1, direction):
     for z in range(z0, z1 + 1):
         for x in range(x0, x1 + 1):
             heights[z][x] = direction
 
 
-# A Mina sobe um degrau no corredor das pedras: tudo ao norte dele fica 1 bloco mais alto.
+# A Mina sobe no corredor das pedras: tudo ao norte dele fica 1 bloco mais alto, e o chão sobe numa rampa de terra.
 for z in range(0, 59):
     for x in range(W):
         if grid[z][x] in FLOOR_CHARS:
             heights[z][x] = '1'
-stairs(37, 59, 40, 59, 'n')
+ramp(37, 59, 40, 60, '^')
 # A beirada da alavanca, do outro lado da vala, fica na mesma altura: o tiro de estilingue passa por cima da vala.
-# Morrinhos na clareira do prólogo, com degraus.
+# Morrinhos na clareira do prólogo: a grama sobe em rampa por todos os lados (as rampas surgem sozinhas).
 raise_area(14, 104, 20, 110, 1)
-stairs(16, 111, 18, 111, 'n')
 raise_area(36, 113, 42, 120, 1)
-stairs(35, 116, 35, 118, 'e')
+raise_area(30, 105, 35, 110, 1)
 # A ponte de tábuas do corredor do portão, sobre a galeria inundada, na altura 0 (A).
 bridge(22, 72, 35, 75, 'A')
+
+# Caminho principal: do começo ao elevador, com os portões abertos.
+passable = set('.wgfVaGEFbpCWKolrPS')
+TARGETS = [('elevador', 'V', True), ('baú', 'C', True), ('Baladeira', 'b', True), ('Picareta', 'p', True),
+           ('alavanca (não deve alcançar)', 'L', False)]
+
+
+def reach_counts(grid):
+    start = next((x, z) for z in range(H) for x in range(W) if grid[z][x] == 'S')
+    seen = {start}
+    queue = deque([start])
+    while queue:
+        x, z = queue.popleft()
+        for dx, dz in ((1, 0), (-1, 0), (0, 1), (0, -1)):
+            nx, nz = x + dx, z + dz
+            if 0 <= nx < W and 0 <= nz < H and (nx, nz) not in seen and grid[nz][nx] in passable:
+                seen.add((nx, nz))
+                queue.append((nx, nz))
+    counts = []
+    for name, ch, _ in TARGETS:
+        cells = [(x, z) for z in range(H) for x in range(W) if grid[z][x] == ch]
+        reach = [c for c in cells if any((c[0] + dx, c[1] + dz) in seen for dx, dz in ((1, 0), (-1, 0), (0, 1), (0, -1)))]
+        counts.append((len(reach), len(cells)))
+    return counts
+
+
+def path_ok(grid):
+    return all((got == total) == wanted for (got, total), (_, _, wanted) in zip(reach_counts(grid), TARGETS))
+
+
+
+# Salas e corredores menos quadrados (08-mapa), nas galerias da Mina (terra e tábuas) e na clareira (a mata da borda
+# entrando e saindo); as arenas ficam como estão.
+ARENAS = [(29, 10, 48, 27), (5, 18, 24, 36)]
+
+
+def outside_arenas(x, z):
+    return not any(x0 <= x <= x1 and z0 <= z <= z1 for x0, z0, x1, z1 in ARENAS)
+
+
+print('formas soltas na Mina (chão, parede):', roughen(grid, heights, '.w', '#', 3, path_ok, region=outside_arenas))
+print('formas soltas na clareira (chão, parede):', roughen(grid, heights, 'g', 'T', 5, path_ok))
+
+# Pedra que não encosta em nenhum chão vira vazio: só sobram as paredes.
+walkable = set('.wgfVaGEFbpCWKolrPSM~LmXdhyijqu')
+floorish = set('.wgfVaGEFbpCWKolrPSdhyijqu')
+for z in range(H):
+    for x in range(W):
+        if grid[z][x] != '#':
+            continue
+        near = any(0 <= z + dz < H and 0 <= x + dx < W and grid[z + dz][x + dx] in floorish
+                   for dz in (-1, 0, 1) for dx in (-1, 0, 1))
+        if not near:
+            grid[z][x] = ' '
+
+for (name, _, _), (got, total) in zip(TARGETS, reach_counts(grid)):
+    print(f'{name}: {got}/{total} alcançáveis')
+
+with open(os.path.join(HERE, 'mine_layout.txt'), 'w') as f:
+    f.write('\n'.join(''.join(row).rstrip() for row in grid) + '\n')
 with open(os.path.join(HERE, 'mine_heights.txt'), 'w') as f:
     f.write('\n'.join(''.join(row) for row in heights) + '\n')

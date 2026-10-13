@@ -5,7 +5,7 @@
 [resource]
 script = ExtResource("1_6jswb")
 damage_points = 20
-damage_hearts = 1
+player_damage = 20
 shape = 2
 reach = 1.0
 width = 1.0

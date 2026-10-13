@@ -9,23 +9,24 @@ HUD, menus e telas do jogo. O visual de ícones, fontes e cores fica em `10-arte
 ## HUD
 
 ```
-+--------------------------------------+
-| ♥♥♥♥♥  frasco 3        == Boiúna ==  |
-|                                      |
-|               Nate                   |
-| [ícone] Lança marajoara              |
-| [perto][longe][armad.] [Q] [E] (Q+E) |
-+--------------------------------------+
++----------------------------------------------+
+| [====80/100====]          == Boiúna ==       |
+| (efeitos)                                    |
+|                     Nate                     |
+|            [ícone] Lança marajoara           |
+|                  Estilingue                  |
+|        [1][2*][3 3][4][5]       [Q] [E] (Q+E)|
++----------------------------------------------+
 ```
 
 | Elemento | Onde | O que mostra |
 |----------|------|--------------|
-| Corações | alto, à esquerda | vida atual e máxima |
-| Frasco | ao lado dos corações | cargas |
-| Efeitos em Nate | ao lado dos corações | um ícone para cada efeito ativo |
+| Barra de vida | alto, à esquerda | a vida atual e a máxima, em número em cima da barra; a barra cresce com a vida máxima (armadura e melhorias); a vida perdida fica clara um instante antes de sumir; com pouca vida, a barra fica laranja |
+| Efeitos em Nate | embaixo da barra de vida | um ícone para cada efeito ativo |
+| Barra fixa | embaixo, no centro | os 5 espaços (`05-itens.md`), com o número de cada um, o ícone do item, moldura verde-jade nas peças marajoara e cinza nas comuns; o espaço vazio fica apagado; o item da mão tem moldura dourada; a poção mostra as cargas. No controle, setas dos lados lembram o direcional |
+| Nome do item da mão | em cima da barra fixa | ao trocar de espaço, o nome do item por 1,2 s, sumindo em 0,5 s |
 | Magias | embaixo, à direita | os 2 elementos equipados, a recarga de cada um e o sinal de combinação pronta |
-| Equipamento | embaixo, à esquerda | a arma de perto, a de longe e a armadura, com moldura verde-jade nas peças marajoara e cinza nas comuns; o espaço vazio fica apagado |
-| Item achado | acima do equipamento | o ícone e o nome de cada item pego (equipamento, melhoria, elemento ou o frasco), por 3 s, sumindo em 0,6 s |
+| Item achado | em cima da barra fixa | o ícone e o nome de cada item pego (arma, armadura, poção, melhoria ou elemento), por 3 s, sumindo em 0,6 s |
 | Barra do chefe | no alto, ao centro | vida da Boiúna; na fase 1, dividida em 4 partes |
 | Barra dos mobs | sobre a cabeça | vida, só depois de o mob levar dano |
 | Efeitos nos mobs | sobre a cabeça | um ícone para cada efeito |
@@ -42,28 +43,31 @@ O centro da tela fica livre para os avisos dos golpes (pilar 2).
 - O que cada trecho ensina: `04-player.md`.
 
 ## Santuário
-- Interagir abre um menu com "Descansar" e "Viajar". "Viajar" mostra a lista dos santuários já visitados (`02-core-loop.md`).
+- Interagir abre um menu com "Descansar", "Viajar" e "Voltar". "Viajar" mostra a lista dos santuários já visitados (`02-core-loop.md`); "Voltar" fecha o menu.
 
 ## Inventário
-Uma tela só, em três partes:
+Uma caixa no centro da tela, com borda, um pouco acima do meio, para não cobrir a barra fixa, que continua embaixo, por cima do resto da tela escurecida:
 
 ```
-+-------------+------------------------+
-| Nate        | itens da categoria     |
-| corpo a c.  |  [ ] [ ] [ ] [ ]       |
-| distância   |  [ ] [ ]               |
-| armadura    |                        |
-| elemento 1  |                        |
-| elemento 2  |                        |
-+-------------+------------------------+
-| detalhes e comparação com o equipado |
-+--------------------------------------+
++------------------------- Inventário --------------------------+
+| Nate             | Mochila                 | Nome (raridade)   |
+| Vida 80/100      | [ ][ ][ ][ ][ ]         | atributo  valor ▲ |
+| Poção 3/3        | [ ][ ][ ][ ][ ]         | atributo  valor ▼ |
+| muiraquitã       | [ ][ ][ ][ ][ ]         |                   |
+| Armadura [ ]     | Elementos aprendidos    |                   |
+| Elementos [ ][ ] | [ ][ ]                  |                   |
+| Combinação       |                         |                   |
++---------------------------------------------------------------+
+|                ajuda: como trocar os itens                    |
++---------------------------------------------------------------+
+              [1][2][3][4][5]   (a barra fixa)
 ```
 
-- **Esquerda:** Nate e os 5 espaços (`05-itens.md`). Escolher um espaço mostra, à direita, os itens daquela categoria.
-- **Embaixo:** detalhes do item e comparação com o equipado, atributo por atributo, com seta verde (melhor) ou vermelha (pior).
-- Com os 2 elementos escolhidos, a tela mostra a combinação que eles formam.
-- A tela também mostra corações, cargas do frasco e o muiraquitã, com ou sem a lasca.
+- **Esquerda:** a vida, as cargas da poção, o muiraquitã (com ou sem a lasca), a armadura vestida, os 2 elementos e a combinação que eles formam.
+- **Meio:** a mochila, 15 espaços, e os elementos aprendidos.
+- **Direita:** detalhes do item apontado (mouse ou foco) e a comparação com o que Nate usa, atributo por atributo, com seta verde (melhor) ou vermelha (pior): a armadura, com a vestida; a arma, com a da mão, se for do mesmo tipo, ou com a primeira do mesmo tipo na barra.
+- **Trocar de lugar:** arrastar com o mouse; ou clicar no item e clicar no espaço de destino (no teclado e no controle, confirmar e confirmar de novo). Os números de 1 a 5 põem o item apontado naquele espaço da barra. Os itens trocam entre a barra, a mochila e a armadura (a barra só aceita itens de mão; o espaço da armadura, só armadura); um elemento aprendido vai para um dos 2 espaços, e soltar um elemento equipado na lista dos aprendidos tira ele do espaço.
+- Voltar larga o item levado; sem item levado, fecha o inventário.
 
 ## Mapa
 - Uma imagem de cada área com segredos (Mina, Bosque de Fungos e Ruínas), aberta pelo menu de pausa.
@@ -90,7 +94,8 @@ Guia o pós-jogo (`02-core-loop.md`), mostrando onde ainda falta algo.
 - Um jogo salvo só. "Novo jogo" pede confirmação antes de apagar o jogo salvo.
 
 ### Pausa
-- Continuar, Mapa, Murais, Progresso, Opções e Voltar ao menu principal.
+- Continuar, Mapa, Murais, Progresso, Configurações e Voltar ao menu principal.
+- **Configurações:** o volume da música (com o som de fundo) e o dos efeitos sonoros (golpes, tiros, passos e avisos), de 0 a 100, guardados nas opções. Os outros grupos das opções entram aqui depois.
 - O inventário abre com Tab.
 
 ### Opções
@@ -112,7 +117,7 @@ Os avisos dos golpes não dependem só de cor, para ajudar daltônicos (regra pa
 - Em seguida, Nate volta ao mundo para o pós-jogo (`02-core-loop.md`).
 
 ## Assets e sons da interface
-- **Ícones:** corações, frasco, os 4 elementos e as 6 combinações, as 13 peças de equipamento, os 4 efeitos de status, o aviso de imune e os botões de teclado e mouse, Xbox e PlayStation.
+- **Ícones:** a poção de vida, os 4 elementos e as 6 combinações, as 13 peças de equipamento, os 4 efeitos de status, o aviso de imune e os botões de teclado e mouse, Xbox e PlayStation. A barra de vida é desenhada por código.
 - **Imagens:** os mapas da Mina, do Bosque e das Ruínas.
 - **Sons de menu:** navegar, confirmar, voltar e equipar.
 - Ícones em pixel art de 16×16 pixels, feitos para o jogo; fonte pixel com licença livre (OFL) e com os acentos do português; cores em `10-arte-audio.md`.

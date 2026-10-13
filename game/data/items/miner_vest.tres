@@ -6,7 +6,7 @@
 
 [resource]
 script = ExtResource("2_r5j5p")
-extra_hearts = 1
+extra_health = 20
 move_speed = 5.0
 name_key = &"ITEM_MINER_VEST"
 icon = ExtResource("1_r5j5p")

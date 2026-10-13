@@ -1,0 +1,29 @@
+[gd_scene format=3]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dust"]
+transparency = 1
+shading_mode = 0
+vertex_color_use_as_albedo = true
+
+[sub_resource type="BoxMesh" id="BoxMesh_dust"]
+material = SubResource("StandardMaterial3D_dust")
+size = Vector3(0.12, 0.12, 0.12)
+
+[sub_resource type="Gradient" id="Gradient_dust"]
+colors = PackedColorArray(0.62, 0.56, 0.48, 0.9, 0.62, 0.56, 0.48, 0)
+
+[node name="DashDust" type="CPUParticles3D"]
+emitting = false
+amount = 10
+lifetime = 0.45
+one_shot = true
+explosiveness = 0.9
+mesh = SubResource("BoxMesh_dust")
+direction = Vector3(0, 0.6, 0)
+spread = 50.0
+gravity = Vector3(0, -4, 0)
+initial_velocity_min = 1.0
+initial_velocity_max = 2.5
+scale_amount_min = 0.6
+scale_amount_max = 1.2
+color_ramp = SubResource("Gradient_dust")

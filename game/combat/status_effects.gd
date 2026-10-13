@@ -2,7 +2,7 @@ class_name StatusEffects
 extends Node
 ## Efeitos de status (03-regras): atordoado, lento, veneno e queimadura. O mesmo efeito não acumula: aplicar
 ## de novo renova a duração. Efeitos diferentes valem ao mesmo tempo. Quem sofre é o pai, que precisa ter
-## take_status_damage(hearts: int, points: int); Nate perde corações, os mobs perdem pontos.
+## take_status_damage(health: int, points: int); Nate perde pontos de vida, os mobs perdem pontos.
 
 signal changed
 
@@ -71,7 +71,7 @@ func _physics_process(delta: float) -> void:
 		# O veneno só age se durar até o fim da espera; com a Água equipada, acaba antes (11-balanceamento).
 		if _poison_elapsed >= rules.poison_delay - EPSILON:
 			_left.erase(Effect.POISON)
-			receiver.call(&"take_status_damage", rules.poison_hearts, 0)
+			receiver.call(&"take_status_damage", rules.poison_damage, 0)
 			changed.emit()
 	var expired := false
 	for effect: Effect in _left.keys():

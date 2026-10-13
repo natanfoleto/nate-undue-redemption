@@ -27,19 +27,20 @@ Tempo de quem joga pela primeira vez, contando as mortes (`02-core-loop.md`).
 ## Nate
 | Valor | Número |
 |-------|--------|
-| Vida inicial | 5 corações |
-| Vida máxima | 9 corações com as 4 melhorias; até 11 com armadura de +2 |
+| Vida inicial | 100 |
+| Vida máxima | 180 com as 4 melhorias (+20 cada); até 220 com armadura de +40 |
 | Velocidade | 5 blocos/s |
 | Aceleração e frenagem | 0,1 s |
 | Ajuda de mira | cone de 45° (22,5° para cada lado da mira), até 4 blocos |
 | Andar golpeando | à metade da velocidade, sem passo à frente |
 | Janela para continuar o combo | 0,4 s depois da recuperação |
 | Recuperação depois do tiro | 0,3 s |
-| Rolamento | 3 blocos em 0,4 s, invencível o tempo todo; recarga de 0,5 s |
+| Dash | 3 blocos em 0,4 s, invencível o tempo todo; recarga de 0,5 s |
 | Sem controle ao levar golpe | 0,2 s |
 | Invencível depois de levar golpe | 1 s |
-| Frasco | 3 cargas (até 5 com melhorias); 2 corações por carga; 0,6 s para beber |
-| Vida que volta fora de luta | depois de 5 s sem levar golpe nem dano, 1 coração na hora e depois 1 a cada 2 s |
+| Poção de vida | 3 cargas (até 5 com melhorias); 40 de vida por carga; 0,6 s para beber |
+| Vida que volta fora de combate | 2 por segundo, sem inimigo atrás de Nate e depois de 8 s sem levar dano (de vazia a cheia, 50 s com 100 de vida) |
+| Espaços da barra fixa e da mochila | 5 e 15 |
 | Chance de crítico | 5% |
 | Elementos equipados | 2 |
 | Raio da Luz Ancestral | 6 blocos |
@@ -64,7 +65,7 @@ O enquadramento é provisório até o rascunho do mapa (`12-tecnico.md`).
 | Interrompido | 0,4 s sem agir |
 | Variação do dano de Nate | de 0,9 a 1,1 |
 | Crítico | dobra o dano |
-| Dano inimigo em Nate | golpe comum 1 coração; forte 2; do chefe até 3 |
+| Dano inimigo em Nate | golpe comum 20; forte 40; do chefe até 60 |
 | Mobs atacando ao mesmo tempo | no máximo 5 |
 | Tempo de cada golpe de Nate | 30% de preparação, 20% de tempo ativo e 50% de recuperação |
 
@@ -88,12 +89,12 @@ Todas ficam entre 23 e 27 pontos de dano por segundo; o que muda é o jeito de b
 | Arco marajoara | 16 | 1 s | 16 blocos | 30 blocos/s | curto | atravessa |
 
 ## Armaduras
-| Peça | Corações | Velocidade de Nate | Efeito |
-|------|----------|--------------------|--------|
-| Colete de minerador | +1 | 5 blocos/s | — |
-| Armadura de minerador | +2 | 4,5 blocos/s | — |
-| Manto de fibras marajoara | +1 | 5 blocos/s | a esquiva recarrega em 0,35 s, em vez de 0,5 s |
-| Couraça de cerâmica marajoara | +2 | 4,5 blocos/s | 15% a mais de dano |
+| Peça | Vida | Velocidade de Nate | Efeito |
+|------|------|--------------------|--------|
+| Colete de minerador | +20 | 5 blocos/s | — |
+| Armadura de minerador | +40 | 4,5 blocos/s | — |
+| Manto de fibras marajoara | +20 | 5 blocos/s | o dash recarrega em 0,35 s, em vez de 0,5 s |
+| Couraça de cerâmica marajoara | +40 | 4,5 blocos/s | 15% a mais de dano |
 
 ## Magias
 As combinações gastam as duas recargas. Onde a combinação causa dano, ele é maior que a soma das duas magias separadas.
@@ -116,7 +117,7 @@ As combinações gastam as duas recargas. Onde a combinação causa dano, ele é
 |--------|-------|
 | Atordoado | Gelo: 2 s; 3º golpe do Tacape: 1,5 s; Boiúna, depois de cada parte da vida da fase 1: 6 s |
 | Lento | metade da velocidade. Zarabatana e abalo do Golem: 2 s. Lamaçal, esporos e poças da Boiúna: enquanto estiver dentro e mais 1 s |
-| Veneno | praga do Necromante: 1 coração depois de 2 s |
+| Veneno | praga do Necromante: 20 de vida depois de 2 s |
 | Queimadura | 4 pontos a cada 0,5 s, por 2 s (16 no total) |
 | Água equipada | os efeitos em Nate duram metade do tempo; com ela, o veneno da praga acaba em 1 s e não chega a agir |
 
@@ -163,9 +164,9 @@ O tempo ativo é de 0,2 s; no salto do lobo, de 0,3 s.
 ## Armadilhas
 | Armadilha | Dano | Área | Tempo | Recuo |
 |-----------|------|------|-------|-------|
-| Pedras que caem | 1 coração em Nate; 30 nos mobs | raio de 1 bloco | aviso de 1 s; cai uma vez | curto |
+| Pedras que caem | 20 de vida em Nate; 30 nos mobs | raio de 1 bloco | aviso de 1 s; cai uma vez | curto |
 | Cogumelo de esporos | — (lento) | nuvem de raio 2 blocos | aviso de 1 s; nuvem por 3 s; volta a crescer em 8 s | — |
-| Lanças do chão | 1 coração em Nate; 20 nos mobs | as placas do chão | ciclo de 4 s: 2 s recolhidas, 1 s de aviso, 1 s para fora | curto |
+| Lanças do chão | 20 de vida em Nate; 20 nos mobs | as placas do chão | ciclo de 4 s: 2 s recolhidas, 1 s de aviso, 1 s para fora | curto |
 
 ## Boiúna
 | Valor | Número |
@@ -175,11 +176,11 @@ O tempo ativo é de 0,2 s; no salto do lobo, de 0,3 s.
 | Ativar um pilar | segurar interagir por 2 s |
 | Intervalo entre ataques | 3 s; 2,5 s; 2 s; 1,5 s (com 0, 1, 2 e 3 pilares ativos) |
 | Vida da fase 2 | 400 |
-| Bote | preparação de 1,2 s; linha de 2 blocos de largura; 3 corações; recuo longo; cabeça no chão por 2,5 s |
-| Varrida de cauda | preparação de 1,2 s; setor de 120°, raio de 8 blocos; 2 corações; recuo longo |
-| Cuspe de escuridão | preparação de 1 s; 3 círculos de raio 1,5 bloco; 2 corações; sem recuo; poças por 4 s |
-| Emboscada | preparação de 1,2 s; linha de 2 blocos de largura; 3 corações; recuo longo; cabeça exposta por 2,5 s; uma a cada 5 s |
-| Cerco | anel de raio 3 blocos, que fecha em 1,2 s; 2 corações; recuo curto |
+| Bote | preparação de 1,2 s; linha de 2 blocos de largura; 60 de vida; recuo longo; cabeça no chão por 2,5 s |
+| Varrida de cauda | preparação de 1,2 s; setor de 120°, raio de 8 blocos; 40 de vida; recuo longo |
+| Cuspe de escuridão | preparação de 1 s; 3 círculos de raio 1,5 bloco; 40 de vida; sem recuo; poças por 4 s |
+| Emboscada | preparação de 1,2 s; linha de 2 blocos de largura; 60 de vida; recuo longo; cabeça exposta por 2,5 s; uma a cada 5 s |
+| Cerco | anel de raio 3 blocos, que fecha em 1,2 s; 40 de vida; recuo curto |
 
 ## Valores provisórios da produção
 Números que a produção precisou para o jogo funcionar e que os outros documentos não fixavam. Ficam em uso até a decisão; cada um está nos arquivos de dados de `game/data/` ou na cena indicada.
@@ -195,7 +196,7 @@ Números que a produção precisou para o jogo funcionar e que os outros documen
 | Tamanho do Lobo Alfa | 1,25 vez o lobo | `data/mobs/wolf_alpha.tres` |
 | Piscar da invencibilidade | troca a cada 0,1 s | `data/balance/player.tres` |
 | Tela clareando quando Nate volta | 0,5 s | `data/balance/player.tres` |
-| Marcas e efeitos na tela | rastro do golpe de 0,5 bloco de largura; número do crítico subindo 0,6 bloco em 0,8 s; barra de vida dos mobs de 0,8 × 0,1 bloco, 0,3 bloco acima da cabeça | cenas de `player/`, `combat/` e `mobs/` |
+| Marcas e efeitos na tela | rastro do golpe de 0,5 bloco de largura, com as pontas arredondadas, nascendo com 35% do tamanho, cheio em 0,09 s e sumindo em 0,14 s, a 60% de opacidade; número do crítico subindo 0,6 bloco em 0,8 s; barra de vida dos mobs de 0,8 × 0,1 bloco, 0,3 bloco acima da cabeça | cenas de `player/`, `combat/` e `mobs/` |
 | Círculo em que o Esqueleto recebe golpes | raio de 0,35 bloco | `data/mobs/skeleton.tres` |
 | Distância em que o Esqueleto espera a vez de atacar | 3 blocos | `data/mobs/skeleton.tres` |
 | Alcance para interagir | 1,5 bloco (elevador: 1,6, do centro da plataforma) | cenas de `world/objects/` |
@@ -209,7 +210,6 @@ Números que a produção precisou para o jogo funcionar e que os outros documen
 | Tempo para apertar o outro botão e sair a combinação | 0,1 s | `player/player.tscn` (SpellCaster) |
 | Necromante | círculo em que recebe golpes de raio 0,35 bloco; espera a vez de atacar a 6 blocos; as marcas de invocação têm raio de 0,6 bloco, a 1,5 bloco de cada lado dele; leque da praga do Ancião de 30° | `data/mobs/`, `data/attacks/summon.tres` |
 | Cogumelo de esporos | incha quando alguém chega a 1,5 bloco; inchado fica 1,3 vez maior e, estourado, 0,4 vez | `world/traps/spore_mushroom.tscn` |
-| Dinossauro do Bosque | anda a 1 bloco/s, até 4 blocos de casa; fica parado de 3 a 6 s e come por 5 s | `world/fauna/dinosaur.tscn` |
 | Troca de área, viagem rápida e descanso | a tela escurece e clareia em 0,5 s | `data/balance/world.tres` |
 | Santuário | alcance para interagir de 2 blocos; acende em 1 s na primeira visita | `world/objects/sanctuary.tscn` |
 | Elevador entre a Mina e o Bosque | a chegada anda metade da viagem (3 blocos em 1,5 s); quebrado, fica inclinado 8°; o conserto leva 0,8 s | `world/objects/elevator.tscn` |
@@ -217,7 +217,8 @@ Números que a produção precisou para o jogo funcionar e que os outros documen
 | Pergaminho aberto | abre em 0,5 s e fecha com qualquer botão depois de 1 s | `ui/scroll_view.tscn` |
 | Muiraquitã acordando | pulso de luz de 1,6 s | `player/player.tscn` |
 | Memórias | 7 s (memória 1) e 8 s (memória 2); dá para pular depois de 1,5 s; a tela clareia em 0,6 s | `world/memories/` |
-| Áreas escuras | o círculo da Luz Ancestral tem borda suave de 1,5 bloco | `world/areas/` |
+| Áreas escuras | a escuridão segue o desenho da área e passa 1 bloco além dela, com a borda esfumada e ondulada por um ruído de 1,5 bloco; o círculo da Luz Ancestral tem borda suave de 1,5 bloco | `world/areas/`, `world/darkness.gdshader` |
+| Água e lava | as faixas de 8 quadros passam a 1,5 quadro por segundo na água e no rio, e a 2 na lava | `tools/areas/make_blocks.gd` |
 | Efeitos das magias | estouro de 24 cubinhos em 0,5 s, com clarão do dobro do raio; onda a 55% de opacidade; nuvem de 40 cubinhos; praga saindo a 1,2 bloco do chão | `data/effects/spell_effects.tres`, `data/mobs/` |
 | Luz do Bosque | luz ambiente a 0,85; luz dos cogumelos gigantes com alcance de 8 blocos e dos fungos pequenos com 6 | `world/areas/forest.tscn` |
 | Área que começa a luta das arenas do Bosque | 15 × 13 blocos, dentro dos 18 × 16 do chão | `world/areas/forest.tscn` |
@@ -229,9 +230,11 @@ Números que a produção precisou para o jogo funcionar e que os outros documen
 | Murais | desenho na parede de 2 × 1,25 blocos; o mural grande aparece em 0,4 s e fecha com qualquer botão depois de 1 s; na galeria, as miniaturas são o desenho ampliado 2 vezes | `world/objects/mural.tscn`, `ui/mural_view.tscn`, `ui/pause_menu.tscn` |
 | Memória 3 | 7 s | `world/memories/memory_3.tscn` |
 | Arenas das Ruínas e arena opcional da Mina | a luta começa em 15 × 13 blocos (Mina: 16 × 14), dentro do chão de cada arena | `world/areas/` |
-| Gravidade | 20 blocos/s² (Nate, mobs e dinossauros ficam no chão; não há pulo nem queda) | `data/balance/world.tres` |
+| Gravidade | 20 blocos/s² (Nate e os mobs ficam no chão; não há pulo nem queda) | `data/balance/world.tres` |
 | Altura em que um golpe acerta | até 1,5 bloco acima ou abaixo de quem bateu (o pé, nos tiros) | `data/balance/combat.tres` |
-| Relevo | platôs de 1 e 2 blocos, ligados por escadas de 1 bloco de altura; nas beiradas sem escada, moitas (clareira) ou pedras (Bosque) de 1 bloco | `world/areas/` |
+| Relevo | platôs de 1 e 2 blocos. Na natureza, rampas do próprio chão: as que surgem sozinhas sobem 1 bloco em 1 (45°), também nos cantos; as dos corredores, 1 bloco em 2 (27°); peças de rampa de 1 a 3 blocos. Nas construções, escadas de 1 bloco de altura. Nas beiradas com desnível de 2 ou mais, moitas (clareira) ou pedras (Bosque) de 1 bloco | `world/areas/`, `tools/areas/` |
+| Formas soltas das salas | reentrâncias de 2 blocos de largura ou mais, 1 de fundo e 2 no meio, onde o ruído suave (grade de 3,5 blocos) passa de 0,6 (o fundo, de 0,74), só com 3 blocos de parede atrás; saliências onde o ruído fica abaixo de 0,3, em lugares com 6 blocos ou mais de fundo; nada muda a 2 blocos de objetos, portas, murais, escadas, rampas e pontes, nem nas arenas e nos salões das Ruínas | `tools/areas/shapes.py` |
+| Chão misturado | cada bloco pega o chão de um vizinho até 2 blocos (às vezes 3), puxado por um ruído suave de 4 blocos, se a reta até ele só passa por chão | `tools/areas/terrain_builder.gd` |
 | Paredes | rente ao chão: na frente da câmera (sul e leste), 1 bloco; 2 em volta das áreas escuras e atrás dos murais; atrás (norte e oeste), de 3 a 5 blocos; bloqueio invisível dos tiros e da visão até 3 blocos acima do chão | `tools/areas/terrain_builder.gd` |
 | Terreno de fora do chão | vai até 24 blocos além do chão em cada direção; até 10 blocos na diagonal à frente de um chão, vira abismo; atrás de tudo, morro que sobe 0,6 bloco por bloco de distância, até 10 acima do chão; o teto de cada coluna deixa à vista 1 bloco acima do chão atrás dela (o peito de Nate) | `tools/areas/terrain_builder.gd` |
 | Abismos | 7 blocos abaixo do chão vizinho, com o fundo (água, fungos ou lava) no último bloco; 6% das colunas do fundo viram pedra subindo até 2 a 4 blocos abaixo do chão; pilares das pontes a cada 2 blocos (3 no pé de cogumelo) | `tools/areas/` |
@@ -240,6 +243,9 @@ Números que a produção precisou para o jogo funcionar e que os outros documen
 | Paredão entre a clareira e a Mina | de 3 a 5 blocos de frente para a clareira, baixando até 1 do lado da Mina | `world/areas/mine.tscn` |
 | Parede rachada | 2 blocos de altura | `world/areas/` |
 | Mapa de navegação dos mobs | raio de 0,5 bloco, altura de 1,75 bloco, sobe até 0,25 bloco de degrau e rampas até 46° | `world/areas/*_navigation.res` |
-| Aviso de item achado no HUD | 3 s na tela, sumindo em 0,6 s | `ui/hud.tscn` |
+| Aviso de item achado no HUD | 3 s na tela, sumindo em 0,6 s | `ui/hotbar.tscn` |
+| Barra fixa e inventário | espaços de 64 px, ícones ampliados 3 vezes, moldura de 2 px (a da mão, dourada, de 4 px); o nome do item da mão fica 1,2 s e some em 0,5 s; a barra some em 0,6 s quando Nate morre; a caixa do inventário fica 56 px acima do centro | `data/ui/cell_look.tres`, `ui/hotbar.tscn`, `ui/inventory.tscn` |
+| Barra de vida de Nate | 2 px por ponto de vida (200 px com 100), 22 px de altura; a vida perdida fica clara 0,4 s e some a 60 pontos por segundo; laranja com 30% da vida ou menos; brilho no alto de 20% da altura | `ui/hud.tscn` |
+| Rastro do dash e poeira | uma cópia de Nate a cada 0,05 s, que some em 0,25 s; 10 cubos de poeira de 0,12 bloco (de 0,6 a 1,2 vez), que saem para trás e um pouco para cima a 1 até 2,5 blocos/s, abertos em 50°, caem a 4 blocos/s² e duram 0,45 s | `player/player.tscn`, `player/dash_dust.tscn` |
 | Som | música a −10 dB e som de fundo a −14 dB, trocando em 2 s (some até −60 dB e volta); avisos de golpe 2 dB acima, e a música abaixa enquanto eles tocam (compressor de razão 6, a partir de −24 dB); passos a cada 1,6 bloco; os sons do mundo tocam no volume cheio até 8 blocos de Nate e somem a 28; até 24 sons do mundo e 6 da tela ao mesmo tempo (som do mundo a mais de 28 blocos nem toca, e um novo pega a primeira voz livre); um som de menu por quadro; o volume e o tom de cada som ficam no banco (as lanças do chão, a −10 dB, porque são muitas) | `data/audio/audio_rules.tres`, `data/audio/sounds.tres`, `default_bus_layout.tres` |
-| Chanfro das quinas dos modelos | 1 px em Nate, no irmão, no herói, nos lobos e nos necromantes; 0,8 nos esqueletos; 1,5 nos golens; 2 no dinossauro e na Boiúna | `data/models/` |
+| Chanfro das quinas dos modelos | 1 px em Nate, no irmão, no herói, nos lobos e nos necromantes; 0,8 nos esqueletos; 1,5 nos golens; 2 na Boiúna | `data/models/` |

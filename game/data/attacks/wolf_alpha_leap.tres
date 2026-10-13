@@ -4,7 +4,7 @@
 
 [resource]
 script = ExtResource("1_o6ttt")
-damage_hearts = 2
+player_damage = 40
 shape = 2
 reach = 4.0
 width = 1.0

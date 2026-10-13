@@ -1,6 +1,6 @@
 class_name Health
 extends Node
-## Vida de uma entidade (03-regras): corações para Nate, pontos para os inimigos.
+## Vida de uma entidade (03-regras), em pontos.
 ## O valor máximo vem dos dados de quem a usa.
 
 signal changed(value: int, max_value: int)
@@ -17,7 +17,7 @@ func reset(new_max: int) -> void:
 	changed.emit(value, max_value)
 
 
-## Muda o máximo. Os corações a mais chegam vazios (armadura) ou cheios, com [param fill] (melhoria); com um
+## Muda o máximo. A vida a mais chega vazia (armadura) ou cheia, com [param fill] (melhoria); com um
 ## máximo menor, a vida atual é cortada nele (05-itens).
 func set_max(new_max: int, fill := false) -> void:
 	var gained := maxi(new_max - max_value, 0) if fill else 0

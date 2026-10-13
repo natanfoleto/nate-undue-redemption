@@ -6,13 +6,14 @@
 ## Atributos
 | Atributo | Valor |
 |----------|-------|
-| Vida máxima inicial | 5 corações |
+| Vida máxima inicial | 100 |
 | Velocidade de movimento | 5 blocos/s |
 | Bônus de dano | 0% |
 | Chance de crítico | 5% |
-| Cargas do frasco | 3 (a partir do primeiro santuário) |
-| Cura por carga | 2 corações |
-| Vida que volta fora de luta | depois de 5 s sem levar golpe, 1 coração na hora e depois 1 a cada 2 s |
+| Cargas da poção de vida | 3 (a partir do primeiro santuário) |
+| Cura por carga | 40 |
+| Vida que volta fora de combate | 2 por segundo, depois de 8 s sem levar dano |
+| Espaços da barra fixa | 5 |
 | Elementos equipados | 2 |
 
 ## Comportamento e habilidades
@@ -24,17 +25,17 @@ No computador, com teclado e mouse ou com controle; os dois funcionam desde o in
 |------|-----------------|-------------------------------|
 | Andar | W A S D | analógico esquerdo |
 | Mirar | mouse | analógico direito |
-| Atacar | botão esquerdo | X / □ |
-| Ataque à distância (segurar e soltar) | botão direito | RT / R2 |
-| Esquivar | Espaço | A / ✕ |
+| Usar o item da mão (golpear; segurar e soltar o tiro; beber a poção) | botão esquerdo | X / □ ou RT / R2 |
+| Escolher o espaço da barra fixa | 1 a 5 e a roda do mouse | direcional ◀ e ▶ |
+| Esquivar (dash) | Espaço | A / ✕ |
 | Magia 1 e 2 (as duas juntas: combinação) | Q e E | LB e RB / L1 e R1 |
-| Frasco | R | Y / △ |
+| Beber a poção (atalho, sem tirar a arma da mão) | R | Y / △ |
 | Interagir | F | B / ○ |
 | Inventário | Tab | View / Touchpad |
 | Pausa | Esc | Menu / Options |
 
 - Todos os botões podem ser trocados numa tela do menu de opções (`09-interface.md`).
-- No controle, o tiro fica no gatilho para dar para mirar com o analógico direito enquanto puxa.
+- No controle, usar fica no X e também no gatilho: com o tiro no gatilho, dá para mirar com o analógico direito enquanto puxa.
 
 ### Movimento
 - 5 blocos/s, uma velocidade só: sem pulo e sem botão de correr.
@@ -48,6 +49,14 @@ No computador, com teclado e mouse ou com controle; os dois funcionam desde o in
 - **Seta da mira:** uma seta discreta no chão, junto de Nate, mostra para onde os ataques vão, no mouse e no controle, já puxada pela ajuda de mira.
 - Dá para andar para um lado e atacar para outro.
 
+### Item da mão
+**Uma arma na mão, como no Minecraft.** A barra fixa tem 5 espaços (`05-itens.md`, `09-interface.md`); o espaço escolhido é o item que Nate segura, e o botão de usar usa esse item.
+- Os números de 1 a 5 escolhem o espaço; a roda do mouse (no controle, o direcional) passa para o seguinte ou o anterior, do último volta ao primeiro. Troca a qualquer hora, até no meio do dash.
+- Com uma arma de perto na mão, usar golpeia (o combo); com uma de longe, segurar puxa e soltar atira; com a poção, bebe.
+- Trocar de espaço para o golpe ou o tiro em andamento; a poção que está sendo bebida continua.
+- Uma arma achada vai para o primeiro espaço vazio da barra e já fica na mão; a poção também entra na barra, sem ir para a mão.
+- Na mão: a arma de perto na direita; a de longe e a poção na esquerda. A armadura fica vestida, fora da barra.
+
 ### Ataque corpo a corpo
 **Combo de 3 golpes:** apertar em sequência faz os 3 golpes.
 
@@ -60,20 +69,20 @@ No computador, com teclado e mouse ou com controle; os dois funcionam desde o in
 - Toda arma corpo a corpo segue esse combo. Cada arma muda dano, área e tempos (`05-itens.md`).
 - Nate golpeia parado ou andando: durante o golpe, anda à metade da velocidade, sem passo à frente (`11-balanceamento.md`). O golpe vai para a mira, não para onde ele anda.
 - Tempo máximo entre dois apertos para o combo continuar: `11-balanceamento.md`.
-- A esquiva cancela a recuperação do golpe.
+- O dash cancela a recuperação do golpe.
 
 ### Ataque à distância
 **Puxar e soltar, sem munição.**
 - Segurar puxa até a força total; soltar atira. Soltar antes da força total cancela o tiro. O tempo até a força total varia por arma (`05-itens.md`).
-- Enquanto puxa, Nate anda à metade da velocidade e não ataca de perto nem usa magia. Esquivar cancela o tiro.
+- Enquanto puxa, Nate anda à metade da velocidade e não usa magia. O dash cancela o tiro.
 - O dano é menor que o do corpo a corpo (valores em `05-itens.md`).
 - Também acerta alvos do cenário, como alavancas distantes (`08-mapa.md`).
 
 ### Esquiva
-**Rolamento:** 3 blocos em 0,4 s, numa cambalhota com os joelhos dobrados.
-- Direção: a do movimento; parado, rola para a frente de Nate.
-- Invencível durante os 0,4 s do rolamento.
-- Recarga: 0,5 s, contada do fim do rolamento (0,35 s com o Manto de fibra, `05-itens.md`).
+**Dash:** 3 blocos em 0,4 s. Nate se inclina e dispara para a frente, deixando cópias translúcidas pelo caminho e poeira nos pés (`10-arte-audio.md`).
+- Direção: a do movimento; parado, para a frente de Nate.
+- Invencível durante os 0,4 s do dash.
+- Recarga: 0,5 s, contada do fim do dash (0,35 s com o Manto de fibra, `05-itens.md`).
 - Cancela a recuperação dos golpes de Nate.
 
 ### Magias
@@ -84,16 +93,18 @@ No computador, com teclado e mouse ou com controle; os dois funcionam desde o in
 - A Luz Ancestral é do próprio muiraquitã: funciona sozinha e não ocupa espaço nem botão.
 
 ### Vida que volta
-- Depois de 5 s sem levar golpe (nem dano de veneno ou queimadura), Nate recupera 1 coração na hora e depois 1 a cada 2 s, até o máximo.
-- Qualquer golpe ou dano recomeça a espera de 5 s. Na luta, a cura vem do frasco.
+- Só fora de combate: nenhum inimigo atrás de Nate ou lutando com ele, e 8 s sem levar dano (golpe, veneno ou queimadura). Aí a vida volta 2 por segundo, até o máximo (de vazia a cheia, 50 s com 100 de vida).
+- Qualquer dano recomeça a espera de 8 s. Em combate, a vida não volta: a cura vem da poção.
 
-### Frasco
-- Beber leva 0,6 s. Enquanto bebe, Nate anda à metade da velocidade e não ataca nem esquiva.
+### Poção de vida
+- Bebe com a poção na mão e o botão de usar, ou pelo atalho (R / Y), sem tirar a arma da mão.
+- Beber leva 0,6 s. Enquanto bebe, Nate anda à metade da velocidade e não ataca nem dá o dash.
 - A cura acontece no fim, mesmo se Nate levar um golpe: a carga nunca é perdida.
+- Com a vida cheia, Nate não bebe (toca o som de não dá).
 - Cargas e cura por carga: `05-itens.md`.
 
 ### Ao levar um golpe
-Perde corações inteiros, é empurrado conforme o golpe, perde o controle por 0,2 s e fica invencível por 1 s (`03-regras.md`).
+Perde vida (20 num golpe comum, 40 num forte), é empurrado conforme o golpe, perde o controle por 0,2 s e fica invencível por 1 s (`03-regras.md`).
 
 ### O que cada trecho ensina
 Uma coisa nova por vez.
@@ -102,13 +113,13 @@ Uma coisa nova por vez.
 |--------|--------|
 | Prólogo (luta com a criatura) | andar, combo e esquiva |
 | Mina | ataque à distância (ex.: alavanca longe) e interagir (baú, alavanca) |
-| Bosque, 1º santuário | Nate ganha o frasco; descansar e recarregar |
+| Bosque, 1º santuário | Nate ganha a poção de vida; descansar e recarregar |
 | Bosque | primeiro pergaminho (Fogo): o muiraquitã acorda; Luz Ancestral e Bola de Fogo |
 | Ruínas | pergaminho de Terra e a primeira combinação, Magma |
 
 Água e Ar, opcionais, são ensinados onde forem achados.
 
-Prólogo e Mina não têm frasco; a vida só volta fora de luta, então as lutas ali são leves (`06-mobs/`, `08-mapa.md`).
+Prólogo e Mina não têm poção; a vida só volta fora de combate, então as lutas ali são leves (`06-mobs/`, `08-mapa.md`).
 
 Nate começa com o facão e acha o estilingue, a primeira arma à distância, na Mina (`05-itens.md`).
 
@@ -116,18 +127,18 @@ Nate começa com o facão e acha o estilingue, a primeira arma à distância, na
 - **Mobs e chefe:** Nate fere com golpes, tiros e magias, e só é ferido por golpes avisados; encostar não fere. Qualquer golpe interrompe mobs leves; os pesados, só o 3º golpe do combo ou outro golpe com recuo longo (`03-regras.md`).
 - **Armadilhas:** ferem Nate e os mobs; dá para atrair ou empurrar inimigos para elas.
 - **Muiraquitã e magias:** a Luz Ancestral ilumina as áreas escuras; com Terra aprendida, os golpes quebram paredes rachadas; com o Selo, a porta da Grande Prisão abre. Os elementos equipados dão as magias em combate.
-- **Cenário:** alavancas (perto, interagir; longe, tiro), baús (interagir), santuários (interagir para descansar, salvar e viajar), elevadores e portas que só abrem por um lado. Paredes bloqueiam golpes e tiros. Escadas sobem e descem os platôs; na beira de um platô, moitas ou pedras seguram Nate, sem quedas (`08-mapa.md`).
+- **Cenário:** alavancas (perto, interagir; longe, tiro), baús (interagir), santuários (interagir para descansar, salvar e viajar), elevadores e portas que só abrem por um lado. Paredes bloqueiam golpes e tiros. Na natureza, o chão sobe e desce em rampas do próprio chão, por qualquer lado; nas construções, por escadas. Onde o desnível passa de 1 bloco, moitas ou pedras seguram Nate, sem quedas (`08-mapa.md`).
 - **Murais:** interagir mostra o mural grande na tela; depois ele fica na galeria (`09-interface.md`).
 - **Morte:** volta ao último santuário, sem perder nada (`02-core-loop.md`).
 
 ## Animações necessárias
 - Parado.
-- Andar (também em meia velocidade, combinado com os golpes, puxar o tiro e beber do frasco).
+- Andar (também em meia velocidade, combinado com os golpes, puxar o tiro e beber a poção).
 - Golpes 1, 2 e 3 do combo, parado ou andando (a parte de cima do corpo golpeia; as pernas andam).
 - Puxar, segurar puxado e soltar o tiro: uma pose para cada tipo de arma (`05-itens.md`).
-- Rolamento: cambalhota, com os joelhos dobrados e os braços junto ao corpo.
+- Dash: inclinado para a frente, os braços para trás e uma perna à frente.
 - Usar magia: a mesma pose para todas, combinações incluídas (`05-itens.md`).
-- Beber do frasco.
+- Beber a poção.
 - Interagir (alavanca, baú).
 - Descansar no santuário.
 - Levar golpe (0,2 s sem controle, sendo empurrado).
@@ -137,9 +148,10 @@ Nate começa com o facão e acha o estilingue, a primeira arma à distância, na
 - Passos (tipos de chão em `10-arte-audio.md`).
 - Golpes 1, 2 e 3 cortando o ar; acerto; acerto crítico.
 - Puxar o tiro, tiro na força total, soltar.
-- Rolamento.
+- Dash: um vush de vento.
+- Trocar o item da mão.
 - Usar magia (cada uma em `05-itens.md`).
-- Beber do frasco, cura concluída, tentar beber sem carga.
+- Beber a poção, cura concluída, tentar beber sem carga ou com a vida cheia.
 - Levar golpe.
 - Morrer.
 
@@ -148,5 +160,6 @@ Nate começa com o facão e acha o estilingue, a primeira arma à distância, na
 - Muiraquitã no pescoço, com a lasca faltando e inteiro (`05-itens.md`).
 - Seta da mira no chão, definida por código.
 - Efeito de piscar durante a invencibilidade.
+- Rastro do dash (cópias translúcidas de Nate) e a poeira dos pés, por código.
 - Sinal de tiro na força total: brilho branco na ponta da arma e um clique curto (`10-arte-audio.md`).
 - Ícones de botão para teclado e mouse, Xbox e PlayStation (`09-interface.md`).

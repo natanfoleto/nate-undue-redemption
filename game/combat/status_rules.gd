@@ -6,9 +6,9 @@ extends Resource
 @export var slow_speed_share := 0.0
 ## Tempo a mais de lentidão depois de sair de uma área que deixa lento, em segundos.
 @export var slow_linger := 0.0
-## Tempo até o veneno agir, em segundos, e quantos corações ele tira de Nate.
+## Tempo até o veneno agir, em segundos, e a vida que ele tira de Nate, em pontos.
 @export var poison_delay := 0.0
-@export var poison_hearts := 0
+@export var poison_damage := 0
 ## Queimadura: pontos a cada tique, tempo entre tiques e duração, em segundos.
 @export var burn_damage := 0
 @export var burn_interval := 0.0

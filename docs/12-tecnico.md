@@ -20,9 +20,10 @@ Motor, arquitetura, estrutura de pastas e convenções de código.
 - Uma cena por área: Prólogo e Mina, Bosque de Fungos, Ruínas e Grande Prisão (`08-mapa.md`).
 - A troca de cena acontece nas passagens que já existem: o elevador (Mina → Bosque), a passagem escura (Bosque → Ruínas) e a porta da Grande Prisão. Na viagem rápida, a área de destino carrega durante um escurecimento da tela.
 - O cenário é pintado bloco a bloco com o GridMap do Godot, com uma biblioteca de blocos por área: texturas de 32 px (as prontas) e de 16 px (as feitas para o jogo), projetadas pelo mundo para continuarem de um bloco para o outro (`10-arte-audio.md`). A grama tem a face de cima diferente das laterais. Detalhes menores que um bloco viram objetos à parte.
-- **Relevo:** o chão tem platôs de 1 e 2 blocos e escadas (uma peça da biblioteca, com rampa na colisão) (`08-mapa.md`). Cada área sai de dois rascunhos em texto: o do mapa, com um caractere por bloco (o que é chão, abismo ou o resto), e o das alturas, em que o dígito é a altura do chão, n, s, e e w são escadas subindo para aquele lado e de A a J é ponte na altura 0 a 9.
+- **Relevo:** o chão tem platôs de 1 e 2 blocos, rampas do próprio chão na natureza e escadas nas construções (peças da biblioteca, com rampa na colisão) (`08-mapa.md`). Cada área sai de dois rascunhos em texto: o do mapa, com um caractere por bloco (o que é chão, abismo ou o resto), e o das alturas, em que o dígito é a altura do chão, n, s, e e w são escadas subindo para aquele lado, ^, v, > e < são rampas do chão (de 1 a 3 blocos seguidos) e de A a J é ponte na altura 0 a 9. Com `auto_ramps` (na Mina e no Bosque), todo desnível de 1 bloco entre dois chões vira rampa sozinho, com as peças de canto de dentro e de fora. A biblioteca de cada área tem, para cada chão que vira rampa, as peças de rampa de 1, 2 e 3 blocos e os 2 cantos, pelo nome ("Grama rampa 1/2", "Grama rampa canto de fora").
+- **Formas soltas e chão misturado:** os rascunhos passam por `shapes.py` (reentrâncias e saliências nas paredes, conferindo o caminho principal a cada saliência); nos geradores, cada bloco de chão pega o material de um vizinho puxado por um ruído suave (`blend_source` do montador), para a borda entre dois chões ondular.
 - **Geradores das áreas:** ficam em `game/tools/areas/`, junto com os rascunhos. Os rascunhos saem dos scripts em Python (`python3 game/tools/areas/mine_layout.py`, que também confere se o caminho principal se alcança); as bibliotecas de blocos e as áreas, dos scripts do Godot, a partir da raiz do repositório: `godot --headless --path game -s res://tools/areas/make_blocks.gd` e depois `make_mine.gd`, `make_forest.gd` e `make_ruins.gd`. Os geradores acham cada bloco da biblioteca pelo nome.
-- **Montador do terreno** (`terrain_builder.gd`): faz o chão, as escadas, as paredes, as pontes e o terreno de fora até 24 blocos além do chão, para a câmera nunca ver o vazio: abismo onde há chão atrás na diagonal da câmera, morro na borda de fora. Cada coluna tem um teto, o da linha de visão da câmera até o chão atrás dela, e só tem os blocos que aparecem (do topo da vizinha mais baixa até o próprio topo). Ele também marca as beiradas dos platôs e assa o mapa de navegação dos mobs.
+- **Montador do terreno** (`terrain_builder.gd`): faz o chão, as escadas, as rampas, as paredes, as pontes e o terreno de fora até 24 blocos além do chão, para a câmera nunca ver o vazio: abismo onde há chão atrás na diagonal da câmera, morro na borda de fora. Cada coluna tem um teto, o da linha de visão da câmera até o chão atrás dela, e só tem os blocos que aparecem (do topo da vizinha mais baixa até o próprio topo). Ele também marca as beiradas dos platôs e assa o mapa de navegação dos mobs.
 - Cada área tem quatro GridMaps: `Terrain` (o terreno, camada 1), `Sight` (blocos invisíveis em cima das paredes baixas, que seguram os tiros e a visão dos mobs até 3 blocos acima do chão, camada 1), `Barriers` (barreiras invisíveis na beira dos abismos, camada 4) e `Decor` (cercas, capim e flores, sem colisão).
 - Água, rio e lava usam o shader `world/blocks/liquid.gdshader`: a textura é uma faixa de quadros que troca com o tempo.
 
@@ -43,7 +44,8 @@ Motor, arquitetura, estrutura de pastas e convenções de código.
 - Um arquivo JSON na pasta do usuário, regravado a cada conquista (item, atalho, mural, inimigo morto) e a cada descanso (`02-core-loop.md`).
 - Gravação segura: o jogo escreve num arquivo temporário e só no fim o troca pelo antigo, para não corromper o jogo salvo se o computador desligar no meio. Na troca, o arquivo antigo vira uma cópia de segurança, que o jogo lê se o principal estiver estragado.
 - Tudo o que é salvo (mob, baú, atalho, mural, pergaminho, melhoria) tem um identificador único no mapa.
-- O arquivo guarda: último santuário, itens, elementos aprendidos, melhorias, o que está equipado, objetos abertos, inimigos mortos, murais vistos, tempo de jogo e mortes (para o resumo do fim).
+- O arquivo guarda: último santuário, itens, onde cada item está (a barra fixa, o espaço da mão, a mochila e a armadura vestida), elementos aprendidos e equipados, melhorias, objetos abertos, inimigos mortos, murais vistos, tempo de jogo e mortes (para o resumo do fim).
+- O formato tem versão. Um jogo salvo de uma versão anterior é convertido ao abrir: a versão 3 trocou o equipamento (arma de perto, de longe e armadura) pela barra, pela mochila e pela armadura vestida; as armas equipadas abrem a barra, e os outros itens vão para os primeiros lugares livres.
 - As opções do menu ficam num arquivo à parte, que não é apagado por "Novo jogo".
 
 ### Sistemas globais
@@ -51,7 +53,7 @@ Autoloads do Godot:
 
 | Sistema | Função |
 |---------|--------|
-| `GameState` | progresso, ponto de retorno (o último santuário, ou o começo antes dele), equipamento e troca de área |
+| `GameState` | progresso, ponto de retorno (o último santuário, ou o começo antes dele), os lugares dos itens (barra fixa, item da mão, mochila e armadura, com as regras em `ItemPlaces`) e troca de área |
 | `SaveSystem` | grava e lê o JSON, com gravação segura |
 | `Events` | canal de sinais (ex.: inimigo morreu, item achado, atalho aberto); o salvamento ouve esses sinais |
 | `Balance` | carrega os arquivos de dados com os números do `11-balanceamento.md` |
@@ -60,7 +62,7 @@ Autoloads do Godot:
 
 ### Combate
 - Toda colisão de combate é calculada por código no plano do chão (`03-regras.md`). Cada entidade recebe golpes num círculo, e as áreas de golpe são círculo, setor, retângulo ou projétil. Um golpe só acerta quem está até a altura-limite de quem bateu (`height_reach`, em `data/balance/combat.tres`); nos tiros, conta o pé de quem atirou.
-- Nate, os mobs e a fauna são `CharacterBody3D` com cápsula e gravidade (`data/balance/world.tres`): ficam presos ao chão e sobem rampas, sem pulo nem queda.
+- Nate e os mobs são `CharacterBody3D` com cápsula e gravidade (`data/balance/world.tres`): ficam presos ao chão e sobem rampas, sem pulo nem queda.
 - A marca de aviso é desenhada a partir da mesma forma do golpe: o que se vê é o que acerta.
 - Componentes reutilizáveis, como nós filhos: vida, efeitos de status, recuo e área de golpe.
 - A fórmula de dano fica numa função só, coberta por teste automático.
@@ -69,7 +71,8 @@ Autoloads do Godot:
 - Camadas de física: 1 o mundo, 2 Nate e 3 os mobs. Nate e os mobs se encostam sem se ferir, e os dois esbarram também nas barreiras da camada 4.
 - Efeitos de status num componente (`StatusEffects`), com os sinais na tela (`StatusVisuals`); os números ficam em `data/balance/status.tres`.
 - Magias: cada elemento (`ElementData`) tem uma magia (`SpellData`), e a tabela de combinações (`ComboTable`) dá a magia dos dois juntos. O componente `SpellCaster` de Nate lança e conta as recargas; as áreas que ficam no chão são `SpellArea`, e os efeitos visuais, `SpellEffects`.
-- Os itens de equipamento dividem a base `ItemData` (nome, ícone, raridade e modelo). Os efeitos próprios ficam nos dados de cada categoria: o 3º golpe que atordoa, a recarga cortada a cada acerto, a flecha que atravessa e o bônus de dano da armadura.
+- Os itens dividem a base `ItemData` (nome, ícone, raridade e modelo): armas de perto, de longe, armaduras e a poção de vida (`PotionData`). Os efeitos próprios ficam nos dados de cada categoria: o 3º golpe que atordoa, a recarga cortada a cada acerto, a flecha que atravessa e o bônus de dano da armadura.
+- Nate usa o item da mão: o botão de usar (`use_item`) chama o combo, o tiro ou a poção conforme o item; `hotbar_1` a `hotbar_5`, `hotbar_next` e `hotbar_previous` trocam o espaço da barra. A vida de Nate e o dano contra ele são em pontos; a vida volta só fora de combate (`Mob.is_engaged`).
 - Um mob pode ter um segundo golpe, alternado com o primeiro a cada vez na fila (o Golem); todo golpe pode aplicar um efeito de status.
 - Magias em volta de Nate (`AROUND`) seguem Nate e empurram quem entra; a Rajada Veloz deixa Nate mais rápido e o Escudo de Areia segura o próximo golpe.
 - Os scripts ficam em `game/combat/`; os mobs, em `game/mobs/`, com uma cena base e uma cena por tipo, que troca os dados. O Necromante troca também o script, filho da base `Mob`, para recuar e invocar.
@@ -83,15 +86,16 @@ Autoloads do Godot:
 - Lanças do chão (`FloorSpears`), ponte de alavanca (`LeverBridge`), portão de várias alavancas, murais (`Mural`, com o mural grande em `MuralView` e a galeria no menu de pausa) e o altar do Selo (`SealAltar`).
 - Áreas escuras (`DarkArea`): uma tampa preta sobre a área, aberta num círculo em volta de Nate quando ele tem a Luz Ancestral, e uma barreira que o segura na borda até lá.
 - Troca de área pelo `GameState`: a tela escurece, a cena carrega e Nate aparece no ponto de chegada (o elevador, um santuário). A saída de uma área é um `AreaExit`; sem a próxima área, ele mostra o fim da parte jogável.
-- Santuários com o menu de descanso e viagem; os dados de cada um (nome, área e memória) ficam em `game/data/sanctuaries/`. As memórias são cenas em `game/world/memories/`, e a fauna de cenário, em `game/world/fauna/`.
+- Santuários com o menu de descanso e viagem; os dados de cada um (nome, área e memória) ficam em `game/data/sanctuaries/`. As memórias são cenas em `game/world/memories/`.
 - Camada de física 4: barreiras invisíveis, como a beira de uma vala; seguram quem anda, mas não os tiros nem a visão.
-- O `GameState` guarda o ponto de retorno (e a área dele), o equipamento, os elementos e as melhorias; o jogo novo começa com o facão. O jogo salvo também guarda as dicas de controle já usadas, os santuários visitados e o tempo de jogo.
+- O `GameState` guarda o ponto de retorno (e a área dele), os lugares dos itens, os elementos e as melhorias; o jogo novo começa com o facão na mão. O jogo salvo também guarda as dicas de controle já usadas, os santuários visitados e o tempo de jogo.
 - O identificador de uma melhoria no mapa começa com o tipo dela (`heart_` ou `charge_`).
 - Menus em `game/ui/`: o principal é a entrada do jogo (`main.tscn`), a pausa abre no Esc e o inventário no Tab. Quem para o jogo (inventário, santuário, pergaminho, memória) cuida dos próprios botões enquanto está aberto.
+- A barra fixa (`Hotbar`) é uma camada própria acima do inventário: com ele aberto, os espaços dela recebem o mouse e o foco, e os itens se arrastam entre ela, a mochila e a armadura (`ItemCell` e `ItemMoves`). Ordem das camadas: HUD 1, inventário 3, barra fixa 4, fim da parte jogável 5, santuário e pergaminho 9, pausa 10, mural 12, memórias 30.
 
 ### Inteligência dos mobs
 - Máquina de estados simples: parado, perseguir, atacar e voltar.
-- Para perseguir e voltar, os mobs seguem o mapa de navegação da área (`NavigationAgent3D` em cada mob; um `NavigationRegion3D` em cada área, com o mapa assado do terreno em `world/areas/*_navigation.res`): sobem e descem pelas escadas e contornam as paredes. Antes de o mapa ficar pronto, vão em linha reta.
+- Para perseguir e voltar, os mobs seguem o mapa de navegação da área (`NavigationAgent3D` em cada mob; um `NavigationRegion3D` em cada área, com o mapa assado do terreno em `world/areas/*_navigation.res`): sobem e descem pelas escadas e rampas e contornam as paredes. Antes de o mapa ficar pronto, vão em linha reta.
 - Uma fila global garante que no máximo 5 mobs preparem ataque ao mesmo tempo (`06-mobs/README.md`).
 
 ### Dados

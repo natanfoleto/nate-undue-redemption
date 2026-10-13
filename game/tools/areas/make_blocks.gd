@@ -6,10 +6,12 @@ extends SceneTree
 #
 # Cada bloco é um dicionário: name, e um dos tipos abaixo, com tint (cor que multiplica a textura) e glow (brilho):
 # - texture: cubo com a textura (cutout: recorte, nas folhas; side: as laterais e o fundo com outra textura);
-# - liquid: cubo de água ou lava, com a faixa de quadros animada (shader liquid.gdshader);
+# - liquid: cubo de água ou lava, com a faixa de quadros animada (shader liquid.gdshader), fps quadros por segundo;
 # - fence: cerca na borda norte do bloco (−z), sem colisão: a barreira invisível segura quem anda;
 # - plant: planta em X (duas folhas cruzadas), sem colisão, com height blocos de altura;
 # - mushroom: cogumelo pequeno, pé e chapéu, sem colisão.
+# Os blocos de chão com ramps ganham as peças de rampa do próprio chão (rampas de 1 a 3 blocos e os 2 cantos,
+# terrain_builder.gd).
 # No fim de cada lista entram o bloco invisível e a escada.
 
 const PAINTED := "res://assets/textures/painted/"
@@ -20,19 +22,19 @@ const BUILDER := "res://tools/areas/terrain_builder.gd"
 
 const MINE := [
 	{"name": "Rocha da mina", "texture": PAINTED + "stone", "tint": Color(0.82, 0.78, 0.72)},
-	{"name": "Chão de terra", "texture": PAINTED + "dirt", "tint": Color(0.95, 0.85, 0.75)},
-	{"name": "Grama", "texture": PAINTED + "grass", "side": PAINTED + "grass_side", "tint": Color(0.8, 0.9, 0.7)},
+	{"name": "Chão de terra", "texture": PAINTED + "dirt", "tint": Color(0.95, 0.85, 0.75), "ramps": true},
+	{"name": "Grama", "texture": PAINTED + "grass", "side": PAINTED + "grass_side", "tint": Color(0.8, 0.9, 0.7), "ramps": true},
 	{"name": "Tronco", "texture": PAINTED + "bark"},
 	{"name": "Folhas", "texture": PAINTED + "leaves", "tint": Color(0.85, 0.95, 0.8), "cutout": true},
-	{"name": "Tábuas", "texture": PAINTED + "planks", "tint": Color(0.8, 0.72, 0.65)},
+	{"name": "Tábuas", "texture": PAINTED + "planks", "tint": Color(0.8, 0.72, 0.65), "ramps": true},
 	{"name": "Rocha", "texture": PAINTED + "cobble", "tint": Color(0.85, 0.85, 0.85)},
 	{"name": "Pedra do povo antigo", "texture": PAINTED + "sandstone_brick"},
 	{"name": "Parede rachada", "texture": PAINTED + "mossy_cobble"},
 	{"name": "Fundo da vala", "texture": PAINTED + "dirt", "tint": Color(0.35, 0.3, 0.26)},
-	{"name": "Grama clara", "texture": PAINTED + "grass", "side": PAINTED + "grass_side", "tint": Color(0.9, 0.97, 0.72)},
-	{"name": "Grama escura", "texture": PAINTED + "grass", "side": PAINTED + "grass_side", "tint": Color(0.68, 0.8, 0.62)},
-	{"name": "Cascalho", "texture": PAINTED + "gravel", "tint": Color(0.8, 0.74, 0.68)},
-	{"name": "Terra escura", "texture": PAINTED + "dirt", "tint": Color(0.68, 0.58, 0.5)},
+	{"name": "Grama clara", "texture": PAINTED + "grass", "side": PAINTED + "grass_side", "tint": Color(0.9, 0.97, 0.72), "ramps": true},
+	{"name": "Grama escura", "texture": PAINTED + "grass", "side": PAINTED + "grass_side", "tint": Color(0.68, 0.8, 0.62), "ramps": true},
+	{"name": "Cascalho", "texture": PAINTED + "gravel", "tint": Color(0.8, 0.74, 0.68), "ramps": true},
+	{"name": "Terra escura", "texture": PAINTED + "dirt", "tint": Color(0.68, 0.58, 0.5), "ramps": true},
 	{"name": "Folhas da mata", "texture": PAINTED + "jungle_leaves", "tint": Color(0.9, 1.0, 0.85), "cutout": true},
 	{"name": "Areia", "texture": PAINTED + "sand", "tint": Color(0.95, 0.9, 0.82)},
 	{"name": "Madeira velha", "texture": PAINTED + "wood", "tint": Color(0.62, 0.55, 0.48)},
@@ -41,8 +43,8 @@ const MINE := [
 	{"name": "Madeira amarela", "texture": PAINTED + "wood", "tint": Color(1.0, 0.88, 0.5)},
 	{"name": "Madeira verde", "texture": PAINTED + "wood", "tint": Color(0.6, 0.88, 0.62)},
 	{"name": "Madeira branca", "texture": PAINTED + "wood", "tint": Color(1.0, 0.98, 0.92)},
-	{"name": "Água escura", "liquid": PAINTED + "water_strip", "tint": Color(0.35, 0.5, 0.6), "glow": 0.15},
-	{"name": "Rio", "liquid": PAINTED + "river_strip", "tint": Color(0.75, 0.82, 0.78), "glow": 0.05},
+	{"name": "Água escura", "liquid": PAINTED + "water_strip", "tint": Color(0.35, 0.5, 0.6), "glow": 0.15, "fps": 1.5},
+	{"name": "Rio", "liquid": PAINTED + "river_strip", "tint": Color(0.75, 0.82, 0.78), "glow": 0.05, "fps": 1.5},
 	{"name": "Cerca", "fence": PAINTED + "planks", "tint": Color(0.7, 0.62, 0.55)},
 	{"name": "Trilho", "texture": PAINTED + "rail", "flat": true},
 	{"name": "Capim", "plant": PAINTED + "grass_tuft", "tint": Color(0.85, 0.95, 0.75)},
@@ -56,15 +58,15 @@ const MINE := [
 ]
 const FOREST := [
 	{"name": "Rocha", "texture": PAINTED + "stone", "tint": Color(0.6, 0.68, 0.85)},
-	{"name": "Chão de terra", "texture": PAINTED + "clay", "tint": Color(0.62, 0.75, 0.78)},
-	{"name": "Chão de musgo", "texture": PAINTED + "grass", "side": PAINTED + "grass_side", "tint": Color(0.45, 0.62, 0.55)},
+	{"name": "Chão de terra", "texture": PAINTED + "clay", "tint": Color(0.62, 0.75, 0.78), "ramps": true},
+	{"name": "Chão de musgo", "texture": PAINTED + "grass", "side": PAINTED + "grass_side", "tint": Color(0.45, 0.62, 0.55), "ramps": true},
 	{"name": "Pedra do povo antigo", "texture": PAINTED + "sandstone_brick", "tint": Color(0.85, 0.85, 0.9)},
 	{"name": "Parede rachada", "texture": PAINTED + "mossy_cobble", "tint": Color(0.85, 0.9, 0.95)},
 	{"name": "Pé de cogumelo", "texture": OURS + "mushroom_stem"},
 	{"name": "Chapéu ciano", "texture": OURS + "mushroom_cap_cyan", "glow": 0.9},
 	{"name": "Chapéu verde-limão", "texture": OURS + "mushroom_cap_lime", "glow": 0.9},
 	{"name": "Lugar do mural", "texture": PAINTED + "desert_stone", "tint": Color(0.95, 0.9, 0.85)},
-	{"name": "Água brilhante", "liquid": PAINTED + "water_strip", "tint": Color(0.35, 0.85, 0.8), "glow": 0.7},
+	{"name": "Água brilhante", "liquid": PAINTED + "water_strip", "tint": Color(0.35, 0.85, 0.8), "glow": 0.7, "fps": 1.5},
 	{"name": "Cerca", "fence": OURS + "mushroom_stem"},
 	{"name": "Cogumelo ciano", "mushroom": OURS + "mushroom_cap_cyan", "glow": 1.4},
 	{"name": "Cogumelo verde-limão", "mushroom": OURS + "mushroom_cap_lime", "glow": 1.4},
@@ -72,15 +74,15 @@ const FOREST := [
 ]
 const RUINS := [
 	{"name": "Parede marajoara", "texture": OURS + "marajoara_wall", "tint": Color(0.95, 0.9, 0.88)},
-	{"name": "Piso marajoara", "texture": OURS + "marajoara_floor", "tint": Color(0.9, 0.88, 0.84)},
-	{"name": "Chão das minas antigas", "texture": PAINTED + "gravel", "tint": Color(0.75, 0.7, 0.66)},
+	{"name": "Piso marajoara", "texture": OURS + "marajoara_floor", "tint": Color(0.9, 0.88, 0.84), "ramps": true},
+	{"name": "Chão das minas antigas", "texture": PAINTED + "gravel", "tint": Color(0.75, 0.7, 0.66), "ramps": true},
 	{"name": "Padrão de jade", "texture": OURS + "marajoara_jade", "glow": 1.2},
 	{"name": "Parede rachada", "texture": PAINTED + "mossy_cobble", "tint": Color(0.9, 0.85, 0.8)},
 	{"name": "Fundo do vão", "texture": PAINTED + "dirt", "tint": Color(0.25, 0.2, 0.18)},
 	{"name": "Pedra dos murais", "texture": PAINTED + "sandstone_brick", "tint": Color(0.95, 0.85, 0.7)},
 	{"name": "Rocha", "texture": PAINTED + "stone", "tint": Color(0.62, 0.56, 0.5)},
 	{"name": "Rocha queimada", "texture": PAINTED + "stone", "tint": Color(0.42, 0.32, 0.28)},
-	{"name": "Lava", "liquid": PAINTED + "lava_strip", "glow": 1.6},
+	{"name": "Lava", "liquid": PAINTED + "lava_strip", "glow": 1.6, "fps": 2.0},
 	{"name": "Balaustrada", "fence": PAINTED + "sandstone_brick", "tint": Color(0.95, 0.85, 0.7)},
 ]
 const TEST := [
@@ -114,7 +116,7 @@ func _save(blocks: Array, look: String, path: String) -> void:
 		var solid := true
 		if block.has("liquid"):
 			mesh = BoxMesh.new()
-			(mesh as BoxMesh).material = _liquid_material(block.liquid, tint, glow)
+			(mesh as BoxMesh).material = _liquid_material(block.liquid, tint, glow, block.get("fps", 4.0))
 		elif block.has("fence"):
 			mesh = _fence_mesh(builder, _material(block.fence, tint, glow, false))
 			solid = false
@@ -139,7 +141,27 @@ func _save(blocks: Array, look: String, path: String) -> void:
 		library.set_item_mesh(i, mesh)
 		if solid:
 			library.set_item_shapes(i, [shape, Transform3D.IDENTITY])
-	var barrier := blocks.size()
+	var next := blocks.size()
+	for block: Dictionary in blocks:
+		if not block.get("ramps", false):
+			continue
+		var tint: Color = block.get("tint", Color.WHITE)
+		var slope := _slope_material(block.texture, tint)
+		var side := _material(block.get("side", block.texture), tint, 0.0, false)
+		for length in range(1, builder.MAX_RAMP + 1):
+			for step in length:
+				library.create_item(next)
+				library.set_item_name(next, builder.ramp_name(block.name, step, length))
+				library.set_item_mesh(next, builder.ramp_mesh(step, length, slope, side))
+				library.set_item_shapes(next, [builder.ramp_shape(step, length), Transform3D.IDENTITY])
+				next += 1
+		for corner in ["inner", "outer"]:
+			library.create_item(next)
+			library.set_item_name(next, builder.ramp_name(block.name, 0, 1, corner))
+			library.set_item_mesh(next, builder.corner_mesh(corner == "inner", slope, side))
+			library.set_item_shapes(next, [builder.corner_shape(corner == "inner"), Transform3D.IDENTITY])
+			next += 1
+	var barrier := next
 	library.create_item(barrier)
 	library.set_item_name(barrier, "Invisível")
 	library.set_item_shapes(barrier, [shape, Transform3D.IDENTITY])
@@ -149,7 +171,7 @@ func _save(blocks: Array, look: String, path: String) -> void:
 	library.set_item_name(stairs, "Escada")
 	library.set_item_mesh(stairs, builder.stairs_mesh(_material(stairs_look[0], stairs_look[1], 0.0, false)))
 	library.set_item_shapes(stairs, [builder.stairs_shape(), Transform3D.IDENTITY])
-	print(path, ": ", error_string(ResourceSaver.save(library, path)), " (", blocks.size() + 2, " blocos)")
+	print(path, ": ", error_string(ResourceSaver.save(library, path)), " (", stairs + 1, " blocos)")
 
 
 func _material(texture_path: String, tint: Color, glow: float, cutout: bool) -> StandardMaterial3D:
@@ -169,6 +191,14 @@ func _material(texture_path: String, tint: Color, glow: float, cutout: bool) -> 
 	return material
 
 
+# A face de cima das rampas: a textura segue a inclinação (sem projeção do mundo), um quadro por bloco.
+func _slope_material(texture_path: String, tint: Color) -> StandardMaterial3D:
+	var material := _material(texture_path, tint, 0.0, false)
+	material.uv1_triplanar = false
+	material.uv1_world_triplanar = false
+	return material
+
+
 func _plant_material(texture_path: String, tint: Color) -> StandardMaterial3D:
 	var material := StandardMaterial3D.new()
 	material.albedo_texture = load(texture_path + ".png")
@@ -180,10 +210,11 @@ func _plant_material(texture_path: String, tint: Color) -> StandardMaterial3D:
 	return material
 
 
-func _liquid_material(texture_path: String, tint: Color, glow: float) -> ShaderMaterial:
+func _liquid_material(texture_path: String, tint: Color, glow: float, frames_per_second: float) -> ShaderMaterial:
 	var material := ShaderMaterial.new()
 	material.shader = load(LIQUID_SHADER)
 	material.set_shader_parameter(&"frames_texture", load(texture_path + ".png"))
+	material.set_shader_parameter(&"frames_per_second", frames_per_second)
 	material.set_shader_parameter(&"tint", tint)
 	material.set_shader_parameter(&"glow", glow)
 	return material

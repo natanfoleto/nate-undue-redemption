@@ -22,11 +22,11 @@ const CRACKED_HEIGHT := 2
 const DARK_WALL_HEIGHT := 2
 const CYAN := Color("4fe3d0")
 const LIME := Color("b8f060")
-# Itens do chão: identificador no mapa, item e espaço.
+# Itens do chão: identificador no mapa e item.
 const PICKUPS := {
-	"z": [&"forest_blowgun", &"blowgun", "ranged"],
-	"c": [&"forest_cloak", &"fiber_cloak", "armor"],
-	"j": [&"forest_javelin", &"javelin", "ranged"],
+	"z": [&"forest_blowgun", &"blowgun"],
+	"c": [&"forest_cloak", &"fiber_cloak"],
+	"j": [&"forest_javelin", &"javelin"],
 }
 # Melhorias: o identificador começa com o tipo (05-itens).
 const UPGRADES := {"h": &"heart_forest_1", "H": &"heart_forest_2"}
@@ -118,16 +118,21 @@ func _build_terrain() -> void:
 	_decor = _grid("Decor", 0)
 	_land = (load(BUILDER) as GDScript).new()
 	_land.floor_chars = FLOOR_CHARS
+	_land.auto_ramps = true
+	_land.slope_chars = ".,"
 	_land.setup(_rows, FileAccess.get_file_as_string(HEIGHTS).split("\n"))
 	for z in range(_land.low.y, _land.high.y):
 		for x in range(_land.low.x, _land.high.x):
 			if _land.kind(x, z) == _land.Kind.WALL and _land.is_front(x, z) and (_touches(x, z, "d") or _touches(x, z, "x")):
 				# Em volta das áreas escuras, a parede da frente sobe até a tampa de escuridão.
 				_land.set_wall_height(x, z, DARK_WALL_HEIGHT)
+			elif _cell(x, z) == "V":
+				# O elevador fica num rebaixo de 1 bloco: a plataforma quebrada, torta, entra nele sem cortar o chão.
+				_land.force_top(x, z, _land.height(x, z) - 1)
 	for z in range(_land.low.y, _land.high.y):
 		for x in range(_land.low.x, _land.high.x):
 			_place_column(x, z)
-	# Beiradas do terraço do Manto: pedras que seguram quem anda; sobe-se e desce-se pela escada.
+	# Beiradas que sobram (desnível de 2 ou mais, sem rampa): pedras que seguram quem anda.
 	for cell: Vector2i in _land.ledges():
 		_terrain.set_cell_item(Vector3i(cell.x, _land.height(cell.x, cell.y), cell.y), _item("Rocha"))
 	_decorate()
@@ -179,15 +184,29 @@ func _place_column(x: int, z: int) -> void:
 
 func _floor(x: int, z: int) -> void:
 	var ch := _cell(x, z)
-	var moss := ch == ","
-	if ch not in [".", ",", "d", "x"]:
-		for side: Vector2i in [Vector2i(1, 0), Vector2i(-1, 0), Vector2i(0, 1), Vector2i(0, -1)]:
-			if _cell(x + side.x, z + side.y) == ",":
-				moss = true
+	if ch == "V":
+		_land.place_column(_terrain, x, z, _item("Rocha funda"), _item("Rocha funda"))
+		return
+	# A borda entre o musgo e a terra fica misturada: o chão vem de um bloco vizinho puxado pelo ruído.
+	var zone: Vector2i = _land.blend_source(x, z)
+	var moss := _is_moss(zone.x, zone.y)
 	_land.place_floor(_terrain, x, z, _item("Chão de musgo") if moss else _item("Chão de terra"), _item("Chão de terra"), _item("Escada"))
 	# Abaixo do chão, a beira das fendas é de rocha funda, como as paredes delas.
 	for y in range(_land.bottom(x, z), _land.height(x, z) - 1):
 		_terrain.set_cell_item(Vector3i(x, y, z), _item("Rocha funda"))
+
+
+# Chão de musgo: o "," do rascunho, e os objetos encostados nele.
+func _is_moss(x: int, z: int) -> bool:
+	var ch := _cell(x, z)
+	if ch == ",":
+		return true
+	if ch in [".", "d", "x"]:
+		return false
+	for side: Vector2i in [Vector2i(1, 0), Vector2i(-1, 0), Vector2i(0, 1), Vector2i(0, -1)]:
+		if _cell(x + side.x, z + side.y) == ",":
+			return true
+	return false
 
 
 # Cogumelo gigante bioluminescente: pé de 3 blocos e chapéu de 3 × 3 que brilha, com uma luz embaixo (só nos do
@@ -322,7 +341,6 @@ func _build_objects() -> void:
 					var chest := _instance(_objects, "res://world/objects/chest.tscn", _center(x, z), PI)
 					chest.set("save_id", &"forest_chest_spear")
 					chest.set("item_id", &"spear")
-					chest.set("item_slot", "melee")
 				"F", "A":
 					var scroll := _instance(_objects, "res://world/objects/scroll.tscn", _center(x, z), 0.0)
 					var element := &"fire" if ch == "F" else &"water"
@@ -334,7 +352,6 @@ func _build_objects() -> void:
 					var pickup := _instance(_objects, "res://world/objects/item_pickup.tscn", _center(x, z), 0.0)
 					pickup.set("save_id", spec[0])
 					pickup.set("item_id", spec[1])
-					pickup.set("item_slot", spec[2])
 				"h", "H":
 					var upgrade := _instance(_objects, "res://world/objects/item_pickup.tscn", _center(x, z), 0.0)
 					upgrade.set("save_id", UPGRADES[ch])
@@ -346,8 +363,6 @@ func _build_objects() -> void:
 					_mob(mobs, "res://mobs/skeleton.tscn", "forest_skeleton", _center(x, z))
 				"N":
 					_mob(mobs, "res://mobs/necromancer.tscn", "forest_necromancer", _center(x, z))
-				"L":
-					_instance(_objects, "res://world/fauna/dinosaur.tscn", _center(x, z), PI / 2.0 * (x % 4))
 				"s":
 					_instance(_objects, "res://world/traps/spore_mushroom.tscn", _center(x, z), 0.0)
 				"m", "3":
@@ -469,9 +484,11 @@ func _build_dark_areas() -> void:
 			var low := Vector2i(x, z)
 			var high := Vector2i(x, z)
 			var queue: Array[Vector2i] = [Vector2i(x, z)]
+			var region: Array[Vector2i] = []
 			done[Vector2i(x, z)] = true
 			while not queue.is_empty():
 				var cell: Vector2i = queue.pop_back()
+				region.append(cell)
 				low = low.min(cell)
 				high = high.max(cell)
 				for side: Vector2i in [Vector2i(1, 0), Vector2i(-1, 0), Vector2i(0, 1), Vector2i(0, -1)]:
@@ -485,6 +502,8 @@ func _build_dark_areas() -> void:
 			dark.set("area_size", Vector2(high - low + Vector2i.ONE))
 			dark.set("cover_height", DARK_WALL_HEIGHT + 0.05)
 			dark.set("light_edge", 1.5)
+			dark.set("mask", _dark_mask(region, low, high))
+			dark.set("margin", 1.0)
 			_add(_objects, dark)
 
 
@@ -552,3 +571,11 @@ func _typed(items: Array, base: StringName, script_path: String) -> Array:
 func _add(parent: Node, node: Node) -> void:
 	parent.add_child(node, true)
 	node.owner = _root
+
+
+# A forma da área escura: um ponto por bloco (branco no escuro), com 1 bloco de margem em volta.
+func _dark_mask(region: Array[Vector2i], low: Vector2i, high: Vector2i) -> ImageTexture:
+	var image := Image.create_empty(high.x - low.x + 3, high.y - low.y + 3, false, Image.FORMAT_L8)
+	for cell in region:
+		image.set_pixel(cell.x - low.x + 1, cell.y - low.y + 1, Color.WHITE)
+	return ImageTexture.create_from_image(image)

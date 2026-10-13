@@ -2,9 +2,8 @@ class_name Chest
 extends Interactable
 ## Baú (08-mapa): interagir abre, e o item vai para o inventário, com o sinal de achar item (05-itens).
 
-## Identificador do item (o nome do arquivo em game/data/items/) e o espaço dele.
+## Identificador do item (o nome do arquivo em game/data/items/).
 @export var item_id: StringName
-@export var item_slot: String
 ## Giro da tampa aberta, em graus, e o tempo para abrir, em segundos.
 @export var open_angle := 0.0
 @export var open_time := 0.0
@@ -21,7 +20,7 @@ func can_interact() -> bool:
 func interact() -> void:
 	_open = true
 	# O item primeiro: se o jogo cair entre as duas gravações, o baú ainda abre de novo.
-	GameState.pick_up(item_id, item_slot)
+	GameState.pick_up(item_id)
 	_mark_done()
 	create_tween().tween_property(_lid, ^"rotation_degrees:x", open_angle, open_time)
 	AudioManager.play(&"chest_open", global_position)

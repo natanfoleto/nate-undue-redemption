@@ -43,7 +43,7 @@ func interact() -> void:
 	player.set_cinematic(false)
 
 
-## Descanso (02-core-loop): a tela escurece, vida e frasco enchem e o jogo salva.
+## Descanso (02-core-loop): a tela escurece, a vida e as cargas da poção enchem e o jogo salva.
 func rest() -> void:
 	var player := get_tree().get_first_node_in_group(&"player") as Player
 	AudioManager.play(&"sanctuary_rest")
@@ -57,7 +57,7 @@ func _first_visit(player: Player) -> void:
 	# Tudo gravado antes de qualquer espera; a visita por último, para a primeira visita voltar se o jogo fechar.
 	var new_flask := gives_flask and not GameState.has_flask()
 	if new_flask:
-		SaveSystem.record(SaveSystem.ITEMS, GameState.FLASK)
+		GameState.store(GameState.FLASK)
 	GameState.set_respawn_point(data.id())
 	SaveSystem.record(SaveSystem.SANCTUARIES, data.id())
 	var tween := create_tween()

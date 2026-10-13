@@ -5,7 +5,7 @@ Regras que valem para todas as entidades: atributos, vida e dano, golpes, recuo,
 ## Unidades
 - **Distância:** blocos. 1 bloco é a aresta de um bloco do cenário.
 - **Tempo:** segundos (s). **Velocidade:** blocos/s.
-- **Vida e dano:** corações para Nate, pontos para os inimigos.
+- **Vida e dano:** pontos, para Nate e para os inimigos.
 
 ## Atributos
 Lista-padrão para as fichas. Os valores ficam em cada ficha (`04-player.md`, `05-itens.md`, `06-mobs/`, `07-chefes/`).
@@ -13,12 +13,12 @@ Lista-padrão para as fichas. Os valores ficam em cada ficha (`04-player.md`, `0
 ### Nate
 | Atributo | Unidade |
 |----------|---------|
-| Vida máxima | corações |
+| Vida máxima | pontos |
 | Velocidade de movimento | blocos/s |
 | Bônus de dano | % (soma de todos os bônus ativos) |
 | Chance de crítico | % (base: 5%) |
-| Cargas do frasco | cargas |
-| Cura por carga | corações |
+| Cargas da poção de vida | cargas |
+| Cura por carga | pontos |
 
 ### Mobs e chefe
 | Atributo | Unidade |
@@ -33,7 +33,7 @@ Vale para golpes de Nate, mobs, chefe e armadilhas.
 
 | Atributo | Unidade |
 |----------|---------|
-| Dano | corações (contra Nate) ou pontos (contra inimigos) |
+| Dano | pontos (contra Nate, sem sorte; contra inimigos, pela fórmula) |
 | Área | forma (círculo, setor, retângulo ou projétil) e tamanho em blocos |
 | Projétil | velocidade em blocos/s e alcance em blocos |
 | Preparação | s |
@@ -43,15 +43,15 @@ Vale para golpes de Nate, mobs, chefe e armadilhas.
 | Recuo | nenhum, curto ou longo |
 | Efeito de status | qual e por quanto tempo, quando houver |
 
-Armadilhas têm os dois valores de dano: em corações, contra Nate, e em pontos, contra os mobs.
+Armadilhas têm os dois valores de dano: um contra Nate e outro contra os mobs.
 
 ## Vida e dano
 
 ### Escala
-- **Nate:** vida em corações inteiros. Cada golpe inimigo tira corações inteiros: golpe comum, 1; golpe forte, 2; golpe do chefe, até 3. Cura, melhorias, veneno e a vida que volta fora de luta também contam em corações (`04-player.md`).
+- **Nate:** vida em pontos, mostrada numa barra no HUD (`09-interface.md`). Os golpes inimigos tiram valores redondos: golpe comum, 20; golpe forte, 40; golpe do chefe, até 60. Cura, melhorias, veneno e a vida que volta fora de combate também contam em pontos (`04-player.md`).
 - **Inimigos:** vida em pontos, mostrada em barra. O dano que Nate causa também é em pontos.
-- Nada tira fração de coração. A armadura não reduz dano: dá corações extras e outros bônus (`05-itens.md`).
-- Corações iniciais de Nate: 5 (`04-player.md`).
+- A armadura não reduz dano: dá vida extra e outros bônus (`05-itens.md`).
+- Vida inicial de Nate: 100 (`04-player.md`).
 
 ### Fórmula
 **Dano que Nate causa:**
@@ -67,7 +67,7 @@ dano = dano do ataque × (1 + soma dos bônus em %) × variação × crítico
 - Exemplo: espada 10, +20% de bônus, variação 1,05 e crítico → 10 × 1,2 × 1,05 × 2 = 25,2 → 25 pontos.
 - O crítico mostra um número amarelo grande e faíscas amarelas, com um som de impacto agudo (`10-arte-audio.md`).
 
-**Dano contra Nate:** sem sorte. Cada golpe tira sempre os mesmos corações.
+**Dano contra Nate:** sem sorte. Cada golpe tira sempre a mesma vida.
 
 ### Quem fere quem
 | Origem do golpe | Fere Nate | Fere mobs |
@@ -83,7 +83,7 @@ dano = dano do ataque × (1 + soma dos bônus em %) × variação × crítico
 
 ### Colisão
 - Calculada no plano do chão, porque o jogo é jogado como 2D. Formas de área: círculo, setor, retângulo ou projétil.
-- O chão tem platôs de 1 e 2 blocos, ligados por escadas (`08-mapa.md`). Um golpe só acerta quem está mais ou menos na mesma altura de quem bateu; o limite fica em `11-balanceamento.md`. Na beira de um platô, o próprio degrau segura os tiros.
+- O chão tem platôs de 1 e 2 blocos, ligados por rampas do próprio chão (na natureza) e escadas (nas construções) (`08-mapa.md`). Um golpe só acerta quem está mais ou menos na mesma altura de quem bateu; o limite fica em `11-balanceamento.md`. Na beira de um platô, o próprio degrau segura os tiros.
 - Todo golpe tem três tempos: preparação (o aviso), tempo ativo (quando fere) e recuperação.
 - Acerta todos os alvos na área, cada um no máximo uma vez.
 - Paredes bloqueiam golpes e projéteis.
@@ -95,8 +95,8 @@ Todo golpe inimigo é avisado antes de ferir (pilar 2).
 
 | Golpe | Como avisa | Aviso mínimo |
 |-------|------------|--------------|
-| Comum (tira 1 coração) | pose, brilho e som | 0,6 s |
-| Forte (tira 2 corações ou mais) ou de área | marca no chão, exatamente igual à área que vai ferir, desde o começo da preparação | 1 s |
+| Comum (tira 20 de vida) | pose, brilho e som | 0,6 s |
+| Forte (tira 40 ou mais) ou de área | marca no chão, exatamente igual à área que vai ferir, desde o começo da preparação | 1 s |
 
 - O aviso conta do início da pose até o primeiro instante em que o golpe pode ferir. Em projéteis, conta até o disparo; o voo dá tempo extra.
 - Golpes comuns dependem de poses bem legíveis (`06-mobs/`).
@@ -119,7 +119,7 @@ Todo golpe inimigo é avisado antes de ferir (pilar 2).
 ### Invencibilidade após dano
 - Depois de levar um golpe, Nate pisca e não leva dano por 1 s. Pode andar, atacar e esquivar normalmente; os 0,2 s sem controle contam dentro desse 1 s.
 - Inimigos não têm invencibilidade após dano.
-- Durante a esquiva, Nate fica invencível o rolamento inteiro, 0,4 s (`04-player.md`).
+- Durante a esquiva, Nate fica invencível o dash inteiro, 0,4 s (`04-player.md`).
 
 ## Efeitos de status
 
@@ -128,8 +128,8 @@ Todo golpe inimigo é avisado antes de ferir (pilar 2).
 |--------|-----------|-------|
 | Atordoado | não se move nem ataca | magia Gelo; 3º golpe do Tacape marajoara |
 | Lento | anda à metade da velocidade | magia Lamaçal; Zarabatana marajoara; abalo do Golem de Pedra |
-| Veneno | perde vida aos poucos; Nate perde corações inteiros | praga do Necromante |
-| Queimadura | perde vida aos poucos; Nate perde corações inteiros | magias de Fogo: Bola de Fogo, Vapor, Magma e Tempestade de Fogo |
+| Veneno | perde vida aos poucos; em Nate, 20 de uma vez | praga do Necromante |
+| Queimadura | perde vida aos poucos | magias de Fogo: Bola de Fogo, Vapor, Magma e Tempestade de Fogo |
 
 A queimadura é de Nate; o veneno é dos mobs.
 
@@ -139,12 +139,12 @@ A queimadura é de Nate; o veneno é dos mobs.
 - O mesmo efeito não acumula: aplicar de novo renova a duração.
 - Efeitos diferentes valem ao mesmo tempo.
 - Efeito sem fonte no jogo é cortado.
-- Cada efeito tem um ícone sobre quem sofre e, em Nate, também ao lado dos corações (`09-interface.md`). Cor, forma e som de cada efeito: `10-arte-audio.md`.
+- Cada efeito tem um ícone sobre quem sofre e, em Nate, também embaixo da barra de vida (`09-interface.md`). Cor, forma e som de cada efeito: `10-arte-audio.md`.
 
 ### Quem sofre o quê
 | Alvo | Atordoado | Lento | Veneno | Queimadura |
 |------|-----------|-------|--------|------------|
-| Nate | nunca | sim | sim, mas não tira o último coração | sim, mas não tira o último coração |
+| Nate | nunca | sim | sim, mas não tira o último ponto de vida | sim, mas não tira o último ponto de vida |
 | Mobs | sim | sim | sim | sim |
 | Chefe | imune | imune | imune | imune |
 

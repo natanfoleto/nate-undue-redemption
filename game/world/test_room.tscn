@@ -5,31 +5,12 @@
 [ext_resource type="PackedScene" path="res://mobs/necromancer.tscn" id="3_ibl20"]
 [ext_resource type="MeshLibrary" path="res://world/blocks/test_blocks.tres" id="4_ion3p"]
 [ext_resource type="PackedScene" path="res://player/player.tscn" id="5_xak2e"]
-[ext_resource type="Script" path="res://player/player.gd" id="6_7blu4"]
-[ext_resource type="Resource" path="res://data/animations/nate_idle.tres" id="7_7w8ae"]
-[ext_resource type="Resource" path="res://data/animations/nate_walk.tres" id="8_wytsm"]
-[ext_resource type="Resource" path="res://data/animations/nate_roll.tres" id="9_go6yv"]
-[ext_resource type="Resource" path="res://data/animations/nate_hurt.tres" id="10_1w1re"]
-[ext_resource type="Resource" path="res://data/animations/nate_death.tres" id="11_geo1f"]
-[ext_resource type="Resource" path="res://data/items/machete.tres" id="12_bb6wt"]
-[ext_resource type="Resource" path="res://data/items/slingshot.tres" id="13_e1by0"]
 [ext_resource type="PackedScene" path="res://mobs/wolf.tscn" id="14_t3ln8"]
 [ext_resource type="Script" path="res://mobs/mob.gd" id="15_bmggi"]
 [ext_resource type="Resource" path="res://data/mobs/wolf.tres" id="16_3ul0q"]
 [ext_resource type="Script" path="res://world/follow_camera.gd" id="17_bfrfw"]
 [ext_resource type="PackedScene" path="res://ui/hud.tscn" id="18_s0cib"]
-[ext_resource type="Script" path="res://ui/hud.gd" id="19_dvkjq"]
-[ext_resource type="Texture2D" path="res://assets/ui/hud/heart_full.png" id="20_18sqp"]
-[ext_resource type="Texture2D" path="res://assets/ui/hud/heart_empty.png" id="21_n1cgr"]
-[ext_resource type="Texture2D" path="res://assets/ui/status/stun.png" id="22_gq8p1"]
-[ext_resource type="Texture2D" path="res://assets/ui/status/slow.png" id="23_y5f28"]
-[ext_resource type="Texture2D" path="res://assets/ui/status/poison.png" id="24_c0w4p"]
-[ext_resource type="Texture2D" path="res://assets/ui/status/burn.png" id="25_2whq2"]
-[ext_resource type="Texture2D" path="res://assets/ui/hud/flask.png" id="26_jeumt"]
 [ext_resource type="PackedScene" path="res://ui/inventory.tscn" id="27_yslav"]
-[ext_resource type="Script" path="res://ui/inventory.gd" id="28_7vmnd"]
-[ext_resource type="Texture2D" path="res://assets/ui/hud/amulet.png" id="29_57lup"]
-[ext_resource type="Texture2D" path="res://assets/ui/hud/amulet_whole.png" id="30_vixw0"]
 [ext_resource type="Script" path="res://ui/control_hints.gd" id="31_8qr1w"]
 [ext_resource type="PackedScene" path="res://ui/button_hint.tscn" id="32_8jyaa"]
 [ext_resource type="Script" path="res://ui/button_hint.gd" id="33_h7up4"]
@@ -61,26 +42,6 @@ data = {
 }
 
 [node name="Player" type="CharacterBody3D" parent="." unique_id=1544871601 instance=ExtResource("5_xak2e")]
-collision_layer = 2
-collision_mask = 13
-floor_constant_speed = true
-floor_max_angle = 0.87266463
-floor_snap_length = 0.5
-script = ExtResource("6_7blu4")
-idle_animation = ExtResource("7_7w8ae")
-walk_animation = ExtResource("8_wytsm")
-roll_animation = ExtResource("9_go6yv")
-hurt_animation = ExtResource("10_1w1re")
-death_animation = ExtResource("11_geo1f")
-use_saved_equipment = false
-melee_weapon = ExtResource("12_bb6wt")
-ranged_weapon = ExtResource("13_e1by0")
-swing_width = 0.5
-light_color = Color(0.84705883, 1, 0.9098039, 1)
-amulet_glow = 1.5
-awaken_glow = 4.0
-awaken_light = 4.0
-awaken_time = 1.6
 
 [node name="Wolf" type="CharacterBody3D" parent="." unique_id=1978122857 instance=ExtResource("14_t3ln8")]
 transform = Transform3D(-0.49613896, 0, 0.86824316, 0, 1, 0, -0.86824316, 0, -0.49613896, 7, 0, -4)
@@ -120,38 +81,8 @@ script = ExtResource("17_bfrfw")
 target = NodePath("../Player")
 
 [node name="Hud" type="CanvasLayer" parent="." unique_id=1655601135 instance=ExtResource("18_s0cib")]
-script = ExtResource("19_dvkjq")
-heart_full = ExtResource("20_18sqp")
-heart_empty = ExtResource("21_n1cgr")
-status_icons = Array[Texture2D]([ExtResource("22_gq8p1"), ExtResource("23_y5f28"), ExtResource("24_c0w4p"), ExtResource("25_2whq2")])
-icon_scale = 3
-combo_dim = 0.35
-marajoara_color = Color(0.24705882, 0.68235296, 0.5411765, 1)
-common_color = Color(0.6039216, 0.6039216, 0.6039216, 1)
-flask_icon = ExtResource("26_jeumt")
-toast_time = 3.0
-toast_fade_time = 0.6
 
 [node name="Inventory" type="CanvasLayer" parent="." unique_id=1858286577 instance=ExtResource("27_yslav")]
-layer = 9
-script = ExtResource("28_7vmnd")
-heart_full = ExtResource("20_18sqp")
-heart_empty = ExtResource("21_n1cgr")
-flask_icon = ExtResource("26_jeumt")
-amulet_icon = ExtResource("29_57lup")
-amulet_whole_icon = ExtResource("30_vixw0")
-icon_scale = 2
-item_size = 72
-frame_width = 2
-focus_width = 4
-glow_size = 6
-asleep_alpha = 0.4
-marajoara_color = Color(0.24705882, 0.68235296, 0.5411765, 1)
-common_color = Color(0.5411765, 0.5411765, 0.5411765, 1)
-item_back = Color(0, 0, 0, 0.5)
-better_color = Color(0.29803923, 0.8156863, 0.29803923, 1)
-worse_color = Color(0.8784314, 0.28235295, 0.28235295, 1)
-font_size = 22
 
 [node name="HintLayer" type="CanvasLayer" parent="." unique_id=1230612340]
 
@@ -173,7 +104,7 @@ icon_scale = 3
 layout_mode = 2
 alignment = 1
 script = ExtResource("33_h7up4")
-actions = Array[StringName]([&"melee_attack"])
+actions = Array[StringName]([&"use_item"])
 text_key = &"HINT_ATTACK"
 icon_scale = 3
 
@@ -189,6 +120,6 @@ icon_scale = 3
 layout_mode = 2
 alignment = 1
 script = ExtResource("33_h7up4")
-actions = Array[StringName]([&"ranged_attack"])
+actions = Array[StringName]([&"use_item"])
 text_key = &"HINT_SHOOT"
 icon_scale = 3

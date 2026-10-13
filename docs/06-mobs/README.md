@@ -32,7 +32,7 @@ Uma por tipo, nas Ruínas e nas arenas opcionais. Cada uma usa o mesmo modelo, c
 
 | Variante | Ajuste |
 |----------|--------|
-| Lobo Alfa | maior e com mais vida; o salto é forte (2 corações, com marca no chão) |
+| Lobo Alfa | maior e com mais vida; o salto é forte (40 de vida, com marca no chão) |
 | Esqueleto Veterano | mais vida; dá 2 golpes seguidos |
 | Necromante Ancião | lança a praga em leque de 3 |
 | Golem Ancião | maior e com mais vida; o abalo tem raio maior |
@@ -49,11 +49,6 @@ Um tipo novo de mob por área: uma coisa nova por vez (`04-player.md`).
 | Arenas opcionais | variantes | o desafio extra |
 
 Mobs por encontro e ondas de cada arena: `08-mapa.md`.
-
-## Fauna de cenário
-- Uma espécie de dinossauro herbívoro vive no Bosque de Fungos, sem lutar. Ela mantém o mundo perdido de A Era do Gelo 3 (`01-historia.md`).
-- Herbívoro de pescoço longo, com cerca de 5 blocos de altura, verde-musgo com manchas que brilham fraco; come cogumelos (`10-arte-audio.md`).
-- Animações: parado, andar devagar e comer.
 
 ## Fora do escopo inicial
 - A criatura poupada no prólogo voltar mais tarde para ajudar Nate (ideia opcional do `01-historia.md`).

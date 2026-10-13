@@ -1,6 +1,6 @@
 extends GdUnitTestSuite
 ## Efeitos de status (03-regras, 11-balanceamento): o mesmo efeito não acumula, efeitos diferentes valem juntos,
-## o lento anda à metade, a queimadura tira 4 pontos a cada 0,5 s por 2 s, o veneno tira 1 coração depois de
+## o lento anda à metade, a queimadura tira 4 pontos a cada 0,5 s por 2 s, o veneno tira 20 de vida depois de
 ## 2 s e, com a Água equipada, acaba antes de agir.
 
 const FRAME := 1.0 / 60.0
@@ -8,11 +8,11 @@ const FRAME := 1.0 / 60.0
 
 class Receiver:
 	extends Node
-	var hearts := 0
+	var health := 0
 	var points := 0
 
-	func take_status_damage(lost_hearts: int, lost_points: int) -> void:
-		hearts += lost_hearts
+	func take_status_damage(lost_health: int, lost_points: int) -> void:
+		health += lost_health
 		points += lost_points
 
 
@@ -54,7 +54,7 @@ func test_burn_takes_16_points_in_2_seconds() -> void:
 	_status.apply(StatusEffects.Effect.BURN, 2.0)
 	_run(3.0)
 	assert_int(_receiver.points).is_equal(16)
-	assert_int(_receiver.hearts).is_equal(0)
+	assert_int(_receiver.health).is_equal(0)
 	assert_bool(_status.has(StatusEffects.Effect.BURN)).is_false()
 
 
@@ -67,19 +67,19 @@ func test_burn_renewed_keeps_its_rhythm() -> void:
 	assert_int(_receiver.points).is_equal(24)
 
 
-func test_poison_takes_one_heart_after_two_seconds() -> void:
+func test_poison_takes_20_health_after_two_seconds() -> void:
 	_status.apply(StatusEffects.Effect.POISON, 2.0)
 	_run(1.9)
-	assert_int(_receiver.hearts).is_equal(0)
+	assert_int(_receiver.health).is_equal(0)
 	_run(0.2)
-	assert_int(_receiver.hearts).is_equal(1)
+	assert_int(_receiver.health).is_equal(20)
 	assert_bool(_status.has(StatusEffects.Effect.POISON)).is_false()
 
 
 func test_water_ends_the_poison_before_it_acts() -> void:
 	_status.apply(StatusEffects.Effect.POISON, 2.0, 0.5)
 	_run(3.0)
-	assert_int(_receiver.hearts).is_equal(0)
+	assert_int(_receiver.health).is_equal(0)
 	assert_bool(_status.has(StatusEffects.Effect.POISON)).is_false()
 
 

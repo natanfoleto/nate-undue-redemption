@@ -12,6 +12,8 @@ static func rows(item: Resource) -> Array[Dictionary]:
 		return _armor(item)
 	if item is ElementData:
 		return _element(item)
+	if item is PotionData:
+		return _potion()
 	return []
 
 
@@ -47,14 +49,23 @@ static func _ranged(weapon: RangedWeaponData) -> Array[Dictionary]:
 
 
 static func _armor(armor: ArmorData) -> Array[Dictionary]:
-	var roll := armor.roll_cooldown if armor.roll_cooldown > 0.0 else Balance.player.roll_cooldown
+	var dash := armor.dash_cooldown if armor.dash_cooldown > 0.0 else Balance.player.dash_cooldown
 	var rows: Array[Dictionary] = [
-		_row(&"STAT_HEARTS", "+%d" % armor.extra_hearts, armor.extra_hearts, true),
+		_row(&"STAT_HEALTH", "+%d" % armor.extra_health, armor.extra_health, true),
 		_row(&"STAT_SPEED", _speed(armor.move_speed), armor.move_speed, true),
-		_row(&"STAT_ROLL_COOLDOWN", _seconds(roll), roll, false),
+		_row(&"STAT_DASH_COOLDOWN", _seconds(dash), dash, false),
 		_row(&"STAT_DAMAGE_BONUS", "+%s%%" % _number(armor.damage_bonus * 100.0), armor.damage_bonus, true),
 	]
 	return rows
+
+
+static func _potion() -> Array[Dictionary]:
+	var stats := Balance.player
+	return [
+		_text_row(&"STAT_HEAL", "+%d" % stats.flask_heal),
+		_text_row(&"STAT_CHARGES", str(GameState.flask_charges())),
+		_text_row(&"STAT_DRINK_TIME", _seconds(stats.flask_time)),
+	]
 
 
 static func _element(element: ElementData) -> Array[Dictionary]:

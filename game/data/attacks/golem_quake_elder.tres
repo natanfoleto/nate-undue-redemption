@@ -4,7 +4,7 @@
 
 [resource]
 script = ExtResource("1_4flaf")
-damage_hearts = 2
+player_damage = 40
 reach = 4.5
 windup = 1.4
 active = 0.2

@@ -41,7 +41,6 @@ func press() -> void:
 	phase = Phase.DRAWING
 	_drawn = 0.0
 	_player.play_overlay(draw_animation, draw_animation.length / weapon.draw_time)
-	_player.show_ranged_weapon(true)
 	AudioManager.play(&"draw", _player.global_position)
 
 
@@ -61,7 +60,6 @@ func release() -> void:
 func cancel() -> void:
 	phase = Phase.NONE
 	_player.stop_overlay()
-	_player.show_ranged_weapon(false)
 	_player.set_ranged_glow(false)
 
 
@@ -99,6 +97,7 @@ func _build_hit(_receiver: Node3D, attack: AttackData, direction: Vector3) -> Hi
 	hit.attacker = _player
 	hit.knockback = attack.knockback
 	hit.direction = direction
-	hit.effect = weapon.effect
-	hit.effect_duration = weapon.effect_duration
+	# Do próprio tiro: a arma da mão pode ter mudado com ele no ar.
+	hit.effect = attack.effect
+	hit.effect_duration = attack.effect_duration
 	return hit

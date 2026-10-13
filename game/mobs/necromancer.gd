@@ -153,7 +153,7 @@ func _plague_hit(_receiver: Node3D, direction: Vector3) -> Hit:
 	var necromancer := data as NecromancerData
 	var hit := Hit.new()
 	hit.attacker = self
-	hit.hearts = data.attack.damage_hearts
+	hit.player_damage = data.attack.player_damage
 	hit.knockback = data.attack.knockback
 	hit.direction = direction
 	hit.effect = necromancer.plague_effect
