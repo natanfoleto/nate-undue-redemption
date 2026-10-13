@@ -1,0 +1,37 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://player/player.gd" id="1_rgyib"]
+[ext_resource type="Resource" path="res://data/animations/nate_idle.tres" id="2_hg6s5"]
+[ext_resource type="Resource" path="res://data/animations/nate_walk.tres" id="3_8t03j"]
+[ext_resource type="Resource" path="res://data/animations/nate_roll.tres" id="4_2ieo8"]
+[ext_resource type="Script" path="res://tools/models/block_model.gd" id="5_ebec5"]
+[ext_resource type="Resource" path="res://data/models/nate.tres" id="6_yllr7"]
+[ext_resource type="Script" path="res://tools/models/model_animator.gd" id="7_kb6p2"]
+[ext_resource type="Resource" path="res://data/models/aim_arrow.tres" id="8_wodsf"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_32hag"]
+height = 1.8
+radius = 0.3
+
+[node name="Player" type="CharacterBody3D" unique_id=1375924052]
+motion_mode = 1
+script = ExtResource("1_rgyib")
+idle_animation = ExtResource("2_hg6s5")
+walk_animation = ExtResource("3_8t03j")
+roll_animation = ExtResource("4_2ieo8")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=745704377]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CylinderShape3D_32hag")
+
+[node name="BlockModel" type="Node3D" parent="." unique_id=126290212]
+script = ExtResource("5_ebec5")
+model = ExtResource("6_yllr7")
+
+[node name="ModelAnimator" type="Node" parent="BlockModel" unique_id=154411258]
+script = ExtResource("7_kb6p2")
+animation = ExtResource("2_hg6s5")
+
+[node name="AimArrow" type="Node3D" parent="." unique_id=231681438]
+script = ExtResource("5_ebec5")
+model = ExtResource("8_wodsf")

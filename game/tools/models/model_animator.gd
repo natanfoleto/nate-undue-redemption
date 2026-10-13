@@ -35,7 +35,7 @@ func _process(delta: float) -> void:
 	var pose := animation.sample(_time)
 	if _from_pose and _blend_elapsed < animation.blend_time:
 		_blend_elapsed += delta
-		pose = _from_pose.blended(pose, minf(_blend_elapsed / animation.blend_time, 1.0))
+		pose = _from_pose.blended(pose, minf(_blend_elapsed / animation.blend_time, 1.0), true)
 	else:
 		_from_pose = null
 	_apply(pose)

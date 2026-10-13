@@ -1,0 +1,36 @@
+[gd_resource type="Resource" script_class="ButtonIcons" format=3]
+
+[ext_resource type="Texture2D" path="res://assets/ui/buttons/stick_l.png" id="1_tskov"]
+[ext_resource type="Texture2D" path="res://assets/ui/buttons/stick_r.png" id="2_823p2"]
+[ext_resource type="Texture2D" path="res://assets/ui/buttons/playstation_l2.png" id="3_0c33w"]
+[ext_resource type="Texture2D" path="res://assets/ui/buttons/playstation_r2.png" id="4_bui60"]
+[ext_resource type="Texture2D" path="res://assets/ui/buttons/playstation_cross.png" id="5_01b5y"]
+[ext_resource type="Texture2D" path="res://assets/ui/buttons/playstation_circle.png" id="6_qs0du"]
+[ext_resource type="Texture2D" path="res://assets/ui/buttons/playstation_square.png" id="7_d1qwr"]
+[ext_resource type="Texture2D" path="res://assets/ui/buttons/playstation_triangle.png" id="8_t8cif"]
+[ext_resource type="Texture2D" path="res://assets/ui/buttons/playstation_l1.png" id="9_3ljdf"]
+[ext_resource type="Texture2D" path="res://assets/ui/buttons/playstation_r1.png" id="10_n3cif"]
+[ext_resource type="Texture2D" path="res://assets/ui/buttons/playstation_touchpad.png" id="11_lv3je"]
+[ext_resource type="Texture2D" path="res://assets/ui/buttons/playstation_options.png" id="12_c7i7a"]
+[ext_resource type="Script" path="res://ui/button_icons.gd" id="13_s2trt"]
+
+[resource]
+script = ExtResource("13_s2trt")
+joy_buttons = Dictionary[int, Texture2D]({
+0: ExtResource("5_01b5y"),
+1: ExtResource("6_qs0du"),
+2: ExtResource("7_d1qwr"),
+3: ExtResource("8_t8cif"),
+6: ExtResource("12_c7i7a"),
+9: ExtResource("9_3ljdf"),
+10: ExtResource("10_n3cif"),
+20: ExtResource("11_lv3je")
+})
+joy_axes = Dictionary[int, Texture2D]({
+0: ExtResource("1_tskov"),
+1: ExtResource("1_tskov"),
+2: ExtResource("2_823p2"),
+3: ExtResource("2_823p2"),
+4: ExtResource("3_0c33w"),
+5: ExtResource("4_bui60")
+})

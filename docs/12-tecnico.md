@@ -68,7 +68,7 @@ Autoloads do Godot:
 - Os números do `11-balanceamento.md` ficam nesses arquivos de dados, um por categoria (armas, magias, mobs, Boiúna etc.). Mudar um número não exige mexer no código.
 
 ### Câmera e luz
-- Câmera ortográfica, com ângulo isométrico. Tamanho do enquadramento: `[A DEFINIR no rascunho do mapa]`.
+- Câmera ortográfica, com ângulo isométrico: 45° de inclinação e 45° de giro. O enquadramento é de 14 blocos de altura de tela, provisório até o rascunho do mapa. Os números ficam em `11-balanceamento.md`.
 - Fungos e padrões marajoara brilham pelo próprio material, com poucas luzes reais. A Luz Ancestral é uma luz presa em Nate.
 
 ### Interface

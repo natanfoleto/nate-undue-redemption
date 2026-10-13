@@ -16,20 +16,23 @@ enum Transition { SMOOTH, LINEAR }
 @export var offsets: Dictionary[StringName, Vector3] = {}
 
 
-## Mistura desta pose com outra: peso 0 é esta, 1 é a outra.
-func blended(other: PoseData, weight: float) -> PoseData:
+## Mistura desta pose com outra: peso 0 é esta, 1 é a outra. Com [param shortest], cada giro
+## segue pelo lado mais curto: sair de um giro de 360° não desvira a parte.
+func blended(other: PoseData, weight: float, shortest := false) -> PoseData:
 	var result := PoseData.new()
-	result.rotations = _blend_values(rotations, other.rotations, weight)
-	result.offsets = _blend_values(offsets, other.offsets, weight)
+	result.rotations = _blend_values(rotations, other.rotations, weight, shortest)
+	result.offsets = _blend_values(offsets, other.offsets, weight, false)
 	return result
 
 
-static func _blend_values(from: Dictionary[StringName, Vector3], to: Dictionary[StringName, Vector3], weight: float) -> Dictionary[StringName, Vector3]:
+static func _blend_values(from: Dictionary[StringName, Vector3], to: Dictionary[StringName, Vector3], weight: float, shortest: bool) -> Dictionary[StringName, Vector3]:
 	var result: Dictionary[StringName, Vector3] = {}
-	for part in from:
-		var target: Vector3 = to.get(part, Vector3.ZERO)
-		result[part] = from[part].lerp(target, weight)
-	for part in to:
-		if not from.has(part):
-			result[part] = Vector3.ZERO.lerp(to[part], weight)
+	for part in from.keys() + to.keys():
+		if result.has(part):
+			continue
+		var start: Vector3 = from.get(part, Vector3.ZERO)
+		var change: Vector3 = to.get(part, Vector3.ZERO) - start
+		if shortest:
+			change = Vector3(wrapf(change.x, -180.0, 180.0), wrapf(change.y, -180.0, 180.0), wrapf(change.z, -180.0, 180.0))
+		result[part] = start + change * weight
 	return result

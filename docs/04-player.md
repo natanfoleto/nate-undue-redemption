@@ -44,6 +44,7 @@ No computador, com teclado e mouse ou com controle; os dois funcionam desde o in
 - **Teclado e mouse:** os ataques vão na direção do cursor.
 - **Controle:** na direção do analógico direito; com ele solto, na direção do movimento.
 - **Ajuda de mira:** o golpe é puxado para o inimigo mais próximo dentro de um cone à frente. Tamanho do cone: `11-balanceamento.md`.
+- **Seta da mira:** uma seta discreta no chão, junto de Nate, mostra para onde os ataques vão, no mouse e no controle, já puxada pela ajuda de mira.
 - Dá para andar para um lado e atacar para outro.
 
 ### Ataque corpo a corpo
@@ -140,6 +141,7 @@ Nate começa com o facão e acha a baladeira, a primeira arma à distância, na 
 ## Assets necessários
 - Modelo de Nate: humano blocado de 2 blocos, visual de ribeirinho, definido por código.
 - Muiraquitã no pescoço, com a lasca faltando e inteiro (`05-itens.md`).
+- Seta da mira no chão, definida por código.
 - Efeito de piscar durante a invencibilidade.
 - Sinal de tiro na força total: brilho branco na ponta da arma e um clique curto (`10-arte-audio.md`).
 - Ícones de botão para teclado e mouse, Xbox e PlayStation (`09-interface.md`).

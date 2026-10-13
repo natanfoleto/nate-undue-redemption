@@ -1,0 +1,17 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://ui/button_hint.gd" id="1_4udng"]
+
+[node name="ButtonHint" type="HBoxContainer" unique_id=1819712978]
+alignment = 1
+script = ExtResource("1_4udng")
+icon_scale = 3
+
+[node name="Icons" type="HBoxContainer" parent="." unique_id=1396672439]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="." unique_id=599771483]
+layout_mode = 2
+theme_override_font_sizes/font_size = 28
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 8

@@ -50,6 +50,8 @@ Concluída em 2026-10-12.
 - Ícones de botão trocando conforme o dispositivo.
 - Todos os números lidos de `game/data/`, pelo `Balance`.
 
+Concluída em 2026-10-12.
+
 ## Etapa 3: combate contra o lobo
 - Área de golpe no plano do chão: as quatro formas, os três tempos e a marca de aviso desenhada pela mesma forma.
 - Vida em corações para Nate e em pontos para os mobs; fórmula de dano com variação e crítico, coberta por teste.

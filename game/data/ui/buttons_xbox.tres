@@ -1,0 +1,36 @@
+[gd_resource type="Resource" script_class="ButtonIcons" format=3]
+
+[ext_resource type="Texture2D" path="res://assets/ui/buttons/stick_l.png" id="1_pm3jq"]
+[ext_resource type="Texture2D" path="res://assets/ui/buttons/stick_r.png" id="2_uhg8g"]
+[ext_resource type="Texture2D" path="res://assets/ui/buttons/xbox_lt.png" id="3_voi8a"]
+[ext_resource type="Texture2D" path="res://assets/ui/buttons/xbox_rt.png" id="4_1xmo3"]
+[ext_resource type="Texture2D" path="res://assets/ui/buttons/xbox_a.png" id="5_bqip6"]
+[ext_resource type="Texture2D" path="res://assets/ui/buttons/xbox_b.png" id="6_gg6hr"]
+[ext_resource type="Texture2D" path="res://assets/ui/buttons/xbox_x.png" id="7_df6ge"]
+[ext_resource type="Texture2D" path="res://assets/ui/buttons/xbox_y.png" id="8_1gwrh"]
+[ext_resource type="Texture2D" path="res://assets/ui/buttons/xbox_lb.png" id="9_vn7iv"]
+[ext_resource type="Texture2D" path="res://assets/ui/buttons/xbox_rb.png" id="10_pvl74"]
+[ext_resource type="Texture2D" path="res://assets/ui/buttons/xbox_view.png" id="11_xe0e1"]
+[ext_resource type="Texture2D" path="res://assets/ui/buttons/xbox_menu.png" id="12_4iln5"]
+[ext_resource type="Script" path="res://ui/button_icons.gd" id="13_8g8r5"]
+
+[resource]
+script = ExtResource("13_8g8r5")
+joy_buttons = Dictionary[int, Texture2D]({
+0: ExtResource("5_bqip6"),
+1: ExtResource("6_gg6hr"),
+2: ExtResource("7_df6ge"),
+3: ExtResource("8_1gwrh"),
+4: ExtResource("11_xe0e1"),
+6: ExtResource("12_4iln5"),
+9: ExtResource("9_vn7iv"),
+10: ExtResource("10_pvl74")
+})
+joy_axes = Dictionary[int, Texture2D]({
+0: ExtResource("1_pm3jq"),
+1: ExtResource("1_pm3jq"),
+2: ExtResource("2_uhg8g"),
+3: ExtResource("2_uhg8g"),
+4: ExtResource("3_voi8a"),
+5: ExtResource("4_1xmo3")
+})

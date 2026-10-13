@@ -31,7 +31,7 @@ Tempo de quem joga pela primeira vez, contando as mortes (`02-core-loop.md`).
 | Vida máxima | 9 corações com as 4 melhorias; até 11 com armadura de +2 |
 | Velocidade | 5 blocos/s |
 | Aceleração e frenagem | 0,1 s |
-| Ajuda de mira | cone de 45°, até 4 blocos |
+| Ajuda de mira | cone de 45° (22,5° para cada lado da mira), até 4 blocos |
 | Passo à frente em cada golpe | 0,5 bloco |
 | Janela para continuar o combo | 0,4 s depois da recuperação |
 | Recuperação depois do tiro | 0,3 s |
@@ -42,6 +42,16 @@ Tempo de quem joga pela primeira vez, contando as mortes (`02-core-loop.md`).
 | Chance de crítico | 5% |
 | Elementos equipados | 2 |
 | Raio da Luz Ancestral | 6 blocos |
+
+## Câmera
+O enquadramento é provisório até o rascunho do mapa (`12-tecnico.md`).
+
+| Valor | Número |
+|-------|--------|
+| Inclinação | 45° |
+| Giro | 45° |
+| Enquadramento | 14 blocos de altura de tela (cerca de 25 de largura) |
+| Distância até Nate | 30 blocos; não muda o enquadramento, só deixa a câmera longe das paredes |
 
 ## Regras de combate
 | Valor | Número |

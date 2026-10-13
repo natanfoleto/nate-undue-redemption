@@ -23,9 +23,10 @@ Origem dos assets, guia de estilo e a lista completa de assets e sons, que sai d
 ### Registro de assets prontos
 | Asset | Origem (link) | Licença | Crédito exigido |
 |-------|---------------|---------|-----------------|
-| — | — | — | — |
+| Textura de pedra da sala de teste (`assets/textures/cobblestone.png`), provisória | "16x16 block texture set", de ARoachIFoundOnMyPillow: https://opengameart.org/content/16x16-block-texture-set | CC0 | não |
+| 36 ícones de botão de teclado e mouse, Xbox e PlayStation (`assets/ui/buttons/`), provisórios | "Input Prompts Pixel 16×", de Kenney: https://opengameart.org/content/input-prompts-pixel-16%C3%97 | CC0 | não (crédito opcional ao Kenney) |
 
-O registro começa a ser preenchido na produção.
+Os ícones definitivos são feitos para o jogo (`09-interface.md`). O pacote dos materiais comuns é escolhido na etapa 4.
 
 ### Plano de produção
 Assets prontos entram como provisórios logo no começo da produção, para testar os sistemas cedo, e são trocados pelos definitivos aos poucos.
@@ -163,6 +164,7 @@ Tudo sai das fichas. Os detalhes de cada item estão na ficha indicada.
 |--------|---------|-------|
 | Nate, o modelo base humano, com o muiraquitã com e sem a lasca | 1 | `04-player.md` |
 | Personagens das cenas, feitos do modelo de Nate: moradores, herói antigo e irmão | 3 | `10-arte-audio.md` |
+| Seta da mira | 1 | `04-player.md` |
 | Armaduras sobre o modelo de Nate | 4 | `05-itens.md` |
 | Armas corpo a corpo | 5 | `05-itens.md` |
 | Armas à distância e seus projéteis | 4 + 4 | `05-itens.md` |
