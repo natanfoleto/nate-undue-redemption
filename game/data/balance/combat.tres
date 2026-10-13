@@ -13,6 +13,7 @@ damage_variation_max = 1.1
 critical_multiplier = 2.0
 max_attackers = 5
 give_up_time = 4.0
+height_reach = 1.5
 melee_windup_share = 0.3
 melee_active_share = 0.2
 melee_recovery_share = 0.5

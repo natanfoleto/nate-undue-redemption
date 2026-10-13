@@ -27,6 +27,7 @@ var _left := 0.0
 var _target := Vector3.ZERO
 var _home := Vector3.ZERO
 var _rng := RandomNumberGenerator.new()
+var _fall_speed := 0.0
 
 @onready var _model: BlockModel = $BlockModel
 @onready var _animator: ModelAnimator = $BlockModel/ModelAnimator
@@ -63,6 +64,8 @@ func _physics_process(delta: float) -> void:
 			velocity = Vector3.ZERO
 			if _left <= 0.0:
 				_idle()
+	_fall_speed = 0.0 if is_on_floor() else _fall_speed - Balance.world.gravity * delta
+	velocity.y = _fall_speed
 	move_and_slide()
 
 

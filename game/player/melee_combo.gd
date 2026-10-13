@@ -1,7 +1,8 @@
 class_name MeleeCombo
 extends Node
 ## Combo de 3 golpes da arma corpo a corpo (04-player): apertar em sequência faz os 3 golpes.
-## Cada golpe tem preparação, tempo ativo e recuperação; durante ele Nate dá um passo à frente e não anda.
+## Cada golpe tem preparação, tempo ativo e recuperação; durante ele Nate anda mais devagar, e os braços batem por
+## cima do andar.
 ## O pai é o Player, que decide quando o combo pode começar e o que o interrompe.
 
 enum Phase { NONE, WINDUP, ACTIVE, RECOVERY }
@@ -55,15 +56,16 @@ func cancel() -> void:
 	_queued = false
 	_window_left = 0.0
 	_player.show_swing(false)
+	_player.stop_overlay()
 
 
-## Avança o golpe e devolve a velocidade do passo à frente.
-func update(delta: float) -> Vector3:
+## Avança o golpe.
+func update(delta: float) -> void:
 	_window_left = maxf(_window_left - delta, 0.0)
 	if _window_left == 0.0 and not is_busy():
 		_index = -1
 	if not is_busy():
-		return Vector3.ZERO
+		return
 	_phase_left -= delta
 	match phase:
 		Phase.WINDUP:
@@ -78,10 +80,6 @@ func update(delta: float) -> Vector3:
 		Phase.RECOVERY:
 			if _phase_left <= 0.0:
 				_finish()
-	if phase == Phase.WINDUP or phase == Phase.ACTIVE:
-		var step_time := _attack.windup + _attack.active
-		return _direction * (Balance.player.melee_step / step_time) if step_time > 0.0 else Vector3.ZERO
-	return Vector3.ZERO
 
 
 func _start(index: int) -> void:
@@ -93,14 +91,16 @@ func _start(index: int) -> void:
 	_already_hit.clear()
 	_enter(Phase.WINDUP, _attack.windup)
 	var animation := hit_animations[index]
-	_player.play_animation(animation, animation.length / _attack.total_time())
+	_player.play_overlay(animation, animation.length / _attack.total_time(), true)
 
 
 func _finish() -> void:
 	phase = Phase.NONE
 	if _queued and _index + 1 < _hit_count():
 		_start(_index + 1)
-	elif _index + 1 < _hit_count():
+		return
+	_player.stop_overlay()
+	if _index + 1 < _hit_count():
 		_window_left = Balance.player.combo_window
 	else:
 		_index = -1

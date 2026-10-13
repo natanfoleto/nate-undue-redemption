@@ -45,6 +45,17 @@ func test_roll_with_certain_critical_doubles() -> void:
 		assert_int(hit.points).is_between(18, 22)
 
 
+# As magias que só empurram têm dano 0: nunca saem como crítico, que mostraria um "0" amarelo.
+func test_roll_without_damage_is_never_critical() -> void:
+	var rules := _rules()
+	var rng := RandomNumberGenerator.new()
+	rng.seed = 7
+	for i in 50:
+		var hit := Damage.roll(0.0, 0.0, 1.0, rules, rng)
+		assert_bool(hit.critical).is_false()
+		assert_int(hit.points).is_equal(0)
+
+
 func _rules() -> CombatRules:
 	var rules := CombatRules.new()
 	rules.damage_variation_min = 0.9

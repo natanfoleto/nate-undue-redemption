@@ -8,21 +8,21 @@
 [sub_resource type="BoxShape3D" id="BoxShape3D_fwirs"]
 size = Vector3(0.75, 0.6, 0.5)
 
-[node name="Chest" type="StaticBody3D" unique_id=2048090220]
+[node name="Chest" type="StaticBody3D" unique_id=2055593470]
 script = ExtResource("1_chxw0")
 open_angle = 100.0
 open_time = 0.4
 reach = 1.5
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=664065308]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=364688809]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.3, 0)
 shape = SubResource("BoxShape3D_fwirs")
 
-[node name="Model" type="Node3D" parent="." unique_id=777595462]
+[node name="Model" type="Node3D" parent="." unique_id=990367889]
 script = ExtResource("2_74owh")
 model = ExtResource("3_7tero")
 
-[node name="Lid" type="Node3D" parent="." unique_id=1755762628]
+[node name="Lid" type="Node3D" parent="." unique_id=1323127215]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.375, 0.25)
 script = ExtResource("2_74owh")
 model = ExtResource("4_1lhn6")

@@ -38,13 +38,13 @@ albedo_color = Color(1, 0.47843137, 0.101960786, 1)
 material = SubResource("StandardMaterial3D_f2gyl")
 size = Vector3(0.09375, 0.09375, 0.09375)
 
-[node name="StatusVisuals" type="Node3D" unique_id=699186324]
+[node name="StatusVisuals" type="Node3D" unique_id=1382831335]
 script = ExtResource("1_hykwn")
 icons = Array[Texture2D]([ExtResource("2_0gc2u"), ExtResource("3_ithtt"), ExtResource("4_ywoqs"), ExtResource("5_a5bkq")])
 icon_size = 0.3
 icon_lift = 0.65
 
-[node name="STUN" type="CPUParticles3D" parent="." unique_id=2094874645]
+[node name="STUN" type="CPUParticles3D" parent="." unique_id=271119378]
 emitting = false
 amount = 6
 lifetime = 0.8
@@ -63,7 +63,7 @@ initial_velocity_max = 0.3
 tangential_accel_min = 2.0
 tangential_accel_max = 2.0
 
-[node name="SLOW" type="CPUParticles3D" parent="." unique_id=1582262212]
+[node name="SLOW" type="CPUParticles3D" parent="." unique_id=1868340521]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.05, 0)
 emitting = false
 lifetime = 0.7
@@ -76,7 +76,7 @@ gravity = Vector3(0, 0.6, 0)
 initial_velocity_min = 0.1
 initial_velocity_max = 0.3
 
-[node name="POISON" type="CPUParticles3D" parent="." unique_id=1008214387]
+[node name="POISON" type="CPUParticles3D" parent="." unique_id=149861833]
 emitting = false
 lifetime = 0.9
 local_coords = true
@@ -88,7 +88,7 @@ gravity = Vector3(0, 0.8, 0)
 initial_velocity_min = 0.1
 initial_velocity_max = 0.3
 
-[node name="BURN" type="CPUParticles3D" parent="." unique_id=1602768475]
+[node name="BURN" type="CPUParticles3D" parent="." unique_id=1068153762]
 emitting = false
 amount = 14
 lifetime = 0.5

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bnt7gvf1eiau6"
-path="res://.godot/imported/cobblestone_mossy.png-a7fd3c2541e7106a71e9e7e09b1f7e94.ctex"
+uid="uid://cxsuji7jnbbrb"
+path="res://.godot/imported/bark.png-6c6dddf913a659dd15ebef261c3a6e1d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/textures/cobblestone_mossy.png"
-dest_files=["res://.godot/imported/cobblestone_mossy.png-a7fd3c2541e7106a71e9e7e09b1f7e94.ctex"]
+source_file="res://assets/textures/painted/bark.png"
+dest_files=["res://.godot/imported/bark.png-6c6dddf913a659dd15ebef261c3a6e1d.ctex"]
 
 [params]
 
@@ -37,4 +37,4 @@ process/normal_map_invert_y=false
 process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
-detect_3d/compress_to=0
+detect_3d/compress_to=1

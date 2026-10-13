@@ -85,6 +85,7 @@ func _fire() -> void:
 	projectile.global_position = _player.shot_origin()
 	(projectile.get_node(^"BlockModel") as BlockModel).model = weapon.projectile_model
 	projectile.pierce = weapon.pierce
+	projectile.set_floor(_player.global_position.y)
 	projectile.launch(attack, direction, Hurtbox.Faction.ENEMY, _build_hit.bind(attack, direction))
 	_player.set_ranged_glow(false)
 

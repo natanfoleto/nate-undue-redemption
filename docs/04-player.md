@@ -1,7 +1,7 @@
 # Nate
 
 **Papel no jogo:** o herói, controlado pelo jogador. Homem comum de 30 anos, sem conhecimento especial, que aprende junto com quem joga (`01-historia.md`).
-**Descrição visual:** humano blocado, com as proporções do Minecraft e 2 blocos de altura. Roupa simples de ribeirinho: camiseta gasta, calça e botas de borracha. No pescoço, o muiraquitã, com uma lasca faltando. Esse é o visual base, sem equipamento; a arma aparece na mão e a armadura no corpo (`05-itens.md`). Cores: camiseta mostarda gasta, calça jeans, botas de borracha pretas, pele morena e cabelo preto curto (`10-arte-audio.md`). Regra: Nate precisa se destacar nos cenários escuros.
+**Descrição visual:** humano blocado, com 2 blocos de altura, proporções perto das do Minecraft e as quinas das caixas chanfradas (ombros, cabeça e mãos arredondados), para não ser um boneco do Minecraft. Roupa simples de ribeirinho: camiseta gasta, calça e botas de borracha. No pescoço, o muiraquitã, com uma lasca faltando. Esse é o visual base, sem equipamento; a arma aparece na mão e a armadura no corpo (`05-itens.md`). Cores: camiseta mostarda gasta, calça jeans, botas de borracha pretas, pele morena e cabelo preto curto (`10-arte-audio.md`). Regra: Nate precisa se destacar nos cenários escuros.
 
 ## Atributos
 | Atributo | Valor |
@@ -12,6 +12,7 @@
 | Chance de crítico | 5% |
 | Cargas do frasco | 3 (a partir do primeiro santuário) |
 | Cura por carga | 2 corações |
+| Vida que volta fora de luta | depois de 5 s sem levar golpe, 1 coração na hora e depois 1 a cada 2 s |
 | Elementos equipados | 2 |
 
 ## Comportamento e habilidades
@@ -57,7 +58,7 @@ No computador, com teclado e mouse ou com controle; os dois funcionam desde o in
 | 3º | maior (quanto: `11-balanceamento.md`) | longo, que interrompe mobs pesados |
 
 - Toda arma corpo a corpo segue esse combo. Cada arma muda dano, área e tempos (`05-itens.md`).
-- Durante o golpe, Nate dá um pequeno passo à frente e não anda. Tamanho do passo: `11-balanceamento.md`.
+- Nate golpeia parado ou andando: durante o golpe, anda à metade da velocidade, sem passo à frente (`11-balanceamento.md`). O golpe vai para a mira, não para onde ele anda.
 - Tempo máximo entre dois apertos para o combo continuar: `11-balanceamento.md`.
 - A esquiva cancela a recuperação do golpe.
 
@@ -69,10 +70,10 @@ No computador, com teclado e mouse ou com controle; os dois funcionam desde o in
 - Também acerta alvos do cenário, como alavancas distantes (`08-mapa.md`).
 
 ### Esquiva
-**Rolamento:** 3 blocos em 0,4 s.
+**Rolamento:** 3 blocos em 0,4 s, numa cambalhota com os joelhos dobrados.
 - Direção: a do movimento; parado, rola para a frente de Nate.
 - Invencível durante os 0,4 s do rolamento.
-- Recarga: 1 s, contada do fim do rolamento.
+- Recarga: 0,5 s, contada do fim do rolamento (0,35 s com o Manto de fibra, `05-itens.md`).
 - Cancela a recuperação dos golpes de Nate.
 
 ### Magias
@@ -81,6 +82,10 @@ No computador, com teclado e mouse ou com controle; os dois funcionam desde o in
 - Aprender um elemento já dá o efeito dele fora de combate, equipado ou não.
 - Os elementos equipados são trocados a qualquer momento, no inventário, com o jogo pausado (`05-itens.md`).
 - A Luz Ancestral é do próprio muiraquitã: funciona sozinha e não ocupa espaço nem botão.
+
+### Vida que volta
+- Depois de 5 s sem levar golpe (nem dano de veneno ou queimadura), Nate recupera 1 coração na hora e depois 1 a cada 2 s, até o máximo.
+- Qualquer golpe ou dano recomeça a espera de 5 s. Na luta, a cura vem do frasco.
 
 ### Frasco
 - Beber leva 0,6 s. Enquanto bebe, Nate anda à metade da velocidade e não ataca nem esquiva.
@@ -103,24 +108,24 @@ Uma coisa nova por vez.
 
 Água e Ar, opcionais, são ensinados onde forem achados.
 
-Prólogo e Mina não têm cura, então as lutas ali são leves (`06-mobs/`, `08-mapa.md`).
+Prólogo e Mina não têm frasco; a vida só volta fora de luta, então as lutas ali são leves (`06-mobs/`, `08-mapa.md`).
 
-Nate começa com o facão e acha a baladeira, a primeira arma à distância, na Mina (`05-itens.md`).
+Nate começa com o facão e acha o estilingue, a primeira arma à distância, na Mina (`05-itens.md`).
 
 ## Interações
 - **Mobs e chefe:** Nate fere com golpes, tiros e magias, e só é ferido por golpes avisados; encostar não fere. Qualquer golpe interrompe mobs leves; os pesados, só o 3º golpe do combo ou outro golpe com recuo longo (`03-regras.md`).
 - **Armadilhas:** ferem Nate e os mobs; dá para atrair ou empurrar inimigos para elas.
 - **Muiraquitã e magias:** a Luz Ancestral ilumina as áreas escuras; com Terra aprendida, os golpes quebram paredes rachadas; com o Selo, a porta da Grande Prisão abre. Os elementos equipados dão as magias em combate.
-- **Cenário:** alavancas (perto, interagir; longe, tiro), baús (interagir), santuários (interagir para descansar, salvar e viajar), elevadores e portas que só abrem por um lado. Paredes bloqueiam golpes e tiros.
+- **Cenário:** alavancas (perto, interagir; longe, tiro), baús (interagir), santuários (interagir para descansar, salvar e viajar), elevadores e portas que só abrem por um lado. Paredes bloqueiam golpes e tiros. Escadas sobem e descem os platôs; na beira de um platô, moitas ou pedras seguram Nate, sem quedas (`08-mapa.md`).
 - **Murais:** interagir mostra o mural grande na tela; depois ele fica na galeria (`09-interface.md`).
 - **Morte:** volta ao último santuário, sem perder nada (`02-core-loop.md`).
 
 ## Animações necessárias
 - Parado.
-- Andar (também em meia velocidade, combinado com puxar o tiro e beber do frasco).
-- Golpes 1, 2 e 3 do combo, com o passo à frente.
+- Andar (também em meia velocidade, combinado com os golpes, puxar o tiro e beber do frasco).
+- Golpes 1, 2 e 3 do combo, parado ou andando (a parte de cima do corpo golpeia; as pernas andam).
 - Puxar, segurar puxado e soltar o tiro: uma pose para cada tipo de arma (`05-itens.md`).
-- Rolamento.
+- Rolamento: cambalhota, com os joelhos dobrados e os braços junto ao corpo.
 - Usar magia: a mesma pose para todas, combinações incluídas (`05-itens.md`).
 - Beber do frasco.
 - Interagir (alavanca, baú).

@@ -9,6 +9,7 @@ var _build_hit: Callable
 var _on_stop: Callable
 var _traveled := 0.0
 var _pierced: Array[Node3D] = []
+var _floor_y := 0.0
 
 ## Atravessa os inimigos (a flecha do Arco marajoara): acerta cada um uma vez e segue.
 var pierce := false
@@ -23,6 +24,11 @@ func launch(attack: AttackData, direction: Vector3, faction: Hurtbox.Faction, bu
 	_build_hit = build_hit
 	_on_stop = on_stop
 	rotation.y = atan2(-_direction.x, -_direction.z)
+
+
+## O chão de onde o projétil saiu (o pé de quem atirou): ele só acerta quem está perto desse nível.
+func set_floor(floor_y: float) -> void:
+	_floor_y = floor_y
 
 
 func _physics_process(delta: float) -> void:
@@ -65,6 +71,8 @@ func _stop(where: Vector3) -> void:
 func _targets(from: Vector3, to: Vector3) -> Array[Hurtbox]:
 	var found: Array[Hurtbox] = []
 	for hurtbox: Hurtbox in get_tree().get_nodes_in_group(Hurtbox.group_for(_faction)):
+		if absf(hurtbox.global_position.y - _floor_y) > Balance.combat.height_reach:
+			continue
 		if HitShape.segment_touches(from, to, hurtbox.global_position, hurtbox.radius):
 			found.append(hurtbox)
 	var start := Vector2(from.x, from.z)

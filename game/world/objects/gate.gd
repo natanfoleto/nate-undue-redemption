@@ -40,7 +40,9 @@ func _levers() -> Array[Lever]:
 	var all: Array[Lever] = []
 	if lever:
 		all.append(lever)
-	all.append_array(extra_levers)
+	for each in extra_levers:
+		if each:
+			all.append(each)
 	return all
 
 

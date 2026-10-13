@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dq41w4dog2ygu"
-path="res://.godot/imported/mud.png-05bd1674f32797e6f4e32ad3bb516db2.ctex"
+uid="uid://bgii720kofaym"
+path="res://.godot/imported/gravel.png-7cac910e5efe49be112b1460a815c527.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/textures/mud.png"
-dest_files=["res://.godot/imported/mud.png-05bd1674f32797e6f4e32ad3bb516db2.ctex"]
+source_file="res://assets/textures/painted/gravel.png"
+dest_files=["res://.godot/imported/gravel.png-7cac910e5efe49be112b1460a815c527.ctex"]
 
 [params]
 

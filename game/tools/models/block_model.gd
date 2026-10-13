@@ -139,7 +139,7 @@ func _make_part(box: BoxData, key: StringName, material: Material, texture_size:
 		part = Node3D.new()
 	else:
 		var mesh_instance := MeshInstance3D.new()
-		mesh_instance.mesh = box.build_mesh(texture_size)
+		mesh_instance.mesh = box.build_mesh(texture_size, model.bevel)
 		mesh_instance.material_override = material
 		part = mesh_instance
 	part.name = key

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://chyxq22v666lv"
-path="res://.godot/imported/serpentine.png-633340aa356f38a316405424e28f737a.ctex"
+uid="uid://b7l4pwn7fir3l"
+path="res://.godot/imported/sandstone_brick.png-6d7490df9c64e1af23a6ae43a8d14fd6.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/textures/serpentine.png"
-dest_files=["res://.godot/imported/serpentine.png-633340aa356f38a316405424e28f737a.ctex"]
+source_file="res://assets/textures/painted/sandstone_brick.png"
+dest_files=["res://.godot/imported/sandstone_brick.png-6d7490df9c64e1af23a6ae43a8d14fd6.ctex"]
 
 [params]
 

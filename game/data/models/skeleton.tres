@@ -167,4 +167,5 @@ color = Color(0.5529412, 0.56078434, 0.5803922, 1)
 
 [resource]
 script = ExtResource("2_014aa")
+bevel = 0.8
 boxes = Array[ExtResource("1_7yisk")]([SubResource("Resource_wjiry"), SubResource("Resource_qkep6"), SubResource("Resource_r5hpc"), SubResource("Resource_0oahs"), SubResource("Resource_5stg1"), SubResource("Resource_hijoa"), SubResource("Resource_jj68c"), SubResource("Resource_2pv66"), SubResource("Resource_hyksl"), SubResource("Resource_6hket"), SubResource("Resource_guk0g"), SubResource("Resource_sakhy"), SubResource("Resource_wd1kx"), SubResource("Resource_i6b1t"), SubResource("Resource_k47qp")])

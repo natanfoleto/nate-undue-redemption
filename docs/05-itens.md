@@ -35,11 +35,11 @@ Sistema de itens e as fichas de equipamento, muiraquitã e magias, frasco e melh
 ### Onde os itens ficam
 - Cada item tem um lugar fixo no mapa: baús, segredos e arenas (`02-core-loop.md`). Não há tabelas de sorteio. A área de cada peça está nas fichas; o lugar exato fica em `08-mapa.md`.
 - Os mobs não deixam nada ao morrer. O prêmio de uma luta é o caminho livre, e por isso a derrota do mob precisa de um efeito satisfatório (`10-arte-audio.md`).
-- O frasco continua sendo a única cura.
+- Itens não curam: a vida volta sozinha fora de luta, e na luta só o frasco cura (`04-player.md`).
 - Achar um item mostra um feixe de luz sobre ele; ao pegar, partículas e um som de recompensa (`10-arte-audio.md`).
 
 ### Equipamento inicial
-- Nate começa com o facão. A primeira arma à distância, a baladeira (o estilingue da região), é achada na Mina, onde o tiro é ensinado (`04-player.md`).
+- Nate começa com o facão. A primeira arma à distância, o estilingue, é achada na Mina, onde o tiro é ensinado (`04-player.md`).
 - Nenhuma armadura no início.
 
 ## Equipamento
@@ -93,12 +93,12 @@ Valores exatos: `11-balanceamento.md`.
 
 | Peça | Raridade | Tempo para puxar | Dano | Alcance | Projétil | Efeito | Área |
 |------|----------|------------------|------|---------|----------|--------|------|
-| Baladeira | comum | curto | baixo | médio | pedra | — | Mina |
+| Estilingue | comum | curto | baixo | médio | pedra | — | Mina |
 | Zarabatana marajoara | marajoara | curto | baixo | médio | dardo | entorpece: deixa lento | Bosque |
 | Azagaia marajoara | marajoara | longo | alto | médio | azagaia | recuo longo | Bosque |
 | Arco marajoara | marajoara | longo | alto | longo | flecha | atravessa inimigos | Ruínas |
 
-Recuo: Baladeira, curto; Zarabatana, nenhum; Arco, curto.
+Recuo: Estilingue, curto; Zarabatana, nenhum; Arco, curto.
 
 #### Comportamento e habilidades
 - Segurar puxa até a força total; soltar atira; soltar antes cancela (`04-player.md`).
@@ -112,7 +112,7 @@ Recuo: Baladeira, curto; Zarabatana, nenhum; Arco, curto.
 - **Paredes rachadas:** com a Terra aprendida, o tiro também as quebra.
 
 #### Animações necessárias
-- Uma pose de puxar, segurar e soltar para cada tipo: baladeira, zarabatana, azagaia e arco. Enquanto puxa, Nate anda em meia velocidade (`04-player.md`).
+- Uma pose de puxar, segurar e soltar para cada tipo: estilingue, zarabatana, azagaia e arco. Enquanto puxa, Nate anda em meia velocidade (`04-player.md`).
 
 #### Sons necessários
 - Puxar e soltar, por tipo: elástico, sopro, arremesso e corda.
@@ -141,7 +141,7 @@ Valores exatos: `11-balanceamento.md`.
 - Os corações da armadura somam à vida máxima enquanto ela está equipada.
 - Ao equipar, os corações extras chegam vazios; ao tirar, a vida atual é cortada no novo máximo. Assim, trocar de armadura não cura.
 - Armaduras pesadas fazem Nate andar mais devagar.
-- **Manto de fibras marajoara:** a esquiva recarrega mais rápido.
+- **Manto de fibras marajoara:** a esquiva recarrega mais rápido: 0,35 s em vez de 0,5 s.
 - **Couraça de cerâmica marajoara:** mais dano (bônus de dano, `03-regras.md`).
 
 #### Interações
@@ -258,7 +258,7 @@ Valores exatos (recarga, dano, áreas e durações): `11-balanceamento.md`.
 Recuo da Tempestade de Fogo: curto.
 
 #### Comportamento e habilidades
-- **Água equipada:** queimadura, veneno e lento duram metade do tempo em Nate. A Água não cura: o frasco continua sendo a única cura.
+- **Água equipada:** queimadura, veneno e lento duram metade do tempo em Nate. A Água não cura: na luta, só o frasco cura.
 - **Terra aprendida:** os golpes de Nate, tiros incluídos, quebram paredes rachadas. Sem a Terra, a parede responde com um som de pedra firme. A Terra é exigida uma vez no caminho principal, na parede rachada antes do Selo (`02-core-loop.md`).
 - As magias de Fogo são a fonte de queimadura de Nate; o veneno é só dos mobs (`03-regras.md`).
 - Nate não é ferido pelas próprias magias (`03-regras.md`).
@@ -282,7 +282,7 @@ Recuo da Tempestade de Fogo: curto.
 - Ícone de cada elemento e de cada combinação (`09-interface.md`).
 
 ## Frasco
-**Papel no jogo:** a única cura. Recarrega no santuário.
+**Papel no jogo:** a cura do meio da luta (fora dela, a vida volta sozinha, `04-player.md`). Recarrega no santuário.
 **Descrição visual:** moringa de cerâmica marajoara (`10-arte-audio.md`).
 
 ### Atributos

@@ -42,8 +42,9 @@ func restart(new_animation: AnimationData) -> void:
 
 
 ## Toca uma animação por cima da principal. A mistura de entrada e de saída usa o tempo de mistura dela.
-func play_overlay(new_overlay: AnimationData, speed := 1.0) -> void:
-	if new_overlay != _overlay:
+## Com [param from_start], começa do início mesmo que seja a que já toca (um golpe repetido).
+func play_overlay(new_overlay: AnimationData, speed := 1.0, from_start := false) -> void:
+	if new_overlay != _overlay or from_start:
 		_overlay_time = 0.0
 		if _overlay == null:
 			_overlay_weight = 0.0

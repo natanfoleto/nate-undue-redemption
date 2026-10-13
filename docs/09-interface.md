@@ -13,8 +13,8 @@ HUD, menus e telas do jogo. O visual de ícones, fontes e cores fica em `10-arte
 | ♥♥♥♥♥  frasco 3        == Boiúna ==  |
 |                                      |
 |               Nate                   |
-|                                      |
-|                        [Q] [E] (Q+E) |
+| [ícone] Lança marajoara              |
+| [perto][longe][armad.] [Q] [E] (Q+E) |
 +--------------------------------------+
 ```
 
@@ -24,6 +24,8 @@ HUD, menus e telas do jogo. O visual de ícones, fontes e cores fica em `10-arte
 | Frasco | ao lado dos corações | cargas |
 | Efeitos em Nate | ao lado dos corações | um ícone para cada efeito ativo |
 | Magias | embaixo, à direita | os 2 elementos equipados, a recarga de cada um e o sinal de combinação pronta |
+| Equipamento | embaixo, à esquerda | a arma de perto, a de longe e a armadura, com moldura verde-jade nas peças marajoara e cinza nas comuns; o espaço vazio fica apagado |
+| Item achado | acima do equipamento | o ícone e o nome de cada item pego (equipamento, melhoria, elemento ou o frasco), por 3 s, sumindo em 0,6 s |
 | Barra do chefe | no alto, ao centro | vida da Boiúna; na fase 1, dividida em 4 partes |
 | Barra dos mobs | sobre a cabeça | vida, só depois de o mob levar dano |
 | Efeitos nos mobs | sobre a cabeça | um ícone para cada efeito |

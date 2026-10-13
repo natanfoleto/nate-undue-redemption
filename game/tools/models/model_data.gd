@@ -8,6 +8,12 @@ extends Resource
 	set(value):
 		texture = value
 		emit_changed()
+## Chanfro das bordas de todas as caixas, em pixels: arredonda o modelo (os personagens). 0 deixa as caixas retas.
+## O chanfro de cada caixa nunca passa de um terço do lado menor dela.
+@export var bevel := 0.0:
+	set(value):
+		bevel = value
+		emit_changed()
 ## Caixas do modelo. Os nomes não se repetem.
 @export var boxes: Array[BoxData] = []:
 	set(value):

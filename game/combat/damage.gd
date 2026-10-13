@@ -10,10 +10,11 @@ static func points(base: float, bonus: float, variation: float, critical: bool, 
 	return roundi(base * (1.0 + bonus) * variation * multiplier)
 
 
-## Sorteia a variação e o crítico e devolve o golpe pronto, com o dano em pontos.
+## Sorteia a variação e o crítico e devolve o golpe pronto, com o dano em pontos. Golpe sem dano (as magias que só
+## empurram) nunca é crítico.
 static func roll(base: float, bonus: float, critical_chance: float, rules: CombatRules, rng: RandomNumberGenerator) -> Hit:
 	var hit := Hit.new()
-	hit.critical = rng.randf() < critical_chance
+	hit.critical = base > 0.0 and rng.randf() < critical_chance
 	var variation := rng.randf_range(rules.damage_variation_min, rules.damage_variation_max)
 	hit.points = points(base, bonus, variation, hit.critical, rules.critical_multiplier)
 	return hit

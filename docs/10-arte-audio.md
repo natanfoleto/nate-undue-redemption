@@ -7,7 +7,7 @@ Origem dos assets, guia de estilo e a lista completa de assets e sons, que sai d
 |------|--------|
 | Personagens e criaturas (Nate, mobs, Boiúna, dinossauro) | por código: blocos definidos no código, com animações também por código |
 | Objetos do cenário (baú, alavanca, portão etc.) | montados com blocos, como os personagens |
-| Cenário | blocos montados no motor; texturas de materiais comuns (pedra, terra, madeira, metal) de um único pacote pronto CC0; texturas marajoara e dos fungos bioluminescentes feitas para o jogo |
+| Cenário | blocos montados no motor; texturas de materiais comuns (pedra, terra, madeira, metal) de um único pacote pronto CC0, pintado à mão; texturas marajoara e dos fungos bioluminescentes feitas para o jogo |
 | Efeitos sonoros | prontos, com licença livre, ajustados para o jogo (corte, volume e tom) |
 | Música | pronta, com licença livre e crédito ao autor quando a licença pedir |
 | Ícones da interface | pixel art feita para o jogo: cerca de 40 ícones de 16×16 pixels, ampliados na tela |
@@ -23,10 +23,10 @@ Origem dos assets, guia de estilo e a lista completa de assets e sons, que sai d
 ### Registro de assets prontos
 | Asset | Origem (link) | Licença | Crédito exigido |
 |-------|---------------|---------|-----------------|
-| Texturas de 16 px da sala de teste, da clareira, da Mina e do Bosque (`assets/textures/`: cobblestone, cobblestone_mossy, dirt, grass_top, grass_side, oak_log_side, oak_log_top, oak_leaves, oak_planks, stone_generic, sandstone_carved, mud, basalt e serpentine), provisórias | "16x16 block texture set", de ARoachIFoundOnMyPillow: https://opengameart.org/content/16x16-block-texture-set | CC0 | não |
+| Texturas pintadas à mão do cenário, da sala de teste e das memórias (`assets/textures/painted/`: grass, grass_side, dirt, stone, cobble, mossy_cobble, stone_brick, sandstone_brick, bark, leaves, planks, gravel, clay e desert_stone), reduzidas de 128 para 32 px; a grama perde 25% da cor, e `grass_side` junta a terra com a franja de grama do pacote | "Big pack of hand painted tiling textures", de drummyfish: https://opengameart.org/node/91360 | CC0 | não (crédito apreciado) |
 | 36 ícones de botão de teclado e mouse, Xbox e PlayStation (`assets/ui/buttons/`), provisórios | "Input Prompts Pixel 16×", de Kenney: https://opengameart.org/content/input-prompts-pixel-16%C3%97 | CC0 | não (crédito opcional ao Kenney) |
 
-Os ícones definitivos são feitos para o jogo (`09-interface.md`). O pacote dos materiais comuns é escolhido na etapa 4.
+Os ícones definitivos são feitos para o jogo (`09-interface.md`). O pacote dos materiais comuns é o do drummyfish, pintado à mão, escolhido depois do primeiro teste de jogo para o cenário não ficar idêntico ao Minecraft. Ele troca o "16x16 block texture set" (ARoachIFoundOnMyPillow, CC0), usado até a etapa 6.
 
 Feitos para o jogo na etapa 6, provisórios: as texturas marajoara das Ruínas (`marajoara_wall`, `marajoara_floor`, `marajoara_jade` e `spear_plate`), os ícones de Terra, Ar, das combinações, das armas e armaduras das Ruínas e da Mina, do Selo e do muiraquitã inteiro, os desenhos dos pergaminhos de Terra e Ar e as imagens dos 7 murais (`assets/murals/`).
 
@@ -38,7 +38,9 @@ Assets prontos entram como provisórios logo no começo da produção, para test
 ## Guia de estilo
 
 ### Base
-- **Densidade:** 16 px por bloco em tudo. As texturas do cenário têm 16×16 pixels, e os personagens usam a mesma densidade (1 pixel equivale a 1/16 de bloco). Nate, com 2 blocos de altura, tem 32 pixels de altura.
+- **Densidade:** personagens, objetos e ícones usam 16 px por bloco (1 pixel equivale a 1/16 de bloco); Nate, com 2 blocos de altura, tem 32 pixels de altura. As texturas prontas do cenário têm 32 px por bloco, pintadas à mão, mais detalhadas que as do Minecraft; as feitas para o jogo (marajoara e fungos) seguem com 16 px.
+- **Quinas chanfradas:** as caixas dos personagens e criaturas têm as quinas chanfradas, de cerca de 1 px, para arredondar ombros, cabeça e mãos (quanto em cada modelo: `11-balanceamento.md`).
+- **Chão em manchas:** a grama da clareira e o chão da Mina misturam 3 tons em manchas, e a grama tem terra nas laterais, para o relevo aparecer e o chão não ficar chapado.
 - **Luz:** o subterrâneo é escuro, mas cada área tem a sua luz: lampiões na Mina, fungos que brilham no Bosque e padrões marajoara acesos nas Ruínas. Escuridão total só nas áreas que exigem a Luz Ancestral. Em todo lugar, a luz precisa bastar para ler os avisos (pilar 2).
 - **Efeitos visuais:** partículas blocadas, feitas de pequenos cubos e quadrados: faíscas, poeira, fogo, água e escuridão.
 
@@ -182,10 +184,10 @@ Tudo sai das fichas. Os detalhes de cada item estão na ficha indicada.
 | Armadilhas: pedras do teto, cogumelo de esporos e placas com lanças | 3 | `08-mapa.md` |
 | Cenário de superfície: árvores da floresta, entrada da mina e casas de Nhamundá à beira do rio | — | `08-mapa.md`, `10-arte-audio.md` |
 
-### Texturas (16×16 pixels por bloco)
+### Texturas (32 px por bloco nas prontas; 16 px nas feitas para o jogo)
 | Textura | Origem |
 |---------|--------|
-| Materiais comuns: pedra, terra, madeira e metal | pacote pronto CC0 |
+| Materiais comuns: pedra, terra, madeira e metal | pacote pronto CC0, pintado à mão |
 | Padrões marajoara: paredes das Ruínas, santuários, pilares, placas das lanças e itens marajoara | feitas para o jogo |
 | Fungos bioluminescentes | feitas para o jogo |
 | Peles de personagens e criaturas: Nate, roupas das cenas, mobs e cores das variantes, Boiúna, dinossauro e gado | feitas para o jogo |

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://coc5vlbjkqa16"
-path="res://.godot/imported/stone_generic.png-9c0740a92f17b1560bd2c8a3375f883d.ctex"
+uid="uid://2wcidruqk1mg"
+path="res://.godot/imported/desert_stone.png-ab7fa83d2ca1c89a8156d0de6c4ad2a6.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/textures/stone_generic.png"
-dest_files=["res://.godot/imported/stone_generic.png-9c0740a92f17b1560bd2c8a3375f883d.ctex"]
+source_file="res://assets/textures/painted/desert_stone.png"
+dest_files=["res://.godot/imported/desert_stone.png-ab7fa83d2ca1c89a8156d0de6c4ad2a6.ctex"]
 
 [params]
 
@@ -37,4 +37,4 @@ process/normal_map_invert_y=false
 process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
-detect_3d/compress_to=0
+detect_3d/compress_to=1

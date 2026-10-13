@@ -8,24 +8,24 @@
 [sub_resource type="BoxShape3D" id="BoxShape3D_w6nyt"]
 size = Vector3(0.8, 1, 0.8)
 
-[node name="SealAltar" type="StaticBody3D" unique_id=1183125728]
+[node name="SealAltar" type="StaticBody3D" unique_id=615196649]
 script = ExtResource("1_ns84w")
 reach = 1.5
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=722820807]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1024204368]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 shape = SubResource("BoxShape3D_w6nyt")
 
-[node name="Altar" type="Node3D" parent="." unique_id=1953344961]
+[node name="Altar" type="Node3D" parent="." unique_id=698072896]
 script = ExtResource("2_cn2ip")
 model = ExtResource("3_43636")
 
-[node name="Seal" type="Node3D" parent="." unique_id=122813913]
+[node name="Seal" type="Node3D" parent="." unique_id=1749476839]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 1, 0)
 script = ExtResource("2_cn2ip")
 model = ExtResource("4_e74ul")
 
-[node name="Light" type="OmniLight3D" parent="Seal" unique_id=1373261650]
+[node name="Light" type="OmniLight3D" parent="Seal" unique_id=565039533]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.6, 0)
 light_color = Color(0.56078434, 1, 0.8156863, 1)
 light_energy = 1.2

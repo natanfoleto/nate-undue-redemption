@@ -48,7 +48,7 @@ Armadilhas têm os dois valores de dano: em corações, contra Nate, e em pontos
 ## Vida e dano
 
 ### Escala
-- **Nate:** vida em corações inteiros. Cada golpe inimigo tira corações inteiros: golpe comum, 1; golpe forte, 2; golpe do chefe, até 3. Cura, melhorias e veneno também contam em corações.
+- **Nate:** vida em corações inteiros. Cada golpe inimigo tira corações inteiros: golpe comum, 1; golpe forte, 2; golpe do chefe, até 3. Cura, melhorias, veneno e a vida que volta fora de luta também contam em corações (`04-player.md`).
 - **Inimigos:** vida em pontos, mostrada em barra. O dano que Nate causa também é em pontos.
 - Nada tira fração de coração. A armadura não reduz dano: dá corações extras e outros bônus (`05-itens.md`).
 - Corações iniciais de Nate: 5 (`04-player.md`).
@@ -83,6 +83,7 @@ dano = dano do ataque × (1 + soma dos bônus em %) × variação × crítico
 
 ### Colisão
 - Calculada no plano do chão, porque o jogo é jogado como 2D. Formas de área: círculo, setor, retângulo ou projétil.
+- O chão tem platôs de 1 e 2 blocos, ligados por escadas (`08-mapa.md`). Um golpe só acerta quem está mais ou menos na mesma altura de quem bateu; o limite fica em `11-balanceamento.md`. Na beira de um platô, o próprio degrau segura os tiros.
 - Todo golpe tem três tempos: preparação (o aviso), tempo ativo (quando fere) e recuperação.
 - Acerta todos os alvos na área, cada um no máximo uma vez.
 - Paredes bloqueiam golpes e projéteis.

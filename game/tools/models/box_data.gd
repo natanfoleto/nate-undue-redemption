@@ -78,10 +78,12 @@ func face_rects() -> Dictionary[Face, Rect2i]:
 	}
 
 
-## Malha da caixa em blocos, com o ponto de giro na origem.
-func build_mesh(texture_size: Vector2) -> ArrayMesh:
+## Malha da caixa em blocos, com o ponto de giro na origem. Com [param bevel] (em pixels), as bordas saem
+## chanfradas: cada face encolhe um pouco e faixas inclinadas e cantos fecham a caixa.
+func build_mesh(texture_size: Vector2, bevel := 0.0) -> ArrayMesh:
 	var low := (position - pivot) / PIXELS_PER_BLOCK
 	var high := low + Vector3(size) / PIXELS_PER_BLOCK
+	var cut := minf(bevel, float(mini(size.x, mini(size.y, size.z))) / 3.0) / PIXELS_PER_BLOCK
 	var vertices := PackedVector3Array()
 	var normals := PackedVector3Array()
 	var uvs := PackedVector2Array()
@@ -89,7 +91,10 @@ func build_mesh(texture_size: Vector2) -> ArrayMesh:
 	var rects := face_rects()
 	for face: Face in FACE_NORMALS:
 		var start := vertices.size()
-		vertices.append_array(_face_corners(face, low, high))
+		var corners := _face_corners(face, low, high)
+		if cut > 0.0:
+			corners = _inset(corners, FACE_NORMALS[face], low, high, cut)
+		vertices.append_array(corners)
 		var rect := Rect2(rects[face])
 		uvs.append_array([
 			rect.position / texture_size,
@@ -101,6 +106,8 @@ func build_mesh(texture_size: Vector2) -> ArrayMesh:
 			normals.append(FACE_NORMALS[face])
 		# Sentido horário visto de fora: a frente do triângulo no Godot.
 		indices.append_array([start, start + 1, start + 2, start, start + 2, start + 3])
+	if cut > 0.0:
+		_add_bevels(low, high, cut, (Rect2(rects[Face.FRONT]).get_center()) / texture_size, vertices, normals, uvs, indices)
 	var arrays := []
 	arrays.resize(Mesh.ARRAY_MAX)
 	arrays[Mesh.ARRAY_VERTEX] = vertices
@@ -110,6 +117,77 @@ func build_mesh(texture_size: Vector2) -> ArrayMesh:
 	var mesh := ArrayMesh.new()
 	mesh.add_surface_from_arrays(Mesh.PRIMITIVE_TRIANGLES, arrays)
 	return mesh
+
+
+# Encolhe os cantos de uma face para dentro dela, nos dois eixos do plano da face.
+static func _inset(corners: PackedVector3Array, normal: Vector3, low: Vector3, high: Vector3, cut: float) -> PackedVector3Array:
+	var result := PackedVector3Array()
+	for corner in corners:
+		for axis in 3:
+			if absf(normal[axis]) > 0.5:
+				continue
+			corner[axis] = low[axis] + cut if is_equal_approx(corner[axis], low[axis]) else high[axis] - cut
+		result.append(corner)
+	return result
+
+
+# As faixas inclinadas das 12 bordas e os triângulos dos 8 cantos, com a cor da caixa.
+static func _add_bevels(low: Vector3, high: Vector3, cut: float, uv: Vector2, vertices: PackedVector3Array,
+		normals: PackedVector3Array, uvs: PackedVector2Array, indices: PackedInt32Array) -> void:
+	for first in 3:
+		for second in range(first + 1, 3):
+			var along := 3 - first - second
+			for first_sign in [-1.0, 1.0]:
+				for second_sign in [-1.0, 1.0]:
+					var points: Array[Vector3] = []
+					for end in [low[along] + cut, high[along] - cut]:
+						# Na face do primeiro eixo, perto da segunda; e na face do segundo, perto da primeira.
+						var on_first := Vector3.ZERO
+						on_first[first] = high[first] if first_sign > 0.0 else low[first]
+						on_first[second] = high[second] - cut if second_sign > 0.0 else low[second] + cut
+						on_first[along] = end
+						var on_second := Vector3.ZERO
+						on_second[second] = high[second] if second_sign > 0.0 else low[second]
+						on_second[first] = high[first] - cut if first_sign > 0.0 else low[first] + cut
+						on_second[along] = end
+						points.append(on_first)
+						points.append(on_second)
+					var outward := Vector3.ZERO
+					outward[first] = first_sign
+					outward[second] = second_sign
+					_add_quad([points[0], points[2], points[3], points[1]], outward.normalized(), uv, vertices, normals, uvs, indices)
+	for x_sign in [-1.0, 1.0]:
+		for y_sign in [-1.0, 1.0]:
+			for z_sign in [-1.0, 1.0]:
+				var signs := Vector3(x_sign, y_sign, z_sign)
+				var triangle: Array[Vector3] = []
+				for axis in 3:
+					var point := Vector3.ZERO
+					for other in 3:
+						var outside := high[other] if signs[other] > 0.0 else low[other]
+						var inside := high[other] - cut if signs[other] > 0.0 else low[other] + cut
+						point[other] = outside if other == axis else inside
+					triangle.append(point)
+				_add_triangle(triangle, signs.normalized(), uv, vertices, normals, uvs, indices)
+
+
+static func _add_quad(points: Array[Vector3], normal: Vector3, uv: Vector2, vertices: PackedVector3Array,
+		normals: PackedVector3Array, uvs: PackedVector2Array, indices: PackedInt32Array) -> void:
+	_add_triangle([points[0], points[1], points[2]], normal, uv, vertices, normals, uvs, indices)
+	_add_triangle([points[0], points[2], points[3]], normal, uv, vertices, normals, uvs, indices)
+
+
+# Um triângulo virado para fora: no Godot, a frente é o sentido horário visto de fora.
+static func _add_triangle(points: Array[Vector3], normal: Vector3, uv: Vector2, vertices: PackedVector3Array,
+		normals: PackedVector3Array, uvs: PackedVector2Array, indices: PackedInt32Array) -> void:
+	if (points[1] - points[0]).cross(points[2] - points[0]).dot(normal) > 0.0:
+		points = [points[0], points[2], points[1]]
+	var start := vertices.size()
+	for point in points:
+		vertices.append(point)
+		normals.append(normal)
+		uvs.append(uv)
+	indices.append_array([start, start + 1, start + 2])
 
 
 # Cantos da face na ordem da textura (superior esquerdo, superior direito, inferior direito,

@@ -35,6 +35,7 @@ var _strikes_done := 0
 # O golpe em andamento e se o próximo é o segundo (os mobs com dois golpes alternam).
 var _attack: AttackData
 var _next_is_second := false
+var _fall_speed := 0.0
 
 @onready var health: Health = $Health
 @onready var status: StatusEffects = $StatusEffects
@@ -44,6 +45,7 @@ var _next_is_second := false
 @onready var _marker: WarningMarker = $WarningMarker
 @onready var _health_bar: HealthBar3D = $HealthBar
 @onready var _status_visuals: StatusVisuals = $StatusVisuals
+@onready var _agent: NavigationAgent3D = $NavigationAgent3D
 
 
 func _ready() -> void:
@@ -105,7 +107,9 @@ func take_hit(hit: Hit) -> void:
 		_end_attack()
 		_enter(State.STAGGER, Balance.combat.interrupt_time)
 		_animator.play(data.hurt_animation)
-	elif state == State.IDLE or state == State.RETURN:
+	elif (state == State.IDLE or state == State.RETURN) and hit.attacker == _target:
+		# Nate bateu de longe, fora da vista: o mob vai até onde ele estava.
+		_last_seen = _target.global_position
 		_enter(State.CHASE, 0.0)
 
 
@@ -131,7 +135,7 @@ func _physics_process(delta: float) -> void:
 			_enter(State.CHASE, 0.0)
 		velocity = Vector3.ZERO
 		_apply_push(delta)
-		move_and_slide()
+		_move(delta)
 		return
 	match state:
 		State.IDLE:
@@ -149,8 +153,30 @@ func _physics_process(delta: float) -> void:
 		State.RETURN:
 			_return_home(delta)
 	_apply_push(delta)
-	move_and_slide()
+	_move(delta)
 	_model.rotation.y = atan2(-_facing.x, -_facing.z)
+
+
+# Direção para chegar a um ponto pelo caminho do mapa de navegação (12-tecnico): contorna paredes e pilares e
+# sobe pelas escadas. Sem mapa, ou já perto, vai em linha reta.
+func _path_direction(target: Vector3) -> Vector3:
+	var straight := _flat(target - global_position)
+	var direct := straight.normalized() if not straight.is_zero_approx() else _facing
+	if NavigationServer3D.map_get_iteration_id(_agent.get_navigation_map()) == 0:
+		return direct
+	_agent.target_position = target
+	var step := _flat(_agent.get_next_path_position() - global_position)
+	return step.normalized() if not step.is_zero_approx() else direct
+
+
+# Anda no chão com a velocidade dos estados e cai pela gravidade fora dele (o relevo).
+func _move(delta: float) -> void:
+	if is_on_floor():
+		_fall_speed = 0.0
+	else:
+		_fall_speed -= Balance.world.gravity * delta
+	velocity.y = _fall_speed
+	move_and_slide()
 
 
 func _apply_push(delta: float) -> void:
@@ -190,6 +216,7 @@ func _chase(delta: float) -> void:
 	# Com vez na fila, chega ao alcance do golpe; sem vez, cerca Nate e espera.
 	var stand := next.reach if can_attack and AttackQueue.has_room(self, limit) else data.wait_distance
 	if distance > stand:
+		_facing = _path_direction(_last_seen)
 		velocity = _facing * _speed()
 		_animator.play(data.walk_animation)
 	else:
@@ -285,7 +312,7 @@ func _return_home(delta: float) -> void:
 		_enter(State.IDLE, 0.0)
 		_animator.play(data.idle_animation)
 		return
-	_facing = offset.normalized()
+	_facing = _path_direction(_home)
 	velocity = _facing * _speed()
 	_animator.play(data.walk_animation)
 

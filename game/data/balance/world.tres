@@ -5,3 +5,4 @@
 [resource]
 script = ExtResource("1_w8yhf")
 area_fade_time = 0.5
+gravity = 20.0

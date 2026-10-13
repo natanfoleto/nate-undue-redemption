@@ -144,6 +144,7 @@ func _fire_plague() -> void:
 		var model := projectile.get_node(^"BlockModel") as BlockModel
 		model.model = necromancer.plague_model
 		model.set_glow(necromancer.plague_glow, necromancer.plague_color)
+		projectile.set_floor(global_position.y)
 		projectile.launch(data.attack, direction, Hurtbox.Faction.PLAYER, _plague_hit.bind(direction))
 
 

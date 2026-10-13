@@ -11,8 +11,7 @@
 [sub_resource type="BoxShape3D" id="BoxShape3D_m8efb"]
 size = Vector3(1.8, 3, 3.6)
 
-[node name="Dinosaur" type="CharacterBody3D" unique_id=1243813362]
-motion_mode = 1
+[node name="Dinosaur" type="CharacterBody3D" unique_id=1659612306]
 script = ExtResource("1_nom08")
 idle_animation = ExtResource("2_e00s7")
 walk_animation = ExtResource("3_8ai42")
@@ -26,14 +25,14 @@ walk_timeout = 8.0
 spot_color = Color(0.49803922, 0.8392157, 0.627451, 1)
 spot_glow = 0.8
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=806694278]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=669221812]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
 shape = SubResource("BoxShape3D_m8efb")
 
-[node name="BlockModel" type="Node3D" parent="." unique_id=1111782648]
+[node name="BlockModel" type="Node3D" parent="." unique_id=1649172096]
 script = ExtResource("5_le78e")
 model = ExtResource("6_syvwb")
 
-[node name="ModelAnimator" type="Node" parent="BlockModel" unique_id=724196485]
+[node name="ModelAnimator" type="Node" parent="BlockModel" unique_id=1592513534]
 script = ExtResource("7_ofgyc")
 animation = ExtResource("2_e00s7")

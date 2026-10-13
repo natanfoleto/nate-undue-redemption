@@ -27,8 +27,8 @@ resource_name = "head"
 script = ExtResource("1_ieli2")
 name = &"head"
 parent = &"body"
-size = Vector3i(8, 6, 8)
-position = Vector3(-4, 24, -4)
+size = Vector3i(7, 6, 7)
+position = Vector3(-3.5, 24, -3.5)
 pivot = Vector3(0, 24, 0)
 color = Color(0.41960785, 0.25882354, 0.14901961, 1)
 
@@ -37,8 +37,8 @@ resource_name = "hair"
 script = ExtResource("1_ieli2")
 name = &"hair"
 parent = &"head"
-size = Vector3i(8, 2, 8)
-position = Vector3(-4, 30, -4)
+size = Vector3i(7, 2, 7)
+position = Vector3(-3.5, 30, -3.5)
 pivot = Vector3(0, 24, 0)
 texture_offset = Vector2i(32, 0)
 color = Color(0.0627451, 0.0627451, 0.0627451, 1)
@@ -48,9 +48,9 @@ resource_name = "arm_r"
 script = ExtResource("1_ieli2")
 name = &"arm_r"
 parent = &"body"
-size = Vector3i(4, 4, 4)
-position = Vector3(4, 20, -2)
-pivot = Vector3(6, 22, 0)
+size = Vector3i(3, 4, 3)
+position = Vector3(4, 20, -1.5)
+pivot = Vector3(5.5, 22, 0)
 texture_offset = Vector2i(40, 16)
 color = Color(0.16470589, 0.1254902, 0.09411765, 1)
 
@@ -59,9 +59,9 @@ resource_name = "forearm_r"
 script = ExtResource("1_ieli2")
 name = &"forearm_r"
 parent = &"arm_r"
-size = Vector3i(4, 8, 4)
-position = Vector3(4, 12, -2)
-pivot = Vector3(6, 22, 0)
+size = Vector3i(3, 8, 3)
+position = Vector3(4, 12, -1.5)
+pivot = Vector3(5.5, 22, 0)
 texture_offset = Vector2i(40, 24)
 color = Color(0.41960785, 0.25882354, 0.14901961, 1)
 
@@ -70,9 +70,9 @@ resource_name = "arm_l"
 script = ExtResource("1_ieli2")
 name = &"arm_l"
 parent = &"body"
-size = Vector3i(4, 4, 4)
-position = Vector3(-8, 20, -2)
-pivot = Vector3(-6, 22, 0)
+size = Vector3i(3, 4, 3)
+position = Vector3(-7, 20, -1.5)
+pivot = Vector3(-5.5, 22, 0)
 texture_offset = Vector2i(32, 48)
 color = Color(0.16470589, 0.1254902, 0.09411765, 1)
 
@@ -81,9 +81,9 @@ resource_name = "forearm_l"
 script = ExtResource("1_ieli2")
 name = &"forearm_l"
 parent = &"arm_l"
-size = Vector3i(4, 8, 4)
-position = Vector3(-8, 12, -2)
-pivot = Vector3(-6, 22, 0)
+size = Vector3i(3, 8, 3)
+position = Vector3(-7, 12, -1.5)
+pivot = Vector3(-5.5, 22, 0)
 texture_offset = Vector2i(48, 48)
 color = Color(0.41960785, 0.25882354, 0.14901961, 1)
 
@@ -105,7 +105,7 @@ name = &"boot_r"
 parent = &"leg_r"
 size = Vector3i(4, 5, 4)
 position = Vector3(0, 0, -2)
-pivot = Vector3(2, 12, 0)
+pivot = Vector3(2, 5, 0)
 texture_offset = Vector2i(0, 32)
 color = Color(0.41960785, 0.25882354, 0.14901961, 1)
 
@@ -127,7 +127,7 @@ name = &"boot_l"
 parent = &"leg_l"
 size = Vector3i(4, 5, 4)
 position = Vector3(-4, 0, -2)
-pivot = Vector3(-2, 12, 0)
+pivot = Vector3(-2, 5, 0)
 texture_offset = Vector2i(0, 48)
 color = Color(0.41960785, 0.25882354, 0.14901961, 1)
 
@@ -137,8 +137,8 @@ script = ExtResource("1_ieli2")
 name = &"hand_r"
 parent = &"forearm_r"
 size = Vector3i(0, 0, 0)
-position = Vector3(6, 13, 0)
-pivot = Vector3(6, 13, 0)
+position = Vector3(5.5, 13, 0)
+pivot = Vector3(5.5, 13, 0)
 
 [sub_resource type="Resource" id="Resource_id5bp"]
 resource_name = "hand_l"
@@ -146,9 +146,10 @@ script = ExtResource("1_ieli2")
 name = &"hand_l"
 parent = &"forearm_l"
 size = Vector3i(0, 0, 0)
-position = Vector3(-6, 13, 0)
-pivot = Vector3(-6, 13, 0)
+position = Vector3(-5.5, 13, 0)
+pivot = Vector3(-5.5, 13, 0)
 
 [resource]
 script = ExtResource("2_368pm")
+bevel = 1.0
 boxes = Array[ExtResource("1_ieli2")]([SubResource("Resource_vr1hj"), SubResource("Resource_dk35o"), SubResource("Resource_3ilst"), SubResource("Resource_3jweg"), SubResource("Resource_cq0xv"), SubResource("Resource_gr58c"), SubResource("Resource_26dyy"), SubResource("Resource_66fss"), SubResource("Resource_g8r7e"), SubResource("Resource_vm5in"), SubResource("Resource_jp6t2"), SubResource("Resource_2j8wx"), SubResource("Resource_61wmn"), SubResource("Resource_id5bp")])

@@ -19,7 +19,9 @@ Motor, arquitetura, estrutura de pastas e convenções de código.
 ### Mapa
 - Uma cena por área: Prólogo e Mina, Bosque de Fungos, Ruínas e Grande Prisão (`08-mapa.md`).
 - A troca de cena acontece nas passagens que já existem: o elevador (Mina → Bosque), a passagem escura (Bosque → Ruínas) e a porta da Grande Prisão. Na viagem rápida, a área de destino carrega durante um escurecimento da tela.
-- O cenário é pintado bloco a bloco com o GridMap do Godot, usando uma biblioteca de blocos texturizados de 16×16 pixels (`10-arte-audio.md`). Detalhes menores que um bloco viram objetos à parte.
+- O cenário é pintado bloco a bloco com o GridMap do Godot, com uma biblioteca de blocos por área: texturas de 32 px (as prontas) e de 16 px (as feitas para o jogo), projetadas pelo mundo para continuarem de um bloco para o outro (`10-arte-audio.md`). A grama tem a face de cima diferente das laterais. Detalhes menores que um bloco viram objetos à parte.
+- **Relevo:** o chão tem platôs de 1 e 2 blocos e escadas (uma peça da biblioteca, com rampa na colisão) (`08-mapa.md`). Cada área sai de dois rascunhos em texto: o do mapa, com um caractere por bloco, e o das alturas, em que o dígito é a altura do chão e n, s, e e w são escadas subindo para aquele lado. Um montador de terreno faz o chão, as escadas, as paredes naturais (baixas na frente da câmera, altas e irregulares atrás), os morros, as beiradas dos platôs e o mapa de navegação dos mobs.
+- As paredes baixas ganham blocos invisíveis num GridMap à parte (`Sight`, camada 1), que seguram os tiros e a visão dos mobs até 3 blocos acima do chão.
 
 ### Modelos e animações
 - Cada modelo é um arquivo de dados com a lista de caixas: tamanho, posição, ponto de giro e região da textura. Um script único, o montador, monta o modelo no jogo.
@@ -30,6 +32,7 @@ Motor, arquitetura, estrutura de pastas e convenções de código.
 - Medidas em pixels (16 px = 1 bloco), com o chão em y = 0 e a frente do modelo virada para −z.
 - Cada caixa tem um nome e pode se prender a outra, girando junto com ela. Uma caixa de tamanho zero só agrupa partes.
 - A textura segue o molde de caixa do Minecraft: cada caixa ocupa uma região que começa num canto dado. Sem textura, cada caixa usa a própria cor (caixa lisa).
+- Chanfro por modelo (`bevel`, em pixels): corta as quinas de todas as caixas, sem passar de um terço do lado menor de cada uma, para arredondar os personagens.
 - Uma pose cita só as partes que saem do repouso. Entre duas poses, o movimento é suave ou constante, e a troca de animação mistura as duas no tempo de mistura da nova.
 - Os scripts ficam em `game/tools/models/` (o montador `BlockModel`, o tocador `ModelAnimator` e a prévia `model_preview.tscn`); os dados, em `game/data/models/` e `game/data/animations/`.
 
@@ -53,7 +56,8 @@ Autoloads do Godot:
 | `AudioManager` | música por área, sons de ambiente e mixagem com os avisos acima da música |
 
 ### Combate
-- Toda colisão de combate é calculada por código no plano do chão (`03-regras.md`). Cada entidade recebe golpes num círculo, e as áreas de golpe são círculo, setor, retângulo ou projétil.
+- Toda colisão de combate é calculada por código no plano do chão (`03-regras.md`). Cada entidade recebe golpes num círculo, e as áreas de golpe são círculo, setor, retângulo ou projétil. Um golpe só acerta quem está até a altura-limite de quem bateu (`height_reach`, em `data/balance/combat.tres`); nos tiros, conta o pé de quem atirou.
+- Nate, os mobs e a fauna são `CharacterBody3D` com cápsula e gravidade (`data/balance/world.tres`): ficam presos ao chão e sobem rampas, sem pulo nem queda.
 - A marca de aviso é desenhada a partir da mesma forma do golpe: o que se vê é o que acerta.
 - Componentes reutilizáveis, como nós filhos: vida, efeitos de status, recuo e área de golpe.
 - A fórmula de dano fica numa função só, coberta por teste automático.
@@ -84,6 +88,7 @@ Autoloads do Godot:
 
 ### Inteligência dos mobs
 - Máquina de estados simples: parado, perseguir, atacar e voltar.
+- Para perseguir e voltar, os mobs seguem o mapa de navegação da área (`NavigationAgent3D` em cada mob; um `NavigationRegion3D` em cada área, com o mapa assado do terreno em `world/areas/*_navigation.res`): sobem e descem pelas escadas e contornam as paredes. Antes de o mapa ficar pronto, vão em linha reta.
 - Uma fila global garante que no máximo 5 mobs preparem ataque ao mesmo tempo (`06-mobs/README.md`).
 
 ### Dados
@@ -146,6 +151,6 @@ game/
   - Os testes ficam em `game/tests/`. No editor, rodam pelo painel GdUnit; no terminal, a partir da raiz do repositório:
     `godot --headless --path game -s res://addons/gdUnit4/bin/GdUnitCmdTool.gd -a res://tests --ignoreHeadlessMode`
   - O gdUnit4 e os testes ficam fora das exportações do jogo.
-- **Git:** os arquivos gerados pelo Godot (`.godot/`), os relatórios dos testes (`reports/`) e as exportações ficam fora do git. Sem Git LFS no começo: texturas de 16 px e sons pequenos cabem no git normal.
+- **Git:** os arquivos gerados pelo Godot (`.godot/`), os relatórios dos testes (`reports/`) e as exportações ficam fora do git. Sem Git LFS no começo: texturas pequenas (até 32 px) e sons pequenos cabem no git normal.
 - **Assets prontos:** entram como provisórios no começo da produção e são registrados com origem e licença no `10-arte-audio.md`. Os créditos do jogo listam os que pedem crédito.
 - **Ordem:** o montador de modelos e a prévia vêm antes dos primeiros modelos.

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://duu3qgcf7wg0a"
-path="res://.godot/imported/sandstone_carved.png-6e525f529356000b2002dc770ee198db.ctex"
+uid="uid://qhejj25onnua"
+path="res://.godot/imported/planks.png-fe6338f28c5a9465ebf10cac9d5efc72.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/textures/sandstone_carved.png"
-dest_files=["res://.godot/imported/sandstone_carved.png-6e525f529356000b2002dc770ee198db.ctex"]
+source_file="res://assets/textures/painted/planks.png"
+dest_files=["res://.godot/imported/planks.png-fe6338f28c5a9465ebf10cac9d5efc72.ctex"]
 
 [params]
 
@@ -37,4 +37,4 @@ process/normal_map_invert_y=false
 process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
-detect_3d/compress_to=0
+detect_3d/compress_to=1

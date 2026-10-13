@@ -37,7 +37,7 @@ func _physics_process(delta: float) -> void:
 	if _push_left > 0.0:
 		_push_left -= delta
 		velocity = _push_velocity
-	move_and_slide()
+	_move(delta)
 	_model.rotation.y = atan2(-_facing.x, -_facing.z)
 
 

@@ -46,6 +46,9 @@ var _flask_model: BlockModel
 var _cinematic := false
 var _boost_share := 0.0
 var _boost_left := 0.0
+var _regen_wait_left := 0.0
+var _regen_tick_left := 0.0
+var _fall_speed := 0.0
 var _shield: SpellArea
 
 @onready var health: Health = $Health
@@ -88,7 +91,7 @@ func _physics_process(delta: float) -> void:
 	if _dead:
 		velocity = _push_velocity if _push_left > 0.0 else Vector3.ZERO
 		_push_left -= delta
-		move_and_slide()
+		_move(delta)
 		return
 	_control_left = maxf(_control_left - delta, 0.0)
 	_hurt_invincible_left = maxf(_hurt_invincible_left - delta, 0.0)
@@ -99,14 +102,13 @@ func _physics_process(delta: float) -> void:
 		_roll_cooldown_left = maxf(_roll_cooldown_left - delta, 0.0)
 	if in_control:
 		_read_actions(move)
-	var step := _melee.update(delta)
+	_melee.update(delta)
 	_ranged.update(delta)
 	spells.update(delta)
 	flask.update(delta)
+	_update_regen(delta)
 	if is_rolling():
 		_update_roll(delta)
-	elif _melee.is_busy():
-		velocity = step
 	elif in_control:
 		_walk(move * _speed_share(), delta)
 	else:
@@ -114,7 +116,7 @@ func _physics_process(delta: float) -> void:
 	if _push_left > 0.0:
 		_push_left -= delta
 		velocity = _push_velocity
-	move_and_slide()
+	_move(delta)
 	_update_facing()
 	_update_aim(move)
 	_update_animation()
@@ -158,8 +160,10 @@ func has_shield() -> bool:
 	return is_instance_valid(_shield)
 
 
-# Puxando o tiro ou bebendo do frasco, Nate anda mais devagar (04-player).
+# Golpeando, puxando o tiro ou bebendo do frasco, Nate anda mais devagar (04-player).
 func _speed_share() -> float:
+	if _melee.is_busy():
+		return Balance.player.melee_speed_share
 	if _ranged.is_drawing():
 		return Balance.player.drawing_speed_share
 	if flask.is_drinking():
@@ -215,6 +219,10 @@ func is_drawing() -> bool:
 	return _ranged.is_drawing()
 
 
+func is_swinging() -> bool:
+	return _melee.is_busy()
+
+
 ## Rolando ou logo depois de levar golpe, nada fere Nate (03-regras).
 func is_invincible() -> bool:
 	return is_rolling() or _hurt_invincible_left > 0.0
@@ -226,6 +234,9 @@ func assisted_aim() -> Vector3:
 	var best_offset := Vector3.ZERO
 	for enemy: Node3D in get_tree().get_nodes_in_group(&"enemies"):
 		var offset := enemy.global_position - global_position
+		# Inimigo fora da altura que o golpe alcança (num platô) não puxa a mira.
+		if absf(offset.y) > Balance.combat.height_reach:
+			continue
 		offset.y = 0.0
 		if offset.is_zero_approx() or offset.length() > stats.aim_assist_range:
 			continue
@@ -241,6 +252,7 @@ func assisted_aim() -> Vector3:
 func take_hit(hit: Hit) -> void:
 	if _dead or is_invincible():
 		return
+	_wait_regen()
 	if has_shield():
 		# O escudo segura o golpe inteiro e se desfaz; Nate ainda é empurrado e pisca.
 		_shield.finish()
@@ -264,10 +276,32 @@ func take_hit(hit: Hit) -> void:
 func take_status_damage(hearts: int, _points: int) -> void:
 	if _dead:
 		return
+	if hearts > 0:
+		_wait_regen()
 	health.damage(mini(hearts, health.value - 1))
 
 
-## De onde sai o tiro: o centro de Nate, na altura da mão que segura a baladeira, para o projétil voar
+# A vida volta sozinha fora de luta (02-core-loop): depois de um tempo sem levar golpe, um coração de cada vez.
+func _update_regen(delta: float) -> void:
+	if health.value >= health.max_value:
+		return
+	if _regen_wait_left > 0.0:
+		_regen_wait_left -= delta
+		return
+	_regen_tick_left -= delta
+	if _regen_tick_left <= 0.0:
+		_regen_tick_left += Balance.player.regen_interval
+		health.heal(1)
+
+
+# Levou golpe: a vida só volta a encher depois de um tempo sem levar outro; o primeiro coração vem logo no fim da
+# espera, e os outros, um a cada intervalo.
+func _wait_regen() -> void:
+	_regen_wait_left = Balance.player.regen_delay
+	_regen_tick_left = 0.0
+
+
+## De onde sai o tiro: o centro de Nate, na altura da mão que segura o estilingue, para o projétil voar
 ## na linha da mira e não ao lado dela.
 func shot_origin() -> Vector3:
 	var hand := _model.get_part(&"hand_l")
@@ -280,8 +314,8 @@ func play_animation(animation: AnimationData, speed: float) -> void:
 	_animator.speed_scale = speed
 
 
-func play_overlay(animation: AnimationData, speed: float) -> void:
-	_animator.play_overlay(animation, speed)
+func play_overlay(animation: AnimationData, speed: float, from_start := false) -> void:
+	_animator.play_overlay(animation, speed, from_start)
 
 
 func stop_overlay() -> void:
@@ -356,7 +390,18 @@ func _nearest_interactable() -> Interactable:
 func _walk(move: Vector3, delta: float) -> void:
 	var speed := move_speed()
 	var rate := speed / Balance.player.acceleration_time
-	velocity = velocity.move_toward(move * speed, rate * delta)
+	var ground := Vector3(velocity.x, 0.0, velocity.z).move_toward(move * speed, rate * delta)
+	velocity = ground
+
+
+# Anda no chão com a velocidade dos estados e cai pela gravidade fora dele (o relevo: escadas e beiradas).
+func _move(delta: float) -> void:
+	if is_on_floor():
+		_fall_speed = 0.0
+	else:
+		_fall_speed -= Balance.world.gravity * delta
+	velocity.y = _fall_speed
+	move_and_slide()
 
 
 func _start_roll(move: Vector3) -> void:
@@ -415,7 +460,7 @@ func _update_aim(move: Vector3) -> void:
 
 
 func _update_animation() -> void:
-	if is_rolling() or _melee.is_busy() or _control_left > 0.0:
+	if is_rolling() or _control_left > 0.0:
 		return
 	var speed := Vector2(velocity.x, velocity.z).length()
 	if is_zero_approx(speed):

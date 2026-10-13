@@ -1,7 +1,8 @@
 class_name Hud
 extends CanvasLayer
-## HUD (09-interface): corações, frasco e efeitos em Nate no alto, à esquerda; as magias embaixo, à direita,
-## com a recarga de cada uma e o sinal de combinação pronta. O centro da tela fica livre para os avisos.
+## HUD (09-interface): corações, frasco e efeitos em Nate no alto, à esquerda; o equipamento embaixo, à esquerda,
+## com o aviso de cada item achado; as magias embaixo, à direita, com a recarga de cada uma e o sinal de combinação
+## pronta. O centro da tela fica livre para os avisos dos golpes.
 
 @export var heart_full: Texture2D
 @export var heart_empty: Texture2D
@@ -11,8 +12,17 @@ extends CanvasLayer
 @export var icon_scale := 1
 ## Transparência do sinal de combinação quando ela ainda não está pronta.
 @export var combo_dim := 0.0
+## Molduras do equipamento (10-arte-audio): marajoara em verde-jade; comum em cinza.
+@export var marajoara_color := Color.WHITE
+@export var common_color := Color.WHITE
+## Ícone do frasco, para o aviso de quando Nate o ganha.
+@export var flask_icon: Texture2D
+## Tempo do aviso de item achado na tela e tempo dele sumindo, em segundos.
+@export var toast_time := 0.0
+@export var toast_fade_time := 0.0
 
 var _player: Player
+var _toast_tween: Tween
 
 @onready var _hearts: HBoxContainer = %Hearts
 @onready var _flask: Control = %Flask
@@ -24,6 +34,10 @@ var _player: Player
 @onready var _cooldowns: Array[ColorRect] = [%Cooldown1, %Cooldown2]
 @onready var _keys: Array[TextureRect] = [%Key1, %Key2]
 @onready var _combo: TextureRect = %Combo
+@onready var _equipment: Array[TextureRect] = [%Melee, %Ranged, %Armor]
+@onready var _toast: Control = %Toast
+@onready var _toast_icon: TextureRect = %ToastIcon
+@onready var _toast_label: Label = %ToastLabel
 
 
 func _ready() -> void:
@@ -39,6 +53,10 @@ func _ready() -> void:
 	GameState.elements_changed.connect(_show_spells)
 	InputManager.device_changed.connect(_on_device_changed)
 	_show_spells()
+	GameState.equipment_changed.connect(_show_equipment)
+	Events.item_picked.connect(_on_item_picked)
+	_show_equipment()
+	_toast.visible = false
 
 
 func _process(_delta: float) -> void:
@@ -84,6 +102,47 @@ func _show_spells() -> void:
 	_combo.visible = first != &"" and second != &"" and combos.icons.has(key)
 	_combo.texture = combos.icons.get(key)
 	_show_keys()
+
+
+# O que Nate tem nas mãos e no corpo: a arma de perto, a de longe e a armadura.
+func _show_equipment() -> void:
+	var slots := [GameState.MELEE, GameState.RANGED, GameState.ARMOR]
+	for i in slots.size():
+		var item := GameState.equipped(slots[i]) as ItemData
+		_equipment[i].texture = item.icon if item else null
+		var frame := _equipment[i].get_parent() as Control
+		frame.self_modulate = (marajoara_color if item.marajoara else common_color) if item else Color(common_color, combo_dim)
+
+
+# Aviso de item achado: o ícone e o nome, por um tempo (05-itens).
+func _on_item_picked(item_id: StringName) -> void:
+	var found := _find_item(item_id)
+	if found.is_empty():
+		return
+	_toast_icon.texture = found[0]
+	_toast_label.text = tr(found[1])
+	_toast.visible = true
+	_toast.modulate.a = 1.0
+	if _toast_tween:
+		_toast_tween.kill()
+	_toast_tween = create_tween()
+	_toast_tween.tween_interval(toast_time)
+	_toast_tween.tween_property(_toast, ^"modulate:a", 0.0, toast_fade_time)
+	_toast_tween.tween_callback(_toast.hide)
+
+
+# O ícone e o nome de um item achado: equipamento, melhoria (o tipo vem no começo do identificador), elemento ou o
+# frasco.
+func _find_item(item_id: StringName) -> Array:
+	if item_id == GameState.FLASK:
+		return [flask_icon, &"ITEM_FLASK"]
+	var paths := [GameState.ITEMS_FOLDER + item_id + ".tres", GameState.ELEMENTS_FOLDER + item_id + ".tres",
+		ItemPickup.UPGRADES_FOLDER + String(item_id).get_slice("_", 0) + ".tres"]
+	for path: String in paths:
+		if ResourceLoader.exists(path):
+			var item: Resource = load(path)
+			return [item.get(&"icon"), item.get(&"name_key")]
+	return []
 
 
 func _on_device_changed(_device: int) -> void:

@@ -39,6 +39,8 @@ func _physics_process(delta: float) -> void:
 	for hurtbox: Hurtbox in get_tree().get_nodes_in_group(Hurtbox.group_for(_faction)):
 		if not HitShape.overlaps(_spell.attack, global_position, Vector3.FORWARD, hurtbox.global_position, hurtbox.radius):
 			continue
+		if absf(hurtbox.global_position.y - global_position.y) > Balance.combat.height_reach:
+			continue
 		var receiver := hurtbox.receiver
 		now_inside.append(receiver)
 		# Quem acabou de entrar leva o golpe uma vez (o recuo da Tempestade de Fogo).

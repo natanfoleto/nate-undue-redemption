@@ -2,25 +2,25 @@
 
 [ext_resource type="Script" path="res://ui/mural_view.gd" id="1_k28cj"]
 
-[node name="MuralView" type="CanvasLayer" unique_id=257912689]
+[node name="MuralView" type="CanvasLayer" unique_id=52202092]
 layer = 12
 script = ExtResource("1_k28cj")
 fade_time = 0.4
 min_time = 1.0
 
-[node name="Shade" type="ColorRect" parent="." unique_id=1208768081]
+[node name="Shade" type="ColorRect" parent="." unique_id=1004883058]
 unique_name_in_owner = true
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 color = Color(0, 0, 0, 0.88)
 
-[node name="Center" type="CenterContainer" parent="Shade" unique_id=617453940]
+[node name="Center" type="CenterContainer" parent="Shade" unique_id=798203038]
 layout_mode = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
 
-[node name="Picture" type="TextureRect" parent="Shade/Center" unique_id=730050460]
+[node name="Picture" type="TextureRect" parent="Shade/Center" unique_id=522576093]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(864, 540)
 layout_mode = 2

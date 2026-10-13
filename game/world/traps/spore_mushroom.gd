@@ -70,6 +70,8 @@ func _slow_inside() -> void:
 		for hurtbox: Hurtbox in get_tree().get_nodes_in_group(Hurtbox.group_for(faction)):
 			if not HitShape.overlaps(attack, global_position, Vector3.FORWARD, hurtbox.global_position, hurtbox.radius):
 				continue
+			if absf(hurtbox.global_position.y - global_position.y) > Balance.combat.height_reach:
+				continue
 			var status := hurtbox.receiver.get_node_or_null(^"StatusEffects") as StatusEffects
 			if status:
 				var share := Player.status_duration_share() if hurtbox.receiver is Player else 1.0

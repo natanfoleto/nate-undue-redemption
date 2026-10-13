@@ -22,6 +22,9 @@ enum Weight { LIGHT, HEAVY, BOSS }
 @export var max_attackers := 0
 ## Tempo sem ver Nate até o mob desistir e voltar para casa, em segundos.
 @export var give_up_time := 0.0
+## Diferença de altura até onde um golpe ainda acerta, em blocos: mais que isso, o alvo está em outro nível do
+## relevo (em cima ou embaixo de uma escada).
+@export var height_reach := 0.0
 ## Parte do tempo de cada golpe de Nate gasta em preparação, tempo ativo e recuperação (somam 1).
 @export var melee_windup_share := 0.0
 @export var melee_active_share := 0.0

@@ -35,9 +35,9 @@
 [ext_resource type="Texture2D" path="res://assets/ui/status/poison.png" id="33_or4qq"]
 [ext_resource type="Texture2D" path="res://assets/ui/status/burn.png" id="34_hggc2"]
 
-[sub_resource type="CylinderShape3D" id="CylinderShape3D_b2j0d"]
-height = 1.8
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_b2j0d"]
 radius = 0.3
+height = 1.8
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7l6ig"]
 transparency = 1
@@ -45,10 +45,12 @@ cull_mode = 2
 shading_mode = 0
 albedo_color = Color(1, 1, 1, 0.6)
 
-[node name="Player" type="CharacterBody3D" unique_id=2045110904]
+[node name="Player" type="CharacterBody3D" unique_id=1544871601]
 collision_layer = 2
 collision_mask = 13
-motion_mode = 1
+floor_constant_speed = true
+floor_max_angle = 0.87266463
+floor_snap_length = 0.5
 script = ExtResource("1_jd2rm")
 idle_animation = ExtResource("2_q28gw")
 walk_animation = ExtResource("3_ge24q")
@@ -62,39 +64,39 @@ awaken_glow = 4.0
 awaken_light = 4.0
 awaken_time = 1.6
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1763825714]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-shape = SubResource("CylinderShape3D_b2j0d")
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=228711272]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0)
+shape = SubResource("CapsuleShape3D_b2j0d")
 
-[node name="BlockModel" type="Node3D" parent="." unique_id=1100180805]
+[node name="BlockModel" type="Node3D" parent="." unique_id=51308545]
 script = ExtResource("7_dx5ib")
 model = ExtResource("8_a2xo5")
 
-[node name="ModelAnimator" type="Node" parent="BlockModel" unique_id=1712914910]
+[node name="ModelAnimator" type="Node" parent="BlockModel" unique_id=343231572]
 script = ExtResource("9_art4l")
 animation = ExtResource("2_q28gw")
 
-[node name="AimArrow" type="Node3D" parent="." unique_id=1516011361]
+[node name="AimArrow" type="Node3D" parent="." unique_id=210079757]
 script = ExtResource("7_dx5ib")
 model = ExtResource("10_fjxoa")
 
-[node name="Health" type="Node" parent="." unique_id=451626965]
+[node name="Health" type="Node" parent="." unique_id=1932383701]
 script = ExtResource("11_gswnw")
 
-[node name="Hurtbox" type="Node3D" parent="." unique_id=766624820]
+[node name="Hurtbox" type="Node3D" parent="." unique_id=560363191]
 script = ExtResource("12_xcnuv")
 faction = 0
 
-[node name="MeleeCombo" type="Node" parent="." unique_id=1401237884]
+[node name="MeleeCombo" type="Node" parent="." unique_id=1158523533]
 script = ExtResource("13_j55il")
 hit_animations = Array[ExtResource("14_hjies")]([ExtResource("15_mmwog"), ExtResource("16_8pxes"), ExtResource("17_fmu53")])
 
-[node name="RangedShot" type="Node" parent="." unique_id=1317274422]
+[node name="RangedShot" type="Node" parent="." unique_id=1990117800]
 script = ExtResource("18_w7j2h")
 draw_animation = ExtResource("19_n0b8q")
 release_animation = ExtResource("20_jfgyi")
 
-[node name="SpellCaster" type="Node" parent="." unique_id=21716518]
+[node name="SpellCaster" type="Node" parent="." unique_id=2129971339]
 script = ExtResource("21_237xx")
 cast_animation = ExtResource("22_wpyo2")
 combos = ExtResource("23_7crtr")
@@ -102,28 +104,28 @@ combo_window = 0.1
 projectile_glow = 1.5
 effect_look = ExtResource("24_vgvch")
 
-[node name="Flask" type="Node" parent="." unique_id=1106169540]
+[node name="Flask" type="Node" parent="." unique_id=290881087]
 script = ExtResource("25_a1u5o")
 drink_animation = ExtResource("26_3dxkp")
 model = ExtResource("27_6wior")
 
-[node name="StatusEffects" type="Node" parent="." unique_id=1259443021]
+[node name="StatusEffects" type="Node" parent="." unique_id=284131278]
 script = ExtResource("28_p5tca")
 stun_proof = true
 
-[node name="StatusVisuals" type="Node3D" parent="." unique_id=1214121785 node_paths=PackedStringArray("status") instance=ExtResource("29_jbx34")]
+[node name="StatusVisuals" type="Node3D" parent="." unique_id=1382831335 node_paths=PackedStringArray("status") instance=ExtResource("29_jbx34")]
 script = ExtResource("30_s3g0c")
 icons = Array[Texture2D]([ExtResource("31_35wys"), ExtResource("32_pjwc4"), ExtResource("33_or4qq"), ExtResource("34_hggc2")])
 icon_size = 0.3
 icon_lift = 0.65
 status = NodePath("../StatusEffects")
 
-[node name="AncestralLight" type="OmniLight3D" parent="." unique_id=1978311041]
+[node name="AncestralLight" type="OmniLight3D" parent="." unique_id=661064200]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4, 0)
 visible = false
 shadow_enabled = true
 
-[node name="Swing" type="MeshInstance3D" parent="." unique_id=761616215]
+[node name="Swing" type="MeshInstance3D" parent="." unique_id=1471344968]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0)
 material_override = SubResource("StandardMaterial3D_7l6ig")
 cast_shadow = 0

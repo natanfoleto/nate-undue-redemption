@@ -8,21 +8,21 @@
 [sub_resource type="BoxShape3D" id="BoxShape3D_15plb"]
 size = Vector3(0.5, 2, 0.5)
 
-[node name="Lever" type="StaticBody3D" unique_id=626513402]
+[node name="Lever" type="StaticBody3D" unique_id=1494410043]
 script = ExtResource("1_6jna7")
 pulled_angle = 35.0
 pull_time = 0.25
 reach = 1.5
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1276446441]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=723268530]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("BoxShape3D_15plb")
 
-[node name="Base" type="Node3D" parent="." unique_id=2022486394]
+[node name="Base" type="Node3D" parent="." unique_id=1568490599]
 script = ExtResource("2_g60rq")
 model = ExtResource("3_xhxgd")
 
-[node name="Handle" type="Node3D" parent="." unique_id=756701439]
+[node name="Handle" type="Node3D" parent="." unique_id=1616489751]
 transform = Transform3D(1, 0, 0, 0, 0.81915206, 0.57357645, 0, -0.57357645, 0.81915206, 0, 0.1875, 0)
 script = ExtResource("2_g60rq")
 model = ExtResource("4_35r6b")

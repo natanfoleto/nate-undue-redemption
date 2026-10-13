@@ -4,6 +4,8 @@ extends CanvasLayer
 ## ver de novo, e quantos dos 7 Nate já achou. Mapa, Progresso e Opções chegam nas etapas deles.
 
 @export_file("*.tscn") var main_menu: String
+## Quantas vezes as miniaturas dos murais na galeria são ampliadas.
+@export var thumbnail_scale := 1
 
 @onready var _panel: Control = %Panel
 @onready var _list: Control = %List
@@ -62,7 +64,7 @@ func _show_gallery() -> void:
 	var found := 0
 	for id in range(1, Mural.COUNT + 1):
 		var button := Button.new()
-		button.custom_minimum_size = Mural.image(id).get_size() * 2
+		button.custom_minimum_size = Mural.image(id).get_size() * thumbnail_scale
 		button.expand_icon = true
 		if Mural.seen(id):
 			found += 1

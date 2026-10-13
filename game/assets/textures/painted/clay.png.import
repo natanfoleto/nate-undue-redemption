@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c1glcrp6nrq6t"
-path="res://.godot/imported/oak_log_side.png-1c9db39e18bd41b89680f3350e69b82b.ctex"
+uid="uid://bm7bmaq0i22k2"
+path="res://.godot/imported/clay.png-bb6d6740599a8b53e3d3facd38434b94.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/textures/oak_log_side.png"
-dest_files=["res://.godot/imported/oak_log_side.png-1c9db39e18bd41b89680f3350e69b82b.ctex"]
+source_file="res://assets/textures/painted/clay.png"
+dest_files=["res://.godot/imported/clay.png-bb6d6740599a8b53e3d3facd38434b94.ctex"]
 
 [params]
 
@@ -37,4 +37,4 @@ process/normal_map_invert_y=false
 process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
-detect_3d/compress_to=0
+detect_3d/compress_to=1

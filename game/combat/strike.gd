@@ -15,6 +15,8 @@ static func hit_area(attack: AttackData, attacker: Node3D, origin: Vector3, forw
 		var receiver := hurtbox.receiver
 		if receiver in already_hit:
 			continue
+		if absf(hurtbox.global_position.y - origin.y) > Balance.combat.height_reach:
+			continue
 		if not HitShape.overlaps(attack, origin, forward, hurtbox.global_position, hurtbox.radius):
 			continue
 		if HitShape.wall_between(space, origin, hurtbox.global_position):
@@ -24,7 +26,7 @@ static func hit_area(attack: AttackData, attacker: Node3D, origin: Vector3, forw
 	# Os golpes de Nate também acertam o que quebra no cenário (as paredes rachadas).
 	if faction == Hurtbox.Faction.ENEMY:
 		for breakable: Node3D in attacker.get_tree().get_nodes_in_group(&"breakables"):
-			if breakable in already_hit:
+			if breakable in already_hit or absf(breakable.global_position.y - origin.y) > Balance.combat.height_reach:
 				continue
 			for point: Vector3 in breakable.call(&"hit_points"):
 				if HitShape.overlaps(attack, origin, forward, point, BREAKABLE_RADIUS):

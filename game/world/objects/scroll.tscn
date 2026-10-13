@@ -7,19 +7,19 @@
 [sub_resource type="BoxShape3D" id="BoxShape3D_56q47"]
 size = Vector3(0.8, 1, 0.8)
 
-[node name="Scroll" type="StaticBody3D" unique_id=195009431]
+[node name="Scroll" type="StaticBody3D" unique_id=798009095]
 script = ExtResource("1_dqhn3")
 reach = 1.5
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=581813474]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1949342719]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 shape = SubResource("BoxShape3D_56q47")
 
-[node name="Model" type="Node3D" parent="." unique_id=991553399]
+[node name="Model" type="Node3D" parent="." unique_id=2143838008]
 script = ExtResource("2_n368x")
 model = ExtResource("3_j0qvj")
 
-[node name="Light" type="OmniLight3D" parent="." unique_id=564996893]
+[node name="Light" type="OmniLight3D" parent="." unique_id=2115670891]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
 light_color = Color(1, 0.9098039, 0.6901961, 1)
 light_energy = 0.8

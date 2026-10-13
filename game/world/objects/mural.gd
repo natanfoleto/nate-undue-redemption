@@ -29,8 +29,10 @@ static func seen(id: int) -> bool:
 
 func _ready() -> void:
 	super._ready()
-	var material := _picture.material_override as StandardMaterial3D
+	# Cada mural com o próprio material: o da cena é um só para todos, e o último desenho valeria para todos.
+	var material := (_picture.material_override as StandardMaterial3D).duplicate() as StandardMaterial3D
 	material.albedo_texture = image(mural_id)
+	_picture.material_override = material
 
 
 func interact() -> void:

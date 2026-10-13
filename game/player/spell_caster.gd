@@ -46,7 +46,8 @@ func update(delta: float) -> void:
 			_cast_single(slot)
 	if _pose_left > 0.0:
 		_pose_left -= delta
-		if _pose_left <= 0.0 and not _player.flask.is_drinking() and not _player.is_drawing():
+		# Bebendo, puxando o tiro ou golpeando, a pose em cima é a dessa ação: ela mesma a tira no fim.
+		if _pose_left <= 0.0 and not _player.flask.is_drinking() and not _player.is_drawing() and not _player.is_swinging():
 			_player.stop_overlay()
 
 
@@ -116,6 +117,7 @@ func _launch(spell: SpellData) -> void:
 			var model := projectile.get_node(^"BlockModel") as BlockModel
 			model.model = spell.projectile_model
 			model.set_glow(projectile_glow, spell.color)
+			projectile.set_floor(_player.global_position.y)
 			projectile.launch(spell.attack, direction, Hurtbox.Faction.ENEMY, Callable(), _explode.bind(spell))
 		SpellData.Delivery.INSTANT:
 			var hit_list: Array[Node3D] = []

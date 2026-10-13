@@ -1,7 +1,7 @@
 [gd_scene format=3]
 
 [ext_resource type="Script" path="res://ui/memory_scene.gd" id="1_b45t5"]
-[ext_resource type="Texture2D" path="res://assets/textures/mud.png" id="2_2mpl4"]
+[ext_resource type="Texture2D" path="res://assets/textures/painted/clay.png" id="2_2mpl4"]
 [ext_resource type="Script" path="res://tools/models/block_model.gd" id="3_u16t7"]
 [ext_resource type="Resource" path="res://data/models/sanctuary.tres" id="4_rku1n"]
 [ext_resource type="Resource" path="res://data/models/hero.tres" id="5_06l4o"]
@@ -27,7 +27,7 @@ texture_filter = 0
 material = SubResource("StandardMaterial3D_le5qn")
 size = Vector3(14, 1, 10)
 
-[node name="Memory1" type="CanvasLayer" unique_id=1778172108 node_paths=PackedStringArray("camera_from", "camera_to")]
+[node name="Memory1" type="CanvasLayer" unique_id=1668662130 node_paths=PackedStringArray("camera_from", "camera_to")]
 layer = 30
 script = ExtResource("1_b45t5")
 duration = 7.0
@@ -36,87 +36,87 @@ fade_time = 0.6
 camera_from = NodePath("View/SubViewport/Stage/CameraFrom")
 camera_to = NodePath("View/SubViewport/Stage/CameraTo")
 
-[node name="View" type="SubViewportContainer" parent="." unique_id=1965275112]
+[node name="View" type="SubViewportContainer" parent="." unique_id=1755312280]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 stretch = true
 
-[node name="SubViewport" type="SubViewport" parent="View" unique_id=141802080]
+[node name="SubViewport" type="SubViewport" parent="View" unique_id=1937894772]
 own_world_3d = true
 size = Vector2i(1280, 720)
 
-[node name="Stage" type="Node3D" parent="View/SubViewport" unique_id=1693035810]
+[node name="Stage" type="Node3D" parent="View/SubViewport" unique_id=1757412285]
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="View/SubViewport/Stage" unique_id=1184871877]
+[node name="WorldEnvironment" type="WorldEnvironment" parent="View/SubViewport/Stage" unique_id=446880534]
 environment = SubResource("Environment_1s6aj")
 
-[node name="Camera" type="Camera3D" parent="View/SubViewport/Stage" unique_id=35948219]
+[node name="Camera" type="Camera3D" parent="View/SubViewport/Stage" unique_id=1141160699]
 unique_name_in_owner = true
 fov = 45.0
 
-[node name="Floor" type="MeshInstance3D" parent="View/SubViewport/Stage" unique_id=468522998]
+[node name="Floor" type="MeshInstance3D" parent="View/SubViewport/Stage" unique_id=1695048101]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
 mesh = SubResource("BoxMesh_x7ji0")
 
-[node name="Sanctuary" type="Node3D" parent="View/SubViewport/Stage" unique_id=1046213330]
+[node name="Sanctuary" type="Node3D" parent="View/SubViewport/Stage" unique_id=1551050722]
 script = ExtResource("3_u16t7")
 model = ExtResource("4_rku1n")
 
-[node name="SanctuaryLight" type="OmniLight3D" parent="View/SubViewport/Stage" unique_id=122497869]
+[node name="SanctuaryLight" type="OmniLight3D" parent="View/SubViewport/Stage" unique_id=654752584]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, 0)
 light_color = Color(0.56078434, 1, 0.8156863, 1)
 light_energy = 2.0
 omni_range = 7.0
 
-[node name="Hero" type="Node3D" parent="View/SubViewport/Stage" unique_id=13605734]
+[node name="Hero" type="Node3D" parent="View/SubViewport/Stage" unique_id=1808615402]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 1.4, 0, 0.3)
 script = ExtResource("3_u16t7")
 model = ExtResource("5_06l4o")
 
-[node name="ModelAnimator" type="Node" parent="View/SubViewport/Stage/Hero" unique_id=922150733]
+[node name="ModelAnimator" type="Node" parent="View/SubViewport/Stage/Hero" unique_id=1389384198]
 script = ExtResource("6_twd8w")
 animation = ExtResource("7_e7yqr")
 
-[node name="Mushroom0" type="Node3D" parent="View/SubViewport/Stage" unique_id=1488532593]
+[node name="Mushroom0" type="Node3D" parent="View/SubViewport/Stage" unique_id=1431005910]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, 3)
 script = ExtResource("3_u16t7")
 model = ExtResource("8_s2wym")
 
-[node name="Mushroom1" type="Node3D" parent="View/SubViewport/Stage" unique_id=1502067071]
+[node name="Mushroom1" type="Node3D" parent="View/SubViewport/Stage" unique_id=478582698]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.6, 0, 4)
 script = ExtResource("3_u16t7")
 model = ExtResource("8_s2wym")
 
-[node name="Mushroom2" type="Node3D" parent="View/SubViewport/Stage" unique_id=1110653714]
+[node name="Mushroom2" type="Node3D" parent="View/SubViewport/Stage" unique_id=534396741]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.2, 0, 3)
 script = ExtResource("3_u16t7")
 model = ExtResource("8_s2wym")
 
-[node name="Mushroom3" type="Node3D" parent="View/SubViewport/Stage" unique_id=1188722229]
+[node name="Mushroom3" type="Node3D" parent="View/SubViewport/Stage" unique_id=1300345973]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.2, 0, 4)
 script = ExtResource("3_u16t7")
 model = ExtResource("8_s2wym")
 
-[node name="Mushroom4" type="Node3D" parent="View/SubViewport/Stage" unique_id=176708444]
+[node name="Mushroom4" type="Node3D" parent="View/SubViewport/Stage" unique_id=2097995992]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.6, 0, 3)
 script = ExtResource("3_u16t7")
 model = ExtResource("8_s2wym")
 
-[node name="CameraFrom" type="Marker3D" parent="View/SubViewport/Stage" unique_id=1717006730]
+[node name="CameraFrom" type="Marker3D" parent="View/SubViewport/Stage" unique_id=1413068400]
 transform = Transform3D(0.8660254, 0.1545085, -0.47552827, 0, 0.95105654, 0.309017, 0.5, -0.26761657, 0.8236391, -2.5, 2.8, 5)
 
-[node name="CameraTo" type="Marker3D" parent="View/SubViewport/Stage" unique_id=1224320715]
+[node name="CameraTo" type="Marker3D" parent="View/SubViewport/Stage" unique_id=1643273876]
 transform = Transform3D(0.92718387, -0.09062554, 0.36347917, 0, 0.9702957, 0.2419219, -0.37460658, -0.22430608, 0.8996425, 2.8, 2.2, 4.2)
 
-[node name="Tint" type="ColorRect" parent="." unique_id=984295798]
+[node name="Tint" type="ColorRect" parent="." unique_id=1518124404]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2
 color = Color(0.85, 0.75, 0.5, 0.12)
 
-[node name="Fade" type="ColorRect" parent="." unique_id=469645239]
+[node name="Fade" type="ColorRect" parent="." unique_id=1938070379]
 unique_name_in_owner = true
 anchors_preset = 15
 anchor_right = 1.0

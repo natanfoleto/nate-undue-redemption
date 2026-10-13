@@ -56,7 +56,7 @@ Concluída em 2026-10-12 no teclado e mouse; falta o teste com controle, que fic
 - Área de golpe no plano do chão: as quatro formas, os três tempos e a marca de aviso desenhada pela mesma forma.
 - Vida em corações para Nate e em pontos para os mobs; fórmula de dano com variação e crítico, coberta por teste.
 - Recuo e peso, interrupção e 1 s de invencibilidade depois de levar golpe.
-- Combo de 3 golpes do facão e tiro da baladeira.
+- Combo de 3 golpes do facão e tiro do estilingue.
 - Lobo com modelo provisório: persegue, salta com mordida depois do aviso e desiste quando perde Nate de vista.
 - Fila de ataque, com no máximo 5 mobs atacando.
 - Morte de Nate e volta ao começo da sala.
@@ -100,7 +100,14 @@ Feita em 2026-10-12, menos a arte e o som definitivos e o teste com controle, co
 - Tacape, Lâmina de pedra verde, Arco, Couraça de cerâmica, Armadura de minerador, +1 coração e +1 carga.
 - Rascunho do mapa das Ruínas, com as 2 arenas e a arena opcional; a passagem escura do Bosque leva até elas.
 
-Feita em 2026-10-12, menos a arte e o som definitivos, o teste com controle e a revisão de código, que vem no começo da etapa 7. Os murais e a memória 3 são provisórios, feitos no motor. A saída depois da sala do Selo termina a parte jogável até a Grande Prisão existir.
+Feita em 2026-10-12, menos a arte e o som definitivos e o teste com controle. Os murais e a memória 3 são provisórios, feitos no motor. A saída depois da sala do Selo termina a parte jogável até a Grande Prisão existir, e só vale com o Selo pego. A revisão de código veio junto com os ajustes do primeiro teste de jogo.
+
+## Ajustes do primeiro teste de jogo
+Depois da etapa 6, o responsável jogou e pediu (2026-10-12):
+- **Cenário:** bordas naturais no lugar das paredes retas de limite (morros, mata e barrancos, como no Minecraft Dungeons); texturas pintadas à mão, menos parecidas com as do Minecraft; relevo, com platôs e escadas; personagens com as quinas arredondadas.
+- **Jogabilidade:** o golpe não leva Nate para a frente, e dá para golpear andando, à metade da velocidade; a Baladeira vira Estilingue; o HUD mostra o equipamento e avisa cada item achado; o rolamento recarrega em 0,5 s, numa cambalhota com os joelhos dobrados; a vida volta sozinha fora de luta, e o frasco fica para o meio da luta.
+
+Feitos em 2026-10-13, com os documentos atualizados, junto com a revisão de código das etapas 6 e dos ajustes. Ela corrigiu: a ponte de alavanca, que com a gravidade nova não segurava Nate; os murais de uma área, que mostravam todos o mesmo desenho na parede; o mob atingido de longe, que corria para um canto do mapa; a ajuda de mira, que não puxa mais para inimigos em outra altura; e as magias que só empurram, que não dão mais crítico de 0. Fica para depois, como o responsável preferiu: mais plantas e mato na floresta.
 
 ## Etapas 7 e 8, em linhas gerais
 - **7. Grande Prisão:** antessala com a memória 4, a Boiúna com as duas fases e os pilares, a cena da troca de fase, o final, os créditos, o resumo e o pós-jogo.

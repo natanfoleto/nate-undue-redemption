@@ -4,12 +4,13 @@
 [ext_resource type="Script" path="res://tools/models/block_model.gd" id="2_7rvp2"]
 [ext_resource type="Resource" path="res://data/models/bridge.tres" id="3_stab0"]
 
-[node name="LeverBridge" type="Node3D" unique_id=817384068]
+[node name="LeverBridge" type="Node3D" unique_id=333191137]
 script = ExtResource("1_kwpoo")
 raised_angle = 90.0
 lower_time = 1.2
 barrier_height = 2.0
+deck_thickness = 0.25
 
-[node name="Deck" type="Node3D" parent="." unique_id=985928770]
+[node name="Deck" type="Node3D" parent="." unique_id=1585041261]
 script = ExtResource("2_7rvp2")
 model = ExtResource("3_stab0")

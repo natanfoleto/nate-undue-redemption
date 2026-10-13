@@ -2,66 +2,67 @@
 
 [ext_resource type="Script" path="res://ui/pause_menu.gd" id="1_50142"]
 
-[node name="PauseMenu" type="CanvasLayer" unique_id=438884903]
+[node name="PauseMenu" type="CanvasLayer" unique_id=590889687]
 layer = 10
 script = ExtResource("1_50142")
 main_menu = "res://main.tscn"
+thumbnail_scale = 2
 
-[node name="Panel" type="ColorRect" parent="." unique_id=825302652]
+[node name="Panel" type="ColorRect" parent="." unique_id=906222066]
 unique_name_in_owner = true
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 color = Color(0, 0, 0, 0.6)
 
-[node name="Center" type="CenterContainer" parent="Panel" unique_id=944108076]
+[node name="Center" type="CenterContainer" parent="Panel" unique_id=794799797]
 layout_mode = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
 
-[node name="List" type="VBoxContainer" parent="Panel/Center" unique_id=348894540]
+[node name="List" type="VBoxContainer" parent="Panel/Center" unique_id=1048375310]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_constants/separation = 16
 
-[node name="Resume" type="Button" parent="Panel/Center/List" unique_id=287176583]
+[node name="Resume" type="Button" parent="Panel/Center/List" unique_id=601098403]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(360, 0)
 layout_mode = 2
 theme_override_font_sizes/font_size = 28
 
-[node name="Murals" type="Button" parent="Panel/Center/List" unique_id=1894674062]
+[node name="Murals" type="Button" parent="Panel/Center/List" unique_id=893409452]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(360, 0)
 layout_mode = 2
 theme_override_font_sizes/font_size = 28
 
-[node name="ToMenu" type="Button" parent="Panel/Center/List" unique_id=883352639]
+[node name="ToMenu" type="Button" parent="Panel/Center/List" unique_id=969102339]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(360, 0)
 layout_mode = 2
 theme_override_font_sizes/font_size = 28
 
-[node name="Gallery" type="VBoxContainer" parent="Panel/Center" unique_id=968679158]
+[node name="Gallery" type="VBoxContainer" parent="Panel/Center" unique_id=914179010]
 unique_name_in_owner = true
 visible = false
 layout_mode = 2
 theme_override_constants/separation = 16
 
-[node name="GalleryTitle" type="Label" parent="Panel/Center/Gallery" unique_id=2046613017]
+[node name="GalleryTitle" type="Label" parent="Panel/Center/Gallery" unique_id=1339793915]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_font_sizes/font_size = 28
 horizontal_alignment = 1
 
-[node name="GalleryGrid" type="GridContainer" parent="Panel/Center/Gallery" unique_id=157719836]
+[node name="GalleryGrid" type="GridContainer" parent="Panel/Center/Gallery" unique_id=1471163633]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_constants/h_separation = 12
 theme_override_constants/v_separation = 12
 columns = 4
 
-[node name="GalleryBack" type="Button" parent="Panel/Center/Gallery" unique_id=133486000]
+[node name="GalleryBack" type="Button" parent="Panel/Center/Gallery" unique_id=1484121752]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_font_sizes/font_size = 28

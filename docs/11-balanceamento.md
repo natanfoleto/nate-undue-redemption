@@ -32,13 +32,14 @@ Tempo de quem joga pela primeira vez, contando as mortes (`02-core-loop.md`).
 | Velocidade | 5 blocos/s |
 | Aceleração e frenagem | 0,1 s |
 | Ajuda de mira | cone de 45° (22,5° para cada lado da mira), até 4 blocos |
-| Passo à frente em cada golpe | 0,5 bloco |
+| Andar golpeando | à metade da velocidade, sem passo à frente |
 | Janela para continuar o combo | 0,4 s depois da recuperação |
 | Recuperação depois do tiro | 0,3 s |
-| Rolamento | 3 blocos em 0,4 s, invencível o tempo todo; recarga de 1 s |
+| Rolamento | 3 blocos em 0,4 s, invencível o tempo todo; recarga de 0,5 s |
 | Sem controle ao levar golpe | 0,2 s |
 | Invencível depois de levar golpe | 1 s |
 | Frasco | 3 cargas (até 5 com melhorias); 2 corações por carga; 0,6 s para beber |
+| Vida que volta fora de luta | depois de 5 s sem levar golpe nem dano, 1 coração na hora e depois 1 a cada 2 s |
 | Chance de crítico | 5% |
 | Elementos equipados | 2 |
 | Raio da Luz Ancestral | 6 blocos |
@@ -81,7 +82,7 @@ Todas ficam entre 23 e 27 pontos de dano por segundo; o que muda é o jeito de b
 ## Armas à distância
 | Peça | Dano | Tempo para puxar | Alcance | Projétil | Recuo | Efeito |
 |------|------|------------------|---------|----------|-------|--------|
-| Baladeira | 6 | 0,4 s | 10 blocos | 20 blocos/s | curto | — |
+| Estilingue | 6 | 0,4 s | 10 blocos | 20 blocos/s | curto | — |
 | Zarabatana marajoara | 5 | 0,4 s | 10 blocos | 25 blocos/s | nenhum | lento por 2 s |
 | Azagaia marajoara | 18 | 1 s | 10 blocos | 15 blocos/s | longo | — |
 | Arco marajoara | 16 | 1 s | 16 blocos | 30 blocos/s | curto | atravessa |
@@ -91,7 +92,7 @@ Todas ficam entre 23 e 27 pontos de dano por segundo; o que muda é o jeito de b
 |------|----------|--------------------|--------|
 | Colete de minerador | +1 | 5 blocos/s | — |
 | Armadura de minerador | +2 | 4,5 blocos/s | — |
-| Manto de fibras marajoara | +1 | 5 blocos/s | a esquiva recarrega em 0,7 s, em vez de 1 s |
+| Manto de fibras marajoara | +1 | 5 blocos/s | a esquiva recarrega em 0,35 s, em vez de 0,5 s |
 | Couraça de cerâmica marajoara | +2 | 4,5 blocos/s | 15% a mais de dano |
 
 ## Magias
@@ -223,8 +224,17 @@ Números que a produção precisou para o jogo funcionar e que os outros documen
 | Golem | círculo em que recebe golpes de raio 0,6 bloco; o Ancião é 1,2 vez maior; espera a vez de atacar a 4 blocos | `data/mobs/`, `mobs/golem.tscn` |
 | Lanças do chão | uma placa de 1 × 1 bloco por vez; placas vizinhas com 0,7 s de diferença no ciclo; as lanças sobem e descem em 0,1 s | `world/traps/floor_spears.tscn`, `world/areas/ruins.tscn` |
 | Escudo de Areia | a areia gira num raio de 1 bloco em volta de Nate | `data/attacks/sand_shield.tres` |
-| Ponte de alavanca | 2 × 4 blocos; baixa em 1,2 s | `world/objects/lever_bridge.tscn` |
+| Ponte de alavanca | 2 × 4 blocos; baixa em 1,2 s; o tabuleiro tem 0,25 bloco de espessura | `world/objects/lever_bridge.tscn` |
 | Parede rachada sem a Terra | treme 0,06 bloco em 0,25 s | `world/objects/cracked_wall.tscn` |
-| Murais | desenho na parede de 2 × 1,25 blocos; o mural grande aparece em 0,4 s e fecha com qualquer botão depois de 1 s | `world/objects/mural.tscn`, `ui/mural_view.tscn` |
+| Murais | desenho na parede de 2 × 1,25 blocos; o mural grande aparece em 0,4 s e fecha com qualquer botão depois de 1 s; na galeria, as miniaturas são o desenho ampliado 2 vezes | `world/objects/mural.tscn`, `ui/mural_view.tscn`, `ui/pause_menu.tscn` |
 | Memória 3 | 7 s | `world/memories/memory_3.tscn` |
 | Arenas das Ruínas e arena opcional da Mina | a luta começa em 15 × 13 blocos (Mina: 16 × 14), dentro do chão de cada arena | `world/areas/` |
+| Gravidade | 20 blocos/s² (Nate, mobs e dinossauros ficam no chão; não há pulo nem queda) | `data/balance/world.tres` |
+| Altura em que um golpe acerta | até 1,5 bloco acima ou abaixo de quem bateu (o pé, nos tiros) | `data/balance/combat.tres` |
+| Relevo | platôs de 1 e 2 blocos, ligados por escadas de 1 bloco de altura; nas beiradas sem escada, moitas (clareira) ou pedras (Bosque) de 1 bloco | `world/areas/` |
+| Paredes naturais | na frente da câmera (sul e leste do chão), 1 bloco, descendo 4 abaixo do chão como barranco; 2 blocos em volta das áreas escuras e atrás dos murais; atrás (norte e oeste), de 3 a 5 blocos; morros atrás delas até 3 blocos de distância, subindo 1 por bloco; bloqueio invisível dos tiros e da visão até 3 blocos acima do chão | `world/areas/` |
+| Paredão entre a clareira e a Mina | de 3 a 5 blocos de frente para a clareira, baixando até 1 do lado da Mina | `world/areas/mine.tscn` |
+| Parede rachada | 2 blocos de altura | `world/areas/` |
+| Mapa de navegação dos mobs | raio de 0,5 bloco, altura de 1,75 bloco, sobe até 0,25 bloco de degrau e rampas até 46° | `world/areas/*_navigation.res` |
+| Aviso de item achado no HUD | 3 s na tela, sumindo em 0,6 s | `ui/hud.tscn` |
+| Chanfro das quinas dos modelos | 1 px em Nate, no irmão, no herói, nos lobos e nos necromantes; 0,8 nos esqueletos; 1,5 nos golens; 2 no dinossauro e na Boiúna | `data/models/` |

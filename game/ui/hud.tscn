@@ -10,51 +10,80 @@
 [ext_resource type="Texture2D" path="res://assets/ui/hud/flask.png" id="8_u6vop"]
 [ext_resource type="Script" path="res://ui/death_screen.gd" id="9_xtm2r"]
 
-[node name="Hud" type="CanvasLayer" unique_id=501661276]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kc1f2"]
+bg_color = Color(0, 0, 0, 0.5)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6mpex"]
+bg_color = Color(0, 0, 0, 0.5)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mlhsj"]
+bg_color = Color(0, 0, 0, 0.5)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 1, 1, 1)
+
+[node name="Hud" type="CanvasLayer" unique_id=1655601135]
 script = ExtResource("1_spcu4")
 heart_full = ExtResource("2_ff8ar")
 heart_empty = ExtResource("3_m0eg6")
 status_icons = Array[Texture2D]([ExtResource("4_b00kl"), ExtResource("5_so1yu"), ExtResource("6_65xic"), ExtResource("7_mp5xd")])
 icon_scale = 3
 combo_dim = 0.35
+marajoara_color = Color(0.24705882, 0.68235296, 0.5411765, 1)
+common_color = Color(0.6039216, 0.6039216, 0.6039216, 1)
+flask_icon = ExtResource("8_u6vop")
+toast_time = 3.0
+toast_fade_time = 0.6
 
-[node name="Top" type="VBoxContainer" parent="." unique_id=1950679713]
+[node name="Top" type="VBoxContainer" parent="." unique_id=1052509568]
 offset_left = 16.0
 offset_top = 16.0
 offset_right = 16.0
 offset_bottom = 16.0
 theme_override_constants/separation = 8
 
-[node name="Row" type="HBoxContainer" parent="Top" unique_id=1602426535]
+[node name="Row" type="HBoxContainer" parent="Top" unique_id=1138651626]
 layout_mode = 2
 theme_override_constants/separation = 24
 
-[node name="Hearts" type="HBoxContainer" parent="Top/Row" unique_id=1087093653]
+[node name="Hearts" type="HBoxContainer" parent="Top/Row" unique_id=1586135222]
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="Flask" type="HBoxContainer" parent="Top/Row" unique_id=1405785352]
+[node name="Flask" type="HBoxContainer" parent="Top/Row" unique_id=1479634198]
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="FlaskIcon" type="TextureRect" parent="Top/Row/Flask" unique_id=587485067]
+[node name="FlaskIcon" type="TextureRect" parent="Top/Row/Flask" unique_id=413015833]
 custom_minimum_size = Vector2(48, 48)
 layout_mode = 2
 texture = ExtResource("8_u6vop")
 expand_mode = 1
 
-[node name="FlaskCharges" type="Label" parent="Top/Row/Flask" unique_id=1799176304]
+[node name="FlaskCharges" type="Label" parent="Top/Row/Flask" unique_id=828791505]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 8
 
-[node name="Statuses" type="HBoxContainer" parent="Top" unique_id=1286820178]
+[node name="Statuses" type="HBoxContainer" parent="Top" unique_id=951847726]
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="Spells" type="HBoxContainer" parent="." unique_id=558458114]
+[node name="Spells" type="HBoxContainer" parent="." unique_id=1769110494]
 unique_name_in_owner = true
 anchors_preset = 3
 anchor_left = 1.0
@@ -69,17 +98,17 @@ grow_horizontal = 0
 grow_vertical = 0
 theme_override_constants/separation = 12
 
-[node name="Slot1" type="VBoxContainer" parent="Spells" unique_id=708698691]
+[node name="Slot1" type="VBoxContainer" parent="Spells" unique_id=1666050698]
 unique_name_in_owner = true
 layout_mode = 2
 alignment = 2
 
-[node name="Back" type="ColorRect" parent="Spells/Slot1" unique_id=164829466]
+[node name="Back" type="ColorRect" parent="Spells/Slot1" unique_id=660357259]
 custom_minimum_size = Vector2(56, 56)
 layout_mode = 2
 color = Color(0, 0, 0, 0.5)
 
-[node name="Icon1" type="TextureRect" parent="Spells/Slot1/Back" unique_id=1802976694]
+[node name="Icon1" type="TextureRect" parent="Spells/Slot1/Back" unique_id=1683709644]
 unique_name_in_owner = true
 layout_mode = 0
 anchor_right = 1.0
@@ -90,30 +119,30 @@ offset_right = -4.0
 offset_bottom = -4.0
 expand_mode = 1
 
-[node name="Cooldown1" type="ColorRect" parent="Spells/Slot1/Back" unique_id=1348814566]
+[node name="Cooldown1" type="ColorRect" parent="Spells/Slot1/Back" unique_id=1521381992]
 unique_name_in_owner = true
 layout_mode = 0
 anchor_right = 1.0
 color = Color(0, 0, 0, 0.65)
 
-[node name="Key1" type="TextureRect" parent="Spells/Slot1" unique_id=1741873220]
+[node name="Key1" type="TextureRect" parent="Spells/Slot1" unique_id=346518907]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 expand_mode = 1
 stretch_mode = 5
 
-[node name="Slot2" type="VBoxContainer" parent="Spells" unique_id=1098369137]
+[node name="Slot2" type="VBoxContainer" parent="Spells" unique_id=1383784905]
 unique_name_in_owner = true
 layout_mode = 2
 alignment = 2
 
-[node name="Back" type="ColorRect" parent="Spells/Slot2" unique_id=643384764]
+[node name="Back" type="ColorRect" parent="Spells/Slot2" unique_id=1913082568]
 custom_minimum_size = Vector2(56, 56)
 layout_mode = 2
 color = Color(0, 0, 0, 0.5)
 
-[node name="Icon2" type="TextureRect" parent="Spells/Slot2/Back" unique_id=2118701587]
+[node name="Icon2" type="TextureRect" parent="Spells/Slot2/Back" unique_id=125885173]
 unique_name_in_owner = true
 layout_mode = 0
 anchor_right = 1.0
@@ -124,27 +153,107 @@ offset_right = -4.0
 offset_bottom = -4.0
 expand_mode = 1
 
-[node name="Cooldown2" type="ColorRect" parent="Spells/Slot2/Back" unique_id=1504848393]
+[node name="Cooldown2" type="ColorRect" parent="Spells/Slot2/Back" unique_id=1090496621]
 unique_name_in_owner = true
 layout_mode = 0
 anchor_right = 1.0
 color = Color(0, 0, 0, 0.65)
 
-[node name="Key2" type="TextureRect" parent="Spells/Slot2" unique_id=270114979]
+[node name="Key2" type="TextureRect" parent="Spells/Slot2" unique_id=1306281729]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 expand_mode = 1
 stretch_mode = 5
 
-[node name="Combo" type="TextureRect" parent="Spells" unique_id=977060979]
+[node name="Combo" type="TextureRect" parent="Spells" unique_id=1664612453]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(48, 48)
 layout_mode = 2
 size_flags_vertical = 4
 expand_mode = 1
 
-[node name="DeathScreen" type="ColorRect" parent="." unique_id=921808356]
+[node name="Bottom" type="VBoxContainer" parent="." unique_id=1153224501]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 16.0
+offset_top = -16.0
+offset_bottom = -16.0
+grow_vertical = 0
+theme_override_constants/separation = 10
+
+[node name="Toast" type="HBoxContainer" parent="Bottom" unique_id=1285852280]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="ToastIcon" type="TextureRect" parent="Bottom/Toast" unique_id=600011887]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+expand_mode = 1
+
+[node name="ToastLabel" type="Label" parent="Bottom/Toast" unique_id=430407904]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 8
+
+[node name="Equipment" type="HBoxContainer" parent="Bottom" unique_id=275406085]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="MeleeFrame" type="Panel" parent="Bottom/Equipment" unique_id=1485474564]
+custom_minimum_size = Vector2(52, 52)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_kc1f2")
+
+[node name="Melee" type="TextureRect" parent="Bottom/Equipment/MeleeFrame" unique_id=32542764]
+unique_name_in_owner = true
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 6.0
+offset_top = 6.0
+offset_right = -6.0
+offset_bottom = -6.0
+expand_mode = 1
+
+[node name="RangedFrame" type="Panel" parent="Bottom/Equipment" unique_id=65612639]
+custom_minimum_size = Vector2(52, 52)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_6mpex")
+
+[node name="Ranged" type="TextureRect" parent="Bottom/Equipment/RangedFrame" unique_id=1822413916]
+unique_name_in_owner = true
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 6.0
+offset_top = 6.0
+offset_right = -6.0
+offset_bottom = -6.0
+expand_mode = 1
+
+[node name="ArmorFrame" type="Panel" parent="Bottom/Equipment" unique_id=1268164346]
+custom_minimum_size = Vector2(52, 52)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_mlhsj")
+
+[node name="Armor" type="TextureRect" parent="Bottom/Equipment/ArmorFrame" unique_id=1475549028]
+unique_name_in_owner = true
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 6.0
+offset_top = 6.0
+offset_right = -6.0
+offset_bottom = -6.0
+expand_mode = 1
+
+[node name="DeathScreen" type="ColorRect" parent="." unique_id=16720311]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0

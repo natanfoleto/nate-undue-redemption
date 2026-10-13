@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b2nd2t5wa38ka"
-path="res://.godot/imported/oak_leaves.png-5b0e1e378f808fd67dc610d7055ba161.ctex"
+uid="uid://dk75qxpwccyof"
+path="res://.godot/imported/stone_brick.png-52f871a937d6dfbe4b60f059252107b2.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/textures/oak_leaves.png"
-dest_files=["res://.godot/imported/oak_leaves.png-5b0e1e378f808fd67dc610d7055ba161.ctex"]
+source_file="res://assets/textures/painted/stone_brick.png"
+dest_files=["res://.godot/imported/stone_brick.png-52f871a937d6dfbe4b60f059252107b2.ctex"]
 
 [params]
 
@@ -37,4 +37,4 @@ process/normal_map_invert_y=false
 process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
-detect_3d/compress_to=0
+detect_3d/compress_to=1

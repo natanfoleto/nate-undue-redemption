@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://coqnriog628xm"
-path="res://.godot/imported/cobblestone.png-cafb010c5b8a4ed2e3370d2ebf95102a.ctex"
+uid="uid://crvrtjnudk3lf"
+path="res://.godot/imported/dirt.png-d34be9eae7ee303462e013783c421eae.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/textures/cobblestone.png"
-dest_files=["res://.godot/imported/cobblestone.png-cafb010c5b8a4ed2e3370d2ebf95102a.ctex"]
+source_file="res://assets/textures/painted/dirt.png"
+dest_files=["res://.godot/imported/dirt.png-d34be9eae7ee303462e013783c421eae.ctex"]
 
 [params]
 
@@ -37,4 +37,4 @@ process/normal_map_invert_y=false
 process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
-detect_3d/compress_to=0
+detect_3d/compress_to=1

@@ -8,14 +8,14 @@ Nate atravessa Agartha de santuário em santuário. Em cada área, ele luta cont
 ## Minuto a minuto
 
 ### Loop de momento (segundos)
-Andar → ver o aviso do ataque inimigo → esquivar ou se posicionar → atacar de perto, à distância ou com magia → usar o frasco quando a vida baixa.
+Andar → ver o aviso do ataque inimigo → esquivar ou se posicionar → atacar de perto, à distância ou com magia → usar o frasco quando a vida baixa no meio da luta.
 
 Controles em `04-player.md`; dano, recuo e invencibilidade em `03-regras.md`.
 
 ### Loop de área (minutos)
 1. **Santuário:** Nate descansa. Vida e frasco cheios, jogo salvo, memória na primeira visita. Descansar não reinicia os inimigos: só a morte faz isso.
 2. **Exploração:** caminho principal e desvios, com mobs espalhados, baús e segredos.
-3. **Lutas:** cada luta gasta vida e cargas do frasco. O que sobra decide se Nate avança ou volta para recarregar.
+3. **Lutas:** cada luta gasta vida e cargas do frasco. A vida volta sozinha fora de luta; as cargas, só no santuário. O que sobra delas decide se Nate avança ou volta para recarregar.
 4. **Atalho:** abrir um caminho curto de volta ao santuário, ou chegar ao próximo.
 5. **Arena:** o clímax da área, guardando um pergaminho ou uma passagem.
 6. **Próxima área.** Cada poder novo de exploração (Luz Ancestral, Terra) também abre segredos nas áreas já visitadas, para quem quiser voltar.
@@ -75,9 +75,10 @@ Lugar de cada passagem, pergaminho e segredo: `08-mapa.md`.
 - Posição e ondas de cada arena: `08-mapa.md`.
 
 ## Cura
-- **Frasco com cargas.** Nate sai do santuário com o frasco cheio, gasta cargas nas lutas e volta pelos atalhos ou avança até o próximo santuário para recarregar.
+- **Fora de luta, a vida volta sozinha:** depois de um tempo sem levar golpe, 1 coração por vez, até o máximo (tempos: `04-player.md`). Entre uma luta e outra, Nate não precisa voltar ao santuário só para recuperar a vida.
+- **Frasco com cargas,** para curar no meio da luta. Nate sai do santuário com o frasco cheio, gasta cargas nas lutas e volta pelos atalhos ou avança até o próximo santuário para recarregar.
 - Recarrega ao descansar no santuário.
-- Nate ganha o frasco no primeiro santuário, no Bosque. Prólogo e Mina não têm cura (`04-player.md`).
+- Nate ganha o frasco no primeiro santuário, no Bosque. Prólogo e Mina não têm frasco, só a vida que volta fora de luta (`04-player.md`).
 - Cargas extras vêm de melhorias escondidas (ver Progressão de poder).
 - 3 cargas; cada carga cura 2 corações (`05-itens.md`).
 

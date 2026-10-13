@@ -7,7 +7,7 @@
 [ext_resource type="Texture2D" path="res://assets/ui/hud/amulet.png" id="5_tf5lj"]
 [ext_resource type="Texture2D" path="res://assets/ui/hud/amulet_whole.png" id="6_w0k1n"]
 
-[node name="Inventory" type="CanvasLayer" unique_id=2078354576]
+[node name="Inventory" type="CanvasLayer" unique_id=1858286577]
 layer = 9
 script = ExtResource("1_n584p")
 heart_full = ExtResource("2_ymwe8")
@@ -28,14 +28,14 @@ better_color = Color(0.29803923, 0.8156863, 0.29803923, 1)
 worse_color = Color(0.8784314, 0.28235295, 0.28235295, 1)
 font_size = 22
 
-[node name="Panel" type="ColorRect" parent="." unique_id=48420047]
+[node name="Panel" type="ColorRect" parent="." unique_id=1960405969]
 unique_name_in_owner = true
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 color = Color(0.05, 0.06, 0.08, 0.92)
 
-[node name="Margin" type="MarginContainer" parent="Panel" unique_id=1827224453]
+[node name="Margin" type="MarginContainer" parent="Panel" unique_id=689527357]
 layout_mode = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -44,95 +44,95 @@ theme_override_constants/margin_top = 40
 theme_override_constants/margin_right = 40
 theme_override_constants/margin_bottom = 40
 
-[node name="Column" type="VBoxContainer" parent="Panel/Margin" unique_id=904784298]
+[node name="Column" type="VBoxContainer" parent="Panel/Margin" unique_id=2116992554]
 layout_mode = 2
 theme_override_constants/separation = 24
 
-[node name="Top" type="HBoxContainer" parent="Panel/Margin/Column" unique_id=1279420324]
+[node name="Top" type="HBoxContainer" parent="Panel/Margin/Column" unique_id=61524502]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_constants/separation = 40
 
-[node name="Left" type="VBoxContainer" parent="Panel/Margin/Column/Top" unique_id=695347220]
+[node name="Left" type="VBoxContainer" parent="Panel/Margin/Column/Top" unique_id=12710599]
 custom_minimum_size = Vector2(420, 0)
 layout_mode = 2
 theme_override_constants/separation = 12
 
-[node name="NateTitle" type="Label" parent="Panel/Margin/Column/Top/Left" unique_id=2133689479]
+[node name="NateTitle" type="Label" parent="Panel/Margin/Column/Top/Left" unique_id=1716712853]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
 
-[node name="Hearts" type="HBoxContainer" parent="Panel/Margin/Column/Top/Left" unique_id=1327166598]
+[node name="Hearts" type="HBoxContainer" parent="Panel/Margin/Column/Top/Left" unique_id=1955845730]
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="StatsRow" type="HBoxContainer" parent="Panel/Margin/Column/Top/Left" unique_id=2033636987]
+[node name="StatsRow" type="HBoxContainer" parent="Panel/Margin/Column/Top/Left" unique_id=1068382122]
 layout_mode = 2
 theme_override_constants/separation = 16
 
-[node name="FlaskBox" type="HBoxContainer" parent="Panel/Margin/Column/Top/Left/StatsRow" unique_id=173848556]
+[node name="FlaskBox" type="HBoxContainer" parent="Panel/Margin/Column/Top/Left/StatsRow" unique_id=2065481278]
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="FlaskIcon" type="TextureRect" parent="Panel/Margin/Column/Top/Left/StatsRow/FlaskBox" unique_id=1161900665]
+[node name="FlaskIcon" type="TextureRect" parent="Panel/Margin/Column/Top/Left/StatsRow/FlaskBox" unique_id=414613025]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 texture = ExtResource("4_137pv")
 expand_mode = 1
 
-[node name="FlaskCharges" type="Label" parent="Panel/Margin/Column/Top/Left/StatsRow/FlaskBox" unique_id=1079937284]
+[node name="FlaskCharges" type="Label" parent="Panel/Margin/Column/Top/Left/StatsRow/FlaskBox" unique_id=1793173955]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_font_sizes/font_size = 24
 
-[node name="Amulet" type="TextureRect" parent="Panel/Margin/Column/Top/Left/StatsRow" unique_id=1334157624]
+[node name="Amulet" type="TextureRect" parent="Panel/Margin/Column/Top/Left/StatsRow" unique_id=1104402829]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 texture = ExtResource("5_tf5lj")
 expand_mode = 1
 
-[node name="SlotList" type="VBoxContainer" parent="Panel/Margin/Column/Top/Left" unique_id=1982254592]
+[node name="SlotList" type="VBoxContainer" parent="Panel/Margin/Column/Top/Left" unique_id=1293475714]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_constants/separation = 6
 
-[node name="Combo" type="Label" parent="Panel/Margin/Column/Top/Left" unique_id=938408441]
+[node name="Combo" type="Label" parent="Panel/Margin/Column/Top/Left" unique_id=568478968]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_font_sizes/font_size = 22
 
-[node name="Right" type="VBoxContainer" parent="Panel/Margin/Column/Top" unique_id=767984880]
+[node name="Right" type="VBoxContainer" parent="Panel/Margin/Column/Top" unique_id=521236408]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/separation = 12
 
-[node name="Category" type="Label" parent="Panel/Margin/Column/Top/Right" unique_id=972474962]
+[node name="Category" type="Label" parent="Panel/Margin/Column/Top/Right" unique_id=2084135139]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_font_sizes/font_size = 28
 
-[node name="Items" type="GridContainer" parent="Panel/Margin/Column/Top/Right" unique_id=1885978853]
+[node name="Items" type="GridContainer" parent="Panel/Margin/Column/Top/Right" unique_id=576394359]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_constants/h_separation = 10
 theme_override_constants/v_separation = 10
 columns = 6
 
-[node name="Details" type="PanelContainer" parent="Panel/Margin/Column" unique_id=40098481]
+[node name="Details" type="PanelContainer" parent="Panel/Margin/Column" unique_id=681420792]
 custom_minimum_size = Vector2(0, 200)
 layout_mode = 2
 
-[node name="DetailsBox" type="VBoxContainer" parent="Panel/Margin/Column/Details" unique_id=1189008674]
+[node name="DetailsBox" type="VBoxContainer" parent="Panel/Margin/Column/Details" unique_id=1098604988]
 layout_mode = 2
 
-[node name="ItemName" type="Label" parent="Panel/Margin/Column/Details/DetailsBox" unique_id=141755801]
+[node name="ItemName" type="Label" parent="Panel/Margin/Column/Details/DetailsBox" unique_id=774663520]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_font_sizes/font_size = 26
 
-[node name="Stats" type="GridContainer" parent="Panel/Margin/Column/Details/DetailsBox" unique_id=222996765]
+[node name="Stats" type="GridContainer" parent="Panel/Margin/Column/Details/DetailsBox" unique_id=705048227]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_constants/h_separation = 24

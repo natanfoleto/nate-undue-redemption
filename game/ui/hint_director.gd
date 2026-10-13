@@ -5,7 +5,7 @@ extends Node
 
 ## Dicas do começo (o prólogo ensina andar, o combo e a esquiva).
 @export var start_hints: Array[HintData] = []
-## Dica que aparece ao pegar um item (o tiro, com a baladeira).
+## Dica que aparece ao pegar um item (o tiro, com o estilingue).
 @export var item_hints: Dictionary[StringName, HintData] = {}
 ## Dica que aparece na primeira vez que Nate chega perto de algo com que dá para interagir.
 @export var interact_hint: HintData

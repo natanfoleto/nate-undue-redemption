@@ -10,11 +10,11 @@ texture_filter = 0
 [sub_resource type="QuadMesh" id="QuadMesh_nsbyf"]
 size = Vector2(2, 1.25)
 
-[node name="Mural" type="StaticBody3D" unique_id=231417527]
+[node name="Mural" type="StaticBody3D" unique_id=998324530]
 script = ExtResource("1_7ybvf")
 reach = 2.0
 
-[node name="Picture" type="MeshInstance3D" parent="." unique_id=177355360]
+[node name="Picture" type="MeshInstance3D" parent="." unique_id=2130459116]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 1.4, 0)
 material_override = SubResource("StandardMaterial3D_mp7b5")
 mesh = SubResource("QuadMesh_nsbyf")

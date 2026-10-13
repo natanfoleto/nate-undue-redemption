@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cp4ntghv0bpmv"
-path="res://.godot/imported/oak_log_top.png-35d4bfd08fccd48dba507445c548fd21.ctex"
+uid="uid://dij6x8qptcdgr"
+path="res://.godot/imported/leaves.png-8655e8314ccf7fe2ac3f7d1a8152772e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/textures/oak_log_top.png"
-dest_files=["res://.godot/imported/oak_log_top.png-35d4bfd08fccd48dba507445c548fd21.ctex"]
+source_file="res://assets/textures/painted/leaves.png"
+dest_files=["res://.godot/imported/leaves.png-8655e8314ccf7fe2ac3f7d1a8152772e.ctex"]
 
 [params]
 
@@ -37,4 +37,4 @@ process/normal_map_invert_y=false
 process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
-detect_3d/compress_to=0
+detect_3d/compress_to=1

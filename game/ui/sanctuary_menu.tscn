@@ -2,53 +2,53 @@
 
 [ext_resource type="Script" path="res://ui/sanctuary_menu.gd" id="1_vynqq"]
 
-[node name="SanctuaryMenu" type="CanvasLayer" unique_id=1576557172]
+[node name="SanctuaryMenu" type="CanvasLayer" unique_id=248694702]
 layer = 9
 script = ExtResource("1_vynqq")
 font_size = 28
 
-[node name="Panel" type="ColorRect" parent="." unique_id=80929391]
+[node name="Panel" type="ColorRect" parent="." unique_id=1158287674]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 color = Color(0, 0, 0, 0.55)
 
-[node name="Center" type="CenterContainer" parent="Panel" unique_id=1851238566]
+[node name="Center" type="CenterContainer" parent="Panel" unique_id=1753126437]
 layout_mode = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
 
-[node name="Column" type="VBoxContainer" parent="Panel/Center" unique_id=595008852]
+[node name="Column" type="VBoxContainer" parent="Panel/Center" unique_id=1915216547]
 layout_mode = 2
 theme_override_constants/separation = 16
 
-[node name="Title" type="Label" parent="Panel/Center/Column" unique_id=1121842236]
+[node name="Title" type="Label" parent="Panel/Center/Column" unique_id=2047164708]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_font_sizes/font_size = 36
 horizontal_alignment = 1
 
-[node name="Main" type="VBoxContainer" parent="Panel/Center/Column" unique_id=1493835153]
+[node name="Main" type="VBoxContainer" parent="Panel/Center/Column" unique_id=549171799]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_constants/separation = 12
 
-[node name="Rest" type="Button" parent="Panel/Center/Column/Main" unique_id=1969318343]
+[node name="Rest" type="Button" parent="Panel/Center/Column/Main" unique_id=561143248]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(360, 0)
 layout_mode = 2
 
-[node name="Travel" type="Button" parent="Panel/Center/Column/Main" unique_id=944801484]
+[node name="Travel" type="Button" parent="Panel/Center/Column/Main" unique_id=1037753322]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(360, 0)
 layout_mode = 2
 
-[node name="Leave" type="Button" parent="Panel/Center/Column/Main" unique_id=915098983]
+[node name="Leave" type="Button" parent="Panel/Center/Column/Main" unique_id=1551580576]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(360, 0)
 layout_mode = 2
 
-[node name="Places" type="VBoxContainer" parent="Panel/Center/Column" unique_id=48830725]
+[node name="Places" type="VBoxContainer" parent="Panel/Center/Column" unique_id=533495061]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_constants/separation = 12

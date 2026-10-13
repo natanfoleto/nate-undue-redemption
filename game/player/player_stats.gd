@@ -24,8 +24,8 @@ extends Resource
 @export var critical_chance := 0.0
 ## Raio do círculo em que Nate recebe golpes, em blocos.
 @export var hurt_radius := 0.0
-## Passo à frente em cada golpe corpo a corpo, em blocos.
-@export var melee_step := 0.0
+## Parte da velocidade com que Nate anda enquanto golpeia de perto.
+@export var melee_speed_share := 0.0
 ## Tempo para continuar o combo depois da recuperação de um golpe, em segundos.
 @export var combo_window := 0.0
 ## Recuperação depois do tiro, em segundos.
@@ -42,6 +42,12 @@ extends Resource
 @export var death_time := 0.0
 ## Tempo da tela clareando quando Nate volta, em segundos.
 @export var respawn_fade_time := 0.0
+
+@export_group("Vida")
+## Tempo sem levar golpe até a vida começar a voltar, em segundos.
+@export var regen_delay := 0.0
+## Tempo entre um coração e o próximo, em segundos.
+@export var regen_interval := 0.0
 
 @export_group("Frasco")
 ## Cargas do frasco sem melhorias.
