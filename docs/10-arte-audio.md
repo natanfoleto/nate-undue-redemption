@@ -28,6 +28,8 @@ Origem dos assets, guia de estilo e a lista completa de assets e sons, que sai d
 
 Os ícones definitivos são feitos para o jogo (`09-interface.md`). O pacote dos materiais comuns é escolhido na etapa 4.
 
+Feitos para o jogo na etapa 6, provisórios: as texturas marajoara das Ruínas (`marajoara_wall`, `marajoara_floor`, `marajoara_jade` e `spear_plate`), os ícones de Terra, Ar, das combinações, das armas e armaduras das Ruínas e da Mina, do Selo e do muiraquitã inteiro, os desenhos dos pergaminhos de Terra e Ar e as imagens dos 7 murais (`assets/murals/`).
+
 Feitos para o jogo na etapa 5, provisórios: as texturas dos fungos (`mushroom_stem`, `mushroom_cap_cyan` e `mushroom_cap_lime`), os ícones de 16 × 16 dos itens, dos elementos, da combinação Vapor, dos efeitos de status, do frasco, do muiraquitã e das melhorias, os desenhos dos pergaminhos de Fogo e Água e o papel do pergaminho aberto (`assets/ui/`).
 
 ### Plano de produção

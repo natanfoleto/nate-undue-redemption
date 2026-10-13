@@ -2,14 +2,34 @@
 
 [ext_resource type="Script" path="res://combat/spell_data.gd" id="1_ts2c8"]
 [ext_resource type="Resource" path="res://data/spells/vapor.tres" id="2_vk6c5"]
+[ext_resource type="Resource" path="res://data/spells/magma.tres" id="3_7wmav"]
 [ext_resource type="Texture2D" path="res://assets/ui/elements/vapor.png" id="3_33hrn"]
+[ext_resource type="Resource" path="res://data/spells/fire_storm.tres" id="4_emqyi"]
 [ext_resource type="Script" path="res://combat/combo_table.gd" id="4_qx0ai"]
+[ext_resource type="Resource" path="res://data/spells/ice.tres" id="5_jbmjo"]
+[ext_resource type="Resource" path="res://data/spells/mud.tres" id="6_ng80x"]
+[ext_resource type="Resource" path="res://data/spells/sand_shield.tres" id="7_egb8v"]
+[ext_resource type="Texture2D" path="res://assets/ui/elements/magma.png" id="9_xh73q"]
+[ext_resource type="Texture2D" path="res://assets/ui/elements/fire_storm.png" id="10_f8hlj"]
+[ext_resource type="Texture2D" path="res://assets/ui/elements/ice.png" id="11_yqxr5"]
+[ext_resource type="Texture2D" path="res://assets/ui/elements/mud.png" id="12_5taqm"]
+[ext_resource type="Texture2D" path="res://assets/ui/elements/sand_shield.png" id="13_rtrwb"]
 
 [resource]
 script = ExtResource("4_qx0ai")
 combos = Dictionary[String, ExtResource("1_ts2c8")]({
+"air+earth": ExtResource("7_egb8v"),
+"air+fire": ExtResource("4_emqyi"),
+"air+water": ExtResource("5_jbmjo"),
+"earth+fire": ExtResource("3_7wmav"),
+"earth+water": ExtResource("6_ng80x"),
 "fire+water": ExtResource("2_vk6c5")
 })
 icons = Dictionary[String, Texture2D]({
+"air+earth": ExtResource("13_rtrwb"),
+"air+fire": ExtResource("10_f8hlj"),
+"air+water": ExtResource("11_yqxr5"),
+"earth+fire": ExtResource("9_xh73q"),
+"earth+water": ExtResource("12_5taqm"),
 "fire+water": ExtResource("3_33hrn")
 })

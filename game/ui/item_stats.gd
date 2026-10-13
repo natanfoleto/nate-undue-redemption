@@ -17,13 +17,18 @@ static func rows(item: Resource) -> Array[Dictionary]:
 
 static func _melee(weapon: MeleeWeaponData) -> Array[Dictionary]:
 	var critical := Balance.player.critical_chance + weapon.critical_bonus
-	return [
+	var rows: Array[Dictionary] = [
 		_row(&"STAT_DAMAGE", "%d / %d" % [weapon.damage, weapon.damage_third], weapon.damage, true),
 		_row(&"STAT_HIT_TIME", _seconds(weapon.time_per_hit), weapon.time_per_hit, false),
 		_row(&"STAT_REACH", _blocks(weapon.reach), weapon.reach, true),
 		_row(&"STAT_ANGLE", "%s°" % _number(weapon.angle), weapon.angle, true),
 		_row(&"STAT_CRITICAL", "%s%%" % _number(critical * 100.0), critical, true),
 	]
+	if weapon.third_effect >= 0:
+		rows.append(_text_row(&"STAT_THIRD_HIT", _effect(weapon.third_effect, weapon.third_effect_duration)))
+	if weapon.cooldown_cut > 0.0:
+		rows.append(_row(&"STAT_COOLDOWN_CUT", _seconds(weapon.cooldown_cut), weapon.cooldown_cut, true))
+	return rows
 
 
 static func _ranged(weapon: RangedWeaponData) -> Array[Dictionary]:
@@ -36,16 +41,20 @@ static func _ranged(weapon: RangedWeaponData) -> Array[Dictionary]:
 	]
 	if weapon.effect >= 0:
 		rows.append(_text_row(&"STAT_EFFECT", _effect(weapon.effect, weapon.effect_duration)))
+	if weapon.pierce:
+		rows.append(_text_row(&"STAT_PIERCE", TranslationServer.translate(&"VALUE_YES")))
 	return rows
 
 
 static func _armor(armor: ArmorData) -> Array[Dictionary]:
 	var roll := armor.roll_cooldown if armor.roll_cooldown > 0.0 else Balance.player.roll_cooldown
-	return [
+	var rows: Array[Dictionary] = [
 		_row(&"STAT_HEARTS", "+%d" % armor.extra_hearts, armor.extra_hearts, true),
 		_row(&"STAT_SPEED", _speed(armor.move_speed), armor.move_speed, true),
 		_row(&"STAT_ROLL_COOLDOWN", _seconds(roll), roll, false),
+		_row(&"STAT_DAMAGE_BONUS", "+%s%%" % _number(armor.damage_bonus * 100.0), armor.damage_bonus, true),
 	]
+	return rows
 
 
 static func _element(element: ElementData) -> Array[Dictionary]:
@@ -62,6 +71,10 @@ static func _element(element: ElementData) -> Array[Dictionary]:
 	if spell.effect >= 0:
 		var duration := Balance.status.burn_duration if spell.effect == StatusEffects.Effect.BURN else spell.effect_duration
 		rows.append(_text_row(&"STAT_EFFECT", _effect(spell.effect, duration)))
+	if spell.self_speed_bonus > 0.0:
+		rows.append(_text_row(&"STAT_SPEED_BOOST", "+%s%%, %s" % [_number(spell.self_speed_bonus * 100.0), _seconds(spell.self_duration)]))
+	if spell.shield:
+		rows.append(_text_row(&"STAT_SHIELD", TranslationServer.translate(&"SHIELD_ONE_HIT")))
 	return rows
 
 

@@ -1,11 +1,13 @@
 class_name EndScreen
 extends ColorRect
-## Fim da parte jogável: a tela escurece, mostra para onde o elevador leva e volta ao menu principal
+## Fim da parte jogável: a tela escurece, mostra para onde a aventura continua e volta ao menu principal
 ## no próximo botão apertado.
 
 ## Tempo para escurecer e tempo até aceitar o botão, em segundos.
 @export var fade_time := 0.0
 @export var wait_time := 0.0
+## Chave do texto na tabela de tradução: para onde a aventura continua.
+@export var text_key := &"SLICE_END"
 
 var _ready_to_leave := false
 
@@ -15,7 +17,7 @@ var _ready_to_leave := false
 func _ready() -> void:
 	visible = false
 	modulate.a = 0.0
-	_label.text = tr(&"SLICE_END")
+	_label.text = tr(text_key)
 
 
 func show_end() -> void:

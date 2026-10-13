@@ -32,6 +32,9 @@ var _already_hit: Array[Node3D] = []
 var _push_velocity := Vector3.ZERO
 var _push_left := 0.0
 var _strikes_done := 0
+# O golpe em andamento e se o próximo é o segundo (os mobs com dois golpes alternam).
+var _attack: AttackData
+var _next_is_second := false
 
 @onready var health: Health = $Health
 @onready var status: StatusEffects = $StatusEffects
@@ -177,14 +180,15 @@ func _chase(delta: float) -> void:
 		return
 	var limit := Balance.combat.max_attackers
 	var can_attack := _cooldown_left == 0.0 and _unseen_time == 0.0
-	if can_attack and distance <= data.attack.reach and AttackQueue.try_enter(self, limit):
+	var next := _next_attack()
+	if can_attack and distance <= next.reach and AttackQueue.try_enter(self, limit):
 		_strikes_done = 0
 		_start_attack(offset)
 		return
 	if not offset.is_zero_approx():
 		_facing = offset.normalized()
 	# Com vez na fila, chega ao alcance do golpe; sem vez, cerca Nate e espera.
-	var stand := data.attack.reach if can_attack and AttackQueue.has_room(self, limit) else data.wait_distance
+	var stand := next.reach if can_attack and AttackQueue.has_room(self, limit) else data.wait_distance
 	if distance > stand:
 		velocity = _facing * _speed()
 		_animator.play(data.walk_animation)
@@ -193,8 +197,17 @@ func _chase(delta: float) -> void:
 		_animator.play(data.idle_animation)
 
 
+# O próximo golpe: o primeiro, ou o segundo quando é a vez dele.
+func _next_attack() -> AttackData:
+	return data.second_attack if _next_is_second and data.second_attack else data.attack
+
+
 func _start_attack(offset: Vector3) -> void:
-	var attack := data.attack
+	var attack := _next_attack()
+	var second := attack != data.attack
+	_attack = attack
+	if data.second_attack:
+		_next_is_second = not _next_is_second
 	_attack_origin = global_position
 	_attack_direction = offset.normalized()
 	_facing = _attack_direction
@@ -203,12 +216,12 @@ func _start_attack(offset: Vector3) -> void:
 	if attack.warning == AttackData.Warning.GROUND_MARK:
 		_marker.show_attack(attack, _attack_origin, _attack_direction)
 	_enter(State.WINDUP, attack.windup)
-	_animator.play(data.windup_animation)
+	_animator.play(data.second_windup_animation if second else data.windup_animation)
 
 
 # Aviso (03-regras): golpe comum com pose e brilho branco; golpe forte com a marca no chão enchendo.
 func _windup() -> void:
-	var attack := data.attack
+	var attack := _attack
 	velocity = Vector3.ZERO
 	var progress := clampf(1.0 - _state_left / attack.windup, 0.0, 1.0) if attack.windup > 0.0 else 1.0
 	if attack.warning == AttackData.Warning.GROUND_MARK:
@@ -219,11 +232,11 @@ func _windup() -> void:
 		_marker.hide_attack()
 		_model.set_glow(0.0)
 		_enter(State.ACTIVE, attack.active)
-		_animator.play(data.attack_animation)
+		_animator.play(data.second_attack_animation if attack != data.attack else data.attack_animation)
 
 
 func _active() -> void:
-	var attack := data.attack
+	var attack := _attack
 	velocity = _attack_direction * (attack.lunge / attack.active) if attack.active > 0.0 else Vector3.ZERO
 	Strike.hit_area(attack, self, _attack_origin, _attack_direction, Hurtbox.Faction.PLAYER, _already_hit, _build_hit)
 	if _state_left <= 0.0:
@@ -237,7 +250,7 @@ func _end_strike() -> void:
 	if _strikes_done < data.attack_count and _can_see_target():
 		_start_attack(_flat(_target.global_position - global_position))
 		return
-	_enter(State.RECOVERY, data.attack.recovery)
+	_enter(State.RECOVERY, _attack.recovery)
 
 
 ## Ação própria de um tipo de mob durante a perseguição (o Necromante recua e invoca). Verdadeiro quando ela
@@ -250,7 +263,7 @@ func _recovery() -> void:
 	velocity = Vector3.ZERO
 	if _state_left <= 0.0:
 		_end_attack()
-		_cooldown_left = data.attack.cooldown
+		_cooldown_left = _attack.cooldown
 		_enter(State.CHASE, 0.0)
 
 
@@ -307,8 +320,10 @@ func _die() -> void:
 func _build_hit(receiver: Node3D) -> Hit:
 	var hit := Hit.new()
 	hit.attacker = self
-	hit.hearts = data.attack.damage_hearts
-	hit.knockback = data.attack.knockback
+	hit.hearts = _attack.damage_hearts
+	hit.knockback = _attack.knockback
+	hit.effect = _attack.effect
+	hit.effect_duration = _attack.effect_duration
 	var away := _flat(receiver.global_position - global_position)
 	hit.direction = away.normalized() if not away.is_zero_approx() else _attack_direction
 	return hit

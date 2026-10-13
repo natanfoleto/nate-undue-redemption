@@ -1,0 +1,32 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://world/objects/seal_altar.gd" id="1_ns84w"]
+[ext_resource type="Script" path="res://tools/models/block_model.gd" id="2_cn2ip"]
+[ext_resource type="Resource" path="res://data/models/altar.tres" id="3_43636"]
+[ext_resource type="Resource" path="res://data/models/seal.tres" id="4_e74ul"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_w6nyt"]
+size = Vector3(0.8, 1, 0.8)
+
+[node name="SealAltar" type="StaticBody3D" unique_id=1183125728]
+script = ExtResource("1_ns84w")
+reach = 1.5
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=722820807]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+shape = SubResource("BoxShape3D_w6nyt")
+
+[node name="Altar" type="Node3D" parent="." unique_id=1953344961]
+script = ExtResource("2_cn2ip")
+model = ExtResource("3_43636")
+
+[node name="Seal" type="Node3D" parent="." unique_id=122813913]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 1, 0)
+script = ExtResource("2_cn2ip")
+model = ExtResource("4_e74ul")
+
+[node name="Light" type="OmniLight3D" parent="Seal" unique_id=1373261650]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.6, 0)
+light_color = Color(0.56078434, 1, 0.8156863, 1)
+light_energy = 1.2
+omni_range = 4.0

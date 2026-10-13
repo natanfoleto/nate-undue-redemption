@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="ArmorData" format=3]
+
+[ext_resource type="Texture2D" path="res://assets/ui/items/cuirass.png" id="1_cjrpe"]
+[ext_resource type="Resource" path="res://data/models/cuirass.tres" id="2_gpwmy"]
+[ext_resource type="Script" path="res://combat/armor_data.gd" id="3_21373"]
+
+[resource]
+script = ExtResource("3_21373")
+extra_hearts = 2
+move_speed = 4.5
+damage_bonus = 0.15
+name_key = &"ITEM_CUIRASS"
+icon = ExtResource("1_cjrpe")
+marajoara = true
+model = ExtResource("2_gpwmy")

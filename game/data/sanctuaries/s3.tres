@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="SanctuaryData" format=3]
+
+[ext_resource type="Script" path="res://world/sanctuary_data.gd" id="1_1f2sw"]
+
+[resource]
+script = ExtResource("1_1f2sw")
+name_key = &"SANCTUARY_3"
+area = "res://world/areas/ruins.tscn"
+memory = "res://world/memories/memory_3.tscn"

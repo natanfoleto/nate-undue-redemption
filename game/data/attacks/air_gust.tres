@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="AttackData" format=3]
+
+[ext_resource type="Script" path="res://combat/attack_data.gd" id="1_yedpw"]
+
+[resource]
+script = ExtResource("1_yedpw")
+shape = 1
+reach = 5.0
+angle = 60.0
+knockback = 2

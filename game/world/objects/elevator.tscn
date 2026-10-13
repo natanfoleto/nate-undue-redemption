@@ -6,7 +6,7 @@
 [ext_resource type="Script" path="res://tools/models/block_model.gd" id="4_kp1j6"]
 [ext_resource type="Resource" path="res://data/models/elevator.tres" id="5_pmqfb"]
 
-[node name="Elevator" type="StaticBody3D" unique_id=794454788]
+[node name="Elevator" type="StaticBody3D" unique_id=1517499635]
 script = ExtResource("1_31ty5")
 depth = 6.0
 travel_time = 3.0
@@ -18,10 +18,10 @@ dust_radius = 1.5
 dust_look = ExtResource("2_pwuu2")
 reach = 1.6
 
-[node name="Arrival" type="Marker3D" parent="." unique_id=438583630]
+[node name="Arrival" type="Marker3D" parent="." unique_id=435481421]
 script = ExtResource("3_pr1ns")
 automatic = false
 
-[node name="Platform" type="Node3D" parent="." unique_id=481547661]
+[node name="Platform" type="Node3D" parent="." unique_id=1078889195]
 script = ExtResource("4_kp1j6")
 model = ExtResource("5_pmqfb")

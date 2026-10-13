@@ -62,7 +62,9 @@ Autoloads do Godot:
 - Camadas de física: 1 o mundo, 2 Nate e 3 os mobs. Nate e os mobs se encostam sem se ferir, e os dois esbarram também nas barreiras da camada 4.
 - Efeitos de status num componente (`StatusEffects`), com os sinais na tela (`StatusVisuals`); os números ficam em `data/balance/status.tres`.
 - Magias: cada elemento (`ElementData`) tem uma magia (`SpellData`), e a tabela de combinações (`ComboTable`) dá a magia dos dois juntos. O componente `SpellCaster` de Nate lança e conta as recargas; as áreas que ficam no chão são `SpellArea`, e os efeitos visuais, `SpellEffects`.
-- Os itens de equipamento dividem a base `ItemData` (nome, ícone, raridade e modelo).
+- Os itens de equipamento dividem a base `ItemData` (nome, ícone, raridade e modelo). Os efeitos próprios ficam nos dados de cada categoria: o 3º golpe que atordoa, a recarga cortada a cada acerto, a flecha que atravessa e o bônus de dano da armadura.
+- Um mob pode ter um segundo golpe, alternado com o primeiro a cada vez na fila (o Golem); todo golpe pode aplicar um efeito de status.
+- Magias em volta de Nate (`AROUND`) seguem Nate e empurram quem entra; a Rajada Veloz deixa Nate mais rápido e o Escudo de Areia segura o próximo golpe.
 - Os scripts ficam em `game/combat/`; os mobs, em `game/mobs/`, com uma cena base e uma cena por tipo, que troca os dados. O Necromante troca também o script, filho da base `Mob`, para recuar e invocar.
 
 ### Áreas e objetos
@@ -70,6 +72,8 @@ Autoloads do Godot:
 - Objetos do cenário em `game/world/objects/` (baú, alavanca, portão, item no chão, elevador, lampião) e armadilhas em `game/world/traps/`. Cada um tem um identificador único no mapa e grava o próprio estado no `SaveSystem`.
 - A arena (`Arena`) fecha os portões quando Nate entra, solta as ondas dos arquivos de `game/data/arenas/` e reinicia se Nate morre no meio.
 - A luz muda por zona (`LightingZone`): embaixo da terra o sol some e a luz vem dos lampiões.
+- Paredes rachadas (`CrackedWall`), no grupo `breakables`: os golpes, as explosões e os tiros de Nate as quebram depois da Terra.
+- Lanças do chão (`FloorSpears`), ponte de alavanca (`LeverBridge`), portão de várias alavancas, murais (`Mural`, com o mural grande em `MuralView` e a galeria no menu de pausa) e o altar do Selo (`SealAltar`).
 - Áreas escuras (`DarkArea`): uma tampa preta sobre a área, aberta num círculo em volta de Nate quando ele tem a Luz Ancestral, e uma barreira que o segura na borda até lá.
 - Troca de área pelo `GameState`: a tela escurece, a cena carrega e Nate aparece no ponto de chegada (o elevador, um santuário). A saída de uma área é um `AreaExit`; sem a próxima área, ele mostra o fim da parte jogável.
 - Santuários com o menu de descanso e viagem; os dados de cada um (nome, área e memória) ficam em `game/data/sanctuaries/`. As memórias são cenas em `game/world/memories/`, e a fauna de cenário, em `game/world/fauna/`.

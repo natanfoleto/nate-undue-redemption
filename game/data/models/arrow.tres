@@ -1,0 +1,34 @@
+[gd_resource type="Resource" script_class="ModelData" format=3]
+
+[ext_resource type="Script" path="res://tools/models/box_data.gd" id="1_sookx"]
+[ext_resource type="Script" path="res://tools/models/model_data.gd" id="2_nl5m2"]
+
+[sub_resource type="Resource" id="Resource_f61fv"]
+resource_name = "shaft"
+script = ExtResource("1_sookx")
+name = &"shaft"
+size = Vector3i(1, 1, 10)
+position = Vector3(-0.5, -0.5, -5)
+color = Color(0.65882355, 0.47843137, 0.25882354, 1)
+
+[sub_resource type="Resource" id="Resource_semfv"]
+resource_name = "head"
+script = ExtResource("1_sookx")
+name = &"head"
+size = Vector3i(2, 1, 2)
+position = Vector3(-1, -0.5, -7)
+texture_offset = Vector2i(0, 11)
+color = Color(0.56078434, 0.654902, 0.6039216, 1)
+
+[sub_resource type="Resource" id="Resource_5ws7u"]
+resource_name = "fletch"
+script = ExtResource("1_sookx")
+name = &"fletch"
+size = Vector3i(2, 2, 1)
+position = Vector3(-1, -1, 5)
+texture_offset = Vector2i(0, 14)
+color = Color(0.70980394, 0.2509804, 0.16470589, 1)
+
+[resource]
+script = ExtResource("2_nl5m2")
+boxes = Array[ExtResource("1_sookx")]([SubResource("Resource_f61fv"), SubResource("Resource_semfv"), SubResource("Resource_5ws7u")])

@@ -1,6 +1,6 @@
 # Plano de produção
 
-Como construir o jogo a partir da documentação. São etapas curtas, e cada uma termina com algo jogável. As etapas 0 a 5 estão detalhadas; as seguintes estão em linhas gerais e ganham detalhe quando chegar a vez delas.
+Como construir o jogo a partir da documentação. São etapas curtas, e cada uma termina com algo jogável. As etapas 0 a 6 estão detalhadas; as seguintes estão em linhas gerais e ganham detalhe quando chegar a vez delas.
 
 ## Princípios
 - **Jogável cedo:** toda etapa termina com algo que dá para jogar e testar.
@@ -90,7 +90,18 @@ Feita em 2026-10-12, menos a arte e o som definitivos, que esperam decisões do 
 
 Feita em 2026-10-12, menos a arte e o som definitivos e o teste com controle, como na etapa 4. As memórias são cenas curtas provisórias, feitas no motor; os murais 2 e 3 têm o lugar no mapa e ganham a tela e a galeria na etapa 6. A passagem escura termina a parte jogável até as Ruínas existirem. Junto vieram as correções da revisão da etapa 4: a arena vencida reabre os portões ao carregar o jogo, as barreiras (camada 4) seguram Nate e os mobs, os corações da armadura chegam vazios, a dica de um item já pego volta se ainda não foi usada, o título da confirmação de "Novo jogo" passa pela tabela de textos e o tempo de jogo passa a contar.
 
-## Etapas 6 a 8, em linhas gerais
-- **6. Ruínas:** Golem e as variantes, pergaminhos de Terra e Ar, paredes rachadas (também as das áreas anteriores), lanças do chão, ponte de alavanca, murais e galeria, memória 3 e a sala do Selo.
+## Etapa 6: Ruínas
+- Golem de Pedra e Golem Ancião: socão e abalo alternados, peso pesado, o abalo deixa lento.
+- Pergaminhos de Terra e Ar e as magias Colapso Terrestre e Rajada Veloz; as 6 combinações (Vapor, Magma, Tempestade de Fogo, Gelo, Lamaçal e Escudo de Areia).
+- Paredes rachadas que quebram com qualquer golpe ou tiro depois da Terra, também na Mina (Armadura de minerador e arena opcional) e no Bosque (+1 coração).
+- Lanças do chão, ponte de alavanca (atalho até o S3) e o portão das 3 alavancas do Arco marajoara.
+- Murais: os 7 desenhos, o mural grande na tela e a galeria no menu de pausa, com a contagem.
+- S3 com a memória 3; a sala do Selo, com os murais 4 e 5, e o Selo, que completa o muiraquitã.
+- Tacape, Lâmina de pedra verde, Arco, Couraça de cerâmica, Armadura de minerador, +1 coração e +1 carga.
+- Rascunho do mapa das Ruínas, com as 2 arenas e a arena opcional; a passagem escura do Bosque leva até elas.
+
+Feita em 2026-10-12, menos a arte e o som definitivos, o teste com controle e a revisão de código, que vem no começo da etapa 7. Os murais e a memória 3 são provisórios, feitos no motor. A saída depois da sala do Selo termina a parte jogável até a Grande Prisão existir.
+
+## Etapas 7 e 8, em linhas gerais
 - **7. Grande Prisão:** antessala com a memória 4, a Boiúna com as duas fases e os pilares, a cena da troca de fase, o final, os créditos, o resumo e o pós-jogo.
 - **8. Acabamento:** abertura, menus e opções (trocar botões e acessibilidade), mapa por área e tela de progresso, música, testes com jogadores de fora para conferir os 30 min, ajustes no `11-balanceamento.md` e exportação para Windows e macOS.

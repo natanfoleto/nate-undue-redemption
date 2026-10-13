@@ -1,0 +1,29 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://world/traps/floor_spears.gd" id="1_x3lc3"]
+[ext_resource type="Resource" path="res://data/attacks/floor_spears.tres" id="2_ghj3d"]
+[ext_resource type="Script" path="res://tools/models/block_model.gd" id="3_27758"]
+[ext_resource type="Resource" path="res://data/models/spear_plate.tres" id="4_uy5yj"]
+[ext_resource type="Resource" path="res://data/models/spears.tres" id="5_a7yik"]
+[ext_resource type="Script" path="res://combat/warning_marker.gd" id="6_e51pe"]
+
+[node name="FloorSpears" type="Node3D" unique_id=132980750]
+script = ExtResource("1_x3lc3")
+attack = ExtResource("2_ghj3d")
+down_time = 2.0
+up_time = 1.0
+hidden_depth = 0.8
+move_time = 0.1
+glow_color = Color(1, 0.41568628, 0.22745098, 1)
+glow = 1.0
+
+[node name="Plate" type="Node3D" parent="." unique_id=2037768410]
+script = ExtResource("3_27758")
+model = ExtResource("4_uy5yj")
+
+[node name="Spears" type="Node3D" parent="." unique_id=1036597768]
+script = ExtResource("3_27758")
+model = ExtResource("5_a7yik")
+
+[node name="WarningMarker" type="MeshInstance3D" parent="." unique_id=1291287686]
+script = ExtResource("6_e51pe")

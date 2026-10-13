@@ -116,9 +116,14 @@ func _hit_count() -> int:
 
 
 func _build_hit(receiver: Node3D) -> Hit:
-	var hit := Damage.roll(_attack.damage_points, 0.0, Balance.player.critical_chance + weapon.critical_bonus, Balance.combat, _rng)
+	var hit := Damage.roll(_attack.damage_points, _player.damage_bonus(), Balance.player.critical_chance + weapon.critical_bonus, Balance.combat, _rng)
 	hit.attacker = _player
 	hit.knockback = _attack.knockback
+	if _index == _hit_count() - 1 and weapon.third_effect >= 0:
+		hit.effect = weapon.third_effect
+		hit.effect_duration = weapon.third_effect_duration
+	if weapon.cooldown_cut > 0.0:
+		_player.spells.cut_cooldowns(weapon.cooldown_cut)
 	var away := receiver.global_position - _player.global_position
 	away.y = 0.0
 	hit.direction = away.normalized() if not away.is_zero_approx() else _direction

@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="ElementData" format=3]
+
+[ext_resource type="Texture2D" path="res://assets/ui/scrolls/air.png" id="1_do367"]
+[ext_resource type="Texture2D" path="res://assets/ui/elements/air.png" id="2_hjrkf"]
+[ext_resource type="Script" path="res://combat/element_data.gd" id="3_kv0xx"]
+[ext_resource type="Resource" path="res://data/spells/air_gust.tres" id="4_msfwo"]
+
+[resource]
+script = ExtResource("3_kv0xx")
+name_key = &"ELEMENT_AIR"
+icon = ExtResource("2_hjrkf")
+drawing = ExtResource("1_do367")
+spell = ExtResource("4_msfwo")

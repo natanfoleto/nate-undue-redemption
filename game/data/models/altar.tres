@@ -1,0 +1,34 @@
+[gd_resource type="Resource" script_class="ModelData" format=3]
+
+[ext_resource type="Script" path="res://tools/models/box_data.gd" id="1_t7rr8"]
+[ext_resource type="Script" path="res://tools/models/model_data.gd" id="2_ueam0"]
+
+[sub_resource type="Resource" id="Resource_4buh8"]
+resource_name = "pedestal"
+script = ExtResource("1_t7rr8")
+name = &"pedestal"
+size = Vector3i(12, 12, 12)
+position = Vector3(-6, 0, -6)
+color = Color(0.41568628, 0.39215687, 0.36078432, 1)
+
+[sub_resource type="Resource" id="Resource_gibdo"]
+resource_name = "top"
+script = ExtResource("1_t7rr8")
+name = &"top"
+size = Vector3i(14, 2, 14)
+position = Vector3(-7, 12, -7)
+texture_offset = Vector2i(0, 24)
+color = Color(0.3529412, 0.33333334, 0.3137255, 1)
+
+[sub_resource type="Resource" id="Resource_32trc"]
+resource_name = "band"
+script = ExtResource("1_t7rr8")
+name = &"band"
+size = Vector3i(13, 2, 13)
+position = Vector3(-6.5, 5, -6.5)
+texture_offset = Vector2i(0, 40)
+color = Color(0.70980394, 0.3372549, 0.18431373, 1)
+
+[resource]
+script = ExtResource("2_ueam0")
+boxes = Array[ExtResource("1_t7rr8")]([SubResource("Resource_4buh8"), SubResource("Resource_gibdo"), SubResource("Resource_32trc")])

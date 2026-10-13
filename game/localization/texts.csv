@@ -76,3 +76,31 @@ UNIT_SECONDS,%s s
 UNIT_BLOCK,%s bloco
 UNIT_BLOCKS,%s blocos
 UNIT_SPEED,%s blocos/s
+PAUSE_MURALS,Murais
+PAUSE_MURALS_FOUND,Murais achados: %d de %d
+PAUSE_BACK,Voltar
+ITEM_SEAL,Selo
+ITEM_TACAPE,Tacape marajoara
+ITEM_STONE_BLADE,Lâmina de pedra verde
+ITEM_BOW,Arco marajoara
+ITEM_CUIRASS,Couraça de cerâmica marajoara
+ITEM_MINER_ARMOR,Armadura de minerador
+ELEMENT_EARTH,Terra
+ELEMENT_AIR,Ar
+SPELL_EARTH_COLLAPSE,Colapso Terrestre
+SPELL_AIR_GUST,Rajada Veloz
+SPELL_MAGMA,Magma
+SPELL_FIRE_STORM,Tempestade de Fogo
+SPELL_ICE,Gelo
+SPELL_MUD,Lamaçal
+SPELL_SAND_SHIELD,Escudo de Areia
+SANCTUARY_3,Coração das Ruínas
+RUINS_END,O Selo está com Nate. A Grande Prisão espera.
+STAT_THIRD_HIT,3º golpe
+STAT_COOLDOWN_CUT,Corta a recarga das magias
+STAT_PIERCE,Atravessa os inimigos
+STAT_DAMAGE_BONUS,Bônus de dano
+STAT_SPEED_BOOST,Nate mais rápido
+STAT_SHIELD,Escudo
+VALUE_YES,sim
+SHIELD_ONE_HIT,segura 1 golpe

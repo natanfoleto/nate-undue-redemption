@@ -8,6 +8,10 @@ var _faction := Hurtbox.Faction.ENEMY
 var _build_hit: Callable
 var _on_stop: Callable
 var _traveled := 0.0
+var _pierced: Array[Node3D] = []
+
+## Atravessa os inimigos (a flecha do Arco marajoara): acerta cada um uma vez e segue.
+var pierce := false
 
 
 ## Dispara na direção dada. [param build_hit] recebe quem foi acertado e devolve o Hit; vazio, o projétil não
@@ -29,12 +33,19 @@ func _physics_process(delta: float) -> void:
 		PhysicsRayQueryParameters3D.create(from, to, HitShape.WORLD_LAYER))
 	if not wall.is_empty():
 		to = wall.position
-	var target := _first_target(from, to)
-	if target:
-		if _build_hit.is_valid():
-			target.receiver.call(&"take_hit", _build_hit.call(target.receiver))
-		_stop(target.global_position)
-		return
+	if pierce:
+		for hurtbox in _targets(from, to):
+			if hurtbox.receiver not in _pierced:
+				_pierced.append(hurtbox.receiver)
+				hurtbox.receiver.call(&"take_hit", _build_hit.call(hurtbox.receiver))
+	else:
+		var targets := _targets(from, to)
+		if not targets.is_empty():
+			var target: Hurtbox = targets[0]
+			if _build_hit.is_valid():
+				target.receiver.call(&"take_hit", _build_hit.call(target.receiver))
+			_stop(target.global_position)
+			return
 	# Alvos do cenário, como alavancas distantes, também levam o tiro (04-player).
 	if not wall.is_empty() and wall.collider.has_method(&"take_shot"):
 		wall.collider.call(&"take_shot")
@@ -50,15 +61,13 @@ func _stop(where: Vector3) -> void:
 	queue_free()
 
 
-# O alvo mais perto do começo do trecho voado neste quadro.
-func _first_target(from: Vector3, to: Vector3) -> Hurtbox:
-	var best: Hurtbox = null
-	var best_distance := INF
+# Os alvos tocados no trecho voado neste quadro, do mais perto do começo para o mais longe.
+func _targets(from: Vector3, to: Vector3) -> Array[Hurtbox]:
+	var found: Array[Hurtbox] = []
 	for hurtbox: Hurtbox in get_tree().get_nodes_in_group(Hurtbox.group_for(_faction)):
-		if not HitShape.segment_touches(from, to, hurtbox.global_position, hurtbox.radius):
-			continue
-		var distance := Vector2(from.x, from.z).distance_to(Vector2(hurtbox.global_position.x, hurtbox.global_position.z))
-		if distance < best_distance:
-			best = hurtbox
-			best_distance = distance
-	return best
+		if HitShape.segment_touches(from, to, hurtbox.global_position, hurtbox.radius):
+			found.append(hurtbox)
+	var start := Vector2(from.x, from.z)
+	found.sort_custom(func(a: Hurtbox, b: Hurtbox) -> bool:
+		return start.distance_to(Vector2(a.global_position.x, a.global_position.z)) < start.distance_to(Vector2(b.global_position.x, b.global_position.z)))
+	return found

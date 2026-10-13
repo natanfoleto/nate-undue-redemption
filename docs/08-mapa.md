@@ -51,7 +51,26 @@ O Bosque de Fungos tem um rascunho jogável em `game/world/areas/forest.tscn` (e
 | Arena 2 | 18 × 16 blocos, com portão na entrada e na saída | as 3 ondas do `11-balanceamento.md` |
 | Passagem escura | 18 × 4 blocos | exige a Luz Ancestral; no fim, a parte jogável termina até as Ruínas existirem |
 
-O caminho principal do Bosque tem cerca de 190 blocos andando, sem contar as lutas.
+O caminho principal do Bosque tem cerca de 190 blocos andando, sem contar as lutas. A passagem escura leva às Ruínas.
+
+Na Mina, a sala do baú tem a parede rachada da Armadura de minerador (sala de 6 × 6 blocos), e o túnel do mural 1 tem a parede rachada da arena opcional: corredor de 11 × 2 blocos, arena de 18 × 16 e uma sala de 6 × 6 com o +1 carga.
+
+As Ruínas têm um rascunho jogável em `game/world/areas/ruins.tscn` (etapa 6). As medidas também são propostas, para conferir jogando.
+
+| Trecho | Medidas | O que tem |
+|---------|---------|-----------|
+| Salão da chegada | 14 × 12 blocos | o baú do Tacape marajoara, 2 Esqueletos e 1 Lobo |
+| Corredor das lanças | 6 × 14 blocos, subindo para o norte | 3 fileiras de lanças do chão, 1 Lobo Alfa e o nicho do +1 carga |
+| Salão do S3 | 18 × 16 blocos | o S3; a leste, o vão de 4 blocos que a ponte cobre |
+| Arena 1 | 18 × 16 blocos, com portão na entrada e na saída | as 2 ondas do `11-balanceamento.md` |
+| Sala do pergaminho de Terra | 8 × 8 blocos | o pergaminho de Terra; a oeste, o nicho do +1 coração; a leste, a parede rachada do caminho principal |
+| Corredor das minas antigas | 34 × 2 blocos e depois 2 × 22, para o sul | 2 Esqueletos Veteranos, 1 Necromante, 1 Golem e lanças do chão; a leste, a galeria das 3 alavancas do Arco |
+| Salão antes da arena 2 | 18 × 14 blocos | a alavanca da ponte, 2 Lobos Alfa, 1 Veterano e 1 Necromante Ancião; a fresta do mural 6 e a parede rachada da Lâmina de pedra verde |
+| Arena 2 | 18 × 16 blocos, com portão na entrada e na saída | as 2 ondas do `11-balanceamento.md` |
+| Sala do Selo | 12 × 12 blocos | o mural 4, o Selo e o mural 5; a saída para a Grande Prisão |
+| Desvio da Couraça | corredor de 16 × 2 blocos com lanças até uma sala de 6 × 8 | a Couraça de cerâmica e a passagem para a arena opcional (18 × 14 blocos), que guarda o pergaminho de Ar |
+
+O caminho principal das Ruínas tem cerca de 150 blocos andando, sem contar as lutas.
 
 ## Trecho a trecho
 

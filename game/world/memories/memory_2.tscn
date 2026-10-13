@@ -48,7 +48,7 @@ texture_filter = 0
 material = SubResource("StandardMaterial3D_w8l62")
 size = Vector3(1, 3, 22)
 
-[node name="Memory2" type="CanvasLayer" unique_id=834527249 node_paths=PackedStringArray("camera_from", "camera_to", "walker", "walker_to")]
+[node name="Memory2" type="CanvasLayer" unique_id=441782374 node_paths=PackedStringArray("camera_from", "camera_to", "walker", "walker_to")]
 layer = 30
 script = ExtResource("1_q6w68")
 duration = 8.0
@@ -59,68 +59,68 @@ camera_to = NodePath("View/SubViewport/Stage/CameraTo")
 walker = NodePath("View/SubViewport/Stage/Hero")
 walker_to = NodePath("View/SubViewport/Stage/WalkerTo")
 
-[node name="View" type="SubViewportContainer" parent="." unique_id=1693399244]
+[node name="View" type="SubViewportContainer" parent="." unique_id=134530025]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 stretch = true
 
-[node name="SubViewport" type="SubViewport" parent="View" unique_id=718362521]
+[node name="SubViewport" type="SubViewport" parent="View" unique_id=960896674]
 own_world_3d = true
 size = Vector2i(1280, 720)
 
-[node name="Stage" type="Node3D" parent="View/SubViewport" unique_id=620425502]
+[node name="Stage" type="Node3D" parent="View/SubViewport" unique_id=1515588234]
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="View/SubViewport/Stage" unique_id=470334324]
+[node name="WorldEnvironment" type="WorldEnvironment" parent="View/SubViewport/Stage" unique_id=1623008093]
 environment = SubResource("Environment_rsgoo")
 
-[node name="Camera" type="Camera3D" parent="View/SubViewport/Stage" unique_id=2012366363]
+[node name="Camera" type="Camera3D" parent="View/SubViewport/Stage" unique_id=1941418763]
 unique_name_in_owner = true
 fov = 45.0
 
-[node name="Floor" type="MeshInstance3D" parent="View/SubViewport/Stage" unique_id=142223550]
+[node name="Floor" type="MeshInstance3D" parent="View/SubViewport/Stage" unique_id=1359708229]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
 mesh = SubResource("BoxMesh_gmh5j")
 
-[node name="WallL" type="MeshInstance3D" parent="View/SubViewport/Stage" unique_id=1093463607]
+[node name="WallL" type="MeshInstance3D" parent="View/SubViewport/Stage" unique_id=710883091]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5, 1.5, 0)
 mesh = SubResource("BoxMesh_jxmd5")
 
-[node name="WallR" type="MeshInstance3D" parent="View/SubViewport/Stage" unique_id=1752475756]
+[node name="WallR" type="MeshInstance3D" parent="View/SubViewport/Stage" unique_id=1892895490]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 1.5, 0)
 mesh = SubResource("BoxMesh_2pljt")
 
-[node name="Hero" type="Node3D" parent="View/SubViewport/Stage" unique_id=1736495264]
+[node name="Hero" type="Node3D" parent="View/SubViewport/Stage" unique_id=1494579817]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 8)
 script = ExtResource("4_dpf2p")
 model = ExtResource("5_bhh2w")
 
-[node name="ModelAnimator" type="Node" parent="View/SubViewport/Stage/Hero" unique_id=1990852385]
+[node name="ModelAnimator" type="Node" parent="View/SubViewport/Stage/Hero" unique_id=1404983370]
 script = ExtResource("6_fchp4")
 animation = ExtResource("7_v40pw")
 
-[node name="AmuletLight" type="OmniLight3D" parent="View/SubViewport/Stage/Hero" unique_id=677949313]
+[node name="AmuletLight" type="OmniLight3D" parent="View/SubViewport/Stage/Hero" unique_id=549646310]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.3, -0.3)
 light_color = Color(0.84705883, 1, 0.9098039, 1)
 light_energy = 3.0
 
-[node name="WalkerTo" type="Marker3D" parent="View/SubViewport/Stage" unique_id=1256563894]
+[node name="WalkerTo" type="Marker3D" parent="View/SubViewport/Stage" unique_id=95592102]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -6)
 
-[node name="CameraFrom" type="Marker3D" parent="View/SubViewport/Stage" unique_id=1849948576]
+[node name="CameraFrom" type="Marker3D" parent="View/SubViewport/Stage" unique_id=509841014]
 transform = Transform3D(0.99026805, -0.065337814, 0.12288255, 0, 0.88294756, 0.46947157, -0.1391731, -0.4649027, 0.8743548, 1, 3.4, 13.5)
 
-[node name="CameraTo" type="Marker3D" parent="View/SubViewport/Stage" unique_id=1025121264]
+[node name="CameraTo" type="Marker3D" parent="View/SubViewport/Stage" unique_id=638726120]
 transform = Transform3D(0.99026805, -0.065337814, 0.12288255, 0, 0.88294756, 0.46947157, -0.1391731, -0.4649027, 0.8743548, 1, 3.4, -0.5)
 
-[node name="Tint" type="ColorRect" parent="." unique_id=1054546252]
+[node name="Tint" type="ColorRect" parent="." unique_id=191348952]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2
 color = Color(0.85, 0.75, 0.5, 0.12)
 
-[node name="Fade" type="ColorRect" parent="." unique_id=300845743]
+[node name="Fade" type="ColorRect" parent="." unique_id=1290735735]
 unique_name_in_owner = true
 anchors_preset = 15
 anchor_right = 1.0

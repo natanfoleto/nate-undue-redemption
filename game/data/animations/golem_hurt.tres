@@ -1,0 +1,26 @@
+[gd_resource type="Resource" script_class="AnimationData" format=3]
+
+[ext_resource type="Script" path="res://tools/models/pose_data.gd" id="1_muow8"]
+[ext_resource type="Script" path="res://tools/models/animation_data.gd" id="2_s33xu"]
+
+[sub_resource type="Resource" id="Resource_wx0lr"]
+script = ExtResource("1_muow8")
+
+[sub_resource type="Resource" id="Resource_6sox6"]
+script = ExtResource("1_muow8")
+time = 0.15
+rotations = Dictionary[StringName, Vector3]({
+&"arm_l": Vector3(-15, 0, -10),
+&"arm_r": Vector3(-15, 0, 10),
+&"body": Vector3(14, 0, 0),
+&"head": Vector3(10, 0, 0)
+})
+
+[sub_resource type="Resource" id="Resource_apm84"]
+script = ExtResource("1_muow8")
+time = 0.5
+
+[resource]
+script = ExtResource("2_s33xu")
+length = 0.5
+poses = Array[ExtResource("1_muow8")]([SubResource("Resource_wx0lr"), SubResource("Resource_6sox6"), SubResource("Resource_apm84")])

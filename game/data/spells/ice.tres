@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="SpellData" format=3]
+
+[ext_resource type="Resource" path="res://data/attacks/ice.tres" id="1_mxsx8"]
+[ext_resource type="Script" path="res://combat/spell_data.gd" id="2_gf13a"]
+
+[resource]
+script = ExtResource("2_gf13a")
+name_key = &"SPELL_ICE"
+attack = ExtResource("1_mxsx8")
+effect = 0
+effect_duration = 2.0
+color = Color(0.6901961, 0.8784314, 1, 1)

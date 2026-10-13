@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="SpellData" format=3]
+
+[ext_resource type="Resource" path="res://data/attacks/magma.tres" id="1_wm8j5"]
+[ext_resource type="Script" path="res://combat/spell_data.gd" id="2_ormva"]
+
+[resource]
+script = ExtResource("2_ormva")
+name_key = &"SPELL_MAGMA"
+attack = ExtResource("1_wm8j5")
+effect = 3
+color = Color(0.8784314, 0.3764706, 0.16470589, 1)

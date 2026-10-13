@@ -5,6 +5,8 @@ extends StaticBody3D
 
 ## Alavanca que abre o portão (vazio nas arenas, que abrem e fecham por conta própria).
 @export var lever: Lever
+## Outras alavancas: com elas, o portão só abre quando todas foram puxadas (o segredo do Arco marajoara).
+@export var extra_levers: Array[Lever] = []
 ## Quanto as grades descem, em blocos, e em quanto tempo, em segundos.
 @export var drop := 0.0
 @export var move_time := 0.0
@@ -18,12 +20,28 @@ var _open := false
 
 
 func _ready() -> void:
-	if lever:
-		lever.pulled.connect(open)
-	# Pelo jogo salvo, e não pela alavanca, que pode ficar pronta depois do portão.
-	var lever_pulled := lever != null and SaveSystem.has_record(SaveSystem.OPENED, lever.save_id)
-	if starts_open or lever_pulled:
+	for each in _levers():
+		each.pulled.connect(_on_lever_pulled)
+	if starts_open or (lever != null and _all_pulled()):
 		_set_open(true, false)
+
+
+func _on_lever_pulled() -> void:
+	if _all_pulled():
+		open()
+
+
+# Pelo jogo salvo, e não pelas alavancas, que podem ficar prontas depois do portão.
+func _all_pulled() -> bool:
+	return _levers().all(func(each: Lever) -> bool: return SaveSystem.has_record(SaveSystem.OPENED, each.save_id))
+
+
+func _levers() -> Array[Lever]:
+	var all: Array[Lever] = []
+	if lever:
+		all.append(lever)
+	all.append_array(extra_levers)
+	return all
 
 
 func open(animated := true) -> void:

@@ -12,6 +12,7 @@ const SLOT_KEYS := [&"SLOT_MELEE", &"SLOT_RANGED", &"SLOT_ARMOR", &"SLOT_ELEMENT
 @export var flask_icon: Texture2D
 ## O muiraquitã, sem e com a lasca (o Selo).
 @export var amulet_icon: Texture2D
+@export var amulet_whole_icon: Texture2D
 ## Quantas vezes os ícones de 16 px são ampliados, e o tamanho de cada item da lista, em pixels da tela.
 @export var icon_scale := 1
 @export var item_size := 0
@@ -108,7 +109,7 @@ func _refresh() -> void:
 		_hearts.add_child(_icon(heart_full if i < player.health.value else heart_empty))
 	_flask_box.visible = GameState.has_flask()
 	_flask.text = "%d/%d" % [player.flask.charges, player.flask.max_charges]
-	_amulet.texture = amulet_icon
+	_amulet.texture = amulet_whole_icon if GameState.has_seal() else amulet_icon
 	_amulet.modulate.a = 1.0 if GameState.has_light() else asleep_alpha
 	for i in SLOT_KEYS.size():
 		var equipped := _equipped(i)

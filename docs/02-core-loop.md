@@ -13,7 +13,7 @@ Andar → ver o aviso do ataque inimigo → esquivar ou se posicionar → atacar
 Controles em `04-player.md`; dano, recuo e invencibilidade em `03-regras.md`.
 
 ### Loop de área (minutos)
-1. **Santuário:** Nate descansa. Vida e frasco cheios, jogo salvo, memória na primeira visita.
+1. **Santuário:** Nate descansa. Vida e frasco cheios, jogo salvo, memória na primeira visita. Descansar não reinicia os inimigos: só a morte faz isso.
 2. **Exploração:** caminho principal e desvios, com mobs espalhados, baús e segredos.
 3. **Lutas:** cada luta gasta vida e cargas do frasco. O que sobra decide se Nate avança ou volta para recarregar.
 4. **Atalho:** abrir um caminho curto de volta ao santuário, ou chegar ao próximo.

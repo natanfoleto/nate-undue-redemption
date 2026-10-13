@@ -10,7 +10,7 @@
 [ext_resource type="Texture2D" path="res://assets/ui/hud/flask.png" id="8_u6vop"]
 [ext_resource type="Script" path="res://ui/death_screen.gd" id="9_xtm2r"]
 
-[node name="Hud" type="CanvasLayer" unique_id=1059239708]
+[node name="Hud" type="CanvasLayer" unique_id=501661276]
 script = ExtResource("1_spcu4")
 heart_full = ExtResource("2_ff8ar")
 heart_empty = ExtResource("3_m0eg6")
@@ -18,43 +18,43 @@ status_icons = Array[Texture2D]([ExtResource("4_b00kl"), ExtResource("5_so1yu"),
 icon_scale = 3
 combo_dim = 0.35
 
-[node name="Top" type="VBoxContainer" parent="." unique_id=1527498876]
+[node name="Top" type="VBoxContainer" parent="." unique_id=1950679713]
 offset_left = 16.0
 offset_top = 16.0
 offset_right = 16.0
 offset_bottom = 16.0
 theme_override_constants/separation = 8
 
-[node name="Row" type="HBoxContainer" parent="Top" unique_id=135667998]
+[node name="Row" type="HBoxContainer" parent="Top" unique_id=1602426535]
 layout_mode = 2
 theme_override_constants/separation = 24
 
-[node name="Hearts" type="HBoxContainer" parent="Top/Row" unique_id=2088251021]
+[node name="Hearts" type="HBoxContainer" parent="Top/Row" unique_id=1087093653]
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="Flask" type="HBoxContainer" parent="Top/Row" unique_id=1922116927]
+[node name="Flask" type="HBoxContainer" parent="Top/Row" unique_id=1405785352]
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="FlaskIcon" type="TextureRect" parent="Top/Row/Flask" unique_id=2017348404]
+[node name="FlaskIcon" type="TextureRect" parent="Top/Row/Flask" unique_id=587485067]
 custom_minimum_size = Vector2(48, 48)
 layout_mode = 2
 texture = ExtResource("8_u6vop")
 expand_mode = 1
 
-[node name="FlaskCharges" type="Label" parent="Top/Row/Flask" unique_id=2139638973]
+[node name="FlaskCharges" type="Label" parent="Top/Row/Flask" unique_id=1799176304]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 8
 
-[node name="Statuses" type="HBoxContainer" parent="Top" unique_id=1442655013]
+[node name="Statuses" type="HBoxContainer" parent="Top" unique_id=1286820178]
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="Spells" type="HBoxContainer" parent="." unique_id=1667220011]
+[node name="Spells" type="HBoxContainer" parent="." unique_id=558458114]
 unique_name_in_owner = true
 anchors_preset = 3
 anchor_left = 1.0
@@ -69,17 +69,17 @@ grow_horizontal = 0
 grow_vertical = 0
 theme_override_constants/separation = 12
 
-[node name="Slot1" type="VBoxContainer" parent="Spells" unique_id=148385176]
+[node name="Slot1" type="VBoxContainer" parent="Spells" unique_id=708698691]
 unique_name_in_owner = true
 layout_mode = 2
 alignment = 2
 
-[node name="Back" type="ColorRect" parent="Spells/Slot1" unique_id=667104885]
+[node name="Back" type="ColorRect" parent="Spells/Slot1" unique_id=164829466]
 custom_minimum_size = Vector2(56, 56)
 layout_mode = 2
 color = Color(0, 0, 0, 0.5)
 
-[node name="Icon1" type="TextureRect" parent="Spells/Slot1/Back" unique_id=1358799554]
+[node name="Icon1" type="TextureRect" parent="Spells/Slot1/Back" unique_id=1802976694]
 unique_name_in_owner = true
 layout_mode = 0
 anchor_right = 1.0
@@ -90,30 +90,30 @@ offset_right = -4.0
 offset_bottom = -4.0
 expand_mode = 1
 
-[node name="Cooldown1" type="ColorRect" parent="Spells/Slot1/Back" unique_id=603896335]
+[node name="Cooldown1" type="ColorRect" parent="Spells/Slot1/Back" unique_id=1348814566]
 unique_name_in_owner = true
 layout_mode = 0
 anchor_right = 1.0
 color = Color(0, 0, 0, 0.65)
 
-[node name="Key1" type="TextureRect" parent="Spells/Slot1" unique_id=1100186588]
+[node name="Key1" type="TextureRect" parent="Spells/Slot1" unique_id=1741873220]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 expand_mode = 1
 stretch_mode = 5
 
-[node name="Slot2" type="VBoxContainer" parent="Spells" unique_id=1955946346]
+[node name="Slot2" type="VBoxContainer" parent="Spells" unique_id=1098369137]
 unique_name_in_owner = true
 layout_mode = 2
 alignment = 2
 
-[node name="Back" type="ColorRect" parent="Spells/Slot2" unique_id=1003076889]
+[node name="Back" type="ColorRect" parent="Spells/Slot2" unique_id=643384764]
 custom_minimum_size = Vector2(56, 56)
 layout_mode = 2
 color = Color(0, 0, 0, 0.5)
 
-[node name="Icon2" type="TextureRect" parent="Spells/Slot2/Back" unique_id=405744498]
+[node name="Icon2" type="TextureRect" parent="Spells/Slot2/Back" unique_id=2118701587]
 unique_name_in_owner = true
 layout_mode = 0
 anchor_right = 1.0
@@ -124,27 +124,27 @@ offset_right = -4.0
 offset_bottom = -4.0
 expand_mode = 1
 
-[node name="Cooldown2" type="ColorRect" parent="Spells/Slot2/Back" unique_id=1679823790]
+[node name="Cooldown2" type="ColorRect" parent="Spells/Slot2/Back" unique_id=1504848393]
 unique_name_in_owner = true
 layout_mode = 0
 anchor_right = 1.0
 color = Color(0, 0, 0, 0.65)
 
-[node name="Key2" type="TextureRect" parent="Spells/Slot2" unique_id=604814866]
+[node name="Key2" type="TextureRect" parent="Spells/Slot2" unique_id=270114979]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 expand_mode = 1
 stretch_mode = 5
 
-[node name="Combo" type="TextureRect" parent="Spells" unique_id=1814491549]
+[node name="Combo" type="TextureRect" parent="Spells" unique_id=977060979]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(48, 48)
 layout_mode = 2
 size_flags_vertical = 4
 expand_mode = 1
 
-[node name="DeathScreen" type="ColorRect" parent="." unique_id=670461129]
+[node name="DeathScreen" type="ColorRect" parent="." unique_id=921808356]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0

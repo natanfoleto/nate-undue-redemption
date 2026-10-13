@@ -106,7 +106,7 @@ As combinações gastam as duas recargas. Onde a combinação causa dano, ele é
 | Vapor | as duas | — | nuvem de raio 2,5 blocos, a 4 blocos à frente, por 4 s | queimadura em quem está dentro |
 | Magma | as duas | 60 | linha de 2 × 8 blocos | queimadura |
 | Tempestade de Fogo | as duas | — | raio de 2,5 blocos ao redor de Nate, por 4 s | queimadura e recuo curto |
-| Gelo | as duas | 10 | cone de 60°, 6 blocos | atordoa por 2 s |
+| Gelo | as duas | 25 | cone de 60°, 6 blocos | atordoa por 2 s |
 | Lamaçal | as duas | — | círculo de raio 3 blocos, a 4 blocos à frente, por 5 s | lento |
 | Escudo de Areia | as duas | — | ao redor de Nate, por 6 s | segura 1 golpe |
 
@@ -220,3 +220,11 @@ Números que a produção precisou para o jogo funcionar e que os outros documen
 | Efeitos das magias | estouro de 24 cubinhos em 0,5 s, com clarão do dobro do raio; onda a 55% de opacidade; nuvem de 40 cubinhos; praga saindo a 1,2 bloco do chão | `data/effects/spell_effects.tres`, `data/mobs/` |
 | Luz do Bosque | luz ambiente a 0,85; luz dos cogumelos gigantes com alcance de 8 blocos e dos fungos pequenos com 6 | `world/areas/forest.tscn` |
 | Área que começa a luta das arenas do Bosque | 15 × 13 blocos, dentro dos 18 × 16 do chão | `world/areas/forest.tscn` |
+| Golem | círculo em que recebe golpes de raio 0,6 bloco; o Ancião é 1,2 vez maior; espera a vez de atacar a 4 blocos | `data/mobs/`, `mobs/golem.tscn` |
+| Lanças do chão | uma placa de 1 × 1 bloco por vez; placas vizinhas com 0,7 s de diferença no ciclo; as lanças sobem e descem em 0,1 s | `world/traps/floor_spears.tscn`, `world/areas/ruins.tscn` |
+| Escudo de Areia | a areia gira num raio de 1 bloco em volta de Nate | `data/attacks/sand_shield.tres` |
+| Ponte de alavanca | 2 × 4 blocos; baixa em 1,2 s | `world/objects/lever_bridge.tscn` |
+| Parede rachada sem a Terra | treme 0,06 bloco em 0,25 s | `world/objects/cracked_wall.tscn` |
+| Murais | desenho na parede de 2 × 1,25 blocos; o mural grande aparece em 0,4 s e fecha com qualquer botão depois de 1 s | `world/objects/mural.tscn`, `ui/mural_view.tscn` |
+| Memória 3 | 7 s | `world/memories/memory_3.tscn` |
+| Arenas das Ruínas e arena opcional da Mina | a luta começa em 15 × 13 blocos (Mina: 16 × 14), dentro do chão de cada arena | `world/areas/` |

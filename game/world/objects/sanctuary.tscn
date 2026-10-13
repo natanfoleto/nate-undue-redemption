@@ -8,7 +8,7 @@
 [sub_resource type="BoxShape3D" id="BoxShape3D_v4kqd"]
 size = Vector3(2, 2.5, 2)
 
-[node name="Sanctuary" type="StaticBody3D" unique_id=2028694527]
+[node name="Sanctuary" type="StaticBody3D" unique_id=971772705]
 script = ExtResource("1_ttj5a")
 glow_color = Color(0.56078434, 1, 0.8156863, 1)
 lit_glow = 2.0
@@ -16,20 +16,20 @@ light_energy = 1.5
 light_up_time = 1.0
 reach = 2.0
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=847551187]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1639258125]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.25, 0)
 shape = SubResource("BoxShape3D_v4kqd")
 
-[node name="Model" type="Node3D" parent="." unique_id=1381987442]
+[node name="Model" type="Node3D" parent="." unique_id=422793995]
 script = ExtResource("2_u6x3i")
 model = ExtResource("3_55ugl")
 
-[node name="Light" type="OmniLight3D" parent="." unique_id=602731736]
+[node name="Light" type="OmniLight3D" parent="." unique_id=946129764]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, 0)
 light_color = Color(0.56078434, 1, 0.8156863, 1)
 omni_range = 7.0
 
-[node name="SpawnPoint" type="Marker3D" parent="." unique_id=195324370]
+[node name="SpawnPoint" type="Marker3D" parent="." unique_id=152265438]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.8)
 script = ExtResource("4_tc8dw")
 automatic = false

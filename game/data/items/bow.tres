@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="RangedWeaponData" format=3]
+
+[ext_resource type="Texture2D" path="res://assets/ui/items/bow.png" id="1_thjit"]
+[ext_resource type="Resource" path="res://data/models/bow.tres" id="2_ca8yi"]
+[ext_resource type="Resource" path="res://data/models/arrow.tres" id="3_3oevh"]
+[ext_resource type="Script" path="res://combat/ranged_weapon_data.gd" id="4_d8ibt"]
+
+[resource]
+script = ExtResource("4_d8ibt")
+damage = 16
+draw_time = 1.0
+reach = 16.0
+projectile_speed = 30.0
+knockback = 1
+pierce = true
+projectile_model = ExtResource("3_3oevh")
+name_key = &"ITEM_BOW"
+icon = ExtResource("1_thjit")
+marajoara = true
+model = ExtResource("2_ca8yi")

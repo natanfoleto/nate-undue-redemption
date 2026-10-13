@@ -14,6 +14,8 @@ extends ItemData
 ## Efeito de status em quem é acertado (-1 para nenhum) e por quanto tempo, em segundos (Zarabatana marajoara).
 @export var effect := -1
 @export var effect_duration := 0.0
+## Atravessa os inimigos e acerta todos na linha, cada um uma vez (Arco marajoara).
+@export var pierce := false
 ## Modelo do projétil em voo.
 @export var projectile_model: ModelData
 

@@ -26,3 +26,8 @@ enum Delivery { PROJECTILE, INSTANT, LASTING, AROUND }
 @export var color := Color.WHITE
 ## Modelo do projétil em voo.
 @export var projectile_model: ModelData
+## Nate fica mais rápido: quanto a mais, de 0 a 1, e por quanto tempo, em segundos (Rajada Veloz).
+@export var self_speed_bonus := 0.0
+@export var self_duration := 0.0
+## Segura o próximo golpe que Nate receber, enquanto a área dura (Escudo de Areia).
+@export var shield := false

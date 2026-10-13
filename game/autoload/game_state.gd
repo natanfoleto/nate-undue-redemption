@@ -20,6 +20,8 @@ const ELEMENTS_FOLDER := "res://data/elements/"
 const SANCTUARIES_FOLDER := "res://data/sanctuaries/"
 ## O frasco, guardado na lista de itens quando Nate o ganha.
 const FLASK := &"flask"
+## O Selo, do mesmo jeito.
+const SEAL := &"seal"
 ## Tipos de melhoria: o identificador de cada uma começa com o tipo (ex.: "heart_forest_1").
 const HEART_UPGRADE := "heart"
 const CHARGE_UPGRADE := "charge"
@@ -153,6 +155,16 @@ func pick_up(item_id: StringName, slot: String) -> void:
 ## Elementos aprendidos, em ordem.
 func learned_elements() -> Array:
 	return SaveSystem.data.get(SaveSystem.ELEMENTS, [])
+
+
+## Se Nate já aprendeu o elemento (a Terra quebra as paredes rachadas).
+func has_learned(element_id: StringName) -> bool:
+	return SaveSystem.has_record(SaveSystem.ELEMENTS, element_id)
+
+
+## O Selo, a lasca do muiraquitã, achado no fim das Ruínas (05-itens).
+func has_seal() -> bool:
+	return SaveSystem.has_record(SaveSystem.ITEMS, SEAL)
 
 
 ## O muiraquitã acorda no primeiro pergaminho e dá a Luz Ancestral (05-itens).

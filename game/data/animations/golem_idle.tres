@@ -1,0 +1,28 @@
+[gd_resource type="Resource" script_class="AnimationData" format=3]
+
+[ext_resource type="Script" path="res://tools/models/pose_data.gd" id="1_ceqrm"]
+[ext_resource type="Script" path="res://tools/models/animation_data.gd" id="2_crxk1"]
+
+[sub_resource type="Resource" id="Resource_pxycm"]
+script = ExtResource("1_ceqrm")
+rotations = Dictionary[StringName, Vector3]({
+&"arm_l": Vector3(-4, 0, 0),
+&"arm_r": Vector3(4, 0, 0),
+&"body": Vector3(0, 0, 2)
+})
+
+[sub_resource type="Resource" id="Resource_ixrhp"]
+script = ExtResource("1_ceqrm")
+time = 1.5
+rotations = Dictionary[StringName, Vector3]({
+&"arm_l": Vector3(4, 0, 0),
+&"arm_r": Vector3(-4, 0, 0),
+&"body": Vector3(0, 0, -2)
+})
+
+[resource]
+script = ExtResource("2_crxk1")
+length = 3.0
+loop = true
+blend_time = 0.3
+poses = Array[ExtResource("1_ceqrm")]([SubResource("Resource_pxycm"), SubResource("Resource_ixrhp")])

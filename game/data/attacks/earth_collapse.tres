@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="AttackData" format=3]
+
+[ext_resource type="Script" path="res://combat/attack_data.gd" id="1_nu1a1"]
+
+[resource]
+script = ExtResource("1_nu1a1")
+damage_points = 30
+reach = 3.0
+knockback = 2

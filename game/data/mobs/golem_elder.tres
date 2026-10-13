@@ -1,0 +1,35 @@
+[gd_resource type="Resource" script_class="MobData" format=3]
+
+[ext_resource type="Resource" path="res://data/attacks/golem_punch.tres" id="1_o0lrm"]
+[ext_resource type="Resource" path="res://data/animations/golem_punch.tres" id="2_gg7e2"]
+[ext_resource type="Resource" path="res://data/animations/golem_death.tres" id="3_qxgx7"]
+[ext_resource type="Resource" path="res://data/animations/golem_hurt.tres" id="4_5dn1x"]
+[ext_resource type="Resource" path="res://data/animations/golem_idle.tres" id="5_keflo"]
+[ext_resource type="Resource" path="res://data/models/golem_elder.tres" id="6_rcovg"]
+[ext_resource type="Script" path="res://mobs/mob_data.gd" id="7_3b25o"]
+[ext_resource type="Resource" path="res://data/attacks/golem_quake_elder.tres" id="8_7qd10"]
+[ext_resource type="Resource" path="res://data/animations/golem_quake.tres" id="9_cmyva"]
+[ext_resource type="Resource" path="res://data/animations/golem_quake_windup.tres" id="10_cobf6"]
+[ext_resource type="Resource" path="res://data/animations/golem_walk.tres" id="11_d2vlc"]
+[ext_resource type="Resource" path="res://data/animations/golem_punch_windup.tres" id="12_gard8"]
+
+[resource]
+script = ExtResource("7_3b25o")
+health = 240
+move_speed = 2.0
+perception = 7.0
+weight = 1
+hurt_radius = 0.6
+wait_distance = 4.0
+attack = ExtResource("1_o0lrm")
+second_attack = ExtResource("8_7qd10")
+model = ExtResource("6_rcovg")
+model_scale = 1.2
+idle_animation = ExtResource("5_keflo")
+walk_animation = ExtResource("11_d2vlc")
+windup_animation = ExtResource("12_gard8")
+attack_animation = ExtResource("2_gg7e2")
+second_windup_animation = ExtResource("10_cobf6")
+second_attack_animation = ExtResource("9_cmyva")
+hurt_animation = ExtResource("4_5dn1x")
+death_animation = ExtResource("3_qxgx7")

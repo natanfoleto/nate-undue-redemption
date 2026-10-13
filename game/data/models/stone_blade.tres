@@ -1,0 +1,34 @@
+[gd_resource type="Resource" script_class="ModelData" format=3]
+
+[ext_resource type="Script" path="res://tools/models/box_data.gd" id="1_esc7j"]
+[ext_resource type="Script" path="res://tools/models/model_data.gd" id="2_kyncr"]
+
+[sub_resource type="Resource" id="Resource_o5hd8"]
+resource_name = "handle"
+script = ExtResource("1_esc7j")
+name = &"handle"
+size = Vector3i(1, 1, 3)
+position = Vector3(-0.5, -0.5, -2)
+color = Color(0.41960785, 0.25882354, 0.14901961, 1)
+
+[sub_resource type="Resource" id="Resource_5soe6"]
+resource_name = "guard"
+script = ExtResource("1_esc7j")
+name = &"guard"
+size = Vector3i(3, 1, 1)
+position = Vector3(-1.5, -0.5, -3)
+texture_offset = Vector2i(0, 4)
+color = Color(0.11372549, 0.101960786, 0.09019608, 1)
+
+[sub_resource type="Resource" id="Resource_vqxx3"]
+resource_name = "blade"
+script = ExtResource("1_esc7j")
+name = &"blade"
+size = Vector3i(1, 2, 8)
+position = Vector3(-0.5, -1, -11)
+texture_offset = Vector2i(0, 6)
+color = Color(0.24705882, 0.68235296, 0.5411765, 1)
+
+[resource]
+script = ExtResource("2_kyncr")
+boxes = Array[ExtResource("1_esc7j")]([SubResource("Resource_o5hd8"), SubResource("Resource_5soe6"), SubResource("Resource_vqxx3")])

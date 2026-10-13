@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="ElementData" format=3]
+
+[ext_resource type="Texture2D" path="res://assets/ui/scrolls/earth.png" id="1_fojji"]
+[ext_resource type="Texture2D" path="res://assets/ui/elements/earth.png" id="2_b3tv0"]
+[ext_resource type="Script" path="res://combat/element_data.gd" id="3_cm57m"]
+[ext_resource type="Resource" path="res://data/spells/earth_collapse.tres" id="4_uv3th"]
+
+[resource]
+script = ExtResource("3_cm57m")
+name_key = &"ELEMENT_EARTH"
+icon = ExtResource("2_b3tv0")
+drawing = ExtResource("1_fojji")
+spell = ExtResource("4_uv3th")

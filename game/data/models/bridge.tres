@@ -1,0 +1,52 @@
+[gd_resource type="Resource" script_class="ModelData" format=3]
+
+[ext_resource type="Script" path="res://tools/models/box_data.gd" id="1_2kjxr"]
+[ext_resource type="Script" path="res://tools/models/model_data.gd" id="2_npnoa"]
+
+[sub_resource type="Resource" id="Resource_hh5in"]
+resource_name = "deck"
+script = ExtResource("1_2kjxr")
+name = &"deck"
+size = Vector3i(32, 2, 64)
+position = Vector3(-16, -2, -64)
+color = Color(0.41568628, 0.2901961, 0.16470589, 1)
+
+[sub_resource type="Resource" id="Resource_gl0n3"]
+resource_name = "rail_r"
+script = ExtResource("1_2kjxr")
+name = &"rail_r"
+size = Vector3i(2, 4, 64)
+position = Vector3(14, 0, -64)
+texture_offset = Vector2i(0, 66)
+color = Color(0.2901961, 0.22745098, 0.16470589, 1)
+
+[sub_resource type="Resource" id="Resource_vcihh"]
+resource_name = "rail_l"
+script = ExtResource("1_2kjxr")
+name = &"rail_l"
+size = Vector3i(2, 4, 64)
+position = Vector3(-16, 0, -64)
+texture_offset = Vector2i(0, 134)
+color = Color(0.2901961, 0.22745098, 0.16470589, 1)
+
+[sub_resource type="Resource" id="Resource_3k806"]
+resource_name = "band_1"
+script = ExtResource("1_2kjxr")
+name = &"band_1"
+size = Vector3i(28, 1, 2)
+position = Vector3(-14, 0, -20)
+texture_offset = Vector2i(0, 202)
+color = Color(0.70980394, 0.2509804, 0.16470589, 1)
+
+[sub_resource type="Resource" id="Resource_o4mjv"]
+resource_name = "band_2"
+script = ExtResource("1_2kjxr")
+name = &"band_2"
+size = Vector3i(28, 1, 2)
+position = Vector3(-14, 0, -44)
+texture_offset = Vector2i(0, 205)
+color = Color(0.11372549, 0.101960786, 0.09019608, 1)
+
+[resource]
+script = ExtResource("2_npnoa")
+boxes = Array[ExtResource("1_2kjxr")]([SubResource("Resource_hh5in"), SubResource("Resource_gl0n3"), SubResource("Resource_vcihh"), SubResource("Resource_3k806"), SubResource("Resource_o4mjv")])

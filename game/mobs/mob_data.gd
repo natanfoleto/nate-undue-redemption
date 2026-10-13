@@ -16,6 +16,8 @@ extends Resource
 @export var attack: AttackData
 ## Golpes seguidos a cada vez na fila, cada um com o próprio aviso (o Esqueleto Veterano dá 2).
 @export var attack_count := 1
+## Segundo golpe, alternado com o primeiro a cada vez na fila (o Golem: socão e abalo).
+@export var second_attack: AttackData
 
 @export_group("Modelo")
 @export var model: ModelData
@@ -29,5 +31,8 @@ extends Resource
 @export var windup_animation: AnimationData
 ## O golpe, durante o tempo ativo.
 @export var attack_animation: AnimationData
+## Aviso e golpe do segundo golpe.
+@export var second_windup_animation: AnimationData
+@export var second_attack_animation: AnimationData
 @export var hurt_animation: AnimationData
 @export var death_animation: AnimationData

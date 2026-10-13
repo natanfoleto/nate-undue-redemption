@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="SpellData" format=3]
+
+[ext_resource type="Resource" path="res://data/attacks/fire_storm.tres" id="1_rmyio"]
+[ext_resource type="Script" path="res://combat/spell_data.gd" id="2_0s4r0"]
+
+[resource]
+script = ExtResource("2_0s4r0")
+name_key = &"SPELL_FIRE_STORM"
+delivery = 3
+attack = ExtResource("1_rmyio")
+effect = 3
+lasting = 4.0
+color = Color(0.9411765, 0.627451, 0.3764706, 1)

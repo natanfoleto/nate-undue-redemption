@@ -10,12 +10,12 @@ albedo_color = Color(1, 0.85, 0.35, 1)
 material = SubResource("StandardMaterial3D_8wjvb")
 size = Vector3(0.0625, 0.0625, 0.0625)
 
-[node name="ItemFound" type="Node3D" unique_id=1430592825]
+[node name="ItemFound" type="Node3D" unique_id=100350523]
 script = ExtResource("1_j12qr")
 rise = 0.8
 duration = 1.6
 
-[node name="Label3D" type="Label3D" parent="." unique_id=1586483884]
+[node name="Label3D" type="Label3D" parent="." unique_id=77504171]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.6, 0)
 pixel_size = 0.01
 billboard = 1
@@ -23,7 +23,7 @@ no_depth_test = true
 modulate = Color(1, 0.92, 0.6, 1)
 font_size = 48
 
-[node name="Sparkles" type="CPUParticles3D" parent="." unique_id=1129714341]
+[node name="Sparkles" type="CPUParticles3D" parent="." unique_id=156511763]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8, 0)
 emitting = false
 amount = 16

@@ -77,6 +77,14 @@ func reset() -> void:
 	_pending = -1
 
 
+## Tira tempo da recarga das magias equipadas (a Lâmina de pedra verde).
+func cut_cooldowns(seconds: float) -> void:
+	for slot in 2:
+		var id := GameState.equipped_element_id(slot)
+		if _cooldowns.has(id):
+			_cooldowns[id] = maxf(_cooldowns[id] - seconds, 0.0)
+
+
 func _cast_single(slot: int) -> void:
 	var element := GameState.equipped_element(slot)
 	var id := GameState.equipped_element_id(slot)
@@ -112,13 +120,36 @@ func _launch(spell: SpellData) -> void:
 		SpellData.Delivery.INSTANT:
 			var hit_list: Array[Node3D] = []
 			Strike.hit_area(spell.attack, _player, origin, direction, Hurtbox.Faction.ENEMY, hit_list, _build_hit.bind(spell, origin))
-			SpellEffects.wave(world, origin, direction, spell.attack.reach, spell.attack.width, spell.color, cast_animation.length, effect_look)
+			_show_instant(spell, world, origin, direction)
 		SpellData.Delivery.LASTING:
 			var area := SpellArea.new()
 			world.add_child(area)
 			area.global_position = origin + direction * spell.offset
 			area.start(spell, Hurtbox.Faction.ENEMY)
 			SpellEffects.cloud(area, spell.color, spell.attack.reach, effect_look)
+		SpellData.Delivery.AROUND:
+			var around := SpellArea.new()
+			world.add_child(around)
+			around.global_position = origin
+			var pushes := spell.attack.knockback != AttackData.Knockback.NONE or spell.attack.damage_points > 0
+			around.start(spell, Hurtbox.Faction.ENEMY, _build_around_hit.bind(spell, around) if pushes else Callable(), _player)
+			SpellEffects.cloud(around, spell.color, spell.attack.reach, effect_look)
+			if spell.shield:
+				_player.raise_shield(around)
+	if spell.self_speed_bonus > 0.0:
+		_player.boost_speed(spell.self_speed_bonus, spell.self_duration)
+
+
+# O efeito de quem fere na hora: a onda na linha, o estouro no círculo em volta de Nate e no cone à frente.
+func _show_instant(spell: SpellData, world: Node, origin: Vector3, direction: Vector3) -> void:
+	var attack := spell.attack
+	match attack.shape:
+		AttackData.Shape.RECTANGLE:
+			SpellEffects.wave(world, origin, direction, attack.reach, attack.width, spell.color, cast_animation.length, effect_look)
+		AttackData.Shape.SECTOR:
+			SpellEffects.burst(world, origin + direction * attack.reach / 2.0, spell.color, attack.reach / 2.0, effect_look)
+		_:
+			SpellEffects.burst(world, origin, spell.color, attack.reach, effect_look)
 
 
 func _explode(where: Vector3, spell: SpellData) -> void:
@@ -128,10 +159,15 @@ func _explode(where: Vector3, spell: SpellData) -> void:
 	SpellEffects.burst(_player.get_parent(), center, spell.color, spell.explosion.reach, effect_look)
 
 
+# Quem entra na área em volta de Nate é empurrado para longe do centro dela.
+func _build_around_hit(receiver: Node3D, spell: SpellData, area: Node3D) -> Hit:
+	return _build_hit(receiver, spell, area.global_position)
+
+
 # O dano das magias segue a mesma fórmula dos golpes de Nate (03-regras); o empurrão sai do centro da magia.
 func _build_hit(receiver: Node3D, spell: SpellData, center: Vector3) -> Hit:
 	var attack := spell.explosion if spell.explosion else spell.attack
-	var hit := Damage.roll(attack.damage_points, 0.0, Balance.player.critical_chance, Balance.combat, _rng)
+	var hit := Damage.roll(attack.damage_points, _player.damage_bonus(), Balance.player.critical_chance, Balance.combat, _rng)
 	hit.attacker = _player
 	hit.knockback = attack.knockback
 	var away := receiver.global_position - center

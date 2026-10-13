@@ -44,6 +44,9 @@ var _armor: ArmorData
 var _armor_model: BlockModel
 var _flask_model: BlockModel
 var _cinematic := false
+var _boost_share := 0.0
+var _boost_left := 0.0
+var _shield: SpellArea
 
 @onready var health: Health = $Health
 @onready var status: StatusEffects = $StatusEffects
@@ -89,6 +92,7 @@ func _physics_process(delta: float) -> void:
 		return
 	_control_left = maxf(_control_left - delta, 0.0)
 	_hurt_invincible_left = maxf(_hurt_invincible_left - delta, 0.0)
+	_boost_left = maxf(_boost_left - delta, 0.0)
 	var in_control := _control_left == 0.0
 	var move := _ground_direction(Input.get_vector(&"move_left", &"move_right", &"move_up", &"move_down")) if in_control else Vector3.ZERO
 	if not is_rolling():
@@ -127,9 +131,31 @@ func max_hearts() -> int:
 	return Balance.player.max_hearts + GameState.upgrade_count(GameState.HEART_UPGRADE) + (_armor.extra_hearts if _armor else 0)
 
 
-## Velocidade de andar: a armadura pesada e a lentidão deixam Nate mais lento (11-balanceamento).
+## Bônus de dano (03-regras): a soma dos bônus em %, que hoje vêm só da armadura.
+func damage_bonus() -> float:
+	return _armor.damage_bonus if _armor else 0.0
+
+
+## Velocidade de andar: a armadura pesada e a lentidão deixam Nate mais lento, e a Rajada Veloz, mais rápido
+## (11-balanceamento).
 func move_speed() -> float:
-	return (_armor.move_speed if _armor else Balance.player.move_speed) * status.speed_share()
+	var boost := 1.0 + (_boost_share if _boost_left > 0.0 else 0.0)
+	return (_armor.move_speed if _armor else Balance.player.move_speed) * status.speed_share() * boost
+
+
+## Rajada Veloz: Nate fica mais rápido por um tempo.
+func boost_speed(share: float, duration: float) -> void:
+	_boost_share = share
+	_boost_left = duration
+
+
+## Escudo de Areia: enquanto a areia gira, o próximo golpe não tira coração.
+func raise_shield(area: SpellArea) -> void:
+	_shield = area
+
+
+func has_shield() -> bool:
+	return is_instance_valid(_shield)
 
 
 # Puxando o tiro ou bebendo do frasco, Nate anda mais devagar (04-player).
@@ -215,14 +241,19 @@ func assisted_aim() -> Vector3:
 func take_hit(hit: Hit) -> void:
 	if _dead or is_invincible():
 		return
-	health.damage(hit.hearts)
+	if has_shield():
+		# O escudo segura o golpe inteiro e se desfaz; Nate ainda é empurrado e pisca.
+		_shield.finish()
+		_shield = null
+	else:
+		health.damage(hit.hearts)
+		if hit.effect >= 0 and not health.is_dead():
+			status.apply(hit.effect, hit.effect_duration, status_duration_share())
 	_melee.cancel()
 	_ranged.cancel()
 	if health.is_dead():
 		_die()
 		return
-	if hit.effect >= 0:
-		status.apply(hit.effect, hit.effect_duration, status_duration_share())
 	_push(hit.direction, Balance.combat.knockback_distance(hit.knockback))
 	_control_left = Balance.player.hit_stun
 	_hurt_invincible_left = Balance.player.hit_invincibility
@@ -433,6 +464,9 @@ func _respawn() -> void:
 	_dead = false
 	status.clear()
 	spells.reset()
+	_boost_left = 0.0
+	if has_shield():
+		_shield.finish()
 	health.reset(max_hearts())
 	flask.refill()
 	_aim_arrow.visible = true
@@ -471,13 +505,24 @@ func awaken_amulet() -> void:
 
 
 func _pulse_amulet(weight: float) -> void:
-	_model.set_part_glow(&"muiraquita", light_color, amulet_glow + weight * awaken_glow)
+	for part in [&"muiraquita", &"muiraquita_chip"]:
+		_model.set_part_glow(part, light_color, amulet_glow + weight * awaken_glow)
 	_light.light_energy = weight * awaken_light
 
 
-# O muiraquitã acorda no primeiro pergaminho e passa a brilhar (05-itens).
+## A lasca se encaixando (05-itens): o muiraquitã fica inteiro, com o mesmo pulso de luz do despertar.
+func fit_seal() -> void:
+	_show_amulet()
+	await awaken_amulet()
+
+
+# O muiraquitã acorda no primeiro pergaminho e passa a brilhar; com o Selo, a lasca aparece no lugar (05-itens).
 func _show_amulet() -> void:
-	_model.set_part_glow(&"muiraquita", light_color, amulet_glow if GameState.has_light() else 0.0)
+	var chip := _model.get_part(&"muiraquita_chip")
+	if chip:
+		chip.visible = GameState.has_seal()
+	for part in [&"muiraquita", &"muiraquita_chip"]:
+		_model.set_part_glow(part, light_color, amulet_glow if GameState.has_light() else 0.0)
 
 
 # A Luz Ancestral acende sozinha nas áreas escuras (05-itens).

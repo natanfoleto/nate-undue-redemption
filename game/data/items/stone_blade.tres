@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="MeleeWeaponData" format=3]
+
+[ext_resource type="Texture2D" path="res://assets/ui/items/stone_blade.png" id="1_lg824"]
+[ext_resource type="Resource" path="res://data/models/stone_blade.tres" id="2_p7jwh"]
+[ext_resource type="Script" path="res://combat/melee_weapon_data.gd" id="3_157to"]
+
+[resource]
+script = ExtResource("3_157to")
+damage = 7
+damage_third = 11
+time_per_hit = 0.35
+reach = 1.25
+angle = 90.0
+cooldown_cut = 0.5
+name_key = &"ITEM_STONE_BLADE"
+icon = ExtResource("1_lg824")
+marajoara = true
+model = ExtResource("2_p7jwh")

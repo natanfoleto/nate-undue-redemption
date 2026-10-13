@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="ArenaWave" format=3]
+
+[ext_resource type="PackedScene" path="res://mobs/golem.tscn" id="1_n8yft"]
+[ext_resource type="Script" path="res://world/arena_wave.gd" id="2_qjr16"]
+
+[resource]
+script = ExtResource("2_qjr16")
+mobs = Array[PackedScene]([ExtResource("1_n8yft")])

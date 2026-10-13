@@ -1,0 +1,79 @@
+[gd_resource type="Resource" script_class="ModelData" format=3]
+
+[ext_resource type="Script" path="res://tools/models/box_data.gd" id="1_ei2fp"]
+[ext_resource type="Script" path="res://tools/models/model_data.gd" id="2_u5rll"]
+
+[sub_resource type="Resource" id="Resource_41rn6"]
+resource_name = "shaft_0"
+script = ExtResource("1_ei2fp")
+name = &"shaft_0"
+size = Vector3i(1, 12, 1)
+position = Vector3(-4.5, 0, -4.5)
+color = Color(0.5529412, 0.5647059, 0.5882353, 1)
+
+[sub_resource type="Resource" id="Resource_0ss3u"]
+resource_name = "tip_0"
+script = ExtResource("1_ei2fp")
+name = &"tip_0"
+size = Vector3i(1, 2, 1)
+position = Vector3(-4.5, 12, -4.5)
+texture_offset = Vector2i(0, 13)
+color = Color(0.78431374, 0.8, 0.8235294, 1)
+
+[sub_resource type="Resource" id="Resource_x4c5v"]
+resource_name = "shaft_1"
+script = ExtResource("1_ei2fp")
+name = &"shaft_1"
+size = Vector3i(1, 12, 1)
+position = Vector3(3.5, 0, -4.5)
+texture_offset = Vector2i(0, 16)
+color = Color(0.5529412, 0.5647059, 0.5882353, 1)
+
+[sub_resource type="Resource" id="Resource_yppcn"]
+resource_name = "tip_1"
+script = ExtResource("1_ei2fp")
+name = &"tip_1"
+size = Vector3i(1, 2, 1)
+position = Vector3(3.5, 12, -4.5)
+texture_offset = Vector2i(0, 29)
+color = Color(0.78431374, 0.8, 0.8235294, 1)
+
+[sub_resource type="Resource" id="Resource_uda7n"]
+resource_name = "shaft_2"
+script = ExtResource("1_ei2fp")
+name = &"shaft_2"
+size = Vector3i(1, 12, 1)
+position = Vector3(-4.5, 0, 3.5)
+texture_offset = Vector2i(0, 32)
+color = Color(0.5529412, 0.5647059, 0.5882353, 1)
+
+[sub_resource type="Resource" id="Resource_dqwqq"]
+resource_name = "tip_2"
+script = ExtResource("1_ei2fp")
+name = &"tip_2"
+size = Vector3i(1, 2, 1)
+position = Vector3(-4.5, 12, 3.5)
+texture_offset = Vector2i(0, 45)
+color = Color(0.78431374, 0.8, 0.8235294, 1)
+
+[sub_resource type="Resource" id="Resource_hb640"]
+resource_name = "shaft_3"
+script = ExtResource("1_ei2fp")
+name = &"shaft_3"
+size = Vector3i(1, 12, 1)
+position = Vector3(3.5, 0, 3.5)
+texture_offset = Vector2i(0, 48)
+color = Color(0.5529412, 0.5647059, 0.5882353, 1)
+
+[sub_resource type="Resource" id="Resource_bo62q"]
+resource_name = "tip_3"
+script = ExtResource("1_ei2fp")
+name = &"tip_3"
+size = Vector3i(1, 2, 1)
+position = Vector3(3.5, 12, 3.5)
+texture_offset = Vector2i(0, 61)
+color = Color(0.78431374, 0.8, 0.8235294, 1)
+
+[resource]
+script = ExtResource("2_u5rll")
+boxes = Array[ExtResource("1_ei2fp")]([SubResource("Resource_41rn6"), SubResource("Resource_0ss3u"), SubResource("Resource_x4c5v"), SubResource("Resource_yppcn"), SubResource("Resource_uda7n"), SubResource("Resource_dqwqq"), SubResource("Resource_hb640"), SubResource("Resource_bo62q")])

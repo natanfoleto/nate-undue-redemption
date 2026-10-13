@@ -84,12 +84,13 @@ func _fire() -> void:
 	_player.get_parent().add_child(projectile)
 	projectile.global_position = _player.shot_origin()
 	(projectile.get_node(^"BlockModel") as BlockModel).model = weapon.projectile_model
+	projectile.pierce = weapon.pierce
 	projectile.launch(attack, direction, Hurtbox.Faction.ENEMY, _build_hit.bind(attack, direction))
 	_player.set_ranged_glow(false)
 
 
 func _build_hit(_receiver: Node3D, attack: AttackData, direction: Vector3) -> Hit:
-	var hit := Damage.roll(attack.damage_points, 0.0, Balance.player.critical_chance, Balance.combat, _rng)
+	var hit := Damage.roll(attack.damage_points, _player.damage_bonus(), Balance.player.critical_chance, Balance.combat, _rng)
 	hit.attacker = _player
 	hit.knockback = attack.knockback
 	hit.direction = direction

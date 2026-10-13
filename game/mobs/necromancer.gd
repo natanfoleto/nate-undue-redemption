@@ -8,6 +8,7 @@ const PROJECTILE := preload("res://combat/projectile.tscn")
 var _summons: Array[Mob] = []
 var _summon_cooldown_left := 0.0
 var _summoning := false
+var _summon_recovery := false
 var _summon_spots: Array[Vector3] = []
 var _summon_markers: Array[WarningMarker] = []
 var _fired := false
@@ -96,6 +97,7 @@ func _finish_summon() -> void:
 		get_parent().add_child(skeleton)
 		_summons.append(skeleton)
 	_summoning = false
+	_summon_recovery = true
 	_summon_cooldown_left = necromancer.summon.cooldown
 	_enter(State.RECOVERY, necromancer.summon.recovery)
 	_animator.play(data.idle_animation)
@@ -112,10 +114,16 @@ func _active() -> void:
 		_end_strike()
 
 
+# A recuperação da invocação não mexe na recarga da praga.
 func _recovery() -> void:
-	if _summoning:
+	if not _summon_recovery:
+		super._recovery()
 		return
-	super._recovery()
+	velocity = Vector3.ZERO
+	if _state_left <= 0.0:
+		_summon_recovery = false
+		_end_attack()
+		_enter(State.CHASE, 0.0)
 
 
 func _fire_plague() -> void:
@@ -154,6 +162,7 @@ func _plague_hit(_receiver: Node3D, direction: Vector3) -> Hit:
 func _end_attack() -> void:
 	super._end_attack()
 	_fired = false
+	_summon_recovery = false
 	if _summoning:
 		_summoning = false
 		_summon_cooldown_left = 0.0

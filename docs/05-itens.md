@@ -24,7 +24,7 @@ Sistema de itens e as fichas de equipamento, muiraquitã e magias, frasco e melh
 
 ### Inventário e troca
 - Nate guarda tudo o que acha.
-- O item achado entra sozinho no espaço dele quando o espaço está vazio; os outros ficam no inventário, para trocar. Provisório, até ser conferido jogando.
+- O item achado entra sozinho no espaço dele quando o espaço está vazio; os outros ficam no inventário, para trocar.
 - Equipamento e elementos são trocados a qualquer momento, no inventário, com o jogo pausado.
 - Tela do inventário: `09-interface.md`.
 

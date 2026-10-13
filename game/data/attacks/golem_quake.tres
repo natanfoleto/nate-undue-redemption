@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="AttackData" format=3]
+
+[ext_resource type="Script" path="res://combat/attack_data.gd" id="1_d3i01"]
+
+[resource]
+script = ExtResource("1_d3i01")
+damage_hearts = 2
+reach = 3.0
+windup = 1.4
+active = 0.2
+recovery = 1.0
+cooldown = 3.0
+knockback = 1
+warning = 1
+effect = 1
+effect_duration = 2.0

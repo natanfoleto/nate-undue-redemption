@@ -1,0 +1,20 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://world/objects/mural.gd" id="1_7ybvf"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mp7b5"]
+emission_enabled = true
+emission = Color(0.25, 0.22, 0.18, 1)
+texture_filter = 0
+
+[sub_resource type="QuadMesh" id="QuadMesh_nsbyf"]
+size = Vector2(2, 1.25)
+
+[node name="Mural" type="StaticBody3D" unique_id=231417527]
+script = ExtResource("1_7ybvf")
+reach = 2.0
+
+[node name="Picture" type="MeshInstance3D" parent="." unique_id=177355360]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 1.4, 0)
+material_override = SubResource("StandardMaterial3D_mp7b5")
+mesh = SubResource("QuadMesh_nsbyf")

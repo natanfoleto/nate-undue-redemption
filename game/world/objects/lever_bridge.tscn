@@ -1,0 +1,15 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://world/objects/lever_bridge.gd" id="1_kwpoo"]
+[ext_resource type="Script" path="res://tools/models/block_model.gd" id="2_7rvp2"]
+[ext_resource type="Resource" path="res://data/models/bridge.tres" id="3_stab0"]
+
+[node name="LeverBridge" type="Node3D" unique_id=817384068]
+script = ExtResource("1_kwpoo")
+raised_angle = 90.0
+lower_time = 1.2
+barrier_height = 2.0
+
+[node name="Deck" type="Node3D" parent="." unique_id=985928770]
+script = ExtResource("2_7rvp2")
+model = ExtResource("3_stab0")

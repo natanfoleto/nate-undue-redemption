@@ -1,0 +1,52 @@
+[gd_resource type="Resource" script_class="ModelData" format=3]
+
+[ext_resource type="Script" path="res://tools/models/box_data.gd" id="1_bs5rn"]
+[ext_resource type="Script" path="res://tools/models/model_data.gd" id="2_u7tmo"]
+
+[sub_resource type="Resource" id="Resource_a8lya"]
+resource_name = "plate"
+script = ExtResource("1_bs5rn")
+name = &"plate"
+size = Vector3i(16, 1, 16)
+position = Vector3(-8, 0, -8)
+color = Color(0.41568628, 0.39215687, 0.36078432, 1)
+
+[sub_resource type="Resource" id="Resource_e5q0o"]
+resource_name = "mark_1"
+script = ExtResource("1_bs5rn")
+name = &"mark_1"
+size = Vector3i(2, 1, 2)
+position = Vector3(-6, 0.5, -6)
+texture_offset = Vector2i(0, 17)
+color = Color(0.70980394, 0.3372549, 0.18431373, 1)
+
+[sub_resource type="Resource" id="Resource_f4agl"]
+resource_name = "mark_2"
+script = ExtResource("1_bs5rn")
+name = &"mark_2"
+size = Vector3i(2, 1, 2)
+position = Vector3(4, 0.5, -6)
+texture_offset = Vector2i(0, 20)
+color = Color(0.70980394, 0.3372549, 0.18431373, 1)
+
+[sub_resource type="Resource" id="Resource_67w0c"]
+resource_name = "mark_3"
+script = ExtResource("1_bs5rn")
+name = &"mark_3"
+size = Vector3i(2, 1, 2)
+position = Vector3(-6, 0.5, 4)
+texture_offset = Vector2i(0, 23)
+color = Color(0.70980394, 0.3372549, 0.18431373, 1)
+
+[sub_resource type="Resource" id="Resource_ghjxn"]
+resource_name = "mark_4"
+script = ExtResource("1_bs5rn")
+name = &"mark_4"
+size = Vector3i(2, 1, 2)
+position = Vector3(4, 0.5, 4)
+texture_offset = Vector2i(0, 26)
+color = Color(0.70980394, 0.3372549, 0.18431373, 1)
+
+[resource]
+script = ExtResource("2_u7tmo")
+boxes = Array[ExtResource("1_bs5rn")]([SubResource("Resource_a8lya"), SubResource("Resource_e5q0o"), SubResource("Resource_f4agl"), SubResource("Resource_67w0c"), SubResource("Resource_ghjxn")])

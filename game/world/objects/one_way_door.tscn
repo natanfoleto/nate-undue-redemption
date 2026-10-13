@@ -8,20 +8,20 @@
 [sub_resource type="BoxShape3D" id="BoxShape3D_fylwd"]
 size = Vector3(2, 2.5, 0.3)
 
-[node name="OneWayDoor" type="StaticBody3D" unique_id=614349897]
+[node name="OneWayDoor" type="StaticBody3D" unique_id=381977213]
 script = ExtResource("1_df635")
 drop = 2.3
 move_time = 0.8
 reach = 1.5
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1580304701]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=258680827]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.25, 0)
 shape = SubResource("BoxShape3D_fylwd")
 
-[node name="Frame" type="Node3D" parent="." unique_id=857530131]
+[node name="Frame" type="Node3D" parent="." unique_id=899890621]
 script = ExtResource("2_8wb76")
 model = ExtResource("3_h1i1d")
 
-[node name="Slab" type="Node3D" parent="." unique_id=335850915]
+[node name="Slab" type="Node3D" parent="." unique_id=645259992]
 script = ExtResource("2_8wb76")
 model = ExtResource("4_4wkeo")

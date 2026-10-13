@@ -33,6 +33,9 @@ enum Warning { POSE, GROUND_MARK }
 @export var warning := Warning.POSE
 ## Quanto quem golpeia avança durante o tempo ativo, em blocos (o salto do lobo).
 @export var lunge := 0.0
+## Efeito de status em quem é acertado (-1 para nenhum) e por quanto tempo, em segundos (o abalo do Golem).
+@export var effect := -1
+@export var effect_duration := 0.0
 
 
 ## Duração do golpe inteiro, em segundos.

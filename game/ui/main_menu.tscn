@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://ui/main_menu.gd" id="1_t7e0r"]
 
-[node name="MainMenu" type="Control" unique_id=562320895]
+[node name="MainMenu" type="Control" unique_id=873312131]
 layout_mode = 3
 anchors_preset = 0
 anchor_right = 1.0
@@ -10,44 +10,44 @@ anchor_bottom = 1.0
 script = ExtResource("1_t7e0r")
 first_area = "res://world/areas/mine.tscn"
 
-[node name="Background" type="ColorRect" parent="." unique_id=1724264050]
+[node name="Background" type="ColorRect" parent="." unique_id=1801117524]
 layout_mode = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
 color = Color(0.08235294, 0.08627451, 0.101960786, 1)
 
-[node name="Center" type="CenterContainer" parent="." unique_id=290047137]
+[node name="Center" type="CenterContainer" parent="." unique_id=637092983]
 layout_mode = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
 
-[node name="Column" type="VBoxContainer" parent="Center" unique_id=535795935]
+[node name="Column" type="VBoxContainer" parent="Center" unique_id=328542167]
 layout_mode = 2
 theme_override_constants/separation = 16
 
-[node name="Title" type="Label" parent="Center/Column" unique_id=276137639]
+[node name="Title" type="Label" parent="Center/Column" unique_id=1747096739]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_font_sizes/font_size = 48
 horizontal_alignment = 1
 
-[node name="Continue" type="Button" parent="Center/Column" unique_id=697844160]
+[node name="Continue" type="Button" parent="Center/Column" unique_id=1663439416]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(320, 0)
 layout_mode = 2
 theme_override_font_sizes/font_size = 28
 
-[node name="NewGame" type="Button" parent="Center/Column" unique_id=1548417312]
+[node name="NewGame" type="Button" parent="Center/Column" unique_id=1639646921]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(320, 0)
 layout_mode = 2
 theme_override_font_sizes/font_size = 28
 
-[node name="Quit" type="Button" parent="Center/Column" unique_id=120706518]
+[node name="Quit" type="Button" parent="Center/Column" unique_id=207240334]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(320, 0)
 layout_mode = 2
 theme_override_font_sizes/font_size = 28
 
-[node name="ConfirmNewGame" type="ConfirmationDialog" parent="." unique_id=1796332270]
+[node name="ConfirmNewGame" type="ConfirmationDialog" parent="." unique_id=647351963]
 unique_name_in_owner = true
