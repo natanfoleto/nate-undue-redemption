@@ -1,24 +1,17 @@
 [gd_resource type="Resource" script_class="ModelData" format=3]
 
-[ext_resource type="Script" path="res://tools/models/box_data.gd" id="1_66v6b"]
-[ext_resource type="Script" path="res://tools/models/model_data.gd" id="2_hfur5"]
+[ext_resource type="Script" path="res://tools/models/box_data.gd" id="1_hfur5"]
+[ext_resource type="Script" path="res://tools/models/model_data.gd" id="2_lwyak"]
+[ext_resource type="Texture2D" path="res://assets/textures/items/seal.png" id="3_7jdsl"]
 
-[sub_resource type="Resource" id="Resource_lwyak"]
+[sub_resource type="Resource" id="Resource_jts67"]
 resource_name = "chip"
-script = ExtResource("1_66v6b")
+script = ExtResource("1_hfur5")
 name = &"chip"
 size = Vector3i(3, 3, 2)
 position = Vector3(-1.5, -1.5, -1)
-color = Color(0.24705882, 0.68235296, 0.5411765, 1)
-
-[sub_resource type="Resource" id="Resource_7jdsl"]
-resource_name = "shine"
-script = ExtResource("1_66v6b")
-name = &"shine"
-position = Vector3(-1.5, 0.5, -1.5)
-texture_offset = Vector2i(0, 5)
-color = Color(0.56078434, 0.8784314, 0.7529412, 1)
 
 [resource]
-script = ExtResource("2_hfur5")
-boxes = Array[ExtResource("1_66v6b")]([SubResource("Resource_lwyak"), SubResource("Resource_7jdsl")])
+script = ExtResource("2_lwyak")
+texture = ExtResource("3_7jdsl")
+boxes = Array[ExtResource("1_hfur5")]([SubResource("Resource_jts67")])

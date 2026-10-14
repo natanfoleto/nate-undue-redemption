@@ -1,16 +1,17 @@
 [gd_resource type="Resource" script_class="ModelData" format=3]
 
-[ext_resource type="Script" path="res://tools/models/box_data.gd" id="1_cklj3"]
-[ext_resource type="Script" path="res://tools/models/model_data.gd" id="2_48ni3"]
+[ext_resource type="Script" path="res://tools/models/box_data.gd" id="1_48ni3"]
+[ext_resource type="Script" path="res://tools/models/model_data.gd" id="2_spapb"]
+[ext_resource type="Texture2D" path="res://assets/textures/items/stone.png" id="3_sc6ls"]
 
-[sub_resource type="Resource" id="Resource_spapb"]
+[sub_resource type="Resource" id="Resource_srxel"]
 resource_name = "stone"
-script = ExtResource("1_cklj3")
+script = ExtResource("1_48ni3")
 name = &"stone"
 size = Vector3i(3, 3, 3)
 position = Vector3(-1.5, -1.5, -1.5)
-color = Color(0.5411765, 0.56078434, 0.5882353, 1)
 
 [resource]
-script = ExtResource("2_48ni3")
-boxes = Array[ExtResource("1_cklj3")]([SubResource("Resource_spapb")])
+script = ExtResource("2_spapb")
+texture = ExtResource("3_sc6ls")
+boxes = Array[ExtResource("1_48ni3")]([SubResource("Resource_srxel")])

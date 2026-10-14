@@ -1,52 +1,72 @@
 [gd_resource type="Resource" script_class="ModelData" format=3]
 
-[ext_resource type="Script" path="res://tools/models/box_data.gd" id="1_ruqr8"]
-[ext_resource type="Script" path="res://tools/models/model_data.gd" id="2_1o62b"]
+[ext_resource type="Script" path="res://tools/models/box_data.gd" id="1_1o62b"]
+[ext_resource type="Script" path="res://tools/models/model_data.gd" id="2_2fbr7"]
+[ext_resource type="Texture2D" path="res://assets/textures/items/spear.png" id="3_3pcai"]
 
-[sub_resource type="Resource" id="Resource_2fbr7"]
+[sub_resource type="Resource" id="Resource_38p0n"]
 resource_name = "shaft"
-script = ExtResource("1_ruqr8")
+script = ExtResource("1_1o62b")
 name = &"shaft"
 size = Vector3i(1, 1, 22)
 position = Vector3(-0.5, -0.5, -18)
-color = Color(0.6039216, 0.41568628, 0.22745098, 1)
-
-[sub_resource type="Resource" id="Resource_3pcai"]
-resource_name = "head"
-script = ExtResource("1_ruqr8")
-name = &"head"
-size = Vector3i(3, 1, 5)
-position = Vector3(-1.5, -0.5, -23)
-texture_offset = Vector2i(0, 23)
-color = Color(0.56078434, 0.654902, 0.6039216, 1)
-
-[sub_resource type="Resource" id="Resource_38p0n"]
-resource_name = "jade"
-script = ExtResource("1_ruqr8")
-name = &"jade"
-size = Vector3i(2, 2, 1)
-position = Vector3(-1, -1, -17)
-texture_offset = Vector2i(0, 29)
-color = Color(0.24705882, 0.68235296, 0.5411765, 1)
 
 [sub_resource type="Resource" id="Resource_fdyts"]
 resource_name = "band_red"
-script = ExtResource("1_ruqr8")
+script = ExtResource("1_1o62b")
 name = &"band_red"
 size = Vector3i(2, 2, 1)
 position = Vector3(-1, -1, -6)
-texture_offset = Vector2i(0, 32)
-color = Color(0.70980394, 0.2509804, 0.16470589, 1)
+texture_offset = Vector2i(46, 0)
 
 [sub_resource type="Resource" id="Resource_4ctee"]
 resource_name = "band_black"
-script = ExtResource("1_ruqr8")
+script = ExtResource("1_1o62b")
 name = &"band_black"
 size = Vector3i(2, 2, 1)
 position = Vector3(-1, -1, -9)
-texture_offset = Vector2i(0, 35)
-color = Color(0.11372549, 0.101960786, 0.09019608, 1)
+texture_offset = Vector2i(52, 0)
+
+[sub_resource type="Resource" id="Resource_u8v4o"]
+resource_name = "jade"
+script = ExtResource("1_1o62b")
+name = &"jade"
+size = Vector3i(2, 2, 1)
+position = Vector3(-1, -1, -18)
+texture_offset = Vector2i(58, 0)
+
+[sub_resource type="Resource" id="Resource_ymwn6"]
+resource_name = "head_base"
+script = ExtResource("1_1o62b")
+name = &"head_base"
+size = Vector3i(2, 1, 2)
+position = Vector3(-1, -0.5, -20)
+texture_offset = Vector2i(0, 23)
+
+[sub_resource type="Resource" id="Resource_7dwqb"]
+resource_name = "head_mid"
+script = ExtResource("1_1o62b")
+name = &"head_mid"
+size = Vector3i(3, 1, 3)
+position = Vector3(-1.5, -0.5, -23)
+texture_offset = Vector2i(8, 23)
+
+[sub_resource type="Resource" id="Resource_7o5ln"]
+resource_name = "head_tip"
+script = ExtResource("1_1o62b")
+name = &"head_tip"
+size = Vector3i(2, 1, 1)
+position = Vector3(-1, -0.5, -24)
+texture_offset = Vector2i(20, 23)
+
+[sub_resource type="Resource" id="Resource_jtasp"]
+resource_name = "head_point"
+script = ExtResource("1_1o62b")
+name = &"head_point"
+position = Vector3(-0.5, -0.5, -25)
+texture_offset = Vector2i(26, 23)
 
 [resource]
-script = ExtResource("2_1o62b")
-boxes = Array[ExtResource("1_ruqr8")]([SubResource("Resource_2fbr7"), SubResource("Resource_3pcai"), SubResource("Resource_38p0n"), SubResource("Resource_fdyts"), SubResource("Resource_4ctee")])
+script = ExtResource("2_2fbr7")
+texture = ExtResource("3_3pcai")
+boxes = Array[ExtResource("1_1o62b")]([SubResource("Resource_38p0n"), SubResource("Resource_fdyts"), SubResource("Resource_4ctee"), SubResource("Resource_u8v4o"), SubResource("Resource_ymwn6"), SubResource("Resource_7dwqb"), SubResource("Resource_7o5ln"), SubResource("Resource_jtasp")])

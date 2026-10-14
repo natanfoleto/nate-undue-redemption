@@ -124,7 +124,7 @@ Depois de jogar o cenário cheio, o responsável pediu (2026-10-13), em 18 ponto
 - **Esquiva:** dash com rastro, com a mesma distância, tempo, recarga e invencibilidade do rolamento.
 - **Relevo:** rampas do próprio chão na natureza; escadas só nas construções.
 
-Feitos em 2026-10-13, com os documentos atualizados. O visual de Nate: o responsável não quis mudar a roupa, e sim o boneco; escolheu voltar às caixas retas em todos os personagens e criaturas (desfazendo as quinas arredondadas do primeiro teste), e Nate ganhou proporções e pele pintada como as skins do Minecraft, com a mesma roupa.
+Feitos em 2026-10-13, com os documentos atualizados. O visual de Nate: o responsável não quis mudar a roupa, e sim o boneco; escolheu voltar às caixas retas em todos os personagens e criaturas (desfazendo as quinas arredondadas do primeiro teste), e Nate ganhou proporções e pele pintada como as skins do Minecraft, com a mesma roupa. Depois, a pedido dele, os mobs ganharam pele pintada do mesmo jeito, e os itens foram refeitos com forma e pele: a espada do esqueleto com pomo, guarda e ponta; as armas de Nate, os projéteis, as armaduras, a poção, as melhorias e o pergaminho.
 
 ## Etapas 7 e 8, em linhas gerais
 - **7. Grande Prisão:** antessala com a memória 4, a Boiúna com as duas fases e os pilares, a cena da troca de fase, o final, os créditos, o resumo e o pós-jogo.

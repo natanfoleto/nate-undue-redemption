@@ -1,34 +1,49 @@
 [gd_resource type="Resource" script_class="ModelData" format=3]
 
-[ext_resource type="Script" path="res://tools/models/box_data.gd" id="1_sookx"]
-[ext_resource type="Script" path="res://tools/models/model_data.gd" id="2_nl5m2"]
+[ext_resource type="Script" path="res://tools/models/box_data.gd" id="1_nl5m2"]
+[ext_resource type="Script" path="res://tools/models/model_data.gd" id="2_f61fv"]
+[ext_resource type="Texture2D" path="res://assets/textures/items/arrow.png" id="3_semfv"]
 
-[sub_resource type="Resource" id="Resource_f61fv"]
+[sub_resource type="Resource" id="Resource_5ws7u"]
 resource_name = "shaft"
-script = ExtResource("1_sookx")
+script = ExtResource("1_nl5m2")
 name = &"shaft"
 size = Vector3i(1, 1, 10)
 position = Vector3(-0.5, -0.5, -5)
-color = Color(0.65882355, 0.47843137, 0.25882354, 1)
 
-[sub_resource type="Resource" id="Resource_semfv"]
-resource_name = "head"
-script = ExtResource("1_sookx")
-name = &"head"
-size = Vector3i(2, 1, 2)
-position = Vector3(-1, -0.5, -7)
-texture_offset = Vector2i(0, 11)
-color = Color(0.56078434, 0.654902, 0.6039216, 1)
+[sub_resource type="Resource" id="Resource_onrqn"]
+resource_name = "head_base"
+script = ExtResource("1_nl5m2")
+name = &"head_base"
+size = Vector3i(3, 1, 1)
+position = Vector3(-1.5, -0.5, -6)
+texture_offset = Vector2i(22, 0)
 
-[sub_resource type="Resource" id="Resource_5ws7u"]
-resource_name = "fletch"
-script = ExtResource("1_sookx")
-name = &"fletch"
-size = Vector3i(2, 2, 1)
-position = Vector3(-1, -1, 5)
-texture_offset = Vector2i(0, 14)
-color = Color(0.70980394, 0.2509804, 0.16470589, 1)
+[sub_resource type="Resource" id="Resource_rfryn"]
+resource_name = "head_point"
+script = ExtResource("1_nl5m2")
+name = &"head_point"
+size = Vector3i(1, 1, 2)
+position = Vector3(-0.5, -0.5, -8)
+texture_offset = Vector2i(30, 0)
+
+[sub_resource type="Resource" id="Resource_8du7c"]
+resource_name = "fletch_v"
+script = ExtResource("1_nl5m2")
+name = &"fletch_v"
+size = Vector3i(1, 3, 3)
+position = Vector3(-0.5, -1.5, 3)
+texture_offset = Vector2i(36, 0)
+
+[sub_resource type="Resource" id="Resource_l2dhj"]
+resource_name = "fletch_h"
+script = ExtResource("1_nl5m2")
+name = &"fletch_h"
+size = Vector3i(3, 1, 3)
+position = Vector3(-1.5, -0.5, 3)
+texture_offset = Vector2i(44, 0)
 
 [resource]
-script = ExtResource("2_nl5m2")
-boxes = Array[ExtResource("1_sookx")]([SubResource("Resource_f61fv"), SubResource("Resource_semfv"), SubResource("Resource_5ws7u")])
+script = ExtResource("2_f61fv")
+texture = ExtResource("3_semfv")
+boxes = Array[ExtResource("1_nl5m2")]([SubResource("Resource_5ws7u"), SubResource("Resource_onrqn"), SubResource("Resource_rfryn"), SubResource("Resource_8du7c"), SubResource("Resource_l2dhj")])

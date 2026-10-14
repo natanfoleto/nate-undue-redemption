@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" path="res://tools/models/box_data.gd" id="1_uqghn"]
 [ext_resource type="Script" path="res://tools/models/model_data.gd" id="2_2rc5x"]
+[ext_resource type="Texture2D" path="res://assets/textures/wolf_alpha_skin.png" id="3_2rc5x"]
 
 [sub_resource type="Resource" id="Resource_ofqd7"]
 resource_name = "root"
@@ -30,7 +31,7 @@ parent = &"body"
 size = Vector3i(6, 6, 5)
 position = Vector3(-3, 8, -11)
 pivot = Vector3(0, 11, -6)
-texture_offset = Vector2i(0, 18)
+texture_offset = Vector2i(36, 0)
 color = Color(0.10980392, 0.11372549, 0.1254902, 1)
 
 [sub_resource type="Resource" id="Resource_pri01"]
@@ -41,7 +42,7 @@ parent = &"head"
 size = Vector3i(4, 3, 3)
 position = Vector3(-2, 8, -14)
 pivot = Vector3(0, 11, -6)
-texture_offset = Vector2i(22, 18)
+texture_offset = Vector2i(58, 0)
 color = Color(0.16470589, 0.17254902, 0.1882353, 1)
 
 [sub_resource type="Resource" id="Resource_t0h6t"]
@@ -52,7 +53,7 @@ parent = &"head"
 size = Vector3i(2, 2, 1)
 position = Vector3(1, 14, -8)
 pivot = Vector3(0, 11, -6)
-texture_offset = Vector2i(36, 0)
+texture_offset = Vector2i(72, 0)
 color = Color(0.10980392, 0.11372549, 0.1254902, 1)
 
 [sub_resource type="Resource" id="Resource_7ga7y"]
@@ -63,7 +64,7 @@ parent = &"head"
 size = Vector3i(2, 2, 1)
 position = Vector3(-3, 14, -8)
 pivot = Vector3(0, 11, -6)
-texture_offset = Vector2i(42, 0)
+texture_offset = Vector2i(78, 0)
 color = Color(0.10980392, 0.11372549, 0.1254902, 1)
 
 [sub_resource type="Resource" id="Resource_e2lne"]
@@ -73,7 +74,7 @@ name = &"eye_r"
 parent = &"head"
 position = Vector3(1, 12, -12)
 pivot = Vector3(0, 11, -6)
-texture_offset = Vector2i(36, 4)
+texture_offset = Vector2i(84, 0)
 color = Color(1, 0.7607843, 0.22745098, 1)
 
 [sub_resource type="Resource" id="Resource_vrmeh"]
@@ -83,7 +84,7 @@ name = &"eye_l"
 parent = &"head"
 position = Vector3(-2, 12, -12)
 pivot = Vector3(0, 11, -6)
-texture_offset = Vector2i(40, 4)
+texture_offset = Vector2i(88, 0)
 color = Color(1, 0.7607843, 0.22745098, 1)
 
 [sub_resource type="Resource" id="Resource_bgfw8"]
@@ -94,7 +95,7 @@ parent = &"root"
 size = Vector3i(2, 6, 2)
 position = Vector3(1, 0, -5)
 pivot = Vector3(2, 6, -4)
-texture_offset = Vector2i(36, 8)
+texture_offset = Vector2i(92, 0)
 color = Color(0.16470589, 0.17254902, 0.1882353, 1)
 
 [sub_resource type="Resource" id="Resource_wt5r7"]
@@ -105,7 +106,7 @@ parent = &"root"
 size = Vector3i(2, 6, 2)
 position = Vector3(-3, 0, -5)
 pivot = Vector3(-2, 6, -4)
-texture_offset = Vector2i(44, 8)
+texture_offset = Vector2i(100, 0)
 color = Color(0.16470589, 0.17254902, 0.1882353, 1)
 
 [sub_resource type="Resource" id="Resource_hsgp6"]
@@ -116,7 +117,7 @@ parent = &"root"
 size = Vector3i(2, 6, 2)
 position = Vector3(1, 0, 3)
 pivot = Vector3(2, 6, 4)
-texture_offset = Vector2i(36, 16)
+texture_offset = Vector2i(108, 0)
 color = Color(0.16470589, 0.17254902, 0.1882353, 1)
 
 [sub_resource type="Resource" id="Resource_mo6n0"]
@@ -127,7 +128,7 @@ parent = &"root"
 size = Vector3i(2, 6, 2)
 position = Vector3(-3, 0, 3)
 pivot = Vector3(-2, 6, 4)
-texture_offset = Vector2i(44, 16)
+texture_offset = Vector2i(116, 0)
 color = Color(0.16470589, 0.17254902, 0.1882353, 1)
 
 [sub_resource type="Resource" id="Resource_v5axv"]
@@ -138,9 +139,10 @@ parent = &"body"
 size = Vector3i(2, 2, 6)
 position = Vector3(-1, 9, 6)
 pivot = Vector3(0, 10, 6)
-texture_offset = Vector2i(0, 30)
+texture_offset = Vector2i(0, 18)
 color = Color(0.16470589, 0.17254902, 0.1882353, 1)
 
 [resource]
 script = ExtResource("2_2rc5x")
+texture = ExtResource("3_2rc5x")
 boxes = Array[ExtResource("1_uqghn")]([SubResource("Resource_ofqd7"), SubResource("Resource_frb1s"), SubResource("Resource_3gvkq"), SubResource("Resource_pri01"), SubResource("Resource_t0h6t"), SubResource("Resource_7ga7y"), SubResource("Resource_e2lne"), SubResource("Resource_vrmeh"), SubResource("Resource_bgfw8"), SubResource("Resource_wt5r7"), SubResource("Resource_hsgp6"), SubResource("Resource_mo6n0"), SubResource("Resource_v5axv")])

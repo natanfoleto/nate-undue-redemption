@@ -1,52 +1,49 @@
 [gd_resource type="Resource" script_class="ModelData" format=3]
 
-[ext_resource type="Script" path="res://tools/models/box_data.gd" id="1_ypsum"]
-[ext_resource type="Script" path="res://tools/models/model_data.gd" id="2_muloj"]
-
-[sub_resource type="Resource" id="Resource_lv6ki"]
-resource_name = "handle"
-script = ExtResource("1_ypsum")
-name = &"handle"
-size = Vector3i(1, 1, 10)
-position = Vector3(-0.5, -0.5, -8)
-color = Color(0.41960785, 0.25882354, 0.14901961, 1)
-
-[sub_resource type="Resource" id="Resource_0r4e2"]
-resource_name = "head"
-script = ExtResource("1_ypsum")
-name = &"head"
-size = Vector3i(4, 4, 7)
-position = Vector3(-2, -2, -15)
-texture_offset = Vector2i(0, 11)
-color = Color(0.41960785, 0.25882354, 0.14901961, 1)
+[ext_resource type="Script" path="res://tools/models/box_data.gd" id="1_muloj"]
+[ext_resource type="Script" path="res://tools/models/model_data.gd" id="2_lv6ki"]
+[ext_resource type="Texture2D" path="res://assets/textures/items/tacape.png" id="3_0r4e2"]
 
 [sub_resource type="Resource" id="Resource_1oola"]
-resource_name = "band_red"
-script = ExtResource("1_ypsum")
-name = &"band_red"
-size = Vector3i(5, 5, 1)
-position = Vector3(-2.5, -2.5, -10)
-texture_offset = Vector2i(0, 22)
-color = Color(0.70980394, 0.2509804, 0.16470589, 1)
+resource_name = "handle"
+script = ExtResource("1_muloj")
+name = &"handle"
+size = Vector3i(1, 2, 9)
+position = Vector3(-0.5, -1, -7)
 
 [sub_resource type="Resource" id="Resource_5bs7j"]
-resource_name = "band_black"
-script = ExtResource("1_ypsum")
-name = &"band_black"
-size = Vector3i(5, 5, 1)
-position = Vector3(-2.5, -2.5, -12.5)
-texture_offset = Vector2i(0, 28)
-color = Color(0.11372549, 0.101960786, 0.09019608, 1)
+resource_name = "head_1"
+script = ExtResource("1_muloj")
+name = &"head_1"
+size = Vector3i(2, 3, 3)
+position = Vector3(-1, -1.5, -10)
+texture_offset = Vector2i(20, 0)
 
 [sub_resource type="Resource" id="Resource_dcwih"]
-resource_name = "band_cream"
-script = ExtResource("1_ypsum")
-name = &"band_cream"
-size = Vector3i(5, 5, 1)
-position = Vector3(-2.5, -2.5, -14.5)
-texture_offset = Vector2i(0, 34)
-color = Color(0.9098039, 0.8509804, 0.6901961, 1)
+resource_name = "head_2"
+script = ExtResource("1_muloj")
+name = &"head_2"
+size = Vector3i(2, 4, 3)
+position = Vector3(-1, -2, -13)
+texture_offset = Vector2i(30, 0)
+
+[sub_resource type="Resource" id="Resource_xvi1d"]
+resource_name = "head_3"
+script = ExtResource("1_muloj")
+name = &"head_3"
+size = Vector3i(2, 5, 4)
+position = Vector3(-1, -2.5, -17)
+texture_offset = Vector2i(40, 0)
+
+[sub_resource type="Resource" id="Resource_b1kfy"]
+resource_name = "head_end"
+script = ExtResource("1_muloj")
+name = &"head_end"
+size = Vector3i(2, 3, 1)
+position = Vector3(-1, -1.5, -18)
+texture_offset = Vector2i(52, 0)
 
 [resource]
-script = ExtResource("2_muloj")
-boxes = Array[ExtResource("1_ypsum")]([SubResource("Resource_lv6ki"), SubResource("Resource_0r4e2"), SubResource("Resource_1oola"), SubResource("Resource_5bs7j"), SubResource("Resource_dcwih")])
+script = ExtResource("2_lv6ki")
+texture = ExtResource("3_0r4e2")
+boxes = Array[ExtResource("1_muloj")]([SubResource("Resource_1oola"), SubResource("Resource_5bs7j"), SubResource("Resource_dcwih"), SubResource("Resource_xvi1d"), SubResource("Resource_b1kfy")])

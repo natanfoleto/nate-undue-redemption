@@ -37,7 +37,7 @@ Motor, arquitetura, estrutura de pastas e convenções de código.
 - Cada caixa tem um nome e pode se prender a outra, girando junto com ela. Uma caixa de tamanho zero só agrupa partes.
 - A textura segue o molde de caixa do Minecraft: cada caixa ocupa uma região que começa num canto dado. Sem textura, cada caixa usa a própria cor (caixa lisa).
 - Chanfro por modelo (`bevel`, em pixels): corta as quinas de todas as caixas, sem passar de um terço do lado menor de cada uma. Hoje todos os modelos usam 0 (caixas retas, como no Minecraft).
-- A pele de um modelo segue o molde de caixa das skins do Minecraft (`ModelData.texture`); a de Nate fica em `assets/textures/nate_skin.png` e sai de `tools/models/make_nate_skin.gd`, que também refaz o modelo.
+- A pele de um modelo segue o molde de caixa das skins do Minecraft (`ModelData.texture`). As peles saem de geradores em `tools/models/`: `make_nate_skin.gd` (a de Nate, que também refaz o modelo), `make_mob_skins.gd` (as dos mobs, sem mudar as caixas) e `make_item_models.gd` (os modelos dos itens, com as caixas e a pele). Cada um roda em três passos: as texturas, a importação e os modelos (`-- --model`).
 - Uma pose cita só as partes que saem do repouso. Entre duas poses, o movimento é suave ou constante, e a troca de animação mistura as duas no tempo de mistura da nova.
 - Os scripts ficam em `game/tools/models/` (o montador `BlockModel`, o tocador `ModelAnimator` e a prévia `model_preview.tscn`); os dados, em `game/data/models/` e `game/data/animations/`.
 

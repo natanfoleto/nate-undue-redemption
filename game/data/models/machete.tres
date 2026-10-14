@@ -1,25 +1,56 @@
 [gd_resource type="Resource" script_class="ModelData" format=3]
 
-[ext_resource type="Script" path="res://tools/models/box_data.gd" id="1_5vtrt"]
-[ext_resource type="Script" path="res://tools/models/model_data.gd" id="2_p4vna"]
+[ext_resource type="Script" path="res://tools/models/box_data.gd" id="1_p4vna"]
+[ext_resource type="Script" path="res://tools/models/model_data.gd" id="2_tk6ek"]
+[ext_resource type="Texture2D" path="res://assets/textures/items/machete.png" id="3_p5foc"]
 
-[sub_resource type="Resource" id="Resource_tk6ek"]
-resource_name = "handle"
-script = ExtResource("1_5vtrt")
-name = &"handle"
-size = Vector3i(1, 1, 3)
-position = Vector3(-0.5, -0.5, -2)
-color = Color(0.41960785, 0.2901961, 0.16862746, 1)
+[sub_resource type="Resource" id="Resource_nkg3j"]
+resource_name = "grip"
+script = ExtResource("1_p4vna")
+name = &"grip"
+size = Vector3i(1, 2, 5)
+position = Vector3(-0.5, -1, -2)
 
-[sub_resource type="Resource" id="Resource_p5foc"]
+[sub_resource type="Resource" id="Resource_bv8ub"]
+resource_name = "pommel"
+script = ExtResource("1_p4vna")
+name = &"pommel"
+size = Vector3i(1, 2, 1)
+position = Vector3(-0.5, -1, 3)
+texture_offset = Vector2i(12, 0)
+
+[sub_resource type="Resource" id="Resource_igkgw"]
+resource_name = "bolster"
+script = ExtResource("1_p4vna")
+name = &"bolster"
+size = Vector3i(2, 3, 1)
+position = Vector3(-1, -1.5, -3)
+texture_offset = Vector2i(16, 0)
+
+[sub_resource type="Resource" id="Resource_2ws0e"]
 resource_name = "blade"
-script = ExtResource("1_5vtrt")
+script = ExtResource("1_p4vna")
 name = &"blade"
-size = Vector3i(1, 2, 9)
-position = Vector3(-0.5, -1, -11)
-texture_offset = Vector2i(0, 4)
-color = Color(0.72156864, 0.7372549, 0.7607843, 1)
+size = Vector3i(1, 3, 10)
+position = Vector3(-0.5, -1, -13)
+texture_offset = Vector2i(22, 0)
+
+[sub_resource type="Resource" id="Resource_0psjh"]
+resource_name = "tip"
+script = ExtResource("1_p4vna")
+name = &"tip"
+size = Vector3i(1, 2, 2)
+position = Vector3(-0.5, 0, -15)
+texture_offset = Vector2i(44, 0)
+
+[sub_resource type="Resource" id="Resource_1w56v"]
+resource_name = "point"
+script = ExtResource("1_p4vna")
+name = &"point"
+position = Vector3(-0.5, 1, -16)
+texture_offset = Vector2i(50, 0)
 
 [resource]
-script = ExtResource("2_p4vna")
-boxes = Array[ExtResource("1_5vtrt")]([SubResource("Resource_tk6ek"), SubResource("Resource_p5foc")])
+script = ExtResource("2_tk6ek")
+texture = ExtResource("3_p5foc")
+boxes = Array[ExtResource("1_p4vna")]([SubResource("Resource_nkg3j"), SubResource("Resource_bv8ub"), SubResource("Resource_igkgw"), SubResource("Resource_2ws0e"), SubResource("Resource_0psjh"), SubResource("Resource_1w56v")])

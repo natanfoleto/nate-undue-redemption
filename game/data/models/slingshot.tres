@@ -1,43 +1,49 @@
 [gd_resource type="Resource" script_class="ModelData" format=3]
 
-[ext_resource type="Script" path="res://tools/models/box_data.gd" id="1_pp38s"]
-[ext_resource type="Script" path="res://tools/models/model_data.gd" id="2_1qkne"]
+[ext_resource type="Script" path="res://tools/models/box_data.gd" id="1_1qkne"]
+[ext_resource type="Script" path="res://tools/models/model_data.gd" id="2_aml5f"]
+[ext_resource type="Texture2D" path="res://assets/textures/items/slingshot.png" id="3_gkfmw"]
 
-[sub_resource type="Resource" id="Resource_aml5f"]
+[sub_resource type="Resource" id="Resource_nws2s"]
 resource_name = "handle"
-script = ExtResource("1_pp38s")
+script = ExtResource("1_1qkne")
 name = &"handle"
-size = Vector3i(1, 1, 3)
+size = Vector3i(1, 1, 4)
 position = Vector3(-0.5, -0.5, -3)
-color = Color(0.41960785, 0.2901961, 0.16862746, 1)
 
-[sub_resource type="Resource" id="Resource_gkfmw"]
+[sub_resource type="Resource" id="Resource_vn01n"]
 resource_name = "fork"
-script = ExtResource("1_pp38s")
+script = ExtResource("1_1qkne")
 name = &"fork"
 size = Vector3i(5, 1, 1)
 position = Vector3(-2.5, -0.5, -4)
-texture_offset = Vector2i(0, 4)
-color = Color(0.41960785, 0.2901961, 0.16862746, 1)
+texture_offset = Vector2i(10, 0)
 
-[sub_resource type="Resource" id="Resource_nws2s"]
+[sub_resource type="Resource" id="Resource_ti30c"]
 resource_name = "prong_r"
-script = ExtResource("1_pp38s")
+script = ExtResource("1_1qkne")
 name = &"prong_r"
-size = Vector3i(1, 1, 2)
-position = Vector3(1.5, -0.5, -6)
-texture_offset = Vector2i(0, 8)
-color = Color(0.41960785, 0.2901961, 0.16862746, 1)
+size = Vector3i(1, 1, 3)
+position = Vector3(1.5, -0.5, -7)
+texture_offset = Vector2i(22, 0)
 
-[sub_resource type="Resource" id="Resource_vn01n"]
+[sub_resource type="Resource" id="Resource_mbjhe"]
 resource_name = "prong_l"
-script = ExtResource("1_pp38s")
+script = ExtResource("1_1qkne")
 name = &"prong_l"
-size = Vector3i(1, 1, 2)
-position = Vector3(-2.5, -0.5, -6)
-texture_offset = Vector2i(8, 8)
-color = Color(0.41960785, 0.2901961, 0.16862746, 1)
+size = Vector3i(1, 1, 3)
+position = Vector3(-2.5, -0.5, -7)
+texture_offset = Vector2i(30, 0)
+
+[sub_resource type="Resource" id="Resource_xamx8"]
+resource_name = "band"
+script = ExtResource("1_1qkne")
+name = &"band"
+size = Vector3i(3, 1, 1)
+position = Vector3(-1.5, -0.5, -7)
+texture_offset = Vector2i(38, 0)
 
 [resource]
-script = ExtResource("2_1qkne")
-boxes = Array[ExtResource("1_pp38s")]([SubResource("Resource_aml5f"), SubResource("Resource_gkfmw"), SubResource("Resource_nws2s"), SubResource("Resource_vn01n")])
+script = ExtResource("2_aml5f")
+texture = ExtResource("3_gkfmw")
+boxes = Array[ExtResource("1_1qkne")]([SubResource("Resource_nws2s"), SubResource("Resource_vn01n"), SubResource("Resource_ti30c"), SubResource("Resource_mbjhe"), SubResource("Resource_xamx8")])

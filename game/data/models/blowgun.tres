@@ -1,43 +1,41 @@
 [gd_resource type="Resource" script_class="ModelData" format=3]
 
-[ext_resource type="Script" path="res://tools/models/box_data.gd" id="1_ocir0"]
-[ext_resource type="Script" path="res://tools/models/model_data.gd" id="2_1ge7x"]
+[ext_resource type="Script" path="res://tools/models/box_data.gd" id="1_1ge7x"]
+[ext_resource type="Script" path="res://tools/models/model_data.gd" id="2_wwhal"]
+[ext_resource type="Texture2D" path="res://assets/textures/items/blowgun.png" id="3_rjlee"]
 
-[sub_resource type="Resource" id="Resource_wwhal"]
+[sub_resource type="Resource" id="Resource_edftn"]
 resource_name = "tube"
-script = ExtResource("1_ocir0")
+script = ExtResource("1_1ge7x")
 name = &"tube"
 size = Vector3i(2, 2, 20)
 position = Vector3(-1, -1, -16)
-color = Color(0.3529412, 0.22745098, 0.13333334, 1)
 
-[sub_resource type="Resource" id="Resource_rjlee"]
+[sub_resource type="Resource" id="Resource_1uq4r"]
 resource_name = "ring_red"
-script = ExtResource("1_ocir0")
+script = ExtResource("1_1ge7x")
 name = &"ring_red"
 size = Vector3i(3, 3, 1)
 position = Vector3(-1.5, -1.5, -12)
-texture_offset = Vector2i(0, 22)
-color = Color(0.70980394, 0.2509804, 0.16470589, 1)
+texture_offset = Vector2i(44, 0)
 
-[sub_resource type="Resource" id="Resource_edftn"]
+[sub_resource type="Resource" id="Resource_gw642"]
 resource_name = "ring_cream"
-script = ExtResource("1_ocir0")
+script = ExtResource("1_1ge7x")
 name = &"ring_cream"
 size = Vector3i(3, 3, 1)
 position = Vector3(-1.5, -1.5, -6)
-texture_offset = Vector2i(0, 26)
-color = Color(0.9098039, 0.8509804, 0.6901961, 1)
+texture_offset = Vector2i(52, 0)
 
-[sub_resource type="Resource" id="Resource_1uq4r"]
+[sub_resource type="Resource" id="Resource_kcb2i"]
 resource_name = "mouth"
-script = ExtResource("1_ocir0")
+script = ExtResource("1_1ge7x")
 name = &"mouth"
 size = Vector3i(3, 3, 1)
 position = Vector3(-1.5, -1.5, 3)
-texture_offset = Vector2i(0, 30)
-color = Color(0.11372549, 0.101960786, 0.09019608, 1)
+texture_offset = Vector2i(0, 22)
 
 [resource]
-script = ExtResource("2_1ge7x")
-boxes = Array[ExtResource("1_ocir0")]([SubResource("Resource_wwhal"), SubResource("Resource_rjlee"), SubResource("Resource_edftn"), SubResource("Resource_1uq4r")])
+script = ExtResource("2_wwhal")
+texture = ExtResource("3_rjlee")
+boxes = Array[ExtResource("1_1ge7x")]([SubResource("Resource_edftn"), SubResource("Resource_1uq4r"), SubResource("Resource_gw642"), SubResource("Resource_kcb2i")])

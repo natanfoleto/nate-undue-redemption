@@ -1,34 +1,48 @@
 [gd_resource type="Resource" script_class="ModelData" format=3]
 
-[ext_resource type="Script" path="res://tools/models/box_data.gd" id="1_esc7j"]
-[ext_resource type="Script" path="res://tools/models/model_data.gd" id="2_kyncr"]
-
-[sub_resource type="Resource" id="Resource_o5hd8"]
-resource_name = "handle"
-script = ExtResource("1_esc7j")
-name = &"handle"
-size = Vector3i(1, 1, 3)
-position = Vector3(-0.5, -0.5, -2)
-color = Color(0.41960785, 0.25882354, 0.14901961, 1)
-
-[sub_resource type="Resource" id="Resource_5soe6"]
-resource_name = "guard"
-script = ExtResource("1_esc7j")
-name = &"guard"
-size = Vector3i(3, 1, 1)
-position = Vector3(-1.5, -0.5, -3)
-texture_offset = Vector2i(0, 4)
-color = Color(0.11372549, 0.101960786, 0.09019608, 1)
+[ext_resource type="Script" path="res://tools/models/box_data.gd" id="1_kyncr"]
+[ext_resource type="Script" path="res://tools/models/model_data.gd" id="2_o5hd8"]
+[ext_resource type="Texture2D" path="res://assets/textures/items/stone_blade.png" id="3_5soe6"]
 
 [sub_resource type="Resource" id="Resource_vqxx3"]
+resource_name = "grip"
+script = ExtResource("1_kyncr")
+name = &"grip"
+size = Vector3i(1, 2, 4)
+position = Vector3(-0.5, -1, -2)
+
+[sub_resource type="Resource" id="Resource_geatb"]
+resource_name = "binding"
+script = ExtResource("1_kyncr")
+name = &"binding"
+size = Vector3i(2, 3, 1)
+position = Vector3(-1, -1.5, -3)
+texture_offset = Vector2i(10, 0)
+
+[sub_resource type="Resource" id="Resource_1oise"]
 resource_name = "blade"
-script = ExtResource("1_esc7j")
+script = ExtResource("1_kyncr")
 name = &"blade"
-size = Vector3i(1, 2, 8)
+size = Vector3i(1, 3, 6)
+position = Vector3(-0.5, -1.5, -9)
+texture_offset = Vector2i(16, 0)
+
+[sub_resource type="Resource" id="Resource_j8ap0"]
+resource_name = "tip"
+script = ExtResource("1_kyncr")
+name = &"tip"
+size = Vector3i(1, 2, 2)
 position = Vector3(-0.5, -1, -11)
-texture_offset = Vector2i(0, 6)
-color = Color(0.24705882, 0.68235296, 0.5411765, 1)
+texture_offset = Vector2i(30, 0)
+
+[sub_resource type="Resource" id="Resource_uk1ai"]
+resource_name = "point"
+script = ExtResource("1_kyncr")
+name = &"point"
+position = Vector3(-0.5, -0.5, -12)
+texture_offset = Vector2i(36, 0)
 
 [resource]
-script = ExtResource("2_kyncr")
-boxes = Array[ExtResource("1_esc7j")]([SubResource("Resource_o5hd8"), SubResource("Resource_5soe6"), SubResource("Resource_vqxx3")])
+script = ExtResource("2_o5hd8")
+texture = ExtResource("3_5soe6")
+boxes = Array[ExtResource("1_kyncr")]([SubResource("Resource_vqxx3"), SubResource("Resource_geatb"), SubResource("Resource_1oise"), SubResource("Resource_j8ap0"), SubResource("Resource_uk1ai")])
