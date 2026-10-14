@@ -28,7 +28,7 @@ Tempo de quem joga pela primeira vez, contando as mortes (`02-core-loop.md`).
 | Valor | Número |
 |-------|--------|
 | Vida inicial | 100 |
-| Vida máxima | 240 com as 7 melhorias (+20 cada); até 280 com armadura de +40 |
+| Vida máxima | 260 com as 8 melhorias (+20 cada); até 320 com a Couraça (+60) |
 | Velocidade | 5 blocos/s |
 | Aceleração e frenagem | 0,1 s |
 | Ajuda de mira | cone de 45° (22,5° para cada lado da mira), até 4 blocos |
@@ -39,12 +39,12 @@ Tempo de quem joga pela primeira vez, contando as mortes (`02-core-loop.md`).
 | Golpe do dash | no fim do dash, o 3º golpe do combo (15 pontos com a espada, recuo longo), sem preparação; um por dash; o aperto de atacar vale até 0,15 s antes do Espaço |
 | Sem controle ao levar golpe | 0,2 s |
 | Invencível depois de levar golpe | 1 s |
-| Poção de vida | 3 cargas (até 7 com melhorias); 40 de vida por carga; 0,6 s segurando o botão para beber (soltar antes não gasta a carga) |
+| Poção de vida | 3 cargas (até 8 com melhorias); 40 de vida por carga; 0,6 s segurando o botão para beber (soltar antes não gasta a carga) |
 | Vida que volta fora de combate | 2 por segundo, sem inimigo atrás de Nate e depois de 8 s sem levar dano (de vazia a cheia, 50 s com 100 de vida) |
 | Espaços da barra fixa e da mochila | 5 e 10 |
 | Chance de crítico | 5% |
 | Elementos equipados | 2 |
-| Raio da Luz Ancestral | 6 blocos, com força 4 (a luz de Nate clareia o chão escurecido em volta dele) |
+| Raio da Luz Ancestral | 6 blocos, com força 1,5; acende e apaga em 0,4 s ao entrar e sair da área escura (a luz de Nate mostra a cor de verdade do chão em volta dele) |
 
 ## Câmera
 O enquadramento é provisório até o rascunho do mapa (`12-tecnico.md`).
@@ -87,10 +87,8 @@ As duas dão cerca de 23 pontos de dano por segundo; o que muda é o jeito de ba
 ## Armaduras
 | Peça | Vida | Velocidade de Nate | Efeito |
 |------|------|--------------------|--------|
-| Colete de minerador | +20 | 5 blocos/s | — |
-| Armadura de minerador | +40 | 4,5 blocos/s | — |
-| Manto de fibras marajoara | +20 | 5 blocos/s | o dash recarrega em 0,35 s, em vez de 0,5 s |
-| Couraça de cerâmica marajoara | +40 | 4,5 blocos/s | 15% a mais de dano |
+| Manto de fibras marajoara (veloz) | +20 | 5,5 blocos/s | o dash recarrega em 0,35 s, em vez de 0,5 s |
+| Couraça de cerâmica marajoara (tank) | +60 | 4,5 blocos/s | — |
 
 ## Magias
 As combinações gastam as duas recargas. Onde a combinação causa dano, ele é maior que a soma das duas magias separadas.
@@ -213,9 +211,11 @@ Números que a produção precisou para o jogo funcionar e que os outros documen
 | Pergaminho aberto | abre em 0,5 s e fecha com qualquer botão depois de 1 s | `ui/scroll_view.tscn` |
 | Muiraquitã acordando | pulso de luz de 1,6 s | `player/player.tscn` |
 | Memórias | 7 s (memória 1) e 8 s (memória 2); dá para pular depois de 1,5 s; a tela clareia em 0,6 s | `world/memories/` |
-| Áreas escuras | o chão, as paredes e as plantas da área escurecem 90%, seguindo o desenho dela e passando 1 bloco além, com a borda esfumada (8 pontos por bloco, de 0,2 a 0,8 da máscara misturada) e ondulada por um ruído de 1,5 bloco (força 0,35); Nate, os mobs, os objetos e os itens não escurecem | `world/areas/`, `world/dark_area.gd` |
-| Água e lava | as faixas de 8 quadros passam a 1,5 quadro por segundo na água e no rio, e a 2 na lava | `tools/areas/make_blocks.gd` |
-| Efeitos das magias | estouro de 24 cubinhos em 0,5 s, com clarão do dobro do raio; onda a 55% de opacidade; nuvem de 40 cubinhos; praga saindo a 1,2 bloco do chão | `data/effects/spell_effects.tres`, `data/mobs/` |
+| Áreas escuras | o chão, as paredes e as plantas da área perdem 90% da luz do ambiente (sem mudar de cor), seguindo o desenho dela e passando 1 bloco além, com a borda esfumada (8 pontos por bloco, de 0,2 a 0,8 da máscara misturada) e ondulada por um ruído de 1,5 bloco (força 0,35); Nate, os mobs, os objetos e os itens não escurecem | `world/areas/`, `world/dark_area.gd` |
+| Água e lava | as faixas de 8 quadros passam a 1,5 quadro por segundo na água, no rio e nos riachos do Bosque, e a 2 na lava | `tools/areas/make_blocks.gd` |
+| Visual das magias | cada magia com as camadas dela (quantidade, tempo, velocidade, gravidade e tamanho dos cubinhos) em `data/effects/spells/`; tremor da tela de 0,04 a 0,28 bloco, por 0,15 a 0,45 s; pausa curta no acerto de 0,04 a 0,07 s, com o jogo a 5% da velocidade; o sinal de combinação pronta cresce 1,4 vez e volta em 0,4 s | `data/effects/`, `ui/hud.tscn` |
+| Bosque vivo | manchas de musgo de 5 blocos (escuro abaixo de 0,36 do ruído, claro acima de 0,64) e de cascalho de 4 (acima de 0,68); plantas em 55% do chão junto às paredes, 45% nas margens dos riachos, 30% nas manchas de musgo (15% delas, flores de luz) e 6% da terra; flores de luz em 5% do musgo; nos morros, arbustos em 10%, plantas em 25%, troncos caídos de 3 blocos em 1,2% e ruínas de 1 a 3 blocos em 1%; cipós em 50% da borda dos chapéus dos cogumelos (30% descem 2 blocos); riachos de 1 bloco de largura, às vezes 2; esporos a cada 9 blocos, 8 por grupo, numa caixa de 8 × 1,5 × 8 blocos, vivendo 5 s | `tools/areas/make_forest.gd`, `data/effects/forest_spores.tres` |
+| Poeira do cenário e praga | estouro de 24 cubinhos em 0,5 s, com clarão do dobro do raio (as paredes rachadas e o elevador); praga saindo a 1,2 bloco do chão | `data/effects/spell_effects.tres`, `data/mobs/` |
 | Luz do Bosque | luz ambiente a 0,85; luz dos cogumelos gigantes com alcance de 8 blocos e dos fungos pequenos com 6 | `world/areas/forest.tscn` |
 | Área que começa a luta das arenas do Bosque | 15 × 13 blocos, dentro dos 18 × 16 do chão | `world/areas/forest.tscn` |
 | Golem | círculo em que recebe golpes de raio 0,6 bloco; o Ancião é 1,2 vez maior; espera a vez de atacar a 4 blocos | `data/mobs/`, `mobs/golem.tscn` |
@@ -241,7 +241,7 @@ Números que a produção precisou para o jogo funcionar e que os outros documen
 | Mapa de navegação dos mobs | raio de 0,5 bloco, altura de 1,75 bloco, sobe até 0,25 bloco de degrau e rampas até 46° | `world/areas/*_navigation.res` |
 | Aviso de item achado no HUD | 3 s na tela, sumindo em 0,6 s | `ui/hotbar.tscn` |
 | Barra fixa e inventário | espaços de 64 px, ícones ampliados 3 vezes, moldura de 2 px (a da mão, dourada, de 4 px), ícone apagado do espaço vazio a 22%; o nome do item da mão fica 1,2 s e some em 0,5 s; a barra some em 0,6 s quando Nate morre; a caixa do inventário fica no centro, com tamanho fixo; Nate no inventário com 160 × 208 px, numa câmera ortogonal que mostra 2,6 blocos de altura, inclinada 12°, virando até 35° para o lado do mouse; os detalhes numa caixinha de 360 px de largura, a 10 px do espaço apontado e a 8 px da borda da tela | `data/ui/cell_look.tres`, `ui/hotbar.tscn`, `ui/inventory.tscn` |
-| Tamanho da interface | desenhada para 1152 × 648 px e ampliada junto com a janela (mais larga, a tela ganha espaço dos lados); o 3D e as memórias são desenhados com os pixels da janela | `project.godot`, `ui/memory_scene.gd` |
+| Tamanho da interface | desenhada para 1152 × 648 px e ampliada junto com a janela, a 75% (escala 0,75; mais larga, a tela ganha espaço dos lados); o 3D e as memórias são desenhados com os pixels da janela | `project.godot`, `ui/memory_scene.gd` |
 | Barra de vida de Nate | 2 px por ponto de vida (200 px com 100), 22 px de altura; a vida perdida fica clara 0,4 s e some a 60 pontos por segundo; laranja com 30% da vida ou menos; brilho no alto de 20% da altura | `ui/hud.tscn` |
 | Rastro do dash e poeira | uma cópia de Nate a cada 0,05 s, que some em 0,25 s; 10 cubos de poeira de 0,12 bloco (de 0,6 a 1,2 vez), que saem para trás e um pouco para cima a 1 até 2,5 blocos/s, abertos em 50°, caem a 4 blocos/s² e duram 0,45 s | `player/player.tscn`, `player/dash_dust.tscn` |
 | Som | música a −10 dB e som de fundo a −14 dB, trocando em 2 s (some até −60 dB e volta); avisos de golpe 2 dB acima, e a música abaixa enquanto eles tocam (compressor de razão 6, a partir de −24 dB); passos a cada 1,6 bloco; os sons do mundo tocam no volume cheio até 8 blocos de Nate e somem a 28; até 24 sons do mundo e 6 da tela ao mesmo tempo (som do mundo a mais de 28 blocos nem toca, e um novo pega a primeira voz livre); um som de menu por quadro; o volume e o tom de cada som ficam no banco (as lanças do chão, a −10 dB, porque são muitas) | `data/audio/audio_rules.tres`, `data/audio/sounds.tres`, `default_bus_layout.tres` |

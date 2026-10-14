@@ -1,0 +1,88 @@
+[gd_resource type="Resource" script_class="SpellLook" format=3]
+
+[ext_resource type="Script" path="res://world/effects/particle_layer.gd" id="1_6jacx"]
+[ext_resource type="Script" path="res://world/effects/spell_look.gd" id="2_kdc16"]
+
+[sub_resource type="Resource" id="Resource_ae287"]
+script = ExtResource("1_6jacx")
+color_start = Color(0.62, 0.46, 0.29, 1)
+color_end = Color(0.62, 0.46, 0.29, 0)
+amount = 18
+lifetime = 0.45
+shape = 2
+shape_size = Vector3(0.6, 0.05, 0.8)
+lift = 0.1
+spread = 10.0
+speed = Vector2(1, 2)
+radial = 2.0
+damping = 1.0
+size_pixels = Vector2(2, 3)
+glows = true
+
+[sub_resource type="Resource" id="Resource_7drbs"]
+script = ExtResource("1_6jacx")
+color_start = Color(0.74, 0.64, 0.5, 1)
+color_end = Color(0.74, 0.64, 0.5, 0)
+amount = 10
+lifetime = 0.6
+shape = 1
+shape_size = Vector3(0.4, 0, 0)
+lift = 1.1
+spread = 30.0
+speed = Vector2(1.5, 3)
+gravity = -2.0
+size_pixels = Vector2(1, 2)
+glows = true
+
+[sub_resource type="Resource" id="Resource_tey7m"]
+script = ExtResource("1_6jacx")
+color_start = Color(0.62, 0.46, 0.29, 1)
+color_end = Color(0.4, 0.28, 0.18, 0.6)
+amount = 34
+lifetime = 0.95
+shape = 2
+shape_size = Vector3(0.6, 0.1, 0.7)
+lift = 0.1
+spread = 22.0
+speed = Vector2(4.5, 7.5)
+gravity = -20.0
+size_pixels = Vector2(4, 7)
+
+[sub_resource type="Resource" id="Resource_sh1l7"]
+script = ExtResource("1_6jacx")
+color_start = Color(0.74, 0.64, 0.5, 0.8)
+color_end = Color(0.74, 0.64, 0.5, 0)
+amount = 46
+lifetime = 0.8
+shape = 2
+shape_size = Vector3(0.25, 0.05, 0)
+lift = 0.15
+spread = 40.0
+speed = Vector2(0.5, 1)
+radial = 9.0
+damping = 4.0
+size_pixels = Vector2(4, 7)
+
+[sub_resource type="Resource" id="Resource_11ucn"]
+script = ExtResource("1_6jacx")
+color_start = Color(0.4, 0.28, 0.18, 1)
+color_end = Color(0.4, 0.28, 0.18, 1)
+amount = 30
+lifetime = 0.7
+shape = 1
+shape_size = Vector3(0.6, 0, 0)
+lift = 0.2
+spread = 45.0
+speed = Vector2(2, 4)
+gravity = -14.0
+size_pixels = Vector2(1, 2)
+
+[resource]
+script = ExtResource("2_kdc16")
+cast = Array[ExtResource("1_6jacx")]([SubResource("Resource_ae287"), SubResource("Resource_7drbs")])
+impact = Array[ExtResource("1_6jacx")]([SubResource("Resource_tey7m"), SubResource("Resource_sh1l7"), SubResource("Resource_11ucn")])
+mark_color = Color(0.12, 0.09, 0.06, 0.5)
+mark_time = 2.5
+shake = 0.28
+shake_time = 0.4
+hit_stop = 0.07

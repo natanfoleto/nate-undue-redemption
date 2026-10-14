@@ -1,9 +1,10 @@
 class_name DarkArea
 extends Node3D
 ## Área escura (08-mapa): sem a Luz Ancestral, Nate para na borda; com ela, a luz do muiraquitã ilumina em volta dele
-## (05-itens). A escuridão é do próprio lugar: um decalque escurece o chão, as paredes e as plantas da área, com a
-## borda esfumada e ondulada, e a luz de Nate clareia o que estiver perto dele. Os personagens, os objetos e os itens
-## (camada de desenho 2, a dos modelos de blocos) não escurecem.
+## (05-itens). A escuridão é do próprio lugar: um decalque tira a luz do ambiente do chão, das paredes e das plantas da
+## área (a oclusão), com a borda esfumada e ondulada, sem mudar a cor deles. Por isso a luz de Nate mostra a cor de
+## verdade do que estiver perto dele, como uma tocha, e atrás dele o escuro volta. Os personagens, os objetos e os
+## itens (camada de desenho 2, a dos modelos de blocos) não escurecem.
 
 ## Retângulo da área no chão, centrado no nó, em blocos.
 @export var area_size := Vector2.ZERO
@@ -12,7 +13,7 @@ extends Node3D
 ## Os blocos escuros (um ponto por bloco, branco no escuro), com a margem em volta; e a margem, em blocos.
 @export var mask: Texture2D
 @export var margin := 0.0
-## Quanto o lugar escurece, de 0 a 1.
+## Quanto da luz do ambiente o lugar perde, de 0 a 1.
 @export var darkness := 0.0
 ## Pontos por bloco na borda da escuridão, e o tamanho (em blocos) e a força da ondulação dela.
 @export var edge_resolution := 1
@@ -35,9 +36,11 @@ func _ready() -> void:
 	decal.size = Vector3(area_size.x + margin * 2.0, depth, area_size.y + margin * 2.0)
 	# Do meio bloco abaixo do chão até o alto das paredes: pega o chão, as paredes e as plantas.
 	decal.position.y = depth / 2.0 - 0.5
+	# A cor fica como está (sem mistura); a transparência da borda só diz onde a oclusão vale.
 	decal.texture_albedo = _edge_texture()
-	decal.modulate = Color(0, 0, 0, darkness)
-	decal.albedo_mix = 1.0
+	decal.modulate = Color(1, 1, 1, darkness)
+	decal.albedo_mix = 0.0
+	decal.texture_orm = _occlusion_texture()
 	decal.normal_fade = 0.0
 	decal.upper_fade = 0.0
 	decal.lower_fade = 0.0
@@ -66,8 +69,15 @@ func _process(_delta: float) -> void:
 		_barrier.disabled = true
 
 
+# A oclusão da escuridão: nenhuma luz do ambiente (vermelho 0), aspereza total (verde 1) e sem metal (azul 0).
+static func _occlusion_texture() -> ImageTexture:
+	var image := Image.create_empty(4, 4, false, Image.FORMAT_RGB8)
+	image.fill(Color(0, 1, 0))
+	return ImageTexture.create_from_image(image)
+
+
 # A borda da escuridão: a máscara de um ponto por bloco ampliada, misturada entre os blocos e ondulada por um ruído
-# suave no chão, para não ter jeito de bloco. Preta, com a escuridão na transparência.
+# suave no chão, para não ter jeito de bloco. A escuridão fica na transparência.
 func _edge_texture() -> ImageTexture:
 	var source := mask.get_image()
 	var columns := source.get_width()

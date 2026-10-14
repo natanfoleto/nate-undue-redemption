@@ -35,8 +35,9 @@ const HOTBAR_ACTIONS: Array[StringName] = [&"hotbar_1", &"hotbar_2", &"hotbar_3"
 @export var awaken_glow := 0.0
 @export var awaken_light := 0.0
 @export var awaken_time := 0.0
-## Força da Luz Ancestral acesa nas áreas escuras: o lugar escurecido aparece em volta de Nate.
+## Força da Luz Ancestral acesa nas áreas escuras, e o tempo dela acendendo e apagando, em segundos.
 @export var ancestral_light_energy := 0.0
+@export var light_fade_time := 0.0
 
 ## Direção da mira no chão, de tamanho 1. Os ataques vão nessa direção, puxados pela ajuda de mira.
 var aim_direction := Vector3.FORWARD
@@ -98,7 +99,7 @@ func _ready() -> void:
 	($StatusVisuals as StatusVisuals).fit(_model.height())
 	_light.omni_range = Balance.player.light_radius
 	_light.light_color = light_color
-	_light.light_energy = ancestral_light_energy
+	_light.light_energy = 0.0
 	_light.visible = false
 	_show_amulet()
 	GameState.inventory_changed.connect(_on_inventory_changed)
@@ -146,7 +147,7 @@ func _physics_process(delta: float) -> void:
 	_update_aim(move)
 	_update_animation()
 	_update_blink()
-	_update_light()
+	_update_light(delta)
 
 
 func is_dashing() -> bool:
@@ -159,12 +160,12 @@ func max_health() -> int:
 	return stats.max_health + GameState.upgrade_count(GameState.HEART_UPGRADE) * stats.upgrade_health + (_armor.extra_health if _armor else 0)
 
 
-## Bônus de dano (03-regras): a soma dos bônus em %, que hoje vêm só da armadura.
+## Bônus de dano (03-regras): a soma dos bônus em %, da armadura que tiver um (hoje nenhuma tem).
 func damage_bonus() -> float:
 	return _armor.damage_bonus if _armor else 0.0
 
 
-## Velocidade de andar: a armadura pesada e a lentidão deixam Nate mais lento, e a Rajada Veloz, mais rápido
+## Velocidade de andar: a Couraça e a lentidão deixam Nate mais lento, e o Manto e a Rajada Veloz, mais rápido
 ## (11-balanceamento).
 func move_speed() -> float:
 	var boost := 1.0 + (_boost_share if _boost_left > 0.0 else 0.0)
@@ -696,7 +697,6 @@ func awaken_amulet() -> void:
 	tween.tween_method(_pulse_amulet, 0.0, 1.0, awaken_time / 2.0)
 	tween.tween_method(_pulse_amulet, 1.0, 0.0, awaken_time / 2.0)
 	await tween.finished
-	_light.light_energy = ancestral_light_energy
 	_show_amulet()
 
 
@@ -722,15 +722,18 @@ func _show_amulet() -> void:
 		_model.set_part_glow(part, light_color, amulet_glow if GameState.has_light() else 0.0)
 
 
-# A Luz Ancestral acende sozinha nas áreas escuras (05-itens).
-func _update_light() -> void:
+# A Luz Ancestral acende sozinha nas áreas escuras (05-itens), aos poucos, e apaga do mesmo jeito ao sair delas.
+func _update_light(delta: float) -> void:
 	var dark := false
 	if GameState.has_light():
 		for area: DarkArea in get_tree().get_nodes_in_group(&"dark_areas"):
 			if area.contains(global_position):
 				dark = true
 				break
-	_light.visible = dark
+	var target := ancestral_light_energy if dark else 0.0
+	# Sem tempo de acender (0), o passo fica infinito e a luz acende na hora.
+	_light.light_energy = move_toward(_light.light_energy, target, ancestral_light_energy / light_fade_time * delta)
+	_light.visible = _light.light_energy > 0.0
 
 
 # Prende o item da mão (a arma de perto na direita; a de longe e a poção na esquerda) e a armadura no corpo, e

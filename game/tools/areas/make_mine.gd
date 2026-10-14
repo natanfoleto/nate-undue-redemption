@@ -559,8 +559,8 @@ func _build_objects(_player: Node3D) -> void:
 					hidden.set("upgrade", true)
 				"C":
 					var chest := _instance(objects, "res://world/objects/chest.tscn", _center(x, z), PI)
-					chest.set("save_id", &"mine_chest_vest")
-					chest.set("item_id", &"miner_vest")
+					chest.set("save_id", &"mine_chest_cloak")
+					chest.set("item_id", &"fiber_cloak")
 				"L":
 					lever = _instance(objects, "res://world/objects/lever.tscn", _center(x, z), PI)
 					lever.set("save_id", &"mine_lever")
@@ -594,7 +594,11 @@ func _build_objects(_player: Node3D) -> void:
 				"X":
 					cracked.append(Vector2i(x, z))
 				"y":
-					_pickup(objects, &"mine_miner_armor", &"miner_armor", _center(x, z))
+					# Atrás da parede rachada da sala do baú, +1 carga (volta com a Terra, 08-mapa).
+					var wall_charge := _instance(objects, "res://world/objects/item_pickup.tscn", _center(x, z), 0.0)
+					wall_charge.set("save_id", &"charge_mine_2")
+					wall_charge.set("item_id", &"charge")
+					wall_charge.set("upgrade", true)
 				"q":
 					var charge := _instance(objects, "res://world/objects/item_pickup.tscn", _center(x, z), 0.0)
 					charge.set("save_id", &"charge_mine_1")

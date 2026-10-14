@@ -39,7 +39,7 @@ fill(37, 27, 40, 27, 'a')            # portão de entrada da arena (fecha quando
 fill(37, 28, 40, 37, '.')
 fill(36, 30, 36, 35, 'M')
 fill(41, 30, 41, 35, 'M')
-# 5) Sala do baú com o Colete de minerador, e o desvio secreto do +20 de vida.
+# 5) Sala do baú com o Manto de fibras marajoara, e o desvio secreto do +20 de vida.
 fill(31, 38, 46, 47, 'w')
 put(45, 39, 'C')
 put(33, 44, 'W')
@@ -47,7 +47,7 @@ put(43, 45, 'W')
 fill(21, 42, 30, 43, '.')            # desvio estreito
 fill(16, 39, 20, 46, '.')
 put(17, 42, 'p')
-fill(47, 41, 47, 44, 'X')            # parede rachada: Armadura de minerador (volta com Terra)
+fill(47, 41, 47, 44, 'X')            # parede rachada: +1 carga (volta com Terra)
 # 4) Corredor das pedras que caem, subindo para o norte.
 fill(37, 48, 40, 75, '.')
 put(38, 66, 'r')
@@ -59,7 +59,7 @@ for z in (55, 63, 71):
 # 3) Corredor depois do portão, para o leste.
 fill(22, 72, 36, 75, '.')
 put(30, 73, 'K')
-# 2) Sala da Baladeira, cortada por uma vala: a alavanca fica do outro lado e só o tiro alcança.
+# 2) Sala do Estilingue, cortada por uma vala: a alavanca fica do outro lado e só o tiro alcança.
 fill(4, 66, 20, 70, '.')             # beirada da alavanca, do outro lado da vala
 put(12, 66, 'L')
 fill(4, 71, 20, 72, '~')             # vala
@@ -68,7 +68,7 @@ put(9, 80, 'b')
 fill(21, 73, 21, 74, 'G')            # portão aberto pela alavanca
 put(5, 82, 'l')
 put(19, 75, 'l')
-# 1) Saguão da entrada da Mina (ponto de retorno) e o corredor até a sala da Baladeira.
+# 1) Saguão da entrada da Mina (ponto de retorno) e o corredor até a sala do Estilingue.
 fill(22, 80, 34, 90, '.')
 fill(27, 89, 28, 89, 'E')
 put(23, 81, 'l')
@@ -92,7 +92,7 @@ put(27, 94, 'F')
 put(27, 120, 'S')
 put(28, 102, 'P')
 
-# Sala da Armadura de minerador, atrás da parede rachada da sala do baú (volta com a Terra).
+# Sala do +1 carga, atrás da parede rachada da sala do baú (volta com a Terra).
 fill(48, 40, 53, 45, '.')
 put(51, 42, 'y')
 # Arena opcional, atrás de uma parede rachada no túnel do mural 1 (volta com a Terra): guarda +1 carga.
@@ -166,7 +166,7 @@ bridge(22, 72, 35, 75, 'A')
 
 # Caminho principal: do começo ao elevador, com os portões abertos.
 passable = set('.wgfVaGEFbpCWKolrPS')
-TARGETS = [('elevador', 'V', True), ('baú', 'C', True), ('Baladeira', 'b', True), ('+20 de vida do desvio', 'p', True),
+TARGETS = [('elevador', 'V', True), ('baú', 'C', True), ('Estilingue', 'b', True), ('+20 de vida do desvio', 'p', True),
            ('alavanca (não deve alcançar)', 'L', False)]
 
 

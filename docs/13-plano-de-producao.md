@@ -135,6 +135,15 @@ Depois de jogar as peles novas, o responsável pediu (2026-10-13), em duas mensa
 
 Feitos em 2026-10-13, com os documentos atualizados: o inventário com Nate no meio, a mochila de 10, a barra dentro dele e os detalhes numa caixinha ao lado do item; a interface crescendo com a janela; a galeria dos murais no G (no controle, o direcional para cima); a clareira subindo num barranco até o morro da mina, sem os morrinhos, e o Bosque sem o morro solto da caverna dos cogumelos; e o herói, o irmão, a cabeça da Boiúna, o santuário e o cogumelo de esporos com pele pintada.
 
+## Ajustes do quarto teste de jogo
+Depois de jogar os ajustes, o responsável pediu (2026-10-14): o chão escuro voltando à cor original em volta de Nate, conforme ele passa; a interface 25% menor; metade das armaduras, com uma mais tank e outra mais veloz; mais cenário na floresta, com as ideias das florestas do Minecraft Dungeons; magias melhores, nos efeitos, nas combinações e nos detalhes; e o inventário sem o texto de ajuda. As escolhas dele:
+- **Escuridão:** a luz acompanha Nate, como uma tocha; atrás dele o escuro volta (serve também para a fase 2 da Boiúna).
+- **Armaduras:** ficam o Manto (veloz: +20 de vida, anda 10% mais rápido e o dash recarrega em 0,35 s), agora no baú da Mina, e a Couraça (tank: +60 de vida, anda 10% mais devagar), nas Ruínas; os lugares que sobraram guardam melhorias. O jogo salvo passa para a versão 5, convertido.
+- **Floresta:** o Bosque de Fungos fica mais vivo, sem fase nova e sem mudar o caminho nem as lutas.
+- **Magias:** o visual e a sensação, sem mudar os números.
+
+Feitos em 2026-10-14, com os documentos atualizados: a escuridão pela oclusão; a interface a 75%; o visual das 10 magias, com tremor da tela, pausa curta no acerto e o pulso da combinação pronta; e o Bosque com manchas no chão, plantas, cipós, arbustos, troncos, ruínas, riachos e esporos. Depois deles, segue a etapa 7.
+
 ## Etapas 7 e 8, em linhas gerais
 - **7. Grande Prisão:** antessala com a memória 4, a Boiúna com as duas fases e os pilares, a cena da troca de fase, o final, os créditos, o resumo e o pós-jogo.
 - **8. Acabamento:** abertura, menus e opções (trocar botões e acessibilidade), mapa por área e tela de progresso, música, testes com jogadores de fora para conferir os 30 min, ajustes no `11-balanceamento.md` e exportação para Windows e macOS.

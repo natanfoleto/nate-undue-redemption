@@ -3,6 +3,7 @@
 [ext_resource type="Resource" path="res://data/attacks/fireball.tres" id="1_ecc7m"]
 [ext_resource type="Resource" path="res://data/attacks/fireball_explosion.tres" id="2_jw1x3"]
 [ext_resource type="Resource" path="res://data/models/fireball.tres" id="3_ag3yy"]
+[ext_resource type="Resource" path="res://data/effects/spells/fireball.tres" id="3_jw1x3"]
 [ext_resource type="Script" path="res://combat/spell_data.gd" id="4_pdlt8"]
 
 [resource]
@@ -14,5 +15,6 @@ explosion = ExtResource("2_jw1x3")
 effect = 3
 cooldown = 8.0
 color = Color(1, 0.5411765, 0.16470589, 1)
+look = ExtResource("3_jw1x3")
 projectile_model = ExtResource("3_ag3yy")
 sound = &"spell_fire"

@@ -15,7 +15,6 @@ PAUSE_RESUME,Continuar
 PAUSE_MAIN_MENU,Voltar ao menu principal
 ITEM_SWORD,Espada
 ITEM_SLINGSHOT,Estilingue
-ITEM_MINER_VEST,Colete de minerador
 SLICE_END,A passagem escura leva às Ruínas. A aventura continua lá.
 MENU_CONFIRM_TITLE,Novo jogo
 HINT_FLASK,Beber a poção (na mão, segurar)
@@ -45,8 +44,6 @@ INVENTORY_LIFE,Vida
 INVENTORY_BAG,Mochila
 INVENTORY_LEARNED,Elementos aprendidos
 INVENTORY_AMULET,Muiraquitã
-INVENTORY_HELP_KEYBOARD,"Arraste, ou clique e clique de novo, para trocar os itens de lugar. Com o mouse em cima de um item, 1 a 5 o põem na barra."
-INVENTORY_HELP_GAMEPAD,"Confirmar pega o item, e confirmar de novo o solta no espaço escolhido. Voltar fecha."
 STAT_HEAL,Cura
 STAT_CHARGES,Cargas
 STAT_DRINK_TIME,Tempo para beber
@@ -87,7 +84,6 @@ SETTINGS_EFFECTS,Efeitos sonoros
 ITEM_SEAL,Selo
 ITEM_BOW,Arco marajoara
 ITEM_CUIRASS,Couraça de cerâmica marajoara
-ITEM_MINER_ARMOR,Armadura de minerador
 ELEMENT_EARTH,Terra
 ELEMENT_AIR,Ar
 SPELL_EARTH_COLLAPSE,Colapso Terrestre

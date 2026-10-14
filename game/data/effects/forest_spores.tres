@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="ParticleLayer" format=3]
+
+[ext_resource type="Script" path="res://world/effects/particle_layer.gd" id="1_spore"]
+
+[resource]
+script = ExtResource("1_spore")
+color_start = Color(0.6, 1, 0.92, 0.9)
+color_end = Color(0.8, 1, 0.6, 0)
+amount = 8
+lifetime = 5.0
+one_shot = false
+shape = 3
+shape_size = Vector3(8, 1.5, 8)
+lift = 1.0
+spread = 180.0
+speed = Vector2(0.05, 0.2)
+gravity = 0.03
+size_pixels = Vector2(1, 2)
+glows = true

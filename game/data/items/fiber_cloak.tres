@@ -7,7 +7,7 @@
 [resource]
 script = ExtResource("3_2vjt8")
 extra_health = 20
-move_speed = 5.0
+move_speed = 5.5
 dash_cooldown = 0.35
 name_key = &"ITEM_FIBER_CLOAK"
 icon = ExtResource("1_k57wl")

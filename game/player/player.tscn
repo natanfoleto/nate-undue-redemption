@@ -73,7 +73,8 @@ light_color = Color(0.84705883, 1, 0.9098039, 1)
 amulet_glow = 1.5
 awaken_glow = 4.0
 awaken_light = 4.0
-ancestral_light_energy = 4.0
+ancestral_light_energy = 1.5
+light_fade_time = 0.4
 awaken_time = 1.6
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=228711272]

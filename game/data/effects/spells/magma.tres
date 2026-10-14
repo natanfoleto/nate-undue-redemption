@@ -1,0 +1,98 @@
+[gd_resource type="Resource" script_class="SpellLook" format=3]
+
+[ext_resource type="Script" path="res://world/effects/particle_layer.gd" id="1_dvn6g"]
+[ext_resource type="Script" path="res://world/effects/spell_look.gd" id="2_7nos4"]
+
+[sub_resource type="Resource" id="Resource_5kdhx"]
+script = ExtResource("1_dvn6g")
+color_start = Color(1, 0.45, 0.12, 1)
+color_end = Color(1, 0.45, 0.12, 0)
+amount = 18
+lifetime = 0.45
+shape = 2
+shape_size = Vector3(0.6, 0.05, 0.8)
+lift = 0.1
+spread = 10.0
+speed = Vector2(1, 2)
+radial = 2.0
+damping = 1.0
+size_pixels = Vector2(2, 3)
+glows = true
+
+[sub_resource type="Resource" id="Resource_cbo5x"]
+script = ExtResource("1_dvn6g")
+color_start = Color(0.62, 0.46, 0.29, 1)
+color_end = Color(0.62, 0.46, 0.29, 0)
+amount = 10
+lifetime = 0.6
+shape = 1
+shape_size = Vector3(0.4, 0, 0)
+lift = 1.1
+spread = 30.0
+speed = Vector2(1.5, 3)
+gravity = -2.0
+size_pixels = Vector2(1, 2)
+glows = true
+
+[sub_resource type="Resource" id="Resource_hdvxy"]
+script = ExtResource("1_dvn6g")
+color_start = Color(1, 0.85, 0.35, 1)
+color_end = Color(0.85, 0.2, 0.06, 0.9)
+amount = 80
+lifetime = 0.85
+one_shot = false
+shape = 3
+shape_size = Vector3(0.8, 0.1, 0.03)
+lift = 0.05
+spread = 14.0
+speed = Vector2(4, 7.5)
+gravity = -16.0
+size_pixels = Vector2(3, 6)
+shrink = true
+glows = true
+
+[sub_resource type="Resource" id="Resource_qxgbe"]
+script = ExtResource("1_dvn6g")
+color_start = Color(0.24, 0.17, 0.14, 1)
+color_end = Color(0.24, 0.17, 0.14, 1)
+amount = 26
+lifetime = 1.0
+one_shot = false
+shape = 3
+shape_size = Vector3(0.8, 0.1, 0.03)
+lift = 0.05
+spread = 30.0
+speed = Vector2(3, 6)
+gravity = -18.0
+size_pixels = Vector2(4, 6)
+
+[sub_resource type="Resource" id="Resource_6rjtg"]
+script = ExtResource("1_dvn6g")
+color_start = Color(0.24, 0.2, 0.19, 0.7)
+color_end = Color(0.24, 0.2, 0.19, 0)
+amount = 22
+lifetime = 1.5
+one_shot = false
+shape = 3
+shape_size = Vector3(0.8, 0.2, 0.03)
+lift = 0.4
+spread = 20.0
+speed = Vector2(0.8, 1.6)
+gravity = 0.6
+size_pixels = Vector2(6, 9)
+
+[resource]
+script = ExtResource("2_7nos4")
+cast = Array[ExtResource("1_dvn6g")]([SubResource("Resource_5kdhx"), SubResource("Resource_cbo5x")])
+impact = Array[ExtResource("1_dvn6g")]([SubResource("Resource_hdvxy"), SubResource("Resource_qxgbe"), SubResource("Resource_6rjtg")])
+sweep_time = 0.35
+light_color = Color(1, 0.45, 0.12, 1)
+light_energy = 3.5
+light_range = 3.0
+light_time = 0.7
+mark_color = Color(1, 0.42, 0.1, 0.85)
+mark_time = 2.2
+mark_glows = true
+shake = 0.22
+shake_time = 0.45
+hit_stop = 0.06

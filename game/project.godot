@@ -27,6 +27,7 @@ AudioManager="*res://autoload/audio_manager.gd"
 
 window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
+window/stretch/scale=0.75
 
 [editor_plugins]
 

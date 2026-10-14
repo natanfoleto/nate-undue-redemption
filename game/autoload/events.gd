@@ -13,3 +13,5 @@ signal item_picked(item_id: StringName)
 signal mural_seen(mural_id: int)
 ## Nate bebeu a poção até o fim (a dica de beber).
 signal flask_drunk
+## Tremor da tela (as magias fortes): quanto, em blocos, e por quanto tempo, em segundos.
+signal screen_shake(strength: float, seconds: float)

@@ -2,8 +2,8 @@ class_name Inventory
 extends CanvasLayer
 ## Inventário (09-interface), parecido com o do Minecraft: uma caixa de tamanho fixo no centro da tela. Em cima, a
 ## armadura vestida e os 2 elementos ao lado de Nate (o boneco, com o item da mão e a armadura) e, à direita, a vida,
-## a poção, o muiraquitã e a combinação dos elementos; embaixo, a mochila, os elementos aprendidos, a barra fixa e a
-## ajuda. Os detalhes do item apontado aparecem numa caixinha ao lado dele, com a comparação com o que Nate usa,
+## a poção, o muiraquitã e a combinação dos elementos; embaixo, a mochila, os elementos aprendidos e a barra fixa.
+## Os detalhes do item apontado aparecem numa caixinha ao lado dele, com a comparação com o que Nate usa,
 ## atributo por atributo, com seta verde (melhor) ou vermelha (pior). Arrastar troca os itens de lugar; clicar pega
 ## o item e clicar em outro espaço o solta ali (o mesmo com o botão de confirmar, no teclado e no controle); os
 ## números põem o item apontado na barra. Abre com o botão de inventário e para o jogo; a barra fixa do HUD some
@@ -53,7 +53,6 @@ var _pointed: ItemCell
 @onready var _item_name: Label = %ItemName
 @onready var _rarity: Label = %Rarity
 @onready var _stats: GridContainer = %Stats
-@onready var _help: Label = %Help
 
 
 func _ready() -> void:
@@ -81,7 +80,6 @@ func _ready() -> void:
 	GameState.inventory_changed.connect(_refresh_if_open)
 	GameState.elements_changed.connect(_refresh_if_open)
 	GameState.hand_changed.connect(_refresh_if_open)
-	InputManager.device_changed.connect(func(_device: int) -> void: _show_help())
 
 
 # Fechar vem antes da interface: o botão em foco usaria o Tab para trocar de foco. Com um item levado, Esc só o larga.
@@ -126,7 +124,6 @@ func _open() -> void:
 		_hud_hotbar.visible = false
 	_preview.set_active(true)
 	_refresh()
-	_show_help()
 	# O foco começa no item da mão; com o mouse, os detalhes só aparecem quando ele passa por cima de um item.
 	var hand := _hotbar[GameState.hand()]
 	hand.grab_focus()
@@ -195,10 +192,6 @@ func _show_combo(player: Player) -> void:
 	_combo.visible = spell != null
 	if spell:
 		_combo.text = "%s: %s" % [tr(&"INVENTORY_COMBO"), tr(spell.name_key)]
-
-
-func _show_help() -> void:
-	_help.text = tr(&"INVENTORY_HELP_GAMEPAD" if InputManager.is_gamepad() else &"INVENTORY_HELP_KEYBOARD")
 
 
 func _new_cell(parent: Control, place: String, index: int) -> ItemCell:

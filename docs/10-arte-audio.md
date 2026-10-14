@@ -42,6 +42,8 @@ Feitos para o jogo depois do segundo teste de jogo, provisórios: o som do golpe
 
 Feitos para o jogo depois do terceiro teste de jogo, provisórios: as texturas das Ruínas no lugar dos losangos e ziguezagues marajoara, a parede de tijolos de terracota lisos (`terracotta_wall`) e o piso de placas grandes de pedra clara (`light_stone_floor`), pintadas por `tools/areas/make_ruins_textures.gd`; as peles do herói, do irmão, da cabeça da Boiúna, do santuário e do cogumelo de esporos (`tools/models/make_scene_skins.gd`); o ícone da espada; a meia-lua do golpe (`world/effects/slash.gdshader`); e os ícones dos botões G e direcional para cima.
 
+Feitos para o jogo depois do quarto teste de jogo, provisórios: o visual das 10 magias (`data/effects/spells/`, gerado por `tools/effects/make_spell_looks.gd`) e os blocos novos do Bosque (musgo claro e escuro, cascalho, leito e água do riacho, tronco, folhas, pedra antiga com musgo, capim, capim alto, samambaia, cipó e flor de luz), com as texturas pintadas do pacote.
+
 ### Plano de produção
 Assets prontos entram como provisórios logo no começo da produção, para testar os sistemas cedo, e são trocados pelos definitivos aos poucos.
 
@@ -53,7 +55,7 @@ Assets prontos entram como provisórios logo no começo da produção, para test
 - **Chão em manchas:** a grama da clareira e o chão da Mina misturam 3 tons em manchas, e a grama tem terra nas laterais, para o relevo aparecer e o chão não ficar chapado. Onde um chão encontra outro, a borda ondula e mistura os dois (`08-mapa.md`).
 - **Rampas:** na natureza, o relevo sobe em rampas do próprio chão, com a textura de cima seguindo a inclinação e as laterais do bloco; escadas de pedra só nas construções (`08-mapa.md`).
 - **Profundidade:** abaixo do chão, a rocha fica mais escura, e o fundo dos abismos tem cor e luz próprias (água escura, água brilhante e fungos, lava), para a câmera ler a altura de cada parte.
-- **Luz:** o subterrâneo é escuro, mas cada área tem a sua luz: lampiões na Mina, fungos que brilham no Bosque e padrões marajoara acesos nas Ruínas. Escuridão total só nas áreas que exigem a Luz Ancestral, e ela é do próprio lugar: o chão, as paredes e as plantas escurecem, sem camada por cima, e Nate, os mobs e os itens continuam visíveis; com a Luz Ancestral, a luz de Nate clareia em volta dele. Em todo lugar, a luz precisa bastar para ler os avisos (pilar 2).
+- **Luz:** o subterrâneo é escuro, mas cada área tem a sua luz: lampiões na Mina, fungos que brilham no Bosque e padrões marajoara acesos nas Ruínas. Escuridão total só nas áreas que exigem a Luz Ancestral, e ela é do próprio lugar: o chão, as paredes e as plantas perdem a luz do ambiente, sem camada por cima, e Nate, os mobs e os itens continuam visíveis; com a Luz Ancestral, a luz de Nate mostra a cor de verdade do que está perto dele, como uma tocha, e atrás dele o escuro volta. Em todo lugar, a luz precisa bastar para ler os avisos (pilar 2).
 - **Efeitos visuais:** partículas blocadas, feitas de pequenos cubos e quadrados: faíscas, poeira, fogo, água e escuridão.
 
 ### Cenas
@@ -93,7 +95,7 @@ Cada sinal tem forma própria, e não só cor, para ajudar daltônicos (`09-inte
 |------|---------|-----|
 | Prólogo | verdes da mata e terra vermelha | sol de fim de tarde |
 | Mina | madeira escura, terra ocre e pedra cinza | lampiões amarelos |
-| Bosque de Fungos | azul-escuro e verde-musgo | fungos ciano e verde-limão |
+| Bosque de Fungos | azul-escuro e verde-musgo, com o musgo em três tons, capim, samambaias, cipós e flores que brilham | fungos ciano e verde-limão, riachos rasos e esporos que brilham |
 | Ruínas | paredes de tijolo de terracota liso e piso de placas grandes de pedra clara, sem padrão; o marajoara (preto, creme e verde-jade) só nos detalhes, como os pilares | padrões acesos em verde-jade |
 | Grande Prisão | pedra escura | pilares que acendem em verde-jade |
 
@@ -224,14 +226,15 @@ Tamanho de cada mural, em blocos: `[A DEFINIR no rascunho do mapa]`.
 | Grupo | Efeitos |
 |-------|---------|
 | Golpes | rastro (a meia-lua branca), acerto e crítico |
+| Peso das magias | tremor da tela, leve na maioria e forte nas pesadas (o Colapso, o Magma e a Bola de Fogo), e uma pausa curta quando a magia acerta |
 | Nate | rastro e poeira do dash |
 | Sinais | marca de aviso no chão, brilho de golpe comum, tiro na força total, feixe de item e piscar de invencibilidade |
 | Efeitos de status | estrelas, partículas azuis, bolhas verdes e chamas |
-| Magias | 10, uma por magia |
+| Magias | 10, uma por magia, com as partículas do elemento (fogo: chamas, brasas e fumaça; água: espuma, gotas e corpo d'água; terra: pedras, pedrinhas e poeira; ar: riscos de vento e lufadas; as combinações misturam os dois); a aura em Nate ao lançar; o rastro da Bola de Fogo; a luz do impacto; a marca no chão (queimado, molhado, rachaduras, lava, gelo e lama) |
 | Muiraquitã | brilho da Luz Ancestral |
 | Mobs | praga, marca de invocação, esqueletos se desfazendo, abalo e pedras do golem desmoronando |
 | Boiúna | cuspe, poças de escuridão e corrente de luz |
-| Cenário | nuvem de esporos, poeira das pedras e iluminação de cada área |
+| Cenário | nuvem de esporos, poeira das pedras, iluminação de cada área e os esporos que brilham no ar do Bosque |
 
 ### Sons
 | Grupo | Quantos | Ficha |

@@ -110,7 +110,7 @@ Nate fica mais forte com o que acha no mapa. Não há XP nem moeda.
 
 - Mobs não deixam nada ao morrer (`05-itens.md`).
 - **Magias:** aprender um elemento já dá o efeito dele fora de combate (com Terra, os golpes quebram paredes rachadas); equipar dá a magia em combate. Nate equipa 2 elementos por vez, cada um num botão, como os artefatos do Minecraft Dungeons, e os dois juntos lançam a combinação (`04-player.md`).
-- Magias, melhorias e as 13 peças de equipamento: `05-itens.md`.
+- Magias, melhorias e as 6 peças de equipamento: `05-itens.md`.
 - A Luz Ancestral é do próprio muiraquitã: funciona sozinha e, na luta final, revela o predador. O Selo é a lasca que falta no muiraquitã: não tem poder de combate e funciona só por estar com Nate, inclusive nos pilares da luta final (`05-itens.md`).
 - Como nada é sorteado, sabemos o que o jogador pode ter em cada ponto do mapa. Isso guia o balanceamento (`11-balanceamento.md`).
 

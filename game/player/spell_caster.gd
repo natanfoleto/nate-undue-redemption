@@ -13,7 +13,7 @@ const PROJECTILE := preload("res://combat/projectile.tscn")
 @export var combo_window := 0.0
 ## Brilho do projétil da magia, na cor dela.
 @export var projectile_glow := 0.0
-## Aparência dos efeitos das magias.
+## A pausa curta no acerto (o visual de cada magia fica no SpellLook dela).
 @export var effect_look: EffectLook
 
 var _cooldowns: Dictionary[StringName, float] = {}
@@ -101,6 +101,7 @@ func _launch(spell: SpellData) -> void:
 	var direction := _player.assisted_aim()
 	var origin := _player.global_position
 	var world := _player.get_parent()
+	SpellEffects.cast(spell, _player, world, direction)
 	# A Bola de Fogo soa ao explodir; as outras magias, ao sair.
 	if spell.delivery != SpellData.Delivery.PROJECTILE:
 		AudioManager.play(spell.sound, origin)
@@ -114,39 +115,31 @@ func _launch(spell: SpellData) -> void:
 			model.set_glow(projectile_glow, spell.color)
 			projectile.set_floor(_player.global_position.y)
 			projectile.launch(spell.attack, direction, Hurtbox.Faction.ENEMY, Callable(), _explode.bind(spell))
+			SpellEffects.trail(spell, projectile, world)
 		SpellData.Delivery.INSTANT:
 			var hit_list: Array[Node3D] = []
 			Strike.hit_area(spell.attack, _player, origin, direction, Hurtbox.Faction.ENEMY, hit_list, _build_hit.bind(spell, origin))
-			_show_instant(spell, world, origin, direction)
+			SpellEffects.impact(spell, spell.attack, world, origin, direction, hit_list.size(), effect_look.hit_stop_scale)
 		SpellData.Delivery.LASTING:
 			var area := SpellArea.new()
 			world.add_child(area)
 			area.global_position = origin + direction * spell.offset
 			area.start(spell, Hurtbox.Faction.ENEMY)
-			SpellEffects.cloud(area, spell.color, spell.attack.reach, effect_look)
+			SpellEffects.impact(spell, spell.attack, world, area.global_position, direction, 0, effect_look.hit_stop_scale)
+			SpellEffects.lasting(spell, area, world)
 		SpellData.Delivery.AROUND:
 			var around := SpellArea.new()
 			world.add_child(around)
 			around.global_position = origin
 			var pushes := spell.attack.knockback != AttackData.Knockback.NONE or spell.attack.damage_points > 0
 			around.start(spell, Hurtbox.Faction.ENEMY, _build_around_hit.bind(spell, around) if pushes else Callable(), _player)
-			SpellEffects.cloud(around, spell.color, spell.attack.reach, effect_look)
+			SpellEffects.impact(spell, spell.attack, world, origin, direction, 0, effect_look.hit_stop_scale)
+			SpellEffects.lasting(spell, around, world)
 			if spell.shield:
 				_player.raise_shield(around)
 	if spell.self_speed_bonus > 0.0:
 		_player.boost_speed(spell.self_speed_bonus, spell.self_duration)
-
-
-# O efeito de quem fere na hora: a onda na linha, o estouro no círculo em volta de Nate e no cone à frente.
-func _show_instant(spell: SpellData, world: Node, origin: Vector3, direction: Vector3) -> void:
-	var attack := spell.attack
-	match attack.shape:
-		AttackData.Shape.RECTANGLE:
-			SpellEffects.wave(world, origin, direction, attack.reach, attack.width, spell.color, cast_animation.length, effect_look)
-		AttackData.Shape.SECTOR:
-			SpellEffects.burst(world, origin + direction * attack.reach / 2.0, spell.color, attack.reach / 2.0, effect_look)
-		_:
-			SpellEffects.burst(world, origin, spell.color, attack.reach, effect_look)
+		SpellEffects.follow_for(spell, _player, world, spell.self_duration)
 
 
 func _explode(where: Vector3, spell: SpellData) -> void:
@@ -154,7 +147,7 @@ func _explode(where: Vector3, spell: SpellData) -> void:
 	var center := Vector3(where.x, _player.global_position.y, where.z)
 	AudioManager.play(spell.sound, center)
 	Strike.hit_area(spell.explosion, _player, center, Vector3.FORWARD, Hurtbox.Faction.ENEMY, hit_list, _build_hit.bind(spell, center))
-	SpellEffects.burst(_player.get_parent(), center, spell.color, spell.explosion.reach, effect_look)
+	SpellEffects.impact(spell, spell.explosion, _player.get_parent(), center, Vector3.ZERO, hit_list.size(), effect_look.hit_stop_scale)
 
 
 # Quem entra na área em volta de Nate é empurrado para longe do centro dela.

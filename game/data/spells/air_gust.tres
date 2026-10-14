@@ -1,6 +1,7 @@
 [gd_resource type="Resource" script_class="SpellData" format=3]
 
 [ext_resource type="Resource" path="res://data/attacks/air_gust.tres" id="1_jbb0o"]
+[ext_resource type="Resource" path="res://data/effects/spells/air_gust.tres" id="2_mnkhk"]
 [ext_resource type="Script" path="res://combat/spell_data.gd" id="2_qn52w"]
 
 [resource]
@@ -9,6 +10,7 @@ name_key = &"SPELL_AIR_GUST"
 attack = ExtResource("1_jbb0o")
 cooldown = 10.0
 color = Color(0.9098039, 0.93333334, 0.9490196, 1)
+look = ExtResource("2_mnkhk")
 self_speed_bonus = 0.3
 self_duration = 3.0
 sound = &"spell_air"

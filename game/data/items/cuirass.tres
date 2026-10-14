@@ -6,9 +6,8 @@
 
 [resource]
 script = ExtResource("3_21373")
-extra_health = 40
+extra_health = 60
 move_speed = 4.5
-damage_bonus = 0.15
 name_key = &"ITEM_CUIRASS"
 icon = ExtResource("1_cjrpe")
 marajoara = true

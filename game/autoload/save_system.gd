@@ -4,13 +4,18 @@ extends Node
 
 const PATH := "user://save.json"
 ## Versão do formato. A 2 (etapa 5) guarda a área do ponto de retorno; a 3, a barra fixa, a mochila e a armadura no
-## lugar do equipamento; a 4 troca o facão pela espada e tira os itens que saíram do jogo.
-const VERSION := 4
-## Itens que saíram do jogo na versão 4, e os que mudaram de nome.
-const REMOVED_ITEMS: Array[String] = ["pickaxe", "tacape", "stone_blade", "blowgun", "javelin"]
-const RENAMED_ITEMS := {"machete": "sword"}
+## lugar do equipamento; a 4 troca o facão pela espada e tira os itens que saíram do jogo; a 5 deixa só duas
+## armaduras (o Colete vira o Manto, e a Armadura de minerador sai).
+const VERSION := 5
+## Em cada versão, os itens que mudaram de nome e os que saíram do jogo.
+const ITEM_CHANGES := {
+	4: {"renamed": {"machete": "sword"}, "removed": ["pickaxe", "tacape", "stone_blade", "blowgun", "javelin"]},
+	5: {"renamed": {"miner_vest": "fiber_cloak"}, "removed": ["miner_armor"]},
+}
 ## Dicas que voltam na versão 4: o tiro e a poção mudaram de botão.
 const RELEARNED_HINTS: Array[String] = ["HINT_SHOOT", "HINT_FLASK"]
+## Objetos do mapa com identificador novo na versão 5: o baú da Mina guarda o Manto.
+const RENAMED_OPENED := {"mine_chest_vest": "mine_chest_cloak"}
 ## A primeira área do jogo: na versão 1, todo ponto de retorno ficava nela.
 const FIRST_AREA := "res://world/areas/mine.tscn"
 
@@ -80,13 +85,17 @@ func _notification(what: int) -> void:
 
 # Jogo salvo da versão 1: o ponto de retorno ainda não guardava a área, e todos ficavam na Mina. Da versão 2: as
 # armas equipadas abrem a barra, a armadura continua vestida e os outros itens vão para os primeiros lugares livres.
-# Da versão 3: o facão vira a espada e os itens que saíram do jogo somem (antes de tudo, para a barra já sair certa).
+# Das versões 3 e 4: os itens que mudaram de nome e os que saíram do jogo (antes de tudo, para a barra já sair certa).
 func _migrate() -> void:
 	var version := int(data.get("version", 1))
 	if version < 2 and data.get("respawn_point", "") != "" and data.get("respawn_area", "") == "":
 		data["respawn_area"] = FIRST_AREA
 	if version < 4:
-		_migrate_items()
+		_migrate_items(4)
+		data["hints"] = (data.get("hints", []) as Array).filter(func(key: String) -> bool: return key not in RELEARNED_HINTS)
+	if version < 5:
+		_migrate_items(5)
+		data[OPENED] = (data.get(OPENED, []) as Array).map(func(id: String) -> String: return RENAMED_OPENED.get(id, id))
 	if version < 3:
 		var equipped: Dictionary = data.get("equipped", {})
 		data["hotbar"] = [equipped.get("melee", ""), equipped.get("ranged", "")].filter(func(id: String) -> bool: return id != "")
@@ -99,34 +108,43 @@ func _migrate() -> void:
 	data["version"] = VERSION
 
 
-# Para a versão 4: o facão vira a espada; os itens que saíram somem da lista, do equipamento antigo, da barra e da
-# mochila, e a mochila (agora menor) fica sem buracos. A mão que estava num item que saiu passa para o primeiro item
-# da barra. As dicas do tiro e da poção voltam, porque os botões mudaram.
-func _migrate_items() -> void:
+# Para a versão dada: os itens que mudaram de nome trocam de nome e os que saíram somem da lista, do equipamento
+# antigo, da armadura vestida, da barra e da mochila; um item que já existia com o nome novo não fica repetido. A
+# mochila fica sem buracos, e a mão que estava num item que saiu passa para o primeiro item da barra.
+func _migrate_items(to_version: int) -> void:
+	var changes: Dictionary = ITEM_CHANGES[to_version]
+	var renamed := func(id: String) -> String:
+		var new_id: String = (changes.renamed as Dictionary).get(id, id)
+		return "" if new_id in changes.removed else new_id
 	var items: Array = []
 	for id: String in data[ITEMS]:
-		var new_id := _renamed(id)
+		var new_id: String = renamed.call(id)
 		if new_id != "" and new_id not in items:
 			items.append(new_id)
 	data[ITEMS] = items
 	var equipped: Dictionary = data.get("equipped", {})
 	for slot: String in equipped:
-		equipped[slot] = _renamed(equipped[slot])
+		equipped[slot] = renamed.call(equipped[slot])
+	var placed: Array[String] = []
+	if data.has(ItemPlaces.ARMOR):
+		data[ItemPlaces.ARMOR] = _keep_once(renamed.call(data[ItemPlaces.ARMOR]), placed)
 	var hotbar: Array = data.get(ItemPlaces.HOTBAR, [])
 	for i in hotbar.size():
-		hotbar[i] = _renamed(hotbar[i])
+		hotbar[i] = _keep_once(renamed.call(hotbar[i]), placed)
 	if data.has(ItemPlaces.BAG):
-		data[ItemPlaces.BAG] = (data[ItemPlaces.BAG] as Array).map(_renamed).filter(func(id: String) -> bool: return id != "")
+		var bag := (data[ItemPlaces.BAG] as Array).map(func(id: String) -> String: return _keep_once(renamed.call(id), placed))
+		data[ItemPlaces.BAG] = bag.filter(func(id: String) -> bool: return id != "")
 	var hand := int(data.get("hand", 0))
 	if hand >= hotbar.size() or hotbar[hand] == "":
 		data["hand"] = maxi(hotbar.find_custom(func(id: String) -> bool: return id != ""), 0)
-	data["hints"] = (data.get("hints", []) as Array).filter(func(key: String) -> bool: return key not in RELEARNED_HINTS)
 
 
-# O nome novo de um item, ou vazio se ele saiu do jogo.
-func _renamed(id: String) -> String:
-	var new_id: String = RENAMED_ITEMS.get(id, id)
-	return "" if new_id in REMOVED_ITEMS else new_id
+# Um item fica num lugar só: da segunda vez em diante, o lugar fica vazio.
+static func _keep_once(id: String, placed: Array[String]) -> String:
+	if id == "" or id in placed:
+		return ""
+	placed.append(id)
+	return id
 
 
 func _on_enemy_died(enemy: Node3D) -> void:

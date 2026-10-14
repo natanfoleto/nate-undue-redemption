@@ -95,7 +95,7 @@ put(60, 9, 's')
 put(52, 15, 'W')
 put(56, 7, 'W')
 put(59, 25, 'N')
-# Desvio do Manto, cercado de cogumelos de esporos.
+# Desvio do +20 de vida, cercado de cogumelos de esporos.
 fill(60, 2, 64, 5, '.')
 put(62, 3, 'c')
 for x, z in [(59, 3), (59, 6), (62, 6), (64, 7)]:
@@ -198,7 +198,7 @@ def results(grid):
     found = []
     for name, ch, area in [("pergaminho de Fogo", 'F', before_light), ("baú da Lança", 'C', before_light),
                            ("+1 carga (desvio)", 'z', before_light), ("S2", '2', with_light), ("saída", 'x', with_light),
-                           ("+20 de vida (escuro)", 'j', with_light), ("Manto", 'c', with_light),
+                           ("+20 de vida (escuro)", 'j', with_light), ("+20 de vida (cogumelos)", 'c', with_light),
                            ("+1 coração", 'h', with_light), ("mural 2", 'm', None), ("mural 3", '3', None),
                            ("pergaminho de Água", 'A', with_light)]:
         cells = find(ch)
@@ -249,7 +249,7 @@ def ramp(x0, z0, x1, z1, direction):
 
 
 # Embaixo: a chegada do elevador, o corredor norte, o desvio do +1 carga, o atalho até a porta, o S2, a arena 2 e
-# a passagem escura. O resto do Bosque fica 1 bloco acima, e o terraço do Manto, encostado na parede norte da caverna
+# a passagem escura. O resto do Bosque fica 1 bloco acima, e o terraço do desvio dos cogumelos, encostado na parede norte da caverna
 # dos cogumelos, 2. Os corredores sobem em rampas longas de terra; o terraço, em rampas curtas que surgem sozinhas.
 raise_area(0, 50, 23, 75, 0)
 raise_area(24, 51, 25, 65, 0)

@@ -5,7 +5,7 @@ HUD, menus e telas do jogo. O visual de ícones, fontes e cores fica em `10-arte
 ## Regras gerais
 - Os ícones de botão mudam sozinhos conforme o último dispositivo usado: teclado e mouse, Xbox ou PlayStation (`04-player.md`).
 - O inventário (Tab), a galeria dos murais (G) e a pausa (Esc) pausam o jogo.
-- A interface é desenhada para 1152 × 648 px e cresce junto com a janela, para ficar legível em tela grande; o 3D continua desenhado com os pixels da janela (`11-balanceamento.md`).
+- A interface acompanha o tamanho da janela, a 75% da escala da tela de base (1152 × 648 px): legível em tela grande, sem tomar a tela; o 3D continua desenhado com os pixels da janela (`11-balanceamento.md`).
 
 ## HUD
 
@@ -26,7 +26,7 @@ HUD, menus e telas do jogo. O visual de ícones, fontes e cores fica em `10-arte
 | Efeitos em Nate | embaixo da barra de vida | um ícone para cada efeito ativo |
 | Barra fixa | embaixo, no centro | os 5 espaços (`05-itens.md`), com o número de cada um, o ícone do item, moldura verde-jade nas peças marajoara e cinza nas comuns; o espaço vazio fica apagado; o item da mão tem moldura dourada; a poção mostra as cargas. No controle, setas dos lados lembram o direcional. Some com o inventário aberto, que tem a barra dele |
 | Nome do item da mão | em cima da barra fixa | ao trocar de espaço, o nome do item por 1,2 s, sumindo em 0,5 s |
-| Magias | embaixo, à direita | os 2 elementos equipados, a recarga de cada um e o sinal de combinação pronta |
+| Magias | embaixo, à direita | os 2 elementos equipados, a recarga de cada um e o sinal de combinação pronta, que pulsa (cresce e clareia) quando ela fica pronta |
 | Item achado | em cima da barra fixa | o ícone e o nome de cada item pego (arma, armadura, poção, melhoria ou elemento), por 3 s, sumindo em 0,6 s |
 | Barra do chefe | no alto, ao centro | vida da Boiúna; na fase 1, dividida em 4 partes |
 | Barra dos mobs | sobre a cabeça | vida, só depois de o mob levar dano |
@@ -59,7 +59,6 @@ Parecido com o do Minecraft: uma caixa de tamanho fixo no centro da tela, por ci
 | [ ][ ][ ][ ][ ]                 [ ][ ]                          |
 | [ ][ ][ ][ ][ ]                 [ ][ ]                          |
 | [1][2][3][4][5]  (a barra fixa)                                 |
-|             ajuda: como trocar os itens de lugar                |
 +-----------------------------------------------------------------+
       +--------------------------+
       | Nome (cor da raridade)   |  <- ao lado do item apontado
@@ -125,7 +124,7 @@ Os avisos dos golpes não dependem só de cor, para ajudar daltônicos (regra pa
 - Em seguida, Nate volta ao mundo para o pós-jogo (`02-core-loop.md`).
 
 ## Assets e sons da interface
-- **Ícones:** a poção de vida, os 4 elementos e as 6 combinações, as 8 peças de equipamento, os 4 efeitos de status, o aviso de imune e os botões de teclado e mouse, Xbox e PlayStation. A barra de vida é desenhada por código.
+- **Ícones:** a poção de vida, os 4 elementos e as 6 combinações, as 6 peças de equipamento, os 4 efeitos de status, o aviso de imune e os botões de teclado e mouse, Xbox e PlayStation. A barra de vida é desenhada por código.
 - **Imagens:** os mapas da Mina, do Bosque e das Ruínas.
 - **Sons de menu:** navegar, confirmar, voltar e equipar.
 - Ícones em pixel art de 16×16 pixels, feitos para o jogo; fonte pixel com licença livre (OFL) e com os acentos do português; cores em `10-arte-audio.md`.

@@ -36,8 +36,8 @@ func test_a_conquest_is_saved_at_once() -> void:
 
 
 func test_the_same_conquest_is_kept_once() -> void:
-	_save.call("record", "opened", &"mine_chest_vest")
-	_save.call("record", "opened", &"mine_chest_vest")
+	_save.call("record", "opened", &"mine_chest_cloak")
+	_save.call("record", "opened", &"mine_chest_cloak")
 	assert_array(_save.get("data")["opened"]).has_size(1)
 
 
@@ -71,7 +71,7 @@ func test_old_save_keeps_its_respawn_in_the_first_area() -> void:
 	assert_str(data["respawn_area"]).is_equal("res://world/areas/mine.tscn")
 	assert_array(data["sanctuaries"]).is_empty()
 	assert_array(data["equipped_elements"]).is_equal(["", ""])
-	assert_int(int(data["version"])).is_equal(4)
+	assert_int(int(data["version"])).is_equal(5)
 	assert_str(String(data["hotbar"][0])).is_equal("sword")
 	assert_bool(reopened.call("has_record", "killed", &"prologue_wolf")).is_true()
 
@@ -89,8 +89,9 @@ func test_version_2_equipment_becomes_the_hotbar() -> void:
 	var data: Dictionary = reopened.get("data")
 	assert_array(data["hotbar"]).is_equal(["spear", "slingshot", "sword", "flask", ""])
 	assert_bool("pickaxe" in data["items"]).is_false()
-	assert_str(String(data["armor"])).is_equal("miner_vest")
-	assert_array((data["bag"] as Array).filter(func(id: String) -> bool: return id != "")).is_equal(["miner_armor"])
+	# O Colete vira o Manto, e a Armadura de minerador sai do jogo (versão 5).
+	assert_str(String(data["armor"])).is_equal("fiber_cloak")
+	assert_array((data["bag"] as Array).filter(func(id: String) -> bool: return id != "")).is_empty()
 	assert_bool(data.has("equipped")).is_false()
 
 
@@ -113,6 +114,23 @@ func test_version_3_drops_the_removed_items() -> void:
 	assert_array(data["hints"]).is_equal(["HINT_MOVE"])
 
 
+func test_version_4_keeps_two_armors() -> void:
+	var old := {"version": 4, "respawn_point": "s1", "respawn_area": "res://world/areas/forest.tscn",
+		"hotbar": ["sword", "", "", "", ""], "hand": 0, "armor": "miner_vest",
+		"bag": ["fiber_cloak", "miner_armor", "cuirass"],
+		"items": ["sword", "miner_vest", "fiber_cloak", "miner_armor", "cuirass"],
+		"opened": ["mine_chest_vest", "mine_gate"]}
+	SaveFile.new(PATH).write(old)
+	var reopened: Node = auto_free(load("res://autoload/save_system.gd").new())
+	reopened.call("open", PATH)
+	var data: Dictionary = reopened.get("data")
+	# O Colete vestido vira o Manto, e o Manto da mochila não fica repetido.
+	assert_str(String(data["armor"])).is_equal("fiber_cloak")
+	assert_array(data["bag"]).is_equal(["cuirass"])
+	assert_array(data["items"]).is_equal(["sword", "fiber_cloak", "cuirass"])
+	assert_array(data["opened"]).is_equal(["mine_chest_cloak", "mine_gate"])
+
+
 func test_new_game_has_no_respawn_area() -> void:
 	assert_str(_save.get("data")["respawn_area"]).is_empty()
-	assert_int(int(_save.get("data")["version"])).is_equal(4)
+	assert_int(int(_save.get("data")["version"])).is_equal(5)

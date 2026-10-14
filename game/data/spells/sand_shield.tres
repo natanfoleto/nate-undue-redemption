@@ -2,6 +2,7 @@
 
 [ext_resource type="Resource" path="res://data/attacks/sand_shield.tres" id="1_tlwhe"]
 [ext_resource type="Script" path="res://combat/spell_data.gd" id="2_8iutr"]
+[ext_resource type="Resource" path="res://data/effects/spells/sand_shield.tres" id="2_yi5mx"]
 
 [resource]
 script = ExtResource("2_8iutr")
@@ -10,5 +11,6 @@ delivery = 3
 attack = ExtResource("1_tlwhe")
 lasting = 6.0
 color = Color(0.84705883, 0.7529412, 0.5411765, 1)
+look = ExtResource("2_yi5mx")
 shield = true
 sound = &"spell_sand"

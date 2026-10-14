@@ -5,17 +5,9 @@
 [resource]
 script = ExtResource("1_f14yr")
 cube_pixels = 2
+hit_stop_scale = 0.05
 burst_amount = 24
 burst_lifetime = 0.5
 burst_speed = Vector2(2, 4)
 flash_range = 2.0
 burst_lift = 0.5
-wave_alpha = 0.55
-wave_height = 0.75
-wave_thickness = 0.25
-wave_lift = 0.4
-cloud_amount = 40
-cloud_lifetime = 1.2
-cloud_rise = 0.5
-cloud_speed = Vector2(0.2, 0.6)
-cloud_lift = 0.6

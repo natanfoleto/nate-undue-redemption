@@ -1,0 +1,79 @@
+[gd_resource type="Resource" script_class="SpellLook" format=3]
+
+[ext_resource type="Script" path="res://world/effects/particle_layer.gd" id="1_vyw28"]
+[ext_resource type="Script" path="res://world/effects/spell_look.gd" id="2_ryeo0"]
+
+[sub_resource type="Resource" id="Resource_mcfkn"]
+script = ExtResource("1_vyw28")
+color_start = Color(0.82, 0.95, 1, 1)
+color_end = Color(0.82, 0.95, 1, 0)
+amount = 18
+lifetime = 0.45
+shape = 2
+shape_size = Vector3(0.6, 0.05, 0.8)
+lift = 0.1
+spread = 10.0
+speed = Vector2(1, 2)
+radial = 2.0
+damping = 1.0
+size_pixels = Vector2(2, 3)
+glows = true
+
+[sub_resource type="Resource" id="Resource_njxy8"]
+script = ExtResource("1_vyw28")
+color_start = Color(0.55, 0.82, 1, 1)
+color_end = Color(0.55, 0.82, 1, 0)
+amount = 10
+lifetime = 0.6
+shape = 1
+shape_size = Vector3(0.4, 0, 0)
+lift = 1.1
+spread = 30.0
+speed = Vector2(1.5, 3)
+gravity = -2.0
+size_pixels = Vector2(1, 2)
+glows = true
+
+[sub_resource type="Resource" id="Resource_cy6am"]
+script = ExtResource("1_vyw28")
+color_start = Color(0.92, 0.98, 1, 1)
+color_end = Color(0.55, 0.82, 1, 0)
+amount = 44
+lifetime = 0.5
+lift = 0.8
+direction = Vector3(0, 0.05, 1)
+spread = 30.0
+speed = Vector2(9, 13)
+damping = 7.0
+size_pixels = Vector2(2, 3)
+stretch = 3.0
+glows = true
+
+[sub_resource type="Resource" id="Resource_abktk"]
+script = ExtResource("1_vyw28")
+color_start = Color(0.82, 0.95, 1, 0.55)
+color_end = Color(0.82, 0.95, 1, 0)
+amount = 30
+lifetime = 0.9
+lift = 0.6
+direction = Vector3(0, 0.05, 1)
+spread = 30.0
+speed = Vector2(3, 6)
+damping = 4.0
+size_pixels = Vector2(5, 9)
+glows = true
+
+[resource]
+script = ExtResource("2_ryeo0")
+cast = Array[ExtResource("1_vyw28")]([SubResource("Resource_mcfkn"), SubResource("Resource_njxy8")])
+impact = Array[ExtResource("1_vyw28")]([SubResource("Resource_cy6am"), SubResource("Resource_abktk")])
+light_color = Color(0.7, 0.9, 1, 1)
+light_energy = 1.6
+light_range = 0.4
+light_time = 0.35
+mark_color = Color(0.85, 0.95, 1, 0.45)
+mark_time = 2.5
+mark_glows = true
+shake = 0.08
+shake_time = 0.2
+hit_stop = 0.05

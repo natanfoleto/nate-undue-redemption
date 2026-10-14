@@ -8,5 +8,5 @@ extends ItemData
 @export var move_speed := 0.0
 ## Recarga do dash com ela, em segundos; 0 mantém a de Nate (Manto de fibras marajoara).
 @export var dash_cooldown := 0.0
-## Bônus de dano, de 0 a 1 (Couraça de cerâmica marajoara: 15% a mais).
+## Bônus de dano, de 0 a 1 (nenhuma armadura tem hoje).
 @export var damage_bonus := 0.0

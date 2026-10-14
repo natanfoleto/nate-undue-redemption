@@ -10,7 +10,7 @@
 | Velocidade de movimento | 5 blocos/s |
 | Bônus de dano | 0% |
 | Chance de crítico | 5% |
-| Cargas da poção de vida | 3 (a partir do primeiro santuário; até 7 com melhorias) |
+| Cargas da poção de vida | 3 (a partir do primeiro santuário; até 8 com melhorias) |
 | Cura por carga | 40 |
 | Vida que volta fora de combate | 2 por segundo, depois de 8 s sem levar dano |
 | Espaços da barra fixa | 5 |

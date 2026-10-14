@@ -25,13 +25,13 @@ O prólogo e a Mina já têm um rascunho jogável, em `game/world/areas/mine.tsc
 | Sala do Estilingue | 17 × 12 blocos, cortada por uma vala de 2 blocos; do outro lado, uma beirada de 5 blocos com a alavanca | o Estilingue no chão e o portão que a alavanca abre |
 | Corredor do portão | 19 × 4 blocos, 14 deles numa ponte de tábuas sobre a galeria inundada (14 × 19 blocos, com 7 de fundo e água escura), com cerca dos dois lados e postes de lampião que sobem da água | 1 Esqueleto, que luta em cima da ponte |
 | Corredor das pedras | 4 × 28 blocos, subindo para o norte | 2 pedras que caem, 1 Lobo e 1 Esqueleto |
-| Sala do baú | 16 × 10 blocos | o baú com o Colete de minerador, 2 Lobos e a parede rachada da Armadura de minerador |
+| Sala do baú | 16 × 10 blocos | o baú com o Manto de fibras marajoara, 2 Lobos e a parede rachada do +1 carga |
 | Desvio do +20 de vida | corredor de 10 × 2 blocos até uma sala de 5 × 8 | +20 de vida |
 | Túnel do mural 1 | 4 × 10 blocos, com paredes de pedra do povo antigo | o lugar do mural 1 |
 | Arena da Mina | 18 × 16 blocos, com portão na entrada e na saída | as 2 ondas do `11-balanceamento.md` |
 | Sala do elevador | 12 × 8 blocos | o elevador, que desce até o Bosque de Fungos |
 
-O caminho principal tem cerca de 135 blocos andando, sem contar as lutas. O canto escuro do +20 de vida fica a leste do saguão da entrada: um corredor de 6 × 2 blocos até uma sala de 5 × 8, escura. A parede rachada da Armadura de minerador e a arena opcional ainda esperam a Terra (etapa 6).
+O caminho principal tem cerca de 135 blocos andando, sem contar as lutas. O canto escuro do +20 de vida fica a leste do saguão da entrada: um corredor de 6 × 2 blocos até uma sala de 5 × 8, escura. A parede rachada do +1 carga e a arena opcional esperam a Terra, das Ruínas.
 
 O Bosque de Fungos tem um rascunho jogável em `game/world/areas/forest.tscn` (etapa 5). As medidas também são propostas, para conferir jogando.
 
@@ -44,7 +44,7 @@ O Bosque de Fungos tem um rascunho jogável em `game/world/areas/forest.tscn` (e
 | Arena 1 | 18 × 16 blocos, com portão na entrada e na saída | as 2 ondas do `11-balanceamento.md` |
 | Sala do pergaminho de Fogo | 8 × 8 blocos | o pergaminho de Fogo; a oeste, o canto escuro do +20 de vida (corredor de 6 × 2 e sala de 4 × 6) |
 | Corredor do mural 2 | 24 × 4 blocos | o lugar do mural 2 na parede norte e 2 Esqueletos |
-| Caverna dos cogumelos gigantes | 24 × 27 blocos | 2 Lobos e 1 Necromante; o desvio do Manto, num terraço 1 bloco mais alto, encostado na parede norte, com rampas, cercado de cogumelos de esporos; uma fresta de 1 bloco até o mural 3 escondido |
+| Caverna dos cogumelos gigantes | 24 × 27 blocos | 2 Lobos e 1 Necromante; o desvio do +20 de vida, num terraço 1 bloco mais alto, encostado na parede norte, com rampas, cercado de cogumelos de esporos; uma fresta de 1 bloco até o mural 3 escondido |
 | Arena opcional | corredor escuro de 7 × 2 blocos, arena de 18 × 16 e uma sala de 5 × 6 | as 2 ondas do `11-balanceamento.md` e o pergaminho de Água |
 | Corredor da fenda | 4 × 8 blocos, da caverna dos cogumelos gigantes até a sala do meio; 6 deles num pé de cogumelo caído, que faz de ponte sobre uma fenda de água brilhante e fungos acesos | 1 cogumelo de esporos em cima da ponte |
 | Sala do meio | 16 × 12 blocos | 2 Esqueletos e 1 Lobo; a leste, o desvio do +20 de vida (2 Lobos); a oeste, o corredor do atalho até a porta do S1 (cerca de 40 blocos) |
@@ -54,7 +54,7 @@ O Bosque de Fungos tem um rascunho jogável em `game/world/areas/forest.tscn` (e
 
 O caminho principal do Bosque tem cerca de 190 blocos andando, sem contar as lutas. A passagem escura leva às Ruínas.
 
-Na Mina, a sala do baú tem a parede rachada da Armadura de minerador (sala de 6 × 6 blocos), e o túnel do mural 1 tem a parede rachada da arena opcional: corredor de 11 × 2 blocos, arena de 18 × 16 e uma sala de 6 × 6 com o +1 carga.
+Na Mina, a sala do baú tem a parede rachada do +1 carga (sala de 6 × 6 blocos), e o túnel do mural 1 tem a parede rachada da arena opcional: corredor de 11 × 2 blocos, arena de 18 × 16 e uma sala de 6 × 6 com o +1 carga.
 
 As Ruínas têm um rascunho jogável em `game/world/areas/ruins.tscn` (etapa 6). As medidas também são propostas, para conferir jogando.
 
@@ -97,15 +97,15 @@ O caminho principal das Ruínas tem cerca de 150 blocos andando, sem contar as l
 - Ponto de retorno: entrada da Mina. Não há santuário nem cura, então as lutas são leves.
 - Caminho principal, em ordem:
   1. O Estilingue e, logo depois, uma alavanca distante que só o tiro alcança: ela abre um portão e ensina o tiro.
-  2. Baú com o Colete de minerador.
+  2. Baú com o Manto de fibras marajoara.
   3. Mural 1, onde a mina da família encontra os túneis do povo antigo.
   4. Arena da Mina.
   5. Elevador velho da mina: desce para Agartha, quebra no caminho e deixa Nate no Bosque.
-- **Segredos:** +20 de vida (desvio); +20 de vida (canto escuro, volta com a Luz Ancestral); Armadura de minerador (parede rachada, volta com Terra).
+- **Segredos:** +20 de vida (desvio); +20 de vida (canto escuro, volta com a Luz Ancestral); +1 carga (parede rachada, volta com Terra).
 - **Arena opcional:** atrás de uma parede rachada (volta com Terra); guarda +1 carga.
 
 ### Bosque de Fungos
-- Cogumelos gigantes bioluminescentes.
+- Cogumelos gigantes bioluminescentes, numa floresta subterrânea viva, como as do Minecraft Dungeons: o chão em manchas de musgo de três tons e de terra com cascalho; capim, samambaias e flores que brilham perto das paredes, nas margens e nas manchas de musgo; cipós pendurados nos chapéus dos cogumelos; nos morros, arbustos, troncos caídos e restos de ruína com musgo; três riachos rasos que brilham (na caverna dos cogumelos gigantes, na sala do meio e na chegada do elevador), só de enfeite, que dá para atravessar andando; e esporos brilhando no ar.
 - Caminho principal, em ordem:
   1. S1, na chegada do elevador: Nate ganha a poção de vida, vê a memória 1 e conserta o elevador, que vira atalho para a Mina.
   2. Baú com a Lança marajoara.
@@ -115,7 +115,7 @@ O caminho principal das Ruínas tem cerca de 150 blocos andando, sem contar as l
   6. Arena 2, que guarda a passagem escura.
   7. Passagem escura até as Ruínas, que exige a Luz Ancestral.
 - **Atalho:** porta que só abre por um lado, do meio do Bosque de volta ao S1.
-- **Segredos:** +1 carga (desvio); Manto de fibras marajoara (desvio cercado de cogumelos); +20 de vida (desvio); +20 de vida (canto escuro); +20 de vida (parede rachada, volta com Terra); mural 3 (escondido).
+- **Segredos:** +1 carga (desvio); +20 de vida (desvio cercado de cogumelos); +20 de vida (desvio); +20 de vida (canto escuro); +20 de vida (parede rachada, volta com Terra); mural 3 (escondido).
 - **Arena opcional:** atrás de um canto escuro; guarda o pergaminho de Água.
 
 ### Ruínas
@@ -177,15 +177,15 @@ A passagem fecha até o jogador vencer as ondas (`02-core-loop.md`). Quantos mob
 |------|------|------|-------|
 | Espada | Prólogo | inicial | — |
 | Estilingue | Mina | caminho | — |
-| Colete de minerador | Mina | caminho (baú) | — |
+| Manto de fibras marajoara | Mina | caminho (baú) | — |
 | +20 de vida | Mina | segredo (desvio) | — |
 | +20 de vida | Mina | segredo (canto escuro) | Luz Ancestral (volta) |
-| Armadura de minerador | Mina | segredo (parede rachada) | Terra (volta) |
+| +1 carga | Mina | segredo (parede rachada) | Terra (volta) |
 | +1 carga | Mina | arena opcional | Terra (volta) |
 | Lança marajoara | Bosque | caminho (baú) | — |
 | Pergaminho de Fogo | Bosque | arena 1 | — |
 | +1 carga | Bosque | segredo (desvio) | — |
-| Manto de fibras marajoara | Bosque | segredo (desvio cercado de cogumelos) | — |
+| +20 de vida | Bosque | segredo (desvio cercado de cogumelos) | — |
 | +20 de vida | Bosque | segredo (desvio) | — |
 | +20 de vida | Bosque | segredo (canto escuro) | Luz Ancestral |
 | +20 de vida | Bosque | segredo (parede rachada) | Terra (volta) |
@@ -200,7 +200,7 @@ A passagem fecha até o jogador vencer as ondas (`02-core-loop.md`). Quantos mob
 | +1 carga | Ruínas | segredo (nicho) | — |
 | Pergaminho de Ar | Ruínas | arena opcional (escondida) | — |
 
-Ao todo: 7 peças de equipamento no mapa, além da espada inicial; 11 melhorias (7 de +20 de vida e 4 de +1 carga); 4 pergaminhos; e o Selo.
+Ao todo: 5 peças de equipamento no mapa, além da espada inicial; 13 melhorias (8 de +20 de vida e 5 de +1 carga); 4 pergaminhos; e o Selo.
 
 ## Atalhos
 | Atalho | Liga | Abre quando |
@@ -320,7 +320,7 @@ As três ferem Nate e os mobs (`03-regras.md`). Os mobs contornam as armadilhas 
 | Porta que só abre por um lado | atalho: abre só pelo lado de dentro | abrir | abrir |
 | Elevador da mina | desce e quebra na chegada ao Bosque; consertado, liga S1 e a Mina | descer, quebrar, subir | elevador; quebra |
 | Parede rachada | quebra com qualquer golpe quando Nate já aprendeu Terra; sem Terra, responde com som de pedra firme | quebrar | quebrar; pedra firme |
-| Área escura | sem a Luz Ancestral, Nate para na borda; com ela, o brilho ilumina o caminho | — | — |
+| Área escura | sem a Luz Ancestral, Nate para na borda. O lugar não tem a luz do ambiente: com a Luz, o chão em volta de Nate aparece na cor de verdade e volta a escurecer atrás dele, como com uma tocha | — | — |
 | Mural | conta a história sem texto; interagir mostra o mural grande na tela, e depois ele fica na galeria (`09-interface.md`) | — | — |
 | Pilar da prisão e porta da Grande Prisão | ver `07-chefes/boiuna.md` | — | — |
 

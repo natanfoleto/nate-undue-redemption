@@ -50,8 +50,9 @@ static func _armor(armor: ArmorData) -> Array[Dictionary]:
 		_row(&"STAT_HEALTH", "+%d" % armor.extra_health, armor.extra_health, true),
 		_row(&"STAT_SPEED", _speed(armor.move_speed), armor.move_speed, true),
 		_row(&"STAT_DASH_COOLDOWN", _seconds(dash), dash, false),
-		_row(&"STAT_DAMAGE_BONUS", "+%s%%" % _number(armor.damage_bonus * 100.0), armor.damage_bonus, true),
 	]
+	if armor.damage_bonus > 0.0:
+		rows.append(_row(&"STAT_DAMAGE_BONUS", "+%s%%" % _number(armor.damage_bonus * 100.0), armor.damage_bonus, true))
 	return rows
 
 

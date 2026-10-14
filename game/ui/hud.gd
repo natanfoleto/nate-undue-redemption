@@ -10,8 +10,15 @@ extends CanvasLayer
 @export var icon_scale := 1
 ## Transparência do sinal de combinação quando ela ainda não está pronta.
 @export var combo_dim := 0.0
+## Quando a combinação fica pronta, o sinal pulsa: quanto ele cresce e quanto tempo leva, em segundos.
+@export var combo_pulse_scale := 1.0
+@export var combo_pulse_time := 0.0
+## Quanto o sinal clareia no começo do pulso (acima de 1 clareia).
+@export var combo_pulse_flash := Color.WHITE
 
 var _player: Player
+var _combo_was_ready := false
+var _combo_tween: Tween
 
 @onready var _health_bar: HealthBar = %HealthBar
 @onready var _statuses: HBoxContainer = %Statuses
@@ -34,6 +41,7 @@ func _ready() -> void:
 	GameState.elements_changed.connect(_show_spells)
 	InputManager.device_changed.connect(_on_device_changed)
 	_show_spells()
+	_combo_was_ready = _player.spells.combo_ready()
 
 
 func _process(_delta: float) -> void:
@@ -42,7 +50,23 @@ func _process(_delta: float) -> void:
 	for slot in 2:
 		var id := GameState.equipped_element_id(slot)
 		_cooldowns[slot].anchor_bottom = _player.spells.cooldown_share(id) if id != &"" else 0.0
-	_combo.modulate.a = 1.0 if _player.spells.combo_ready() else combo_dim
+	var combo_is_ready := _player.spells.combo_ready()
+	_combo.modulate.a = 1.0 if combo_is_ready else combo_dim
+	if combo_is_ready and not _combo_was_ready and _combo.visible:
+		_pulse_combo()
+	_combo_was_ready = combo_is_ready
+
+
+# A combinação acabou de ficar pronta: o sinal cresce, clareia e volta.
+func _pulse_combo() -> void:
+	if _combo_tween:
+		_combo_tween.kill()
+	_combo.pivot_offset = _combo.size / 2.0
+	_combo.scale = Vector2.ONE * combo_pulse_scale
+	_combo.self_modulate = combo_pulse_flash
+	_combo_tween = create_tween().set_parallel()
+	_combo_tween.tween_property(_combo, ^"scale", Vector2.ONE, combo_pulse_time).set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_OUT)
+	_combo_tween.tween_property(_combo, ^"self_modulate", Color.WHITE, combo_pulse_time)
 
 
 func _show_statuses() -> void:

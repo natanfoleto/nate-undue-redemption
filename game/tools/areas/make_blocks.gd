@@ -8,8 +8,9 @@ extends SceneTree
 # Cada bloco é um dicionário: name, e um dos tipos abaixo, com tint (cor que multiplica a textura) e glow (brilho):
 # - texture: cubo com a textura (cutout: recorte, nas folhas; side: as laterais e o fundo com outra textura);
 # - liquid: cubo de água ou lava, com a faixa de quadros animada (shader liquid.gdshader), fps quadros por segundo;
+# - flat_liquid: a mesma água, deitada no chão, sem colisão (o riacho raso);
 # - fence: cerca na borda norte do bloco (−z), sem colisão: a barreira invisível segura quem anda;
-# - plant: planta em X (duas folhas cruzadas), sem colisão, com height blocos de altura;
+# - plant: planta em X (duas folhas cruzadas), sem colisão, com height blocos de altura (e glow nas que brilham);
 # - mushroom: cogumelo pequeno, pé e chapéu, sem colisão.
 # Os blocos de chão com ramps ganham as peças de rampa do próprio chão (rampas de 1 a 3 blocos e os 2 cantos,
 # terrain_builder.gd).
@@ -72,6 +73,21 @@ const FOREST := [
 	{"name": "Cogumelo ciano", "mushroom": OURS + "mushroom_cap_cyan", "glow": 1.4},
 	{"name": "Cogumelo verde-limão", "mushroom": OURS + "mushroom_cap_lime", "glow": 1.4},
 	{"name": "Rocha funda", "texture": PAINTED + "stone", "tint": Color(0.42, 0.5, 0.66)},
+	# O Bosque mais vivo, como as florestas do Minecraft Dungeons: manchas de musgo e cascalho, riacho raso, troncos,
+	# arbustos, ruínas com musgo, capim, samambaias, cipós e flores que brilham.
+	{"name": "Musgo claro", "texture": PAINTED + "grass", "side": PAINTED + "grass_side", "tint": Color(0.55, 0.74, 0.62), "ramps": true},
+	{"name": "Musgo escuro", "texture": PAINTED + "grass", "side": PAINTED + "grass_side", "tint": Color(0.36, 0.52, 0.48), "ramps": true},
+	{"name": "Cascalho do bosque", "texture": PAINTED + "gravel", "tint": Color(0.55, 0.62, 0.7), "ramps": true},
+	{"name": "Leito do riacho", "texture": PAINTED + "gravel", "tint": Color(0.35, 0.42, 0.5)},
+	{"name": "Riacho", "flat_liquid": PAINTED + "water_strip", "tint": Color(0.32, 0.62, 0.66), "glow": 0.25, "fps": 1.5},
+	{"name": "Tronco do bosque", "texture": PAINTED + "bark", "tint": Color(0.62, 0.66, 0.72)},
+	{"name": "Folhas do bosque", "texture": PAINTED + "jungle_leaves", "tint": Color(0.45, 0.75, 0.68), "cutout": true},
+	{"name": "Pedra antiga com musgo", "texture": PAINTED + "mossy_cobble", "tint": Color(0.7, 0.8, 0.85)},
+	{"name": "Capim do bosque", "plant": PAINTED + "grass_tuft", "tint": Color(0.5, 0.85, 0.75)},
+	{"name": "Capim alto do bosque", "plant": PAINTED + "grass_tall", "tint": Color(0.45, 0.78, 0.7)},
+	{"name": "Samambaia", "plant": PAINTED + "jungle_grass", "tint": Color(0.5, 0.82, 0.72), "height": 1.4},
+	{"name": "Cipó", "plant": PAINTED + "jungle_leaves", "tint": Color(0.4, 0.7, 0.62)},
+	{"name": "Flor de luz", "plant": PAINTED + "flower_blue", "tint": Color(0.7, 1.0, 0.95), "glow": 1.2},
 ]
 const RUINS := [
 	{"name": "Parede de terracota", "texture": OURS + "terracotta_wall"},
@@ -118,11 +134,14 @@ func _save(blocks: Array, look: String, path: String) -> void:
 		if block.has("liquid"):
 			mesh = BoxMesh.new()
 			(mesh as BoxMesh).material = _liquid_material(block.liquid, tint, glow, block.get("fps", 4.0))
+		elif block.has("flat_liquid"):
+			mesh = _flat_mesh(_liquid_material(block.flat_liquid, tint, glow, block.get("fps", 4.0)))
+			solid = false
 		elif block.has("fence"):
 			mesh = _fence_mesh(builder, _material(block.fence, tint, glow, false))
 			solid = false
 		elif block.has("plant"):
-			mesh = _plant_mesh(_plant_material(block.plant, tint), block.get("height", 1.0))
+			mesh = _plant_mesh(_plant_material(block.plant, tint, glow), block.get("height", 1.0))
 			solid = false
 		elif block.has("mushroom"):
 			mesh = _mushroom_mesh(builder, _material(OURS + "mushroom_stem", Color.WHITE, 0.0, false), _material(block.mushroom, tint, glow, false))
@@ -200,7 +219,7 @@ func _slope_material(texture_path: String, tint: Color) -> StandardMaterial3D:
 	return material
 
 
-func _plant_material(texture_path: String, tint: Color) -> StandardMaterial3D:
+func _plant_material(texture_path: String, tint: Color, glow := 0.0) -> StandardMaterial3D:
 	var material := StandardMaterial3D.new()
 	material.albedo_texture = load(texture_path + ".png")
 	material.albedo_color = tint
@@ -208,6 +227,10 @@ func _plant_material(texture_path: String, tint: Color) -> StandardMaterial3D:
 	material.transparency = BaseMaterial3D.TRANSPARENCY_ALPHA_SCISSOR
 	material.cull_mode = BaseMaterial3D.CULL_DISABLED
 	material.specular_mode = BaseMaterial3D.SPECULAR_DISABLED
+	if glow > 0.0:
+		material.emission_enabled = true
+		material.emission_texture = material.albedo_texture
+		material.emission_energy_multiplier = glow
 	return material
 
 

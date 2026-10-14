@@ -16,9 +16,9 @@ func test_weapons_and_the_potion_go_to_the_hotbar() -> void:
 
 
 func test_first_armor_is_worn_and_the_next_goes_to_the_bag() -> void:
-	ItemPlaces.place(_data, "miner_vest")
+	ItemPlaces.place(_data, "fiber_cloak")
 	ItemPlaces.place(_data, "cuirass")
-	assert_str(String(_data["armor"])).is_equal("miner_vest")
+	assert_str(String(_data["armor"])).is_equal("fiber_cloak")
 	assert_str(ItemPlaces.id_at(_data, ItemPlaces.BAG, 0)).is_equal("cuirass")
 
 
@@ -35,7 +35,7 @@ func test_an_item_is_kept_in_one_place_only() -> void:
 
 
 func test_armor_never_goes_to_the_hotbar() -> void:
-	ItemPlaces.place(_data, "miner_vest")
+	ItemPlaces.place(_data, "cuirass")
 	assert_bool(ItemPlaces.can_move(_data, ItemPlaces.ARMOR, 0, ItemPlaces.HOTBAR, 1)).is_false()
 	# Nem trocando com a arma de um espaço da barra.
 	assert_bool(ItemPlaces.can_move(_data, ItemPlaces.HOTBAR, 0, ItemPlaces.ARMOR, 0)).is_false()
@@ -51,10 +51,10 @@ func test_moving_swaps_the_two_places() -> void:
 
 
 func test_taking_the_armor_off_leaves_nate_without_one() -> void:
-	ItemPlaces.place(_data, "miner_vest")
+	ItemPlaces.place(_data, "cuirass")
 	assert_bool(ItemPlaces.move(_data, ItemPlaces.ARMOR, 0, ItemPlaces.BAG, 0)).is_true()
 	assert_str(String(_data["armor"])).is_empty()
-	assert_str(ItemPlaces.id_at(_data, ItemPlaces.BAG, 0)).is_equal("miner_vest")
+	assert_str(ItemPlaces.id_at(_data, ItemPlaces.BAG, 0)).is_equal("cuirass")
 
 
 func test_an_empty_place_moves_nothing() -> void:

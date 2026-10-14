@@ -9,6 +9,8 @@ var _left := 0.0
 var _faction := Hurtbox.Faction.ENEMY
 var _build_hit: Callable
 var _follow: Node3D
+# Um nó liberado compara igual a null: a área guarda à parte que segue alguém.
+var _following := false
 var _inside: Array[Node3D] = []
 
 
@@ -20,6 +22,7 @@ func start(spell: SpellData, faction: Hurtbox.Faction, build_hit := Callable(), 
 	_faction = faction
 	_build_hit = build_hit
 	_follow = follow
+	_following = follow != null
 
 
 ## Acaba antes da hora (o Escudo de Areia que segurou o golpe).
@@ -29,10 +32,10 @@ func finish() -> void:
 
 func _physics_process(delta: float) -> void:
 	_left -= delta
-	if _left <= 0.0 or (_follow != null and not is_instance_valid(_follow)):
+	if _left <= 0.0 or (_following and not is_instance_valid(_follow)):
 		queue_free()
 		return
-	if _follow:
+	if _following:
 		global_position = _follow.global_position
 	var duration := _effect_duration()
 	var now_inside: Array[Node3D] = []

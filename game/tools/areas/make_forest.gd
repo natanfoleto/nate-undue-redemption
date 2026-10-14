@@ -22,21 +22,48 @@ const CRACKED_HEIGHT := 2
 const DARK_WALL_HEIGHT := 2
 const CYAN := Color("4fe3d0")
 const LIME := Color("b8f060")
-# Itens do chão: identificador no mapa e item.
-const PICKUPS := {
-	"c": [&"forest_cloak", &"fiber_cloak"],
-}
-# Melhorias: identificador no mapa (começa com o tipo) e tipo. O desvio a oeste do corredor norte guarda +1 carga, e
-# o canto escuro ao lado da sala do Fogo, +20 de vida.
+# Melhorias: identificador no mapa (começa com o tipo) e tipo. O desvio a oeste do corredor norte guarda +1 carga;
+# o canto escuro ao lado da sala do Fogo e o desvio cercado de cogumelos, +20 de vida.
 const UPGRADES := {
 	"h": [&"heart_forest_1", &"heart"],
 	"H": [&"heart_forest_2", &"heart"],
 	"z": [&"charge_forest_1", &"charge"],
 	"j": [&"heart_forest_3", &"heart"],
+	"c": [&"heart_forest_4", &"heart"],
 }
 # Luzes do fundo das fendas: uma a cada tantos blocos, até esta distância do chão.
 const BOTTOM_LIGHT_EVERY := 7
 const BOTTOM_LIGHT_REACH := 9
+# O Bosque vivo, como as florestas do Minecraft Dungeons (08-mapa): o chão em manchas de musgo (claro, médio e escuro)
+# e de terra com cascalho, no tamanho do ruído; no chão de dentro, plantas perto das paredes, nas manchas de musgo e
+# um pouco na terra, e flores que brilham; nos morros, arbustos, plantas, troncos caídos e ruínas com musgo. Partes
+# de 0 a 1.
+const PATCH_SCALE := 5.0
+const GRAVEL_SCALE := 4.0
+const EDGE_PLANTS := 0.55
+const MOSS_PLANTS := 0.3
+const DIRT_PLANTS := 0.06
+const GLOW_FLOWERS := 0.05
+const HILL_BUSHES := 0.1
+const HILL_PLANTS := 0.25
+const HILL_LOGS := 0.012
+const HILL_RUINS := 0.01
+const LOG_LENGTH := 3
+# Cipós debaixo da borda dos chapéus dos cogumelos gigantes: a parte que tem e a que desce 2 blocos.
+const VINES := 0.5
+const LONG_VINES := 0.3
+# Riachos rasos que brilham, de uma parede a outra ou até a fenda: os pontos por onde cada um passa. Não passam em
+# objetos nem em rampas; correm sem buracos (sem ligar blocos só pelo canto), às vezes com 2 blocos de largura, e têm
+# mais plantas nas margens.
+const STREAMS := [
+	[Vector2i(52, 2), Vector2i(50, 8), Vector2i(53, 14), Vector2i(50, 20), Vector2i(46, 26), Vector2i(45, 28)],
+	[Vector2i(4, 62), Vector2i(9, 69), Vector2i(11, 73)],
+	[Vector2i(44, 36), Vector2i(46, 42), Vector2i(43, 48)],
+]
+const STREAM_WIDE := 0.62
+const BANK_PLANTS := 0.45
+# Esporos que flutuam no ar do Bosque: um grupo a cada tantos blocos de chão.
+const SPORES_EVERY := 9
 
 var _rows: PackedStringArray
 var _root: Node3D
@@ -50,6 +77,7 @@ var _objects: Node3D
 var _items := {}
 var _counts := {}
 var _mushrooms := 0
+var _streams := {}
 
 
 func _initialize() -> void:
@@ -125,6 +153,7 @@ func _build_terrain() -> void:
 	_land.auto_ramps = true
 	_land.slope_chars = ".,"
 	_land.setup(_rows, FileAccess.get_file_as_string(HEIGHTS).split("\n"))
+	_trace_streams()
 	for z in range(_land.low.y, _land.high.y):
 		for x in range(_land.low.x, _land.high.x):
 			if _land.kind(x, z) == _land.Kind.WALL and _land.is_front(x, z) and (_touches(x, z, "d") or _touches(x, z, "x")):
@@ -140,6 +169,8 @@ func _build_terrain() -> void:
 	for cell: Vector2i in _land.ledges():
 		_terrain.set_cell_item(Vector3i(cell.x, _land.height(cell.x, cell.y), cell.y), _item("Rocha"))
 	_decorate()
+	_decorate_floor()
+	_build_spores()
 	_build_navigation()
 
 
@@ -191,13 +222,28 @@ func _floor(x: int, z: int) -> void:
 	if ch == "V":
 		_land.place_column(_terrain, x, z, _item("Rocha funda"), _item("Rocha funda"))
 		return
-	# A borda entre o musgo e a terra fica misturada: o chão vem de um bloco vizinho puxado pelo ruído.
+	# A borda entre o musgo e a terra fica misturada: o chão vem de um bloco vizinho puxado pelo ruído. O musgo e a
+	# terra têm manchas (o musgo em três tons, a terra com cascalho), e o riacho corre num leito de pedrinhas.
 	var zone: Vector2i = _land.blend_source(x, z)
-	var moss := _is_moss(zone.x, zone.y)
-	_land.place_floor(_terrain, x, z, _item("Chão de musgo") if moss else _item("Chão de terra"), _item("Chão de terra"), _item("Escada"))
+	var top := _moss_patch(x, z) if _is_moss(zone.x, zone.y) else _dirt_patch(x, z)
+	if _streams.has(Vector2i(x, z)):
+		top = _item("Leito do riacho")
+		_decor.set_cell_item(Vector3i(x, _land.height(x, z), z), _item("Riacho"))
+	_land.place_floor(_terrain, x, z, top, _item("Chão de terra"), _item("Escada"))
 	# Abaixo do chão, a beira das fendas é de rocha funda, como as paredes delas.
 	for y in range(_land.bottom(x, z), _land.height(x, z) - 1):
 		_terrain.set_cell_item(Vector3i(x, y, z), _item("Rocha funda"))
+
+
+func _moss_patch(x: int, z: int) -> int:
+	var patch: float = _land.smooth_noise(x, z, PATCH_SCALE, 31)
+	if patch < 0.36:
+		return _item("Musgo escuro")
+	return _item("Musgo claro") if patch > 0.64 else _item("Chão de musgo")
+
+
+func _dirt_patch(x: int, z: int) -> int:
+	return _item("Cascalho do bosque") if _land.smooth_noise(x, z, GRAVEL_SCALE, 37) > 0.68 else _item("Chão de terra")
 
 
 # Chão de musgo: o "," do rascunho, e os objetos encostados nele.
@@ -224,6 +270,13 @@ func _giant_mushroom(x: int, z: int, base: int, with_light: bool) -> void:
 		for dz in range(-1, 2):
 			_set_if_empty(Vector3i(x + dx, base + STEM_HEIGHT, z + dz), cap)
 	_set_if_empty(Vector3i(x, base + STEM_HEIGHT + 1, z), cap)
+	# Cipós pendurados debaixo da borda do chapéu, alguns mais compridos.
+	for dx in range(-1, 2):
+		for dz in range(-1, 2):
+			if (dx != 0 or dz != 0) and _land.chance(x + dx, z + dz, 47) < VINES:
+				_decor_if_empty(Vector3i(x + dx, base + STEM_HEIGHT - 1, z + dz), _item("Cipó"))
+				if _land.chance(x + dx, z + dz, 53) < LONG_VINES:
+					_decor_if_empty(Vector3i(x + dx, base + STEM_HEIGHT - 2, z + dz), _item("Cipó"))
 	if with_light:
 		_light(Vector3(x + 0.5, base + STEM_HEIGHT - 0.4, z + 0.5), CYAN if cap == _item("Chapéu ciano") else LIME, 8.0, 2.0)
 
@@ -248,11 +301,136 @@ func _decorate() -> void:
 					_giant_mushroom(x, z, top, false)
 				elif roll < 0.12:
 					_decor_if_empty(Vector3i(x, top, z), _small_mushroom(x, z))
+				else:
+					_decorate_hill(x, z, top, roll - 0.12)
 			elif _land.is_bottom(x, z) or kind == _land.Kind.CHASM:
 				if roll < 0.1:
 					_decor_if_empty(Vector3i(x, top, z), _small_mushroom(x, z))
 				if x % BOTTOM_LIGHT_EVERY == 0 and z % BOTTOM_LIGHT_EVERY == 0 and _land.distance(x, z) <= BOTTOM_LIGHT_REACH:
 					_light(Vector3(x + 0.5, top + 1.5, z + 0.5), CYAN if (x / BOTTOM_LIGHT_EVERY) % 2 == 0 else LIME, 7.0, 1.6)
+
+
+# O alto de um morro: arbustos, plantas, troncos caídos e restos de ruína com musgo, sem passar do teto da coluna (a
+# linha de visão da câmera).
+func _decorate_hill(x: int, z: int, top: int, roll: float) -> void:
+	var room: int = _land.cap(x, z) - top
+	if roll < HILL_BUSHES:
+		if room >= 1:
+			_set_if_empty(Vector3i(x, top, z), _item("Folhas do bosque"))
+	elif roll < HILL_BUSHES + HILL_PLANTS:
+		_decor_if_empty(Vector3i(x, top, z), _plant(x, z))
+	elif roll < HILL_BUSHES + HILL_PLANTS + HILL_LOGS:
+		_fallen_log(x, z, top)
+	elif roll < HILL_BUSHES + HILL_PLANTS + HILL_LOGS + HILL_RUINS:
+		for y in mini(1 + _land.noise(x, z) % 3, room):
+			_set_if_empty(Vector3i(x, top + y, z), _item("Pedra antiga com musgo"))
+
+
+# Tronco caído: alguns blocos de casca deitados em fila, para o lado em que cabem no alto do morro.
+func _fallen_log(x: int, z: int, top: int) -> void:
+	var along := Vector2i(1, 0) if _land.noise(x, z) % 2 == 0 else Vector2i(0, 1)
+	for i in LOG_LENGTH:
+		var spot := Vector2i(x, z) + along * i
+		if _land.kind(spot.x, spot.y) != _land.Kind.FILL or _land.top(spot.x, spot.y) != top or _land.cap(spot.x, spot.y) <= top:
+			return
+	for i in LOG_LENGTH:
+		var spot := Vector2i(x, z) + along * i
+		_set_if_empty(Vector3i(spot.x, top, spot.y), _item("Tronco do bosque"))
+
+
+# Uma planta do Bosque: capim, capim alto ou samambaia.
+func _plant(x: int, z: int) -> int:
+	var pick: float = _land.chance(x, z, 59)
+	if pick < 0.3:
+		return _item("Samambaia")
+	return _item("Capim alto do bosque") if pick < 0.7 else _item("Capim do bosque")
+
+
+# O chão de dentro: plantas perto das paredes, nas manchas de musgo e um pouco na terra, e as flores que brilham; longe
+# dos objetos, das rampas e dos riachos (a planta não segura ninguém: é só enfeite).
+func _decorate_floor() -> void:
+	for z in range(_land.low.y, _land.high.y):
+		for x in range(_land.low.x, _land.high.x):
+			if not _free_floor(x, z) or _streams.has(Vector2i(x, z)):
+				continue
+			var where := Vector3i(x, _land.height(x, z), z)
+			var roll: float = _land.chance(x, z, 41)
+			var moss := _is_moss(x, z)
+			if _near_stream(x, z) and roll < BANK_PLANTS:
+				_decor_if_empty(where, _plant(x, z))
+			elif _near_wall(x, z) and roll < EDGE_PLANTS:
+				_decor_if_empty(where, _plant(x, z))
+			elif moss and _land.smooth_noise(x, z, 3.5, 43) > 0.55 and roll < MOSS_PLANTS:
+				_decor_if_empty(where, _item("Flor de luz") if roll < MOSS_PLANTS * 0.15 else _plant(x, z))
+			elif moss and roll < GLOW_FLOWERS:
+				_decor_if_empty(where, _item("Flor de luz"))
+			elif not moss and roll < DIRT_PLANTS:
+				_decor_if_empty(where, _item("Capim do bosque"))
+
+
+# Chão comum e plano, sem objeto nele nem em volta (os objetos ficam legíveis).
+func _free_floor(x: int, z: int) -> bool:
+	if _land.kind(x, z) != _land.Kind.FLOOR or not _land.ramp_at(x, z).is_empty() or _land.stairs_at(x, z) != "":
+		return false
+	for dz in range(-1, 2):
+		for dx in range(-1, 2):
+			if _cell(x + dx, z + dz) not in [".", ",", "#", "~"]:
+				return false
+	return true
+
+
+func _near_wall(x: int, z: int) -> bool:
+	for side: Vector2i in [Vector2i(1, 0), Vector2i(-1, 0), Vector2i(0, 1), Vector2i(0, -1)]:
+		var kind: int = _land.kind(x + side.x, z + side.y)
+		if kind == _land.Kind.WALL or kind == _land.Kind.FILL:
+			return true
+	return false
+
+
+func _near_stream(x: int, z: int) -> bool:
+	for side: Vector2i in [Vector2i(1, 0), Vector2i(-1, 0), Vector2i(0, 1), Vector2i(0, -1)]:
+		if _streams.has(Vector2i(x, z) + side):
+			return true
+	return false
+
+
+# Os riachos: cada trecho entre dois pontos vira uma fila de blocos de chão livre, às vezes com 2 de largura.
+func _trace_streams() -> void:
+	for stream: Array in STREAMS:
+		for i in stream.size() - 1:
+			var from: Vector2i = stream[i]
+			var to: Vector2i = stream[i + 1]
+			var steps := maxi(absi(to.x - from.x), absi(to.y - from.y)) * 2
+			var last := from
+			for step in steps + 1:
+				var cell := Vector2i(Vector2(from).lerp(Vector2(to), float(step) / steps).round())
+				# Um passo na diagonal ganha o bloco do canto, para a água não pular de quina em quina.
+				if cell.x != last.x and cell.y != last.y:
+					_add_stream(Vector2i(cell.x, last.y))
+				_add_stream(cell)
+				if _land.smooth_noise(cell.x, cell.y, 3.0, 61) > STREAM_WIDE:
+					_add_stream(cell + Vector2i(1, 0))
+				last = cell
+
+
+func _add_stream(cell: Vector2i) -> void:
+	if _free_floor(cell.x, cell.y):
+		_streams[cell] = true
+
+
+# Esporos que brilham flutuando no ar, um grupo a cada tantos blocos de chão (data/effects/forest_spores.tres).
+func _build_spores() -> void:
+	var layer := load("res://data/effects/forest_spores.tres") as ParticleLayer
+	for z in range(_land.low.y, _land.high.y):
+		for x in range(_land.low.x, _land.high.x):
+			if x % SPORES_EVERY != 0 or z % SPORES_EVERY != 0 or _land.kind(x, z) != _land.Kind.FLOOR:
+				continue
+			var spores := layer.build(Vector3.ONE)
+			spores.name = "Spores"
+			spores.position += Vector3(x + 0.5, _land.height(x, z), z + 0.5)
+			# Já no ar quando a área abre.
+			spores.preprocess = layer.lifetime
+			_add(_root, spores)
 
 
 func _small_mushroom(x: int, z: int) -> int:
@@ -351,12 +529,7 @@ func _build_objects() -> void:
 					scroll.name = "Scroll" + String(element).capitalize()
 					scroll.set("save_id", StringName("forest_scroll_" + element))
 					scroll.set("element_id", element)
-				"c":
-					var spec: Array = PICKUPS[ch]
-					var pickup := _instance(_objects, "res://world/objects/item_pickup.tscn", _center(x, z), 0.0)
-					pickup.set("save_id", spec[0])
-					pickup.set("item_id", spec[1])
-				"h", "H", "z", "j":
+				"h", "H", "z", "j", "c":
 					var upgrade := _instance(_objects, "res://world/objects/item_pickup.tscn", _center(x, z), 0.0)
 					upgrade.set("save_id", UPGRADES[ch][0])
 					upgrade.set("item_id", UPGRADES[ch][1])

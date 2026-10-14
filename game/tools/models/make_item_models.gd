@@ -17,9 +17,6 @@ const STEEL_EDGE := Color("e8eaee")
 const GOLD := Color("c8a040")
 const GOLD_DARK := Color("98782c")
 const GOLD_LIGHT := Color("e8c870")
-const IRON := Color("6e7178")
-const IRON_DARK := Color("4a4c52")
-const IRON_LIGHT := Color("9a9ea6")
 const WOOD := Color("6b4a2b")
 const WOOD_DARK := Color("4e3520")
 const WOOD_LIGHT := Color("86603a")
@@ -39,9 +36,6 @@ const BLACK := Color("1d1a17")
 const CREAM := Color("e8d9b0")
 const TERRACOTTA := Color("b5562f")
 const TERRACOTTA_DARK := Color("8e4324")
-const ORANGE := Color("c8702a")
-const ORANGE_DARK := Color("9a5520")
-const YELLOW := Color("f2d040")
 const FIBER := Color("c8963c")
 const FIBER_DARK := Color("a07428")
 const RUBBER := Color("6a2820")
@@ -162,18 +156,6 @@ func _shapes() -> Dictionary:
 			_b("fletch_v", Vector3i(1, 3, 3), Vector3(-0.5, -1.5, 3)),
 			_b("fletch_h", Vector3i(3, 1, 3), Vector3(-1.5, -0.5, 3)),
 		],
-		"miner_vest": [
-			_b("vest", Vector3i(10, 9, 5), Vector3(-5, 2, -2.5)),
-			_b("pocket_r", Vector3i(3, 2, 1), Vector3(1, 4, -3)),
-			_b("pocket_l", Vector3i(3, 2, 1), Vector3(-4, 4, -3)),
-		],
-		"miner_armor": [
-			_b("body", Vector3i(11, 11, 6), Vector3(-5.5, 0, -3)),
-			_b("plate", Vector3i(8, 3, 1), Vector3(-4, 6, -3.5)),
-			_b("belt", Vector3i(11, 1, 6), Vector3(-5.5, 1, -3.2)),
-			_b("shoulder_r", Vector3i(4, 3, 6), Vector3(3, 9, -3)),
-			_b("shoulder_l", Vector3i(4, 3, 6), Vector3(-7, 9, -3)),
-		],
 		"fiber_cloak": [
 			_b("cape", Vector3i(10, 13, 1), Vector3(-5, -3, 2)),
 			_b("stripe_1", Vector3i(10, 1, 1), Vector3(-5, 7, 3)),
@@ -287,10 +269,6 @@ func _paint(item: String, box: BoxData, face: int, u: int, v: int, w: int, h: in
 			if part.begins_with("fletch"):
 				return CREAM if (u + v) % 3 == 0 else RED
 			return _wood(box, face, u, v, PALE_WOOD, PALE_WOOD_DARK, PALE_WOOD.lightened(0.15))
-		"miner_vest":
-			return _vest(box, part, face, u, v, w, h)
-		"miner_armor":
-			return _miner_armor(box, part, face, u, v, w, h)
 		"fiber_cloak":
 			return _cloak(box, part, face, u, v, w, h)
 		"cuirass":
@@ -384,44 +362,6 @@ func _bow(box: BoxData, part: String, face: int, u: int, v: int, w: int, h: int)
 	if along % 3 == 0:
 		return BLACK if part.ends_with("2") else RED
 	return _wood(box, face, u, v, Color("8a5a2b"), Color("6e4620"), Color("a06c36"))
-
-
-# Colete de minerador: a lona laranja com as duas faixas amarelas refletivas, o zíper escuro no meio, as costuras
-# claras nas bordas e os bolsos com a tampa mais escura.
-func _vest(box: BoxData, part: String, face: int, u: int, v: int, w: int, h: int) -> Color:
-	if part.begins_with("pocket"):
-		return ORANGE_DARK if v == 0 else ORANGE
-	if face == BoxData.Face.TOP or face == BoxData.Face.BOTTOM:
-		return ORANGE_DARK
-	if v == 3 or v == 6:
-		return YELLOW
-	if face == BoxData.Face.FRONT and (u == w / 2 or u == w / 2 - 1):
-		return Color("3a2a1a") if u == w / 2 - 1 else ORANGE_DARK
-	if v == h - 1 or v == 0:
-		return ORANGE_DARK
-	return ORANGE.lightened(0.08) if _noise(box, face, u, v) > 0.9 else ORANGE
-
-
-# Armadura de minerador: o couro com costuras, a placa de ferro do peito com rebites nos cantos, o cinto com a
-# fivela e as ombreiras de ferro com uma fileira de rebites.
-func _miner_armor(box: BoxData, part: String, face: int, u: int, v: int, w: int, h: int) -> Color:
-	match part:
-		"plate":
-			if (u == 0 or u == w - 1) and (v == 0 or v == h - 1):
-				return IRON_LIGHT
-			return IRON.darkened(0.1) if _noise(box, face, u, v) < 0.2 else IRON
-		"belt":
-			if face == BoxData.Face.FRONT and (u == w / 2 or u == w / 2 - 1):
-				return Color("b8a060")
-			return LEATHER
-		"shoulder_r", "shoulder_l":
-			if face == BoxData.Face.TOP:
-				return IRON_LIGHT if v % 2 == 0 and u % 2 == 0 else IRON
-			return IRON_DARK if v == h - 1 else IRON
-	# O couro: costura clara tracejada nas bordas.
-	if not _cap(face) and (u == 0 or u == w - 1 or v == 0) and (u + v) % 2 == 0:
-		return Color("8a6a4a")
-	return Color("6a4a2a").darkened(0.1) if _noise(box, face, u, v) < 0.15 else Color("6a4a2a")
 
 
 # Manto de fibras marajoara: a fibra trançada em diagonal, as faixas pretas e vermelhas com pontos creme e a gola

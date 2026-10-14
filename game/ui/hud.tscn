@@ -14,6 +14,9 @@ script = ExtResource("1_spcu4")
 status_icons = Array[Texture2D]([ExtResource("4_b00kl"), ExtResource("5_so1yu"), ExtResource("6_65xic"), ExtResource("7_mp5xd")])
 icon_scale = 3
 combo_dim = 0.35
+combo_pulse_scale = 1.4
+combo_pulse_time = 0.4
+combo_pulse_flash = Color(2, 2, 2, 1)
 
 [node name="Top" type="VBoxContainer" parent="." unique_id=1052509568]
 offset_left = 16.0

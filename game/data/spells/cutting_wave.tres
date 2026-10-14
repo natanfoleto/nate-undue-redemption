@@ -2,6 +2,7 @@
 
 [ext_resource type="Resource" path="res://data/attacks/cutting_wave.tres" id="1_hiyhl"]
 [ext_resource type="Script" path="res://combat/spell_data.gd" id="2_1kewt"]
+[ext_resource type="Resource" path="res://data/effects/spells/cutting_wave.tres" id="2_ibif3"]
 
 [resource]
 script = ExtResource("2_1kewt")
@@ -9,4 +10,5 @@ name_key = &"SPELL_CUTTING_WAVE"
 attack = ExtResource("1_hiyhl")
 cooldown = 8.0
 color = Color(0.5411765, 0.8156863, 1, 1)
+look = ExtResource("2_ibif3")
 sound = &"spell_water"

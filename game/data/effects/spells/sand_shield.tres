@@ -1,0 +1,84 @@
+[gd_resource type="Resource" script_class="SpellLook" format=3]
+
+[ext_resource type="Script" path="res://world/effects/particle_layer.gd" id="1_3phuy"]
+[ext_resource type="Script" path="res://world/effects/spell_look.gd" id="2_atw8f"]
+
+[sub_resource type="Resource" id="Resource_sk2h4"]
+script = ExtResource("1_3phuy")
+color_start = Color(0.92, 0.82, 0.57, 1)
+color_end = Color(0.92, 0.82, 0.57, 0)
+amount = 18
+lifetime = 0.45
+shape = 2
+shape_size = Vector3(0.6, 0.05, 0.8)
+lift = 0.1
+spread = 10.0
+speed = Vector2(1, 2)
+radial = 2.0
+damping = 1.0
+size_pixels = Vector2(2, 3)
+glows = true
+
+[sub_resource type="Resource" id="Resource_2ha6p"]
+script = ExtResource("1_3phuy")
+color_end = Color(1, 1, 1, 0)
+amount = 10
+lifetime = 0.6
+shape = 1
+shape_size = Vector3(0.4, 0, 0)
+lift = 1.1
+spread = 30.0
+speed = Vector2(1.5, 3)
+gravity = -2.0
+size_pixels = Vector2(1, 2)
+glows = true
+
+[sub_resource type="Resource" id="Resource_twmtb"]
+script = ExtResource("1_3phuy")
+color_start = Color(0.92, 0.82, 0.57, 1)
+color_end = Color(0.8, 0.68, 0.45, 0)
+amount = 30
+lifetime = 0.5
+shape = 2
+shape_size = Vector3(0.6, 0.1, 0.5)
+lift = 0.2
+spread = 20.0
+speed = Vector2(1.5, 3)
+radial = 4.0
+size_pixels = Vector2(1, 3)
+
+[sub_resource type="Resource" id="Resource_shw5u"]
+script = ExtResource("1_3phuy")
+color_start = Color(0.92, 0.82, 0.57, 0.95)
+color_end = Color(0.8, 0.68, 0.45, 0)
+amount = 60
+lifetime = 0.8
+one_shot = false
+shape = 2
+shape_size = Vector3(1, 1.4, 0.85)
+lift = 0.8
+spread = 10.0
+speed = Vector2(0.2, 0.6)
+size_pixels = Vector2(1, 2)
+spin = 1.4
+
+[sub_resource type="Resource" id="Resource_x6qi4"]
+script = ExtResource("1_3phuy")
+color_start = Color(0.8, 0.68, 0.45, 1)
+color_end = Color(0.8, 0.68, 0.45, 0)
+amount = 16
+lifetime = 1.0
+one_shot = false
+shape = 2
+shape_size = Vector3(1, 1, 0.8)
+lift = 0.8
+spread = 10.0
+speed = Vector2(0.1, 0.3)
+size_pixels = Vector2(3, 4)
+spin = 0.9
+
+[resource]
+script = ExtResource("2_atw8f")
+cast = Array[ExtResource("1_3phuy")]([SubResource("Resource_sk2h4"), SubResource("Resource_2ha6p")])
+impact = Array[ExtResource("1_3phuy")]([SubResource("Resource_twmtb")])
+lasting = Array[ExtResource("1_3phuy")]([SubResource("Resource_shw5u"), SubResource("Resource_x6qi4")])

@@ -13,7 +13,7 @@ Sistema de itens e as fichas de equipamento, muiraquitã e magias, poção de vi
 | Elemento | 2 | uma magia em cada botão; os dois juntos lançam a combinação (`04-player.md`) |
 
 - Na barra, só itens de mão; a armadura nunca entra nela.
-- Cada item fica num lugar só. Os 5 da barra mais os 10 da mochila e a armadura cabem todos os itens do jogo (as 8 peças de equipamento e a poção).
+- Cada item fica num lugar só. Os 5 da barra mais os 10 da mochila e a armadura cabem todos os itens do jogo (as 6 peças de equipamento e a poção).
 
 ### Raridade
 | Raridade | Origem | O que tem |
@@ -45,7 +45,7 @@ Sistema de itens e as fichas de equipamento, muiraquitã e magias, poção de vi
 - Nenhuma armadura no início.
 
 ## Equipamento
-8 peças: 2 armas corpo a corpo, 2 armas à distância e 4 armaduras. Dessas, 4 são comuns e 4 são marajoara. Poucas peças, cada uma com um jeito próprio de lutar.
+6 peças: 2 armas corpo a corpo, 2 armas à distância e 2 armaduras. Dessas, 2 são comuns (a Espada e o Estilingue) e 4 são marajoara. Poucas peças, cada uma com um jeito próprio de lutar.
 
 ### Armas corpo a corpo
 **Papel no jogo:** o ataque principal de Nate. Cada arma muda o ritmo do combo de 3 golpes, e as marajoara somam um efeito.
@@ -117,25 +117,23 @@ Recuo: Estilingue e Arco, curto.
 - Ícone de cada arma no inventário.
 
 ### Armaduras
-**Papel no jogo:** dar vida extra e marcar o estilo, leve ou pesado.
-**Descrição visual:** blocos e cores sobre o modelo base de Nate. As comuns são equipamento gasto de minerador; as marajoara, fibras trançadas e placas de cerâmica com padrões geométricos marajoara.
+**Papel no jogo:** dar vida extra e marcar o estilo: uma veloz, para quem desvia, e uma tank, para quem aguenta.
+**Descrição visual:** blocos e cores sobre o modelo base de Nate: fibras trançadas (o Manto) e placas de cerâmica (a Couraça), com padrões geométricos marajoara.
 
 #### Atributos
 Valores exatos: `11-balanceamento.md`.
 
 | Peça | Raridade | Peso | Vida | Velocidade | Efeito | Área |
 |------|----------|------|------|------------|--------|------|
-| Colete de minerador | comum | leve | +20 | normal | — | Mina |
-| Armadura de minerador | comum | pesada | +40 | menor | — | Mina |
-| Manto de fibras marajoara | marajoara | leve | +20 | normal | dash recarrega mais rápido | Bosque |
-| Couraça de cerâmica marajoara | marajoara | pesada | +40 | menor | mais dano | Ruínas |
+| Manto de fibras marajoara | marajoara | leve (veloz) | +20 | maior | dash recarrega mais rápido | Mina |
+| Couraça de cerâmica marajoara | marajoara | pesada (tank) | +60 | menor | — | Ruínas |
 
 #### Comportamento e habilidades
 - A vida da armadura soma à vida máxima enquanto ela está vestida.
 - Ao vestir, a vida extra chega vazia; ao tirar, a vida atual é cortada no novo máximo. Assim, trocar de armadura não cura.
 - Armaduras pesadas fazem Nate andar mais devagar.
-- **Manto de fibras marajoara:** o dash recarrega mais rápido: 0,35 s em vez de 0,5 s.
-- **Couraça de cerâmica marajoara:** mais dano (bônus de dano, `03-regras.md`).
+- **Manto de fibras marajoara (veloz):** Nate anda 10% mais rápido, e o dash recarrega em 0,35 s em vez de 0,5 s.
+- **Couraça de cerâmica marajoara (tank):** a vida extra maior, com Nate andando 10% mais devagar.
 
 #### Interações
 Nenhuma além dos atributos.
@@ -147,7 +145,7 @@ Nenhuma própria: a armadura acompanha as animações de Nate.
 Nenhum próprio.
 
 #### Assets necessários
-- 4 conjuntos de armadura sobre o modelo de Nate, definidos por código.
+- 2 conjuntos de armadura sobre o modelo de Nate, definidos por código.
 - Ícone de cada armadura no inventário.
 
 ## O muiraquitã e as magias
@@ -264,7 +262,7 @@ Recuo da Tempestade de Fogo: curto.
 
 #### Animações necessárias
 - A pose de usar magia de Nate (`04-player.md`), a mesma para as 10.
-- Efeito visual de cada magia: 10 efeitos.
+- Efeito visual de cada magia: 10 efeitos, com as partículas do elemento (o fogo com chamas, brasas e fumaça; a água com espuma, gotas e corpo d'água; a terra com pedras, pedrinhas e poeira; o ar com riscos de vento e lufadas; as combinações misturam os dois), a aura em Nate ao lançar, o rastro do projétil, a luz, a marca no chão, o tremor da tela nas fortes e uma pausa curta quando acertam (`10-arte-audio.md`).
 
 #### Sons necessários
 - Um som para cada magia: 10 sons.
@@ -281,7 +279,7 @@ Recuo da Tempestade de Fogo: curto.
 ### Atributos
 | Atributo | Valor |
 |----------|-------|
-| Cargas | 3 (até 7 com melhorias) |
+| Cargas | 3 (até 8 com melhorias) |
 | Cura por carga | 40 |
 | Tempo para beber | 0,6 s |
 
@@ -311,8 +309,8 @@ Recuo da Tempestade de Fogo: curto.
 ### Atributos
 | Melhoria | Quantas | Efeito |
 |----------|---------|--------|
-| +20 de vida | 7 | vida máxima de 100 até 240 |
-| +1 carga | 4 | poção de 3 até 7 cargas |
+| +20 de vida | 8 | vida máxima de 100 até 260 |
+| +1 carga | 5 | poção de 3 até 8 cargas |
 
 ### Comportamento e habilidades
 - Escondidas em segredos; lugar exato em `08-mapa.md`.

@@ -1,0 +1,89 @@
+[gd_resource type="Resource" script_class="SpellLook" format=3]
+
+[ext_resource type="Script" path="res://world/effects/particle_layer.gd" id="1_llypk"]
+[ext_resource type="Script" path="res://world/effects/spell_look.gd" id="2_uwx8f"]
+
+[sub_resource type="Resource" id="Resource_n7bvu"]
+script = ExtResource("1_llypk")
+color_start = Color(0.56, 0.43, 0.28, 1)
+color_end = Color(0.56, 0.43, 0.28, 0)
+amount = 18
+lifetime = 0.45
+shape = 2
+shape_size = Vector3(0.6, 0.05, 0.8)
+lift = 0.1
+spread = 10.0
+speed = Vector2(1, 2)
+radial = 2.0
+damping = 1.0
+size_pixels = Vector2(2, 3)
+glows = true
+
+[sub_resource type="Resource" id="Resource_bo526"]
+script = ExtResource("1_llypk")
+color_start = Color(0.5, 0.78, 1, 1)
+color_end = Color(0.5, 0.78, 1, 0)
+amount = 10
+lifetime = 0.6
+shape = 1
+shape_size = Vector3(0.4, 0, 0)
+lift = 1.1
+spread = 30.0
+speed = Vector2(1.5, 3)
+gravity = -2.0
+size_pixels = Vector2(1, 2)
+glows = true
+
+[sub_resource type="Resource" id="Resource_q7qo4"]
+script = ExtResource("1_llypk")
+color_start = Color(0.42, 0.3, 0.18, 1)
+color_end = Color(0.42, 0.3, 0.18, 1)
+amount = 34
+lifetime = 0.75
+shape = 1
+shape_size = Vector3(0.5, 0, 0)
+lift = 0.3
+spread = 55.0
+speed = Vector2(2, 4.5)
+gravity = -13.0
+size_pixels = Vector2(3, 5)
+
+[sub_resource type="Resource" id="Resource_gncrl"]
+script = ExtResource("1_llypk")
+color_start = Color(0.56, 0.43, 0.28, 1)
+color_end = Color(0.56, 0.43, 0.28, 0.6)
+amount = 16
+lifetime = 0.9
+one_shot = false
+shape = 2
+shape_size = Vector3(0.85, 0.05, 0)
+lift = 0.05
+spread = 8.0
+speed = Vector2(0.2, 0.5)
+size_pixels = Vector2(2, 4)
+shrink = true
+
+[sub_resource type="Resource" id="Resource_3gcop"]
+script = ExtResource("1_llypk")
+color_start = Color(0.42, 0.3, 0.18, 1)
+color_end = Color(0.42, 0.3, 0.18, 1)
+amount = 8
+lifetime = 0.6
+one_shot = false
+shape = 2
+shape_size = Vector3(0.85, 0.05, 0)
+lift = 0.05
+spread = 30.0
+speed = Vector2(1, 2)
+gravity = -10.0
+size_pixels = Vector2(1, 2)
+
+[resource]
+script = ExtResource("2_uwx8f")
+cast = Array[ExtResource("1_llypk")]([SubResource("Resource_n7bvu"), SubResource("Resource_bo526")])
+impact = Array[ExtResource("1_llypk")]([SubResource("Resource_q7qo4")])
+lasting = Array[ExtResource("1_llypk")]([SubResource("Resource_gncrl"), SubResource("Resource_3gcop")])
+mark_color = Color(0.28, 0.2, 0.12, 0.85)
+mark_time = 0.8
+shake = 0.04
+shake_time = 0.15

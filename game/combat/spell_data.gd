@@ -22,8 +22,9 @@ enum Delivery { PROJECTILE, INSTANT, LASTING, AROUND }
 @export var lasting := 0.0
 ## Distância da frente de Nate até o centro da área, em blocos.
 @export var offset := 0.0
-## Cor do efeito visual (10-arte-audio).
+## Cor da magia (10-arte-audio); o visual dela fica no SpellLook.
 @export var color := Color.WHITE
+@export var look: SpellLook
 ## Modelo do projétil em voo.
 @export var projectile_model: ModelData
 ## Nate fica mais rápido: quanto a mais, de 0 a 1, e por quanto tempo, em segundos (Rajada Veloz).

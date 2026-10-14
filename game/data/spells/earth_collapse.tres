@@ -1,6 +1,7 @@
 [gd_resource type="Resource" script_class="SpellData" format=3]
 
 [ext_resource type="Resource" path="res://data/attacks/earth_collapse.tres" id="1_ka2i1"]
+[ext_resource type="Resource" path="res://data/effects/spells/earth_collapse.tres" id="2_gu7d8"]
 [ext_resource type="Script" path="res://combat/spell_data.gd" id="2_wm1yj"]
 
 [resource]
@@ -9,4 +10,5 @@ name_key = &"SPELL_EARTH_COLLAPSE"
 attack = ExtResource("1_ka2i1")
 cooldown = 10.0
 color = Color(0.627451, 0.4392157, 0.22745098, 1)
+look = ExtResource("2_gu7d8")
 sound = &"spell_earth"
