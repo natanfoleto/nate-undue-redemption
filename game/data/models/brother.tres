@@ -151,5 +151,4 @@ pivot = Vector3(-5.5, 13, 0)
 
 [resource]
 script = ExtResource("2_368pm")
-bevel = 1.0
 boxes = Array[ExtResource("1_ieli2")]([SubResource("Resource_vr1hj"), SubResource("Resource_dk35o"), SubResource("Resource_3ilst"), SubResource("Resource_3jweg"), SubResource("Resource_cq0xv"), SubResource("Resource_gr58c"), SubResource("Resource_26dyy"), SubResource("Resource_66fss"), SubResource("Resource_g8r7e"), SubResource("Resource_vm5in"), SubResource("Resource_jp6t2"), SubResource("Resource_2j8wx"), SubResource("Resource_61wmn"), SubResource("Resource_id5bp")])

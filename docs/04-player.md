@@ -1,7 +1,7 @@
 # Nate
 
 **Papel no jogo:** o herói, controlado pelo jogador. Homem comum de 30 anos, sem conhecimento especial, que aprende junto com quem joga (`01-historia.md`).
-**Descrição visual:** humano blocado, com 2 blocos de altura, proporções perto das do Minecraft e as quinas das caixas chanfradas (ombros, cabeça e mãos arredondados), para não ser um boneco do Minecraft. Roupa simples de ribeirinho: camiseta gasta, calça e botas de borracha. No pescoço, o muiraquitã, com uma lasca faltando. Esse é o visual base, sem equipamento; a arma aparece na mão e a armadura no corpo (`05-itens.md`). Cores: camiseta mostarda gasta, calça jeans, botas de borracha pretas, pele morena e cabelo preto curto (`10-arte-audio.md`). Regra: Nate precisa se destacar nos cenários escuros.
+**Descrição visual:** humano blocado, com 2 blocos de altura, nas proporções e no estilo das skins do Minecraft: caixas retas (cabeça de 8 × 8 × 8 px, corpo de 8 × 12 × 4, braços e pernas de 4 × 12 × 4) e uma pele pintada pixel a pixel, com rosto, cabelo e as dobras da roupa. Roupa simples de ribeirinho: camiseta gasta, calça e botas de borracha. No pescoço, o muiraquitã, com uma lasca faltando. Esse é o visual base, sem equipamento; a arma aparece na mão e a armadura no corpo (`05-itens.md`). Cores: camiseta mostarda gasta, calça jeans, botas de borracha pretas, pele morena e cabelo preto curto (`10-arte-audio.md`). Regra: Nate precisa se destacar nos cenários escuros.
 
 ## Atributos
 | Atributo | Valor |

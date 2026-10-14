@@ -38,7 +38,7 @@ Feitos para o jogo na etapa 6, provisórios: as texturas marajoara das Ruínas (
 
 Feitos para o jogo na etapa 5, provisórios: as texturas dos fungos (`mushroom_stem`, `mushroom_cap_cyan` e `mushroom_cap_lime`), os ícones de 16 × 16 dos itens, dos elementos, da combinação Vapor, dos efeitos de status, do muiraquitã e das melhorias, os desenhos dos pergaminhos de Fogo e Água e o papel do pergaminho aberto (`assets/ui/`).
 
-Feitos para o jogo depois do segundo teste de jogo, provisórios: o som do golpe de lâmina (`assets/audio/ours/swoosh.wav`, um vush de vento) e o do dash (`dash.wav`, mais grave e longo), sintetizados de ruído filtrado; o ícone e o modelo da poção de vida (`assets/ui/items/flask.png`); a pose do dash e as peças de rampa e de canto do chão (`tools/areas/`).
+Feitos para o jogo depois do segundo teste de jogo, provisórios: o som do golpe de lâmina (`assets/audio/ours/swoosh.wav`, um vush de vento) e o do dash (`dash.wav`, mais grave e longo), sintetizados de ruído filtrado; o ícone e o modelo da poção de vida (`assets/ui/items/flask.png`); a pose do dash; as peças de rampa e de canto do chão (`tools/areas/`); e a pele de Nate no molde das skins do Minecraft (`assets/textures/nate_skin.png`).
 
 ### Plano de produção
 Assets prontos entram como provisórios logo no começo da produção, para testar os sistemas cedo, e são trocados pelos definitivos aos poucos.
@@ -47,7 +47,7 @@ Assets prontos entram como provisórios logo no começo da produção, para test
 
 ### Base
 - **Densidade:** personagens, objetos e ícones usam 16 px por bloco (1 pixel equivale a 1/16 de bloco); Nate, com 2 blocos de altura, tem 32 pixels de altura. As texturas prontas do cenário têm 32 px por bloco, pintadas à mão, mais detalhadas que as do Minecraft; as feitas para o jogo (marajoara e fungos) seguem com 16 px.
-- **Quinas chanfradas:** as caixas dos personagens e criaturas têm as quinas chanfradas, de cerca de 1 px, para arredondar ombros, cabeça e mãos (quanto em cada modelo: `11-balanceamento.md`).
+- **Caixas retas:** personagens e criaturas são caixas retas, como no Minecraft. Nate tem a pele pintada no molde das skins do Minecraft, a 16 px por bloco (`assets/textures/nate_skin.png`); os outros personagens ainda usam cores lisas por caixa.
 - **Chão em manchas:** a grama da clareira e o chão da Mina misturam 3 tons em manchas, e a grama tem terra nas laterais, para o relevo aparecer e o chão não ficar chapado. Onde um chão encontra outro, a borda ondula e mistura os dois (`08-mapa.md`).
 - **Rampas:** na natureza, o relevo sobe em rampas do próprio chão, com a textura de cima seguindo a inclinação e as laterais do bloco; escadas de pedra só nas construções (`08-mapa.md`).
 - **Profundidade:** abaixo do chão, a rocha fica mais escura, e o fundo dos abismos tem cor e luz próprias (água escura, água brilhante e fungos, lava), para a câmera ler a altura de cada parte.
