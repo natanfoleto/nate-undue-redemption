@@ -35,39 +35,28 @@ static func arc(radius_inner: float, radius_outer: float, angle_degrees: float) 
 	return surface.commit()
 
 
-## O rastro do golpe com as pontas arredondadas: a faixa curva entre [param radius_inner] e [param radius_outer] e,
-## em cada ponta, um meio círculo. O UV.y vai de 0 numa ponta até 1 na outra.
-static func slash(radius_inner: float, radius_outer: float, angle_degrees: float) -> ArrayMesh:
+## A meia-lua do rastro do golpe, no plano do chão, varrendo da direita (+x) para a esquerda: a borda de fora no
+## [param radius]; a grossura vai de zero numa ponta até [param thickness] no meio e volta a zero na outra, como a
+## lua. UV.x vai do começo (0) ao fim do arco (1); UV.y, da beira de dentro (0) à de fora (1).
+static func crescent(radius: float, thickness: float, angle_degrees: float) -> ArrayMesh:
 	var surface := SurfaceTool.new()
 	surface.begin(Mesh.PRIMITIVE_TRIANGLES)
 	var angle := deg_to_rad(angle_degrees)
-	var middle := (radius_inner + radius_outer) / 2.0
-	var half := (radius_outer - radius_inner) / 2.0
-	var steps := maxi(ceili(SEGMENTS_PER_TURN * angle / TAU), 1)
-	for i in steps:
-		var a0 := -angle / 2.0 + angle * i / steps
-		var a1 := -angle / 2.0 + angle * (i + 1) / steps
-		var along0 := float(i) / steps
-		var along1 := float(i + 1) / steps
-		_slash_triangle(surface, [_point(a0, radius_inner), _point(a0, radius_outer), _point(a1, radius_outer)],
-			[Vector2(0, along0), Vector2(1, along0), Vector2(1, along1)])
-		_slash_triangle(surface, [_point(a0, radius_inner), _point(a1, radius_outer), _point(a1, radius_inner)],
-			[Vector2(0, along0), Vector2(1, along1), Vector2(0, along1)])
-	# As pontas: meio círculo em volta do meio da faixa, virado para fora do arco.
-	for end_sign: float in [-1.0, 1.0]:
-		var end_angle := end_sign * angle / 2.0
-		var center := _point(end_angle, middle)
-		var outward := Vector3(cos(end_angle), 0.0, sin(end_angle)) * end_sign
-		var radial := Vector3(sin(end_angle), 0.0, -cos(end_angle))
-		var cap_steps := SEGMENTS_PER_TURN / 4
-		var along := 0.0 if end_sign < 0.0 else 1.0
-		for i in cap_steps:
-			var p0 := -PI / 2.0 + PI * i / cap_steps
-			var p1 := -PI / 2.0 + PI * (i + 1) / cap_steps
-			var e0 := center + (outward * cos(p0) + radial * sin(p0)) * half
-			var e1 := center + (outward * cos(p1) + radial * sin(p1)) * half
-			_slash_triangle(surface, [center, e0, e1],
-				[Vector2(0.5, along), Vector2(0.5 + sin(p0) / 2.0, along), Vector2(0.5 + sin(p1) / 2.0, along)])
+	var steps := maxi(ceili(SEGMENTS_PER_TURN * angle / TAU), 8)
+	var previous_outer := Vector3.ZERO
+	var previous_inner := Vector3.ZERO
+	for i in steps + 1:
+		var s := float(i) / steps
+		var a := angle / 2.0 - angle * s
+		var width := thickness * sin(PI * s)
+		var outer := _point(a, radius)
+		var inner := _point(a, radius - width)
+		if i > 0:
+			var s0 := float(i - 1) / steps
+			_slash_triangle(surface, [previous_inner, previous_outer, outer], [Vector2(s0, 0), Vector2(s0, 1), Vector2(s, 1)])
+			_slash_triangle(surface, [previous_inner, outer, inner], [Vector2(s0, 0), Vector2(s, 1), Vector2(s, 0)])
+		previous_outer = outer
+		previous_inner = inner
 	return surface.commit()
 
 

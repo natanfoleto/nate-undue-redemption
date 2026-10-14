@@ -21,7 +21,7 @@ Valores exatos: `11-balanceamento.md`.
 | Socão | forte | 40 de vida | à frente, perto | marca no chão, pelo menos 1 s | longo | — |
 | Abalo | área | 40 de vida | círculo ao redor | marca no chão, pelo menos 1 s | curto | lento |
 
-- **Resistência:** ignora o recuo curto. Só o 3º golpe do combo, a Azagaia marajoara e magias com recuo longo o empurram e interrompem (`03-regras.md`).
+- **Resistência:** ignora o recuo curto. Só o 3º golpe do combo, o golpe do dash e magias com recuo longo o empurram e interrompem (`03-regras.md`).
 
 ### Variante: Golem Ancião
 - Maior e com mais vida, com outra cor.

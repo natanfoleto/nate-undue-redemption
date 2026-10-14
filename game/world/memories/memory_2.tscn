@@ -59,13 +59,15 @@ camera_to = NodePath("View/SubViewport/Stage/CameraTo")
 walker = NodePath("View/SubViewport/Stage/Hero")
 walker_to = NodePath("View/SubViewport/Stage/WalkerTo")
 
-[node name="View" type="SubViewportContainer" parent="." unique_id=368224274]
+[node name="View" type="TextureRect" parent="." unique_id=368224274]
+unique_name_in_owner = true
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-stretch = true
+expand_mode = 1
 
 [node name="SubViewport" type="SubViewport" parent="View" unique_id=1584659475]
+unique_name_in_owner = true
 own_world_3d = true
 size = Vector2i(1280, 720)
 

@@ -22,11 +22,17 @@ var _ending := false
 
 @onready var _camera: Camera3D = %Camera
 @onready var _fade: ColorRect = %Fade
+@onready var _view: TextureRect = %View
+@onready var _stage_view: SubViewport = %SubViewport
 
 
 func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_ALWAYS
 	get_tree().paused = true
+	_stage_view.render_target_update_mode = SubViewport.UPDATE_ALWAYS
+	_view.texture = _stage_view.get_texture()
+	_fit_view()
+	get_viewport().size_changed.connect(_fit_view)
 	AudioManager.push_music(AudioManager.rules.memory_music)
 	_camera.global_transform = camera_from.global_transform
 	_fade.color.a = 1.0
@@ -37,6 +43,12 @@ func _ready() -> void:
 		tween.tween_property(walker, ^"global_position", walker_to.global_position, duration)
 	tween.tween_callback(func() -> void: _can_skip = true).set_delay(min_time)
 	tween.chain().tween_callback(_end)
+
+
+# O cenário é desenhado com os pixels da janela: a interface cresce com a janela, mas o 3D não pode perder nitidez.
+func _fit_view() -> void:
+	var pixels := get_viewport().get_visible_rect().size * get_viewport().get_final_transform().get_scale()
+	_stage_view.size = Vector2i(pixels.round())
 
 
 func _unhandled_input(event: InputEvent) -> void:

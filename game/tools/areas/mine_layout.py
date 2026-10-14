@@ -7,7 +7,7 @@ import sys
 HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, HERE)
 sys.dont_write_bytecode = True  # Sem __pycache__ dentro do repositório.
-from shapes import roughen  # noqa: E402
+from shapes import roughen, smooth  # noqa: E402
 
 W, H = 64, 126
 grid = [[' '] * W for _ in range(H)]
@@ -39,7 +39,7 @@ fill(37, 27, 40, 27, 'a')            # portão de entrada da arena (fecha quando
 fill(37, 28, 40, 37, '.')
 fill(36, 30, 36, 35, 'M')
 fill(41, 30, 41, 35, 'M')
-# 5) Sala do baú com o Colete de minerador, e o desvio secreto da Picareta.
+# 5) Sala do baú com o Colete de minerador, e o desvio secreto do +20 de vida.
 fill(31, 38, 46, 47, 'w')
 put(45, 39, 'C')
 put(33, 44, 'W')
@@ -106,7 +106,7 @@ put(14, 15, 'q')
 for x, z in [(8, 22), (21, 22), (8, 33), (21, 33), (14, 27)]:
     put(x, z, 'u')
 
-# Canto escuro do +1 coração, a leste do saguão da entrada: volta com a Luz Ancestral (08-mapa).
+# Canto escuro do +20 de vida, a leste do saguão da entrada: volta com a Luz Ancestral (08-mapa).
 fill(35, 84, 40, 85, 'd')
 fill(41, 81, 45, 88, 'd')
 put(43, 84, 'h')
@@ -154,16 +154,19 @@ for z in range(0, 59):
             heights[z][x] = '1'
 ramp(37, 59, 40, 60, '^')
 # A beirada da alavanca, do outro lado da vala, fica na mesma altura: o tiro de estilingue passa por cima da vala.
-# Morrinhos na clareira do prólogo: a grama sobe em rampa por todos os lados (as rampas surgem sozinhas).
-raise_area(14, 104, 20, 110, 1)
-raise_area(36, 113, 42, 120, 1)
-raise_area(30, 105, 35, 110, 1)
+# A clareira sobe 1 bloco em direção ao morro da mina, ao norte, numa borda ondulada que a corta de lado a lado,
+# como um barranco natural (as rampas de grama surgem sozinhas na borda); a fenda desce em rampa até o saguão.
+for z in range(98, 124):
+    for x in range(W):
+        if grid[z][x] in FLOOR_CHARS and z <= 103 + round(4 * smooth(x, 0, 6.0, 9)):
+            heights[z][x] = '1'
+ramp(27, 96, 28, 97, 'v')
 # A ponte de tábuas do corredor do portão, sobre a galeria inundada, na altura 0 (A).
 bridge(22, 72, 35, 75, 'A')
 
 # Caminho principal: do começo ao elevador, com os portões abertos.
 passable = set('.wgfVaGEFbpCWKolrPS')
-TARGETS = [('elevador', 'V', True), ('baú', 'C', True), ('Baladeira', 'b', True), ('Picareta', 'p', True),
+TARGETS = [('elevador', 'V', True), ('baú', 'C', True), ('Baladeira', 'b', True), ('+20 de vida do desvio', 'p', True),
            ('alavanca (não deve alcançar)', 'L', False)]
 
 

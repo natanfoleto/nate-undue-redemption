@@ -126,8 +126,8 @@ Todo golpe inimigo é avisado antes de ferir (pilar 2).
 ### Lista
 | Efeito | O que faz | Fonte |
 |--------|-----------|-------|
-| Atordoado | não se move nem ataca | magia Gelo; 3º golpe do Tacape marajoara |
-| Lento | anda à metade da velocidade | magia Lamaçal; Zarabatana marajoara; abalo do Golem de Pedra |
+| Atordoado | não se move nem ataca | magia Gelo |
+| Lento | anda à metade da velocidade | magia Lamaçal; abalo do Golem de Pedra |
 | Veneno | perde vida aos poucos; em Nate, 20 de uma vez | praga do Necromante |
 | Queimadura | perde vida aos poucos | magias de Fogo: Bola de Fogo, Vapor, Magma e Tempestade de Fogo |
 

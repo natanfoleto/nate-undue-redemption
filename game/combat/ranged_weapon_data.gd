@@ -11,7 +11,7 @@ extends ItemData
 ## Velocidade do projétil, em blocos/s.
 @export var projectile_speed := 0.0
 @export var knockback := AttackData.Knockback.NONE
-## Efeito de status em quem é acertado (-1 para nenhum) e por quanto tempo, em segundos (Zarabatana marajoara).
+## Efeito de status em quem é acertado (-1 para nenhum) e por quanto tempo, em segundos.
 @export var effect := -1
 @export var effect_duration := 0.0
 ## Atravessa os inimigos e acerta todos na linha, cada um uma vez (Arco marajoara).

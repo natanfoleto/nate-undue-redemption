@@ -5,6 +5,10 @@ extends Node3D
 ## Cada parte fica no ponto de giro da caixa, e as filhas giram junto com a mãe.
 ## Monta também no editor, para a prévia; as partes não são salvas na cena.
 
+## Camada de desenho dos modelos de blocos (personagens, objetos e itens): a escuridão das áreas escuras (DarkArea)
+## só escurece o terreno, na camada 1.
+const MODEL_LAYER := 2
+
 ## Modelo a montar.
 @export var model: ModelData:
 	set(value):
@@ -141,6 +145,7 @@ func _make_part(box: BoxData, key: StringName, material: Material, texture_size:
 		var mesh_instance := MeshInstance3D.new()
 		mesh_instance.mesh = box.build_mesh(texture_size, model.bevel)
 		mesh_instance.material_override = material
+		mesh_instance.layers = MODEL_LAYER
 		part = mesh_instance
 	part.name = key
 	return part

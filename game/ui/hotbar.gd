@@ -1,9 +1,9 @@
 class_name Hotbar
 extends CanvasLayer
 ## Barra fixa (09-interface): 5 espaços embaixo, no centro da tela, com as armas e a poção. O espaço com a moldura
-## dourada é o item na mão de Nate; os números (o direcional, no controle) trocam de espaço. Fica por cima do
-## inventário aberto, onde os itens podem ser arrastados para ela. Em cima dela aparecem o nome do item que Nate
-## pegou na mão e o aviso de item achado.
+## dourada é o item na mão de Nate; os números (o direcional, no controle) trocam de espaço. Com o inventário aberto,
+## ela some: o inventário tem a barra dele. Em cima dela aparecem o nome do item que Nate pegou na mão e o aviso de
+## item achado.
 
 @export var look: CellLook
 ## Tempo do nome do item da mão na tela e tempo dele sumindo, em segundos.
@@ -33,18 +33,17 @@ var _hide_tween: Tween
 
 func _ready() -> void:
 	add_to_group(&"hotbar")
-	# Arrastar itens para a barra funciona com o jogo parado pelo inventário.
-	process_mode = Node.PROCESS_MODE_ALWAYS
 	for i in GameState.HOTBAR_SIZE:
 		var cell := ItemCell.new()
 		cell.look = look
 		cell.place = GameState.HOTBAR
 		cell.index = i
 		cell.number = i + 1
+		cell.mouse_filter = Control.MOUSE_FILTER_IGNORE
+		cell.focus_mode = Control.FOCUS_NONE
 		_row.add_child(cell)
 		cells.append(cell)
 	_row.move_child(_arrows[1], -1)
-	set_interactive(false)
 	_hand_name.modulate.a = 0.0
 	_toast.visible = false
 	GameState.inventory_changed.connect(refresh)
@@ -61,18 +60,15 @@ func _ready() -> void:
 
 
 func refresh() -> void:
-	for cell in cells:
+	show_slots(cells, _player)
+
+
+## Mostra a barra fixa nos espaços dados (a do HUD e a do inventário): o item, a moldura da mão e as cargas da poção.
+static func show_slots(slots: Array[ItemCell], player: Player) -> void:
+	for cell in slots:
 		cell.item = GameState.item_at(GameState.HOTBAR, cell.index)
 		cell.in_hand = cell.index == GameState.hand()
-		cell.count_text = str(_player.flask.charges) if cell.item is PotionData and _player else ""
-
-
-## Com o inventário aberto, os espaços recebem o mouse e o foco; no jogo, o mouse passa direto por eles.
-func set_interactive(on: bool) -> void:
-	for cell in cells:
-		cell.mouse_filter = Control.MOUSE_FILTER_STOP if on else Control.MOUSE_FILTER_IGNORE
-		cell.focus_mode = Control.FOCUS_ALL if on else Control.FOCUS_NONE
-		cell.carried = false
+		cell.count_text = str(player.flask.charges) if cell.item is PotionData and player else ""
 
 
 # O nome do item que Nate pegou na mão aparece um instante em cima da barra.

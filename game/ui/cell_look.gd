@@ -19,8 +19,9 @@ extends Resource
 @export var hand_width := 0
 ## O espaço em foco ou embaixo do mouse, no inventário.
 @export var focus_color := Color.WHITE
-## Transparência do ícone do item que está sendo levado para outro espaço.
+## Transparência do ícone do item que está sendo levado para outro espaço e do ícone apagado do espaço vazio.
 @export var carried_alpha := 0.0
+@export var placeholder_alpha := 0.0
 ## Tamanho do número do espaço e das cargas, a distância deles até a moldura e o contorno escuro, em pixels da tela.
 @export var font_size := 0
 @export var text_margin := 0

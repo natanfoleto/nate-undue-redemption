@@ -1,9 +1,10 @@
 class_name Player
 extends CharacterBody3D
 ## Nate (04-player): anda, olha para onde anda, mira, dá o dash, luta e leva golpes. Os números vêm do Balance.
-## Segura na mão o item do espaço escolhido da barra fixa, e o botão de usar usa esse item: golpeia com a arma de
-## perto, puxa e solta o tiro da arma de longe ou bebe a poção. O combo, o tiro, as magias e a poção ficam nos
-## componentes filhos MeleeCombo, RangedShot, SpellCaster e Flask.
+## Segura na mão o item do espaço escolhido da barra fixa: com a arma de perto, o botão de atacar golpeia (e, durante o
+## dash, guarda o golpe do dash); com a de longe, segurar o botão de usar puxa e soltar atira; com a poção, segurar o
+## botão de usar bebe. O combo, o tiro, as magias e a poção ficam nos componentes filhos MeleeCombo, RangedShot,
+## SpellCaster e Flask.
 
 ## Ações dos 5 espaços da barra, na ordem.
 const HOTBAR_ACTIONS: Array[StringName] = [&"hotbar_1", &"hotbar_2", &"hotbar_3", &"hotbar_4", &"hotbar_5"]
@@ -13,12 +14,10 @@ const HOTBAR_ACTIONS: Array[StringName] = [&"hotbar_1", &"hotbar_2", &"hotbar_3"
 @export var dash_animation: AnimationData
 @export var hurt_animation: AnimationData
 @export var death_animation: AnimationData
-## Largura do arco do rastro do golpe, em blocos, a partir da borda do alcance.
+## Rastro do golpe (10-arte-audio): a meia-lua branca, com a grossura máxima em blocos (para dentro, a partir do
+## alcance); o tempo em que ela varre o arco e o tempo em que some, em segundos; e a transparência.
 @export var swing_width := 0.0
-## O rastro nasce neste tamanho (de 0 a 1), cresce até o cheio neste tempo e some neste outro, em segundos; a
-## transparência dele.
-@export var swing_start_scale := 1.0
-@export var swing_grow_time := 0.0
+@export var swing_sweep_time := 0.0
 @export var swing_fade_time := 0.0
 @export var swing_alpha := 1.0
 ## Rastro do dash (10-arte-audio): uma cópia translúcida de Nate a cada tanto tempo, que some neste outro tempo, em
@@ -36,6 +35,8 @@ const HOTBAR_ACTIONS: Array[StringName] = [&"hotbar_1", &"hotbar_2", &"hotbar_3"
 @export var awaken_glow := 0.0
 @export var awaken_light := 0.0
 @export var awaken_time := 0.0
+## Força da Luz Ancestral acesa nas áreas escuras: o lugar escurecido aparece em volta de Nate.
+@export var ancestral_light_energy := 0.0
 
 ## Direção da mira no chão, de tamanho 1. Os ataques vão nessa direção, puxados pela ajuda de mira.
 var aim_direction := Vector3.FORWARD
@@ -46,6 +47,10 @@ var _dash_time_left := 0.0
 var _dash_cooldown_left := 0.0
 var _dash_direction := Vector3.ZERO
 var _afterimage_left := 0.0
+# O golpe do dash: guardado durante o dash, sai no fim dele; e o tempo desde o último aperto de atacar, para o dash
+# logo depois de atacar também virar golpe do dash.
+var _dash_strike := false
+var _attack_pressed_ago := INF
 var _control_left := 0.0
 var _hurt_invincible_left := 0.0
 var _push_velocity := Vector3.ZERO
@@ -93,6 +98,7 @@ func _ready() -> void:
 	($StatusVisuals as StatusVisuals).fit(_model.height())
 	_light.omni_range = Balance.player.light_radius
 	_light.light_color = light_color
+	_light.light_energy = ancestral_light_energy
 	_light.visible = false
 	_show_amulet()
 	GameState.inventory_changed.connect(_on_inventory_changed)
@@ -119,7 +125,7 @@ func _physics_process(delta: float) -> void:
 	if not is_dashing():
 		_dash_cooldown_left = maxf(_dash_cooldown_left - delta, 0.0)
 	if in_control:
-		_read_actions(move)
+		_read_actions(move, delta)
 	_melee.update(delta)
 	_ranged.update(delta)
 	spells.update(delta)
@@ -353,19 +359,21 @@ func stop_overlay() -> void:
 func show_swing(on: bool) -> void:
 	if _swing_tween:
 		_swing_tween.kill()
-	var material := _swing.material_override as StandardMaterial3D
+	var material := _swing.material_override as ShaderMaterial
 	if not on:
 		_swing_tween = create_tween()
-		_swing_tween.tween_property(material, ^"albedo_color:a", 0.0, swing_fade_time)
+		_swing_tween.tween_method(func(value: float) -> void: material.set_shader_parameter(&"fade", value), swing_alpha, 0.0, swing_fade_time)
 		_swing_tween.tween_callback(_swing.hide)
 		return
 	var direction := _melee.direction()
 	_swing.rotation.y = atan2(-direction.x, -direction.z)
+	# O 1º golpe e o 3º vão da direita para a esquerda; o 2º volta, da esquerda para a direita (o rastro espelhado).
+	_swing.scale = Vector3(-1.0 if _melee.hit_index() == 1 else 1.0, 1.0, 1.0)
 	_swing.visible = true
-	_swing.scale = Vector3.ONE * swing_start_scale
-	material.albedo_color.a = swing_alpha
+	material.set_shader_parameter(&"fade", swing_alpha)
 	_swing_tween = create_tween()
-	_swing_tween.tween_property(_swing, ^"scale", Vector3.ONE, swing_grow_time).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
+	_swing_tween.tween_method(func(value: float) -> void: material.set_shader_parameter(&"progress", value), 0.0, 1.0, swing_sweep_time) \
+		.set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
 
 
 ## Brilho na arma quando o tiro chega à força total (10-arte-audio).
@@ -388,22 +396,40 @@ func _input(event: InputEvent) -> void:
 		GameState.select_hand(GameState.hand() - 1)
 
 
-func _read_actions(move: Vector3) -> void:
-	# O dash cancela a recuperação dos golpes e o tiro (04-player).
-	var can_dash := not is_dashing() and (not _melee.is_busy() or _melee.in_recovery())
+func _read_actions(move: Vector3, delta: float) -> void:
+	_attack_pressed_ago += delta
+	var attack_pressed := Input.is_action_just_pressed(&"attack")
+	if attack_pressed:
+		_attack_pressed_ago = 0.0
+	# Beber é segurar o botão: soltar antes do fim para de beber, sem gastar a carga.
 	if flask.is_drinking():
+		if not Input.is_action_pressed(&"use_hold"):
+			flask.cancel()
 		return
+	# O dash cancela a recuperação dos golpes e o tiro; logo depois de apertar atacar, também a preparação do golpe,
+	# que vira o golpe do dash (Espaço + clique, em qualquer ordem) (04-player).
+	var combo_input := _attack_pressed_ago <= Balance.player.dash_strike_window and _melee.weapon != null
+	var can_dash := not is_dashing() and (not _melee.is_busy() or _melee.in_recovery() or combo_input)
 	if Input.is_action_just_pressed(&"dodge") and can_dash and is_zero_approx(_dash_cooldown_left):
 		_melee.cancel()
 		_ranged.cancel()
 		_start_dash(move)
+		_dash_strike = combo_input
 		return
 	if is_dashing():
+		if attack_pressed and _melee.weapon:
+			_dash_strike = true
 		return
-	if Input.is_action_just_pressed(&"use_item"):
-		_use_hand()
+	if attack_pressed and _melee.weapon and not _ranged.is_busy():
+		_melee.press()
+	if Input.is_action_just_pressed(&"use_hold") and not _melee.is_busy():
+		if _ranged.weapon:
+			_ranged.press()
+		elif GameState.hand_item() is PotionData and not _ranged.is_busy():
+			flask.press()
+			return
 	# Pelo estado do botão, e não pelo quadro em que foi solto: com o jogo pausado, esse quadro não roda.
-	if _ranged.is_drawing() and not Input.is_action_pressed(&"use_item"):
+	if _ranged.is_drawing() and not Input.is_action_pressed(&"use_hold"):
 		_ranged.release()
 	var hands_free := not _melee.is_busy() and not _ranged.is_busy()
 	if hands_free and GameState.learned_elements().size() > 0:
@@ -411,26 +437,10 @@ func _read_actions(move: Vector3) -> void:
 			spells.press(0)
 		if Input.is_action_just_pressed(&"spell_2"):
 			spells.press(1)
-	# Atalho da poção: bebe sem tirar a arma da mão.
-	if Input.is_action_just_pressed(&"flask") and hands_free:
-		flask.press()
-		return
 	if Input.is_action_just_pressed(&"interact") and hands_free:
 		var target := _nearest_interactable()
 		if target:
 			target.interact()
-
-
-# O botão de usar: golpeia com a arma de perto, puxa o tiro da arma de longe ou bebe a poção.
-func _use_hand() -> void:
-	if _melee.weapon:
-		if not _ranged.is_busy():
-			_melee.press()
-	elif _ranged.weapon:
-		if not _melee.is_busy():
-			_ranged.press()
-	elif GameState.hand_item() is PotionData:
-		flask.press()
 
 
 # O objeto mais perto ao alcance da mão.
@@ -518,6 +528,10 @@ func _update_dash(delta: float) -> void:
 	if _dash_time_left <= 0.0:
 		_dash_time_left = 0.0
 		_dash_cooldown_left = _armor.dash_cooldown if _armor and _armor.dash_cooldown > 0.0 else stats.dash_cooldown
+		# O golpe do dash: o 3º golpe do combo, na direção do dash.
+		if _dash_strike and _melee.weapon:
+			_melee.dash_strike(_dash_direction)
+		_dash_strike = false
 
 
 # Uma cópia de Nate parada onde ele está agora, que some aos poucos (10-arte-audio).
@@ -682,7 +696,7 @@ func awaken_amulet() -> void:
 	tween.tween_method(_pulse_amulet, 0.0, 1.0, awaken_time / 2.0)
 	tween.tween_method(_pulse_amulet, 1.0, 0.0, awaken_time / 2.0)
 	await tween.finished
-	_light.light_energy = 1.0
+	_light.light_energy = ancestral_light_energy
 	_show_amulet()
 
 
@@ -742,7 +756,7 @@ func _equip() -> void:
 	if held:
 		_hand_model = _attach(held.model, &"hand_r" if held is MeleeWeaponData else &"hand_l")
 	if _melee.weapon:
-		_swing.mesh = AreaMesh.slash(_melee.weapon.reach - swing_width, _melee.weapon.reach, _melee.weapon.angle)
+		_swing.mesh = AreaMesh.crescent(_melee.weapon.reach, swing_width, _melee.weapon.angle)
 	if _armor:
 		_armor_model = _attach(_armor.model, &"body")
 	var potion := ItemPlaces.load_item(GameState.FLASK)

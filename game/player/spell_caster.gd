@@ -78,14 +78,6 @@ func reset() -> void:
 	_pending = -1
 
 
-## Tira tempo da recarga das magias equipadas (a Lâmina de pedra verde).
-func cut_cooldowns(seconds: float) -> void:
-	for slot in 2:
-		var id := GameState.equipped_element_id(slot)
-		if _cooldowns.has(id):
-			_cooldowns[id] = maxf(_cooldowns[id] - seconds, 0.0)
-
-
 func _cast_single(slot: int) -> void:
 	var element := GameState.equipped_element(slot)
 	var id := GameState.equipped_element_id(slot)

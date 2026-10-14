@@ -24,12 +24,16 @@ const CYAN := Color("4fe3d0")
 const LIME := Color("b8f060")
 # Itens do chão: identificador no mapa e item.
 const PICKUPS := {
-	"z": [&"forest_blowgun", &"blowgun"],
 	"c": [&"forest_cloak", &"fiber_cloak"],
-	"j": [&"forest_javelin", &"javelin"],
 }
-# Melhorias: o identificador começa com o tipo (05-itens).
-const UPGRADES := {"h": &"heart_forest_1", "H": &"heart_forest_2"}
+# Melhorias: identificador no mapa (começa com o tipo) e tipo. O desvio a oeste do corredor norte guarda +1 carga, e
+# o canto escuro ao lado da sala do Fogo, +20 de vida.
+const UPGRADES := {
+	"h": [&"heart_forest_1", &"heart"],
+	"H": [&"heart_forest_2", &"heart"],
+	"z": [&"charge_forest_1", &"charge"],
+	"j": [&"heart_forest_3", &"heart"],
+}
 # Luzes do fundo das fendas: uma a cada tantos blocos, até esta distância do chão.
 const BOTTOM_LIGHT_EVERY := 7
 const BOTTOM_LIGHT_REACH := 9
@@ -347,15 +351,15 @@ func _build_objects() -> void:
 					scroll.name = "Scroll" + String(element).capitalize()
 					scroll.set("save_id", StringName("forest_scroll_" + element))
 					scroll.set("element_id", element)
-				"z", "c", "j":
+				"c":
 					var spec: Array = PICKUPS[ch]
 					var pickup := _instance(_objects, "res://world/objects/item_pickup.tscn", _center(x, z), 0.0)
 					pickup.set("save_id", spec[0])
 					pickup.set("item_id", spec[1])
-				"h", "H":
+				"h", "H", "z", "j":
 					var upgrade := _instance(_objects, "res://world/objects/item_pickup.tscn", _center(x, z), 0.0)
-					upgrade.set("save_id", UPGRADES[ch])
-					upgrade.set("item_id", &"heart")
+					upgrade.set("save_id", UPGRADES[ch][0])
+					upgrade.set("item_id", UPGRADES[ch][1])
 					upgrade.set("upgrade", true)
 				"W":
 					_mob(mobs, "res://mobs/wolf.tscn", "forest_wolf", _center(x, z))
@@ -501,9 +505,14 @@ func _build_dark_areas() -> void:
 			dark.position = Vector3((low.x + high.x + 1) / 2.0, _ground(x, z), (low.y + high.y + 1) / 2.0)
 			dark.set("area_size", Vector2(high - low + Vector2i.ONE))
 			dark.set("cover_height", DARK_WALL_HEIGHT + 0.05)
-			dark.set("light_edge", 1.5)
 			dark.set("mask", _dark_mask(region, low, high))
 			dark.set("margin", 1.0)
+			dark.set("darkness", 0.9)
+			dark.set("edge_resolution", 8)
+			dark.set("wobble_size", 1.5)
+			dark.set("wobble", 0.35)
+			dark.set("edge_start", 0.2)
+			dark.set("edge_end", 0.8)
 			_add(_objects, dark)
 
 
@@ -549,6 +558,7 @@ func _build_interface(player: Node3D) -> void:
 	}, TYPE_STRING_NAME, &"", null, TYPE_OBJECT, &"Resource", load("res://ui/hint_data.gd"))
 	director.set("item_hints", item_hints)
 	director.set("interact_hint", load("res://data/ui/hint_interact.tres"))
+	director.set("mural_hint", load("res://data/ui/hint_murals.tres"))
 	director.set("hints", hints)
 	director.set("hint_scene", load("res://ui/button_hint.tscn"))
 	_add(_root, director)
@@ -561,6 +571,7 @@ func _build_interface(player: Node3D) -> void:
 	_root.set("end_screen", end)
 	_add(_root, (load("res://ui/pause_menu.tscn") as PackedScene).instantiate())
 	_add(_root, (load("res://ui/inventory.tscn") as PackedScene).instantiate())
+	_add(_root, (load("res://ui/mural_gallery.tscn") as PackedScene).instantiate())
 
 
 # Lista tipada com um script carregado só agora: os tipos que dependem dos sistemas globais não compilam antes.

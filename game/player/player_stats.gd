@@ -16,6 +16,9 @@ extends Resource
 @export var dash_duration := 0.0
 ## Recarga do dash, em segundos, contada do fim dele.
 @export var dash_cooldown := 0.0
+## Golpe do dash: apertar atacar até este tempo antes do dash também conta (Espaço + clique em qualquer ordem), em
+## segundos.
+@export var dash_strike_window := 0.0
 
 @export_group("Combate")
 ## Vida no começo do jogo, em pontos.

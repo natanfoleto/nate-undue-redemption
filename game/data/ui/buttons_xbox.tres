@@ -12,6 +12,7 @@
 [ext_resource type="Texture2D" path="res://assets/ui/buttons/xbox_rb.png" id="10_pvl74"]
 [ext_resource type="Texture2D" path="res://assets/ui/buttons/xbox_view.png" id="11_xe0e1"]
 [ext_resource type="Texture2D" path="res://assets/ui/buttons/xbox_menu.png" id="12_4iln5"]
+[ext_resource type="Texture2D" path="res://assets/ui/buttons/dpad_up.png" id="14_dpad"]
 [ext_resource type="Script" path="res://ui/button_icons.gd" id="13_8g8r5"]
 
 [resource]
@@ -24,7 +25,8 @@ joy_buttons = Dictionary[int, Texture2D]({
 4: ExtResource("11_xe0e1"),
 6: ExtResource("12_4iln5"),
 9: ExtResource("9_vn7iv"),
-10: ExtResource("10_pvl74")
+10: ExtResource("10_pvl74"),
+11: ExtResource("14_dpad")
 })
 joy_axes = Dictionary[int, Texture2D]({
 0: ExtResource("1_pm3jq"),

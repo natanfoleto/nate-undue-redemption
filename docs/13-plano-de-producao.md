@@ -126,6 +126,15 @@ Depois de jogar o cenário cheio, o responsável pediu (2026-10-13), em 18 ponto
 
 Feitos em 2026-10-13, com os documentos atualizados. O visual de Nate: o responsável não quis mudar a roupa, e sim o boneco; escolheu voltar às caixas retas em todos os personagens e criaturas (desfazendo as quinas arredondadas do primeiro teste), e Nate ganhou proporções e pele pintada como as skins do Minecraft, com a mesma roupa. Depois, a pedido dele, os mobs ganharam pele pintada do mesmo jeito, e os itens foram refeitos com forma e pele: a espada do esqueleto com pomo, guarda e ponta; as armas de Nate, os projéteis, as armaduras, a poção, as melhorias e o pergaminho.
 
+## Ajustes do terceiro teste de jogo
+Depois de jogar as peles novas, o responsável pediu (2026-10-13), em duas mensagens: o inventário com tamanho fixo, maior e arrumado como o do Minecraft; a poção bebida segurando o botão direito, sem o atalho R; o tiro segurando o botão direito em todas as armas de longe; menos itens (ficam a espada, a lança, o estilingue e o arco); um golpe junto com o dash (Espaço + clique); blocos mais limpos nas Ruínas, no lugar dos losangos e ziguezagues; o efeito do golpe como a meia-lua branca de um jogo 2D, adaptada; a escuridão no próprio chão e nas paredes, no lugar da camada de sombra; relevo de terreno real, sem morros soltos no meio do nada; os murais fora da pausa, com uma tecla própria (o M fica para o mapa); e mais detalhes nas cenas, como em Nate e nos mobs. As escolhas dele:
+- **Espada:** o facão vira a espada, com os mesmos números.
+- **Itens que saíram:** Picareta, Tacape, Lâmina de pedra verde, Zarabatana e Azagaia. As armaduras ficam, e os lugares dos itens que saíram guardam melhorias: 3 de +20 de vida e 2 de +1 carga. O jogo salvo passa para a versão 4, convertido.
+- **Golpe do dash:** clicar no dash dá, no fim dele, o 3º golpe do combo; um por dash, só com arma de perto.
+- **Ruínas:** paredes de tijolo de terracota liso e piso de placas grandes de pedra clara; o marajoara fica nos detalhes, como os pilares de jade.
+
+Feitos em 2026-10-13, com os documentos atualizados: o inventário com Nate no meio, a mochila de 10, a barra dentro dele e os detalhes numa caixinha ao lado do item; a interface crescendo com a janela; a galeria dos murais no G (no controle, o direcional para cima); a clareira subindo num barranco até o morro da mina, sem os morrinhos, e o Bosque sem o morro solto da caverna dos cogumelos; e o herói, o irmão, a cabeça da Boiúna, o santuário e o cogumelo de esporos com pele pintada.
+
 ## Etapas 7 e 8, em linhas gerais
 - **7. Grande Prisão:** antessala com a memória 4, a Boiúna com as duas fases e os pilares, a cena da troca de fase, o final, os créditos, o resumo e o pós-jogo.
 - **8. Acabamento:** abertura, menus e opções (trocar botões e acessibilidade), mapa por área e tela de progresso, música, testes com jogadores de fora para conferir os 30 min, ajustes no `11-balanceamento.md` e exportação para Windows e macOS.

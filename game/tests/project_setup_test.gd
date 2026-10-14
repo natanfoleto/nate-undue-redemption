@@ -4,8 +4,8 @@ extends GdUnitTestSuite
 const PLAYER_ACTIONS: Array[StringName] = [
 	&"move_up", &"move_down", &"move_left", &"move_right",
 	&"aim_up", &"aim_down", &"aim_left", &"aim_right",
-	&"use_item", &"hotbar_1", &"hotbar_2", &"hotbar_3", &"hotbar_4", &"hotbar_5", &"hotbar_next", &"hotbar_previous",
-	&"dodge", &"spell_1", &"spell_2", &"flask", &"interact", &"inventory", &"pause",
+	&"attack", &"use_hold", &"hotbar_1", &"hotbar_2", &"hotbar_3", &"hotbar_4", &"hotbar_5", &"hotbar_next",
+	&"hotbar_previous", &"dodge", &"spell_1", &"spell_2", &"interact", &"murals", &"inventory", &"pause",
 ]
 
 # No teclado e mouse, a mira segue o cursor: as ações de mira só existem no analógico.

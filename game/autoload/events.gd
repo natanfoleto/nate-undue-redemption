@@ -9,3 +9,7 @@ signal player_respawned
 signal enemy_died(enemy: Node3D)
 ## Nate pegou um item (do chão ou de um baú).
 signal item_picked(item_id: StringName)
+## Nate viu um mural de perto (a dica do botão dos murais).
+signal mural_seen(mural_id: int)
+## Nate bebeu a poção até o fim (a dica de beber).
+signal flask_drunk

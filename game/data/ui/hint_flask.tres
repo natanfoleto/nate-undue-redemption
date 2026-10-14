@@ -4,5 +4,6 @@
 
 [resource]
 script = ExtResource("1_c663p")
-actions = Array[StringName]([&"flask"])
+actions = Array[StringName]([&"use_hold"])
 text_key = &"HINT_FLASK"
+manual = true

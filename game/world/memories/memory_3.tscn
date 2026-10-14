@@ -1,7 +1,7 @@
 [gd_scene format=3]
 
 [ext_resource type="Script" path="res://ui/memory_scene.gd" id="1_xfp16"]
-[ext_resource type="Texture2D" path="res://assets/textures/marajoara_floor.png" id="2_2oy5d"]
+[ext_resource type="Texture2D" path="res://assets/textures/light_stone_floor.png" id="2_2oy5d"]
 [ext_resource type="Script" path="res://tools/models/block_model.gd" id="3_u4m21"]
 [ext_resource type="Resource" path="res://data/models/hero.tres" id="4_gic6w"]
 [ext_resource type="Script" path="res://tools/models/model_animator.gd" id="5_5xvj7"]
@@ -35,13 +35,15 @@ fade_time = 0.6
 camera_from = NodePath("View/SubViewport/Stage/CameraFrom")
 camera_to = NodePath("View/SubViewport/Stage/CameraTo")
 
-[node name="View" type="SubViewportContainer" parent="." unique_id=1755312280]
+[node name="View" type="TextureRect" parent="." unique_id=1755312280]
+unique_name_in_owner = true
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-stretch = true
+expand_mode = 1
 
 [node name="SubViewport" type="SubViewport" parent="View" unique_id=1937894772]
+unique_name_in_owner = true
 own_world_3d = true
 size = Vector2i(1280, 720)
 

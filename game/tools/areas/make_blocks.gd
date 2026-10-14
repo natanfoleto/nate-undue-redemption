@@ -1,6 +1,7 @@
 extends SceneTree
 # Gera as bibliotecas de blocos das áreas e da sala de teste (world/blocks/), com as texturas pintadas à mão
-# (pacote CC0 do drummyfish, 32 px por bloco) e as feitas para o jogo (fungos e padrões marajoara). Os geradores
+# (pacote CC0 do drummyfish, 32 px por bloco) e as feitas para o jogo (fungos, terracota, pedra clara e o padrão de
+# jade). Os geradores
 # das áreas acham cada bloco pelo nome. Rodar a partir da raiz do repositório:
 #   godot --headless --path game -s res://tools/areas/make_blocks.gd
 #
@@ -73,8 +74,8 @@ const FOREST := [
 	{"name": "Rocha funda", "texture": PAINTED + "stone", "tint": Color(0.42, 0.5, 0.66)},
 ]
 const RUINS := [
-	{"name": "Parede marajoara", "texture": OURS + "marajoara_wall", "tint": Color(0.95, 0.9, 0.88)},
-	{"name": "Piso marajoara", "texture": OURS + "marajoara_floor", "tint": Color(0.9, 0.88, 0.84), "ramps": true},
+	{"name": "Parede de terracota", "texture": OURS + "terracotta_wall"},
+	{"name": "Piso de pedra clara", "texture": OURS + "light_stone_floor", "ramps": true},
 	{"name": "Chão das minas antigas", "texture": PAINTED + "gravel", "tint": Color(0.75, 0.7, 0.66), "ramps": true},
 	{"name": "Padrão de jade", "texture": OURS + "marajoara_jade", "glow": 1.2},
 	{"name": "Parede rachada", "texture": PAINTED + "mossy_cobble", "tint": Color(0.9, 0.85, 0.8)},
@@ -91,7 +92,7 @@ const TEST := [
 const STAIRS_LOOK := {
 	"mine": [PAINTED + "stone_brick", Color(0.85, 0.8, 0.75)],
 	"forest": [PAINTED + "stone_brick", Color(0.65, 0.72, 0.85)],
-	"ruins": [OURS + "marajoara_floor", Color(0.9, 0.88, 0.84)],
+	"ruins": [OURS + "light_stone_floor", Color.WHITE],
 	"test": [PAINTED + "stone_brick", Color.WHITE],
 }
 

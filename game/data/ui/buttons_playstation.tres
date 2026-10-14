@@ -12,6 +12,7 @@
 [ext_resource type="Texture2D" path="res://assets/ui/buttons/playstation_r1.png" id="10_n3cif"]
 [ext_resource type="Texture2D" path="res://assets/ui/buttons/playstation_touchpad.png" id="11_lv3je"]
 [ext_resource type="Texture2D" path="res://assets/ui/buttons/playstation_options.png" id="12_c7i7a"]
+[ext_resource type="Texture2D" path="res://assets/ui/buttons/dpad_up.png" id="14_dpad"]
 [ext_resource type="Script" path="res://ui/button_icons.gd" id="13_s2trt"]
 
 [resource]
@@ -24,6 +25,7 @@ joy_buttons = Dictionary[int, Texture2D]({
 6: ExtResource("12_c7i7a"),
 9: ExtResource("9_3ljdf"),
 10: ExtResource("10_n3cif"),
+11: ExtResource("14_dpad"),
 20: ExtResource("11_lv3je")
 })
 joy_axes = Dictionary[int, Texture2D]({

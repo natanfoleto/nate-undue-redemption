@@ -7,7 +7,7 @@ extends Node
 
 enum Phase { NONE, WINDUP, ACTIVE, RECOVERY }
 
-## Animações dos 3 golpes, feitas para o tempo de golpe do facão; outras armas mudam a velocidade.
+## Animações dos 3 golpes, feitas para o tempo de golpe da espada; outras armas mudam a velocidade.
 @export var hit_animations: Array[AnimationData] = []
 
 var weapon: MeleeWeaponData
@@ -47,6 +47,29 @@ func press() -> void:
 		_queued = true
 	else:
 		_start(_index + 1 if _window_left > 0.0 and _index + 1 < _hit_count() else 0)
+
+
+## Golpe do dash (04-player): no fim do dash, o 3º golpe do combo sai sem a preparação (o dash foi a preparação), na
+## direção do dash, com o dano maior e o recuo longo do 3º golpe.
+func dash_strike(strike_direction: Vector3) -> void:
+	if weapon == null:
+		return
+	_index = _hit_count() - 1
+	_queued = false
+	_window_left = 0.0
+	_attack = weapon.combo_hit(_index, Balance.combat)
+	_direction = strike_direction
+	_already_hit.clear()
+	_enter(Phase.ACTIVE, _attack.active)
+	_player.show_swing(true)
+	var animation := hit_animations[_index]
+	_player.play_overlay(animation, animation.length / (_attack.active + _attack.recovery), true)
+	AudioManager.play(&"swing", _player.global_position)
+
+
+## Qual golpe do combo está saindo (0 é o primeiro); -1 fora do combo.
+func hit_index() -> int:
+	return _index
 
 
 ## Para o combo na hora (esquiva, golpe levado, morte). O próximo aperto começa do 1º golpe.
@@ -120,11 +143,6 @@ func _build_hit(receiver: Node3D) -> Hit:
 	var hit := Damage.roll(_attack.damage_points, _player.damage_bonus(), Balance.player.critical_chance + weapon.critical_bonus, Balance.combat, _rng)
 	hit.attacker = _player
 	hit.knockback = _attack.knockback
-	if _index == _hit_count() - 1 and weapon.third_effect >= 0:
-		hit.effect = weapon.third_effect
-		hit.effect_duration = weapon.third_effect_duration
-	if weapon.cooldown_cut > 0.0:
-		_player.spells.cut_cooldowns(weapon.cooldown_cut)
 	var away := receiver.global_position - _player.global_position
 	away.y = 0.0
 	hit.direction = away.normalized() if not away.is_zero_approx() else _direction

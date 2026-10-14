@@ -1,13 +1,13 @@
 class_name ItemPlaces
 ## Onde ficam os itens no jogo salvo (05-itens, 12-tecnico): a barra fixa ("hotbar", 5 espaços, só os itens de mão:
-## armas e a poção), a mochila ("bag", 15 espaços, tudo) e a armadura vestida ("armor"). Funções puras sobre os
+## armas e a poção), a mochila ("bag", 10 espaços, tudo) e a armadura vestida ("armor"). Funções puras sobre os
 ## dados do jogo salvo; o GameState as usa com os dados abertos, e o SaveSystem, ao converter um jogo antigo.
 
 const HOTBAR := "hotbar"
 const BAG := "bag"
 const ARMOR := "armor"
 const HOTBAR_SIZE := 5
-const BAG_SIZE := 15
+const BAG_SIZE := 10
 ## Pasta dos itens: o identificador de um item é o nome do arquivo.
 const ITEMS_FOLDER := "res://data/items/"
 

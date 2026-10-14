@@ -4,5 +4,5 @@
 
 [resource]
 script = ExtResource("1_x4gr0")
-actions = Array[StringName]([&"use_item"])
+actions = Array[StringName]([&"attack"])
 text_key = &"HINT_ATTACK"

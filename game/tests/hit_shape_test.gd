@@ -11,8 +11,8 @@ func test_circle_touches_up_to_reach_plus_target_radius() -> void:
 	assert_bool(HitShape.overlaps(attack, Vector3.ZERO, FORWARD, Vector3(3.31, 0, 0), RADIUS)).is_false()
 
 
-func test_sector_of_the_machete() -> void:
-	# Facão: 1,5 bloco e 90°, 45° para cada lado.
+func test_sector_of_the_sword() -> void:
+	# Espada: 1,5 bloco e 90°, 45° para cada lado.
 	var attack := _attack(AttackData.Shape.SECTOR, 1.5, 90.0)
 	assert_bool(HitShape.overlaps(attack, Vector3.ZERO, FORWARD, Vector3(0, 0, -1.4), RADIUS)).is_true()
 	assert_bool(HitShape.overlaps(attack, Vector3.ZERO, FORWARD, _at_angle(40.0, 1.2), RADIUS)).is_true()

@@ -34,16 +34,20 @@
 [ext_resource type="Texture2D" path="res://assets/ui/status/poison.png" id="33_or4qq"]
 [ext_resource type="Texture2D" path="res://assets/ui/status/burn.png" id="34_hggc2"]
 [ext_resource type="PackedScene" path="res://player/dash_dust.tscn" id="35_dust"]
+[ext_resource type="Shader" path="res://world/effects/slash.gdshader" id="36_slash"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_b2j0d"]
 radius = 0.3
 height = 1.8
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7l6ig"]
-transparency = 1
-cull_mode = 2
-shading_mode = 0
-albedo_color = Color(1, 1, 1, 0.6)
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_slash"]
+render_priority = 0
+shader = ExtResource("36_slash")
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/progress = 1.0
+shader_parameter/fade = 0.0
+shader_parameter/tail_alpha = 0.45
+shader_parameter/inner_alpha = 0.35
 
 [node name="Player" type="CharacterBody3D" unique_id=1544871601]
 collision_layer = 2
@@ -57,11 +61,10 @@ walk_animation = ExtResource("3_ge24q")
 dash_animation = ExtResource("4_pnw6m")
 hurt_animation = ExtResource("5_1so5t")
 death_animation = ExtResource("6_55jnj")
-swing_width = 0.5
-swing_start_scale = 0.35
-swing_grow_time = 0.09
-swing_fade_time = 0.14
-swing_alpha = 0.6
+swing_width = 0.6
+swing_sweep_time = 0.09
+swing_fade_time = 0.18
+swing_alpha = 1.0
 afterimage_interval = 0.05
 afterimage_time = 0.25
 afterimage_color = Color(0.72, 0.95, 0.88, 0.45)
@@ -70,6 +73,7 @@ light_color = Color(0.84705883, 1, 0.9098039, 1)
 amulet_glow = 1.5
 awaken_glow = 4.0
 awaken_light = 4.0
+ancestral_light_energy = 4.0
 awaken_time = 1.6
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=228711272]
@@ -134,5 +138,5 @@ shadow_enabled = true
 
 [node name="Swing" type="MeshInstance3D" parent="." unique_id=1471344968]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0)
-material_override = SubResource("StandardMaterial3D_7l6ig")
+material_override = SubResource("ShaderMaterial_slash")
 cast_shadow = 0

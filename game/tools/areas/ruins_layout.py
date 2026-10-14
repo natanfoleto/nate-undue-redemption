@@ -25,7 +25,7 @@ def put(x, z, ch):
     grid[z][x] = ch
 
 
-# 1) Salão da chegada, vindo da passagem escura do Bosque: o baú do Tacape marajoara e o primeiro encontro.
+# 1) Salão da chegada, vindo da passagem escura do Bosque: o baú do +1 carga e o primeiro encontro.
 fill(6, 70, 19, 81, '.')
 put(12, 80, 'R')
 put(17, 72, 'C')
@@ -88,7 +88,7 @@ put(45, 47, 'J')
 put(34, 33, '.')
 fill(32, 30, 36, 32, '.')
 fill(32, 29, 36, 29, '6')
-# Lâmina de pedra verde, atrás de uma parede rachada na parede sul do salão.
+# +20 de vida, atrás de uma parede rachada na parede sul do salão.
 fill(35, 48, 36, 48, 'X')
 fill(32, 49, 39, 54, ',')
 put(36, 52, 'k')
@@ -180,14 +180,14 @@ def results(grid):
         return any((x + dx, z + dz) in area for x, z in find(ch) for dx, dz in ((1, 0), (-1, 0), (0, 1), (0, -1)))
 
     found = []
-    for name, ch, area in [("Tacape (baú)", 'C', no_earth), ("S3", '3', no_earth), ("pergaminho de Terra", 'T', no_earth),
+    for name, ch, area in [("+1 carga (baú)", 'C', no_earth), ("S3", '3', no_earth), ("pergaminho de Terra", 'T', no_earth),
                            ("alavanca da ponte", 'L', with_earth), ("Selo", 'S', with_earth), ("saída", 'x', with_earth),
                            ("+1 carga", 'Q', no_earth), ("+1 coração", 'h', no_earth), ("Couraça", 'c', no_earth),
-                           ("Lâmina (parede rachada)", 'k', with_earth), ("Arco (alavancas)", 'w', with_bow),
+                           ("+20 de vida (parede rachada)", 'k', with_earth), ("Arco (alavancas)", 'w', with_bow),
                            ("pergaminho de Ar", 'Y', no_earth)]:
         found.append((name, ok(ch, area)))
     found.append(("Selo não alcança antes da Terra", not ok('S', no_earth)))
-    found.append(("Lâmina não alcança antes da Terra", not ok('k', no_earth)))
+    found.append(("+20 de vida da parede rachada não alcança antes da Terra", not ok('k', no_earth)))
     found.append(("murais 4, 5 e 6", near('4', with_earth) and near('5', with_earth) and near('6', with_earth)))
     found.append(("alavancas do Arco do outro lado do vão", all(c not in with_earth for c in find('l'))))
     # Linha de tiro: do lado do S3, nenhum lugar acerta a alavanca da ponte (as paredes do vão seguram o tiro).

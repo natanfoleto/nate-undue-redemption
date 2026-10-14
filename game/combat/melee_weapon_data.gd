@@ -14,11 +14,6 @@ extends ItemData
 @export var angle := 0.0
 ## Chance de crítico a mais, de 0 a 1 (Lança marajoara).
 @export var critical_bonus := 0.0
-## Efeito de status do 3º golpe (-1 para nenhum) e por quanto tempo, em segundos (Tacape marajoara).
-@export var third_effect := -1
-@export var third_effect_duration := 0.0
-## Quanto cada acerto tira da recarga das magias equipadas, em segundos (Lâmina de pedra verde).
-@export var cooldown_cut := 0.0
 
 
 ## O golpe [param index] do combo (0, 1 ou 2).

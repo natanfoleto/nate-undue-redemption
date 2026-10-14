@@ -7,13 +7,13 @@
 [ext_resource type="Texture2D" path="res://assets/ui/buttons/keyboard_d.png" id="5_17bw6"]
 [ext_resource type="Texture2D" path="res://assets/ui/buttons/keyboard_q.png" id="6_y8yu8"]
 [ext_resource type="Texture2D" path="res://assets/ui/buttons/keyboard_e.png" id="7_5q8ln"]
-[ext_resource type="Texture2D" path="res://assets/ui/buttons/keyboard_r.png" id="8_ava8b"]
 [ext_resource type="Texture2D" path="res://assets/ui/buttons/keyboard_f.png" id="9_b7vxo"]
 [ext_resource type="Texture2D" path="res://assets/ui/buttons/keyboard_space.png" id="10_y3gdg"]
 [ext_resource type="Texture2D" path="res://assets/ui/buttons/keyboard_tab.png" id="11_0jaot"]
 [ext_resource type="Texture2D" path="res://assets/ui/buttons/keyboard_escape.png" id="12_mlvrm"]
 [ext_resource type="Texture2D" path="res://assets/ui/buttons/mouse_left.png" id="13_btpjx"]
 [ext_resource type="Texture2D" path="res://assets/ui/buttons/mouse_right.png" id="14_uskbs"]
+[ext_resource type="Texture2D" path="res://assets/ui/buttons/keyboard_g.png" id="16_keyg"]
 [ext_resource type="Script" path="res://ui/button_icons.gd" id="15_13ql1"]
 
 [resource]
@@ -24,8 +24,8 @@ keys = Dictionary[int, Texture2D]({
 68: ExtResource("5_17bw6"),
 69: ExtResource("7_5q8ln"),
 70: ExtResource("9_b7vxo"),
+71: ExtResource("16_keyg"),
 81: ExtResource("6_y8yu8"),
-82: ExtResource("8_ava8b"),
 83: ExtResource("4_y7lgr"),
 87: ExtResource("2_2g3si"),
 4194305: ExtResource("12_mlvrm"),

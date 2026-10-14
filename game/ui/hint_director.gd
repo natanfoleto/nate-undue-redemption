@@ -5,14 +5,18 @@ extends Node
 
 ## Dicas do começo (o prólogo ensina andar, o combo e a esquiva).
 @export var start_hints: Array[HintData] = []
-## Dica que aparece ao pegar um item (o tiro, com o estilingue).
+## Dica que aparece ao pegar um item (o tiro, com o estilingue). A da poção sai quando Nate bebe.
 @export var item_hints: Dictionary[StringName, HintData] = {}
 ## Dica que aparece na primeira vez que Nate chega perto de algo com que dá para interagir.
 @export var interact_hint: HintData
+## Dica do botão dos murais: aparece depois do primeiro mural visto.
+@export var mural_hint: HintData
 @export var hints: ControlHints
 @export var hint_scene: PackedScene
 
 var _interact_shown := false
+# As dicas na tela, pelo nome: a mesma dica não aparece duas vezes.
+var _shown: Dictionary[StringName, ButtonHint] = {}
 
 
 func _ready() -> void:
@@ -23,6 +27,11 @@ func _ready() -> void:
 		if SaveSystem.has_record(SaveSystem.ITEMS, item_id) or SaveSystem.has_record(SaveSystem.ELEMENTS, item_id):
 			_show(item_hints[item_id])
 	Events.item_picked.connect(_on_item_picked)
+	Events.flask_drunk.connect(_on_flask_drunk)
+	if mural_hint:
+		Events.mural_seen.connect(func(_id: int) -> void: _show(mural_hint))
+		if not (SaveSystem.data.get(SaveSystem.MURALS, []) as Array).is_empty():
+			_show(mural_hint)
 
 
 func _physics_process(_delta: float) -> void:
@@ -44,14 +53,28 @@ func _on_item_picked(item_id: StringName) -> void:
 		_show(item_hints[item_id])
 
 
+# A dica da poção sai quando Nate bebe, e não pelo botão: segurar o botão direito também atira.
+func _on_flask_drunk() -> void:
+	var hint: HintData = item_hints.get(GameState.FLASK)
+	if hint == null or _was_used(hint):
+		return
+	var shown: ButtonHint = _shown.get(hint.text_key)
+	if is_instance_valid(shown):
+		shown.finish()
+	else:
+		_on_used(hint.text_key)
+
+
 func _show(hint: HintData) -> void:
-	if _was_used(hint):
+	if _was_used(hint) or is_instance_valid(_shown.get(hint.text_key)):
 		return
 	var button_hint := hint_scene.instantiate() as ButtonHint
 	button_hint.actions = hint.actions
 	button_hint.text_key = hint.text_key
 	button_hint.together = hint.together
+	button_hint.manual = hint.manual
 	button_hint.used.connect(_on_used)
+	_shown[hint.text_key] = button_hint
 	hints.add_hint(button_hint)
 
 

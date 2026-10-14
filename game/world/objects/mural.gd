@@ -1,7 +1,7 @@
 class_name Mural
 extends Interactable
 ## Mural (08-mapa, 09-interface): conta a história sem texto. Na parede, o desenho pequeno; interagir mostra o mural
-## grande na tela, e depois ele fica na galeria do menu de pausa.
+## grande na tela, e depois ele fica na galeria dos murais (MuralGallery).
 
 const VIEW_SCENE := "res://ui/mural_view.tscn"
 ## Quantos murais o jogo tem (08-mapa).
@@ -44,3 +44,4 @@ func interact() -> void:
 	get_tree().current_scene.add_child(view)
 	await view.show_image(image(mural_id))
 	player.set_cinematic(false)
+	Events.mural_seen.emit(mural_id)

@@ -36,13 +36,15 @@ fade_time = 0.6
 camera_from = NodePath("View/SubViewport/Stage/CameraFrom")
 camera_to = NodePath("View/SubViewport/Stage/CameraTo")
 
-[node name="View" type="SubViewportContainer" parent="." unique_id=1755312280]
+[node name="View" type="TextureRect" parent="." unique_id=1755312280]
+unique_name_in_owner = true
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-stretch = true
+expand_mode = 1
 
 [node name="SubViewport" type="SubViewport" parent="View" unique_id=1937894772]
+unique_name_in_owner = true
 own_world_3d = true
 size = Vector2i(1280, 720)
 

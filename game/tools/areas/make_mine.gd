@@ -181,11 +181,12 @@ func _shape_outside() -> void:
 
 
 # O paredão entre a clareira e a mina: alto e irregular de frente para a clareira, baixando para o lado da mina
-# (para não esconder a entrada dela) e baixo do lado da câmera no caminho.
+# (para não esconder a entrada dela) e baixo do lado da câmera no caminho; sempre acima do chão mais perto.
 func _cliff_top(x: int, z: int) -> int:
+	var base: int = _land.base(x, z)
 	if _land.is_front(x, z):
-		return 1
-	return mini(3 + _land.noise(x, z) % 3, z - SURFACE_Z + 1)
+		return base + 1
+	return base + maxi(mini(3 + _land.noise(x, z) % 3, z - SURFACE_Z + 1), 1)
 
 
 # O chão de fora: morros com mata a oeste, o terraço da vila a leste e a encosta do rio ao sul.
@@ -551,7 +552,11 @@ func _build_objects(_player: Node3D) -> void:
 				"b":
 					_pickup(objects, &"mine_slingshot", &"slingshot", _center(x, z))
 				"p":
-					_pickup(objects, &"mine_pickaxe", &"pickaxe", _center(x, z))
+					# O desvio do fim da sala do baú guarda +20 de vida (08-mapa).
+					var hidden := _instance(objects, "res://world/objects/item_pickup.tscn", _center(x, z), 0.0)
+					hidden.set("save_id", &"heart_mine_2")
+					hidden.set("item_id", &"heart")
+					hidden.set("upgrade", true)
 				"C":
 					var chest := _instance(objects, "res://world/objects/chest.tscn", _center(x, z), PI)
 					chest.set("save_id", &"mine_chest_vest")
@@ -598,7 +603,7 @@ func _build_objects(_player: Node3D) -> void:
 				"i", "j", "u":
 					optional[ch].append(Vector2i(x, z))
 				"h":
-					# +1 coração no canto escuro: volta com a Luz Ancestral (08-mapa).
+					# +20 de vida no canto escuro: volta com a Luz Ancestral (08-mapa).
 					var upgrade := _instance(objects, "res://world/objects/item_pickup.tscn", _center(x, z), 0.0)
 					upgrade.set("save_id", &"heart_mine_1")
 					upgrade.set("item_id", &"heart")
@@ -698,9 +703,14 @@ func _build_dark_areas(objects: Node3D) -> void:
 			dark.position = Vector3((low.x + high.x + 1) / 2.0, _ground(x, z), (low.y + high.y + 1) / 2.0)
 			dark.set("area_size", Vector2(high - low + Vector2i.ONE))
 			dark.set("cover_height", 2.05)
-			dark.set("light_edge", 1.5)
 			dark.set("mask", _dark_mask(region, low, high))
 			dark.set("margin", 1.0)
+			dark.set("darkness", 0.9)
+			dark.set("edge_resolution", 8)
+			dark.set("wobble_size", 1.5)
+			dark.set("wobble", 0.35)
+			dark.set("edge_start", 0.2)
+			dark.set("edge_end", 0.8)
 			_add(objects, dark)
 
 
@@ -791,6 +801,7 @@ func _build_interface(player: Node3D) -> void:
 	}, TYPE_STRING_NAME, &"", null, TYPE_OBJECT, &"Resource", load("res://ui/hint_data.gd"))
 	director.set("item_hints", item_hints)
 	director.set("interact_hint", load("res://data/ui/hint_interact.tres"))
+	director.set("mural_hint", load("res://data/ui/hint_murals.tres"))
 	director.set("hints", hints)
 	director.set("hint_scene", load("res://ui/button_hint.tscn"))
 	_add(_root, director)
@@ -803,6 +814,7 @@ func _build_interface(player: Node3D) -> void:
 	_root.set("end_screen", end)
 	_add(_root, (load("res://ui/pause_menu.tscn") as PackedScene).instantiate())
 	_add(_root, (load("res://ui/inventory.tscn") as PackedScene).instantiate())
+	_add(_root, (load("res://ui/mural_gallery.tscn") as PackedScene).instantiate())
 
 
 # Lista tipada com um script carregado só agora: os tipos que dependem dos sistemas globais não compilam antes.

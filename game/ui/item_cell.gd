@@ -1,7 +1,8 @@
 class_name ItemCell
 extends Button
 ## Um espaço de item (09-interface): na barra fixa, na mochila, na armadura e nos elementos do inventário. Mostra o
-## ícone com a moldura da raridade, o número do espaço da barra, as cargas da poção e se o item está na mão.
+## ícone com a moldura da raridade, o número do espaço da barra, as cargas da poção e se o item está na mão; vazio,
+## a armadura e os elementos mostram um ícone apagado do que vai ali.
 ## Arrastar e soltar troca os itens de lugar (ItemMoves); clicar pega o item e clicar em outro espaço o solta ali.
 
 ## Lugares que não guardam itens: os 2 espaços de elemento e a lista dos elementos aprendidos.
@@ -38,6 +39,9 @@ var carried := false:
 	set(value):
 		carried = value
 		queue_redraw()
+## Ícone apagado do espaço vazio e o nome do espaço (chave de tradução), para os detalhes do espaço vazio.
+var placeholder: Texture2D
+var slot_key: StringName
 
 var _hovered := false
 
@@ -70,10 +74,13 @@ func _draw() -> void:
 		frame = look.focus_color
 	draw_rect(rect.grow(-width / 2.0), frame, false, width)
 	var texture := _icon()
+	var alpha := look.carried_alpha if carried else 1.0
+	if texture == null and placeholder:
+		texture = placeholder
+		alpha = look.placeholder_alpha
 	if texture:
 		var icon_size := texture.get_size() * look.icon_scale
-		var tint := Color(1, 1, 1, look.carried_alpha if carried else 1.0)
-		draw_texture_rect(texture, Rect2((size - icon_size) / 2.0, icon_size), false, tint)
+		draw_texture_rect(texture, Rect2((size - icon_size) / 2.0, icon_size), false, Color(1, 1, 1, alpha))
 	var font := get_theme_default_font()
 	var margin := width + look.text_margin
 	if number > 0:

@@ -11,6 +11,8 @@ signal used(text_key: StringName)
 @export var text_key: StringName
 ## A dica só sai quando todas as ações são apertadas juntas (a combinação); senão, qualquer uma tira a dica.
 @export var together := false
+## A dica só sai quando o jogo avisa (finish), e não pelo botão.
+@export var manual := false
 ## Quantas vezes os ícones de 16 px são ampliados.
 @export var icon_scale := 1
 
@@ -26,13 +28,20 @@ func _ready() -> void:
 
 # Em _input, e não em _unhandled_input: as telas que abrem com o botão (o inventário) o consomem.
 func _input(event: InputEvent) -> void:
+	if manual:
+		return
 	for action in actions:
 		if event.is_action_pressed(action):
 			if together and not actions.all(func(other: StringName) -> bool: return Input.is_action_pressed(other)):
 				return
-			used.emit(text_key)
-			queue_free()
+			finish()
 			return
+
+
+## A ação foi feita: a dica some e fica gravada como usada.
+func finish() -> void:
+	used.emit(text_key)
+	queue_free()
 
 
 func _on_device_changed(_device: int) -> void:

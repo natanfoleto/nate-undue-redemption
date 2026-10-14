@@ -3,7 +3,7 @@ GAME_TITLE,Nate: Undue Redemption
 HINT_MOVE,Andar
 HINT_DODGE,Esquivar
 HINT_ATTACK,Atacar
-HINT_SHOOT,Atirar
+HINT_SHOOT,Atirar (segurar e soltar)
 HINT_INTERACT,Interagir
 MENU_CONTINUE,Continuar
 MENU_NEW_GAME,Novo jogo
@@ -13,19 +13,17 @@ MENU_YES,Sim
 MENU_NO,Não
 PAUSE_RESUME,Continuar
 PAUSE_MAIN_MENU,Voltar ao menu principal
-ITEM_MACHETE,Facão
+ITEM_SWORD,Espada
 ITEM_SLINGSHOT,Estilingue
-ITEM_PICKAXE,Picareta
 ITEM_MINER_VEST,Colete de minerador
 SLICE_END,A passagem escura leva às Ruínas. A aventura continua lá.
 MENU_CONFIRM_TITLE,Novo jogo
-HINT_FLASK,Beber a poção
+HINT_FLASK,Beber a poção (na mão, segurar)
 HINT_SPELL,Magia
 HINT_COMBO,Combinação
 HINT_INVENTORY,Inventário
+HINT_MURALS,Murais
 ITEM_SPEAR,Lança marajoara
-ITEM_BLOWGUN,Zarabatana marajoara
-ITEM_JAVELIN,Azagaia marajoara
 ITEM_FIBER_CLOAK,Manto de fibras marajoara
 ITEM_FLASK,Poção de vida
 UPGRADE_HEART,+20 de vida
@@ -41,21 +39,21 @@ SANCTUARY_REST,Descansar
 SANCTUARY_TRAVEL,Viajar
 SANCTUARY_LEAVE,Voltar
 SANCTUARY_BACK,Voltar
-INVENTORY_NATE,Nate
 INVENTORY_COMBO,Combinação
 INVENTORY_TITLE,Inventário
 INVENTORY_LIFE,Vida
 INVENTORY_BAG,Mochila
-INVENTORY_ELEMENTS,Elementos
 INVENTORY_LEARNED,Elementos aprendidos
+INVENTORY_AMULET,Muiraquitã
 INVENTORY_HELP_KEYBOARD,"Arraste, ou clique e clique de novo, para trocar os itens de lugar. Com o mouse em cima de um item, 1 a 5 o põem na barra."
 INVENTORY_HELP_GAMEPAD,"Confirmar pega o item, e confirmar de novo o solta no espaço escolhido. Voltar fecha."
 STAT_HEAL,Cura
 STAT_CHARGES,Cargas
 STAT_DRINK_TIME,Tempo para beber
 SLOT_ARMOR,Armadura
-RARITY_COMMON,comum
-RARITY_MARAJOARA,marajoara
+SLOT_ELEMENT,Elemento
+RARITY_COMMON,Comum
+RARITY_MARAJOARA,Marajoara
 STAT_DAMAGE,Dano
 STAT_HIT_TIME,Tempo por golpe
 STAT_REACH,Alcance
@@ -81,15 +79,12 @@ UNIT_SECONDS,%s s
 UNIT_BLOCK,%s bloco
 UNIT_BLOCKS,%s blocos
 UNIT_SPEED,%s blocos/s
-PAUSE_MURALS,Murais
 PAUSE_MURALS_FOUND,Murais achados: %d de %d
 PAUSE_BACK,Voltar
 PAUSE_SETTINGS,Configurações
 SETTINGS_MUSIC,Música
 SETTINGS_EFFECTS,Efeitos sonoros
 ITEM_SEAL,Selo
-ITEM_TACAPE,Tacape marajoara
-ITEM_STONE_BLADE,Lâmina de pedra verde
 ITEM_BOW,Arco marajoara
 ITEM_CUIRASS,Couraça de cerâmica marajoara
 ITEM_MINER_ARMOR,Armadura de minerador
@@ -104,8 +99,6 @@ SPELL_MUD,Lamaçal
 SPELL_SAND_SHIELD,Escudo de Areia
 SANCTUARY_3,Coração das Ruínas
 RUINS_END,O Selo está com Nate. A Grande Prisão espera.
-STAT_THIRD_HIT,3º golpe
-STAT_COOLDOWN_CUT,Corta a recarga das magias
 STAT_PIERCE,Atravessa os inimigos
 STAT_DAMAGE_BONUS,Bônus de dano
 STAT_SPEED_BOOST,Nate mais rápido

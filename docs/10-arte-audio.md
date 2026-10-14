@@ -34,11 +34,13 @@ Origem dos assets, guia de estilo e a lista completa de assets e sons, que sai d
 
 Os ícones definitivos são feitos para o jogo (`09-interface.md`). O pacote dos materiais comuns é o do drummyfish, pintado à mão, escolhido depois do primeiro teste de jogo para o cenário não ficar idêntico ao Minecraft. Ele troca o "16x16 block texture set" (ARoachIFoundOnMyPillow, CC0), usado até a etapa 6.
 
-Feitos para o jogo na etapa 6, provisórios: as texturas marajoara das Ruínas (`marajoara_wall`, `marajoara_floor`, `marajoara_jade` e `spear_plate`), os ícones de Terra, Ar, das combinações, das armas e armaduras das Ruínas e da Mina, do Selo e do muiraquitã inteiro, os desenhos dos pergaminhos de Terra e Ar e as imagens dos 7 murais (`assets/murals/`).
+Feitos para o jogo na etapa 6, provisórios: as texturas marajoara das Ruínas (`marajoara_jade` e `spear_plate`), os ícones de Terra, Ar, das combinações, das armas e armaduras das Ruínas e da Mina, do Selo e do muiraquitã inteiro, os desenhos dos pergaminhos de Terra e Ar e as imagens dos 7 murais (`assets/murals/`).
 
 Feitos para o jogo na etapa 5, provisórios: as texturas dos fungos (`mushroom_stem`, `mushroom_cap_cyan` e `mushroom_cap_lime`), os ícones de 16 × 16 dos itens, dos elementos, da combinação Vapor, dos efeitos de status, do muiraquitã e das melhorias, os desenhos dos pergaminhos de Fogo e Água e o papel do pergaminho aberto (`assets/ui/`).
 
 Feitos para o jogo depois do segundo teste de jogo, provisórios: o som do golpe de lâmina (`assets/audio/ours/swoosh.wav`, um vush de vento) e o do dash (`dash.wav`, mais grave e longo), sintetizados de ruído filtrado; o ícone e o modelo da poção de vida (`assets/ui/items/flask.png`); a pose do dash; as peças de rampa e de canto do chão (`tools/areas/`); e as peles de Nate, dos mobs e dos itens no molde das skins do Minecraft (`assets/textures/`).
+
+Feitos para o jogo depois do terceiro teste de jogo, provisórios: as texturas das Ruínas no lugar dos losangos e ziguezagues marajoara, a parede de tijolos de terracota lisos (`terracotta_wall`) e o piso de placas grandes de pedra clara (`light_stone_floor`), pintadas por `tools/areas/make_ruins_textures.gd`; as peles do herói, do irmão, da cabeça da Boiúna, do santuário e do cogumelo de esporos (`tools/models/make_scene_skins.gd`); o ícone da espada; a meia-lua do golpe (`world/effects/slash.gdshader`); e os ícones dos botões G e direcional para cima.
 
 ### Plano de produção
 Assets prontos entram como provisórios logo no começo da produção, para testar os sistemas cedo, e são trocados pelos definitivos aos poucos.
@@ -47,11 +49,11 @@ Assets prontos entram como provisórios logo no começo da produção, para test
 
 ### Base
 - **Densidade:** personagens, objetos e ícones usam 16 px por bloco (1 pixel equivale a 1/16 de bloco); Nate, com 2 blocos de altura, tem 32 pixels de altura. As texturas prontas do cenário têm 32 px por bloco, pintadas à mão, mais detalhadas que as do Minecraft; as feitas para o jogo (marajoara e fungos) seguem com 16 px.
-- **Caixas retas e pele pintada:** personagens, criaturas e itens são caixas retas, como no Minecraft, com a pele pintada pixel a pixel no molde das skins do Minecraft, a 16 px por bloco: Nate (rosto, cabelo e as dobras da roupa); os mobs (o pelo do lobo, os ossos do esqueleto com as juntas roxas, o manto do necromante com a barra roxa, a pedra do golem em blocos com veios roxos), com as variantes nas cores delas; e os itens (a lâmina com fio e ponta, os cabos com rebites e amarrações, os padrões marajoara, as costuras e os rebites das armaduras). O herói e o irmão das memórias ainda usam cores lisas por caixa.
+- **Caixas retas e pele pintada:** personagens, criaturas e itens são caixas retas, como no Minecraft, com a pele pintada pixel a pixel no molde das skins do Minecraft, a 16 px por bloco: Nate (rosto, cabelo e as dobras da roupa); os mobs (o pelo do lobo, os ossos do esqueleto com as juntas roxas, o manto do necromante com a barra roxa, a pedra do golem em blocos com veios roxos), com as variantes nas cores delas; e os itens (a lâmina com fio e ponta, os cabos com rebites e amarrações, os padrões marajoara, as costuras e os rebites das armaduras). Nas cenas, o herói e o irmão têm as caixas e as proporções de Nate, com outra roupa (o herói: túnica cor de urucum com a faixa creme de traços pretos, tanga de algodão, faixa vermelha na cabeça, cabelo comprido, traços de jenipapo nos antebraços e o muiraquitã inteiro; o irmão: túnica escura com a faixa ocre, cabelo curto, a testa franzida, o olhar de lado e uma cicatriz); a cabeça da Boiúna tem escamas, a barriga em placas, olhos âmbar de pupila em fenda e presas; o santuário, blocos de pedra com musgo, o pilar com o losango entalhado, as faixas vermelha e preta e o cristal de jade; e o cogumelo de esporos, o pé com fibras e o chapéu com pintas e lamelas.
 - **Chão em manchas:** a grama da clareira e o chão da Mina misturam 3 tons em manchas, e a grama tem terra nas laterais, para o relevo aparecer e o chão não ficar chapado. Onde um chão encontra outro, a borda ondula e mistura os dois (`08-mapa.md`).
 - **Rampas:** na natureza, o relevo sobe em rampas do próprio chão, com a textura de cima seguindo a inclinação e as laterais do bloco; escadas de pedra só nas construções (`08-mapa.md`).
 - **Profundidade:** abaixo do chão, a rocha fica mais escura, e o fundo dos abismos tem cor e luz próprias (água escura, água brilhante e fungos, lava), para a câmera ler a altura de cada parte.
-- **Luz:** o subterrâneo é escuro, mas cada área tem a sua luz: lampiões na Mina, fungos que brilham no Bosque e padrões marajoara acesos nas Ruínas. Escuridão total só nas áreas que exigem a Luz Ancestral. Em todo lugar, a luz precisa bastar para ler os avisos (pilar 2).
+- **Luz:** o subterrâneo é escuro, mas cada área tem a sua luz: lampiões na Mina, fungos que brilham no Bosque e padrões marajoara acesos nas Ruínas. Escuridão total só nas áreas que exigem a Luz Ancestral, e ela é do próprio lugar: o chão, as paredes e as plantas escurecem, sem camada por cima, e Nate, os mobs e os itens continuam visíveis; com a Luz Ancestral, a luz de Nate clareia em volta dele. Em todo lugar, a luz precisa bastar para ler os avisos (pilar 2).
 - **Efeitos visuais:** partículas blocadas, feitas de pequenos cubos e quadrados: faíscas, poeira, fogo, água e escuridão.
 
 ### Cenas
@@ -77,7 +79,7 @@ Cada sinal tem forma própria, e não só cor, para ajudar daltônicos (`09-inte
 | Queimadura | chamas laranja; ícone de chama | crepitar |
 | Imune | a palavra "imune", em cinza | batida seca |
 | Invencível | Nate pisca | — |
-| Rastro do golpe | arco branco curto, com as pontas arredondadas, que nasce pequeno, cresce até o tamanho cheio e some devagar; nas armas marajoara, verde-jade | vush de vento, o mesmo em todos os golpes |
+| Rastro do golpe | meia-lua branca, grossa no meio e fina nas duas pontas, adaptada dos jogos 2D: aparece varrendo a área do golpe, por cima de tudo, e some; o começo do arco e a beira de dentro mais transparentes; a mesma em todas as armas | vush de vento, o mesmo em todos os golpes |
 | Dash | cópias translúcidas de Nate pelo caminho, que somem em 0,25 s, e poeira de cubos nos pés | vush de vento mais grave |
 | Item da mão | moldura dourada no espaço da barra fixa e o nome do item em cima dela | som curto de lâmina |
 
@@ -92,7 +94,7 @@ Cada sinal tem forma própria, e não só cor, para ajudar daltônicos (`09-inte
 | Prólogo | verdes da mata e terra vermelha | sol de fim de tarde |
 | Mina | madeira escura, terra ocre e pedra cinza | lampiões amarelos |
 | Bosque de Fungos | azul-escuro e verde-musgo | fungos ciano e verde-limão |
-| Ruínas | terracota, preto e creme, as cores da cerâmica marajoara | padrões acesos em verde-jade |
+| Ruínas | paredes de tijolo de terracota liso e piso de placas grandes de pedra clara, sem padrão; o marajoara (preto, creme e verde-jade) só nos detalhes, como os pilares | padrões acesos em verde-jade |
 | Grande Prisão | pedra escura | pilares que acendem em verde-jade |
 
 ### Cores e tamanhos
@@ -109,7 +111,7 @@ Cada sinal tem forma própria, e não só cor, para ajudar daltônicos (`09-inte
 | Poção de vida | garrafinha de vidro com o líquido vermelho, um brilho claro no vidro e rolha de cortiça |
 | Melhorias | contas de jade, uma em forma de coração (+20 de vida) e outra em forma de gota (+1 carga) |
 | Pergaminho | rolo de fibra clara com desenhos marajoara em preto e vermelho; ao ler, o rolo se abre na tela e mostra o desenho do elemento, sem texto |
-| Armas | de 0,75 a 1,5 bloco de comprimento |
+| Armas | de 0,5 bloco (estilingue) a 1,8 bloco (lança) de comprimento |
 | Pedras que caem | 1 bloco |
 | Cogumelo de esporos | 1,5 bloco de altura |
 | Lanças do chão | placas de 1×1 bloco |
@@ -200,7 +202,8 @@ Tudo sai das fichas. Os detalhes de cada item estão na ficha indicada.
 | Textura | Origem |
 |---------|--------|
 | Materiais comuns: pedra, terra, madeira e metal | pacote pronto CC0, pintado à mão |
-| Padrões marajoara: paredes das Ruínas, santuários, pilares, placas das lanças e itens marajoara | feitas para o jogo |
+| Padrões marajoara: pilares das Ruínas, santuários, placas das lanças e itens marajoara | feitas para o jogo |
+| Terracota e pedra clara das Ruínas | feitas para o jogo, no jeito das pintadas (32 px por bloco) |
 | Fungos bioluminescentes | feitas para o jogo |
 | Peles de personagens e criaturas: Nate, roupas das cenas, mobs e cores das variantes, Boiúna e gado | feitas para o jogo |
 | Os 7 murais | feitos para o jogo |
@@ -210,7 +213,7 @@ Tamanho de cada mural, em blocos: `[A DEFINIR no rascunho do mapa]`.
 ### Animações (por código)
 | De quem | Quantas | Ficha |
 |---------|---------|-------|
-| Nate | 11, mais 4 poses de tiro | `04-player.md`, `05-itens.md` |
+| Nate | 11, mais 2 poses de tiro | `04-player.md`, `05-itens.md` |
 | Mobs | de 6 a 8 por tipo | `06-mobs/` |
 | Boiúna | 12 | `07-chefes/boiuna.md` |
 | Muiraquitã | 3: acordar, brilho e lasca se encaixando | `05-itens.md` |
@@ -220,7 +223,7 @@ Tamanho de cada mural, em blocos: `[A DEFINIR no rascunho do mapa]`.
 ### Efeitos visuais (partículas blocadas)
 | Grupo | Efeitos |
 |-------|---------|
-| Golpes | rastro (branco e verde-jade), acerto e crítico |
+| Golpes | rastro (a meia-lua branca), acerto e crítico |
 | Nate | rastro e poeira do dash |
 | Sinais | marca de aviso no chão, brilho de golpe comum, tiro na força total, feixe de item e piscar de invencibilidade |
 | Efeitos de status | estrelas, partículas azuis, bolhas verdes e chamas |

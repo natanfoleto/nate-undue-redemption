@@ -104,7 +104,7 @@ icon_scale = 3
 layout_mode = 2
 alignment = 1
 script = ExtResource("33_h7up4")
-actions = Array[StringName]([&"use_item"])
+actions = Array[StringName]([&"attack"])
 text_key = &"HINT_ATTACK"
 icon_scale = 3
 
@@ -120,6 +120,6 @@ icon_scale = 3
 layout_mode = 2
 alignment = 1
 script = ExtResource("33_h7up4")
-actions = Array[StringName]([&"use_item"])
+actions = Array[StringName]([&"use_hold"])
 text_key = &"HINT_SHOOT"
 icon_scale = 3

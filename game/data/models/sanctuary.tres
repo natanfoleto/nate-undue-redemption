@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" path="res://tools/models/box_data.gd" id="1_enfwg"]
 [ext_resource type="Script" path="res://tools/models/model_data.gd" id="2_d0c0k"]
+[ext_resource type="Texture2D" path="res://assets/textures/sanctuary_skin.png" id="3_d0c0k"]
 
 [sub_resource type="Resource" id="Resource_8kb51"]
 resource_name = "base"
@@ -35,7 +36,7 @@ script = ExtResource("1_enfwg")
 name = &"band_red"
 size = Vector3i(12, 2, 12)
 position = Vector3(-6, 14, -6)
-texture_offset = Vector2i(0, 98)
+texture_offset = Vector2i(40, 64)
 color = Color(0.70980394, 0.2509804, 0.16470589, 1)
 
 [sub_resource type="Resource" id="Resource_6uqg5"]
@@ -44,7 +45,7 @@ script = ExtResource("1_enfwg")
 name = &"band_black"
 size = Vector3i(12, 1, 12)
 position = Vector3(-6, 24, -6)
-texture_offset = Vector2i(0, 112)
+texture_offset = Vector2i(0, 98)
 color = Color(0.11372549, 0.101960786, 0.09019608, 1)
 
 [sub_resource type="Resource" id="Resource_2012y"]
@@ -53,7 +54,7 @@ script = ExtResource("1_enfwg")
 name = &"bowl"
 size = Vector3i(14, 3, 14)
 position = Vector3(-7, 32, -7)
-texture_offset = Vector2i(0, 125)
+texture_offset = Vector2i(48, 98)
 color = Color(0.41568628, 0.39215687, 0.36078432, 1)
 
 [sub_resource type="Resource" id="Resource_fw7n5"]
@@ -62,9 +63,10 @@ script = ExtResource("1_enfwg")
 name = &"glow"
 size = Vector3i(6, 6, 6)
 position = Vector3(-3, 35, -3)
-texture_offset = Vector2i(0, 142)
+texture_offset = Vector2i(104, 98)
 color = Color(0.24705882, 0.68235296, 0.5411765, 1)
 
 [resource]
 script = ExtResource("2_d0c0k")
+texture = ExtResource("3_d0c0k")
 boxes = Array[ExtResource("1_enfwg")]([SubResource("Resource_8kb51"), SubResource("Resource_t4xmx"), SubResource("Resource_t54ug"), SubResource("Resource_1wnkx"), SubResource("Resource_6uqg5"), SubResource("Resource_2012y"), SubResource("Resource_fw7n5")])

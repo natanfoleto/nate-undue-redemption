@@ -3,7 +3,7 @@ extends SceneTree
 # montador do terreno explica o formato). Rodar a partir da raiz do repositório:
 #   godot --headless --path game -s res://tools/areas/make_ruins.gd
 #
-# Em volta da cidade, rocha subindo em morros com restos de muros marajoara em cima; na frente da câmera, fendas de
+# Em volta da cidade, rocha subindo em morros com restos de muros de terracota em cima; na frente da câmera, fendas de
 # lava, que iluminam as paredes de baixo para cima.
 
 const FOLDER := "res://tools/areas/"
@@ -30,9 +30,8 @@ const LAVA_LIGHT_REACH := 9
 const PICKUPS := {
 	"w": [&"ruins_bow", &"bow"],
 	"c": [&"ruins_cuirass", &"cuirass"],
-	"k": [&"ruins_stone_blade", &"stone_blade"],
 }
-const UPGRADES := {"h": [&"heart_ruins_1", &"heart"], "Q": [&"charge_ruins_1", &"charge"]}
+const UPGRADES := {"h": [&"heart_ruins_1", &"heart"], "Q": [&"charge_ruins_1", &"charge"], "k": [&"heart_ruins_2", &"heart"]}
 const MOBS := {
 	"K": ["res://mobs/skeleton.tscn", "ruins_skeleton"],
 	"V": ["res://mobs/skeleton_veteran.tscn", "ruins_veteran"],
@@ -160,7 +159,7 @@ func _place_column(x: int, z: int) -> void:
 					_terrain.set_cell_item(Vector3i(x, y, z), _item("Padrão de jade"))
 				_light(Vector3(x + 0.5, h + 2.0, z + 0.5), JADE_LIGHT, 6.0, 1.2)
 		_land.Kind.BRIDGE:
-			_land.place_bridge(_terrain, x, z, _item("Piso marajoara"), _item("Parede marajoara"), 2, _item("Lava"), _item("Rocha queimada"))
+			_land.place_bridge(_terrain, x, z, _item("Piso de pedra clara"), _item("Parede de terracota"), 2, _item("Lava"), _item("Rocha queimada"))
 		_land.Kind.CHASM:
 			_land.place_column(_terrain, x, z, _item("Lava"), _item("Rocha queimada"))
 			# O vão da ponte de alavanca não tem barreira de bloco: quem segura é a própria ponte, enquanto levantada.
@@ -179,7 +178,7 @@ func _place_column(x: int, z: int) -> void:
 					if _land.is_bottom(x, z):
 						_land.place_column(_terrain, x, z, _item("Lava"), _item("Rocha queimada"), _item("Rocha queimada"))
 					elif _land.kind(x, z) == _land.Kind.WALL:
-						_land.place_column(_terrain, x, z, _item("Parede marajoara"), _item("Parede marajoara"), _item("Rocha queimada"))
+						_land.place_column(_terrain, x, z, _item("Parede de terracota"), _item("Parede de terracota"), _item("Rocha queimada"))
 					else:
 						_land.place_column(_terrain, x, z, _item("Rocha"), _item("Rocha"), _item("Rocha queimada"))
 			_land.place_sight(_sight, x, z, _item("Invisível"))
@@ -190,7 +189,7 @@ func _floor(x: int, z: int) -> void:
 	# o chão vem de um bloco vizinho puxado pelo ruído.
 	var zone: Vector2i = _land.blend_source(x, z)
 	var mine := _is_mine_floor(zone.x, zone.y)
-	_land.place_floor(_terrain, x, z, _item("Chão das minas antigas") if mine else _item("Piso marajoara"), _item("Rocha"), _item("Escada"))
+	_land.place_floor(_terrain, x, z, _item("Chão das minas antigas") if mine else _item("Piso de pedra clara"), _item("Rocha"), _item("Escada"))
 	# Abaixo do chão, a beira dos vãos é de rocha queimada, como as paredes deles.
 	for y in range(_land.bottom(x, z), _land.height(x, z) - 1):
 		_terrain.set_cell_item(Vector3i(x, y, z), _item("Rocha queimada"))
@@ -224,11 +223,11 @@ func _decorate() -> void:
 			var roll: float = _land.chance(x, z, 21)
 			if top < _land.base(x, z) + 2 or roll > 0.07:
 				continue
-			# Resto de muro: de 1 a 3 blocos de parede marajoara, às vezes com o padrão de jade aceso em cima.
+			# Resto de muro: de 1 a 3 blocos de parede de terracota, às vezes com o padrão de jade aceso em cima.
 			var pieces: int = 1 + _land.noise(x, z) % 3
 			for y in range(top, top + pieces):
 				if y + 1 <= _land.cap(x, z):
-					_set_if_empty(Vector3i(x, y, z), _item("Parede marajoara"))
+					_set_if_empty(Vector3i(x, y, z), _item("Parede de terracota"))
 			if roll < 0.012 and top + pieces + 1 <= _land.cap(x, z):
 				_set_if_empty(Vector3i(x, top + pieces, z), _item("Padrão de jade"))
 
@@ -293,20 +292,22 @@ func _build_objects() -> void:
 					sanctuary.set("data", load("res://data/sanctuaries/s3.tres"))
 				"C":
 					var chest := _instance(_objects, "res://world/objects/chest.tscn", _center(x, z), PI)
-					chest.set("save_id", &"ruins_chest_tacape")
-					chest.set("item_id", &"tacape")
+					# O baú da chegada guarda +1 carga.
+					chest.set("save_id", &"charge_ruins_2")
+					chest.set("item_id", &"charge")
+					chest.set("upgrade", true)
 				"T", "Y":
 					var scroll := _instance(_objects, "res://world/objects/scroll.tscn", _center(x, z), 0.0)
 					var element := &"earth" if ch == "T" else &"air"
 					scroll.name = "Scroll" + String(element).capitalize()
 					scroll.set("save_id", StringName("ruins_scroll_" + element))
 					scroll.set("element_id", element)
-				"w", "c", "k":
+				"w", "c":
 					var spec: Array = PICKUPS[ch]
 					var pickup := _instance(_objects, "res://world/objects/item_pickup.tscn", _center(x, z), 0.0)
 					pickup.set("save_id", spec[0])
 					pickup.set("item_id", spec[1])
-				"h", "Q":
+				"h", "Q", "k":
 					var upgrade := _instance(_objects, "res://world/objects/item_pickup.tscn", _center(x, z), 0.0)
 					upgrade.set("save_id", UPGRADES[ch][0])
 					upgrade.set("item_id", UPGRADES[ch][1])
@@ -511,6 +512,7 @@ func _build_interface(player: Node3D) -> void:
 	}, TYPE_STRING_NAME, &"", null, TYPE_OBJECT, &"Resource", load("res://ui/hint_data.gd"))
 	director.set("item_hints", item_hints)
 	director.set("interact_hint", load("res://data/ui/hint_interact.tres"))
+	director.set("mural_hint", load("res://data/ui/hint_murals.tres"))
 	director.set("hints", hints)
 	director.set("hint_scene", load("res://ui/button_hint.tscn"))
 	_add(_root, director)
@@ -524,6 +526,7 @@ func _build_interface(player: Node3D) -> void:
 	_root.set("end_screen", end)
 	_add(_root, (load("res://ui/pause_menu.tscn") as PackedScene).instantiate())
 	_add(_root, (load("res://ui/inventory.tscn") as PackedScene).instantiate())
+	_add(_root, (load("res://ui/mural_gallery.tscn") as PackedScene).instantiate())
 
 
 # Lista tipada com um script carregado só agora: os tipos que dependem dos sistemas globais não compilam antes.

@@ -6,13 +6,13 @@ var _data: Dictionary
 
 
 func before_test() -> void:
-	_data = {"hotbar": ["machete", "", "", "", ""], "bag": [], "armor": ""}
+	_data = {"hotbar": ["sword", "", "", "", ""], "bag": [], "armor": ""}
 
 
 func test_weapons_and_the_potion_go_to_the_hotbar() -> void:
 	ItemPlaces.place(_data, "slingshot")
 	ItemPlaces.place(_data, "flask")
-	assert_array(_data["hotbar"]).is_equal(["machete", "slingshot", "flask", "", ""])
+	assert_array(_data["hotbar"]).is_equal(["sword", "slingshot", "flask", "", ""])
 
 
 func test_first_armor_is_worn_and_the_next_goes_to_the_bag() -> void:
@@ -23,14 +23,14 @@ func test_first_armor_is_worn_and_the_next_goes_to_the_bag() -> void:
 
 
 func test_full_hotbar_sends_weapons_to_the_bag() -> void:
-	for id in ["slingshot", "spear", "bow", "tacape", "pickaxe"]:
-		ItemPlaces.place(_data, id)
-	assert_str(ItemPlaces.id_at(_data, ItemPlaces.BAG, 0)).is_equal("pickaxe")
+	_data["hotbar"] = ["sword", "slingshot", "spear", "flask", "seal"]
+	ItemPlaces.place(_data, "bow")
+	assert_str(ItemPlaces.id_at(_data, ItemPlaces.BAG, 0)).is_equal("bow")
 
 
 func test_an_item_is_kept_in_one_place_only() -> void:
-	ItemPlaces.place(_data, "machete")
-	assert_array(_data["hotbar"]).is_equal(["machete", "", "", "", ""])
+	ItemPlaces.place(_data, "sword")
+	assert_array(_data["hotbar"]).is_equal(["sword", "", "", "", ""])
 	assert_str(ItemPlaces.id_at(_data, ItemPlaces.BAG, 0)).is_empty()
 
 
@@ -44,7 +44,7 @@ func test_armor_never_goes_to_the_hotbar() -> void:
 func test_moving_swaps_the_two_places() -> void:
 	ItemPlaces.place(_data, "slingshot")
 	assert_bool(ItemPlaces.move(_data, ItemPlaces.HOTBAR, 0, ItemPlaces.HOTBAR, 1)).is_true()
-	assert_array(_data["hotbar"]).is_equal(["slingshot", "machete", "", "", ""])
+	assert_array(_data["hotbar"]).is_equal(["slingshot", "sword", "", "", ""])
 	assert_bool(ItemPlaces.move(_data, ItemPlaces.HOTBAR, 0, ItemPlaces.BAG, 3)).is_true()
 	assert_str(ItemPlaces.id_at(_data, ItemPlaces.HOTBAR, 0)).is_empty()
 	assert_str(ItemPlaces.id_at(_data, ItemPlaces.BAG, 3)).is_equal("slingshot")

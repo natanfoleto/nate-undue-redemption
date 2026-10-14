@@ -7,13 +7,13 @@ Sistema de itens e as fichas de equipamento, muiraquitã e magias, poção de vi
 ### Lugares dos itens
 | Lugar | Espaços | O que guarda |
 |-------|---------|--------------|
-| Barra fixa | 5 | os itens de mão: armas de perto, armas de longe e a poção de vida. O espaço escolhido é o item na mão de Nate, que o botão de usar usa (`04-player.md`) |
-| Mochila | 15 | tudo o que não está na barra nem vestido |
+| Barra fixa | 5 | os itens de mão: armas de perto, armas de longe e a poção de vida. O espaço escolhido é o item na mão de Nate: o botão esquerdo ataca com a arma de perto; o direito, segurado, atira ou bebe (`04-player.md`) |
+| Mochila | 10 | tudo o que não está na barra nem vestido |
 | Armadura | 1 | a armadura vestida: vida extra e, às vezes, um bônus; não reduz dano (`03-regras.md`) |
 | Elemento | 2 | uma magia em cada botão; os dois juntos lançam a combinação (`04-player.md`) |
 
 - Na barra, só itens de mão; a armadura nunca entra nela.
-- Cada item fica num lugar só. Os 5 da barra mais os 15 da mochila e a armadura cabem todos os itens do jogo.
+- Cada item fica num lugar só. Os 5 da barra mais os 10 da mochila e a armadura cabem todos os itens do jogo (as 8 peças de equipamento e a poção).
 
 ### Raridade
 | Raridade | Origem | O que tem |
@@ -41,33 +41,29 @@ Sistema de itens e as fichas de equipamento, muiraquitã e magias, poção de vi
 - Achar um item mostra um feixe de luz sobre ele; ao pegar, partículas e um som de recompensa (`10-arte-audio.md`).
 
 ### Equipamento inicial
-- Nate começa com o facão. A primeira arma à distância, o estilingue, é achada na Mina, onde o tiro é ensinado (`04-player.md`).
+- Nate começa com a espada. A primeira arma à distância, o estilingue, é achada na Mina, onde o tiro é ensinado (`04-player.md`).
 - Nenhuma armadura no início.
 
 ## Equipamento
-13 peças: 5 armas corpo a corpo, 4 armas à distância e 4 armaduras. Dessas, 5 são comuns e 8 são marajoara.
+8 peças: 2 armas corpo a corpo, 2 armas à distância e 4 armaduras. Dessas, 4 são comuns e 4 são marajoara. Poucas peças, cada uma com um jeito próprio de lutar.
 
 ### Armas corpo a corpo
 **Papel no jogo:** o ataque principal de Nate. Cada arma muda o ritmo do combo de 3 golpes, e as marajoara somam um efeito.
-**Descrição visual:** armas blocadas na mão de Nate. As comuns são ferramentas gastas de metal e madeira; as marajoara, de pedra e madeira com padrões geométricos marajoara. Tamanho: de 0,75 a 1,5 bloco de comprimento (`10-arte-audio.md`).
+**Descrição visual:** armas blocadas na mão de Nate, com forma de verdade: a espada com lâmina de fio e ponta, guarda dourada, cabo de couro e pomo; a lança marajoara com a ponta de pedra verde e o cabo amarrado. Comprimento: a espada, 1,3 bloco; a lança, 1,8 bloco (`10-arte-audio.md`).
 
 #### Atributos
 Valores exatos: `11-balanceamento.md`.
 
 | Peça | Raridade | Velocidade | Dano | Golpe | Efeito | Área |
 |------|----------|------------|------|-------|--------|------|
-| Facão | comum | média | médio | médio | — | inicial |
-| Picareta | comum | lenta | alto | estreito | — | Mina |
+| Espada | comum | média | médio | médio e largo | — | inicial |
 | Lança marajoara | marajoara | média | médio | longo e estreito | mais chance de crítico | Bosque |
-| Tacape marajoara | marajoara | lenta | alto | largo | o 3º golpe atordoa | Ruínas |
-| Lâmina de pedra verde | marajoara | rápida | baixo | curto | cada acerto reduz a recarga das magias equipadas | Ruínas |
 
 #### Comportamento e habilidades
 - Todas seguem o combo de 3 golpes de Nate: 1º e 2º com recuo curto, 3º com mais dano e recuo longo (`04-player.md`).
 - Cada arma muda velocidade, dano e tamanho do golpe. A sequência é sempre a mesma.
 - **Lança marajoara:** chance de crítico maior que a base de 5% (`03-regras.md`).
-- **Tacape marajoara:** o 3º golpe atordoa.
-- **Lâmina de pedra verde:** cada acerto reduz a recarga das magias equipadas.
+- **Golpe do dash:** com qualquer arma de perto, atacar no dash dá, no fim dele, o 3º golpe do combo (`04-player.md`).
 
 #### Interações
 - **Mobs:** recuo e interrupção conforme o golpe (`03-regras.md`).
@@ -76,14 +72,13 @@ Valores exatos: `11-balanceamento.md`.
 
 #### Animações necessárias
 - As do combo de Nate (`04-player.md`) servem para todas as armas.
-- Rastro do golpe: arco branco curto; nas armas marajoara, verde-jade (`10-arte-audio.md`).
+- Rastro do golpe: uma meia-lua branca na área do golpe, a mesma em todas as armas (`10-arte-audio.md`).
 
 #### Sons necessários
-- Golpe cortando o ar e acerto, em três pesos: leve (Lâmina de pedra verde), médio (Facão, Lança marajoara) e pesado (Picareta, Tacape marajoara).
-- O atordoar do Tacape usa o som do efeito de status (`03-regras.md`).
+- Golpe cortando o ar (um vento só, para as duas armas) e acerto.
 
 #### Assets necessários
-- 5 modelos de arma, definidos por código.
+- 2 modelos de arma, definidos por código, com a pele pintada (`10-arte-audio.md`).
 - Ícone de cada arma no inventário (`09-interface.md`).
 
 ### Armas à distância
@@ -96,33 +91,29 @@ Valores exatos: `11-balanceamento.md`.
 | Peça | Raridade | Tempo para puxar | Dano | Alcance | Projétil | Efeito | Área |
 |------|----------|------------------|------|---------|----------|--------|------|
 | Estilingue | comum | curto | baixo | médio | pedra | — | Mina |
-| Zarabatana marajoara | marajoara | curto | baixo | médio | dardo | entorpece: deixa lento | Bosque |
-| Azagaia marajoara | marajoara | longo | alto | médio | azagaia | recuo longo | Bosque |
 | Arco marajoara | marajoara | longo | alto | longo | flecha | atravessa inimigos | Ruínas |
 
-Recuo: Estilingue, curto; Zarabatana, nenhum; Arco, curto.
+Recuo: Estilingue e Arco, curto.
 
 #### Comportamento e habilidades
-- Segurar puxa até a força total; soltar atira; soltar antes cancela (`04-player.md`).
+- Segurar o botão direito puxa até a força total; soltar atira; soltar antes cancela (`04-player.md`).
 - O dano é menor que o das armas corpo a corpo.
 - O projétil para no primeiro inimigo que acerta. A flecha do Arco marajoara é a exceção: atravessa e acerta todos na linha, cada um uma vez.
-- **Zarabatana marajoara:** dardos que entorpecem e deixam lento, como os da zarabatana real, que usava curare para paralisar a caça.
-- **Azagaia marajoara:** recuo longo, que interrompe mobs pesados de longe.
 
 #### Interações
 - **Cenário:** acertam alavancas distantes (`08-mapa.md`). Paredes bloqueiam projéteis.
 - **Paredes rachadas:** com a Terra aprendida, o tiro também as quebra.
 
 #### Animações necessárias
-- Uma pose de puxar, segurar e soltar para cada tipo: estilingue, zarabatana, azagaia e arco. Enquanto puxa, Nate anda em meia velocidade (`04-player.md`).
+- Uma pose de puxar, segurar e soltar para cada tipo: estilingue e arco. Enquanto puxa, Nate anda em meia velocidade (`04-player.md`).
 
 #### Sons necessários
-- Puxar e soltar, por tipo: elástico, sopro, arremesso e corda.
-- Projétil acertando: pedra, dardo, azagaia e flecha.
+- Puxar e soltar, por tipo: elástico e corda.
+- Projétil acertando: pedra e flecha.
 - Tiro na força total (`04-player.md`).
 
 #### Assets necessários
-- 4 modelos de arma e 4 de projétil, definidos por código.
+- 2 modelos de arma e 2 de projétil, definidos por código.
 - Ícone de cada arma no inventário.
 
 ### Armaduras
@@ -290,14 +281,14 @@ Recuo da Tempestade de Fogo: curto.
 ### Atributos
 | Atributo | Valor |
 |----------|-------|
-| Cargas | 3 (até 5 com melhorias) |
+| Cargas | 3 (até 7 com melhorias) |
 | Cura por carga | 40 |
 | Tempo para beber | 0,6 s |
 
 ### Comportamento e habilidades
 - Nate ganha a poção no primeiro santuário, no Bosque; ela entra na barra fixa, sem ir para a mão.
-- Bebe com a poção na mão e o botão de usar, ou pelo atalho de beber, sem tirar a arma da mão (`04-player.md`).
-- Beber leva 0,6 s, com Nate andando em meia velocidade, sem atacar nem dar o dash. A cura acontece no fim, mesmo se ele levar um golpe. Com a vida cheia, Nate não bebe.
+- Bebe com a poção na mão, segurando o botão direito; não há atalho (`04-player.md`). A dica de beber só sai quando Nate bebe pela primeira vez, porque o mesmo botão também atira.
+- Beber leva 0,6 s, com Nate andando em meia velocidade, sem atacar nem dar o dash. A cura e o gasto da carga acontecem no fim, mesmo se ele levar um golpe; soltar o botão antes para de beber, sem gastar a carga. Com a vida cheia, Nate não bebe.
 - Recarrega ao descansar no santuário e quando Nate volta depois de morrer (`02-core-loop.md`).
 
 ### Interações
@@ -320,8 +311,8 @@ Recuo da Tempestade de Fogo: curto.
 ### Atributos
 | Melhoria | Quantas | Efeito |
 |----------|---------|--------|
-| +20 de vida | 4 | vida máxima de 100 até 180 |
-| +1 carga | 2 | poção de 3 até 5 cargas |
+| +20 de vida | 7 | vida máxima de 100 até 240 |
+| +1 carga | 4 | poção de 3 até 7 cargas |
 
 ### Comportamento e habilidades
 - Escondidas em segredos; lugar exato em `08-mapa.md`.

@@ -42,7 +42,7 @@ put(11, 53, 'W')
 put(13, 52, 'W')
 put(8, 58, 'u')
 put(15, 51, 'u')
-# Desvio da Zarabatana, a oeste do corredor.
+# Desvio do +1 carga, a oeste do corredor.
 fill(6, 54, 8, 55, '.')
 fill(1, 51, 5, 58, ',')
 put(2, 52, 'z')
@@ -73,7 +73,7 @@ fill(9, 4, 16, 11, '.')
 put(12, 6, 'F')
 put(9, 4, 'U')
 put(16, 4, 'U')
-# Canto escuro da Azagaia, logo ao lado: ensina a Luz Ancestral.
+# Canto escuro do +20 de vida, logo ao lado: ensina a Luz Ancestral.
 fill(3, 7, 8, 8, 'd')
 fill(1, 1, 4, 6, 'd')
 put(2, 2, 'j')
@@ -197,8 +197,8 @@ def results(grid):
     with_light = reachable(start, WALKABLE - set("D") - set("X"))
     found = []
     for name, ch, area in [("pergaminho de Fogo", 'F', before_light), ("baú da Lança", 'C', before_light),
-                           ("Zarabatana", 'z', before_light), ("S2", '2', with_light), ("saída", 'x', with_light),
-                           ("Azagaia (escuro)", 'j', with_light), ("Manto", 'c', with_light),
+                           ("+1 carga (desvio)", 'z', before_light), ("S2", '2', with_light), ("saída", 'x', with_light),
+                           ("+20 de vida (escuro)", 'j', with_light), ("Manto", 'c', with_light),
                            ("+1 coração", 'h', with_light), ("mural 2", 'm', None), ("mural 3", '3', None),
                            ("pergaminho de Água", 'A', with_light)]:
         cells = find(ch)
@@ -248,10 +248,9 @@ def ramp(x0, z0, x1, z1, direction):
             heights[z][x] = direction
 
 
-# Embaixo: a chegada do elevador, o corredor norte, o desvio da Zarabatana, o atalho até a porta, o S2, a arena 2 e
-# a passagem escura. O resto do Bosque fica 1 bloco acima, e o terraço do Manto, 2; no meio da caverna dos cogumelos,
-# um morro também sobe a 2. Os corredores sobem em rampas longas de terra; o terraço e o morro, em rampas curtas que
-# surgem sozinhas por todos os lados.
+# Embaixo: a chegada do elevador, o corredor norte, o desvio do +1 carga, o atalho até a porta, o S2, a arena 2 e
+# a passagem escura. O resto do Bosque fica 1 bloco acima, e o terraço do Manto, encostado na parede norte da caverna
+# dos cogumelos, 2. Os corredores sobem em rampas longas de terra; o terraço, em rampas curtas que surgem sozinhas.
 raise_area(0, 50, 23, 75, 0)
 raise_area(24, 51, 25, 65, 0)
 raise_area(40, 50, 99, 75, 0)
@@ -263,7 +262,6 @@ raise_area(52, 2, 64, 8, 2)
 for z in range(30, 36):
     for x in range(48, 52):
         heights[z][x] = 'B'
-raise_area(47, 16, 52, 21, 2)
 
 # Salas e corredores menos quadrados (08-mapa); as arenas ficam como estão.
 ARENAS = [(3, 12, 22, 29), (72, 5, 91, 22), (58, 49, 77, 66)]

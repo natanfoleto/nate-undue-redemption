@@ -26,10 +26,6 @@ static func _melee(weapon: MeleeWeaponData) -> Array[Dictionary]:
 		_row(&"STAT_ANGLE", "%s°" % _number(weapon.angle), weapon.angle, true),
 		_row(&"STAT_CRITICAL", "%s%%" % _number(critical * 100.0), critical, true),
 	]
-	if weapon.third_effect >= 0:
-		rows.append(_text_row(&"STAT_THIRD_HIT", _effect(weapon.third_effect, weapon.third_effect_duration)))
-	if weapon.cooldown_cut > 0.0:
-		rows.append(_row(&"STAT_COOLDOWN_CUT", _seconds(weapon.cooldown_cut), weapon.cooldown_cut, true))
 	return rows
 
 

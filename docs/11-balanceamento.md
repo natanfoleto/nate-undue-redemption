@@ -5,8 +5,8 @@ Todos os números do jogo num lugar só. São valores iniciais, e os testes no m
 ## Âncoras
 | Âncora | Valor |
 |--------|-------|
-| Golpe do facão | 10 pontos; 15 no 3º golpe do combo |
-| Golpes de facão para derrubar | Lobo 3, Necromante 4, Esqueleto 5, Golem 15 |
+| Golpe da espada | 10 pontos; 15 no 3º golpe do combo |
+| Golpes de espada para derrubar | Lobo 3, Necromante 4, Esqueleto 5, Golem 15 |
 | Variantes | cerca de 60% a mais de vida |
 | Recarga das magias de elemento | 8 a 10 s |
 | Efeitos de status | cerca de 2 s |
@@ -28,7 +28,7 @@ Tempo de quem joga pela primeira vez, contando as mortes (`02-core-loop.md`).
 | Valor | Número |
 |-------|--------|
 | Vida inicial | 100 |
-| Vida máxima | 180 com as 4 melhorias (+20 cada); até 220 com armadura de +40 |
+| Vida máxima | 240 com as 7 melhorias (+20 cada); até 280 com armadura de +40 |
 | Velocidade | 5 blocos/s |
 | Aceleração e frenagem | 0,1 s |
 | Ajuda de mira | cone de 45° (22,5° para cada lado da mira), até 4 blocos |
@@ -36,14 +36,15 @@ Tempo de quem joga pela primeira vez, contando as mortes (`02-core-loop.md`).
 | Janela para continuar o combo | 0,4 s depois da recuperação |
 | Recuperação depois do tiro | 0,3 s |
 | Dash | 3 blocos em 0,4 s, invencível o tempo todo; recarga de 0,5 s |
+| Golpe do dash | no fim do dash, o 3º golpe do combo (15 pontos com a espada, recuo longo), sem preparação; um por dash; o aperto de atacar vale até 0,15 s antes do Espaço |
 | Sem controle ao levar golpe | 0,2 s |
 | Invencível depois de levar golpe | 1 s |
-| Poção de vida | 3 cargas (até 5 com melhorias); 40 de vida por carga; 0,6 s para beber |
+| Poção de vida | 3 cargas (até 7 com melhorias); 40 de vida por carga; 0,6 s segurando o botão para beber (soltar antes não gasta a carga) |
 | Vida que volta fora de combate | 2 por segundo, sem inimigo atrás de Nate e depois de 8 s sem levar dano (de vazia a cheia, 50 s com 100 de vida) |
-| Espaços da barra fixa e da mochila | 5 e 15 |
+| Espaços da barra fixa e da mochila | 5 e 10 |
 | Chance de crítico | 5% |
 | Elementos equipados | 2 |
-| Raio da Luz Ancestral | 6 blocos |
+| Raio da Luz Ancestral | 6 blocos, com força 4 (a luz de Nate clareia o chão escurecido em volta dele) |
 
 ## Câmera
 O enquadramento é provisório até o rascunho do mapa (`12-tecnico.md`).
@@ -70,22 +71,17 @@ O enquadramento é provisório até o rascunho do mapa (`12-tecnico.md`).
 | Tempo de cada golpe de Nate | 30% de preparação, 20% de tempo ativo e 50% de recuperação |
 
 ## Armas corpo a corpo
-Todas ficam entre 23 e 27 pontos de dano por segundo; o que muda é o jeito de bater.
+As duas dão cerca de 23 pontos de dano por segundo; o que muda é o jeito de bater: a espada, curta e larga; a lança, longa e estreita, com mais crítico.
 
 | Peça | Dano (1º e 2º / 3º) | Tempo por golpe | Alcance e ângulo | Efeito |
 |------|---------------------|-----------------|------------------|--------|
-| Facão | 10 / 15 | 0,5 s | 1,5 bloco, 90° | — |
-| Picareta | 16 / 24 | 0,7 s | 1,75 bloco, 45° | — |
+| Espada | 10 / 15 | 0,5 s | 1,5 bloco, 90° | — |
 | Lança marajoara | 10 / 15 | 0,5 s | 3 blocos, 30° | crítico de 20% (5% da base mais 15%) |
-| Tacape marajoara | 16 / 24 | 0,7 s | 1,75 bloco, 150° | o 3º golpe atordoa por 1,5 s |
-| Lâmina de pedra verde | 7 / 11 | 0,35 s | 1,25 bloco, 90° | cada acerto tira 0,5 s da recarga das magias equipadas |
 
 ## Armas à distância
 | Peça | Dano | Tempo para puxar | Alcance | Projétil | Recuo | Efeito |
 |------|------|------------------|---------|----------|-------|--------|
 | Estilingue | 6 | 0,4 s | 10 blocos | 20 blocos/s | curto | — |
-| Zarabatana marajoara | 5 | 0,4 s | 10 blocos | 25 blocos/s | nenhum | lento por 2 s |
-| Azagaia marajoara | 18 | 1 s | 10 blocos | 15 blocos/s | longo | — |
 | Arco marajoara | 16 | 1 s | 16 blocos | 30 blocos/s | curto | atravessa |
 
 ## Armaduras
@@ -115,8 +111,8 @@ As combinações gastam as duas recargas. Onde a combinação causa dano, ele é
 ## Efeitos de status
 | Efeito | Valor |
 |--------|-------|
-| Atordoado | Gelo: 2 s; 3º golpe do Tacape: 1,5 s; Boiúna, depois de cada parte da vida da fase 1: 6 s |
-| Lento | metade da velocidade. Zarabatana e abalo do Golem: 2 s. Lamaçal, esporos e poças da Boiúna: enquanto estiver dentro e mais 1 s |
+| Atordoado | Gelo: 2 s; Boiúna, depois de cada parte da vida da fase 1: 6 s |
+| Lento | metade da velocidade. Abalo do Golem: 2 s. Lamaçal, esporos e poças da Boiúna: enquanto estiver dentro e mais 1 s |
 | Veneno | praga do Necromante: 20 de vida depois de 2 s |
 | Queimadura | 4 pontos a cada 0,5 s, por 2 s (16 no total) |
 | Água equipada | os efeitos em Nate duram metade do tempo; com ela, o veneno da praga acaba em 1 s e não chega a agir |
@@ -196,7 +192,7 @@ Números que a produção precisou para o jogo funcionar e que os outros documen
 | Tamanho do Lobo Alfa | 1,25 vez o lobo | `data/mobs/wolf_alpha.tres` |
 | Piscar da invencibilidade | troca a cada 0,1 s | `data/balance/player.tres` |
 | Tela clareando quando Nate volta | 0,5 s | `data/balance/player.tres` |
-| Marcas e efeitos na tela | rastro do golpe de 0,5 bloco de largura, com as pontas arredondadas, nascendo com 35% do tamanho, cheio em 0,09 s e sumindo em 0,14 s, a 60% de opacidade; número do crítico subindo 0,6 bloco em 0,8 s; barra de vida dos mobs de 0,8 × 0,1 bloco, 0,3 bloco acima da cabeça | cenas de `player/`, `combat/` e `mobs/` |
+| Marcas e efeitos na tela | rastro do golpe: meia-lua branca na área do golpe (o alcance e o ângulo da arma), 0,6 bloco de grossura no meio e fina nas pontas, 0,9 bloco acima do chão e por cima de tudo; varre o arco em 0,09 s, fica no tempo ativo e some em 0,18 s; o começo do arco a 45% de opacidade e a beira de dentro a 35%; número do crítico subindo 0,6 bloco em 0,8 s; barra de vida dos mobs de 0,8 × 0,1 bloco, 0,3 bloco acima da cabeça | cenas de `player/`, `combat/` e `mobs/` |
 | Círculo em que o Esqueleto recebe golpes | raio de 0,35 bloco | `data/mobs/skeleton.tres` |
 | Distância em que o Esqueleto espera a vez de atacar | 3 blocos | `data/mobs/skeleton.tres` |
 | Alcance para interagir | 1,5 bloco (elevador: 1,6, do centro da plataforma) | cenas de `world/objects/` |
@@ -217,7 +213,7 @@ Números que a produção precisou para o jogo funcionar e que os outros documen
 | Pergaminho aberto | abre em 0,5 s e fecha com qualquer botão depois de 1 s | `ui/scroll_view.tscn` |
 | Muiraquitã acordando | pulso de luz de 1,6 s | `player/player.tscn` |
 | Memórias | 7 s (memória 1) e 8 s (memória 2); dá para pular depois de 1,5 s; a tela clareia em 0,6 s | `world/memories/` |
-| Áreas escuras | a escuridão segue o desenho da área e passa 1 bloco além dela, com a borda esfumada e ondulada por um ruído de 1,5 bloco; o círculo da Luz Ancestral tem borda suave de 1,5 bloco | `world/areas/`, `world/darkness.gdshader` |
+| Áreas escuras | o chão, as paredes e as plantas da área escurecem 90%, seguindo o desenho dela e passando 1 bloco além, com a borda esfumada (8 pontos por bloco, de 0,2 a 0,8 da máscara misturada) e ondulada por um ruído de 1,5 bloco (força 0,35); Nate, os mobs, os objetos e os itens não escurecem | `world/areas/`, `world/dark_area.gd` |
 | Água e lava | as faixas de 8 quadros passam a 1,5 quadro por segundo na água e no rio, e a 2 na lava | `tools/areas/make_blocks.gd` |
 | Efeitos das magias | estouro de 24 cubinhos em 0,5 s, com clarão do dobro do raio; onda a 55% de opacidade; nuvem de 40 cubinhos; praga saindo a 1,2 bloco do chão | `data/effects/spell_effects.tres`, `data/mobs/` |
 | Luz do Bosque | luz ambiente a 0,85; luz dos cogumelos gigantes com alcance de 8 blocos e dos fungos pequenos com 6 | `world/areas/forest.tscn` |
@@ -227,7 +223,7 @@ Números que a produção precisou para o jogo funcionar e que os outros documen
 | Escudo de Areia | a areia gira num raio de 1 bloco em volta de Nate | `data/attacks/sand_shield.tres` |
 | Ponte de alavanca | 2 × 4 blocos; baixa em 1,2 s; o tabuleiro tem 0,25 bloco de espessura | `world/objects/lever_bridge.tscn` |
 | Parede rachada sem a Terra | treme 0,06 bloco em 0,25 s | `world/objects/cracked_wall.tscn` |
-| Murais | desenho na parede de 2 × 1,25 blocos; o mural grande aparece em 0,4 s e fecha com qualquer botão depois de 1 s; na galeria, as miniaturas são o desenho ampliado 2 vezes | `world/objects/mural.tscn`, `ui/mural_view.tscn`, `ui/pause_menu.tscn` |
+| Murais | desenho na parede de 2 × 1,25 blocos; o mural grande aparece em 0,4 s e fecha com qualquer botão depois de 1 s; na galeria, as miniaturas são o desenho ampliado 2 vezes | `world/objects/mural.tscn`, `ui/mural_view.tscn`, `ui/mural_gallery.tscn` |
 | Memória 3 | 7 s | `world/memories/memory_3.tscn` |
 | Arenas das Ruínas e arena opcional da Mina | a luta começa em 15 × 13 blocos (Mina: 16 × 14), dentro do chão de cada arena | `world/areas/` |
 | Gravidade | 20 blocos/s² (Nate e os mobs ficam no chão; não há pulo nem queda) | `data/balance/world.tres` |
@@ -244,7 +240,8 @@ Números que a produção precisou para o jogo funcionar e que os outros documen
 | Parede rachada | 2 blocos de altura | `world/areas/` |
 | Mapa de navegação dos mobs | raio de 0,5 bloco, altura de 1,75 bloco, sobe até 0,25 bloco de degrau e rampas até 46° | `world/areas/*_navigation.res` |
 | Aviso de item achado no HUD | 3 s na tela, sumindo em 0,6 s | `ui/hotbar.tscn` |
-| Barra fixa e inventário | espaços de 64 px, ícones ampliados 3 vezes, moldura de 2 px (a da mão, dourada, de 4 px); o nome do item da mão fica 1,2 s e some em 0,5 s; a barra some em 0,6 s quando Nate morre; a caixa do inventário fica 56 px acima do centro | `data/ui/cell_look.tres`, `ui/hotbar.tscn`, `ui/inventory.tscn` |
+| Barra fixa e inventário | espaços de 64 px, ícones ampliados 3 vezes, moldura de 2 px (a da mão, dourada, de 4 px), ícone apagado do espaço vazio a 22%; o nome do item da mão fica 1,2 s e some em 0,5 s; a barra some em 0,6 s quando Nate morre; a caixa do inventário fica no centro, com tamanho fixo; Nate no inventário com 160 × 208 px, numa câmera ortogonal que mostra 2,6 blocos de altura, inclinada 12°, virando até 35° para o lado do mouse; os detalhes numa caixinha de 360 px de largura, a 10 px do espaço apontado e a 8 px da borda da tela | `data/ui/cell_look.tres`, `ui/hotbar.tscn`, `ui/inventory.tscn` |
+| Tamanho da interface | desenhada para 1152 × 648 px e ampliada junto com a janela (mais larga, a tela ganha espaço dos lados); o 3D e as memórias são desenhados com os pixels da janela | `project.godot`, `ui/memory_scene.gd` |
 | Barra de vida de Nate | 2 px por ponto de vida (200 px com 100), 22 px de altura; a vida perdida fica clara 0,4 s e some a 60 pontos por segundo; laranja com 30% da vida ou menos; brilho no alto de 20% da altura | `ui/hud.tscn` |
 | Rastro do dash e poeira | uma cópia de Nate a cada 0,05 s, que some em 0,25 s; 10 cubos de poeira de 0,12 bloco (de 0,6 a 1,2 vez), que saem para trás e um pouco para cima a 1 até 2,5 blocos/s, abertos em 50°, caem a 4 blocos/s² e duram 0,45 s | `player/player.tscn`, `player/dash_dust.tscn` |
 | Som | música a −10 dB e som de fundo a −14 dB, trocando em 2 s (some até −60 dB e volta); avisos de golpe 2 dB acima, e a música abaixa enquanto eles tocam (compressor de razão 6, a partir de −24 dB); passos a cada 1,6 bloco; os sons do mundo tocam no volume cheio até 8 blocos de Nate e somem a 28; até 24 sons do mundo e 6 da tela ao mesmo tempo (som do mundo a mais de 28 blocos nem toca, e um novo pega a primeira voz livre); um som de menu por quadro; o volume e o tom de cada som ficam no banco (as lanças do chão, a −10 dB, porque são muitas) | `data/audio/audio_rules.tres`, `data/audio/sounds.tres`, `default_bus_layout.tres` |

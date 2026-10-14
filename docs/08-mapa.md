@@ -20,13 +20,13 @@ O prólogo e a Mina já têm um rascunho jogável, em `game/world/areas/mine.tsc
 
 | Trecho | Medidas | O que tem |
 |---------|---------|-----------|
-| Clareira do prólogo | 32 × 26 blocos de grama, cercada de mata, com o paredão de pedra e a boca velha da mina ao norte e dois morrinhos de 1 bloco, com degraus | o começo, o lobo e a fenda de 2 blocos de largura até a Mina |
+| Clareira do prólogo | 32 × 26 blocos de grama, cercada de mata, com o paredão de pedra e a boca velha da mina ao norte; a parte norte, encostada no morro da mina, fica 1 bloco mais alta, numa borda ondulada com rampas de grama | o começo, o lobo e a fenda de 2 blocos de largura até a Mina |
 | Saguão da entrada da Mina | 13 × 11 blocos | o ponto de retorno da Mina |
 | Sala do Estilingue | 17 × 12 blocos, cortada por uma vala de 2 blocos; do outro lado, uma beirada de 5 blocos com a alavanca | o Estilingue no chão e o portão que a alavanca abre |
 | Corredor do portão | 19 × 4 blocos, 14 deles numa ponte de tábuas sobre a galeria inundada (14 × 19 blocos, com 7 de fundo e água escura), com cerca dos dois lados e postes de lampião que sobem da água | 1 Esqueleto, que luta em cima da ponte |
 | Corredor das pedras | 4 × 28 blocos, subindo para o norte | 2 pedras que caem, 1 Lobo e 1 Esqueleto |
 | Sala do baú | 16 × 10 blocos | o baú com o Colete de minerador, 2 Lobos e a parede rachada da Armadura de minerador |
-| Desvio da Picareta | corredor de 10 × 2 blocos até uma sala de 5 × 8 | a Picareta |
+| Desvio do +20 de vida | corredor de 10 × 2 blocos até uma sala de 5 × 8 | +20 de vida |
 | Túnel do mural 1 | 4 × 10 blocos, com paredes de pedra do povo antigo | o lugar do mural 1 |
 | Arena da Mina | 18 × 16 blocos, com portão na entrada e na saída | as 2 ondas do `11-balanceamento.md` |
 | Sala do elevador | 12 × 8 blocos | o elevador, que desce até o Bosque de Fungos |
@@ -39,12 +39,12 @@ O Bosque de Fungos tem um rascunho jogável em `game/world/areas/forest.tscn` (e
 |---------|---------|-----------|
 | Chegada do elevador | 16 × 12 blocos de musgo | o elevador quebrado, o S1 e a porta que só abre por um lado, na parede leste |
 | Corredor norte | 6 × 10 blocos | 2 cogumelos de esporos e 2 Lobos |
-| Desvio da Zarabatana | passagem de 3 × 2 blocos até uma sala de 5 × 8 | a Zarabatana marajoara, 1 Lobo e 1 Esqueleto |
+| Desvio do +1 carga | passagem de 3 × 2 blocos até uma sala de 5 × 8 | +1 carga, 1 Lobo e 1 Esqueleto |
 | Sala do baú | 18 × 14 blocos | o baú com a Lança marajoara, o primeiro Necromante e 1 Esqueleto; na parede oeste, a parede rachada do +20 de vida (volta com Terra) |
 | Arena 1 | 18 × 16 blocos, com portão na entrada e na saída | as 2 ondas do `11-balanceamento.md` |
-| Sala do pergaminho de Fogo | 8 × 8 blocos | o pergaminho de Fogo; a oeste, o canto escuro da Azagaia (corredor de 6 × 2 e sala de 4 × 6) |
+| Sala do pergaminho de Fogo | 8 × 8 blocos | o pergaminho de Fogo; a oeste, o canto escuro do +20 de vida (corredor de 6 × 2 e sala de 4 × 6) |
 | Corredor do mural 2 | 24 × 4 blocos | o lugar do mural 2 na parede norte e 2 Esqueletos |
-| Caverna dos cogumelos gigantes | 24 × 27 blocos | 2 Lobos e 1 Necromante; o desvio do Manto, num terraço 1 bloco mais alto, com rampas, cercado de cogumelos de esporos; no meio, um morro que sobe mais 1 bloco; uma fresta de 1 bloco até o mural 3 escondido |
+| Caverna dos cogumelos gigantes | 24 × 27 blocos | 2 Lobos e 1 Necromante; o desvio do Manto, num terraço 1 bloco mais alto, encostado na parede norte, com rampas, cercado de cogumelos de esporos; uma fresta de 1 bloco até o mural 3 escondido |
 | Arena opcional | corredor escuro de 7 × 2 blocos, arena de 18 × 16 e uma sala de 5 × 6 | as 2 ondas do `11-balanceamento.md` e o pergaminho de Água |
 | Corredor da fenda | 4 × 8 blocos, da caverna dos cogumelos gigantes até a sala do meio; 6 deles num pé de cogumelo caído, que faz de ponte sobre uma fenda de água brilhante e fungos acesos | 1 cogumelo de esporos em cima da ponte |
 | Sala do meio | 16 × 12 blocos | 2 Esqueletos e 1 Lobo; a leste, o desvio do +20 de vida (2 Lobos); a oeste, o corredor do atalho até a porta do S1 (cerca de 40 blocos) |
@@ -60,13 +60,13 @@ As Ruínas têm um rascunho jogável em `game/world/areas/ruins.tscn` (etapa 6).
 
 | Trecho | Medidas | O que tem |
 |---------|---------|-----------|
-| Salão da chegada | 14 × 12 blocos | o baú do Tacape marajoara, 2 Esqueletos e 1 Lobo |
+| Salão da chegada | 14 × 12 blocos | o baú do +1 carga, 2 Esqueletos e 1 Lobo |
 | Corredor das lanças | 6 × 14 blocos, subindo para o norte | 3 fileiras de lanças do chão, 1 Lobo Alfa e o nicho do +1 carga |
 | Salão do S3 | 18 × 16 blocos | o S3; a leste, o vão de 4 blocos que a ponte cobre |
 | Arena 1 | 18 × 16 blocos, com portão na entrada e na saída | as 2 ondas do `11-balanceamento.md` |
 | Sala do pergaminho de Terra | 8 × 8 blocos | o pergaminho de Terra; a oeste, o nicho do +20 de vida; a leste, a parede rachada do caminho principal |
 | Corredor das minas antigas | 34 × 2 blocos e depois 2 × 22, para o sul, com uma ponte de pedra de 4 blocos sobre uma fenda de lava, com balaustrada | 2 Esqueletos Veteranos, 1 Necromante, 1 Golem (na cabeceira da ponte) e lanças do chão; a leste, a galeria das 3 alavancas do Arco |
-| Salão antes da arena 2 | 18 × 14 blocos | a alavanca da ponte, 2 Lobos Alfa, 1 Veterano e 1 Necromante Ancião; a fresta do mural 6 e a parede rachada da Lâmina de pedra verde |
+| Salão antes da arena 2 | 18 × 14 blocos | a alavanca da ponte, 2 Lobos Alfa, 1 Veterano e 1 Necromante Ancião; a fresta do mural 6 e a parede rachada do +20 de vida |
 | Arena 2 | 18 × 16 blocos, com portão na entrada e na saída | as 2 ondas do `11-balanceamento.md` |
 | Sala do Selo | 12 × 12 blocos | o mural 4, o Selo e o mural 5; a saída para a Grande Prisão |
 | Desvio da Couraça | corredor de 16 × 2 blocos com lanças até uma sala de 6 × 8 | a Couraça de cerâmica e a passagem para a arena opcional (18 × 14 blocos), que guarda o pergaminho de Ar |
@@ -75,7 +75,8 @@ O caminho principal das Ruínas tem cerca de 150 blocos andando, sem contar as l
 
 ### Relevo e bordas
 - O chão tem platôs de 1 e 2 blocos. **Na natureza** (a clareira, a Mina, o Bosque), o próprio chão sobe em rampas, sem escada: todo desnível de 1 bloco entre dois chões vira rampa curta do mesmo material (grama, terra, cascalho, musgo), também nos cantos, e os morros sobem de qualquer lado; nos corredores, rampas mais longas, de 2 blocos, sobem mais suave. **Nas construções** (as Ruínas), as subidas são escadas de pedra. Onde o desnível passa de 1 bloco, moitas (na clareira) ou pedras (no Bosque) seguram quem anda: não há quedas. Golpes só acertam quem está mais ou menos na mesma altura (`03-regras.md`).
-- **Clareira:** três morrinhos de grama, com rampas por todos os lados. **Mina:** o corredor das pedras sobe 1 bloco para o norte numa rampa de terra, e tudo dali em diante fica 1 bloco acima. **Bosque:** a chegada do elevador, o S2, a arena 2 e a passagem escura ficam embaixo; o resto, 1 bloco acima, com rampas nos corredores; o terraço do Manto e o morro da caverna dos cogumelos, 2. **Ruínas:** a chegada, o corredor das lanças e o desvio da Couraça ficam embaixo; uma escadaria sobe ao salão do S3; a arena 2, a sala do Selo e a saída ficam mais 1 bloco acima.
+- **Relevo de verdade:** o chão sobe e desce como num terreno real: encostado em morros e paredões, em barrancos que cortam a área de lado a lado e em terraços, nunca em morrinhos soltos no meio do nada.
+- **Clareira:** sobe 1 bloco em direção ao morro da mina, ao norte, numa borda ondulada que a corta de lado a lado, como um barranco natural, com rampas de grama na borda; a fenda desce em rampa até o saguão. **Mina:** o corredor das pedras sobe 1 bloco para o norte numa rampa de terra, e tudo dali em diante fica 1 bloco acima. **Bosque:** a chegada do elevador, o S2, a arena 2 e a passagem escura ficam embaixo; o resto, 1 bloco acima, com rampas nos corredores; o terraço do Manto, encostado na parede norte da caverna dos cogumelos, 2. **Ruínas:** a chegada, o corredor das lanças e o desvio da Couraça ficam embaixo; uma escadaria sobe ao salão do S3; a arena 2, a sala do Selo e a saída ficam mais 1 bloco acima.
 - **Formas soltas:** as salas e os corredores da natureza não são caixas. As paredes ganham reentrâncias arredondadas e saliências de rocha (ou árvores entrando na clareira), sem fechar nenhum caminho nem abrir caminho novo; as arenas e os salões do povo antigo, que são construção, ficam retos.
 - **Chão misturado:** onde um chão encontra outro (a grama e a terra da fenda, as tábuas e a terra da Mina, o musgo e a terra do Bosque, o cascalho e o piso das Ruínas), a borda ondula e mistura os blocos dos dois, em vez de uma linha reta.
 - **Nada de vazio:** o terreno preenche tudo o que a câmera alcança, como no Minecraft Dungeons. Rente ao chão fica a parede: baixa na frente da câmera (sul e leste do chão), para não esconder Nate, e alta e irregular atrás (norte e oeste). Depois dela, onde há outra sala na diagonal da câmera, o terreno desce num abismo; atrás de tudo, na borda de fora, sobem morros. Os morros e a divisa com os abismos ondulam, sem as linhas retas da distância contada em blocos. Nenhuma coluna tampa a visão de Nate: a altura de cada uma tem um teto, o da linha de visão da câmera até o chão atrás dela.
@@ -100,7 +101,7 @@ O caminho principal das Ruínas tem cerca de 150 blocos andando, sem contar as l
   3. Mural 1, onde a mina da família encontra os túneis do povo antigo.
   4. Arena da Mina.
   5. Elevador velho da mina: desce para Agartha, quebra no caminho e deixa Nate no Bosque.
-- **Segredos:** Picareta (desvio); +20 de vida (canto escuro, volta com a Luz Ancestral); Armadura de minerador (parede rachada, volta com Terra).
+- **Segredos:** +20 de vida (desvio); +20 de vida (canto escuro, volta com a Luz Ancestral); Armadura de minerador (parede rachada, volta com Terra).
 - **Arena opcional:** atrás de uma parede rachada (volta com Terra); guarda +1 carga.
 
 ### Bosque de Fungos
@@ -114,20 +115,20 @@ O caminho principal das Ruínas tem cerca de 150 blocos andando, sem contar as l
   6. Arena 2, que guarda a passagem escura.
   7. Passagem escura até as Ruínas, que exige a Luz Ancestral.
 - **Atalho:** porta que só abre por um lado, do meio do Bosque de volta ao S1.
-- **Segredos:** Zarabatana marajoara (desvio); Manto de fibras marajoara (desvio cercado de cogumelos); +20 de vida (desvio); Azagaia marajoara (canto escuro); +20 de vida (parede rachada, volta com Terra); mural 3 (escondido).
+- **Segredos:** +1 carga (desvio); Manto de fibras marajoara (desvio cercado de cogumelos); +20 de vida (desvio); +20 de vida (canto escuro); +20 de vida (parede rachada, volta com Terra); mural 3 (escondido).
 - **Arena opcional:** atrás de um canto escuro; guarda o pergaminho de Água.
 
 ### Ruínas
 - A cidade e as minas antigas do povo antigo, com murais e mecanismos.
 - Caminho principal, em ordem:
-  1. Tacape marajoara.
+  1. Baú com +1 carga.
   2. S3.
   3. Arena 1, que guarda o pergaminho de Terra.
   4. Parede rachada, que exige Terra.
   5. Arena 2, que guarda a sala do Selo.
   6. Sala do Selo: o mural 4, a lasca do muiraquitã e o mural 5, que mostra a traição.
 - **Atalho:** ponte baixada por alavanca, do trecho antes da arena 2 até o S3.
-- **Segredos:** Arco marajoara (alavancas); Couraça de cerâmica marajoara (desvio com lanças); Lâmina de pedra verde (parede rachada); +20 de vida; +1 carga; mural 6 (escondido: o rosto do irmão).
+- **Segredos:** Arco marajoara (alavancas); Couraça de cerâmica marajoara (desvio com lanças); +20 de vida (parede rachada); +20 de vida (nicho); +1 carga (nicho); mural 6 (escondido: o rosto do irmão).
 - **Arena opcional:** escondida; guarda o pergaminho de Ar.
 
 ### Grande Prisão
@@ -174,32 +175,32 @@ A passagem fecha até o jogador vencer as ondas (`02-core-loop.md`). Quantos mob
 ## Onde ficam os itens
 | Item | Área | Onde | Exige |
 |------|------|------|-------|
-| Facão | Prólogo | inicial | — |
+| Espada | Prólogo | inicial | — |
 | Estilingue | Mina | caminho | — |
 | Colete de minerador | Mina | caminho (baú) | — |
-| Picareta | Mina | segredo (desvio) | — |
+| +20 de vida | Mina | segredo (desvio) | — |
 | +20 de vida | Mina | segredo (canto escuro) | Luz Ancestral (volta) |
 | Armadura de minerador | Mina | segredo (parede rachada) | Terra (volta) |
 | +1 carga | Mina | arena opcional | Terra (volta) |
 | Lança marajoara | Bosque | caminho (baú) | — |
 | Pergaminho de Fogo | Bosque | arena 1 | — |
-| Zarabatana marajoara | Bosque | segredo (desvio) | — |
+| +1 carga | Bosque | segredo (desvio) | — |
 | Manto de fibras marajoara | Bosque | segredo (desvio cercado de cogumelos) | — |
 | +20 de vida | Bosque | segredo (desvio) | — |
-| Azagaia marajoara | Bosque | segredo (canto escuro) | Luz Ancestral |
+| +20 de vida | Bosque | segredo (canto escuro) | Luz Ancestral |
 | +20 de vida | Bosque | segredo (parede rachada) | Terra (volta) |
 | Pergaminho de Água | Bosque | arena opcional (atrás de canto escuro) | Luz Ancestral |
-| Tacape marajoara | Ruínas | caminho | — |
+| +1 carga | Ruínas | caminho (baú) | — |
 | Pergaminho de Terra | Ruínas | arena 1 | — |
 | O Selo | Ruínas | caminho (sala do Selo) | Terra |
 | Arco marajoara | Ruínas | segredo (alavancas) | — |
 | Couraça de cerâmica marajoara | Ruínas | segredo (desvio com lanças) | — |
-| Lâmina de pedra verde | Ruínas | segredo (parede rachada) | Terra |
-| +20 de vida | Ruínas | segredo | — |
-| +1 carga | Ruínas | segredo | — |
+| +20 de vida | Ruínas | segredo (parede rachada) | Terra |
+| +20 de vida | Ruínas | segredo (nicho) | — |
+| +1 carga | Ruínas | segredo (nicho) | — |
 | Pergaminho de Ar | Ruínas | arena opcional (escondida) | — |
 
-Ao todo: 12 peças de equipamento no mapa, além do facão inicial; 6 melhorias; 4 pergaminhos; e o Selo.
+Ao todo: 7 peças de equipamento no mapa, além da espada inicial; 11 melhorias (7 de +20 de vida e 4 de +1 carga); 4 pergaminhos; e o Selo.
 
 ## Atalhos
 | Atalho | Liga | Abre quando |

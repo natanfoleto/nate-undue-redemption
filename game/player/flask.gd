@@ -1,8 +1,9 @@
 class_name Flask
 extends Node
-## Poção de vida (04-player, 05-itens): a única cura. Beber leva um tempo, com Nate andando mais devagar, sem atacar
-## nem dar o dash; a cura vem no fim, mesmo se ele levar um golpe, e a carga nunca se perde. Com a vida cheia, Nate
-## não bebe. Recarrega no santuário e quando Nate volta depois de morrer. O pai é o Player.
+## Poção de vida (04-player, 05-itens): a única cura. Beber é segurar o botão de usar com a poção na mão; leva um
+## tempo, com Nate andando mais devagar, sem atacar nem dar o dash. A cura e o gasto da carga vêm no fim, mesmo se ele
+## levar um golpe; soltar o botão antes para de beber, sem gastar a carga. Com a vida cheia, Nate não bebe. Recarrega
+## no santuário e quando Nate volta depois de morrer. O pai é o Player.
 
 signal changed(charges: int, max_charges: int)
 
@@ -27,12 +28,10 @@ func press() -> void:
 	if charges <= 0 or _player.health.value >= _player.health.max_value:
 		AudioManager.play(&"drink_empty", _player.global_position)
 		return
-	charges -= 1
 	AudioManager.play(&"drink", _player.global_position)
 	_left = Balance.player.flask_time
 	_player.play_overlay(drink_animation, drink_animation.length / _left)
 	_player.show_flask(true)
-	changed.emit(charges, max_charges)
 
 
 func update(delta: float) -> void:
@@ -41,12 +40,15 @@ func update(delta: float) -> void:
 	_left -= delta
 	if _left <= 0.0:
 		_left = 0.0
+		charges -= 1
+		changed.emit(charges, max_charges)
 		_player.heal(Balance.player.flask_heal)
 		AudioManager.play(&"drink_done", _player.global_position)
 		_stop()
+		Events.flask_drunk.emit()
 
 
-## Para de beber sem curar (morte).
+## Para de beber sem curar e sem gastar a carga (soltou o botão, morreu).
 func cancel() -> void:
 	if is_drinking():
 		_left = 0.0

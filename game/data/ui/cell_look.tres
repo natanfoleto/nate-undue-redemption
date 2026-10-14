@@ -16,6 +16,7 @@ hand_color = Color(1, 0.84, 0.36, 1)
 hand_width = 4
 focus_color = Color(1, 1, 1, 1)
 carried_alpha = 0.3
+placeholder_alpha = 0.22
 font_size = 16
 text_margin = 3
 text_outline = 4

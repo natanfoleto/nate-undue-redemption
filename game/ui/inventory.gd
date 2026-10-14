@@ -1,16 +1,21 @@
 class_name Inventory
 extends CanvasLayer
-## Inventário (09-interface): uma caixa no centro da tela. À esquerda, Nate: a vida, a poção, o muiraquitã, a
-## armadura vestida e os 2 elementos; no meio, a mochila e os elementos aprendidos; à direita, os detalhes do item
-## e a comparação com o que Nate usa, atributo por atributo, com seta verde (melhor) ou vermelha (pior). A barra
-## fixa continua embaixo, por cima da caixa. Arrastar troca os itens de lugar; clicar pega o item e clicar em outro
-## espaço o solta ali (o mesmo com o botão de confirmar, no teclado e no controle); os números põem o item apontado
-## na barra. Abre com o botão de inventário e para o jogo enquanto está aberto.
+## Inventário (09-interface), parecido com o do Minecraft: uma caixa de tamanho fixo no centro da tela. Em cima, a
+## armadura vestida e os 2 elementos ao lado de Nate (o boneco, com o item da mão e a armadura) e, à direita, a vida,
+## a poção, o muiraquitã e a combinação dos elementos; embaixo, a mochila, os elementos aprendidos, a barra fixa e a
+## ajuda. Os detalhes do item apontado aparecem numa caixinha ao lado dele, com a comparação com o que Nate usa,
+## atributo por atributo, com seta verde (melhor) ou vermelha (pior). Arrastar troca os itens de lugar; clicar pega
+## o item e clicar em outro espaço o solta ali (o mesmo com o botão de confirmar, no teclado e no controle); os
+## números põem o item apontado na barra. Abre com o botão de inventário e para o jogo; a barra fixa do HUD some
+## enquanto ele está aberto, porque a dele toma o lugar.
 
 @export var look: CellLook
 ## O muiraquitã, sem e com a lasca (o Selo).
 @export var amulet_icon: Texture2D
 @export var amulet_whole_icon: Texture2D
+## Ícones apagados dos espaços vazios da armadura e dos elementos.
+@export var armor_placeholder: Texture2D
+@export var element_placeholder: Texture2D
 ## Quantas vezes os ícones de 16 px são ampliados.
 @export var icon_scale := 1
 ## Transparência do muiraquitã ainda adormecido.
@@ -18,25 +23,35 @@ extends CanvasLayer
 ## Setas da comparação: melhor e pior.
 @export var better_color := Color.WHITE
 @export var worse_color := Color.WHITE
+## Cor do nome do item comum (o marajoara usa a cor da moldura dele).
+@export var common_name_color := Color.WHITE
 ## Tamanho do texto dos atributos, em pixels da tela.
 @export var font_size := 0
+## Distância dos detalhes até o espaço apontado e até a borda da tela, em pixels da tela.
+@export var details_gap := 0.0
+@export var screen_margin := 0.0
 
 var _bag: Array[ItemCell] = []
 var _armor: ItemCell
 var _elements: Array[ItemCell] = []
-var _hotbar: Hotbar
-# O espaço com o item sendo levado (clique ou confirmar) e o último espaço apontado (mouse ou foco).
+var _hotbar: Array[ItemCell] = []
+var _hud_hotbar: Hotbar
+# O espaço com o item sendo levado (clique ou confirmar) e o espaço apontado (mouse em cima ou foco).
 var _carried: ItemCell
 var _pointed: ItemCell
 
 @onready var _panel: Control = %Panel
+@onready var _preview: NatePreview = %Preview
 @onready var _life: Label = %Life
 @onready var _potion: Label = %Potion
 @onready var _amulet: TextureRect = %Amulet
+@onready var _amulet_name: Label = %AmuletName
 @onready var _combo: Label = %Combo
 @onready var _learned_title: Label = %LearnedTitle
-@onready var _learned: HBoxContainer = %Learned
+@onready var _learned: GridContainer = %Learned
+@onready var _details: Control = %Details
 @onready var _item_name: Label = %ItemName
+@onready var _rarity: Label = %Rarity
 @onready var _stats: GridContainer = %Stats
 @onready var _help: Label = %Help
 
@@ -44,17 +59,25 @@ var _pointed: ItemCell
 func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_ALWAYS
 	_panel.visible = false
+	_details.visible = false
 	(%Title as Label).text = tr(&"INVENTORY_TITLE")
-	(%NateTitle as Label).text = tr(&"INVENTORY_NATE")
-	(%ArmorTitle as Label).text = tr(&"SLOT_ARMOR")
-	(%ElementsTitle as Label).text = tr(&"INVENTORY_ELEMENTS")
 	(%BagTitle as Label).text = tr(&"INVENTORY_BAG")
 	_learned_title.text = tr(&"INVENTORY_LEARNED")
+	_amulet_name.text = tr(&"INVENTORY_AMULET")
+	_armor = _new_cell(%Gear, GameState.ARMOR, 0)
+	_armor.placeholder = armor_placeholder
+	_armor.slot_key = &"SLOT_ARMOR"
+	for i in 2:
+		var element := _new_cell(%Gear, ItemCell.ELEMENT, i)
+		element.placeholder = element_placeholder
+		element.slot_key = &"SLOT_ELEMENT"
+		_elements.append(element)
 	for i in GameState.BAG_SIZE:
 		_bag.append(_new_cell(%Bag, GameState.BAG, i))
-	_armor = _new_cell(%ArmorRow, GameState.ARMOR, 0)
-	for i in 2:
-		_elements.append(_new_cell(%ElementRow, ItemCell.ELEMENT, i))
+	for i in GameState.HOTBAR_SIZE:
+		var cell := _new_cell(%HotbarRow, GameState.HOTBAR, i)
+		cell.number = i + 1
+		_hotbar.append(cell)
 	GameState.inventory_changed.connect(_refresh_if_open)
 	GameState.elements_changed.connect(_refresh_if_open)
 	GameState.hand_changed.connect(_refresh_if_open)
@@ -98,23 +121,35 @@ func _open() -> void:
 	get_tree().paused = true
 	AudioManager.play(&"ui_open")
 	_panel.visible = true
-	_hotbar = get_tree().get_first_node_in_group(&"hotbar") as Hotbar
-	if _hotbar:
-		_hotbar.set_interactive(true)
-		_link_hotbar()
+	_hud_hotbar = get_tree().get_first_node_in_group(&"hotbar") as Hotbar
+	if _hud_hotbar:
+		_hud_hotbar.visible = false
+	_preview.set_active(true)
 	_refresh()
 	_show_help()
-	var first := _hotbar.cells[GameState.hand()] if _hotbar else _bag[0]
-	first.grab_focus()
+	# O foco começa no item da mão; com o mouse, os detalhes só aparecem quando ele passa por cima de um item.
+	var hand := _hotbar[GameState.hand()]
+	hand.grab_focus()
+	if not InputManager.is_gamepad():
+		_unpoint(hand)
 
 
 func _close() -> void:
 	AudioManager.play(&"ui_close")
 	_drop_carried()
-	if _hotbar:
-		_hotbar.set_interactive(false)
+	_pointed = null
+	_details.visible = false
+	_preview.set_active(false)
+	if _hud_hotbar:
+		_hud_hotbar.visible = true
 	_panel.visible = false
 	get_tree().paused = false
+
+
+# A caixinha dos detalhes acompanha o espaço apontado depois que a caixa do inventário se arruma na tela.
+func _process(_delta: float) -> void:
+	if _details.visible:
+		_place_details()
 
 
 func _refresh_if_open() -> void:
@@ -130,16 +165,17 @@ func _refresh() -> void:
 	_amulet.texture = amulet_whole_icon if GameState.has_seal() else amulet_icon
 	_amulet.custom_minimum_size = _amulet.texture.get_size() * icon_scale
 	_amulet.modulate.a = 1.0 if GameState.has_light() else asleep_alpha
+	_amulet_name.modulate.a = _amulet.modulate.a
 	for cell in _bag:
 		cell.item = GameState.item_at(GameState.BAG, cell.index)
 	_armor.item = GameState.worn_armor()
 	for cell in _elements:
 		cell.item = GameState.equipped_element(cell.index)
+	Hotbar.show_slots(_hotbar, player)
 	_show_learned()
-	if _hotbar:
-		_hotbar.refresh()
 	_show_combo(player)
-	_show_details(_pointed.item if _pointed else null)
+	_preview.dress(GameState.hand_item(), GameState.worn_armor())
+	_show_details(_pointed)
 
 
 # Os elementos aprendidos, para arrastar para os 2 espaços.
@@ -171,24 +207,11 @@ func _new_cell(parent: Control, place: String, index: int) -> ItemCell:
 	cell.place = place
 	cell.index = index
 	parent.add_child(cell)
-	_link(cell)
-	return cell
-
-
-func _link(cell: ItemCell) -> void:
 	cell.pressed.connect(_on_cell_pressed.bind(cell))
 	cell.focus_entered.connect(_point.bind(cell))
 	cell.mouse_entered.connect(_point.bind(cell))
-
-
-# Os espaços da barra fixa entram no inventário: clique, foco e o caminho do foco entre a mochila e a barra.
-func _link_hotbar() -> void:
-	for cell in _hotbar.cells:
-		if not cell.pressed.is_connected(_on_cell_pressed):
-			_link(cell)
-		var above := _bag[GameState.BAG_SIZE - 5 + cell.index]
-		cell.focus_neighbor_top = cell.get_path_to(above)
-		above.focus_neighbor_bottom = above.get_path_to(cell)
+	cell.mouse_exited.connect(_unpoint.bind(cell))
+	return cell
 
 
 # Clique ou confirmar: o primeiro pega o item, o segundo o solta no espaço escolhido (ou devolve, no mesmo espaço).
@@ -213,27 +236,43 @@ func _drop_carried() -> void:
 
 # Os números põem o item apontado no espaço da barra com aquele número (ou trocam dois espaços da barra).
 func _send_to_hotbar(slot: int) -> void:
-	if _pointed == null or _pointed.item == null or _hotbar == null:
+	if _pointed == null or _pointed.item == null:
 		return
 	_drop_carried()
-	ItemMoves.drop(_pointed, _hotbar.cells[slot])
+	ItemMoves.drop(_pointed, _hotbar[slot])
 
 
 func _point(cell: ItemCell) -> void:
 	_pointed = cell
-	_show_details(cell.item)
+	_show_details(cell)
 
 
-func _show_details(option: Resource) -> void:
-	for cell in _stats.get_children():
-		cell.free()
+# O mouse saiu do espaço: os detalhes somem (com o teclado e o controle, eles seguem o foco).
+func _unpoint(cell: ItemCell) -> void:
+	if _pointed == cell:
+		_pointed = null
+		_details.visible = false
+
+
+# Os detalhes do item apontado, na caixinha ao lado do espaço; no espaço vazio da armadura e dos elementos, o nome
+# do espaço.
+func _show_details(cell: ItemCell) -> void:
+	for child in _stats.get_children():
+		child.free()
+	var option: Resource = cell.item if cell else null
 	if option == null:
-		_item_name.text = ""
+		_details.visible = cell != null and cell.slot_key != &""
+		if _details.visible:
+			_item_name.text = tr(cell.slot_key)
+			_item_name.modulate = common_name_color
+			_rarity.visible = false
+			_details.reset_size()
 		return
-	var rarity := ""
-	if option is ItemData:
-		rarity = " (%s)" % tr(&"RARITY_MARAJOARA" if option.marajoara else &"RARITY_COMMON")
-	_item_name.text = tr(option.name_key) + rarity
+	var marajoara: bool = option is ItemData and (option as ItemData).marajoara
+	_item_name.text = tr(option.name_key)
+	_item_name.modulate = look.marajoara_color if marajoara else common_name_color
+	_rarity.visible = option is ItemData
+	_rarity.text = tr(&"RARITY_MARAJOARA" if marajoara else &"RARITY_COMMON")
 	var current := _reference(option)
 	for row in ItemStats.rows(option):
 		var mine: Dictionary = row
@@ -245,6 +284,21 @@ func _show_details(option: Resource) -> void:
 		_add_cell(tr(mine.key))
 		_add_cell(mine.text)
 		_add_comparison(mine, other)
+	_details.visible = true
+	_details.reset_size()
+
+
+# Ao lado do espaço apontado, à direita; sem lugar, à esquerda. Sempre dentro da tela.
+func _place_details() -> void:
+	if _pointed == null or not _details.visible:
+		return
+	var cell := _pointed.get_global_rect()
+	var screen := _panel.get_viewport_rect().size
+	var spot := Vector2(cell.end.x + details_gap, cell.position.y)
+	if spot.x + _details.size.x > screen.x - screen_margin:
+		spot.x = cell.position.x - details_gap - _details.size.x
+	spot.y = clampf(spot.y, screen_margin, screen.y - screen_margin - _details.size.y)
+	_details.position = spot
 
 
 # Com o que o item é comparado: a armadura vestida; para as armas, a da mão, se for do mesmo tipo, ou a primeira
