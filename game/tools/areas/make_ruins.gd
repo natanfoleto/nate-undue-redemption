@@ -427,7 +427,7 @@ func _gate(cells: Array) -> Node3D:
 	return _instance(_objects, "res://world/objects/gate_%d.tscn" % cells.size(), Vector3(center.x, _ground(center.x, center.y), center.y), PI / 2.0 if along_z else 0.0)
 
 
-# A saída depois do Selo: até a Grande Prisão existir, a parte jogável termina aqui.
+# A saída depois do Selo, para a antessala da Grande Prisão (só com o Selo no muiraquitã).
 func _build_exit(cells: Array) -> void:
 	var low := Vector2(cells[0])
 	var high := Vector2(cells[0])
@@ -439,8 +439,11 @@ func _build_exit(cells: Array) -> void:
 	exit.position = Vector3((low.x + high.x) / 2.0 + 0.5, _ground(low.x, low.y), (low.y + high.y) / 2.0 + 0.5)
 	exit.set("area_size", high - low + Vector2.ONE)
 	exit.set("needs_seal", true)
+	exit.set("next_area", "res://world/areas/prison.tscn")
+	exit.set("arrival", &"prison_entrance")
 	_add(_objects, exit)
-	_root.set("exit", exit)
+	# Onde Nate chega, voltando da Grande Prisão: antes da saída, virado para a sala do Selo.
+	_respawn(&"ruins_from_prison", Vector3(low.x - 0.5, _ground(low.x - 1, low.y), (low.y + high.y) / 2.0 + 0.5), PI / 2.0)
 
 
 # Blocos marcados que se tocam formam um grupo (uma parede rachada inteira).
@@ -516,14 +519,6 @@ func _build_interface(player: Node3D) -> void:
 	director.set("hints", hints)
 	director.set("hint_scene", load("res://ui/button_hint.tscn"))
 	_add(_root, director)
-	var end_layer := CanvasLayer.new()
-	end_layer.name = "EndLayer"
-	end_layer.layer = 5
-	_add(_root, end_layer)
-	var end: Control = (load("res://ui/end_screen.tscn") as PackedScene).instantiate()
-	end.set("text_key", &"RUINS_END")
-	_add(end_layer, end)
-	_root.set("end_screen", end)
 	_add(_root, (load("res://ui/pause_menu.tscn") as PackedScene).instantiate())
 	_add(_root, (load("res://ui/inventory.tscn") as PackedScene).instantiate())
 	_add(_root, (load("res://ui/mural_gallery.tscn") as PackedScene).instantiate())

@@ -48,6 +48,22 @@ func _physics_process(_delta: float) -> void:
 			return
 
 
+## Mostra uma dica pedida por quem a ensina (o pilar da Grande Prisão, na primeira vez que a Boiúna fica atordoada).
+func show_hint(hint: HintData) -> void:
+	_show(hint)
+
+
+## A ação da dica foi feita do jeito certo (o pilar ativo): a dica some e não volta.
+func finish_hint(hint: HintData) -> void:
+	if _was_used(hint):
+		return
+	var shown: ButtonHint = _shown.get(hint.text_key)
+	if is_instance_valid(shown):
+		shown.finish()
+	else:
+		_on_used(hint.text_key)
+
+
 func _on_item_picked(item_id: StringName) -> void:
 	if item_hints.has(item_id):
 		_show(item_hints[item_id])
@@ -56,13 +72,8 @@ func _on_item_picked(item_id: StringName) -> void:
 # A dica da poção sai quando Nate bebe, e não pelo botão: segurar o botão direito também atira.
 func _on_flask_drunk() -> void:
 	var hint: HintData = item_hints.get(GameState.FLASK)
-	if hint == null or _was_used(hint):
-		return
-	var shown: ButtonHint = _shown.get(hint.text_key)
-	if is_instance_valid(shown):
-		shown.finish()
-	else:
-		_on_used(hint.text_key)
+	if hint:
+		finish_hint(hint)
 
 
 func _show(hint: HintData) -> void:

@@ -102,6 +102,17 @@ const RUINS := [
 	{"name": "Lava", "liquid": PAINTED + "lava_strip", "glow": 1.6, "fps": 2.0},
 	{"name": "Balaustrada", "fence": PAINTED + "sandstone_brick", "tint": Color(0.95, 0.85, 0.7)},
 ]
+# A Grande Prisão: pedra escura, padrões de jade acesos e, no fundo do fosso, a escuridão roxa do predador.
+const PRISON := [
+	{"name": "Pedra da prisão", "texture": PAINTED + "stone", "tint": Color(0.42, 0.43, 0.52)},
+	{"name": "Piso da prisão", "texture": PAINTED + "stone_brick", "tint": Color(0.52, 0.52, 0.6)},
+	{"name": "Piso da arena", "texture": PAINTED + "stone_brick", "tint": Color(0.4, 0.38, 0.48)},
+	{"name": "Padrão de jade", "texture": OURS + "marajoara_jade", "glow": 1.2},
+	{"name": "Lugar do mural", "texture": PAINTED + "desert_stone", "tint": Color(0.7, 0.66, 0.62)},
+	{"name": "Rocha", "texture": PAINTED + "stone", "tint": Color(0.36, 0.36, 0.42)},
+	{"name": "Rocha funda", "texture": PAINTED + "stone", "tint": Color(0.26, 0.25, 0.3)},
+	{"name": "Escuridão", "liquid": PAINTED + "water_strip", "tint": Color(1.0, 0.25, 0.55), "glow": 0.6, "fps": 1.0},
+]
 const TEST := [
 	{"name": "Pedra", "texture": PAINTED + "cobble"},
 ]
@@ -109,6 +120,7 @@ const STAIRS_LOOK := {
 	"mine": [PAINTED + "stone_brick", Color(0.85, 0.8, 0.75)],
 	"forest": [PAINTED + "stone_brick", Color(0.65, 0.72, 0.85)],
 	"ruins": [OURS + "light_stone_floor", Color.WHITE],
+	"prison": [PAINTED + "stone_brick", Color(0.52, 0.52, 0.6)],
 	"test": [PAINTED + "stone_brick", Color.WHITE],
 }
 
@@ -117,6 +129,7 @@ func _initialize() -> void:
 	_save(MINE, "mine", "res://world/blocks/mine_blocks.tres")
 	_save(FOREST, "forest", "res://world/blocks/forest_blocks.tres")
 	_save(RUINS, "ruins", "res://world/blocks/ruins_blocks.tres")
+	_save(PRISON, "prison", "res://world/blocks/prison_blocks.tres")
 	_save(TEST, "test", "res://world/blocks/test_blocks.tres")
 	quit()
 

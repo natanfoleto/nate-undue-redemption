@@ -1,0 +1,148 @@
+[gd_resource type="Resource" script_class="ModelData" format=3]
+
+[ext_resource type="Script" path="res://tools/models/box_data.gd" id="1_o1fqf"]
+[ext_resource type="Script" path="res://tools/models/model_data.gd" id="2_v5of7"]
+[ext_resource type="Texture2D" path="res://assets/textures/villager_2_skin.png" id="3_bhl7v"]
+
+[sub_resource type="Resource" id="Resource_cqmk7"]
+resource_name = "root"
+script = ExtResource("1_o1fqf")
+name = &"root"
+size = Vector3i(0, 0, 0)
+position = Vector3(0, 16, 0)
+pivot = Vector3(0, 16, 0)
+color = Color(0.6901961, 0.2901961, 0.22745098, 1)
+
+[sub_resource type="Resource" id="Resource_lh5wv"]
+resource_name = "body"
+script = ExtResource("1_o1fqf")
+name = &"body"
+parent = &"root"
+size = Vector3i(8, 12, 4)
+position = Vector3(-4, 12, -2)
+pivot = Vector3(0, 12, 0)
+color = Color(0.6901961, 0.2901961, 0.22745098, 1)
+
+[sub_resource type="Resource" id="Resource_86bu2"]
+resource_name = "head"
+script = ExtResource("1_o1fqf")
+name = &"head"
+parent = &"body"
+size = Vector3i(8, 8, 8)
+position = Vector3(-4, 24, -4)
+pivot = Vector3(0, 24, 0)
+texture_offset = Vector2i(24, 0)
+color = Color(0.43137255, 0.26666668, 0.15686275, 1)
+
+[sub_resource type="Resource" id="Resource_7mpvt"]
+resource_name = "arm_r"
+script = ExtResource("1_o1fqf")
+name = &"arm_r"
+parent = &"body"
+size = Vector3i(4, 4, 4)
+position = Vector3(4, 20, -2)
+pivot = Vector3(6, 22, 0)
+texture_offset = Vector2i(0, 16)
+color = Color(0.6901961, 0.2901961, 0.22745098, 1)
+
+[sub_resource type="Resource" id="Resource_4jq26"]
+resource_name = "forearm_r"
+script = ExtResource("1_o1fqf")
+name = &"forearm_r"
+parent = &"arm_r"
+size = Vector3i(4, 8, 4)
+position = Vector3(4, 12, -2)
+pivot = Vector3(6, 22, 0)
+texture_offset = Vector2i(16, 16)
+color = Color(0.43137255, 0.26666668, 0.15686275, 1)
+
+[sub_resource type="Resource" id="Resource_8q5wf"]
+resource_name = "arm_l"
+script = ExtResource("1_o1fqf")
+name = &"arm_l"
+parent = &"body"
+size = Vector3i(4, 4, 4)
+position = Vector3(-8, 20, -2)
+pivot = Vector3(-6, 22, 0)
+texture_offset = Vector2i(32, 16)
+color = Color(0.6901961, 0.2901961, 0.22745098, 1)
+
+[sub_resource type="Resource" id="Resource_54gw4"]
+resource_name = "forearm_l"
+script = ExtResource("1_o1fqf")
+name = &"forearm_l"
+parent = &"arm_l"
+size = Vector3i(4, 8, 4)
+position = Vector3(-8, 12, -2)
+pivot = Vector3(-6, 22, 0)
+texture_offset = Vector2i(48, 16)
+color = Color(0.43137255, 0.26666668, 0.15686275, 1)
+
+[sub_resource type="Resource" id="Resource_x2en3"]
+resource_name = "leg_r"
+script = ExtResource("1_o1fqf")
+name = &"leg_r"
+parent = &"root"
+size = Vector3i(4, 7, 4)
+position = Vector3(0, 5, -2)
+pivot = Vector3(2, 12, 0)
+texture_offset = Vector2i(0, 28)
+color = Color(0.6039216, 0.24313726, 0.19607843, 1)
+
+[sub_resource type="Resource" id="Resource_0aw0i"]
+resource_name = "boot_r"
+script = ExtResource("1_o1fqf")
+name = &"boot_r"
+parent = &"leg_r"
+size = Vector3i(4, 5, 4)
+position = Vector3(0, 0, -2)
+pivot = Vector3(2, 5, 0)
+texture_offset = Vector2i(16, 28)
+color = Color(0.43137255, 0.26666668, 0.15686275, 1)
+
+[sub_resource type="Resource" id="Resource_jmmtl"]
+resource_name = "leg_l"
+script = ExtResource("1_o1fqf")
+name = &"leg_l"
+parent = &"root"
+size = Vector3i(4, 7, 4)
+position = Vector3(-4, 5, -2)
+pivot = Vector3(-2, 12, 0)
+texture_offset = Vector2i(32, 28)
+color = Color(0.6039216, 0.24313726, 0.19607843, 1)
+
+[sub_resource type="Resource" id="Resource_5ccyq"]
+resource_name = "boot_l"
+script = ExtResource("1_o1fqf")
+name = &"boot_l"
+parent = &"leg_l"
+size = Vector3i(4, 5, 4)
+position = Vector3(-4, 0, -2)
+pivot = Vector3(-2, 5, 0)
+texture_offset = Vector2i(48, 28)
+color = Color(0.43137255, 0.26666668, 0.15686275, 1)
+
+[sub_resource type="Resource" id="Resource_8rof7"]
+resource_name = "hand_r"
+script = ExtResource("1_o1fqf")
+name = &"hand_r"
+parent = &"forearm_r"
+size = Vector3i(0, 0, 0)
+position = Vector3(6, 13, 0)
+pivot = Vector3(6, 13, 0)
+color = Color(0.43137255, 0.26666668, 0.15686275, 1)
+
+[sub_resource type="Resource" id="Resource_mwo1j"]
+resource_name = "hand_l"
+script = ExtResource("1_o1fqf")
+name = &"hand_l"
+parent = &"forearm_l"
+size = Vector3i(0, 0, 0)
+position = Vector3(-6, 13, 0)
+pivot = Vector3(-6, 13, 0)
+color = Color(0.43137255, 0.26666668, 0.15686275, 1)
+
+[resource]
+script = ExtResource("2_v5of7")
+texture = ExtResource("3_bhl7v")
+boxes = Array[ExtResource("1_o1fqf")]([SubResource("Resource_cqmk7"), SubResource("Resource_lh5wv"), SubResource("Resource_86bu2"), SubResource("Resource_7mpvt"), SubResource("Resource_4jq26"), SubResource("Resource_8q5wf"), SubResource("Resource_54gw4"), SubResource("Resource_x2en3"), SubResource("Resource_0aw0i"), SubResource("Resource_jmmtl"), SubResource("Resource_5ccyq"), SubResource("Resource_8rof7"), SubResource("Resource_mwo1j")])

@@ -1,0 +1,54 @@
+[gd_resource type="Resource" script_class="ModelData" format=3]
+
+[ext_resource type="Script" path="res://tools/models/box_data.gd" id="1_kd881"]
+[ext_resource type="Script" path="res://tools/models/model_data.gd" id="2_8yjwj"]
+[ext_resource type="Texture2D" path="res://assets/textures/prison_pillar_skin.png" id="3_quux3"]
+
+[sub_resource type="Resource" id="Resource_80hmi"]
+resource_name = "base"
+script = ExtResource("1_kd881")
+name = &"base"
+size = Vector3i(32, 4, 32)
+position = Vector3(-16, 0, -16)
+color = Color(0.36078432, 0.36078432, 0.4392157, 1)
+
+[sub_resource type="Resource" id="Resource_d8pti"]
+resource_name = "shaft"
+script = ExtResource("1_kd881")
+name = &"shaft"
+size = Vector3i(24, 26, 24)
+position = Vector3(-12, 4, -12)
+texture_offset = Vector2i(128, 0)
+color = Color(0.36078432, 0.36078432, 0.4392157, 1)
+
+[sub_resource type="Resource" id="Resource_1ium7"]
+resource_name = "band"
+script = ExtResource("1_kd881")
+name = &"band"
+size = Vector3i(26, 4, 26)
+position = Vector3(-13, 14, -13)
+texture_offset = Vector2i(0, 50)
+color = Color(0.36078432, 0.36078432, 0.4392157, 1)
+
+[sub_resource type="Resource" id="Resource_y5akq"]
+resource_name = "capital"
+script = ExtResource("1_kd881")
+name = &"capital"
+size = Vector3i(30, 4, 30)
+position = Vector3(-15, 30, -15)
+texture_offset = Vector2i(104, 50)
+color = Color(0.36078432, 0.36078432, 0.4392157, 1)
+
+[sub_resource type="Resource" id="Resource_pgkoj"]
+resource_name = "crystal"
+script = ExtResource("1_kd881")
+name = &"crystal"
+size = Vector3i(8, 8, 8)
+position = Vector3(-4, 34, -4)
+texture_offset = Vector2i(224, 50)
+color = Color(0.36078432, 0.36078432, 0.4392157, 1)
+
+[resource]
+script = ExtResource("2_8yjwj")
+texture = ExtResource("3_quux3")
+boxes = Array[ExtResource("1_kd881")]([SubResource("Resource_80hmi"), SubResource("Resource_d8pti"), SubResource("Resource_1ium7"), SubResource("Resource_y5akq"), SubResource("Resource_pgkoj")])

@@ -8,6 +8,7 @@
 [ext_resource type="Script" path="res://ui/death_screen.gd" id="9_xtm2r"]
 [ext_resource type="Script" path="res://ui/health_bar.gd" id="10_hbar"]
 [ext_resource type="PackedScene" path="res://ui/hotbar.tscn" id="11_hotb"]
+[ext_resource type="Script" path="res://ui/boss_bar.gd" id="12_boss"]
 
 [node name="Hud" type="CanvasLayer" unique_id=1655601135]
 script = ExtResource("1_spcu4")
@@ -147,6 +148,33 @@ size_flags_vertical = 4
 expand_mode = 1
 
 [node name="Hotbar" parent="." unique_id=1479634198 instance=ExtResource("11_hotb")]
+
+[node name="BossBar" type="Control" parent="."]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_top = 16.0
+offset_bottom = 16.0
+grow_horizontal = 2
+mouse_filter = 2
+script = ExtResource("12_boss")
+bar_size = Vector2(440, 14)
+gap = 6
+border_width = 2
+back_color = Color(0.06, 0.04, 0.08, 0.75)
+fill_color = Color(0.55, 0.22, 0.7, 1)
+locked_color = Color(0.45, 0.45, 0.5, 1)
+lost_color = Color(1, 0.86, 0.7, 0.9)
+border_color = Color(0.08, 0.06, 0.1, 1)
+shine_share = 0.25
+shine_color = Color(1, 1, 1, 0.18)
+lost_delay = 0.4
+lost_speed = 120.0
+name_key = &"BOSS_BOIUNA"
+font_size = 20
+outline_size = 5
+name_gap = 4
+fade_time = 0.6
 
 [node name="DeathScreen" type="ColorRect" parent="." unique_id=16720311]
 anchors_preset = 15

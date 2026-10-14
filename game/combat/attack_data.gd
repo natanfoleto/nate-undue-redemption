@@ -36,6 +36,9 @@ enum Warning { POSE, GROUND_MARK }
 ## Efeito de status em quem é acertado (-1 para nenhum) e por quanto tempo, em segundos (o abalo do Golem).
 @export var effect := -1
 @export var effect_duration := 0.0
+## Passa por paredes e pilares: os golpes da Boiúna, que vêm do alto e de todo lado (a marca no chão é sempre a área
+## atingida).
+@export var ignores_walls := false
 ## Sons do banco (data/audio/sounds.tres): o aviso, no começo da preparação, e o do golpe, quando ele sai.
 @export var warning_sound: StringName
 @export var strike_sound: StringName

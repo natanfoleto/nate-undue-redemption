@@ -15,7 +15,6 @@ PAUSE_RESUME,Continuar
 PAUSE_MAIN_MENU,Voltar ao menu principal
 ITEM_SWORD,Espada
 ITEM_SLINGSHOT,Estilingue
-SLICE_END,A passagem escura leva às Ruínas. A aventura continua lá.
 MENU_CONFIRM_TITLE,Novo jogo
 HINT_FLASK,Beber a poção (na mão, segurar)
 HINT_SPELL,Magia
@@ -94,10 +93,37 @@ SPELL_ICE,Gelo
 SPELL_MUD,Lamaçal
 SPELL_SAND_SHIELD,Escudo de Areia
 SANCTUARY_3,Coração das Ruínas
-RUINS_END,O Selo está com Nate. A Grande Prisão espera.
+SANCTUARY_4,Antessala da Grande Prisão
 STAT_PIERCE,Atravessa os inimigos
 STAT_DAMAGE_BONUS,Bônus de dano
 STAT_SPEED_BOOST,Nate mais rápido
 STAT_SHIELD,Escudo
 VALUE_YES,sim
 SHIELD_ONE_HIT,segura 1 golpe
+IMMUNE,imune
+BOSS_BOIUNA,Boiúna
+HINT_PILLAR,Ativar o pilar (segurar)
+SUMMARY_TITLE,Resumo da partida
+SUMMARY_TIME,Tempo de jogo
+SUMMARY_DEATHS,Mortes
+SUMMARY_MURALS,Murais
+SUMMARY_UPGRADES,Melhorias
+SUMMARY_SCROLLS,Pergaminhos
+SUMMARY_EQUIPMENT,Equipamento
+SUMMARY_OF,%d de %d
+SUMMARY_CONTINUE,Aperte um botão para continuar
+CREDITS_BY,Um jogo de Natan Foleto
+CREDITS_MUSIC,Música
+CREDITS_MUSIC_EHLERS,"Alexander Ehlers: ""Free Music Pack"" (CC0)"
+CREDITS_MUSIC_KISTOL,"Kistol: ""Krakatoa"" (CC0)"
+CREDITS_SOUNDS,Sons
+CREDITS_SOUNDS_KENNEY,"Kenney: ""RPG Audio"", ""Impact Sounds"" e ""Interface Sounds"" (CC0)"
+CREDITS_SOUNDS_RUBBERDUCK,"rubberduck: ""80 CC0 creature SFX"" e ""80 CC0 creature SFX #2"" (CC0)"
+CREDITS_SOUNDS_LEOHPAZ,"leohpaz: ""8 Magic Attacks"" (CC BY 4.0)"
+CREDITS_SOUNDS_JAGGEDSTONE,"JaggedStone: ""Loopable Dungeon Ambience"" (CC0)"
+CREDITS_ART,Texturas e ícones
+CREDITS_ART_DRUMMYFISH,"drummyfish: ""Big pack of hand painted tiling textures"" (CC0)"
+CREDITS_ART_KENNEY,"Kenney: ""Input Prompts Pixel 16×"" (CC0)"
+CREDITS_ENGINE,Feito com
+CREDITS_ENGINE_GODOT,"Godot Engine, licença MIT: © 2014-presente, os colaboradores do Godot Engine; © 2007-2014, Juan Linietsky e Ariel Manzur"
+CREDITS_THANKS,Obrigado por jogar!

@@ -112,6 +112,22 @@ func play(id: StringName, where := Vector3.INF) -> void:
 	voice.call(&"play")
 
 
+## Prepara uma voz própria de quem precisa parar o som no meio (o pilar carregando, que para se Nate soltar): a
+## gravação, o volume, o tom e o canal do som do banco.
+func prepare(voice: Node, id: StringName) -> void:
+	var sound: SoundData = bank.sounds.get(id)
+	if sound == null or sound.streams.is_empty():
+		push_warning("Som que falta no banco: %s" % id)
+		return
+	voice.set(&"stream", sound.streams[0])
+	voice.set(&"volume_db", sound.volume_db)
+	voice.set(&"pitch_scale", sound.pitch)
+	voice.set(&"bus", sound.bus)
+	if voice is AudioStreamPlayer3D:
+		(voice as AudioStreamPlayer3D).unit_size = rules.unit_size
+		(voice as AudioStreamPlayer3D).max_distance = rules.max_distance
+
+
 # A primeira voz do mundo livre a partir da vez; com todas ocupadas, a da vez (a que tocou há mais tempo).
 func _free_world_voice() -> int:
 	var now := Time.get_ticks_msec()

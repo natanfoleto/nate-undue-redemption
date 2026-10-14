@@ -1,0 +1,36 @@
+[gd_resource type="Resource" script_class="ModelData" format=3]
+
+[ext_resource type="Script" path="res://tools/models/box_data.gd" id="1_bkcbu"]
+[ext_resource type="Script" path="res://tools/models/model_data.gd" id="2_ok7df"]
+[ext_resource type="Texture2D" path="res://assets/textures/prison_door_frame_skin.png" id="3_cvq7e"]
+
+[sub_resource type="Resource" id="Resource_xyodj"]
+resource_name = "post_l"
+script = ExtResource("1_bkcbu")
+name = &"post_l"
+size = Vector3i(8, 40, 10)
+position = Vector3(-40, 0, -5)
+color = Color(0.36078432, 0.36078432, 0.4392157, 1)
+
+[sub_resource type="Resource" id="Resource_0wyy3"]
+resource_name = "post_r"
+script = ExtResource("1_bkcbu")
+name = &"post_r"
+size = Vector3i(8, 40, 10)
+position = Vector3(32, 0, -5)
+texture_offset = Vector2i(36, 0)
+color = Color(0.36078432, 0.36078432, 0.4392157, 1)
+
+[sub_resource type="Resource" id="Resource_we0qn"]
+resource_name = "lintel"
+script = ExtResource("1_bkcbu")
+name = &"lintel"
+size = Vector3i(80, 6, 12)
+position = Vector3(-40, 38, -6)
+texture_offset = Vector2i(72, 0)
+color = Color(0.36078432, 0.36078432, 0.4392157, 1)
+
+[resource]
+script = ExtResource("2_ok7df")
+texture = ExtResource("3_cvq7e")
+boxes = Array[ExtResource("1_bkcbu")]([SubResource("Resource_xyodj"), SubResource("Resource_0wyy3"), SubResource("Resource_we0qn")])

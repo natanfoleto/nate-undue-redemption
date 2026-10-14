@@ -19,7 +19,7 @@ static func hit_area(attack: AttackData, attacker: Node3D, origin: Vector3, forw
 			continue
 		if not HitShape.overlaps(attack, origin, forward, hurtbox.global_position, hurtbox.radius):
 			continue
-		if HitShape.wall_between(space, origin, hurtbox.global_position):
+		if not attack.ignores_walls and HitShape.wall_between(space, origin, hurtbox.global_position):
 			continue
 		already_hit.append(receiver)
 		receiver.call(&"take_hit", build_hit.call(receiver))

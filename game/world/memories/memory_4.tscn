@@ -1,0 +1,237 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://ui/memory_scene.gd" id="1_ugh51"]
+[ext_resource type="Texture2D" path="res://assets/textures/painted/stone_brick.png" id="2_bhxdn"]
+[ext_resource type="Script" path="res://tools/models/block_model.gd" id="3_vmt8k"]
+[ext_resource type="Resource" path="res://data/models/prison_pillar.tres" id="4_330o5"]
+[ext_resource type="Resource" path="res://data/models/hero.tres" id="5_hvqcu"]
+[ext_resource type="Script" path="res://tools/models/model_animator.gd" id="6_q4gbd"]
+[ext_resource type="Resource" path="res://data/animations/nate_cast.tres" id="7_b8oi3"]
+[ext_resource type="Resource" path="res://data/models/brother.tres" id="8_e2krk"]
+[ext_resource type="Resource" path="res://data/animations/nate_idle.tres" id="9_wj827"]
+[ext_resource type="Resource" path="res://data/models/boiuna_head.tres" id="10_igb3e"]
+
+[sub_resource type="Environment" id="Environment_53xit"]
+background_mode = 1
+background_color = Color(0.023529412, 0.02745098, 0.039215688, 1)
+ambient_light_source = 2
+ambient_light_color = Color(0.5, 0.5, 0.66, 1)
+ambient_light_energy = 0.6
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_j5ev3"]
+albedo_color = Color(0.4, 0.38, 0.48, 1)
+albedo_texture = ExtResource("2_bhxdn")
+uv1_triplanar = true
+uv1_world_triplanar = true
+texture_filter = 0
+
+[sub_resource type="BoxMesh" id="BoxMesh_6m0dc"]
+material = SubResource("StandardMaterial3D_j5ev3")
+size = Vector3(18, 1, 16)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yk3vj"]
+albedo_color = Color(0.2, 0.06, 0.3, 1)
+emission_enabled = true
+emission = Color(0.45, 0.15, 0.6, 1)
+emission_energy_multiplier = 1.2
+
+[sub_resource type="BoxMesh" id="BoxMesh_nht1u"]
+material = SubResource("StandardMaterial3D_yk3vj")
+size = Vector3(4, 0.04, 4)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4yb85"]
+albedo_color = Color(0.2, 0.55, 0.42, 1)
+emission_enabled = true
+emission = Color(0.35, 0.9, 0.65, 1)
+emission_energy_multiplier = 0.8
+
+[sub_resource type="BoxMesh" id="BoxMesh_a3ss4"]
+material = SubResource("StandardMaterial3D_4yb85")
+size = Vector3(4.6, 0.06, 0.3)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ose5n"]
+albedo_color = Color(0.2, 0.55, 0.42, 1)
+emission_enabled = true
+emission = Color(0.35, 0.9, 0.65, 1)
+emission_energy_multiplier = 0.8
+
+[sub_resource type="BoxMesh" id="BoxMesh_4k8e6"]
+material = SubResource("StandardMaterial3D_ose5n")
+size = Vector3(4.6, 0.06, 0.3)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_322gf"]
+albedo_color = Color(0.2, 0.55, 0.42, 1)
+emission_enabled = true
+emission = Color(0.35, 0.9, 0.65, 1)
+emission_energy_multiplier = 0.8
+
+[sub_resource type="BoxMesh" id="BoxMesh_dld2m"]
+material = SubResource("StandardMaterial3D_322gf")
+size = Vector3(0.3, 0.06, 4.6)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mqq6h"]
+albedo_color = Color(0.2, 0.55, 0.42, 1)
+emission_enabled = true
+emission = Color(0.35, 0.9, 0.65, 1)
+emission_energy_multiplier = 0.8
+
+[sub_resource type="BoxMesh" id="BoxMesh_bjvnu"]
+material = SubResource("StandardMaterial3D_mqq6h")
+size = Vector3(0.3, 0.06, 4.6)
+
+[node name="Memory4" type="CanvasLayer" unique_id=1668662130 node_paths=PackedStringArray("camera_from", "camera_to", "walker", "walker_to")]
+layer = 30
+script = ExtResource("1_ugh51")
+duration = 8.0
+min_time = 1.5
+fade_time = 0.6
+camera_from = NodePath("View/SubViewport/Stage/CameraFrom")
+camera_to = NodePath("View/SubViewport/Stage/CameraTo")
+walker = NodePath("View/SubViewport/Stage/Boiuna")
+walker_to = NodePath("View/SubViewport/Stage/WalkerTo")
+metadata/stage = Object(Node3D,"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","transform":Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0),"rotation_edit_mode":0,"rotation_order":2,"top_level":false,"visible":true,"visibility_parent":NodePath(""),"script":null)
+
+
+[node name="View" type="TextureRect" parent="." unique_id=1755312280]
+unique_name_in_owner = true
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+expand_mode = 1
+
+[node name="SubViewport" type="SubViewport" parent="View" unique_id=1937894772]
+unique_name_in_owner = true
+own_world_3d = true
+size = Vector2i(1280, 720)
+
+[node name="Stage" type="Node3D" parent="View/SubViewport" unique_id=1757412285]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="View/SubViewport/Stage" unique_id=446880534]
+environment = SubResource("Environment_53xit")
+
+[node name="Camera" type="Camera3D" parent="View/SubViewport/Stage" unique_id=1141160699]
+unique_name_in_owner = true
+fov = 45.0
+
+[node name="CameraFrom" type="Marker3D" parent="View/SubViewport/Stage" unique_id=1413068400]
+transform = Transform3D(0.89442724, -0.16552733, 0.4154524, 0, 0.9289798, 0.37013033, -0.44721362, -0.33105466, 0.8309048, 5.5, 5.5, 8.5)
+
+[node name="CameraTo" type="Marker3D" parent="View/SubViewport/Stage" unique_id=1643273876]
+transform = Transform3D(0.9938837, 0.043681968, -0.10142489, 0, 0.91844136, 0.39555705, 0.11043153, -0.39313772, 0.912824, -3.5, 4.5, 8.5)
+
+[node name="Floor" type="MeshInstance3D" parent="View/SubViewport/Stage" unique_id=1266676590]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+mesh = SubResource("BoxMesh_6m0dc")
+
+[node name="Pit" type="MeshInstance3D" parent="View/SubViewport/Stage" unique_id=1890327278]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.02, -3.5)
+mesh = SubResource("BoxMesh_nht1u")
+
+[node name="Rim" type="MeshInstance3D" parent="View/SubViewport/Stage" unique_id=1159463475]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.03, -5.65)
+mesh = SubResource("BoxMesh_a3ss4")
+
+[node name="Rim2" type="MeshInstance3D" parent="View/SubViewport/Stage" unique_id=1326171936]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.03, -1.3499999)
+mesh = SubResource("BoxMesh_4k8e6")
+
+[node name="Rim3" type="MeshInstance3D" parent="View/SubViewport/Stage" unique_id=33310849]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.15, 0.03, -3.5)
+mesh = SubResource("BoxMesh_dld2m")
+
+[node name="Rim4" type="MeshInstance3D" parent="View/SubViewport/Stage" unique_id=1980958635]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.15, 0.03, -3.5)
+mesh = SubResource("BoxMesh_bjvnu")
+
+[node name="Pillar" type="Node3D" parent="View/SubViewport/Stage" unique_id=2079046288]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.5, 0, -7.5)
+script = ExtResource("3_vmt8k")
+model = ExtResource("4_330o5")
+
+[node name="Light" type="OmniLight3D" parent="View/SubViewport/Stage" unique_id=668529525]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.5, 3.2, -7.5)
+light_color = Color(0.56078434, 1, 0.8156863, 1)
+light_energy = 1.4
+
+[node name="Pillar2" type="Node3D" parent="View/SubViewport/Stage" unique_id=563796898]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.5, 0, -7.5)
+script = ExtResource("3_vmt8k")
+model = ExtResource("4_330o5")
+
+[node name="Light2" type="OmniLight3D" parent="View/SubViewport/Stage" unique_id=1417633188]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.5, 3.2, -7.5)
+light_color = Color(0.56078434, 1, 0.8156863, 1)
+light_energy = 1.4
+
+[node name="Pillar3" type="Node3D" parent="View/SubViewport/Stage" unique_id=705027165]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.5, 0, 0.5)
+script = ExtResource("3_vmt8k")
+model = ExtResource("4_330o5")
+
+[node name="Light3" type="OmniLight3D" parent="View/SubViewport/Stage" unique_id=314036106]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.5, 3.2, 0.5)
+light_color = Color(0.56078434, 1, 0.8156863, 1)
+light_energy = 1.4
+
+[node name="Pillar4" type="Node3D" parent="View/SubViewport/Stage" unique_id=1962284627]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.5, 0, 0.5)
+script = ExtResource("3_vmt8k")
+model = ExtResource("4_330o5")
+
+[node name="Light4" type="OmniLight3D" parent="View/SubViewport/Stage" unique_id=784534427]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.5, 3.2, 0.5)
+light_color = Color(0.56078434, 1, 0.8156863, 1)
+light_energy = 1.4
+
+[node name="Hero" type="Node3D" parent="View/SubViewport/Stage" unique_id=884738717]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.6)
+script = ExtResource("3_vmt8k")
+model = ExtResource("5_hvqcu")
+
+[node name="ModelAnimator" type="Node" parent="View/SubViewport/Stage/Hero" unique_id=1998692218]
+script = ExtResource("6_q4gbd")
+animation = ExtResource("7_b8oi3")
+
+[node name="Brother" type="Node3D" parent="View/SubViewport/Stage" unique_id=402837941]
+transform = Transform3D(-0.80901706, 0, 0.5877852, 0, 1, 0, -0.5877852, 0, -0.80901706, -5.5, 0, 2.2)
+script = ExtResource("3_vmt8k")
+model = ExtResource("8_e2krk")
+
+[node name="ModelAnimator" type="Node" parent="View/SubViewport/Stage/Brother" unique_id=1812846675]
+script = ExtResource("6_q4gbd")
+animation = ExtResource("9_wj827")
+
+[node name="Light5" type="OmniLight3D" parent="View/SubViewport/Stage" unique_id=816300065]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 2.6, 3.2)
+light_color = Color(0.6039216, 0.65882355, 0.8156863, 1)
+light_energy = 0.7
+omni_range = 4.0
+
+[node name="Boiuna" type="Node3D" parent="View/SubViewport/Stage" unique_id=2127915299]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, -0.2, -4.1)
+script = ExtResource("3_vmt8k")
+model = ExtResource("10_igb3e")
+
+[node name="WalkerTo" type="Marker3D" parent="View/SubViewport/Stage" unique_id=1544834051]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4.2, -4.1)
+
+[node name="Light6" type="OmniLight3D" parent="View/SubViewport/Stage" unique_id=1493106312]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2, -3.5)
+light_color = Color(0.627451, 0.3137255, 0.8784314, 1)
+light_energy = 1.6
+omni_range = 6.0
+
+[node name="Tint" type="ColorRect" parent="." unique_id=1518124404]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+color = Color(0.85, 0.75, 0.5, 0.12)
+
+[node name="Fade" type="ColorRect" parent="." unique_id=1938070379]
+unique_name_in_owner = true
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+color = Color(0, 0, 0, 1)

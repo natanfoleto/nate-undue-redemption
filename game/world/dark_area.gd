@@ -22,11 +22,19 @@ extends Node3D
 ## Onde a borda esfumada começa e acaba, no valor da máscara misturada e ondulada (0 fora, 1 dentro).
 @export var edge_start := 0.0
 @export var edge_end := 0.0
+## Escura desde o começo. Sem isso, a área fica clara (sem escurecer nem acender a luz de Nate) até alguém a apagar
+## (a arena da Boiúna, na fase 2).
+@export var starts_dark := true
+
+## Se a área está escura agora.
+var dark := true
 
 ## Só o terreno (camada de desenho 1) escurece.
 const TERRAIN_LAYER := 1
 
 var _barrier: CollisionShape3D
+var _decal: Decal
+var _tween: Tween
 
 
 func _ready() -> void:
@@ -38,7 +46,8 @@ func _ready() -> void:
 	decal.position.y = depth / 2.0 - 0.5
 	# A cor fica como está (sem mistura); a transparência da borda só diz onde a oclusão vale.
 	decal.texture_albedo = _edge_texture()
-	decal.modulate = Color(1, 1, 1, darkness)
+	dark = starts_dark
+	decal.modulate = Color(1, 1, 1, darkness if dark else 0.0)
 	decal.albedo_mix = 0.0
 	decal.texture_orm = _occlusion_texture()
 	decal.normal_fade = 0.0
@@ -46,6 +55,7 @@ func _ready() -> void:
 	decal.lower_fade = 0.0
 	decal.cull_mask = TERRAIN_LAYER
 	add_child(decal)
+	_decal = decal
 	# Barreira (camada 4): segura quem anda até Nate ter a Luz Ancestral.
 	var body := StaticBody3D.new()
 	body.collision_layer = HitShape.BARRIER_LAYER
@@ -59,7 +69,19 @@ func _ready() -> void:
 	add_child(body)
 
 
+## Apaga ou acende a área aos poucos, em [param seconds] segundos (a arena da Boiúna apagando na fase 2).
+func set_dark(on: bool, seconds: float) -> void:
+	dark = on
+	if _tween:
+		_tween.kill()
+	_tween = create_tween()
+	_tween.tween_property(_decal, ^"modulate:a", darkness if on else 0.0, seconds)
+
+
+## Se o ponto fica dentro da área escura (a luz de Nate acende nele).
 func contains(point: Vector3) -> bool:
+	if not dark:
+		return false
 	var offset := point - global_position
 	return absf(offset.x) <= area_size.x / 2.0 and absf(offset.z) <= area_size.y / 2.0
 

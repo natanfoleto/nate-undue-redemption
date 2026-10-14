@@ -1,0 +1,36 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://boss/boiuna.gd" id="1_boiuna"]
+[ext_resource type="Resource" path="res://data/boss/boiuna.tres" id="2_data"]
+[ext_resource type="Script" path="res://combat/health.gd" id="3_health"]
+[ext_resource type="Script" path="res://combat/status_effects.gd" id="4_status"]
+[ext_resource type="Script" path="res://tools/models/block_model.gd" id="5_model"]
+[ext_resource type="Script" path="res://combat/hurtbox.gd" id="6_hurtbox"]
+[ext_resource type="PackedScene" path="res://combat/status_visuals.tscn" id="7_visuals"]
+
+[node name="Boiuna" type="Node3D"]
+script = ExtResource("1_boiuna")
+data = ExtResource("2_data")
+
+[node name="Health" type="Node" parent="."]
+script = ExtResource("3_health")
+
+[node name="StatusEffects" type="Node" parent="."]
+script = ExtResource("4_status")
+immune = true
+
+[node name="Head" type="Node3D" parent="."]
+script = ExtResource("5_model")
+
+[node name="Body" type="Node3D" parent="."]
+
+[node name="Tail" type="Node3D" parent="."]
+
+[node name="BodyHurtbox" type="Node3D" parent="."]
+script = ExtResource("6_hurtbox")
+
+[node name="HeadHurtbox" type="Node3D" parent="."]
+script = ExtResource("6_hurtbox")
+
+[node name="StatusVisuals" parent="." node_paths=PackedStringArray("status") instance=ExtResource("7_visuals")]
+status = NodePath("../StatusEffects")

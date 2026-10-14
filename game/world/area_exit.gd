@@ -1,16 +1,14 @@
 class_name AreaExit
 extends Node3D
-## Saída de uma área (12-tecnico): quando Nate entra no retângulo, a próxima área carrega. Sem próxima área,
-## avisa a área, que mostra o fim da parte jogável.
+## Saída de uma área (12-tecnico): quando Nate entra no retângulo, a próxima área carrega e ele aparece no ponto de
+## chegada dela.
 
-signal reached
-
-## Cena da próxima área e o ponto onde Nate chega nela; vazia, a parte jogável termina aqui.
+## Cena da próxima área e o ponto onde Nate chega nela.
 @export_file("*.tscn") var next_area: String
 @export var arrival: StringName
 ## Retângulo no chão, centrado no nó, em blocos.
 @export var area_size := Vector2.ZERO
-## A saída só vale com o Selo no muiraquitã (a das Ruínas: o fim diz que Nate está com ele).
+## A saída só vale com o Selo no muiraquitã (a das Ruínas, para a Grande Prisão).
 @export var needs_seal := false
 
 var _done := false
@@ -29,7 +27,4 @@ func _physics_process(_delta: float) -> void:
 		return
 	_done = true
 	player.set_cinematic(true)
-	if next_area != "":
-		GameState.change_area(next_area, arrival)
-	else:
-		reached.emit()
+	GameState.change_area(next_area, arrival)

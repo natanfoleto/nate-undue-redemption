@@ -633,7 +633,7 @@ func _gate(cells: Array) -> Node3D:
 	return _instance(_objects, "res://world/objects/gate_%d.tscn" % cells.size(), Vector3(center.x, _ground(center.x, center.y), center.y), PI / 2.0 if along_z else 0.0)
 
 
-# Fim da passagem escura: até as Ruínas existirem, a parte jogável termina aqui.
+# Fim da passagem escura: a saída para as Ruínas.
 func _build_exit(cells: Array[Vector2i]) -> void:
 	var low := Vector2(cells[0])
 	var high := Vector2(cells[0])
@@ -648,7 +648,6 @@ func _build_exit(cells: Array[Vector2i]) -> void:
 	exit.set("next_area", "res://world/areas/ruins.tscn")
 	exit.set("arrival", &"ruins_entrance")
 	_add(_objects, exit)
-	_root.set("exit", exit)
 
 
 # Áreas escuras (08-mapa): cada mancha de chão escuro vira um retângulo com a tampa de escuridão e a barreira.
@@ -735,13 +734,6 @@ func _build_interface(player: Node3D) -> void:
 	director.set("hints", hints)
 	director.set("hint_scene", load("res://ui/button_hint.tscn"))
 	_add(_root, director)
-	var end_layer := CanvasLayer.new()
-	end_layer.name = "EndLayer"
-	end_layer.layer = 5
-	_add(_root, end_layer)
-	var end: Control = (load("res://ui/end_screen.tscn") as PackedScene).instantiate()
-	_add(end_layer, end)
-	_root.set("end_screen", end)
 	_add(_root, (load("res://ui/pause_menu.tscn") as PackedScene).instantiate())
 	_add(_root, (load("res://ui/inventory.tscn") as PackedScene).instantiate())
 	_add(_root, (load("res://ui/mural_gallery.tscn") as PackedScene).instantiate())

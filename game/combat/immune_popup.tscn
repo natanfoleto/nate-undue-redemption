@@ -1,0 +1,19 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://combat/critical_popup.gd" id="1_popup"]
+
+[node name="ImmunePopup" type="Node3D"]
+script = ExtResource("1_popup")
+rise = 0.5
+duration = 0.7
+text_key = &"IMMUNE"
+
+[node name="Label3D" type="Label3D" parent="."]
+pixel_size = 0.01
+billboard = 1
+no_depth_test = true
+modulate = Color(0.72, 0.72, 0.76, 1)
+outline_modulate = Color(0, 0, 0, 1)
+text = "imune"
+font_size = 48
+outline_size = 10

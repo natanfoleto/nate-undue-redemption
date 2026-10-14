@@ -1,0 +1,55 @@
+[gd_resource type="Resource" script_class="ModelData" format=3]
+
+[ext_resource type="Script" path="res://tools/models/box_data.gd" id="1_0d7ly"]
+[ext_resource type="Script" path="res://tools/models/model_data.gd" id="2_we2eo"]
+[ext_resource type="Texture2D" path="res://assets/textures/boiuna_skull_skin.png" id="3_y1l4x"]
+
+[sub_resource type="Resource" id="Resource_thtks"]
+resource_name = "head"
+script = ExtResource("1_0d7ly")
+name = &"head"
+size = Vector3i(22, 14, 30)
+position = Vector3(-11, -7, -30)
+color = Color(0.36078432, 0.36078432, 0.4392157, 1)
+
+[sub_resource type="Resource" id="Resource_3mjcb"]
+resource_name = "jaw"
+script = ExtResource("1_0d7ly")
+name = &"jaw"
+size = Vector3i(18, 4, 24)
+position = Vector3(-9, -11, -26)
+pivot = Vector3(0, -7, -2)
+texture_offset = Vector2i(104, 0)
+color = Color(0.36078432, 0.36078432, 0.4392157, 1)
+
+[sub_resource type="Resource" id="Resource_tyntg"]
+resource_name = "eye_r"
+script = ExtResource("1_0d7ly")
+name = &"eye_r"
+size = Vector3i(2, 3, 4)
+position = Vector3(11, 0, -26)
+texture_offset = Vector2i(188, 0)
+color = Color(0.36078432, 0.36078432, 0.4392157, 1)
+
+[sub_resource type="Resource" id="Resource_gijn1"]
+resource_name = "eye_l"
+script = ExtResource("1_0d7ly")
+name = &"eye_l"
+size = Vector3i(2, 3, 4)
+position = Vector3(-13, 0, -26)
+texture_offset = Vector2i(200, 0)
+color = Color(0.36078432, 0.36078432, 0.4392157, 1)
+
+[sub_resource type="Resource" id="Resource_odohw"]
+resource_name = "sheen"
+script = ExtResource("1_0d7ly")
+name = &"sheen"
+size = Vector3i(6, 1, 18)
+position = Vector3(-3, 7, -24)
+texture_offset = Vector2i(0, 44)
+color = Color(0.36078432, 0.36078432, 0.4392157, 1)
+
+[resource]
+script = ExtResource("2_we2eo")
+texture = ExtResource("3_y1l4x")
+boxes = Array[ExtResource("1_0d7ly")]([SubResource("Resource_thtks"), SubResource("Resource_3mjcb"), SubResource("Resource_tyntg"), SubResource("Resource_gijn1"), SubResource("Resource_odohw")])

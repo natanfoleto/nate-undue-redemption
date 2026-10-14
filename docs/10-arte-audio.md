@@ -25,9 +25,9 @@ Origem dos assets, guia de estilo e a lista completa de assets e sons, que sai d
 |-------|---------------|---------|-----------------|
 | Texturas pintadas à mão do cenário, da sala de teste e das memórias (`assets/textures/painted/`: grass, grass_side, dirt, stone, cobble, mossy_cobble, stone_brick, sandstone_brick, bark, leaves, jungle_leaves, planks, wood, gravel, clay, clay_brick, desert_stone, sand e rail), reduzidas de 128 para 32 px; a grama perde 25% da cor, e `grass_side` junta a terra com a franja de grama do pacote. Plantas (grass_tuft, grass_tall, jungle_grass, papyrus, flower_blue, flower_yellow e flower_red), com o recorte limpo. Água, rio e lava animados (water_strip, river_strip e lava_strip: 8 quadros de 32 px, um embaixo do outro) | "Big pack of hand painted tiling textures", de drummyfish: https://opengameart.org/node/91360 | CC0 | não (crédito apreciado) |
 | Sons de Nate, das armas, dos objetos e da interface (`assets/audio/kenney/`), provisórios | "RPG Audio", "Impact Sounds" e "Interface Sounds", de Kenney: https://kenney.nl/assets/rpg-audio, https://kenney.nl/assets/impact-sounds e https://kenney.nl/assets/interface-sounds | CC0 | não (crédito opcional a Kenney) |
-| Vozes dos mobs (`assets/audio/rubberduck/`), provisórias | "80 CC0 creature SFX" e "80 CC0 creture SFX #2", de rubberduck: https://opengameart.org/content/80-cc0-creature-sfx e https://opengameart.org/content/80-cc0-creture-sfx-2 | CC0 | não |
-| Sons das magias e da praga (`assets/audio/leohpaz/`), provisórios | "8 Magic Attacks", de leohpaz: https://opengameart.org/content/8-magic-attacks | CC-BY 4.0 | sim: leohpaz |
-| Música do menu, das memórias, das arenas, do Bosque e das Ruínas (`assets/audio/music/`: great_mission, doomed, waking_the_devil, spacetime e warped), provisória | "Free Music Pack", de Alexander Ehlers (tricksntraps): https://opengameart.org/content/free-music-pack | CC0 | não |
+| Vozes dos mobs e da Boiúna (`assets/audio/rubberduck/`), provisórias | "80 CC0 creature SFX" e "80 CC0 creture SFX #2", de rubberduck: https://opengameart.org/content/80-cc0-creature-sfx e https://opengameart.org/content/80-cc0-creture-sfx-2 | CC0 | não |
+| Sons das magias, da praga e do pilar carregando (`assets/audio/leohpaz/`), provisórios | "8 Magic Attacks", de leohpaz: https://opengameart.org/content/8-magic-attacks | CC-BY 4.0 | sim: leohpaz |
+| Música do menu, da cena final, dos créditos, das memórias, das arenas, do Bosque, das Ruínas e da Boiúna (`assets/audio/music/`: great_mission, doomed, waking_the_devil, spacetime, warped e twists), provisória | "Free Music Pack", de Alexander Ehlers (tricksntraps): https://opengameart.org/content/free-music-pack | CC0 | não |
 | Música do prólogo e da Mina (`assets/audio/music/krakatoa.ogg`), provisória | "Krakatoa", de Kistol: https://opengameart.org/content/krakatoa | CC0 | não |
 | Som de fundo da Mina e das Ruínas (`assets/audio/ambience/dungeon_ambient_1.ogg`), provisório | "Loopable Dungeon Ambience", de JaggedStone: https://opengameart.org/content/loopable-dungeon-ambience | CC0 | não |
 | 36 ícones de botão de teclado e mouse, Xbox e PlayStation (`assets/ui/buttons/`), provisórios | "Input Prompts Pixel 16×", de Kenney: https://opengameart.org/content/input-prompts-pixel-16%C3%97 | CC0 | não (crédito opcional ao Kenney) |
@@ -43,6 +43,8 @@ Feitos para o jogo depois do segundo teste de jogo, provisórios: o som do golpe
 Feitos para o jogo depois do terceiro teste de jogo, provisórios: as texturas das Ruínas no lugar dos losangos e ziguezagues marajoara, a parede de tijolos de terracota lisos (`terracotta_wall`) e o piso de placas grandes de pedra clara (`light_stone_floor`), pintadas por `tools/areas/make_ruins_textures.gd`; as peles do herói, do irmão, da cabeça da Boiúna, do santuário e do cogumelo de esporos (`tools/models/make_scene_skins.gd`); o ícone da espada; a meia-lua do golpe (`world/effects/slash.gdshader`); e os ícones dos botões G e direcional para cima.
 
 Feitos para o jogo depois do quarto teste de jogo, provisórios: o visual das 10 magias (`data/effects/spells/`, gerado por `tools/effects/make_spell_looks.gd`) e os blocos novos do Bosque (musgo claro e escuro, cascalho, leito e água do riacho, tronco, folhas, pedra antiga com musgo, capim, capim alto, samambaia, cipó e flor de luz), com as texturas pintadas do pacote.
+
+Feitos para o jogo na etapa 7, provisórios: os blocos da Grande Prisão (pedra escura, os pisos, as pilastras de jade e a escuridão roxa do fundo, com as texturas pintadas do pacote); o pilar, a porta e a Boiúna (a cabeça e o gomo do corpo), com a pele pintada (`tools/models/make_prison_models.gd`); os moradores de Nhamundá da cena final, com as caixas de Nate (`tools/models/make_scene_skins.gd`); a corrente de luz, as poças de escuridão e a tampa de jade do fosso; a memória 4 e a cena final. Os sons da Boiúna, dos pilares, das correntes e da prisão fechando saem dos pacotes já registrados acima (as criaturas de rubberduck, os impactos de Kenney e a carga de leohpaz), mais graves no banco de sons.
 
 ### Plano de produção
 Assets prontos entram como provisórios logo no começo da produção, para testar os sistemas cedo, e são trocados pelos definitivos aos poucos.
@@ -146,7 +148,7 @@ Mostram a vida pessoal do herói antigo. Cada uma prepara o que vem logo depois:
 ### Outras cenas
 - **Abertura:** Nhamundá à beira do rio. Lobos atacam um rebanho, moradores dão as costas a Nate, e ele vai sozinho para a floresta.
 - **Troca de fase da Boiúna:** ela se solta em parte das correntes, ruge, e a arena se apaga.
-- **Final:** Nate volta à cidade, que agora depende dele, o guardião da passagem.
+- **Final:** Nate volta à cidade, que agora depende dele, o guardião da passagem. Feita no motor: Nate chega a Nhamundá no fim da tarde, pela estrada à beira do rio, e os moradores que tinham dado as costas a ele na abertura agora o esperam na estrada.
 
 ## Áudio
 
@@ -161,7 +163,7 @@ Sete faixas instrumentais, sem letra, com flautas, tambores e marimbas para dar 
 | Ruínas | Ruínas | "Warped" (Alexander Ehlers) |
 | Memórias | as 4 memórias, por cima da música da área | "Doomed" (Alexander Ehlers) |
 | Arenas | todas as arenas, da primeira onda até a vitória, por cima da música da área | "Waking the devil" (Alexander Ehlers) |
-| Boiúna | luta final, mais intensa na fase 2 | `[A DEFINIR na etapa 7]` |
+| Boiúna | luta final, mais intensa na fase 2 | "Twists" (Alexander Ehlers), a mesma nas duas fases |
 
 ### Ambiente
 | Área | Sons de fundo | Som provisório |
@@ -170,7 +172,7 @@ Sete faixas instrumentais, sem letra, com flautas, tambores e marimbas para dar 
 | Mina | gotas, madeira rangendo e vento nos túneis | "Loopable Dungeon Ambience" (JaggedStone), só embaixo da terra |
 | Bosque de Fungos | zumbido grave e fungos pulsando | nenhum ainda |
 | Ruínas | eco e pedra | "Loopable Dungeon Ambience" (JaggedStone) |
-| Grande Prisão | silêncio grave e a respiração da Boiúna | `[A DEFINIR na etapa 7]` |
+| Grande Prisão | silêncio grave e a respiração da Boiúna | "Loopable Dungeon Ambience" (JaggedStone), sem música, e a respiração da Boiúna saindo do fosso antes da luta (um ronco das criaturas de rubberduck, mais grave) |
 
 ### Regras de som
 - Todo ataque inimigo tem som de aviso próprio (`03-regras.md`).

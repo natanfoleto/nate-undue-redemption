@@ -138,48 +138,149 @@
 [ext_resource type="AudioStream" path="res://assets/audio/kenney/back_001.ogg" id="136_k8shx"]
 [ext_resource type="AudioStream" path="res://assets/audio/kenney/open_001.ogg" id="137_lcj1b"]
 [ext_resource type="AudioStream" path="res://assets/audio/kenney/close_001.ogg" id="138_dh6ts"]
+[ext_resource type="AudioStream" path="res://assets/audio/leohpaz/45_Charge_05.wav" id="139_ba6xp"]
+[ext_resource type="AudioStream" path="res://assets/audio/kenney/impactBell_heavy_001.ogg" id="140_b65rp"]
+[ext_resource type="AudioStream" path="res://assets/audio/kenney/impactMetal_heavy_000.ogg" id="141_joiga"]
+[ext_resource type="AudioStream" path="res://assets/audio/kenney/impactMetal_heavy_001.ogg" id="142_t0jak"]
+[ext_resource type="AudioStream" path="res://assets/audio/kenney/impactMetal_heavy_002.ogg" id="143_d03oj"]
+[ext_resource type="AudioStream" path="res://assets/audio/kenney/impactGlass_heavy_000.ogg" id="144_vk5f7"]
+[ext_resource type="AudioStream" path="res://assets/audio/kenney/impactGlass_heavy_001.ogg" id="145_3tvc7"]
+[ext_resource type="AudioStream" path="res://assets/audio/kenney/impactGlass_heavy_002.ogg" id="146_f8kam"]
+[ext_resource type="AudioStream" path="res://assets/audio/kenney/impactBell_heavy_002.ogg" id="147_hpi1x"]
+[ext_resource type="AudioStream" path="res://assets/audio/rubberduck/monster_19.ogg" id="148_xxhv3"]
+[ext_resource type="AudioStream" path="res://assets/audio/rubberduck/monster_20.ogg" id="149_iiuvu"]
+[ext_resource type="AudioStream" path="res://assets/audio/rubberduck/snore_02.ogg" id="150_0aagg"]
+[ext_resource type="AudioStream" path="res://assets/audio/rubberduck/monster_14.ogg" id="151_nhy6v"]
+[ext_resource type="AudioStream" path="res://assets/audio/rubberduck/monster_15.ogg" id="152_kksmw"]
+[ext_resource type="AudioStream" path="res://assets/audio/rubberduck/breath.ogg" id="153_qedkh"]
+[ext_resource type="AudioStream" path="res://assets/audio/rubberduck/grunt_01.ogg" id="154_fr3ub"]
+[ext_resource type="AudioStream" path="res://assets/audio/rubberduck/burp_01.ogg" id="155_cpfj5"]
+[ext_resource type="AudioStream" path="res://assets/audio/rubberduck/burp_02.ogg" id="156_rlxhr"]
+[ext_resource type="AudioStream" path="res://assets/audio/rubberduck/spit_01.ogg" id="157_4xtbg"]
+[ext_resource type="AudioStream" path="res://assets/audio/rubberduck/spit_02.ogg" id="158_qylp3"]
+[ext_resource type="AudioStream" path="res://assets/audio/rubberduck/spit_03.ogg" id="159_xnptj"]
+[ext_resource type="AudioStream" path="res://assets/audio/rubberduck/weird_06.ogg" id="160_dwsdu"]
+[ext_resource type="AudioStream" path="res://assets/audio/rubberduck/monster_17.ogg" id="161_ht5xe"]
 
-[sub_resource type="Resource" id="Resource_is4sg"]
+[sub_resource type="Resource" id="Resource_ba6xp"]
 script = ExtResource("2_o4l24")
-streams = Array[AudioStream]([ExtResource("3_ib4pd")])
-volume_db = -6.0
+streams = Array[AudioStream]([ExtResource("160_dwsdu")])
+volume_db = -2.0
+pitch = 0.55
+pitch_variation = 0.05
+bus = &"Warnings"
 
-[sub_resource type="Resource" id="Resource_xhtqh"]
-script = ExtResource("2_o4l24")
-streams = Array[AudioStream]([ExtResource("4_l4vh2"), ExtResource("5_2epk0"), ExtResource("6_rtyx2"), ExtResource("7_wuw5s"), ExtResource("8_cvsjk")])
-volume_db = -4.0
-pitch_variation = 0.08
-
-[sub_resource type="Resource" id="Resource_rk131"]
+[sub_resource type="Resource" id="Resource_b65rp"]
 script = ExtResource("2_o4l24")
 streams = Array[AudioStream]([ExtResource("9_u08vh"), ExtResource("10_hfgr6"), ExtResource("11_m5tbv"), ExtResource("12_qtn76"), ExtResource("13_lsu3b")])
-volume_db = -2.0
-pitch_variation = 0.08
-
-[sub_resource type="Resource" id="Resource_ngc5l"]
-script = ExtResource("2_o4l24")
-streams = Array[AudioStream]([ExtResource("14_gc4gj"), ExtResource("15_vbt4u"), ExtResource("16_px7pb")])
-volume_db = -3.0
-pitch = 1.3
+pitch = 0.5
 pitch_variation = 0.05
 
-[sub_resource type="Resource" id="Resource_87mx3"]
+[sub_resource type="Resource" id="Resource_joiga"]
 script = ExtResource("2_o4l24")
-streams = Array[AudioStream]([ExtResource("17_l0ur5"), ExtResource("18_xw6wl"), ExtResource("19_fldhg"), ExtResource("20_6u874"), ExtResource("21_vjdo2")])
-volume_db = -16.0
-pitch_variation = 0.1
+streams = Array[AudioStream]([ExtResource("153_qedkh")])
+volume_db = -2.0
+pitch = 1.2
+pitch_variation = 0.05
+bus = &"Warnings"
 
-[sub_resource type="Resource" id="Resource_m7847"]
+[sub_resource type="Resource" id="Resource_t0jak"]
 script = ExtResource("2_o4l24")
-streams = Array[AudioStream]([ExtResource("22_4dcec"), ExtResource("23_2rhxe"), ExtResource("24_ba6xp"), ExtResource("25_b65rp"), ExtResource("26_joiga")])
-volume_db = -14.0
-pitch_variation = 0.1
+streams = Array[AudioStream]([ExtResource("150_0aagg")])
+volume_db = -8.0
+pitch = 0.5
+pitch_variation = 0.05
 
-[sub_resource type="Resource" id="Resource_ob7jo"]
+[sub_resource type="Resource" id="Resource_d03oj"]
 script = ExtResource("2_o4l24")
-streams = Array[AudioStream]([ExtResource("27_t0jak"), ExtResource("28_d03oj"), ExtResource("29_vk5f7"), ExtResource("30_3tvc7"), ExtResource("31_f8kam")])
-volume_db = -16.0
-pitch_variation = 0.1
+streams = Array[AudioStream]([ExtResource("56_iv2yt")])
+volume_db = -4.0
+pitch = 0.5
+pitch_variation = 0.05
+
+[sub_resource type="Resource" id="Resource_vk5f7"]
+script = ExtResource("2_o4l24")
+streams = Array[AudioStream]([ExtResource("151_nhy6v"), ExtResource("152_kksmw")])
+volume_db = -6.0
+pitch = 0.6
+pitch_variation = 0.08
+
+[sub_resource type="Resource" id="Resource_3tvc7"]
+script = ExtResource("2_o4l24")
+streams = Array[AudioStream]([ExtResource("34_iiuvu"), ExtResource("35_0aagg"), ExtResource("36_nhy6v"), ExtResource("37_kksmw"), ExtResource("38_qedkh")])
+pitch = 0.45
+pitch_variation = 0.05
+
+[sub_resource type="Resource" id="Resource_f8kam"]
+script = ExtResource("2_o4l24")
+streams = Array[AudioStream]([ExtResource("161_ht5xe")])
+volume_db = -2.0
+pitch = 0.5
+pitch_variation = 0.05
+bus = &"Warnings"
+
+[sub_resource type="Resource" id="Resource_hpi1x"]
+script = ExtResource("2_o4l24")
+streams = Array[AudioStream]([ExtResource("148_xxhv3"), ExtResource("149_iiuvu")])
+pitch = 0.55
+pitch_variation = 0.03
+
+[sub_resource type="Resource" id="Resource_xxhv3"]
+script = ExtResource("2_o4l24")
+streams = Array[AudioStream]([ExtResource("157_4xtbg"), ExtResource("158_qylp3"), ExtResource("159_xnptj")])
+volume_db = -2.0
+pitch = 0.7
+pitch_variation = 0.08
+
+[sub_resource type="Resource" id="Resource_iiuvu"]
+script = ExtResource("2_o4l24")
+streams = Array[AudioStream]([ExtResource("155_cpfj5"), ExtResource("156_rlxhr")])
+volume_db = -2.0
+pitch = 0.6
+pitch_variation = 0.05
+bus = &"Warnings"
+
+[sub_resource type="Resource" id="Resource_0aagg"]
+script = ExtResource("2_o4l24")
+streams = Array[AudioStream]([ExtResource("117_5h2gu"), ExtResource("118_flh4v"), ExtResource("119_h5cxq")])
+volume_db = -2.0
+pitch = 0.6
+pitch_variation = 0.08
+
+[sub_resource type="Resource" id="Resource_nhy6v"]
+script = ExtResource("2_o4l24")
+streams = Array[AudioStream]([ExtResource("3_ib4pd")])
+pitch = 0.45
+pitch_variation = 0.05
+
+[sub_resource type="Resource" id="Resource_kksmw"]
+script = ExtResource("2_o4l24")
+streams = Array[AudioStream]([ExtResource("154_fr3ub")])
+volume_db = -2.0
+pitch = 0.5
+pitch_variation = 0.05
+bus = &"Warnings"
+
+[sub_resource type="Resource" id="Resource_qedkh"]
+script = ExtResource("2_o4l24")
+streams = Array[AudioStream]([ExtResource("141_joiga"), ExtResource("142_t0jak"), ExtResource("143_d03oj")])
+volume_db = -4.0
+pitch = 0.9
+pitch_variation = 0.05
+
+[sub_resource type="Resource" id="Resource_fr3ub"]
+script = ExtResource("2_o4l24")
+streams = Array[AudioStream]([ExtResource("144_vk5f7"), ExtResource("145_3tvc7"), ExtResource("146_f8kam")])
+volume_db = -2.0
+pitch = 0.6
+pitch_variation = 0.05
+
+[sub_resource type="Resource" id="Resource_atogp"]
+script = ExtResource("2_o4l24")
+streams = Array[AudioStream]([ExtResource("104_eo0vq"), ExtResource("105_yoe10")])
+volume_db = -4.0
+pitch = 1.1
+pitch_variation = 0.05
 
 [sub_resource type="Resource" id="Resource_ud55b"]
 script = ExtResource("2_o4l24")
@@ -187,44 +288,15 @@ streams = Array[AudioStream]([ExtResource("32_hpi1x")])
 volume_db = -5.0
 pitch_variation = 0.06
 
-[sub_resource type="Resource" id="Resource_xsvp6"]
+[sub_resource type="Resource" id="Resource_s1vnc"]
 script = ExtResource("2_o4l24")
-streams = Array[AudioStream]([ExtResource("33_xxhv3")])
-volume_db = -14.0
-pitch = 1.15
-pitch_variation = 0.05
-
-[sub_resource type="Resource" id="Resource_6va6h"]
-script = ExtResource("2_o4l24")
-streams = Array[AudioStream]([ExtResource("34_iiuvu"), ExtResource("35_0aagg"), ExtResource("36_nhy6v"), ExtResource("37_kksmw"), ExtResource("38_qedkh")])
-pitch_variation = 0.08
-
-[sub_resource type="Resource" id="Resource_tchqy"]
-script = ExtResource("2_o4l24")
-streams = Array[AudioStream]([ExtResource("34_iiuvu"), ExtResource("35_0aagg"), ExtResource("36_nhy6v"), ExtResource("37_kksmw"), ExtResource("38_qedkh")])
-volume_db = 2.0
-pitch = 0.7
+streams = Array[AudioStream]([ExtResource("95_usdfh"), ExtResource("96_dpjba"), ExtResource("97_atuw7"), ExtResource("98_ucmkq"), ExtResource("99_opsbo")])
+volume_db = -4.0
+pitch = 0.5
 
 [sub_resource type="Resource" id="Resource_ec0rx"]
 script = ExtResource("2_o4l24")
 streams = Array[AudioStream]([ExtResource("39_fr3ub"), ExtResource("40_cpfj5"), ExtResource("41_rlxhr")])
-volume_db = -8.0
-pitch_variation = 0.1
-
-[sub_resource type="Resource" id="Resource_v4itk"]
-script = ExtResource("2_o4l24")
-streams = Array[AudioStream]([ExtResource("42_4xtbg")])
-volume_db = -6.0
-
-[sub_resource type="Resource" id="Resource_seiw4"]
-script = ExtResource("2_o4l24")
-streams = Array[AudioStream]([ExtResource("43_qylp3"), ExtResource("44_xnptj")])
-volume_db = -4.0
-pitch_variation = 0.08
-
-[sub_resource type="Resource" id="Resource_wkw4y"]
-script = ExtResource("2_o4l24")
-streams = Array[AudioStream]([ExtResource("45_dwsdu"), ExtResource("46_ht5xe"), ExtResource("47_f2qnd"), ExtResource("48_0kapf"), ExtResource("49_7d64m")])
 volume_db = -8.0
 pitch_variation = 0.1
 
@@ -244,130 +316,139 @@ script = ExtResource("2_o4l24")
 streams = Array[AudioStream]([ExtResource("54_pa6dq")])
 volume_db = -6.0
 
-[sub_resource type="Resource" id="Resource_ipjph"]
+[sub_resource type="Resource" id="Resource_s1d53"]
 script = ExtResource("2_o4l24")
-streams = Array[AudioStream]([ExtResource("55_tjrpk")])
-volume_db = -6.0
+streams = Array[AudioStream]([ExtResource("114_sxutc"), ExtResource("115_siibj"), ExtResource("116_7ue2m")])
+pitch = 0.8
 pitch_variation = 0.05
 
-[sub_resource type="Resource" id="Resource_tum5r"]
+[sub_resource type="Resource" id="Resource_43akw"]
 script = ExtResource("2_o4l24")
-streams = Array[AudioStream]([ExtResource("56_iv2yt")])
-volume_db = -6.0
+streams = Array[AudioStream]([ExtResource("112_82rpy"), ExtResource("113_tbqon")])
+volume_db = -4.0
+pitch = 0.8
 pitch_variation = 0.05
 
-[sub_resource type="Resource" id="Resource_ssspj"]
+[sub_resource type="Resource" id="Resource_v6fjd"]
 script = ExtResource("2_o4l24")
-streams = Array[AudioStream]([ExtResource("57_ui7ao")])
+streams = Array[AudioStream]([ExtResource("108_bk74u"), ExtResource("109_5s8qt")])
 volume_db = -4.0
 pitch_variation = 0.05
 
-[sub_resource type="Resource" id="Resource_dhby0"]
+[sub_resource type="Resource" id="Resource_1rj5r"]
 script = ExtResource("2_o4l24")
-streams = Array[AudioStream]([ExtResource("58_3kap7")])
-volume_db = -6.0
-pitch_variation = 0.05
-
-[sub_resource type="Resource" id="Resource_jilwn"]
-script = ExtResource("2_o4l24")
-streams = Array[AudioStream]([ExtResource("56_iv2yt")])
-volume_db = -6.0
-pitch = 0.8
-
-[sub_resource type="Resource" id="Resource_wh68s"]
-script = ExtResource("2_o4l24")
-streams = Array[AudioStream]([ExtResource("55_tjrpk")])
+streams = Array[AudioStream]([ExtResource("111_clxf5")])
 volume_db = -4.0
 pitch = 0.7
+pitch_variation = 0.05
 
-[sub_resource type="Resource" id="Resource_wnner"]
+[sub_resource type="Resource" id="Resource_1fk0o"]
 script = ExtResource("2_o4l24")
-streams = Array[AudioStream]([ExtResource("59_55t4m")])
-volume_db = -6.0
+streams = Array[AudioStream]([ExtResource("110_0ii8a")])
+volume_db = -4.0
+pitch = 0.7
+pitch_variation = 0.05
 
-[sub_resource type="Resource" id="Resource_pvtaf"]
+[sub_resource type="Resource" id="Resource_17g3a"]
 script = ExtResource("2_o4l24")
-streams = Array[AudioStream]([ExtResource("60_hfy0d")])
-volume_db = -6.0
-
-[sub_resource type="Resource" id="Resource_hc4um"]
-script = ExtResource("2_o4l24")
-streams = Array[AudioStream]([ExtResource("56_iv2yt")])
-volume_db = -6.0
+streams = Array[AudioStream]([ExtResource("101_fafg7"), ExtResource("102_mp6jt"), ExtResource("103_qrx3t")])
+volume_db = -2.0
 pitch = 0.6
 
-[sub_resource type="Resource" id="Resource_rsu0r"]
+[sub_resource type="Resource" id="Resource_nkosn"]
 script = ExtResource("2_o4l24")
-streams = Array[AudioStream]([ExtResource("58_3kap7")])
-volume_db = -6.0
+streams = Array[AudioStream]([ExtResource("95_usdfh"), ExtResource("96_dpjba"), ExtResource("97_atuw7"), ExtResource("98_ucmkq"), ExtResource("99_opsbo")])
+volume_db = -4.0
+pitch = 0.6
+pitch_variation = 0.08
+
+[sub_resource type="Resource" id="Resource_vmnvv"]
+script = ExtResource("2_o4l24")
+streams = Array[AudioStream]([ExtResource("100_v3btk")])
 pitch = 0.7
-
-[sub_resource type="Resource" id="Resource_ddpkj"]
-script = ExtResource("2_o4l24")
-streams = Array[AudioStream]([ExtResource("61_8041e"), ExtResource("62_llk5a")])
-volume_db = -2.0
-pitch_variation = 0.08
-bus = &"Warnings"
-
-[sub_resource type="Resource" id="Resource_xefd8"]
-script = ExtResource("2_o4l24")
-streams = Array[AudioStream]([ExtResource("63_8cknc"), ExtResource("64_lse3n"), ExtResource("65_8wvny")])
-volume_db = -4.0
-pitch_variation = 0.08
-
-[sub_resource type="Resource" id="Resource_qdb2b"]
-script = ExtResource("2_o4l24")
-streams = Array[AudioStream]([ExtResource("66_r0iv4"), ExtResource("67_d3p5x"), ExtResource("68_alf4w")])
-volume_db = -6.0
-pitch = 1.1
-pitch_variation = 0.08
-
-[sub_resource type="Resource" id="Resource_48fs3"]
-script = ExtResource("2_o4l24")
-streams = Array[AudioStream]([ExtResource("69_ub5l5")])
-volume_db = -4.0
 pitch_variation = 0.05
 
-[sub_resource type="Resource" id="Resource_vnawp"]
+[sub_resource type="Resource" id="Resource_b8nev"]
 script = ExtResource("2_o4l24")
-streams = Array[AudioStream]([ExtResource("70_vbf5n")])
-volume_db = -4.0
+streams = Array[AudioStream]([ExtResource("95_usdfh"), ExtResource("96_dpjba"), ExtResource("97_atuw7"), ExtResource("98_ucmkq"), ExtResource("99_opsbo")])
+pitch = 0.7
+pitch_variation = 0.05
 
-[sub_resource type="Resource" id="Resource_adaea"]
+[sub_resource type="Resource" id="Resource_32a7c"]
 script = ExtResource("2_o4l24")
-streams = Array[AudioStream]([ExtResource("71_5yo08"), ExtResource("72_2nsk3")])
+streams = Array[AudioStream]([ExtResource("92_xk4fx"), ExtResource("93_tlv6c"), ExtResource("94_4th6y")])
 volume_db = -2.0
-pitch = 0.8
+pitch = 0.6
 pitch_variation = 0.05
 bus = &"Warnings"
 
-[sub_resource type="Resource" id="Resource_mw7ru"]
+[sub_resource type="Resource" id="Resource_xsvp6"]
 script = ExtResource("2_o4l24")
-streams = Array[AudioStream]([ExtResource("73_m0i0w"), ExtResource("74_fejmj")])
+streams = Array[AudioStream]([ExtResource("33_xxhv3")])
+volume_db = -14.0
+pitch = 1.15
+pitch_variation = 0.05
+
+[sub_resource type="Resource" id="Resource_xhtqh"]
+script = ExtResource("2_o4l24")
+streams = Array[AudioStream]([ExtResource("4_l4vh2"), ExtResource("5_2epk0"), ExtResource("6_rtyx2"), ExtResource("7_wuw5s"), ExtResource("8_cvsjk")])
 volume_db = -4.0
 pitch_variation = 0.08
 
-[sub_resource type="Resource" id="Resource_kugdk"]
+[sub_resource type="Resource" id="Resource_ngc5l"]
 script = ExtResource("2_o4l24")
-streams = Array[AudioStream]([ExtResource("75_404p7"), ExtResource("76_5rhyq"), ExtResource("77_xu80h"), ExtResource("78_rcmmx"), ExtResource("79_ayxo4")])
-volume_db = -4.0
-pitch = 1.2
-pitch_variation = 0.1
-
-[sub_resource type="Resource" id="Resource_4n6my"]
-script = ExtResource("2_o4l24")
-streams = Array[AudioStream]([ExtResource("80_a7ijd"), ExtResource("81_sh1aq"), ExtResource("82_eyl2n"), ExtResource("83_hg3b6"), ExtResource("84_8qim2")])
-volume_db = -2.0
-pitch = 1.1
+streams = Array[AudioStream]([ExtResource("14_gc4gj"), ExtResource("15_vbt4u"), ExtResource("16_px7pb")])
+volume_db = -3.0
+pitch = 1.3
 pitch_variation = 0.05
 
-[sub_resource type="Resource" id="Resource_bolwb"]
+[sub_resource type="Resource" id="Resource_rk131"]
 script = ExtResource("2_o4l24")
-streams = Array[AudioStream]([ExtResource("85_roomp"), ExtResource("86_vt6uv"), ExtResource("87_anh4u")])
+streams = Array[AudioStream]([ExtResource("9_u08vh"), ExtResource("10_hfgr6"), ExtResource("11_m5tbv"), ExtResource("12_qtn76"), ExtResource("13_lsu3b")])
+volume_db = -2.0
+pitch_variation = 0.08
+
+[sub_resource type="Resource" id="Resource_wynsy"]
+script = ExtResource("2_o4l24")
+streams = Array[AudioStream]([ExtResource("106_1yent")])
+volume_db = -4.0
+
+[sub_resource type="Resource" id="Resource_te2s4"]
+script = ExtResource("2_o4l24")
+streams = Array[AudioStream]([ExtResource("108_bk74u"), ExtResource("109_5s8qt")])
 volume_db = -4.0
 pitch = 0.9
 pitch_variation = 0.05
-bus = &"Warnings"
+
+[sub_resource type="Resource" id="Resource_6u5rf"]
+script = ExtResource("2_o4l24")
+streams = Array[AudioStream]([ExtResource("130_n5bna"), ExtResource("131_n8cjw"), ExtResource("132_ggmqw")])
+volume_db = -4.0
+pitch_variation = 0.05
+
+[sub_resource type="Resource" id="Resource_tchqy"]
+script = ExtResource("2_o4l24")
+streams = Array[AudioStream]([ExtResource("34_iiuvu"), ExtResource("35_0aagg"), ExtResource("36_nhy6v"), ExtResource("37_kksmw"), ExtResource("38_qedkh")])
+volume_db = 2.0
+pitch = 0.7
+
+[sub_resource type="Resource" id="Resource_6va6h"]
+script = ExtResource("2_o4l24")
+streams = Array[AudioStream]([ExtResource("34_iiuvu"), ExtResource("35_0aagg"), ExtResource("36_nhy6v"), ExtResource("37_kksmw"), ExtResource("38_qedkh")])
+pitch_variation = 0.08
+
+[sub_resource type="Resource" id="Resource_tjmje"]
+script = ExtResource("2_o4l24")
+streams = Array[AudioStream]([ExtResource("91_65kgj")])
+volume_db = -4.0
+pitch = 0.9
+pitch_variation = 0.05
+
+[sub_resource type="Resource" id="Resource_ixllj"]
+script = ExtResource("2_o4l24")
+streams = Array[AudioStream]([ExtResource("89_vamfi"), ExtResource("90_6jrgb")])
+volume_db = -6.0
+pitch_variation = 0.08
 
 [sub_resource type="Resource" id="Resource_e2n2d"]
 script = ExtResource("2_o4l24")
@@ -383,126 +464,40 @@ pitch = 0.6
 pitch_variation = 0.05
 bus = &"Warnings"
 
-[sub_resource type="Resource" id="Resource_ixllj"]
+[sub_resource type="Resource" id="Resource_bolwb"]
 script = ExtResource("2_o4l24")
-streams = Array[AudioStream]([ExtResource("89_vamfi"), ExtResource("90_6jrgb")])
-volume_db = -6.0
-pitch_variation = 0.08
-
-[sub_resource type="Resource" id="Resource_tjmje"]
-script = ExtResource("2_o4l24")
-streams = Array[AudioStream]([ExtResource("91_65kgj")])
+streams = Array[AudioStream]([ExtResource("85_roomp"), ExtResource("86_vt6uv"), ExtResource("87_anh4u")])
 volume_db = -4.0
 pitch = 0.9
-pitch_variation = 0.05
-
-[sub_resource type="Resource" id="Resource_32a7c"]
-script = ExtResource("2_o4l24")
-streams = Array[AudioStream]([ExtResource("92_xk4fx"), ExtResource("93_tlv6c"), ExtResource("94_4th6y")])
-volume_db = -2.0
-pitch = 0.6
 pitch_variation = 0.05
 bus = &"Warnings"
 
-[sub_resource type="Resource" id="Resource_b8nev"]
+[sub_resource type="Resource" id="Resource_cpfj5"]
 script = ExtResource("2_o4l24")
-streams = Array[AudioStream]([ExtResource("95_usdfh"), ExtResource("96_dpjba"), ExtResource("97_atuw7"), ExtResource("98_ucmkq"), ExtResource("99_opsbo")])
-pitch = 0.7
-pitch_variation = 0.05
+streams = Array[AudioStream]([ExtResource("139_ba6xp")])
+volume_db = -6.0
 
-[sub_resource type="Resource" id="Resource_vmnvv"]
+[sub_resource type="Resource" id="Resource_rlxhr"]
 script = ExtResource("2_o4l24")
-streams = Array[AudioStream]([ExtResource("100_v3btk")])
-pitch = 0.7
-pitch_variation = 0.05
-
-[sub_resource type="Resource" id="Resource_nkosn"]
-script = ExtResource("2_o4l24")
-streams = Array[AudioStream]([ExtResource("95_usdfh"), ExtResource("96_dpjba"), ExtResource("97_atuw7"), ExtResource("98_ucmkq"), ExtResource("99_opsbo")])
-volume_db = -4.0
-pitch = 0.6
-pitch_variation = 0.08
-
-[sub_resource type="Resource" id="Resource_17g3a"]
-script = ExtResource("2_o4l24")
-streams = Array[AudioStream]([ExtResource("101_fafg7"), ExtResource("102_mp6jt"), ExtResource("103_qrx3t")])
+streams = Array[AudioStream]([ExtResource("140_b65rp")])
 volume_db = -2.0
-pitch = 0.6
+pitch = 1.3
 
-[sub_resource type="Resource" id="Resource_atogp"]
+[sub_resource type="Resource" id="Resource_4xtbg"]
 script = ExtResource("2_o4l24")
-streams = Array[AudioStream]([ExtResource("104_eo0vq"), ExtResource("105_yoe10")])
-volume_db = -4.0
-pitch = 1.1
-pitch_variation = 0.05
+streams = Array[AudioStream]([ExtResource("147_hpi1x")])
+pitch = 0.45
 
-[sub_resource type="Resource" id="Resource_wynsy"]
+[sub_resource type="Resource" id="Resource_wkw4y"]
 script = ExtResource("2_o4l24")
-streams = Array[AudioStream]([ExtResource("106_1yent")])
-volume_db = -4.0
+streams = Array[AudioStream]([ExtResource("45_dwsdu"), ExtResource("46_ht5xe"), ExtResource("47_f2qnd"), ExtResource("48_0kapf"), ExtResource("49_7d64m")])
+volume_db = -8.0
+pitch_variation = 0.1
 
-[sub_resource type="Resource" id="Resource_8n288"]
+[sub_resource type="Resource" id="Resource_t4ur5"]
 script = ExtResource("2_o4l24")
-streams = Array[AudioStream]([ExtResource("107_lryqc")])
-volume_db = -4.0
-
-[sub_resource type="Resource" id="Resource_te2s4"]
-script = ExtResource("2_o4l24")
-streams = Array[AudioStream]([ExtResource("108_bk74u"), ExtResource("109_5s8qt")])
-volume_db = -4.0
-pitch = 0.9
-pitch_variation = 0.05
-
-[sub_resource type="Resource" id="Resource_1fk0o"]
-script = ExtResource("2_o4l24")
-streams = Array[AudioStream]([ExtResource("110_0ii8a")])
-volume_db = -4.0
-pitch = 0.7
-pitch_variation = 0.05
-
-[sub_resource type="Resource" id="Resource_1rj5r"]
-script = ExtResource("2_o4l24")
-streams = Array[AudioStream]([ExtResource("111_clxf5")])
-volume_db = -4.0
-pitch = 0.7
-pitch_variation = 0.05
-
-[sub_resource type="Resource" id="Resource_s1vnc"]
-script = ExtResource("2_o4l24")
-streams = Array[AudioStream]([ExtResource("95_usdfh"), ExtResource("96_dpjba"), ExtResource("97_atuw7"), ExtResource("98_ucmkq"), ExtResource("99_opsbo")])
-volume_db = -4.0
-pitch = 0.5
-
-[sub_resource type="Resource" id="Resource_43akw"]
-script = ExtResource("2_o4l24")
-streams = Array[AudioStream]([ExtResource("112_82rpy"), ExtResource("113_tbqon")])
-volume_db = -4.0
+streams = Array[AudioStream]([ExtResource("34_iiuvu"), ExtResource("35_0aagg"), ExtResource("36_nhy6v"), ExtResource("37_kksmw"), ExtResource("38_qedkh")])
 pitch = 0.8
-pitch_variation = 0.05
-
-[sub_resource type="Resource" id="Resource_s1d53"]
-script = ExtResource("2_o4l24")
-streams = Array[AudioStream]([ExtResource("114_sxutc"), ExtResource("115_siibj"), ExtResource("116_7ue2m")])
-pitch = 0.8
-pitch_variation = 0.05
-
-[sub_resource type="Resource" id="Resource_v6fjd"]
-script = ExtResource("2_o4l24")
-streams = Array[AudioStream]([ExtResource("108_bk74u"), ExtResource("109_5s8qt")])
-volume_db = -4.0
-pitch_variation = 0.05
-
-[sub_resource type="Resource" id="Resource_y044j"]
-script = ExtResource("2_o4l24")
-streams = Array[AudioStream]([ExtResource("95_usdfh"), ExtResource("96_dpjba"), ExtResource("97_atuw7"), ExtResource("98_ucmkq"), ExtResource("99_opsbo")])
-volume_db = -4.0
-pitch = 0.6
-pitch_variation = 0.05
-
-[sub_resource type="Resource" id="Resource_xu5n6"]
-script = ExtResource("2_o4l24")
-streams = Array[AudioStream]([ExtResource("95_usdfh"), ExtResource("96_dpjba"), ExtResource("97_atuw7"), ExtResource("98_ucmkq"), ExtResource("99_opsbo")])
-pitch = 0.9
 pitch_variation = 0.05
 
 [sub_resource type="Resource" id="Resource_15gsj"]
@@ -512,39 +507,6 @@ volume_db = -2.0
 pitch = 0.6
 pitch_variation = 0.05
 bus = &"Warnings"
-
-[sub_resource type="Resource" id="Resource_t4ur5"]
-script = ExtResource("2_o4l24")
-streams = Array[AudioStream]([ExtResource("34_iiuvu"), ExtResource("35_0aagg"), ExtResource("36_nhy6v"), ExtResource("37_kksmw"), ExtResource("38_qedkh")])
-pitch = 0.8
-pitch_variation = 0.05
-
-[sub_resource type="Resource" id="Resource_711k3"]
-script = ExtResource("2_o4l24")
-streams = Array[AudioStream]([ExtResource("117_5h2gu"), ExtResource("118_flh4v"), ExtResource("119_h5cxq")])
-volume_db = -4.0
-pitch_variation = 0.08
-bus = &"Warnings"
-
-[sub_resource type="Resource" id="Resource_l0ds3"]
-script = ExtResource("2_o4l24")
-streams = Array[AudioStream]([ExtResource("120_m1udb"), ExtResource("121_0m1go")])
-volume_db = -4.0
-pitch_variation = 0.08
-
-[sub_resource type="Resource" id="Resource_p0hgf"]
-script = ExtResource("2_o4l24")
-streams = Array[AudioStream]([ExtResource("109_5s8qt")])
-volume_db = -10.0
-pitch = 0.8
-pitch_variation = 0.05
-bus = &"Warnings"
-
-[sub_resource type="Resource" id="Resource_kvkxo"]
-script = ExtResource("2_o4l24")
-streams = Array[AudioStream]([ExtResource("122_tahi4"), ExtResource("123_pb1ip"), ExtResource("124_nvfsu"), ExtResource("125_x1diq"), ExtResource("126_r77hv")])
-volume_db = -10.0
-pitch_variation = 0.05
 
 [sub_resource type="Resource" id="Resource_0t76i"]
 script = ExtResource("2_o4l24")
@@ -561,36 +523,162 @@ script = ExtResource("2_o4l24")
 streams = Array[AudioStream]([ExtResource("129_r3bei")])
 volume_db = -4.0
 
-[sub_resource type="Resource" id="Resource_6u5rf"]
-script = ExtResource("2_o4l24")
-streams = Array[AudioStream]([ExtResource("130_n5bna"), ExtResource("131_n8cjw"), ExtResource("132_ggmqw")])
-volume_db = -4.0
-pitch_variation = 0.05
-
 [sub_resource type="Resource" id="Resource_ehifq"]
 script = ExtResource("2_o4l24")
 streams = Array[AudioStream]([ExtResource("133_eljhe")])
 volume_db = -2.0
 pitch = 0.9
 
-[sub_resource type="Resource" id="Resource_gpwod"]
+[sub_resource type="Resource" id="Resource_seiw4"]
 script = ExtResource("2_o4l24")
-streams = Array[AudioStream]([ExtResource("134_ljqef")])
-volume_db = -12.0
+streams = Array[AudioStream]([ExtResource("43_qylp3"), ExtResource("44_xnptj")])
+volume_db = -4.0
+pitch_variation = 0.08
 
-[sub_resource type="Resource" id="Resource_rcocf"]
+[sub_resource type="Resource" id="Resource_v4itk"]
 script = ExtResource("2_o4l24")
-streams = Array[AudioStream]([ExtResource("135_01sgi")])
-volume_db = -8.0
+streams = Array[AudioStream]([ExtResource("42_4xtbg")])
+volume_db = -6.0
+
+[sub_resource type="Resource" id="Resource_4n6my"]
+script = ExtResource("2_o4l24")
+streams = Array[AudioStream]([ExtResource("80_a7ijd"), ExtResource("81_sh1aq"), ExtResource("82_eyl2n"), ExtResource("83_hg3b6"), ExtResource("84_8qim2")])
+volume_db = -2.0
+pitch = 1.1
+pitch_variation = 0.05
+
+[sub_resource type="Resource" id="Resource_kugdk"]
+script = ExtResource("2_o4l24")
+streams = Array[AudioStream]([ExtResource("75_404p7"), ExtResource("76_5rhyq"), ExtResource("77_xu80h"), ExtResource("78_rcmmx"), ExtResource("79_ayxo4")])
+volume_db = -4.0
+pitch = 1.2
+pitch_variation = 0.1
+
+[sub_resource type="Resource" id="Resource_mw7ru"]
+script = ExtResource("2_o4l24")
+streams = Array[AudioStream]([ExtResource("73_m0i0w"), ExtResource("74_fejmj")])
+volume_db = -4.0
+pitch_variation = 0.08
+
+[sub_resource type="Resource" id="Resource_adaea"]
+script = ExtResource("2_o4l24")
+streams = Array[AudioStream]([ExtResource("71_5yo08"), ExtResource("72_2nsk3")])
+volume_db = -2.0
+pitch = 0.8
+pitch_variation = 0.05
+bus = &"Warnings"
+
+[sub_resource type="Resource" id="Resource_kvkxo"]
+script = ExtResource("2_o4l24")
+streams = Array[AudioStream]([ExtResource("122_tahi4"), ExtResource("123_pb1ip"), ExtResource("124_nvfsu"), ExtResource("125_x1diq"), ExtResource("126_r77hv")])
+volume_db = -10.0
+pitch_variation = 0.05
+
+[sub_resource type="Resource" id="Resource_p0hgf"]
+script = ExtResource("2_o4l24")
+streams = Array[AudioStream]([ExtResource("109_5s8qt")])
+volume_db = -10.0
+pitch = 0.8
+pitch_variation = 0.05
+bus = &"Warnings"
+
+[sub_resource type="Resource" id="Resource_dhby0"]
+script = ExtResource("2_o4l24")
+streams = Array[AudioStream]([ExtResource("58_3kap7")])
+volume_db = -6.0
+pitch_variation = 0.05
+
+[sub_resource type="Resource" id="Resource_ssspj"]
+script = ExtResource("2_o4l24")
+streams = Array[AudioStream]([ExtResource("57_ui7ao")])
+volume_db = -4.0
+pitch_variation = 0.05
+
+[sub_resource type="Resource" id="Resource_ipjph"]
+script = ExtResource("2_o4l24")
+streams = Array[AudioStream]([ExtResource("55_tjrpk")])
+volume_db = -6.0
+pitch_variation = 0.05
+
+[sub_resource type="Resource" id="Resource_wnner"]
+script = ExtResource("2_o4l24")
+streams = Array[AudioStream]([ExtResource("59_55t4m")])
+volume_db = -6.0
+
+[sub_resource type="Resource" id="Resource_pvtaf"]
+script = ExtResource("2_o4l24")
+streams = Array[AudioStream]([ExtResource("60_hfy0d")])
+volume_db = -6.0
+
+[sub_resource type="Resource" id="Resource_wh68s"]
+script = ExtResource("2_o4l24")
+streams = Array[AudioStream]([ExtResource("55_tjrpk")])
+volume_db = -4.0
+pitch = 0.7
+
+[sub_resource type="Resource" id="Resource_hc4um"]
+script = ExtResource("2_o4l24")
+streams = Array[AudioStream]([ExtResource("56_iv2yt")])
+volume_db = -6.0
+pitch = 0.6
+
+[sub_resource type="Resource" id="Resource_rsu0r"]
+script = ExtResource("2_o4l24")
+streams = Array[AudioStream]([ExtResource("58_3kap7")])
+volume_db = -6.0
+pitch = 0.7
+
+[sub_resource type="Resource" id="Resource_jilwn"]
+script = ExtResource("2_o4l24")
+streams = Array[AudioStream]([ExtResource("56_iv2yt")])
+volume_db = -6.0
+pitch = 0.8
+
+[sub_resource type="Resource" id="Resource_tum5r"]
+script = ExtResource("2_o4l24")
+streams = Array[AudioStream]([ExtResource("56_iv2yt")])
+volume_db = -6.0
+pitch_variation = 0.05
+
+[sub_resource type="Resource" id="Resource_l0ds3"]
+script = ExtResource("2_o4l24")
+streams = Array[AudioStream]([ExtResource("120_m1udb"), ExtResource("121_0m1go")])
+volume_db = -4.0
+pitch_variation = 0.08
+
+[sub_resource type="Resource" id="Resource_711k3"]
+script = ExtResource("2_o4l24")
+streams = Array[AudioStream]([ExtResource("117_5h2gu"), ExtResource("118_flh4v"), ExtResource("119_h5cxq")])
+volume_db = -4.0
+pitch_variation = 0.08
+bus = &"Warnings"
+
+[sub_resource type="Resource" id="Resource_87mx3"]
+script = ExtResource("2_o4l24")
+streams = Array[AudioStream]([ExtResource("17_l0ur5"), ExtResource("18_xw6wl"), ExtResource("19_fldhg"), ExtResource("20_6u874"), ExtResource("21_vjdo2")])
+volume_db = -16.0
+pitch_variation = 0.1
+
+[sub_resource type="Resource" id="Resource_ob7jo"]
+script = ExtResource("2_o4l24")
+streams = Array[AudioStream]([ExtResource("27_t0jak"), ExtResource("28_d03oj"), ExtResource("29_vk5f7"), ExtResource("30_3tvc7"), ExtResource("31_f8kam")])
+volume_db = -16.0
+pitch_variation = 0.1
+
+[sub_resource type="Resource" id="Resource_m7847"]
+script = ExtResource("2_o4l24")
+streams = Array[AudioStream]([ExtResource("22_4dcec"), ExtResource("23_2rhxe"), ExtResource("24_ba6xp"), ExtResource("25_b65rp"), ExtResource("26_joiga")])
+volume_db = -14.0
+pitch_variation = 0.1
+
+[sub_resource type="Resource" id="Resource_is4sg"]
+script = ExtResource("2_o4l24")
+streams = Array[AudioStream]([ExtResource("3_ib4pd")])
+volume_db = -6.0
 
 [sub_resource type="Resource" id="Resource_nhbba"]
 script = ExtResource("2_o4l24")
 streams = Array[AudioStream]([ExtResource("136_k8shx")])
-volume_db = -8.0
-
-[sub_resource type="Resource" id="Resource_jj3yv"]
-script = ExtResource("2_o4l24")
-streams = Array[AudioStream]([ExtResource("137_lcj1b")])
 volume_db = -8.0
 
 [sub_resource type="Resource" id="Resource_t7a58"]
@@ -598,9 +686,96 @@ script = ExtResource("2_o4l24")
 streams = Array[AudioStream]([ExtResource("138_dh6ts")])
 volume_db = -8.0
 
+[sub_resource type="Resource" id="Resource_rcocf"]
+script = ExtResource("2_o4l24")
+streams = Array[AudioStream]([ExtResource("135_01sgi")])
+volume_db = -8.0
+
+[sub_resource type="Resource" id="Resource_gpwod"]
+script = ExtResource("2_o4l24")
+streams = Array[AudioStream]([ExtResource("134_ljqef")])
+volume_db = -12.0
+
+[sub_resource type="Resource" id="Resource_jj3yv"]
+script = ExtResource("2_o4l24")
+streams = Array[AudioStream]([ExtResource("137_lcj1b")])
+volume_db = -8.0
+
+[sub_resource type="Resource" id="Resource_8n288"]
+script = ExtResource("2_o4l24")
+streams = Array[AudioStream]([ExtResource("107_lryqc")])
+volume_db = -4.0
+
+[sub_resource type="Resource" id="Resource_xu5n6"]
+script = ExtResource("2_o4l24")
+streams = Array[AudioStream]([ExtResource("95_usdfh"), ExtResource("96_dpjba"), ExtResource("97_atuw7"), ExtResource("98_ucmkq"), ExtResource("99_opsbo")])
+pitch = 0.9
+pitch_variation = 0.05
+
+[sub_resource type="Resource" id="Resource_y044j"]
+script = ExtResource("2_o4l24")
+streams = Array[AudioStream]([ExtResource("95_usdfh"), ExtResource("96_dpjba"), ExtResource("97_atuw7"), ExtResource("98_ucmkq"), ExtResource("99_opsbo")])
+volume_db = -4.0
+pitch = 0.6
+pitch_variation = 0.05
+
+[sub_resource type="Resource" id="Resource_48fs3"]
+script = ExtResource("2_o4l24")
+streams = Array[AudioStream]([ExtResource("69_ub5l5")])
+volume_db = -4.0
+pitch_variation = 0.05
+
+[sub_resource type="Resource" id="Resource_vnawp"]
+script = ExtResource("2_o4l24")
+streams = Array[AudioStream]([ExtResource("70_vbf5n")])
+volume_db = -4.0
+
+[sub_resource type="Resource" id="Resource_qdb2b"]
+script = ExtResource("2_o4l24")
+streams = Array[AudioStream]([ExtResource("66_r0iv4"), ExtResource("67_d3p5x"), ExtResource("68_alf4w")])
+volume_db = -6.0
+pitch = 1.1
+pitch_variation = 0.08
+
+[sub_resource type="Resource" id="Resource_xefd8"]
+script = ExtResource("2_o4l24")
+streams = Array[AudioStream]([ExtResource("63_8cknc"), ExtResource("64_lse3n"), ExtResource("65_8wvny")])
+volume_db = -4.0
+pitch_variation = 0.08
+
+[sub_resource type="Resource" id="Resource_ddpkj"]
+script = ExtResource("2_o4l24")
+streams = Array[AudioStream]([ExtResource("61_8041e"), ExtResource("62_llk5a")])
+volume_db = -2.0
+pitch_variation = 0.08
+bus = &"Warnings"
+
+[sub_resource type="Resource" id="Resource_qylp3"]
+script = ExtResource("2_o4l24")
+streams = Array[AudioStream]([ExtResource("114_sxutc"), ExtResource("115_siibj"), ExtResource("116_7ue2m")])
+volume_db = -6.0
+pitch = 0.75
+pitch_variation = 0.05
+
 [resource]
 script = ExtResource("1_umjyu")
 sounds = Dictionary[StringName, ExtResource("2_o4l24")]({
+&"boiuna_ambush_warning": SubResource("Resource_ba6xp"),
+&"boiuna_bite": SubResource("Resource_b65rp"),
+&"boiuna_bite_warning": SubResource("Resource_joiga"),
+&"boiuna_breath": SubResource("Resource_t0jak"),
+&"boiuna_emerge": SubResource("Resource_d03oj"),
+&"boiuna_hurt": SubResource("Resource_vk5f7"),
+&"boiuna_ring": SubResource("Resource_3tvc7"),
+&"boiuna_ring_warning": SubResource("Resource_f8kam"),
+&"boiuna_roar": SubResource("Resource_hpi1x"),
+&"boiuna_spit": SubResource("Resource_xxhv3"),
+&"boiuna_spit_warning": SubResource("Resource_iiuvu"),
+&"boiuna_splash": SubResource("Resource_0aagg"),
+&"boiuna_tail": SubResource("Resource_nhy6v"),
+&"boiuna_tail_warning": SubResource("Resource_kksmw"),
+&"chain_bind": SubResource("Resource_qedkh"),
+&"chain_break": SubResource("Resource_fr3ub"),
 &"chest_open": SubResource("Resource_atogp"),
 &"dash": SubResource("Resource_ud55b"),
 &"door_open": SubResource("Resource_s1vnc"),
@@ -622,6 +797,7 @@ sounds = Dictionary[StringName, ExtResource("2_o4l24")]({
 &"hit": SubResource("Resource_xhtqh"),
 &"hit_critical": SubResource("Resource_ngc5l"),
 &"hit_heavy": SubResource("Resource_rk131"),
+&"immune": SubResource("Resource_qylp3"),
 &"item_found": SubResource("Resource_wynsy"),
 &"lever": SubResource("Resource_te2s4"),
 &"mural_open": SubResource("Resource_6u5rf"),
@@ -632,6 +808,9 @@ sounds = Dictionary[StringName, ExtResource("2_o4l24")]({
 &"necromancer_strike": SubResource("Resource_e2n2d"),
 &"necromancer_summon": SubResource("Resource_nt4r7"),
 &"necromancer_warning": SubResource("Resource_bolwb"),
+&"pillar_charge": SubResource("Resource_cpfj5"),
+&"pillar_on": SubResource("Resource_rlxhr"),
+&"prison_close": SubResource("Resource_4xtbg"),
 &"projectile_wall": SubResource("Resource_wkw4y"),
 &"rock_fall": SubResource("Resource_t4ur5"),
 &"rock_warning": SubResource("Resource_15gsj"),

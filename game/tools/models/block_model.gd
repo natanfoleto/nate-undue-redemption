@@ -25,6 +25,7 @@ const MODEL_LAYER := 2
 		rebuild()
 
 var _parts: Dictionary[StringName, Node3D] = {}
+var _boxes: Dictionary[StringName, BoxData] = {}
 var _rest_positions: Dictionary[StringName, Vector3] = {}
 var _material: StandardMaterial3D
 var _height := 0.0
@@ -43,6 +44,7 @@ func rebuild() -> void:
 		if is_instance_valid(part):
 			part.free()
 	_parts.clear()
+	_boxes.clear()
 	_rest_positions.clear()
 	_material = null
 	_height = 0.0
@@ -70,6 +72,7 @@ func rebuild() -> void:
 			push_warning("Modelo %s: a caixa \"%s\" se repete e foi ignorada." % [model.resource_path, key])
 			continue
 		boxes[key] = box
+		_boxes[key] = box
 		_parts[key] = _make_part(box, key, _material, texture_size)
 		_height = maxf(_height, (box.position.y + box.size.y) / BoxData.PIXELS_PER_BLOCK)
 
@@ -103,6 +106,16 @@ func get_part(part_name: StringName) -> Node3D:
 	return _parts.get(part_name)
 
 
+## O centro da caixa de uma parte, no mundo (o cristal do pilar, o muiraquitã no peito de Nate). Sem a parte, a
+## origem do modelo.
+func part_center(part_name: StringName) -> Vector3:
+	var part := _parts.get(part_name) as Node3D
+	var box := _boxes.get(part_name) as BoxData
+	if part == null or box == null:
+		return global_position
+	return part.global_transform * ((box.position - box.pivot + Vector3(box.size) / 2.0) / BoxData.PIXELS_PER_BLOCK)
+
+
 ## Brilho branco do aviso de golpe comum (10-arte-audio), de 0 (nenhum) a 1. Outra cor serve para o que
 ## brilha sozinho (a Bola de Fogo, a praga).
 func set_glow(strength: float, color := Color.WHITE) -> void:
@@ -113,6 +126,21 @@ func set_glow(strength: float, color := Color.WHITE) -> void:
 	_material.emission_energy_multiplier = strength
 
 
+## Transparência do modelo inteiro, de 0 a 1 (a Boiúna na frente de Nate fica meio transparente, para ele não
+## sumir atrás dela).
+func set_alpha(alpha: float) -> void:
+	if _material == null:
+		return
+	var materials: Array[StandardMaterial3D] = [_material]
+	for part in _parts.values():
+		var mesh_part := part as MeshInstance3D
+		if mesh_part and mesh_part.material_override != _material and mesh_part.material_override is StandardMaterial3D:
+			materials.append(mesh_part.material_override)
+	for material in materials:
+		material.transparency = BaseMaterial3D.TRANSPARENCY_ALPHA_DEPTH_PRE_PASS if alpha < 1.0 else BaseMaterial3D.TRANSPARENCY_DISABLED
+		material.albedo_color.a = alpha
+
+
 ## Brilho próprio de uma parte, na cor dada (o muiraquitã aceso), de 0 (nenhum) a 1 ou mais.
 func set_part_glow(part_name: StringName, color: Color, strength: float) -> void:
 	var part := _parts.get(part_name) as MeshInstance3D
@@ -121,11 +149,14 @@ func set_part_glow(part_name: StringName, color: Color, strength: float) -> void
 	if strength <= 0.0:
 		part.material_override = _material
 		return
-	var material := _material.duplicate() as StandardMaterial3D
+	# A parte que já brilha reaproveita o material dela: o brilho pode mudar a cada quadro (o cristal pulsando).
+	var material := part.material_override as StandardMaterial3D
+	if material == null or material == _material:
+		material = _material.duplicate() as StandardMaterial3D
+		part.material_override = material
 	material.emission_enabled = true
 	material.emission = color
 	material.emission_energy_multiplier = strength
-	part.material_override = material
 
 
 ## Põe as partes na pose: o giro e o deslocamento contam a partir do repouso.

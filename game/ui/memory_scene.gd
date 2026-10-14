@@ -16,6 +16,8 @@ signal finished
 ## Quem anda pela cena (a memória 2), de um ponto ao outro.
 @export var walker: Node3D
 @export var walker_to: Marker3D
+## Música da cena, por cima da da área; vazia, a das memórias (a cena final usa o tema principal).
+@export var music: AudioStream
 
 var _can_skip := false
 var _ending := false
@@ -33,7 +35,7 @@ func _ready() -> void:
 	_view.texture = _stage_view.get_texture()
 	_fit_view()
 	get_viewport().size_changed.connect(_fit_view)
-	AudioManager.push_music(AudioManager.rules.memory_music)
+	AudioManager.push_music(music if music else AudioManager.rules.memory_music)
 	_camera.global_transform = camera_from.global_transform
 	_fade.color.a = 1.0
 	var tween := create_tween().set_parallel()

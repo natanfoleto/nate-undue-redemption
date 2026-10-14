@@ -1,0 +1,36 @@
+[gd_resource type="Resource" script_class="ModelData" format=3]
+
+[ext_resource type="Script" path="res://tools/models/box_data.gd" id="1_12i7w"]
+[ext_resource type="Script" path="res://tools/models/model_data.gd" id="2_qmflo"]
+[ext_resource type="Texture2D" path="res://assets/textures/prison_door_slab_skin.png" id="3_oa3ex"]
+
+[sub_resource type="Resource" id="Resource_eswfu"]
+resource_name = "slab"
+script = ExtResource("1_12i7w")
+name = &"slab"
+size = Vector3i(64, 38, 6)
+position = Vector3(-32, 0, -3)
+color = Color(0.36078432, 0.36078432, 0.4392157, 1)
+
+[sub_resource type="Resource" id="Resource_s1xcj"]
+resource_name = "emblem"
+script = ExtResource("1_12i7w")
+name = &"emblem"
+size = Vector3i(16, 14, 1)
+position = Vector3(-8, 12, -4)
+texture_offset = Vector2i(140, 0)
+color = Color(0.36078432, 0.36078432, 0.4392157, 1)
+
+[sub_resource type="Resource" id="Resource_pjwcc"]
+resource_name = "emblem_back"
+script = ExtResource("1_12i7w")
+name = &"emblem_back"
+size = Vector3i(16, 14, 1)
+position = Vector3(-8, 12, 3)
+texture_offset = Vector2i(174, 0)
+color = Color(0.36078432, 0.36078432, 0.4392157, 1)
+
+[resource]
+script = ExtResource("2_qmflo")
+texture = ExtResource("3_oa3ex")
+boxes = Array[ExtResource("1_12i7w")]([SubResource("Resource_eswfu"), SubResource("Resource_s1xcj"), SubResource("Resource_pjwcc")])

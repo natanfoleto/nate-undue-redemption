@@ -1,0 +1,42 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://ui/credits.gd" id="1_credits"]
+
+[node name="Credits" type="CanvasLayer"]
+layer = 30
+script = ExtResource("1_credits")
+lines = Array[StringName]([&"GAME_TITLE", &"CREDITS_BY", &"CREDITS_MUSIC", &"CREDITS_MUSIC_EHLERS", &"CREDITS_MUSIC_KISTOL", &"CREDITS_SOUNDS", &"CREDITS_SOUNDS_KENNEY", &"CREDITS_SOUNDS_RUBBERDUCK", &"CREDITS_SOUNDS_LEOHPAZ", &"CREDITS_SOUNDS_JAGGEDSTONE", &"CREDITS_ART", &"CREDITS_ART_DRUMMYFISH", &"CREDITS_ART_KENNEY", &"CREDITS_ENGINE", &"CREDITS_ENGINE_GODOT", &"CREDITS_THANKS"])
+headings = Array[StringName]([&"CREDITS_MUSIC", &"CREDITS_SOUNDS", &"CREDITS_ART", &"CREDITS_ENGINE"])
+title_size = 52
+heading_size = 30
+line_size = 22
+heading_color = Color(0.56078434, 1, 0.8156863, 1)
+speed = 45.0
+fast_speed = 240.0
+fade_time = 1.0
+end_hold = 2.5
+
+[node name="Back" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+color = Color(0.03, 0.03, 0.05, 1)
+
+[node name="Roll" type="VBoxContainer" parent="."]
+unique_name_in_owner = true
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 96.0
+offset_right = -96.0
+grow_horizontal = 2
+mouse_filter = 2
+theme_override_constants/separation = 28
+
+[node name="Fade" type="ColorRect" parent="."]
+unique_name_in_owner = true
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+color = Color(0, 0, 0, 1)

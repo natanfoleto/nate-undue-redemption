@@ -86,7 +86,7 @@ dano = dano do ataque × (1 + soma dos bônus em %) × variação × crítico
 - O chão tem platôs de 1 e 2 blocos, ligados por rampas do próprio chão (na natureza) e escadas (nas construções) (`08-mapa.md`). Um golpe só acerta quem está mais ou menos na mesma altura de quem bateu; o limite fica em `11-balanceamento.md`. Na beira de um platô, o próprio degrau segura os tiros.
 - Todo golpe tem três tempos: preparação (o aviso), tempo ativo (quando fere) e recuperação.
 - Acerta todos os alvos na área, cada um no máximo uma vez.
-- Paredes bloqueiam golpes e projéteis.
+- Paredes bloqueiam golpes e projéteis. A exceção são os golpes da Boiúna, que passam pelos pilares da arena: a marca dela é sempre a área que ela atinge (`07-chefes/boiuna.md`).
 - O projétil para no primeiro inimigo que acerta, salvo arma com efeito próprio (`05-itens.md`).
 - Encostar num inimigo não fere. Só golpes avisados ferem.
 

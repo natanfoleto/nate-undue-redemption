@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="AttackData" format=3]
+
+[ext_resource type="Script" path="res://combat/attack_data.gd" id="1_attack"]
+
+[resource]
+script = ExtResource("1_attack")
+player_damage = 40
+shape = 1
+reach = 8.0
+angle = 120.0
+width = 0.0
+windup = 1.2
+active = 0.35
+recovery = 0.6
+knockback = 2
+warning = 1
+ignores_walls = true
+warning_sound = &"boiuna_tail_warning"
+strike_sound = &"boiuna_tail"

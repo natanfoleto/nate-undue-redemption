@@ -28,7 +28,7 @@ HUD, menus e telas do jogo. O visual de ícones, fontes e cores fica em `10-arte
 | Nome do item da mão | em cima da barra fixa | ao trocar de espaço, o nome do item por 1,2 s, sumindo em 0,5 s |
 | Magias | embaixo, à direita | os 2 elementos equipados, a recarga de cada um e o sinal de combinação pronta, que pulsa (cresce e clareia) quando ela fica pronta |
 | Item achado | em cima da barra fixa | o ícone e o nome de cada item pego (arma, armadura, poção, melhoria ou elemento), por 3 s, sumindo em 0,6 s |
-| Barra do chefe | no alto, ao centro | vida da Boiúna; na fase 1, dividida em 4 partes |
+| Barra do chefe | no alto, ao centro | vida da Boiúna, com o nome em cima; na fase 1, dividida em 4 partes, e a parte que espera um pilar aceso fica cinza; aparece quando a luta começa e some quando ela acaba |
 | Barra dos mobs | sobre a cabeça | vida, só depois de o mob levar dano |
 | Efeitos nos mobs | sobre a cabeça | um ícone para cada efeito |
 | Imune | sobre o chefe | a palavra "imune" quando um efeito não pega (`03-regras.md`) |
@@ -41,6 +41,7 @@ O centro da tela fica livre para os avisos dos golpes (pilar 2).
 
 ## Dicas de controle
 - Quando uma ação nova aparece, o ícone do botão surge perto de Nate (ex.: [F] Interagir) e some depois que ele usa a ação.
+- No primeiro atordoar da Boiúna, aparece a dica de segurar interagir para ativar o pilar; ela some quando um pilar acende.
 - O que cada trecho ensina: `04-player.md`.
 
 ## Santuário
@@ -120,8 +121,9 @@ Os avisos dos golpes não dependem só de cor, para ajudar daltônicos (regra pa
 - Os textos ficam numa tabela de tradução desde o início, para facilitar uma tradução no futuro (`12-tecnico.md`).
 
 ## Fim da partida
-- Depois da cena final e dos créditos, aparece um resumo da partida: tempo de jogo, mortes e segredos achados.
-- Em seguida, Nate volta ao mundo para o pós-jogo (`02-core-loop.md`).
+- **Créditos:** depois da cena final, os nomes sobem devagar pela tela, com o tema principal: o nome do jogo, "Um jogo de Natan Foleto", os pacotes prontos usados (música, sons, texturas e ícones, com os autores e as licenças) e o Godot. Segurar qualquer botão acelera; no fim, a última linha ("Obrigado por jogar!") para no meio da tela e a tela escurece.
+- **Resumo da partida:** tempo de jogo, mortes e segredos achados: murais (x de 7), melhorias (x de 13), pergaminhos (x de 4) e equipamento (x de 5, sem a espada inicial). Qualquer botão segue, depois de um instante.
+- Em seguida, Nate volta ao mundo para o pós-jogo, no S4 (`02-core-loop.md`).
 
 ## Assets e sons da interface
 - **Ícones:** a poção de vida, os 4 elementos e as 6 combinações, as 6 peças de equipamento, os 4 efeitos de status, o aviso de imune e os botões de teclado e mouse, Xbox e PlayStation. A barra de vida é desenhada por código.

@@ -1,0 +1,196 @@
+[gd_resource type="MeshLibrary" format=4]
+
+[ext_resource type="Texture2D" path="res://assets/textures/painted/stone.png" id="1_y161n"]
+[ext_resource type="Texture2D" path="res://assets/textures/painted/stone_brick.png" id="2_615wy"]
+[ext_resource type="Texture2D" path="res://assets/textures/marajoara_jade.png" id="3_wnocy"]
+[ext_resource type="Texture2D" path="res://assets/textures/painted/desert_stone.png" id="4_ujkd2"]
+[ext_resource type="Shader" path="res://world/blocks/liquid.gdshader" id="5_jhisg"]
+[ext_resource type="Texture2D" path="res://assets/textures/painted/water_strip.png" id="6_jbnvj"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0de20"]
+specular_mode = 2
+albedo_color = Color(0.42, 0.43, 0.52, 1)
+albedo_texture = ExtResource("1_y161n")
+uv1_triplanar = true
+uv1_world_triplanar = true
+texture_filter = 0
+
+[sub_resource type="BoxMesh" id="BoxMesh_yg7c7"]
+material = SubResource("StandardMaterial3D_0de20")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_6swyp"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dj1qg"]
+specular_mode = 2
+albedo_color = Color(0.52, 0.52, 0.6, 1)
+albedo_texture = ExtResource("2_615wy")
+uv1_triplanar = true
+uv1_world_triplanar = true
+texture_filter = 0
+
+[sub_resource type="BoxMesh" id="BoxMesh_pmgf6"]
+material = SubResource("StandardMaterial3D_dj1qg")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sc6py"]
+specular_mode = 2
+albedo_color = Color(0.4, 0.38, 0.48, 1)
+albedo_texture = ExtResource("2_615wy")
+uv1_triplanar = true
+uv1_world_triplanar = true
+texture_filter = 0
+
+[sub_resource type="BoxMesh" id="BoxMesh_umbmr"]
+material = SubResource("StandardMaterial3D_sc6py")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1yxbh"]
+specular_mode = 2
+albedo_texture = ExtResource("3_wnocy")
+emission_enabled = true
+emission_energy_multiplier = 1.2
+emission_texture = ExtResource("3_wnocy")
+uv1_triplanar = true
+uv1_world_triplanar = true
+texture_filter = 0
+
+[sub_resource type="BoxMesh" id="BoxMesh_n8ruy"]
+material = SubResource("StandardMaterial3D_1yxbh")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_o1udy"]
+specular_mode = 2
+albedo_color = Color(0.7, 0.66, 0.62, 1)
+albedo_texture = ExtResource("4_ujkd2")
+uv1_triplanar = true
+uv1_world_triplanar = true
+texture_filter = 0
+
+[sub_resource type="BoxMesh" id="BoxMesh_liedq"]
+material = SubResource("StandardMaterial3D_o1udy")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_obspa"]
+specular_mode = 2
+albedo_color = Color(0.36, 0.36, 0.42, 1)
+albedo_texture = ExtResource("1_y161n")
+uv1_triplanar = true
+uv1_world_triplanar = true
+texture_filter = 0
+
+[sub_resource type="BoxMesh" id="BoxMesh_ok0fh"]
+material = SubResource("StandardMaterial3D_obspa")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dxcdc"]
+specular_mode = 2
+albedo_color = Color(0.26, 0.25, 0.3, 1)
+albedo_texture = ExtResource("1_y161n")
+uv1_triplanar = true
+uv1_world_triplanar = true
+texture_filter = 0
+
+[sub_resource type="BoxMesh" id="BoxMesh_4acdi"]
+material = SubResource("StandardMaterial3D_dxcdc")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_e7rr2"]
+render_priority = 0
+shader = ExtResource("5_jhisg")
+shader_parameter/frames_texture = ExtResource("6_jbnvj")
+shader_parameter/frame_count = null
+shader_parameter/frames_per_second = 1.0
+shader_parameter/tint = Color(1, 0.25, 0.55, 1)
+shader_parameter/glow = 0.6
+shader_parameter/roughness_value = null
+
+[sub_resource type="BoxMesh" id="BoxMesh_7hhay"]
+material = SubResource("ShaderMaterial_e7rr2")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cm0ed"]
+specular_mode = 2
+albedo_color = Color(0.52, 0.52, 0.6, 1)
+albedo_texture = ExtResource("2_615wy")
+uv1_triplanar = true
+uv1_world_triplanar = true
+texture_filter = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_l2jyh"]
+_surfaces = [{
+"aabb": AABB(-0.5, -0.5, -0.5, 1, 1, 1),
+"attribute_data": PackedByteArray("AACAvgAAgD4AAEA/AAAAPwAAQD8AAIA+AACAvgAAgD4AAIC+AAAAPwAAQD8AAAA/AAAAAAAAAD8AAIA/AACAPgAAgD8AAAA/AAAAAAAAAD8AAAAAAACAPgAAgD8AAIA+AAAAAAAAgD4AAEA/AACAPgAAgD8AAIA+AAAAAAAAgD4AAIC+AACAPgAAQD8AAIA+AACAvgAAAD8AAIA/AAAAPwAAQD8AAAA/AACAvgAAAD8AAAAAAAAAPwAAgD8AAAA/AABAPwAAAD8AAIA/AACAPgAAQD8AAIA+AABAPwAAAD8AAIA/AAAAPwAAgD8AAIA+AAAAAAAAAD8AAIC+AACAPgAAAAAAAIA+AAAAAAAAAD8AAIC+AAAAPwAAgL4AAIA+AAAAvwAAAIAAAAA/AAAAPwAAAD8AAACAAAAAvwAAAIAAAAC/AAAAPwAAAD8AAAA/AACAvgAAAD8AAEA/AAAAgAAAQD8AAAA/AACAvgAAAD8AAIC+AAAAgAAAQD8AAACAAACAvgAAAIAAAAA/AAAAgAAAQD8AAACAAACAvgAAAIAAAAC/AAAAgAAAAD8AAACAAAAAvwAAAD8AAEA/AAAAPwAAAD8AAAA/AAAAvwAAAD8AAIC+AAAAPwAAQD8AAAA/AAAAPwAAAD8AAEA/AAAAgAAAAD8AAACAAAAAPwAAAD8AAEA/AAAAPwAAQD8AAACAAACAvgAAAD8AAAC/AAAAgAAAgL4AAACAAACAvgAAAD8AAAC/AAAAPwAAAL8AAACAAABAvwAAgL4AAIA+AAAAPwAAgD4AAIC+AABAvwAAgL4AAEC/AAAAPwAAgD4AAAA/AAAAvwAAAD8AAAA/AACAvgAAAD8AAAA/AAAAvwAAAD8AAAC/AACAvgAAAD8AAIC+AAAAvwAAgL4AAIA+AACAvgAAAD8AAIC+AAAAvwAAgL4AAEC/AACAvgAAgD4AAIC+AABAvwAAAD8AAAA/AAAAPwAAgD4AAAA/AABAvwAAAD8AAAC/AAAAPwAAAD8AAAA/AACAPgAAAD8AAAA/AACAvgAAgD4AAIC+AACAPgAAAD8AAAA/AAAAPwAAAD8AAIC+AAAAvwAAAD8AAEC/AACAvgAAAL8AAIC+AAAAvwAAAD8AAEC/AAAAPwAAQL8AAIC+AACAvwAAAL8AAAAAAAAAPwAAAAAAAAC/AACAvwAAAL8AAIC/AAAAPwAAAAAAAAA/AABAvwAAAD8AAIA+AAAAvwAAgD4AAAA/AABAvwAAAD8AAEC/AAAAvwAAgD4AAAC/AABAvwAAAL8AAAAAAAAAvwAAgD4AAAC/AABAvwAAAL8AAIC/AAAAvwAAAAAAAAC/AACAvwAAAD8AAIA+AAAAPwAAAAAAAAA/AACAvwAAAD8AAEC/AAAAPwAAgD4AAAA/AAAAAAAAAD8AAIA+AAAAvwAAAAAAAAC/AAAAAAAAAD8AAIA+AAAAPwAAgD4AAAC/AABAvwAAAD8AAIC/AAAAvwAAQL8AAAC/AABAvwAAAD8AAIC/AAAAPwAAgL8AAAC/"),
+"format": 34359738391,
+"material": SubResource("StandardMaterial3D_cm0ed"),
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 144,
+"vertex_data": PackedByteArray("AAAAvwAAgL4AAIA+AAAAPwAAAL8AAIA+AAAAPwAAgL4AAIA+AAAAvwAAgL4AAIA+AAAAvwAAAL8AAIA+AAAAPwAAAL8AAIA+AAAAvwAAAL8AAAA/AAAAPwAAgL4AAAA/AAAAPwAAAL8AAAA/AAAAvwAAAL8AAAA/AAAAvwAAgL4AAAA/AAAAPwAAgL4AAAA/AAAAvwAAgL4AAAA/AAAAPwAAgL4AAIA+AAAAPwAAgL4AAAA/AAAAvwAAgL4AAAA/AAAAvwAAgL4AAIA+AAAAPwAAgL4AAIA+AAAAvwAAAL8AAIA+AAAAPwAAAL8AAAA/AAAAPwAAAL8AAIA+AAAAvwAAAL8AAIA+AAAAvwAAAL8AAAA/AAAAPwAAAL8AAAA/AAAAPwAAAL8AAIA+AAAAPwAAgL4AAAA/AAAAPwAAgL4AAIA+AAAAPwAAAL8AAIA+AAAAPwAAAL8AAAA/AAAAPwAAgL4AAAA/AAAAvwAAAL8AAAA/AAAAvwAAgL4AAIA+AAAAvwAAgL4AAAA/AAAAvwAAAL8AAAA/AAAAvwAAAL8AAIA+AAAAvwAAgL4AAIA+AAAAvwAAAAAAAAAAAAAAPwAAAL8AAAAAAAAAPwAAAAAAAAAAAAAAvwAAAAAAAAAAAAAAvwAAAL8AAAAAAAAAPwAAAL8AAAAAAAAAvwAAAL8AAIA+AAAAPwAAAAAAAIA+AAAAPwAAAL8AAIA+AAAAvwAAAL8AAIA+AAAAvwAAAAAAAIA+AAAAPwAAAAAAAIA+AAAAvwAAAAAAAIA+AAAAPwAAAAAAAAAAAAAAPwAAAAAAAIA+AAAAvwAAAAAAAIA+AAAAvwAAAAAAAAAAAAAAPwAAAAAAAAAAAAAAvwAAAL8AAAAAAAAAPwAAAL8AAIA+AAAAPwAAAL8AAAAAAAAAvwAAAL8AAAAAAAAAvwAAAL8AAIA+AAAAPwAAAL8AAIA+AAAAPwAAAL8AAAAAAAAAPwAAAAAAAIA+AAAAPwAAAAAAAAAAAAAAPwAAAL8AAAAAAAAAPwAAAL8AAIA+AAAAPwAAAAAAAIA+AAAAvwAAAL8AAIA+AAAAvwAAAAAAAAAAAAAAvwAAAAAAAIA+AAAAvwAAAL8AAIA+AAAAvwAAAL8AAAAAAAAAvwAAAAAAAAAAAAAAvwAAgD4AAIC+AAAAPwAAAL8AAIC+AAAAPwAAgD4AAIC+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")
+}]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_njkt4"]
+points = PackedVector3Array(-0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5)
+
+[resource]
+item/0/name = "Pedra da prisão"
+item/0/mesh = SubResource("BoxMesh_yg7c7")
+item/0/mesh_transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+item/0/mesh_cast_shadow = 1
+item/0/shapes = [SubResource("BoxShape3D_6swyp"), Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)]
+item/0/navigation_mesh_transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+item/0/navigation_layers = 1
+item/1/name = "Piso da prisão"
+item/1/mesh = SubResource("BoxMesh_pmgf6")
+item/1/mesh_transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+item/1/mesh_cast_shadow = 1
+item/1/shapes = [SubResource("BoxShape3D_6swyp"), Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)]
+item/1/navigation_mesh_transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+item/1/navigation_layers = 1
+item/2/name = "Piso da arena"
+item/2/mesh = SubResource("BoxMesh_umbmr")
+item/2/mesh_transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+item/2/mesh_cast_shadow = 1
+item/2/shapes = [SubResource("BoxShape3D_6swyp"), Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)]
+item/2/navigation_mesh_transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+item/2/navigation_layers = 1
+item/3/name = "Padrão de jade"
+item/3/mesh = SubResource("BoxMesh_n8ruy")
+item/3/mesh_transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+item/3/mesh_cast_shadow = 1
+item/3/shapes = [SubResource("BoxShape3D_6swyp"), Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)]
+item/3/navigation_mesh_transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+item/3/navigation_layers = 1
+item/4/name = "Lugar do mural"
+item/4/mesh = SubResource("BoxMesh_liedq")
+item/4/mesh_transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+item/4/mesh_cast_shadow = 1
+item/4/shapes = [SubResource("BoxShape3D_6swyp"), Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)]
+item/4/navigation_mesh_transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+item/4/navigation_layers = 1
+item/5/name = "Rocha"
+item/5/mesh = SubResource("BoxMesh_ok0fh")
+item/5/mesh_transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+item/5/mesh_cast_shadow = 1
+item/5/shapes = [SubResource("BoxShape3D_6swyp"), Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)]
+item/5/navigation_mesh_transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+item/5/navigation_layers = 1
+item/6/name = "Rocha funda"
+item/6/mesh = SubResource("BoxMesh_4acdi")
+item/6/mesh_transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+item/6/mesh_cast_shadow = 1
+item/6/shapes = [SubResource("BoxShape3D_6swyp"), Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)]
+item/6/navigation_mesh_transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+item/6/navigation_layers = 1
+item/7/name = "Escuridão"
+item/7/mesh = SubResource("BoxMesh_7hhay")
+item/7/mesh_transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+item/7/mesh_cast_shadow = 1
+item/7/shapes = [SubResource("BoxShape3D_6swyp"), Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)]
+item/7/navigation_mesh_transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+item/7/navigation_layers = 1
+item/8/name = "Invisível"
+item/8/mesh_transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+item/8/mesh_cast_shadow = 1
+item/8/shapes = [SubResource("BoxShape3D_6swyp"), Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)]
+item/8/navigation_mesh_transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+item/8/navigation_layers = 1
+item/9/name = "Escada"
+item/9/mesh = SubResource("ArrayMesh_l2jyh")
+item/9/mesh_transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+item/9/mesh_cast_shadow = 1
+item/9/shapes = [SubResource("ConvexPolygonShape3D_njkt4"), Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)]
+item/9/navigation_mesh_transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+item/9/navigation_layers = 1

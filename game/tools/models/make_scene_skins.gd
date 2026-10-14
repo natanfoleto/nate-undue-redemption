@@ -27,6 +27,33 @@ const PEOPLE := {
 		"wrap": "4a3a2a", "wrap_dark": "3a2c1f", "cord": "a8752e", "sole": "2a1e16", "eye": "2a1a10",
 		"eye_white": "e6ddd0", "brow": "0e0a08", "mouth": "4e2820", "scar": "a87058",
 		"long_hair": false, "amulet": false},
+	# Moradores de Nhamundá, na cena final: roupa de hoje (camiseta, bermuda ou calça, pé descalço ou sapato). O
+	# pescador, de camiseta clara e bermuda azul; a mulher, de cabelo comprido e vestido vermelho; o velho, de cabelo
+	# grisalho, camisa verde e calça; e o menino, de camiseta amarela.
+	"villager_1": {"skin": "8a5a3a", "skin_shade": "7a4e32", "skin_dark": "6a4229", "skin_light": "9c6844",
+		"hair": "141210", "hair_light": "2a2420", "band": "141210", "band_dark": "141210", "mark": "1a1410",
+		"cloth": "d8d0c0", "cloth_dark": "b8b0a0", "cloth_light": "ece6da", "trim": "d8d0c0", "trim_dark": "b8b0a0",
+		"wrap": "3a5a8a", "wrap_dark": "2c466c", "cord": "6a4229", "sole": "3a2a20", "eye": "2a1a10",
+		"eye_white": "efe9df", "brow": "141210", "mouth": "5e3026", "long_hair": false, "amulet": false,
+		"modern": true, "pants": false},
+	"villager_2": {"skin": "6e4428", "skin_shade": "603a22", "skin_dark": "52321d", "skin_light": "80502f",
+		"hair": "0e0c0a", "hair_light": "241e1a", "band": "0e0c0a", "band_dark": "0e0c0a", "mark": "1a1410",
+		"cloth": "b04a3a", "cloth_dark": "8e3a2e", "cloth_light": "c45c4a", "trim": "b04a3a", "trim_dark": "8e3a2e",
+		"wrap": "9a3e32", "wrap_dark": "7c3228", "cord": "c9a040", "sole": "3a2a20", "eye": "2a1a10",
+		"eye_white": "efe9df", "brow": "0e0c0a", "mouth": "6e3030", "long_hair": true, "amulet": false,
+		"modern": true, "pants": false},
+	"villager_3": {"skin": "7a4a2c", "skin_shade": "6a3f25", "skin_dark": "5a3420", "skin_light": "8c5836",
+		"hair": "9a9894", "hair_light": "c0beb8", "band": "9a9894", "band_dark": "9a9894", "mark": "1a1410",
+		"cloth": "4a7a4a", "cloth_dark": "3a623a", "cloth_light": "5a8c5a", "trim": "4a7a4a", "trim_dark": "3a623a",
+		"wrap": "5a4a3a", "wrap_dark": "483a2e", "cord": "5a3420", "sole": "2a1e16", "eye": "2a1a10",
+		"eye_white": "e6ddd0", "brow": "c0beb8", "mouth": "5e3026", "long_hair": false, "amulet": false,
+		"modern": true, "pants": true},
+	"villager_4": {"skin": "8c5836", "skin_shade": "7a4c2e", "skin_dark": "6a4229", "skin_light": "9c6844",
+		"hair": "141210", "hair_light": "2a2420", "band": "141210", "band_dark": "141210", "mark": "1a1410",
+		"cloth": "e0b030", "cloth_dark": "c09020", "cloth_light": "f0c850", "trim": "e0b030", "trim_dark": "c09020",
+		"wrap": "4a7a4a", "wrap_dark": "3a623a", "cord": "6a4229", "sole": "3a2a20", "eye": "2a1a10",
+		"eye_white": "efe9df", "brow": "141210", "mouth": "6e3030", "long_hair": false, "amulet": false,
+		"modern": true, "pants": false},
 }
 const PEOPLE_ATLAS := Vector2i(64, 64)
 # Modelos que mantêm as caixas: só a pele muda.
@@ -241,13 +268,17 @@ func _tunic(box: BoxData, face: int, u: int, v: int, w: int, h: int) -> Color:
 		return _hair(box, face, u, v)
 	if face == FRONT and v == 0:
 		return _c("skin") if u >= 3 and u <= w - 4 else _c("cloth_dark")
-	if v == 7 or v == 10:
+	if _look.get("modern", false):
+		# Camiseta: lisa, com a barra mais escura.
+		if v == h - 1:
+			return _c("cloth_dark")
+	elif v == 7 or v == 10:
 		return _c("cloth_dark")
-	if v == 8:
+	elif v == 8:
 		return _c("mark") if posmod(u, 4) == 0 else _c("trim")
-	if v == 9:
+	elif v == 9:
 		return _c("mark") if posmod(u, 4) == 2 else _c("trim")
-	if v == h - 1:
+	elif v == h - 1:
 		return _c("trim") if posmod(u, 3) == 1 else _c("cloth_dark")
 	var n := _noise(box, face, u, v)
 	if n < 0.1:
@@ -262,7 +293,7 @@ func _sleeve(box: BoxData, face: int, u: int, v: int, h: int) -> Color:
 	if face == TOP:
 		return _c("cloth")
 	if v == h - 1:
-		return _c("trim")
+		return _c("cloth_dark") if _look.get("modern", false) else _c("trim")
 	return _c("cloth_light") if _noise(box, face, u, v) > 0.88 else _c("cloth")
 
 
@@ -272,9 +303,9 @@ func _forearm(face: int, v: int, h: int) -> Color:
 		return _c("skin_dark")
 	if face == TOP:
 		return _c("skin")
-	if v == 0:
+	if v == 0 and not _look.get("modern", false):
 		return _c("cord")
-	if _look.long_hair and (v == 2 or v == 4):
+	if _look.long_hair and not _look.get("modern", false) and (v == 2 or v == 4):
 		return _c("mark")
 	if v >= h - 2:
 		return _c("skin_shade")
@@ -289,7 +320,7 @@ func _wrap(box: BoxData, face: int, u: int, v: int, w: int, h: int) -> Color:
 		return _c("skin_shade")
 	if v == h - 1:
 		return _c("wrap_dark")
-	if v == h - 2:
+	if v == h - 2 and not _look.get("modern", false):
 		return _c("band")
 	if (face == RIGHT or face == LEFT) and u == w / 2:
 		return _c("wrap_dark")
@@ -299,6 +330,11 @@ func _wrap(box: BoxData, face: int, u: int, v: int, w: int, h: int) -> Color:
 # Canela e pé descalço: a sombra da tanga em cima, o cordão no tornozelo e a sola escura.
 func _shin(face: int, v: int, h: int) -> Color:
 	if face == BOTTOM:
+		return _c("sole")
+	# A calça até o sapato.
+	if _look.get("pants", false):
+		if face == TOP or v < h - 1:
+			return _c("wrap_dark") if v == h - 2 else _c("wrap")
 		return _c("sole")
 	if face == TOP:
 		return _c("skin")

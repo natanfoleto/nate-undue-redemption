@@ -1,0 +1,84 @@
+[gd_resource type="Resource" script_class="BoiunaData" format=3]
+
+[ext_resource type="Script" path="res://boss/boiuna_data.gd" id="1_data"]
+[ext_resource type="Resource" path="res://data/attacks/boiuna_bite.tres" id="2_bite"]
+[ext_resource type="Resource" path="res://data/attacks/boiuna_tail.tres" id="3_tail"]
+[ext_resource type="Resource" path="res://data/attacks/boiuna_spit.tres" id="4_spit"]
+[ext_resource type="Resource" path="res://data/attacks/boiuna_ambush.tres" id="5_ambush"]
+[ext_resource type="Resource" path="res://data/attacks/boiuna_ring.tres" id="6_ring"]
+[ext_resource type="Resource" path="res://data/models/boiuna_skull.tres" id="7_skull"]
+[ext_resource type="Resource" path="res://data/models/boiuna_segment.tres" id="8_segment"]
+[ext_resource type="Resource" path="res://data/effects/spell_effects.tres" id="9_splash"]
+
+[resource]
+script = ExtResource("1_data")
+part_health = 180
+parts = 4
+stun_time = 6.0
+phase_2_health = 400
+pillar_hold_time = 2.0
+intervals = Array[float]([3.0, 2.5, 2.0, 1.5])
+bite = ExtResource("2_bite")
+tail_sweep = ExtResource("3_tail")
+spit = ExtResource("4_spit")
+ambush = ExtResource("5_ambush")
+ring = ExtResource("6_ring")
+ambush_every = 5.0
+phase_2_rings = Array[bool]([false, true, false])
+lunge_overshoot = 1.0
+spit_count = 3
+spit_spread = 3.0
+spit_flight = 0.45
+pool_time = 4.0
+pool_fade_time = 0.4
+body_hurt_radius = 2.6
+head_hurt_radius = 1.2
+model_scale = 2.0
+head_height = 4.0
+head_reach = -0.4
+head_rest_height = 1.4
+emerge_time = 1.6
+dive_time = 1.0
+head_return_time = 0.6
+segment_spacing = 0.6
+depth = 6.0
+tail_length = 6.0
+tail_height = 4.0
+head_follow = 6.0
+coil_back = 1.2
+coil_rise = 0.8
+throat_swell = 0.25
+jaw_open = 28.0
+thrash_sway = 1.2
+thrash_time = 0.9
+sway = 0.3
+sway_time = 3.0
+ring_turns = 1.0
+ring_closed_radius = 0.8
+phase_2_first_delay = 2.5
+head_model = ExtResource("7_skull")
+segment_model = ExtResource("8_segment")
+body_thickness = Vector2(0.8, 0.65)
+tail_thickness = Vector2(0.8, 0.35)
+look_pitch = 0.5
+stunned_jaw = 0.4
+eye_color = Color(0.95, 0.63, 0.19, 1)
+eye_glow = 1.5
+eye_warning_glow = 4.0
+eye_stunned_glow = 0.3
+hurt_flash_time = 0.1
+immune_wait = 0.4
+pool_color = Color(0.32, 0.1, 0.45, 0.85)
+spit_size = 0.4
+spit_arc = 2.0
+spit_turns = Vector2(1, 2)
+splash_look = ExtResource("9_splash")
+splash_radius = 2.0
+slam_shake = 0.12
+slam_shake_time = 0.3
+roar_shake = 0.08
+roar_shake_time = 0.8
+see_through_alpha = 0.35
+see_through_time = 0.15
+see_through_height = 1.0
+see_through_margin = 0.4

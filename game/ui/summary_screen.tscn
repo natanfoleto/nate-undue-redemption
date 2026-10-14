@@ -1,0 +1,58 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://ui/summary_screen.gd" id="1_summary"]
+[ext_resource type="Resource" path="res://data/ui/summary.tres" id="2_data"]
+
+[node name="SummaryScreen" type="CanvasLayer"]
+layer = 30
+script = ExtResource("1_summary")
+data = ExtResource("2_data")
+fade_time = 0.8
+wait_time = 1.5
+row_font_size = 30
+
+[node name="Back" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+color = Color(0.03, 0.03, 0.05, 1)
+
+[node name="Center" type="CenterContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+
+[node name="List" type="VBoxContainer" parent="Center"]
+layout_mode = 2
+theme_override_constants/separation = 32
+
+[node name="Title" type="Label" parent="Center/List"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 44
+horizontal_alignment = 1
+
+[node name="Rows" type="GridContainer" parent="Center/List"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/h_separation = 64
+theme_override_constants/v_separation = 12
+columns = 2
+
+[node name="Continue" type="Label" parent="Center/List"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.75, 0.75, 0.8, 1)
+theme_override_font_sizes/font_size = 22
+horizontal_alignment = 1
+
+[node name="Fade" type="ColorRect" parent="."]
+unique_name_in_owner = true
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+color = Color(0, 0, 0, 1)

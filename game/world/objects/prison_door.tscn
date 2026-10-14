@@ -1,0 +1,29 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://world/objects/prison_door.gd" id="1_door"]
+[ext_resource type="Script" path="res://tools/models/block_model.gd" id="2_model"]
+[ext_resource type="Resource" path="res://data/models/prison_door_frame.tres" id="3_frame"]
+[ext_resource type="Resource" path="res://data/models/prison_door_slab.tres" id="4_slab"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_door"]
+size = Vector3(4, 2.4, 0.4)
+
+[node name="PrisonDoor" type="StaticBody3D"]
+script = ExtResource("1_door")
+drop = 2.4
+move_time = 1.2
+emblem_color = Color(0.56078434, 1, 0.8156863, 1)
+emblem_glow = 0.6
+reach = 2.0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2, 0)
+shape = SubResource("BoxShape3D_door")
+
+[node name="Frame" type="Node3D" parent="."]
+script = ExtResource("2_model")
+model = ExtResource("3_frame")
+
+[node name="Slab" type="Node3D" parent="."]
+script = ExtResource("2_model")
+model = ExtResource("4_slab")

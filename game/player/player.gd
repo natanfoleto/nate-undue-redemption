@@ -6,6 +6,9 @@ extends CharacterBody3D
 ## botão de usar bebe. O combo, o tiro, as magias e a poção ficam nos componentes filhos MeleeCombo, RangedShot,
 ## SpellCaster e Flask.
 
+## Um golpe pegou em Nate (mesmo segurado pelo escudo): a ativação de um pilar para.
+signal hit_taken
+
 ## Ações dos 5 espaços da barra, na ordem.
 const HOTBAR_ACTIONS: Array[StringName] = [&"hotbar_1", &"hotbar_2", &"hotbar_3", &"hotbar_4", &"hotbar_5"]
 
@@ -66,6 +69,10 @@ var _armor: ArmorData
 var _armor_model: BlockModel
 var _flask_model: BlockModel
 var _cinematic := false
+# Parado, segurando a ativação de um pilar: não anda nem age, mas leva golpes.
+var _holding := false
+# O pulso do muiraquitã acordando cuida da luz enquanto dura.
+var _pulsing := false
 var _boost_share := 0.0
 var _boost_left := 0.0
 var _regen_wait_left := 0.0
@@ -112,6 +119,8 @@ func _physics_process(delta: float) -> void:
 	if _cinematic:
 		velocity = Vector3.ZERO
 		_update_animation()
+		if not _pulsing:
+			_update_light(delta)
 		return
 	if _dead:
 		velocity = _push_velocity if _push_left > 0.0 else Vector3.ZERO
@@ -121,7 +130,7 @@ func _physics_process(delta: float) -> void:
 	_control_left = maxf(_control_left - delta, 0.0)
 	_hurt_invincible_left = maxf(_hurt_invincible_left - delta, 0.0)
 	_boost_left = maxf(_boost_left - delta, 0.0)
-	var in_control := _control_left == 0.0
+	var in_control := _control_left == 0.0 and not _holding
 	var move := _ground_direction(Input.get_vector(&"move_left", &"move_right", &"move_up", &"move_down")) if in_control else Vector3.ZERO
 	if not is_dashing():
 		_dash_cooldown_left = maxf(_dash_cooldown_left - delta, 0.0)
@@ -147,7 +156,8 @@ func _physics_process(delta: float) -> void:
 	_update_aim(move)
 	_update_animation()
 	_update_blink()
-	_update_light(delta)
+	if not _pulsing:
+		_update_light(delta)
 
 
 func is_dashing() -> bool:
@@ -221,6 +231,21 @@ func set_cinematic(on: bool) -> void:
 		_animator.play(idle_animation)
 
 
+## Parado, de braços estendidos, segurando a ativação de um pilar (07-chefes/boiuna): não anda nem age, mas leva
+## golpes.
+func hold_still(on: bool) -> void:
+	if on == _holding:
+		return
+	_holding = on
+	if on:
+		_melee.cancel()
+		_ranged.cancel()
+		velocity = Vector3.ZERO
+		play_overlay(spells.cast_animation, 1.0, true)
+	else:
+		stop_overlay()
+
+
 ## Descanso no santuário (02-core-loop): vida e frasco cheios, sem efeitos.
 func rest() -> void:
 	health.reset(max_health())
@@ -260,7 +285,9 @@ func assisted_aim() -> Vector3:
 	var stats := Balance.player
 	var best_offset := Vector3.ZERO
 	for enemy: Node3D in get_tree().get_nodes_in_group(&"enemies"):
-		var offset := enemy.global_position - global_position
+		# O chefe diz onde mirar (a cabeça no chão ou o corpo no fosso).
+		var target: Vector3 = enemy.call(&"aim_point") if enemy.has_method(&"aim_point") else enemy.global_position
+		var offset := target - global_position
 		# Inimigo fora da altura que o golpe alcança (num platô) não puxa a mira.
 		if absf(offset.y) > Balance.combat.height_reach:
 			continue
@@ -279,6 +306,7 @@ func assisted_aim() -> Vector3:
 func take_hit(hit: Hit) -> void:
 	if _dead or is_invincible():
 		return
+	hit_taken.emit()
 	_wait_regen()
 	if has_shield():
 		# O escudo segura o golpe inteiro e se desfaz; Nate ainda é empurrado e pisca.
@@ -309,9 +337,9 @@ func take_status_damage(amount: int, _points: int) -> void:
 	health.damage(mini(amount, health.value - 1))
 
 
-## Em combate: algum inimigo está atrás de Nate ou lutando com ele.
+## Em combate: algum inimigo (ou o chefe) está atrás de Nate ou lutando com ele.
 func in_combat() -> bool:
-	return get_tree().get_nodes_in_group(&"enemies").any(func(enemy: Node) -> bool: return enemy is Mob and (enemy as Mob).is_engaged())
+	return get_tree().get_nodes_in_group(&"enemies").any(func(enemy: Node) -> bool: return enemy.has_method(&"is_engaged") and enemy.call(&"is_engaged"))
 
 
 # A vida volta sozinha fora de combate (02-core-loop): sem inimigo atrás de Nate e depois de um tempo sem levar
@@ -625,6 +653,7 @@ func _update_blink() -> void:
 
 func _die() -> void:
 	_dead = true
+	hold_still(false)
 	_melee.cancel()
 	_ranged.cancel()
 	flask.cancel()
@@ -690,13 +719,20 @@ func show_flask(on: bool) -> void:
 		_hand_model.visible = not on
 
 
+## O ponto do muiraquitã no peito de Nate, de onde sai a corrente de luz até o pilar.
+func amulet_point() -> Vector3:
+	return _model.part_center(&"muiraquita")
+
+
 ## O muiraquitã acordando (05-itens): um pulso de luz em volta de Nate, e depois ele fica aceso.
 func awaken_amulet() -> void:
+	_pulsing = true
 	_light.visible = true
 	var tween := create_tween()
 	tween.tween_method(_pulse_amulet, 0.0, 1.0, awaken_time / 2.0)
 	tween.tween_method(_pulse_amulet, 1.0, 0.0, awaken_time / 2.0)
 	await tween.finished
+	_pulsing = false
 	_show_amulet()
 
 

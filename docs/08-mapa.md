@@ -50,7 +50,7 @@ O Bosque de Fungos tem um rascunho jogável em `game/world/areas/forest.tscn` (e
 | Sala do meio | 16 × 12 blocos | 2 Esqueletos e 1 Lobo; a leste, o desvio do +20 de vida (2 Lobos); a oeste, o corredor do atalho até a porta do S1 (cerca de 40 blocos) |
 | S2 | 16 × 10 blocos | o S2 |
 | Arena 2 | 18 × 16 blocos, com portão na entrada e na saída | as 3 ondas do `11-balanceamento.md` |
-| Passagem escura | 18 × 4 blocos | exige a Luz Ancestral; no fim, a parte jogável termina até as Ruínas existirem |
+| Passagem escura | 18 × 4 blocos | exige a Luz Ancestral; no fim, a saída para as Ruínas |
 
 O caminho principal do Bosque tem cerca de 190 blocos andando, sem contar as lutas. A passagem escura leva às Ruínas.
 
@@ -73,6 +73,16 @@ As Ruínas têm um rascunho jogável em `game/world/areas/ruins.tscn` (etapa 6).
 
 O caminho principal das Ruínas tem cerca de 150 blocos andando, sem contar as lutas.
 
+A Grande Prisão tem um rascunho jogável em `game/world/areas/prison.tscn` (etapa 7). As medidas também são propostas, para conferir jogando.
+
+| Trecho | Medidas | O que tem |
+|---------|---------|-----------|
+| Corredor da chegada | 10 × 2 blocos, vindo da saída da sala do Selo | o ponto de chegada e, na ponta, a volta para as Ruínas |
+| Antessala | 12 × 12 blocos | o S4, com a memória 4; o mural 7 na parede norte; a porta da Grande Prisão, de 4 blocos, na parede leste |
+| Arena da Boiúna | 14 × 14 blocos, que cabem na câmera | o fosso de 4 × 4 no centro, de onde a Boiúna sai, com um anel de jade em volta; 4 pilares de 2 × 2, a 5 blocos do centro, um de cada lado |
+
+Da chegada até a porta, são cerca de 20 blocos andando. A construção é de pedra escura, com pilastras de jade nas paredes de trás; em volta, rocha subindo atrás e, na frente da câmera, o abismo com a escuridão roxa do predador no fundo.
+
 ### Relevo e bordas
 - O chão tem platôs de 1 e 2 blocos. **Na natureza** (a clareira, a Mina, o Bosque), o próprio chão sobe em rampas, sem escada: todo desnível de 1 bloco entre dois chões vira rampa curta do mesmo material (grama, terra, cascalho, musgo), também nos cantos, e os morros sobem de qualquer lado; nos corredores, rampas mais longas, de 2 blocos, sobem mais suave. **Nas construções** (as Ruínas), as subidas são escadas de pedra. Onde o desnível passa de 1 bloco, moitas (na clareira) ou pedras (no Bosque) seguram quem anda: não há quedas. Golpes só acertam quem está mais ou menos na mesma altura (`03-regras.md`).
 - **Relevo de verdade:** o chão sobe e desce como num terreno real: encostado em morros e paredões, em barrancos que cortam a área de lado a lado e em terraços, nunca em morrinhos soltos no meio do nada.
@@ -80,7 +90,7 @@ O caminho principal das Ruínas tem cerca de 150 blocos andando, sem contar as l
 - **Formas soltas:** as salas e os corredores da natureza não são caixas. As paredes ganham reentrâncias arredondadas e saliências de rocha (ou árvores entrando na clareira), sem fechar nenhum caminho nem abrir caminho novo; as arenas e os salões do povo antigo, que são construção, ficam retos.
 - **Chão misturado:** onde um chão encontra outro (a grama e a terra da fenda, as tábuas e a terra da Mina, o musgo e a terra do Bosque, o cascalho e o piso das Ruínas), a borda ondula e mistura os blocos dos dois, em vez de uma linha reta.
 - **Nada de vazio:** o terreno preenche tudo o que a câmera alcança, como no Minecraft Dungeons. Rente ao chão fica a parede: baixa na frente da câmera (sul e leste do chão), para não esconder Nate, e alta e irregular atrás (norte e oeste). Depois dela, onde há outra sala na diagonal da câmera, o terreno desce num abismo; atrás de tudo, na borda de fora, sobem morros. Os morros e a divisa com os abismos ondulam, sem as linhas retas da distância contada em blocos. Nenhuma coluna tampa a visão de Nate: a altura de cada uma tem um teto, o da linha de visão da câmera até o chão atrás dela.
-- **Fundo dos abismos:** água escura de galeria inundada, com esteios de madeira, na Mina; água que brilha, com fungos acesos, no Bosque; lava, que ilumina as paredes de baixo para cima, nas Ruínas. Pedras sobem do fundo aqui e ali, e a rocha fica mais escura abaixo do chão.
+- **Fundo dos abismos:** água escura de galeria inundada, com esteios de madeira, na Mina; água que brilha, com fungos acesos, no Bosque; lava, que ilumina as paredes de baixo para cima, nas Ruínas; a escuridão roxa do predador, com luzes roxas no fundo, na Grande Prisão. Pedras sobem do fundo aqui e ali, e a rocha fica mais escura abaixo do chão.
 - **Mundo de fora:** em volta da clareira, mata fechada subindo em morros a oeste; a leste, num terraço mais baixo, a vila abandonada dos mineiros da família, com barracos de telhado caindo, um trilho e uma vagoneta; ao sul, a encosta desce até o rio Nhamundá, com areia, papiro e canoas, e a cidade do outro lado, com casas de madeira pintada. Capim e flores pela clareira e pela mata.
 - **Abismos e pontes no caminho:** a vala da sala do Estilingue, a galeria inundada da Mina, a fenda do Bosque, a fenda de lava das Ruínas e os vãos da ponte de alavanca e da galeria do Arco são abismos de verdade. Na beira deles, cerca (ou balaustrada) e uma barreira invisível seguram quem anda; os tiros passam por cima.
 - As paredes baixas seguram os tiros e a visão dos mobs como as outras, com blocos invisíveis por cima. Em volta das áreas escuras e atrás dos murais, a parede da frente é um pouco mais alta. Números: `11-balanceamento.md`.
@@ -133,8 +143,9 @@ O caminho principal das Ruínas tem cerca de 150 blocos andando, sem contar as l
 
 ### Grande Prisão
 - **Antessala:** S4, com a memória 4, e o mural 7.
-- **Porta da Grande Prisão:** abre com o muiraquitã inteiro (`05-itens.md`).
-- **Arena da Boiúna:** cabe inteira na câmera normal do jogo, com o fosso no centro e um pilar de cada lado (`07-chefes/boiuna.md`).
+- **Porta da Grande Prisão:** abre com o muiraquitã inteiro (`05-itens.md`); na luta, fecha trancada atrás de Nate.
+- **Arena da Boiúna:** cabe inteira na câmera normal do jogo, com o fosso no centro e um pilar de cada lado (`07-chefes/boiuna.md`). Depois da luta, fica vazia, com uma tampa de jade no fosso (`02-core-loop.md`).
+- **Volta:** a ponta do corredor da chegada leva de volta às Ruínas.
 
 ## Santuários
 | Santuário | Onde | Memória |

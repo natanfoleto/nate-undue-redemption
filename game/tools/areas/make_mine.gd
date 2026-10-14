@@ -809,13 +809,6 @@ func _build_interface(player: Node3D) -> void:
 	director.set("hints", hints)
 	director.set("hint_scene", load("res://ui/button_hint.tscn"))
 	_add(_root, director)
-	var end_layer := CanvasLayer.new()
-	end_layer.name = "EndLayer"
-	end_layer.layer = 5
-	_add(_root, end_layer)
-	var end: Control = (load("res://ui/end_screen.tscn") as PackedScene).instantiate()
-	_add(end_layer, end)
-	_root.set("end_screen", end)
 	_add(_root, (load("res://ui/pause_menu.tscn") as PackedScene).instantiate())
 	_add(_root, (load("res://ui/inventory.tscn") as PackedScene).instantiate())
 	_add(_root, (load("res://ui/mural_gallery.tscn") as PackedScene).instantiate())

@@ -1,6 +1,6 @@
 # Plano de produção
 
-Como construir o jogo a partir da documentação. São etapas curtas, e cada uma termina com algo jogável. As etapas 0 a 6 estão detalhadas; as seguintes estão em linhas gerais e ganham detalhe quando chegar a vez delas.
+Como construir o jogo a partir da documentação. São etapas curtas, e cada uma termina com algo jogável. As etapas 0 a 7 estão detalhadas; a 8 está em linhas gerais e ganha detalhe quando chegar a vez dela.
 
 ## Princípios
 - **Jogável cedo:** toda etapa termina com algo que dá para jogar e testar.
@@ -144,6 +144,23 @@ Depois de jogar os ajustes, o responsável pediu (2026-10-14): o chão escuro vo
 
 Feitos em 2026-10-14, com os documentos atualizados: a escuridão pela oclusão; a interface a 75%; o visual das 10 magias, com tremor da tela, pausa curta no acerto e o pulso da combinação pronta; e o Bosque com manchas no chão, plantas, cipós, arbustos, troncos, ruínas, riachos e esporos. Depois deles, segue a etapa 7.
 
-## Etapas 7 e 8, em linhas gerais
-- **7. Grande Prisão:** antessala com a memória 4, a Boiúna com as duas fases e os pilares, a cena da troca de fase, o final, os créditos, o resumo e o pós-jogo.
+## Etapa 7: Grande Prisão
+- Rascunho do mapa: o corredor da chegada, a antessala com o S4 e o mural 7, a porta e a arena de 14 × 14 blocos, com o fosso no centro e os 4 pilares; a saída da sala do Selo leva até ela, e a ponta do corredor volta às Ruínas.
+- A porta da Grande Prisão, que abre com o muiraquitã inteiro e fica trancada durante a luta; os pilares, ativados segurando interagir, com a corrente de luz.
+- A Boiúna: a cabeça, o corpo em gomos e a cauda; a fase 1 com o bote, a varrida de cauda e o cuspe, as 4 partes da vida, o atordoar e os pilares prendendo-a; a fase 2 na escuridão, com a emboscada e o cerco.
+- A cena da troca de fase, as regras da morte nas duas fases e a prisão fechando.
+- A memória 4, a cena final, os créditos, o resumo da partida e o pós-jogo.
+- A barra do chefe no HUD, a dica do pilar, a música e os sons da luta.
+
+Feita em 2026-10-14, menos a arte e o som definitivos e o teste com controle: dá para jogar do começo ao fim. A tela do fim da parte jogável saiu do jogo, porque todas as áreas se ligam. O que os documentos deixavam aberto ficou como provisório da produção, para conferir jogando (`07-chefes/boiuna.md`, `11-balanceamento.md`):
+- **Partes da vida e pilares:** cada parte cai inteira, e a seguinte só cai depois que um pilar acende para cada parte derrubada; até lá, aparece "imune" e a parte fica cinza na barra. Os pilares podem ser ativados a qualquer hora da fase 1.
+- **Onde ferir:** na fase 1, o corpo em volta do fosso o tempo todo e a cabeça no chão; na fase 2, a cabeça, desde o aviso da emboscada e no cerco.
+- **Fase 2:** um ataque a cada 5 s, na ordem emboscada, cerco, emboscada; entre um e outro, ela fica escondida no fosso, e as 2 correntes que restaram seguem presas a ela.
+- **Leitura:** a Boiúna fica meio transparente quando está entre a câmera e Nate, e a câmera puxa um pouco para o centro da arena durante a luta.
+- **Som:** a música "Twists" na luta e o tema principal na cena final e nos créditos; os sons da Boiúna, dos pilares e das correntes, dos pacotes já usados.
+- **Fim:** a cena final em Nhamundá, com os moradores esperando Nate na estrada; os créditos com "Um jogo de Natan Foleto" e os pacotes prontos; o resumo com o tempo, as mortes, os murais, as melhorias, os pergaminhos e o equipamento; e o pós-jogo no S4, com a arena vazia e o fosso tampado.
+
+Fica para o acabamento: na primeira vez que cada efeito aparece numa máquina, o jogo pode engasgar um instante enquanto o Godot prepara o shader dele (na luta, até 1 s no primeiro cuspe); depois, ele fica guardado. Com os shaders prontos, a luta roda a 60 quadros por segundo em 1080p.
+
+## Etapa 8, em linhas gerais
 - **8. Acabamento:** abertura, menus e opções (trocar botões e acessibilidade), mapa por área e tela de progresso, música, testes com jogadores de fora para conferir os 30 min, ajustes no `11-balanceamento.md` e exportação para Windows e macOS.
